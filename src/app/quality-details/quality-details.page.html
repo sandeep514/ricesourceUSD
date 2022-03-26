@@ -1,0 +1,105 @@
+<ion-header class="green">
+	<ion-toolbar  mode="ios"  style="background: transparent; --background: transparent">
+		<ion-buttons slot="start" class="back-button" (click)="closeModal()">
+			<ion-icon name="arrow-back-outline"></ion-icon>
+		</ion-buttons>
+		<ion-title class="header-title porttitle">
+			{{ riceQuality?.quality }} {{ riceQuality?.quality_name }}
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="lightgreen">
+	<div style="margin-bottom: 50px;">
+
+		<div style="border-bottom: 2px solid #000;margin: 20px 0px">			
+			<p style="font-size: 18px;font-weight: bold;text-align: center;">Customised Packing Price</p>
+			<ion-row>
+				<ion-col size="3" style="font-size: 20px;line-height: 2.6">Packing: </ion-col>
+				<ion-col size="9" >
+					<ion-item class="select" style="background: #fffbd6;--background: #fffbd6;border: 2px solid #92b243;border-radius: 9px">
+						<ion-label>Packing</ion-label>
+						<ion-select placeholder="Select" (ionChange)="changeBag($event)">
+						  	<ion-select-option *ngFor="let bag of packing" value="{{ bag?.PMT_USD }}">
+								{{ bag?.bag_size }} ({{ bag?.bag_type }})
+							</ion-select-option>
+						</ion-select>
+					  </ion-item>
+				</ion-col>
+			</ion-row>
+
+			<ion-row >
+				<ion-col size="4" style="font-size: 20px;line-height: 2.5">FOB Price: </ion-col>
+				<ion-col size="8" >
+					<ion-item class="select" style="background: #fffbd6;--background: #fffbd6">
+						<!-- <ion-label>region</ion-label> -->
+						<h4 style="padding: 0;margin: 0;width: 100%;text-align: right;">${{ fobminData }} - ${{ fobmaxData }} PMT</h4>
+					  </ion-item>
+				</ion-col>
+			</ion-row>
+			
+			<ion-row >
+				<ion-col size="3" style="font-size: 20px;line-height: 2.6">Port: </ion-col>
+				<ion-col size="9">
+					<ion-row>
+						<ion-col size="12" >
+							<ion-item class="select" style="background: #fffbd6;--background: #fffbd6;border: 2px solid #92b243;border-radius: 9px">
+								<ion-label>REGION</ion-label>
+								<ion-select placeholder="Select" (ionChange)="changeRegion($event)">
+										<ion-select-option *ngFor="let region of regions">{{ region }}</ion-select-option>
+								</ion-select>
+							</ion-item>
+						</ion-col>
+						<ion-col size="12" >
+							<ion-item class="select" style="background: #fffbd6;--background: #fffbd6;border: 2px solid #92b243;border-radius: 9px">
+								<ion-label>COUNTRY</ion-label>
+		
+								<ion-select placeholder="Select" (ionChange)="changeCountry($event)">
+										<ion-select-option *ngFor="let ctry of country">{{ ctry }}</ion-select-option>
+								</ion-select>
+							</ion-item>
+						</ion-col>
+						<ion-col size="12" >
+							<ion-item class="select" style="background: #fffbd6;--background: #fffbd6;border: 2px solid #92b243;border-radius: 9px">
+								<ion-label>PORT</ion-label>
+		
+								<ion-select placeholder="Select" (ionChange)="changePort($event)">
+										<ion-select-option *ngFor="let ctry of selectedPorts">{{ ctry }}</ion-select-option>
+								</ion-select>
+							</ion-item>
+						</ion-col>
+					</ion-row>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col size="5">
+					<p style="margin-left: 5px;font-size: 20px;">Ocean Freight PMT: </p>
+				</ion-col>
+				<ion-col  size="7">
+					<p style="font-size: 18px; text-transform: uppercase; font-weight: bold; list-style: none; padding: 0; margin: 0; margin-top: 15px;text-align: right;margin-right: 14px;">{{ defalutPort }} (${{ defalutPortPrice }})</p>
+				</ion-col>
+			</ion-row>
+			<ion-row >
+				<ion-col size="4" style="font-size: 20px;line-height: 2.5">CIF Price:</ion-col>
+				<ion-col size="8" >
+					<ion-item class="select" style="background: #fffbd6;--background: #fffbd6">
+						<h4 style="padding: 0;margin: 0;width: 100%;text-align: right;">${{CIFminData}} - ${{ CIFmaxData }} PMT</h4>
+					  </ion-item>
+				</ion-col>
+			</ion-row>
+		</div>
+		<!-- <div>
+			{{ riceQuality?.quality }} {{ riceQuality?.quality_name }}
+		</div> -->
+		<div style="text-align: center;font-size: 20px;">
+			Rice Graph
+		</div>
+		<ion-row>
+			<ion-col>
+				<div id="highcharts" style="width: 100%; height:300"></div>
+			</ion-col>
+		</ion-row>
+
+	</div>
+	<app-menu></app-menu>
+</ion-content>

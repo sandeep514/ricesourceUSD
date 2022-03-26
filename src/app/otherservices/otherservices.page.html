@@ -1,0 +1,35 @@
+<ion-header class="green">
+	<ion-toolbar  mode="ios"  style="background: transparent; --background: transparent">
+		<ion-buttons slot="start" class="back-button" (click)="back()">
+			<ion-icon name="arrow-back-outline"></ion-icon>
+		</ion-buttons>
+		<ion-title class="header-title porttitle">Our Other Services</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content id="content" class="lightgreen"  style="height: 100%;">
+	<div style="height: 90%;overflow: scroll;">
+		<div>
+			<ul>
+				<ng-container *ngFor="let buyers of myBuyers">
+					<li  class="demandedData" *ngIf="buyers.contact_person != '' || buyers.contact_person != null">
+						<div >
+							<p>
+								<span class="demandHeaders">Buyer Name</span> : {{ buyers.contact_person }}
+							</p>
+							<p>
+								<span class="demandHeaders">Buyer Contact</span> : {{ buyers.contact_number }}
+							</p>
+							<p>
+								<span class="demandHeaders">Specialised</span> : {{ buyers.specialised }}
+							</p>
+							
+	
+						</div>
+					</li>
+				</ng-container>
+			</ul>
+		</div>
+	</div>
+	<app-menu></app-menu>
+</ion-content>

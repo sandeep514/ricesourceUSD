@@ -1,0 +1,98 @@
+.user-profile-icon {
+    width: 50px;
+    background-color: #606060;
+    border-radius: 50px;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 15px;
+    margin-top: 10px;
+    span {
+        color: #FFF;
+        font-size: 30px;
+    }
+}
+
+.notification {
+    ion-icon{
+        font-size: 38px;
+        margin-top: 15px;
+        margin-right: 10px;
+    }
+    .badge {
+        background-color: #ad362d;
+        height: 17px;
+        width: 17px;
+        color: #FFF;
+        border-radius: 50px;
+        display: inline-block;
+        font-size: 12px;
+        text-align: center;
+        line-height: 17px;
+        right: 16px;
+        position: absolute;
+        top: 19px;
+    }
+}
+
+.galleryImages > ion-row{
+    height: 100%;
+    overflow: scroll;
+}
+
+.galleryImages{
+    width: 89%;
+    height: 68%;
+    padding-bottom: 14%;
+    ion-col{
+        padding: 2px;
+        margin: 0;
+        height: 134px;
+    }
+    .galleryoverlay {
+        background: #cdb58e;
+        color: white;
+        position: absolute;
+        z-index: 999;
+        top: 2px;
+        width: 92%;
+        text-align: center;
+        padding: 56px 0px;
+        opacity: 0.7;
+        left: 6px;
+    }
+}
+.p0{
+    padding: 0;
+}
+.m0{
+    margin: 0;
+}
+hr{
+    background: white;
+    margin: 2px 15px;
+}
+// .green{
+//     // background: #0DCC18
+// }
+.galleryImage{
+    max-width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.w-100{
+    width: 100%;
+    color: white;
+}
+.mt-20{
+    margin-top: 20px;
+}
+.galleycard {
+    margin-bottom: 55px !important;
+}
+.color-black{
+    color: black
+}

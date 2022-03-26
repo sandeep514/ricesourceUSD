@@ -1,0 +1,470 @@
+
+<ion-content id="content" [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+    <ion-row>
+        <ion-col size="4" align="center">
+            <div class="user-profile-icon">
+                <span>R</span>
+            </div>
+        </ion-col>
+        <ion-col size="4" align="center">
+            <h3>Dashboard</h3>
+        </ion-col>
+        <!-- <ion-col size="4" align="right" class="notification">
+            <ion-icon name="notifications"></ion-icon>
+            <span class="badge">2</span>
+        </ion-col> -->
+    </ion-row>
+    <!-- <ion-row class="slider">
+        <ion-col align="center" size="5">
+            <img src="../../assets/1.jpg" />
+        </ion-col>
+        <ion-col size="7" class="sntc-slider">
+            <img src="../../assets/sntc.png" />
+        </ion-col>
+    </ion-row> -->
+    <ion-row class="ion-padding rice-gallery">
+        <ion-col>
+            <ion-slides pager="false" [options]="slideOpts">
+                <ion-slide>
+                    <img src="../../assets/slider/1.jpg" class="slide-image">
+                </ion-slide>
+                <!-- <ion-slide>
+                    <img src="../../assets/new_logo.png" class="slide-image">
+                </ion-slide> -->
+                <ion-slide>
+                    <img src="../../assets/slider/3.jpg" class="slide-image">
+                </ion-slide>
+                <ion-slide>
+                    <img src="../../assets/slider/4.jpg" class="slide-image">
+                </ion-slide>
+                <ion-slide>
+                    <img src="../../assets/slider/5.jpg" class="slide-image">
+                </ion-slide>
+            </ion-slides>
+        </ion-col>
+    </ion-row>
+    <!-- <ion-row class="ion-padding title-padding riceDisplayType" style="border-bottom: 1px solid #ededed;">
+        <ion-col size="6" style="margin-top: 10px;">
+            <h2 class="ricetitle">Filter Columns</h2>
+        </ion-col>
+        <ion-col size="5" class="filterRice">
+            <ul>
+                <li [class.show]="riceTypeData == 'price' ">
+                    <span (click)="changeState()">%</span>
+                </li>
+                <li [class.show]="riceTypeData == 'percentage' ">
+                    <span (click)="changeState()">&#8377;</span>
+                </li>
+            </ul>
+        </ion-col>
+        <ion-col size="1"></ion-col>	
+    </ion-row> -->
+    <ion-row class="ion-padding title-padding ">
+        <ion-col class="title" size="12">
+            <h2 class="ricetitle">Basmati Live Price</h2>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <div class="scroll-arrow">
+            <ion-icon name="chevron-back-outline" (click)="scroll('left','table-responsive-1')" class="lefticon"></ion-icon>
+            &nbsp;&nbsp;
+            <ion-icon name="chevron-forward-outline" (click)="scroll('right','table-responsive-1')" class="righticon"></ion-icon>
+        </div>
+        <ion-col class="pt0 pb0 ">
+            <ion-segment scrollable (ionChange)="changeStateBasmati($event)" value="punjab_haryana" class="header-segment table-responsive-1 basmatiState">
+                <ion-segment-button value="punjab_haryana">
+                    <ion-label>Punjab-Haryana</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="kota_bundi">
+                    <ion-label>Rajasthan</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="madhya_pradesh">
+                    <ion-label>Madhya Pradesh</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="gujarat">
+                    <ion-label>Gujarat</ion-label>
+                </ion-segment-button>
+            </ion-segment>
+        </ion-col>
+    </ion-row>
+    <ng-container *ngIf="basmatiprice?.basmati == null">
+        <div class="center">
+            <p>No item found</p>
+        </div>
+    </ng-container>
+    
+    <ng-container *ngIf="basmatiprice?.basmati != null">
+        <ion-row class="ion-padding table-row padd-5"> 
+            
+            <ion-col class="price-table dashboard">
+                <table class="table " *ngFor="let basmatiPrice of basmatiprice?.basmati | keyvalue">
+                    <thead>
+                        <tr>
+                            <th class="sticky-col first-col left pl-10" style="width:60%" ><h4 class="black ricetype">{{ basmatiPrice.key }} </h4>
+                        </th>
+                            <th class="font-17 type-columns black">
+                                <ul class="table-filter">
+                                    <li class="filter-content">
+                                        Prices in quintals
+                                    </li>
+                                    <li class="filter">
+                                        <ion-icon name="ellipsis-vertical-outline" (click)="openPopup(convertToLowerCase(basmatiPrice.key))"></ion-icon>
+                                        <div class="popover" [id]="convertToLowerCase(basmatiPrice.key)">
+                                            <ul>
+<li>
+    <label for="price"> Last price
+        <input id="price" type="radio" name="radio"  id="{{ convertToLowerCase(basmatiPrice.key)+'_price' }}" checked (click)="changeState(1)"></label>
+</li>
+<li>
+    <label for="percentage"> Percentage 
+        <input id="percentage" type="radio" name="radio"  id="{{ convertToLowerCase(basmatiPrice.key)+'_percentage' }}" (click)="changeState(2)"></label>
+</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul> 
+                            </th>
+                        </tr>
+                        <div class="popoverley" (click)="removePopover()"></div>
+                    </thead>
+                    <tbody>
+
+                    
+<ng-container *ngFor="let riceData of basmatiprice.basmati[basmatiPrice.key] | keyvalue" >
+<tr *ngIf="extractRiceName(riceData.key) == 'Brown' " id="{{ convertToLowerCase(basmatiPrice.key)+'_price' }}"  (click)="getRiceDetails(riceData.key , riceData.value[latestDateBasmati].state)">
+    <td class="sticky-col first-col left pl-10" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+        {{ extractRiceName(riceData.key) }}
+    </td>
+    <td class="type-columns" style="width:180px" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+        <div class="priceData">&#8377; {{ riceData.value[latestDateBasmati].min_price }} - {{ riceData.value[latestDateBasmati].max_price }} </div> 
+    </td>
+</tr>
+</ng-container>
+
+<ng-container *ngFor="let riceData of basmatiprice.basmati[basmatiPrice.key] | keyvalue" >
+<tr *ngIf="riceData.value[oldDateBasmati] != undefined &&  extractRiceName(riceData.key) == 'Brown' " id="{{ convertToLowerCase(basmatiPrice.key)+'_percentage' }}" class="abc" (click)="getRiceDetails(riceData.key , riceData.value[oldDateBasmati].state)">
+    <td class="sticky-col first-col left pl-10" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1">
+        {{ extractRiceName(riceData.key) }}
+    </td>
+    <td class="type-columns" style="width:180px" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1">
+        {{ (( riceData.value[oldDateBasmati].min_price - riceData.value[oldDateBasmati].max_price ) / 100) }} %
+    </td>
+</tr>
+</ng-container>
+
+
+
+<ng-container *ngFor="let riceData of basmatiColumns[basmatiPrice.key] | keyvalue" >
+<tr *ngIf="  extractRiceName(riceData.key) == 'Creamy Sella' " id="{{ convertToLowerCase(basmatiPrice.key)+'_price' }}" (click)="getRiceDetails(riceData.key , riceData.value[latestDateBasmati].state)">
+    <td class="sticky-col first-col left pl-10" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+        {{ extractRiceName(riceData.key) }}
+    </td>
+    <td class="type-columns" style="width:180px" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+        <div class="priceData">&#8377; {{ riceData.value[latestDateBasmati].min_price }} - {{ riceData.value[latestDateBasmati].max_price }} </div> 
+    </td>
+</tr>
+</ng-container>
+<ng-container *ngFor="let riceData of basmatiColumns[basmatiPrice.key] | keyvalue" >
+<tr id="{{ convertToLowerCase(basmatiPrice.key)+'_percentage' }}" class="abc" *ngIf="riceData.value[oldDateBasmati] != undefined &&  extractRiceName(riceData.key) == 'Creamy Sella' " (click)="getRiceDetails(riceData.key , riceData.value[oldDateBasmati].state)">
+    <td class="sticky-col first-col left pl-10" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1">
+        {{ extractRiceName(riceData.key) }}
+    </td>
+    <td class="type-columns" style="width:180px" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1">
+        {{ (( riceData.value[oldDateBasmati].min_price - riceData.value[oldDateBasmati].max_price ) / 100) }} %
+    </td>
+</tr>
+</ng-container>
+
+
+<ng-container *ngFor="let riceData of basmatiColumns[basmatiPrice.key] | keyvalue" >
+<tr id="{{ convertToLowerCase(basmatiPrice.key)+'_price' }}" *ngIf="  extractRiceName(riceData.key) == 'Golden Sella' " (click)="getRiceDetails(riceData.key , riceData.value[latestDateBasmati].state)">
+    <td class="sticky-col first-col left pl-10" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+        {{ extractRiceName(riceData.key) }}
+    </td>
+    <td class="type-columns" style="width:180px" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+        <div class="priceData">&#8377; {{ riceData.value[latestDateBasmati].min_price }} - {{ riceData.value[latestDateBasmati].max_price }} </div> 
+    </td>
+</tr>
+</ng-container>
+<ng-container *ngFor="let riceData of basmatiColumns[basmatiPrice.key] | keyvalue" >
+<tr id="{{ convertToLowerCase(basmatiPrice.key)+'_percentage' }}" class="abc" *ngIf="riceData.value[oldDateBasmati] != undefined &&  extractRiceName(riceData.key) == 'Golden Sella' " (click)="getRiceDetails(riceData.key , riceData.value[oldDateBasmati].state)">
+    <td class="sticky-col first-col left pl-10" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1">
+        {{ extractRiceName(riceData.key) }}
+    </td>
+    <td class="type-columns" style="width:180px" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1">
+        {{ (( riceData.value[oldDateBasmati].min_price - riceData.value[oldDateBasmati].max_price ) / 100) }} %
+    </td>
+</tr>
+</ng-container>
+
+
+
+<ng-container *ngFor="let riceData of basmatiColumns[basmatiPrice.key] | keyvalue" >
+<tr id="{{ convertToLowerCase(basmatiPrice.key)+'_price' }}" *ngIf="  extractRiceName(riceData.key) == 'Raw' " (click)="getRiceDetails(riceData.key , riceData.value[latestDateBasmati].state)">
+    <td class="sticky-col first-col left pl-10" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+        {{ extractRiceName(riceData.key) }}
+    </td>
+    <td class="type-columns" style="width:180px" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+        <div class="priceData">&#8377; {{ riceData.value[latestDateBasmati].min_price }} - {{ riceData.value[latestDateBasmati].max_price }} </div> 
+    </td>
+</tr>
+</ng-container>
+<ng-container *ngFor="let riceData of basmatiColumns[basmatiPrice.key] | keyvalue" >
+<tr id="{{ convertToLowerCase(basmatiPrice.key)+'_percentage' }}" class="abc" *ngIf="riceData.value[oldDateBasmati] != undefined &&  extractRiceName(riceData.key) == 'Raw' " (click)="getRiceDetails(riceData.key , riceData.value[oldDateBasmati].state)">
+    <td class="sticky-col first-col left pl-10" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1">
+        {{ extractRiceName(riceData.key) }}
+    </td>
+    <td class="type-columns" style="width:180px" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1">
+        {{ (( riceData.value[oldDateBasmati].min_price - riceData.value[oldDateBasmati].max_price ) / 100) }} %
+    </td>
+</tr>
+</ng-container>
+
+
+
+<ng-container *ngFor="let riceData of basmatiColumns[basmatiPrice.key] | keyvalue" >
+<tr id="{{ convertToLowerCase(basmatiPrice.key)+'_price' }}" *ngIf="  extractRiceName(riceData.key) == 'Steam' " (click)="getRiceDetails(riceData.key , riceData.value[latestDateBasmati].state)">
+    <td class="sticky-col first-col left pl-10" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+        {{ extractRiceName(riceData.key) }}
+    </td>
+    <td class="type-columns" style="width:180px" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+        <div class="priceData">&#8377; {{ riceData.value[latestDateBasmati].min_price }} - {{ riceData.value[latestDateBasmati].max_price }} </div> 
+    </td>
+</tr>
+</ng-container>
+<ng-container *ngFor="let riceData of basmatiColumns[basmatiPrice.key] | keyvalue" >
+<tr id="{{ convertToLowerCase(basmatiPrice.key)+'_percentage' }}" class="abc" *ngIf="riceData.value[oldDateBasmati] != undefined &&  extractRiceName(riceData.key) == 'Steam' " (click)="getRiceDetails(riceData.key , riceData.value[oldDateBasmati].state)">
+    <td class="sticky-col first-col left pl-10" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1">
+        {{ extractRiceName(riceData.key) }}
+    </td>
+    <td class="type-columns" style="width:180px" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1" >
+        {{ (( riceData.value[oldDateBasmati].min_price - riceData.value[oldDateBasmati].max_price ) / 100) }} %
+    </td>
+</tr>
+</ng-container>
+
+                    </tbody>
+                </table>
+
+            </ion-col>
+        </ion-row>
+    </ng-container>
+
+    <ion-row class="ion-padding title-padding">
+        <ion-col class="title" size="12">
+            <h2 class="ricetitle">Non - Basmati Live Price</h2>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <div class="scroll-arrow">
+            <ion-icon name="chevron-back-outline" (click)="scroll('left','table-responsive-2')" class="lefticon"></ion-icon>
+            &nbsp;&nbsp;
+            <ion-icon name="chevron-forward-outline" (click)="scroll('right','table-responsive-2')" class="righticon"></ion-icon>
+        </div>
+        <ion-col class="pt0 pb0 p05">
+            <ion-segment scrollable (ionChange)="changeStateNONBasmati($event)" value="punjab_haryana" class="header-segment table-responsive-2 basmatiState">
+                <ion-segment-button value="punjab_haryana">
+                    <ion-label>Punjab-Haryana</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="uttar_pradesh">
+                    <ion-label>Uttar Pradesh</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="maharashtra">
+                    <ion-label>Maharashtra</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="karnataka">
+                    <ion-label>Karnataka</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="andhra_pradesh">
+                    <ion-label>Andhra Pradesh</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="west_bangal">
+                    <ion-label>West Bangal</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="kerala">
+                    <ion-label>Kerala</ion-label>
+                </ion-segment-button>
+            </ion-segment>
+        </ion-col>
+    </ion-row>
+
+
+
+
+
+    <ng-container *ngIf="nonbasmatiprice?.non_basmati == null">
+        <div class="center">
+            <p>No item found</p>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="nonbasmatiprice?.non_basmati != null">
+        <ion-row class="ion-padding table-row padd-5"> 
+            
+            <ion-col class="price-table dashboard">
+                <table class="table " *ngFor="let nonBas of nonbasmatiprice?.non_basmati | keyvalue">
+                    
+                    <thead>
+                        <tr>
+                            <th class="sticky-col first-col left pl-10" style="width:60%" ><h4 class="black ricetype">{{ nonBas.key }} </h4></th>
+                            <th class="font-17 type-columns black">
+                                <ul class="table-filter">
+                                    <li>
+                                        Prices in quintals
+                                    </li>
+                                    <li>
+                                        <ion-icon name="ellipsis-vertical-outline" (click)="openPopup(convertToLowerCase(nonBas.key))"></ion-icon>
+                                        <div class="popover" [id]="convertToLowerCase(nonBas.key)">
+                                            <ul>
+                                                <li>
+                                                    <label for="price"> Last price <input id="price" type="radio" name="radio" value="1"></label>
+                                                </li>
+                                                <li>
+                                                    <label for="percentage"> Last price <input id="percentage" type="radio" name="radio" value="2"></label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        
+                                    </li>
+                                </ul> 
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container >
+                            
+                            <ng-container *ngFor="let riceData of nonBasmatiColumns[nonBas.key] | keyvalue" >
+                                <tr *ngIf="  extractRiceName(riceData.key) == 'Brown' " (click)="getRiceDetails(riceData.key , riceData.value[latestDateBasmati].state)">
+                                    <td class="sticky-col first-col left pl-10" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+                                        {{ extractRiceName(riceData.key) }}
+                                    </td>
+                                    <td class="type-columns" style="width:180px" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+                                        <div class="priceData">&#8377; {{ riceData.value[latestDateBasmati].min_price }} - {{ riceData.value[latestDateBasmati].max_price }} </div> 
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <ng-container *ngFor="let riceData of nonBasmatiColumns[nonBas.key] | keyvalue" >
+                                <tr *ngIf="  extractRiceName(riceData.key) == 'Creamy Sella' " (click)="getRiceDetails(riceData.key , riceData.value[latestDateBasmati].state)">
+                                    <td class="sticky-col first-col left pl-10" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+                                        {{ extractRiceName(riceData.key) }}
+                                    </td>
+                                    <td class="type-columns" style="width:180px" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+                                        <div class="priceData">&#8377; {{ riceData.value[latestDateBasmati].min_price }} - {{ riceData.value[latestDateBasmati].max_price }} </div> 
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <ng-container *ngFor="let riceData of nonBasmatiColumns[nonBas.key] | keyvalue" >
+                                <tr *ngIf="  extractRiceName(riceData.key) == 'Golden Sella' " (click)="getRiceDetails(riceData.key , riceData.value[latestDateBasmati].state)">
+                                    <td class="sticky-col first-col left pl-10" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+                                        {{ extractRiceName(riceData.key) }}
+                                    </td>
+                                    <td class="type-columns" style="width:180px" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+                                        <div class="priceData">&#8377; {{ riceData.value[latestDateBasmati].min_price }} - {{ riceData.value[latestDateBasmati].max_price }} </div> 
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <ng-container *ngFor="let riceData of nonBasmatiColumns[nonBas.key] | keyvalue" >
+                                <tr *ngIf="  extractRiceName(riceData.key) == 'Raw' " (click)="getRiceDetails(riceData.key , riceData.value[latestDateBasmati].state)">
+                                    <td class="sticky-col first-col left pl-10" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+                                        {{ extractRiceName(riceData.key) }}
+                                    </td>
+                                    <td class="type-columns" style="width:180px" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+                                        <div class="priceData">&#8377; {{ riceData.value[latestDateBasmati].min_price }} - {{ riceData.value[latestDateBasmati].max_price }} </div> 
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            <ng-container *ngFor="let riceData of nonBasmatiColumns[nonBas.key] | keyvalue" >
+                                <tr *ngIf="  extractRiceName(riceData.key) == 'Steam' " (click)="getRiceDetails(riceData.key , riceData.value[latestDateBasmati].state)">
+                                    <td class="sticky-col first-col left pl-10" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+                                        {{ extractRiceName(riceData.key) }}
+                                    </td>
+                                    <td class="type-columns" style="width:180px" [class.green]="riceData.value[latestDateBasmati].up_down == 'up' " [class.red]="riceData.value[latestDateBasmati].up_down != 'up' ">
+                                        <div class="priceData">&#8377; {{ riceData.value[latestDateBasmati].min_price }} - {{ riceData.value[latestDateBasmati].max_price }} </div> 
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </ng-container>
+
+                        <ng-container >
+                            <ng-container *ngFor="let riceData of nonBasmatiColumns[nonBas.key] | keyvalue" >
+                                <tr *ngIf="riceData.value[oldDateBasmati] != undefined &&  extractRiceName(riceData.key) == 'Brown' " (click)="getRiceDetails(riceData.key , riceData.value[oldDateBasmati].state)">
+                                    <td class="sticky-col first-col left pl-10" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1">
+                                        {{ extractRiceName(riceData.key) }}
+                                    </td>
+                                    <td class="type-columns" style="width:180px" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1">
+                                        {{ (( riceData.value[oldDateBasmati].min_price - riceData.value[oldDateBasmati].max_price ) / 100) }} %
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            
+                            <ng-container *ngFor="let riceData of nonBasmatiColumns[nonBas.key] | keyvalue" >
+                                <tr *ngIf="riceData.value[oldDateBasmati] != undefined &&  extractRiceName(riceData.key) == 'Creamy Sella' " (click)="getRiceDetails(riceData.key , riceData.value[oldDateBasmati].state)">
+                                    <td class="sticky-col first-col left pl-10" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1">
+                                        {{ extractRiceName(riceData.key) }} here
+                                    </td>
+                                    <td class="type-columns" style="width:180px" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1">
+                                        {{ (( riceData.value[oldDateBasmati].min_price - riceData.value[oldDateBasmati].max_price ) / 100) }} %
+                                    </td>
+                                </tr>
+                            </ng-container>
+                            
+                            <ng-container *ngFor="let riceData of nonBasmatiColumns[nonBas.key] | keyvalue" >
+                                    <tr *ngIf="riceData.value[oldDateBasmati] != undefined &&  extractRiceName(riceData.key) == 'Golden Sella' " (click)="getRiceDetails(riceData.key , riceData.value[oldDateBasmati].state)">
+                                        <td class="sticky-col first-col left pl-10" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1">
+                                            {{ extractRiceName(riceData.key) }}
+                                        </td>
+                                        <td class="type-columns" style="width:180px" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1">
+                                            {{ (( riceData.value[oldDateBasmati].min_price - riceData.value[oldDateBasmati].max_price ) / 100) }} %
+                                        </td>
+                                    </tr>
+                            </ng-container>
+                            
+                            <ng-container *ngFor="let riceData of nonBasmatiColumns[nonBas.key] | keyvalue" >
+                                    <tr *ngIf="riceData.value[oldDateBasmati] != undefined &&  extractRiceName(riceData.key) == 'Raw' " (click)="getRiceDetails(riceData.key , riceData.value[oldDateBasmati].state)">
+                                        <td class="sticky-col first-col left pl-10" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1">
+                                            {{ extractRiceName(riceData.key) }}
+                                        </td>
+                                        <td class="type-columns" style="width:180px" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1">
+                                            {{ (( riceData.value[oldDateBasmati].min_price - riceData.value[oldDateBasmati].max_price ) / 100) }} %
+                                        </td>
+                                    </tr>
+                            </ng-container>
+                            
+                            <ng-container *ngFor="let riceData of nonBasmatiColumns[nonBas.key] | keyvalue" >
+                                    <tr *ngIf="riceData.value[oldDateBasmati] != undefined &&  extractRiceName(riceData.key) == 'Steam' " (click)="getRiceDetails(riceData.key , riceData.value[oldDateBasmati].state)">
+                                        <td class="sticky-col first-col left pl-10" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1">
+                                            {{ extractRiceName(riceData.key) }}
+                                        </td>
+                                        <td class="type-columns" style="width:180px" [class.green]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == 1" [class.red]="checkIfValueIsNeg(riceData.value[oldDateBasmati].min_price , riceData.value[oldDateBasmati].max_price) == -1" >
+                                            {{ (( riceData.value[oldDateBasmati].min_price - riceData.value[oldDateBasmati].max_price ) / 100) }} %
+                                        </td>
+                                    </tr>
+                            </ng-container>
+                        </ng-container>
+                    </tbody>
+                </table>
+
+            </ion-col>
+        </ion-row>
+    </ng-container>
+
+    <ion-row class="ion-padding title-padding center">
+        <ion-col class="title">
+            <a href="javascript:void(0);" class="viewtrans" (click)="navToPort()">View Transportation</a>
+        </ion-col>
+    </ion-row>
+
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="margin-bottom: 65px" (click)="scrollDown()" *ngIf="scrollPosition == 'top' ">
+            <ion-fab-button>
+                <ion-icon name="chevron-down-outline"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="margin-bottom: 65px" (click)="scrollUp()" *ngIf="scrollPosition == 'bottom' ">
+            <ion-fab-button>
+                <ion-icon name="chevron-up-outline"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
+
+<app-menu></app-menu>
+
+</ion-content>

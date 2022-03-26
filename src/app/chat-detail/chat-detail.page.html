@@ -1,0 +1,75 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <ion-buttons slot="start" (click)="back()">
+            <ion-icon style="font-size: 23px;" name="arrow-back-outline"></ion-icon>
+        </ion-buttons>
+
+        <ion-title class="">Chat Support</ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <div class="chat-list">
+        <ng-container *ngFor="let item of additionalMessages | keyvalue">
+
+            <div class="chat-item">
+                <div class="chat-timestamp">
+                    {{item.key}}
+                </div>
+                <div class="chat-item-content" [ngClass]="(chat.from == myId) ? 'right' : 'left'" *ngFor=" let chat of item.value ">
+                    <!-- <div class="chat-avatar">
+                        <ion-avatar class="avatar-sm">
+                            <ng-container *ngIf=" chat.from == myId ">
+                                <img src='https://ui-avatars.com/api/?name={{ myName }}&color=7F9CF5&background=EBF4FF'>
+                            </ng-container>
+                            <ng-container *ngIf=" chat.from != myId ">
+                                <img src='https://ui-avatars.com/api/?name=Chart+support&color=FFFBD6&background=92B243'>
+                            </ng-container>
+                        </ion-avatar>
+                    </div> -->
+
+                    <div class="chat-item-bubble" [ngClass]="{'bubble-image': item.type === 'image'}">
+                        <div class="chat-body"> {{ chat.message }}</div>
+                        <!-- <img [src]="item.body" *ngIf="item.type === 'image'"> -->
+                    </div>
+                </div>
+
+            </div>
+        </ng-container>
+
+
+        <div class="chat-item" *ngFor="let item of newMessages" >
+            <div class="chat-item-content right">
+                <div class="chat-avatar">
+                    <ion-avatar class="avatar-sm">
+                        <img src='assets/img/avatars/5.jpg'>
+                    </ion-avatar>
+                </div>
+
+                <div class="chat-item-bubble" [ngClass]="{'bubble-image': item.type === 'image'}">
+                    <div class="chat-body" *ngIf="item.type !== 'image'" [innerHtml]="nl2br(item.body)"></div>
+                    <img [src]="item.body" *ngIf="item.type === 'image'">
+                </div>
+
+                <div class="chat-item-reaction" *ngIf="!item.isSender && item.type === 'image'">
+                    <ion-icon name="share-outline"></ion-icon>
+                </div>
+            </div>
+        </div>
+        <button id="refresh" (click)="getMessages()" style="display: none;">hi</button>
+    </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+    <ion-toolbar>
+        <ion-input class="message-input" placeholder="Aa" [(ngModel)]="messageInput" (ionFocus)="toggleFocus(true)" (ionBlur)="toggleFocus(false)">
+        </ion-input>
+
+        <ion-buttons slot="end" (click)="sendMessage()">
+            <ion-button>
+                <ion-icon slot="icon-only" name="chevron-forward"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

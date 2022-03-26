@@ -1,0 +1,56 @@
+<ion-header class="green">
+	<ion-toolbar  mode="ios"  style="background: transparent; --background: transparent">
+		<ion-buttons slot="start" class="back-button" (click)="back()">
+			<ion-icon name="arrow-back-outline"></ion-icon>
+		</ion-buttons>
+		<ion-title class="header-title porttitle">My Bids</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content id="content" class="lightgreen"  style="height: 100%;">
+	<div style="height: 90%;overflow: scroll;">
+		<div>
+			<ul>
+				<li *ngFor="let bids of mybids" class="demandedData">
+					<div>
+						<ion-row>
+							<ion-col size="4" class="demandHeaders">Rice</ion-col> 
+							<ion-col>
+								: {{ bids.qualityName }} {{ bids.qualityType }}
+							</ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col size="4" class="demandHeaders">Quantity MT</ion-col> 
+							<ion-col>: {{ bids.quantity }}</ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col size="4" class="demandHeaders">Remarks</ion-col> 
+							<ion-col>: {{ bids.remarks }}</ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col size="4" class="demandHeaders">Packing</ion-col> 
+							<ion-col>: {{ bids.get_packing_type.bag_size }} {{ bids.get_packing_type.bag_type }}</ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col size="4" class="demandHeaders">Port</ion-col> 
+							<ion-col>: {{ bids.portName }}</ion-col>
+						</ion-row>
+						<ion-row *ngIf="bids?.get_bids.length > 0"  style="margin-top: 5px;">
+							your bids is <span class="demandHeaders"> ${{ bids?.get_bids[0].bid_amount }} </span> on <span class="demandHeaders"> {{ bids?.get_bids[0].created_at | date:'dd/MM/yyyy ' }}</span>
+						</ion-row>
+
+						<ion-row *ngIf="bids?.get_bids.length <= 0"  style="margin-top: 5px;margin-bottom: 35px;">
+							<ion-item>
+								<ion-label position="floating">Place your bid</ion-label>
+								<ion-input (ionChange)="yourbidfunction($event , bids.id)" type="number"></ion-input>
+							</ion-item>
+							<ion-button class="green" style="color: #fff;border-radius: 12px;" (click)="saveUserBid()">Save</ion-button>
+						</ion-row>
+
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<app-menu></app-menu>
+</ion-content>

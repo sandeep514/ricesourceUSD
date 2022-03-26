@@ -1,0 +1,62 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-ionic-webview": {
+      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-theme-detection": {
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-camera": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-androidx-adapter": {
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "com.razorpay.cordova": {
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-firebase-messaging": {
+      "ANDROID_FIREBASE_MESSAGING_VERSION": "22.0.+",
+      "ANDROIDX_CORE_VERSION": "1.6.+",
+      "ANALYTICS_COLLECTION_ENABLED": "true",
+      "AUTOMATIC_SCREEN_REPORTING_ENABLED": "true",
+      "ANDROID_FIREBASE_ANALYTICS_VERSION": "19.0.+",
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-support-android-plugin": {
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-firebase-analytics": {
+      "ANALYTICS_COLLECTION_ENABLED": "true",
+      "AUTOMATIC_SCREEN_REPORTING_ENABLED": "true",
+      "ANDROID_FIREBASE_ANALYTICS_VERSION": "19.0.+",
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    }
+  }
+}

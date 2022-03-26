@@ -1,0 +1,7 @@
+{
+  "name": "rice-admin",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

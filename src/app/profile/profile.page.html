@@ -1,0 +1,43 @@
+<ion-content>
+  <div class="container">
+    <div class="header-container">
+		<div class=""></div>
+		<div class="header green">
+
+			<svg (click)="showMenu()" fill="#ffffff" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg" class="header-icon">
+				<path d="M0 0h24v24H0z" fill="none"/>
+				<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+			</svg>
+	
+			<div style="margin-top: 30px;">
+				<h1 class="main-heading font-30">{{ name | uppercase }}</h1>
+				<span class="tag">{{ email }}</span>
+				<p>Role: {{ userRole }}</p>
+			</div>
+			<div class="stats">
+			</div>
+
+      	</div>
+    	</div>
+    
+    	<div class="overlay-header"></div>
+    
+    	<div class="body">
+		<div class="body-image userCaps" >
+			{{ name[0] | uppercase }}
+		</div>
+
+		<div class="u-clearfix"></div>
+		<div style="margin-top: 30px;">
+			<span class="body-stats"><span style="font-size: font-size:13px;">Plan Name</span> <span>{{ planName }}</span></span>
+			<span class="body-stats"><span style="font-size: font-size:13px;">Plan Month</span> <span>{{ planMonths }}</span></span>
+			<span class="body-stats"><span style="font-size: font-size:13px;">EXPIRED ON</span> <span>{{ expired_on }}</span></span>
+		</div>
+		
+    	</div>
+    
+  </div>
+</ion-content>
+<ion-footer>
+	<ion-button expand="block" class="footerbutton" (click)="gotohome()">Go to home</ion-button>
+</ion-footer>

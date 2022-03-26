@@ -1,0 +1,40 @@
+.tf-tree.example {
+    text-align: center;
+}
+
+.back-button {
+    margin-right: 10px;
+    margin-left: 10px;
+    color: #FFF;
+    ion-icon {
+        font-size: 23px;
+    }
+}
+
+ion-toolbar {
+    --background: #494f58;
+    color: #FFF;
+}
+
+ion-item{
+    border: 3px solid #92b243;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    --background: #fffbd6;
+}
+.item-native{
+    background: transparent;
+    background-color: transparent;
+    --background: transparent;
+    --background-color: transparent;
+}
+.packingSelect{
+    .select-text{
+        display: none;
+    }
+
+}
+ion-content{
+    padding: 10px;
+    border: 10px solid #fffbd6;
+}

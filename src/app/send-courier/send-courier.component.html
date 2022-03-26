@@ -1,0 +1,42 @@
+<ion-header>
+	<ion-toolbar>
+	  	<ion-buttons slot="start" class="back-button" (click)="closeModal()">
+			<ion-icon name="arrow-back-outline"></ion-icon>
+	  	</ion-buttons>
+	  	<ion-title class="header-title">Send Courier</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-row>
+		<ion-col size="12">
+			<ion-list>
+				<ion-item>
+					<ion-label position="floating">Date</ion-label>
+					<ion-datetime displayFormat="DD-MMMM-YYYY" value="" [(ngModel)]="formData['date']"></ion-datetime>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating">Sent Via</ion-label>
+					<ion-select placeholder="Select One" interface="action-sheet" [(ngModel)]="formData['sent_via']">
+					  	<ion-select-option value="{{ sent.key }}" *ngFor="let sent of sentVia | keyvalue">{{ sent.value }}</ion-select-option>
+					</ion-select>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating">Details/AWB no/Person Name</ion-label>
+					<ion-input [(ngModel)]="formData['details']"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label>Pending Courier Samples</ion-label>
+					<ion-select value="brown" interface="popover" multiple [(ngModel)]="formData['sample']">	
+					  	<ion-select-option value="{{ sample.id }}" *ngFor="let sample of samples">{{ sample?.quality_rel.name }} ({{ sample?.supplier_rel.name }})</ion-select-option>
+					</ion-select>
+				</ion-item>
+			</ion-list>
+		</ion-col>
+	</ion-row>
+	<ion-row>
+		<ion-col>
+			<ion-button expand="block" class="primary-button" (click)="saveCourier()">Save Courier</ion-button>
+		</ion-col>
+	</ion-row>
+</ion-content>

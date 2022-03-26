@@ -1,0 +1,33 @@
+<ion-header class="green">
+	<ion-toolbar  mode="ios"  style="background: transparent; --background: transparent">
+		<ion-buttons slot="start" class="back-button" (click)="back()">
+			<ion-icon name="arrow-back-outline"></ion-icon>
+		</ion-buttons>
+			<ion-title class="header-title porttitle">Bid</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content id="content" [scrollEvents]="true" (ionScroll)="logScrolling($event)" class="lightgreen" >
+	<div style="padding: 10px 10px;margin-bottom: 100px;">
+		<div>
+			<p style="font-size: 20px;line-height: 1.5;padding: 0 10px;">				
+				New Query for <span style="color: #92b243;">{{qualityType}} - {{qualityName}}</span> with <span style="color: #92b243;">{{quantity}}</span> Quantity.</p>
+				<p>
+					Remarks: {{remarks}}
+				</p>
+		</div>
+		
+		<ion-item>
+			<ion-label position="">Place your bid</ion-label>
+			<ion-input [(ngModel)]="bidprice" type="text"></ion-input>
+		</ion-item>
+
+		<div *ngIf="validateFails" style="text-align: center;color: red;font-weight: 600">
+			<span>Required Fields are missing</span>
+		</div>
+
+		<ion-button color="success" expand="full" shape="round" (click)="save()">Submit</ion-button>
+	</div>
+	<app-menu></app-menu>
+</ion-content>

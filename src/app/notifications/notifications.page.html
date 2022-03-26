@@ -1,0 +1,39 @@
+<ion-content id="content" [scrollEvents]="true" class="lightgreen">
+    <div class="header-data green" style="min-height: 80px;height: 80px">
+        <div style="min-height: 80px">
+            <ion-row>
+                <ion-col size="4" align="center">
+                    <div class="user-profile-icon" (click)="gotoProfile()">
+                        <span>{{ userFirstName | uppercase }}</span>
+                    </div>
+                </ion-col>
+                <ion-col size="4" align="center" class="notification" style="margin-top: 25px ;font-size: 20px;font-weight: 700;">
+                    Notification
+                </ion-col>
+                <ion-col size="4" align="right" class="notification">
+                    <ion-icon name="notifications"></ion-icon>
+                    <!-- <span class="badge">2</span> -->
+                </ion-col>
+            </ion-row>
+        </div>
+        <ng-container>
+            <ion-row *ngFor="let data of ListNotif" style="padding: 10px;border-bottom: 1px solid #ededed">
+                <ion-col>
+                    <ul style="list-style: none;display: flex;width: 100%;padding-left: 0;justify-content: space-between;margin-top: 0;">
+                        <li style="font-weight: 700;">
+                            {{ data.title }}
+                        </li>
+                        <li>
+                            {{ data.created_at | date: 'dd/MM/yyyy H:mm' }}
+                        </li>
+                    </ul>
+                    <p style="margin: 0">{{ data.message }}</p>
+                </ion-col>
+            </ion-row>
+            <ion-row style="height: 100px">
+
+            </ion-row>
+        </ng-container>
+    </div>
+    <app-menu></app-menu>
+</ion-content>

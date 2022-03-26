@@ -1,0 +1,35 @@
+<ion-header [translucent]="true" class="ion-no-border green">
+	<ion-toolbar>
+	 
+	  <ion-title>Chats</ion-title>
+  
+	</ion-toolbar>
+  
+  </ion-header>
+  
+  <ion-content [fullscreen]="true">
+	
+  
+	<div class="chat-list">
+	  <ion-list>
+		<ion-item *ngFor="let chatItems of listChats | keyvalue" class="unread" (click)="showChatDetails(chatItems.value.user)">
+		  <ion-avatar class="avatar-md has-status" slot="start">
+			<img src="https://ui-avatars.com/api/?name={{ chatItems.value.name }}&color=7F9CF5&background=EBF4FF" alt="">
+			<div class="avatar-status">
+				<ng-container *ngIf="chatItems.value.unseenMessage >= '1'">
+					<div class="online-status active"></div>
+				</ng-container>
+			</div>
+		  </ion-avatar>
+		  <ion-label>
+			<h2 class="chat-name" style="font-size: 20px;font-weight: 600;text-transform: capitalize;">{{ chatItems.value.name }}</h2>
+			<div class="chat-description">
+			  <div class="content-preview">{{chatItems.value.unseenMessage}}{{chatItems.value.user}} {{ chatItems.value.last_message }} </div>
+			</div>
+		  </ion-label>
+		</ion-item>
+	
+	  </ion-list>
+	</div>
+  </ion-content>
+  

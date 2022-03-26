@@ -1,0 +1,218 @@
+<ion-content class="register lightgreen">
+	<ion-row>
+		<ion-col class="h-200 green brlb-30">
+			<!-- <h3 class="userTitle">
+				Register
+			</h3> -->
+			<img src="../../assets/sntc_nobackground.png" class="registerlogo" alt="">
+		</ion-col>
+	</ion-row>
+
+	<ion-row>
+		<ion-col>
+			<h3>
+				Register
+			</h3>
+		</ion-col>
+	</ion-row>
+
+	<ion-row style="margin-bottom: 15px;">
+		<ion-col>
+			<ion-button class="green" [ngClass]="(registerForm == 'domestic') ? 'activeFormType' : 'formType'" (click)="registerFormType('domestic')" style="color: white;font-size: 12px;">Domestic</ion-button>
+			<p style="padding: 0;margin: 0;font-size: 14px;" >Prices IN INR</p>
+		</ion-col>
+		<ion-col>
+			<ion-button class="green" [ngClass]="(registerForm == 'international') ? 'activeFormType' : 'formType'" (click)="registerFormType('international')" style="color: white;font-size: 12px;">International</ion-button>
+			<p style="padding: 0;margin: 0;font-size: 14px;">Prices IN USD</p>
+		</ion-col>
+	</ion-row>
+
+	<!-- <ion-row>
+		<ion-col *ngIf="registerForm == 'domestic' ">
+			<p style="padding: 0;margin: 0;">Prices IN INR</p>
+		</ion-col>
+		<ion-col *ngIf="registerForm == 'international' ">
+			<p style="padding: 0;margin: 0;">Prices IN USD</p>
+		</ion-col>
+	</ion-row> -->
+
+	<ion-row class="userType">
+		<ul>
+			<ion-col>
+				<li (click)="changeState('supplier')" [class.activeTab]="userState == 'supplier' ">
+					Supplier 
+				</li>
+			</ion-col>
+			
+			<ion-col>
+				<li (click)="changeState('buyer')" [class.activeTab]="userState == 'buyer' ">
+					Buyer
+				</li>
+			</ion-col>
+
+			<ion-col *ngIf="registerForm == 'domestic' " >
+				<li (click)="changeState('broker')" [class.activeTab]="userState == 'broker' ">
+					Broker
+				</li>
+			</ion-col>
+
+			<ion-col>
+				<li (click)="changeState('guest')" [class.activeTab]="userState == 'guest' ">
+					{{ ( registerForm == 'domestic' ) ? 'Guest' : 'Other User'  }}
+				</li>
+			</ion-col>
+		</ul>
+	</ion-row>
+	
+	<ion-row class="formData">
+
+		<ion-col class="form" *ngIf="registerForm == 'domestic' " >
+			<ion-item>
+				<ion-label position="floating">Username</ion-label>
+				<ion-input [(ngModel)]="username" name="username"></ion-input>
+				<!-- <ion-icon name="person" slot="start"></ion-icon> -->
+				<img src="../../assets/svg/person-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
+			</ion-item>
+			
+			<ion-item>
+				<ion-label position="floating">Email</ion-label>
+				<ion-input [(ngModel)]="email" name="email"></ion-input>
+				<img src="../../assets/svg/mail-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
+			</ion-item>
+			
+			<ion-item>
+				<ion-label position="floating">Mobile no</ion-label>
+				<ion-input [(ngModel)]="mobile" name="mobile"></ion-input>
+				<img src="../../assets/svg/call-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
+			</ion-item>
+			
+			<ion-item>
+				<ion-label position="floating">Company name</ion-label>
+				<ion-input [(ngModel)]="companyname" name="companyname"></ion-input>
+				<img src="../../assets/svg/business-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
+			</ion-item>
+			
+			<ion-item>
+				<ion-label position="floating">Password</ion-label>
+				<ion-input [type]="password1Type" name='password' [(ngModel)]="password"></ion-input>
+				<ion-icon slot="end" [name]="password1Icon" class="passwordIcon" (click)='hideShowPassword1()'></ion-icon>
+				<img src="../../assets/svg/key-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
+			</ion-item>
+			
+			<ion-item>
+				<ion-label position="floating">Confirm Password</ion-label>
+				<ion-input [type]="password2Type" name='confpassword' [(ngModel)]="confpassword"></ion-input>
+				<ion-icon slot="end" [name]="password2Icon" class="passwordIcon" (click)='hideShowPassword2()'></ion-icon>
+				<img src="../../assets/svg/key-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
+			</ion-item>
+			
+			<div class="center mt10">
+				<!-- <p class="center w-100">Already a user ? <a href="javascript:void(0)" class="nounderline" (click)="signin()">Sign in</a></p> -->
+				<label for="">
+					<input type="checkbox" (click)="changetermsandcondition($event)" >Agree with 
+					<a class="nounderline" href="javascript:void(0)" (click)="termsandcondition()">terms and condition</a>
+				</label>
+			</div>
+			<div class="center mt10">
+				<ion-button class="green" (click)="registerUser()" expand="full"> Register </ion-button>
+				<p>OR</p>
+				<ion-button class="green" (click)="signin()" expand="full"> Sign In </ion-button>
+			</div>
+		</ion-col>
+
+		<ion-col class="form" *ngIf="registerForm == 'international' ">
+
+			<ion-item>
+				<ion-label position="floating">Username</ion-label>
+				<ion-input [(ngModel)]="username" name="username"></ion-input>
+				<img src="../../assets/svg/person-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">Email</ion-label>
+				<ion-input [(ngModel)]="email" name="email"></ion-input>
+				<img src="../../assets/svg/mail-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">Company name</ion-label>
+				<ion-input [(ngModel)]="companyname" name="companyname"></ion-input>
+				<img src="../../assets/svg/business-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">Address</ion-label>
+				<ion-input [(ngModel)]="address" name="address"></ion-input>
+				<ion-icon slot="start" name="map-outline" style="color: black; margin-top: 17px;"></ion-icon>
+			</ion-item>
+			
+			<ion-item>
+				<ion-item style="width: 100%" class="ion-no-padding">
+					<ion-label position="floating">Country</ion-label>
+					<ion-select placeholder="Select One"  [(ngModel)]="country" name="country" (ionChange)="changeCountry($event)">
+					  	<ion-select-option value="{{ country }}" *ngFor="let country of listCountries">{{country}}</ion-select-option>
+					</ion-select>
+				  </ion-item>
+				<ion-icon slot="start" name="earth-outline" style="color: black; margin-top: 17px;"></ion-icon>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">Zip Code</ion-label>
+				<ion-input [(ngModel)]="zipcode" name="zipcode"></ion-input>
+				<ion-icon slot="start" name="globe-outline" style="color: black; margin-top: 17px;"></ion-icon>
+			</ion-item>
+				
+			<ion-item>
+				<ion-item style="width: 100%" class="ion-no-padding">
+					<ion-label position="floating">Import Port</ion-label>
+					<ion-select placeholder="Select One" [(ngModel)]="import" name="import" (ionChange)="changePort($event)">
+							<ion-select-option value="{{ country.port }}" *ngFor="let country of selectedPort">{{country.port}}</ion-select-option>
+					</ion-select>
+					</ion-item>
+				<ion-icon slot="start" name="earth-outline" style="color: black; margin-top: 17px;"></ion-icon>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">Contact Person</ion-label>
+				<ion-input [(ngModel)]="contactperson" name="contactperson"></ion-input>
+				<ion-icon  slot="start" name="person-outline" style="color: black; margin-top: 17px;"></ion-icon>
+			</ion-item>
+
+			<ion-item>
+				<ion-label position="floating">Mobile no</ion-label>
+				<ion-input [(ngModel)]="mobile" name="mobile"></ion-input>
+				<img src="../../assets/svg/call-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
+			</ion-item>
+			
+			<ion-item>
+				<ion-label position="floating">Password</ion-label>
+				<ion-input [type]="password1Type" name='password' [(ngModel)]="password"></ion-input>
+				<ion-icon slot="end" [name]="password1Icon" class="passwordIcon" (click)='hideShowPassword1()'></ion-icon>
+				<img src="../../assets/svg/key-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
+			</ion-item>
+			
+			<ion-item>
+				<ion-label position="floating">Confirm Password</ion-label>
+				<ion-input [type]="password2Type" name='confpassword' [(ngModel)]="confpassword"></ion-input>
+				<ion-icon slot="end" [name]="password2Icon" class="passwordIcon" (click)='hideShowPassword2()'></ion-icon>
+				<img src="../../assets/svg/key-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
+			</ion-item>
+			
+			<div class="center mt10">
+				<label for="">
+					<input type="checkbox" (click)="changetermsandcondition($event)" >Agree with 
+					<a class="nounderline" href="javascript:void(0)" (click)="termsandcondition()">terms and condition</a>
+				</label>
+			</div>
+
+			<div class="center mt10">
+				<ion-button class="green" (click)="registerUser()" expand="full"> Register </ion-button>
+				<p>OR</p>
+				<ion-button class="green" (click)="signin()" expand="full"> Sign in </ion-button>
+				<!-- <a href="javascript:void(0)" class="nounderline" (click)="signin()"></a> -->
+			</div>
+		</ion-col>
+	</ion-row>
+	
+	<ion-row class="center"></ion-row>
+</ion-content>

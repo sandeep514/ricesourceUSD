@@ -1,0 +1,95 @@
+<ion-content id="content" class="bg-lightgreen">
+	<div class="header-data green" >
+
+		<div class="header-content">
+			<ion-row class="">
+				<ion-col size="3" align="center">
+					<div class="user-profile-icon">
+						<span> {{ userFirstName }} </span>
+					</div>
+				</ion-col>
+				<ion-col size="6" align="center">
+					<h3>Gallery</h3>
+				</ion-col>
+				<!-- <ion-col size="3" align="right" class="notification">
+					<ion-icon name="notifications"></ion-icon>
+					<span class="badge">2</span>
+				</ion-col> -->
+			</ion-row>
+		</div>
+
+		<ion-row class="m020 mt30">
+			<ion-col size="12" style="height: 70px;">
+				<ng-container>
+					<ion-item class="green">
+						<ion-label>Rice Type</ion-label>
+						<ion-select interface="popover" (ionChange)="getRiceType($event)" value="basmati">
+							<ion-select-option value="basmati" selected="selected">Basmati</ion-select-option>
+							<ion-select-option value="nonbasmati">Non Basmati</ion-select-option>
+						</ion-select>
+					</ion-item>
+				</ng-container>		
+			</ion-col>
+		</ion-row>
+
+	</div>
+	
+	<ng-container>
+		<div class="galleryImages m020 mt10">
+			
+			<ion-row>
+
+				<ng-container *ngIf="riceTypeAvailable == 'basmati' ">
+					<ng-container *ngIf="basmartiGallery == '' ">
+						<ion-col class="12">
+							<div class="center w-100 color-black">
+								<h3>Basmati gallery not available</h3>
+							</div>
+						</ion-col>
+					</ng-container>
+					
+					<ng-container *ngIf="basmartiGallery != '' ">
+						<ion-col size="6" class="galleycard" *ngFor="let list of basmartiGallery" (click)="getGalleryData(list.id)">
+							<div class="galleryImage h-200" >
+								<img src="{{ imagePre }}uploads/gallery/{{ list.attachment }}" style="width: 190px;height: 130px;padding: 0 5px;" alt="{{ list.title }}">
+							</div>
+							<div>
+								<p class="p0 m0 green center font-lightgreen m05" style="padding: 5px;margin: 0px 5px 0px 4px;font-size: 13px">{{ list.title | uppercase }}</p>
+							</div>
+							<!-- <div class="galleryoverlay">
+								<div class="riceType">
+									<h3 class="p0 m0 ">{{ list.type | uppercase }}</h3>
+								</div>
+							</div> -->
+						</ion-col>
+					</ng-container>
+				</ng-container>
+
+				<ng-container *ngIf="riceTypeAvailable == 'nonbasmati'">
+					<ng-container *ngIf="nonbasmartiGallery == '' ">
+						<div class="center w-100 color-black">
+							<h3>Non Basmati gallery not available</h3>
+						</div>
+					</ng-container>
+	
+					<ng-container *ngIf="nonbasmartiGallery != '' ">
+						<ion-col size="6" class="galleycard" *ngFor="let list of nonbasmartiGallery" (click)="getGalleryData(list.id)">
+							<div class="galleryImage" >
+								<img src="{{ imagePre }}uploads/gallery/{{ list.attachment }}" style="width: 190px;height: 130px;padding: 0 5px;" alt="{{ list.title }}">
+							</div>
+							<div>
+								<p class="p0 m0 green center font-lightgreen m05" style="padding: 5px;margin: 0px 5px 0px 4px;font-size: 13px">{{ list.title }}</p>
+							</div>
+							<!-- <div class="galleryoverlay">
+								<div class="riceType">
+									<h3 class="p0 m0 ">{{ list.type | uppercase }}</h3>
+								</div>
+							</div> -->
+						</ion-col>
+					</ng-container>
+				</ng-container>
+			</ion-row>
+		</div>
+	</ng-container>
+<app-menu></app-menu>
+</ion-content>

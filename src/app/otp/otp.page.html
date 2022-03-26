@@ -1,0 +1,45 @@
+<ion-content class="register bg-lightgreen">
+	<ion-row>
+		<ion-col class="h-260 green brlb-30">
+			<!-- <h3 class="userTitle">
+				Register
+			</h3> -->
+			<img src="../../assets/sntc_nobackground.png" class="registerlogo" alt="">
+			<!-- <h3>
+				OTP
+			</h3> -->
+		</ion-col>
+	</ion-row>
+	
+	<ion-row class="formData mt-50 ">
+		<div id="wrapper">
+			<div id="dialog">
+				<span>Please enter OTP that is sent to your registered mobile number.</span>
+				<div id="form">
+					<input type="number" [(ngModel)]="text1" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+					<!-- <input type="number" [(ngModel)]="text2" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+					<input type="number" [(ngModel)]="text3" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" />
+					<input type="number" [(ngModel)]="text4" maxLength="1" size="1" min="0" max="9" pattern="[0-9]{1}" /> -->
+					<ion-row>
+						<ion-col size="10">
+							<ion-button expand="block" class="green mt-20" (click)="checkOTP()">Verify</ion-button>
+						</ion-col>
+						<ion-col size="2">
+							<img (click)="sendOTP()" src="../../assets/svg/refresh-outline.svg" style="width: 100%;margin-top: 20px;" alt="">
+						</ion-col>
+					</ion-row>
+					<p class="center w-100" style="font-size: 17px;"><a href="javascript:void(0)" class="nounderline" (click)="login()">Go to login</a></p>
+					<ul class="verifylistitem">
+						<li>
+						</li>
+						<li>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</ion-row>
+	<ion-row class="center">
+		
+	</ion-row>
+</ion-content>

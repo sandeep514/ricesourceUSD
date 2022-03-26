@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "618455000401",
+    "project_id": "sntc-rice-sourcing",
+    "storage_bucket": "sntc-rice-sourcing.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618455000401:android:ea8765155825bb09afdf70",
+        "android_client_info": {
+          "package_name": "sntc.rice.sourcing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "618455000401-n8bh50nme56eha7v68tqv60v7m0sb8u2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnWZlr1Jp8F5B8Slubnb5pr3CvhTCWhsI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "618455000401-n8bh50nme56eha7v68tqv60v7m0sb8u2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

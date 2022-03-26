@@ -1,0 +1,59 @@
+ion-content{
+    --background: url(../../assets/sntc_field_runner-Recoveredlogin.png) no-repeat center/cover fixed;
+}
+
+.logo{
+    width: 230px;
+}
+
+.logo-row{
+    margin-top: 27px;
+    margin-bottom: 32px;
+}
+
+.user-icon{
+    width: 19px;
+    margin-top: 14px;
+    margin-left: 10px;
+}
+
+.login-fields{
+    border-radius: 100px;
+    box-shadow: -2px 4px 11px 0px #CCC;
+    width: 92%;
+    margin: 0 auto;
+    margin-top: 27px;
+    margin-bottom: 48px;
+}
+
+.login-now{
+    width: 68%;
+    height: 44px;
+    --background: #FFF;
+    color: #53b769;
+    text-transform: none;
+    --border-radius: 100px;
+    font-size: 16px;
+}
+
+.login-button{
+    margin-top: -16px;
+}
+.or-text{
+    color: #53b769;
+}
+
+.social-row{
+    img{
+        width: 63px;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+}
+
+.create-account{
+    color: #53b769;
+    h4{
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,38 @@
+.logo{
+    text-align: center;
+}
+.app-logo{
+    width: 32%;
+    padding: 10px;
+    border-radius: 20px;
+}
+.closeModal{
+    position: absolute;
+    text-decoration: none;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    background: red;
+    color: white;
+}
+.content{
+    text-align: center;
+    p{
+        text-align: center;
+    }
+
+}
+.contactuser{
+    height: 0px;
+    margin-top: 8px;
+    border-radius: 100px;
+    min-height: 36px;
+    margin-left: 2px;
+    margin-right: 2px;
+    box-shadow: -1px 1px 9px 0px #CCC;
+    width: 33%;
+    color: #000;
+    font-size: 12px;
+    text-decoration: none;
+    padding: 10px;
+}

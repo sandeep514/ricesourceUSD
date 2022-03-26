@@ -1,0 +1,136 @@
+.message-input {
+  --background: var(--ion-color-light);
+  --padding-start: 12px;
+  --padding-end: 12px;
+  border-radius: 20px;
+}
+
+/* Chat UI v2.1.0 by Hieu Pham<mr_hie@yahoo.com> */
+
+.chat-list {
+    .chat-item {
+      margin-bottom: 8px;
+  
+      &.chat-item-sender {
+        text-align: right;
+  
+        .chat-item-content {
+          justify-content: flex-end;
+        }
+  
+        .chat-body {
+          color: #fff;
+          background: var(--ion-color-primary);
+          border-radius: 20px;
+          border-color: transparent;
+        }
+      }
+    }
+  
+    .chat-timestamp {
+      text-align: center;
+      font-size: 13px;
+      padding: 8px;
+      color: var(--ion-color-medium);
+      text-transform: uppercase;
+    }
+  
+    .chat-item-status {
+      font-size: 13px;
+      color: var(--ion-color-medium);
+      margin-right: 8px;
+    }
+  
+    .chat-item-content {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 4px;
+  
+      .chat-avatar {
+        margin-right: 8px;
+        align-self: flex-end;
+  
+        img {
+          display: inline-block;
+          width: 100%;
+          border-radius: 50%;
+          margin-top: 6px;
+        }
+      }
+    }
+  
+    .chat-item-bubble {
+      position: relative;
+      max-width: 75%;
+  
+      .chat-body {
+        display: inline-block;
+        background: var(--ion-color-light);
+        border-radius: 20px;
+        padding: 12px 16px;
+        white-space: normal;
+        max-width: 100%;
+        text-align: left;
+      }
+  
+      &.bubble-image {
+        font-size: 0;
+  
+        img {
+          width: 100%;
+          max-width: 480px;
+          border-radius: 16px;
+        }
+      }
+    }
+  
+    .chat-item-reaction {
+      text-align: left;
+      margin-left: 8px;
+      font-size: 18px;
+      align-self: center;
+      flex-grow: 99;
+    }
+  }
+  
+.right .chat-avatar {
+    float: right;
+}
+
+.right .chat-item-bubble {
+    text-align: right;
+    max-width: 100%;
+}
+
+.chat-list .chat-item-content.right {
+    width: 100%;
+    display: block
+}
+
+.left {
+    .chat-body {
+        color: #fff;
+        background: #4592f0 !important;
+    }
+}
+  
+.left .chat-avatar {
+    float: left;
+}
+
+.left .chat-item-bubble {
+    text-align: left;
+    max-width: 86%;
+}
+
+.chat-list .chat-item-content.left {
+    width: 100%;
+    display: block
+}
+
+.left {
+    .chat-body {
+        color: #fff;
+        background: #4592f0 !important;
+    }
+}

@@ -1,0 +1,98 @@
+<ion-header class="green">
+	<ion-toolbar  mode="ios"  style="background: transparent; --background: transparent">
+		<ion-buttons slot="start" class="back-button" (click)="back()">
+			<ion-icon name="arrow-back-outline"></ion-icon>
+		</ion-buttons>
+			<ion-title class="header-title porttitle">Calculator</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content id="content" class="lightgreen"  style="height: 100%;">
+	<div style="height: 90%;overflow: scroll;">
+
+		<ion-item>
+			<ion-label>Rice</ion-label>
+			<ion-select placeholder="Select One" (ionChange)="changeQuality($event)">
+				<ion-select-option *ngFor="let Qualities of QualityMaster" value="{{ Qualities.id }}">{{ Qualities.quality}} {{ Qualities?.quality_name }}</ion-select-option>
+			</ion-select>
+		</ion-item>
+	
+		<ion-item>
+			<ion-label position="floating">Cost of Rice Ex Mill Min Price*</ion-label>
+			<ion-input placeholder="Cost of Rice Ex Mill Min Price" [(ngModel)]="riceMinPrice"></ion-input>
+		</ion-item>
+	
+		<ion-item>
+			<ion-label position="floating">Cost of Rice Ex Mill Max Price*</ion-label>
+			<ion-input placeholder="Cost of Rice Ex Mill Max Price" [(ngModel)]="riceMaxPrice"></ion-input>
+		</ion-item>
+	
+		<ion-item>
+			<ion-label position="floating">Transport Min Price</ion-label>
+			<ion-input placeholder="Transport Min Price" [(ngModel)]="transportMin"></ion-input>
+		</ion-item>
+	
+		<ion-item>
+			<ion-label position="floating">Transport Max Price</ion-label>
+			<ion-input placeholder="Transport Max Price" [(ngModel)]="transportMax"></ion-input>
+		</ion-item>
+	
+		<ion-item>
+			<ion-label position="floating">Bag Cost including Sortexing & packing labour*</ion-label>
+			<ion-input placeholder="Bag Cost including Sortexing & packing labour*" [(ngModel)]="bagcost"></ion-input>
+		</ion-item>
+	
+		<ion-item>
+			<ion-label position="floating">All Local charges( CFS Handling, B/L, THC ), Finance cost*</ion-label>
+			<ion-input placeholder="All Local charges( CFS Handling, B/L, THC ), Finance cost*" [(ngModel)]="localCharges"></ion-input>
+		</ion-item>
+	
+		<ion-item>
+			<ion-label position="floating">Today's Dollar rate *</ion-label>
+			<ion-input placeholder="Today's Dollar rate *" [(ngModel)]="dollaerate"></ion-input>
+		</ion-item>
+	
+		<ion-item>
+			<ion-label>Supplier Markup% +SNTC Service charge (1 - 20%)*</ion-label>
+			<ion-select placeholder="Select One" [(ngModel)]="supplierCharge">
+				<ion-select-option value="1">1</ion-select-option>
+				<ion-select-option value="2">2</ion-select-option>
+				<ion-select-option value="3">3</ion-select-option>
+				<ion-select-option value="4">4</ion-select-option>
+				<ion-select-option value="5">5</ion-select-option>
+				<ion-select-option value="6">6</ion-select-option>
+				<ion-select-option value="7">7</ion-select-option>
+				<ion-select-option value="8">8</ion-select-option>
+				<ion-select-option value="9">9</ion-select-option>
+				<ion-select-option value="10">10</ion-select-option>
+				<ion-select-option value="11">11</ion-select-option>
+				<ion-select-option value="12">12</ion-select-option>
+				<ion-select-option value="13">13</ion-select-option>
+				<ion-select-option value="14">14</ion-select-option>
+				<ion-select-option value="15">15</ion-select-option>
+				<ion-select-option value="16">16</ion-select-option>
+				<ion-select-option value="17">17</ion-select-option>
+				<ion-select-option value="18">18</ion-select-option>
+				<ion-select-option value="19">19</ion-select-option>
+				<ion-select-option value="20">20</ion-select-option>
+			</ion-select>
+		</ion-item>
+	
+		<ion-item>
+			<ion-label>Bag size*</ion-label>
+			<ion-select placeholder="Select One" [(ngModel)]="bagSize" (ionChange)="bagChange($event)">
+				<ion-select-option *ngFor="let data of USD_master" value="{{ data.bag_size }}_{{ data.bag_type }}_{{ data.PMT_USD }}" >{{ data.bag_size }}_{{ data.bag_type }}</ion-select-option>
+			</ion-select>
+		</ion-item>
+		
+		<div>
+			<p>Total: (in ₹): {{total}}</p>
+			<p>After exchange rate: (in $): {{exchange}}</p>
+			<p>FOB Prices: {{FOB}}</p>
+		</div>
+		<ion-button color="success" expand="full" shape="round" (click)="save()">Calculate Now</ion-button>
+		
+	</div>
+	
+	<app-menu></app-menu>
+</ion-content>

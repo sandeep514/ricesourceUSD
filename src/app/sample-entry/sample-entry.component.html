@@ -1,0 +1,67 @@
+<ion-header>
+	<ion-toolbar>
+	  	<ion-buttons slot="start" class="back-button" (click)="closeModal()">
+			<ion-icon name="arrow-back-outline"></ion-icon>
+	  	</ion-buttons>
+	  	<ion-title class="header-title">Sample Entry</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-row>
+		<ion-col size="12">
+			<ion-list>
+				<ion-item>
+					<ion-label position="floating">Date</ion-label>
+					<ion-datetime displayFormat="DD-MMMM-YYYY" value="" [(ngModel)]="formData['date']"></ion-datetime>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating">Select Seller</ion-label>
+					<ion-select placeholder="Select One" interface="action-sheet" [(ngModel)]="formData['seller']">
+					  	<ion-select-option value="{{ seller.key }}" *ngFor="let seller of sellers | keyvalue">{{ seller.value }}</ion-select-option>
+					</ion-select>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating">Select Quality</ion-label>
+					<ion-select placeholder="Select One" interface="action-sheet" [(ngModel)]="formData['quality']">
+						<ion-select-option value="{{ quality.key }}" *ngFor="let quality of qualities | keyvalue">{{ quality.value }}</ion-select-option>
+					</ion-select>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating">Select Packing</ion-label>
+					<ion-select placeholder="Select One" interface="action-sheet" [(ngModel)]="formData['packing']">
+						<ion-select-option value="{{ packing.key }}" *ngFor="let packing of packings | keyvalue">{{ packing.value }}</ion-select-option>
+					</ion-select>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating">Select Packing Type</ion-label>
+					<ion-select placeholder="Select One" interface="action-sheet" [(ngModel)]="formData['packing_type']">
+						<ion-select-option value="{{ packingType.key }}" *ngFor="let packingType of packingTypes | keyvalue">{{ packingType.value }}</ion-select-option>
+					</ion-select>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating">No. of Bags</ion-label>
+					<ion-select placeholder="Select One" interface="action-sheet" [(ngModel)]="formData['no_of_bags']">
+						<ion-select-option value="{{ noOfBag.key }}" *ngFor="let noOfBag of noOfBags">{{ noOfBag.value }}</ion-select-option>
+					</ion-select>
+				</ion-item>
+				<ion-item *ngIf="formData['no_of_bags'] == 'manual'">
+					<ion-label position="floating">Enter Bags Qty</ion-label>
+					<ion-input [(ngModel)]="formData['bags_qty']"></ion-input>
+				</ion-item>
+				<ion-item>
+					<ion-label position="floating">Qty</ion-label>
+					<ion-input [(ngModel)]="formData['qty']"></ion-input>
+				</ion-item>
+			</ion-list>
+		</ion-col>
+		<ion-col align="center">
+			<img [src]="sampleImage" (click)="getPicture()" />
+		</ion-col>
+	</ion-row>
+	<ion-row>
+		<ion-col>
+			<ion-button expand="block" class="primary-button" (click)="saveSample()">Save Sample</ion-button>
+		</ion-col>
+	</ion-row>
+</ion-content>

@@ -1,0 +1,376 @@
+.tf-tree.example {
+    text-align: center;
+}
+
+.back-button {
+    margin-right: 10px;
+    margin-left: 10px;
+    color: #FFF;
+    ion-icon {
+        font-size: 23px;
+    }
+}
+
+ion-toolbar {
+    --background: #494f58;
+    color: #FFF;
+}
+
+.header-title {
+    color: #FFF;
+}
+
+.header-md::after {
+    background: none;
+}
+
+ion-toolbar {
+    --background: white;
+    ion-icon {
+        color: #000;
+    }
+}
+
+.header-title {
+    color: #000;
+}
+
+ion-title {
+    padding: 0;
+    text-align: center;
+}
+
+.ion-card {
+    width: 900px;
+}
+
+ion-card {
+    width: 17%;
+    text-align: center;
+    float: left;
+}
+
+.tf-tree {
+    clear: both;
+}
+
+.ioncard1 {
+    background: #d8f9fe;
+}
+
+.ioncard2 {
+    background: #d8f9fe;
+}
+
+.ioncard3 {
+    background: #d8f9fe;
+}
+
+.ioncard4 {
+    background: #d8f9fe;
+}
+
+.ioncard5 {
+    background: #d8f9fe;
+}
+
+table,
+thead,
+tbody {
+    border: 1px solid #eeeeee;
+}
+
+table {
+    width: 100%;
+    thead {
+        th {
+            padding: 10px 0px;
+            border-right: 1px solid #eeeeee;
+        }
+    }
+    tbody {
+        tr {
+            border-bottom: 1px solid #ededed;
+        }
+        td {
+            width: 50%;
+            text-align: center;
+            padding: 10px 0px;
+            border-right: 1px solid #eeeeee;
+        }
+    }
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.active {
+    background: #c9a27c;
+    --background: #c9a27c;
+    background-color: #c9a27c;
+    --background-color: #c9a27c;
+}
+
+.price-table {
+    // background-color: #FFF;
+    table {
+        width: 100%;
+        thead {
+            tr {
+                height: 34px;
+                font-size: 12px;
+                // background-color: #eeeeee !important;
+                th {
+                    // background-color: #eeeeee !important;
+                    border-right: 1px solid #dfdfdf;
+                }
+            }
+        }
+        tbody {
+            tr {
+                height: 35px;
+                td {
+                    font-size: 16px;
+                    // padding-left: 20px;
+                    // border-bottom: 1px solid #dfdfdf;
+                    border-right: 1px solid #dfdfdf;
+                }
+            }
+        }
+        margin-top: 6px;
+    }
+}
+
+table,
+table thead,
+table tbody,
+table thead th,
+table tbody tr,
+table tbody tr td {
+    border: 0 !important
+}
+
+table thead,
+table tbody,
+table tbody tr {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+table thead tr{
+    border-bottom: 2px solid #cfcaab !important;
+}
+table tbody tr{
+    border-bottom: 2px solid #cfcaab !important;
+}
+
+table tr th {
+    padding: 0;
+    margin: 0;
+}
+
+table {
+    tbody {
+        tr {
+            td {
+                text-align: left;
+                margin-left: 20px;
+                padding-left: 20px;
+            }
+        }
+    }
+}
+
+.pl-60 {
+    padding-left: 60px !important;
+}
+
+.pl-10 {
+    padding-left: 10px !important;
+}
+
+.left {
+    text-align: left;
+}
+
+.active {
+    background: #92B243;
+    color: white !important;
+    border: 2px solid #92B243 !important;
+}
+
+.segment-button-checked {
+    background: #92B243;
+    color: white !important;
+    border: 2px solid #92B243 !important;
+}
+
+.scroll-arrow {
+    position: absolute;
+    margin-top: 3.2%;
+    width: 100%;
+    padding-top: 4px;
+    font-size: 18px;
+}
+
+.header-segment ion-segment-button {
+    --indicator-color: transparent !important;
+    --indicator-color-checked: transparent !important;
+    height: 0px;
+    // margin-top: 8px;
+    border-radius: 0px;
+    min-height: 31px;
+    margin-left: 2px;
+    margin-right: 2px;
+    // box-shadow: -1px 1px 9px 0px #CCC;
+    width: auto;
+    --width: auto;
+    min-width: auto;
+    --min-width: auto;
+    color: #000;
+    font-size: 12px;
+    border: 2px solid #92b243;
+}
+.ios .header-segment ion-segment-button {
+    --indicator-color: transparent !important;
+    --indicator-color-checked: transparent !important;
+    height: 0px;
+    // margin-top: 8px;
+    border-radius: 5px;
+    min-height: 31px;
+    margin-left: 2px;
+    margin-right: 2px;
+    // box-shadow: -1px 1px 9px 0px #CCC;
+    width: auto;
+    --width: auto;
+    min-width: auto;
+    --min-width: auto;
+    color: #000;
+    font-size: 12px;
+    border: 2px solid #92b243;
+}
+.header-ios ion-toolbar{
+    border: 0px;
+    --border-width: 0px
+}
+.ios{
+    .type-columns{
+        border: 0px solid transparent !important;
+        --border: 0px solid transparent !important;
+    }
+}
+
+.scroll-arrow .lefticon {
+    position: absolute;
+    left: 10px;
+    z-index: 999999;
+    color: #000;
+    padding: 2px;
+    // border-radius: 100%;
+    width: 18px;
+    top: 0px;
+}
+
+.scroll-arrow .righticon {
+    position: absolute;
+    right: 10px;
+    z-index: 999999;
+    color: #000;
+    padding: 2px;
+    // border-radius: 100%;
+    width: 18px;
+    top: 0px;
+}
+
+.basmatiState {
+    margin: 10px 30px 0px 30px;
+}
+
+.ricetype {
+    color: #000;
+    font-size: 30px;
+    font-family: GlacialIndifference-bold;
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+}
+
+.font-17 {
+    font-size: 14px;
+    font-family: GlacialIndifference-bold;
+}
+
+.green {
+    color: #92B243;
+    td {
+        text-transform: capitalize;
+        font-size: 18px !important;
+    }
+}
+
+.porttitle {
+    font-size: 20px
+}   
+
+ion-segment {
+    ion-segment-button {
+        ion-label {
+            margin: 0;
+            padding: 0;
+            margin-top: -2px;
+        }
+    }
+}
+
+.imageprev {
+    min-height: 200px;
+    max-height: 200px;
+    height: 200px;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.paddingBottom100 {
+    padding-bottom: 100px;
+}
+
+
+.item-ionic-selectable{
+    border: 2px solid #92b243;
+    border-radius: 10px;
+    .item-native{
+        background-color: transparent;
+        --background-color: transparent;
+        background: transparent;
+        --background: transparent;
+    }
+}
+.demandHeaders{
+    font-weight: bold;
+    font-size: 18px;
+}
+.demandedData{
+    p{
+        padding: 0;
+        margin: 0;
+    }
+    div{
+        margin-bottom: 20px;
+    }
+}
+ion-item{
+    width: 65%;
+    float: left;
+    margin-right: 10px;
+    border: 2px solid red;
+    border-radius: 12px;
+    background: transparent !important;
+    background-color: transparent !important;
+    --background: transparent !important;
+    --background-color: transparent !important;
+}

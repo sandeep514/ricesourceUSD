@@ -1,0 +1,24 @@
+.logo-col{
+    img{
+        width: 223px;
+        margin-top: 91px;
+    }
+}
+
+ion-content{
+    --background: url('../../assets/login-bg.jpg') no-repeat center/cover fixed;
+}
+
+.sntc-details{
+    h1{
+        font-size: 40px;
+    }
+
+    small{
+        font-size: 14px;
+    }
+    p{
+        text-align: justify;
+        padding: 16px;
+    }
+}

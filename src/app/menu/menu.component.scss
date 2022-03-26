@@ -1,0 +1,41 @@
+.footer-tabs{
+    position: fixed;
+    height: 69px;
+    bottom: -8px;
+    width: 100%;
+    z-index: 9999999;
+    background-color: #fffbd6;
+    padding-top: 4px;
+}
+
+.tab-icon{
+    img{
+        width: 25px;
+    }
+    h5{
+        margin: 0px;
+        font-size: 9.9px;
+        color: #5f5f5f;
+    }
+}
+
+.ripple-parent {
+    position: relative;
+    overflow: hidden;
+}
+
+.truck{
+    width: 53px !important;
+    margin-top: 5px !important;
+}
+
+.unseenmessage{
+    position: absolute;
+    top: 5px;
+    border-radius: 100%;
+    width: 15px;
+    background: #92B243;
+    color: #FFFBD6;
+    font-size: 0px;
+    height: 15px;
+}

@@ -1,0 +1,83 @@
+<ion-header class="green">
+	<ion-toolbar  mode="ios"  style="background: transparent; --background: transparent">
+		<ion-buttons slot="start" class="back-button" (click)="back()">
+			<ion-icon name="arrow-back-outline"></ion-icon>
+		</ion-buttons>
+			<ion-title class="header-title porttitle">Buy Query</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content id="content" [scrollEvents]="true" (ionScroll)="logScrolling($event)" class="lightgreen" >
+	<div style="padding: 10px 10px;margin-bottom: 100px;">
+		<ion-item>
+			<ion-label>Category</ion-label>
+			<!-- (ionChange)="changecountry($event)" -->
+			<ion-select placeholder="Select" (ionChange)="changeQualityType($event)">
+				<ion-select-option *ngFor="let qualityType of riceQualityType" style="text-transform: capitalize;">{{ qualityType | uppercase }}</ion-select-option>
+			</ion-select>
+		</ion-item>
+		<ion-item>
+			<ion-label>Quality</ion-label>
+			<ion-select placeholder="Select" (ionChange)="changeQuality($event)">
+				<ion-select-option *ngFor="let qualityType of riceQualityDataSelectedArray" style="text-transform: capitalize;">{{ qualityType.quality }} {{ qualityType.quality_name }}</ion-select-option>
+				<!-- <ion-select-option style="text-transform: capitalize;">Other</ion-select-option> -->
+			</ion-select>
+		</ion-item>
+
+		<!-- <ion-item>
+			<ion-label position="">Quality</ion-label>
+			<ion-input [(ngModel)]="quality" type="text"></ion-input>
+		</ion-item> -->
+
+		<ion-row style="margin-bottom: 10px;">
+			<ion-col size="12" style="border: 3px solid #92b243;border-radius: 10px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
+				<ion-item class="packingSelect" style="border: 0px;margin-bottom: 0;">
+					<ion-label>Packing</ion-label>
+					<ion-select placeholder="Select" (ionChange)="changePacking($event)">
+						<ion-select-option *ngFor="let package of selectedPackageData" value="{{ package.id+'_'+package.bag_size+'_'+package.bag_type }}">
+							<p>{{package.bag_size}} </p>
+							<p>({{package.bag_type}})</p>
+						</ion-select-option>
+					</ion-select>
+				</ion-item>
+				<p style="padding: 0;margin: 0;margin-left: 15px;text-align: right;padding: 5px;">{{selectedPackageName}}</p>
+			</ion-col>				
+			
+		</ion-row>
+
+		<ion-item>
+			<ion-label position="">Quantity (MT)</ion-label>
+			<ion-input [(ngModel)]="quantity" type="text" style="    text-align: right;"></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label>Port</ion-label>
+			<!-- (ionChange)="changecountry($event)" -->
+			<ion-select placeholder="Select" (ionChange)="changePort($event)">
+				<ion-select-option *ngFor="let port of ports" value="{{ port.port+'_'+port.freight_25MT }}">{{ port.port }}</ion-select-option>
+			</ion-select>
+		</ion-item>
+	
+		<ion-item>
+			<ion-label position="">Buyer Name</ion-label>
+			<ion-input [(ngModel)]="party" type="text" style="    text-align: right;"></ion-input>
+		</ion-item>
+	
+		<ion-item>
+			<ion-label position="">Contact No.</ion-label>
+			<ion-input [(ngModel)]="mobile" type="text" style="    text-align: right;"></ion-input>
+		</ion-item>
+	
+		<ion-item>
+			<ion-label >Additional Information: </ion-label>
+			<ion-textarea rows="6" cols="20" [(ngModel)]="remarks" ></ion-textarea>
+		</ion-item>
+
+		<div *ngIf="validateFails" style="text-align: center;color: red;font-weight: 600">
+			<span>Required Fields are missing</span>
+		</div>
+
+		<ion-button color="success" expand="full" shape="round" (click)="save()">Submit</ion-button>
+	</div>
+	<app-menu></app-menu>
+</ion-content>

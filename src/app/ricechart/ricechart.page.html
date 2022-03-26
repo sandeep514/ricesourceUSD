@@ -1,0 +1,47 @@
+<ion-content id="content" [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+	<div class="header-data green">
+		<ion-row>
+			<ion-col size="4" align="center">
+				<div class="user-profile-icon">
+					<span (click)="gotoProfile()">{{ userFirstName | uppercase}}</span>
+				</div>
+			</ion-col>
+			<ion-col size="4" align="center">
+				<!-- <h3 class="font-lightgreen">Rice Details</h3> -->
+			</ion-col>
+			<!-- <ion-col size="4" align="right" class="notification">
+				<img src="../../assets/bell.png" />
+				<span class="badge">2</span>
+			</ion-col> -->
+		</ion-row>
+
+		<h2 class="center font-lightgreen mt30">{{ rice }} - {{ ricename | uppercase }} {{ productType | uppercase }} RICE</h2>
+	</div>
+	
+	<br>
+	<button id="clickme" (click)="clickme()"></button>
+	<!-- <ion-row>
+		<div class="scroll-arrow">
+			<img src="./../../assets/RINGH.png" alt="" (click)="scroll('left','table-responsive-2')" class="righticon">
+			&nbsp;&nbsp;
+			<img src="./../../assets/LEFT.png" alt="" (click)="scroll('right','table-responsive-2')" class="lefticon">
+		</div>
+		<ion-col class="pt0 pb0 p05">
+			<ion-segment scrollable  class="header-segment table-responsive-2 basmatiState">
+
+				<ion-segment-button id="{{ parseValue(selectedChartData) }}" *ngFor="let interval of chartIntervals" (click)="getCartData(interval.name)" [class.green]="selectedChartData == interval.name" value="{{ interval.name}}">
+					<ion-label >{{ interval.name }}</ion-label>
+				</ion-segment-button>
+				
+			</ion-segment>
+		</ion-col>
+	</ion-row> -->
+
+	<ion-row>
+		<ion-col>
+			<div id="highcharts" style="width:400; height:400px;"></div>
+		</ion-col>
+	</ion-row>
+
+<app-menu></app-menu>
+</ion-content>

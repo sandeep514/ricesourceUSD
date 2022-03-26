@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "949629925863",
+    "firebase_url": "https://sntc-b3fc6.firebaseio.com",
+    "project_id": "sntc-b3fc6",
+    "storage_bucket": "sntc-b3fc6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949629925863:android:3ec892f117b75a327ea542",
+        "android_client_info": {
+          "package_name": "io.sntc.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "949629925863-j6ehl13ohtgv7e2ksrfvt5t0lt2fh9hf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWlHGxmD8eDOzLLpvcYfejJpf_-IWq6KU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "949629925863-j6ehl13ohtgv7e2ksrfvt5t0lt2fh9hf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
