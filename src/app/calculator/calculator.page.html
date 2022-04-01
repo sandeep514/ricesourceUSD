@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content id="content" class="lightgreen"  style="height: 100%;">
-	<div style="height: 90%;overflow: scroll;">
+	<!-- <div style="height: 90%;overflow: scroll;">
 
 		<ion-item>
 			<ion-label>Rice</ion-label>
@@ -92,7 +92,240 @@
 		</div>
 		<ion-button color="success" expand="full" shape="round" (click)="save()">Calculate Now</ion-button>
 		
+	</div> -->
+	<div style="height: 90%;overflow: scroll;">
+		<ion-row style="justify-content: center;">Cost of Rice1: </ion-row>
+		<ion-row>
+			<ion-col size="6">
+				<ion-item>
+					<ion-label position="floating">Quality Cost of Rice 1 *</ion-label>
+					<ion-input placeholder="Today's Dollar rate *" [(ngModel)]="riceone"></ion-input>
+				</ion-item>
+			</ion-col>
+			<ion-col size="6">
+				<ion-item>
+					<ion-label position="floating">Percentage of Rice 1*</ion-label>
+					<ion-input placeholder="Today's Dollar rate *" [(ngModel)]="riceonepercentage"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row style="justify-content: center;">Cost of Rice2: </ion-row>
+		<ion-row>
+			<ion-col size="6">
+				<ion-item>
+					<ion-label position="floating">Quality Cost of Rice 2 *</ion-label>
+					<ion-input placeholder="Today's Dollar rate *" [(ngModel)]="ricetwo"></ion-input>
+				</ion-item>
+			</ion-col>
+			<ion-col size="6">
+				<ion-item>
+					<ion-label position="floating">Percentage of Rice 2*</ion-label>
+					<ion-input placeholder="Today's Dollar rate *" [(ngModel)]="ricetwopercentage"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row style="justify-content: center;">Cost of Rice3: </ion-row>
+
+		<ion-row>
+			<ion-col size="6">
+				<ion-item>
+					<ion-label position="floating">Quality Cost of Rice 3 *</ion-label>
+					<ion-input placeholder="Today's Dollar rate *" [(ngModel)]="ricethree"></ion-input>
+				</ion-item>
+			</ion-col>
+			<ion-col size="6">
+				<ion-item>
+					<ion-label position="floating">Percentage of Rice 3*</ion-label>
+					<ion-input placeholder="Today's Dollar rate *" [(ngModel)]="ricethreepercentage"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row style="justify-content: center;">Cost of Rice4: </ion-row>
+
+		<ion-row>
+			<ion-col size="6">
+				<ion-item>
+					<ion-label position="floating">Quality Cost of Rice 4 *</ion-label>
+					<ion-input placeholder="Today's Dollar rate *" [(ngModel)]="ricefour"></ion-input>
+				</ion-item>
+			</ion-col>
+			<ion-col size="6">
+				<ion-item>
+					<ion-label position="floating">Percentage of Rice 4*</ion-label>
+					<ion-input placeholder="Today's Dollar rate *" [(ngModel)]="ricefourpercentage"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="12">
+				<ion-item>
+					<ion-label position="floating">Processing Charges</ion-label>
+					<ion-input placeholder="Today's Dollar rate *" [(ngModel)]="processingCharges"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row >
+			<ion-col>
+				<ion-item>
+					<ion-label>Bag size*</ion-label>
+					<ion-select placeholder="Select One" [(ngModel)]="bagSize" (ionChange)="bagChange($event)">
+						<ion-select-option *ngFor="let data of USD_master" value="{{ data.bag_size }}_{{ data.bag_type }}_{{ data.PMT_USD }}" >{{ data.bag_size }}_{{ data.bag_type }}</ion-select-option>
+					</ion-select>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			PMT:
+		</ion-row>
+		<ion-row>
+			<ion-col size="12">
+				<ion-item>
+					<ion-label position="floating">Domestic Transport Upto Mundra</ion-label>
+					<ion-input placeholder="Domestic Transport Upto Mundra" [(ngModel)]="domesticTransport"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			Local Charges: ₹2500
+		</ion-row>
+		<ion-row>
+			Finance Cost: ₹350
+		</ion-row>
+		<ion-row>
+			Total: ₹0
+		</ion-row>
+		<ion-row>
+			<ion-col size="12">
+				<ion-item>
+					<ion-label position="floating">Today's Dollar Rate</ion-label>
+					<ion-input placeholder="Today's Dollar Rate" [(ngModel)]="dollaerate"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<ion-item>
+					<ion-label>Supplier Markup% +SNTC Service charge (1 - 20%)*</ion-label>
+					<ion-select placeholder="Select One" [(ngModel)]="supplierCharge">
+						<ion-select-option value="1">1</ion-select-option>
+						<ion-select-option value="2">2</ion-select-option>
+						<ion-select-option value="3">3</ion-select-option>
+						<ion-select-option value="4">4</ion-select-option>
+						<ion-select-option value="5">5</ion-select-option>
+						<ion-select-option value="6">6</ion-select-option>
+						<ion-select-option value="7">7</ion-select-option>
+						<ion-select-option value="8">8</ion-select-option>
+						<ion-select-option value="9">9</ion-select-option>
+						<ion-select-option value="10">10</ion-select-option>
+						<ion-select-option value="11">11</ion-select-option>
+						<ion-select-option value="12">12</ion-select-option>
+						<ion-select-option value="13">13</ion-select-option>
+						<ion-select-option value="14">14</ion-select-option>
+						<ion-select-option value="15">15</ion-select-option>
+						<ion-select-option value="16">16</ion-select-option>
+						<ion-select-option value="17">17</ion-select-option>
+						<ion-select-option value="18">18</ion-select-option>
+						<ion-select-option value="19">19</ion-select-option>
+						<ion-select-option value="20">20</ion-select-option>
+					</ion-select>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				PMT FOB Price in $0
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="12">
+				<ion-item>
+					<ion-label position="floating">L/C Charges</ion-label>
+					<ion-input placeholder="L/C Charges" [(ngModel)]="lccharges"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="12">
+				<ion-item>
+					<ion-label position="floating">Ocean Freight Per MT</ion-label>
+					<ion-input placeholder="Ocean Freight Per MT" [(ngModel)]="oceanfreight"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="12">
+				<ion-item>
+					<ion-label position="floating">Third Party Inspection</ion-label>
+					<ion-input placeholder="Third Party Inspection" [(ngModel)]="thirdpartyinspection"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="12">
+				<ion-item>
+					<ion-label position="floating">Legalisation Charges</ion-label>
+					<ion-input placeholder="Legalisation Charges" [(ngModel)]="legalisationcharges"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="12">
+				<ion-item>
+					<ion-label position="floating">COC</ion-label>
+					<ion-input placeholder="COC" [(ngModel)]="coc"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="12">
+				<ion-item>
+					<ion-label position="floating">EIA cost ( for EU Only )</ion-label>
+					<ion-input placeholder="EIA cost ( for EU Only )" [(ngModel)]="eiacost"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size="12">
+					<ion-item>
+						<ion-label>Supplier Charge</ion-label>
+						<ion-select placeholder="Select One" [(ngModel)]="supplierCharge">
+							<ion-select-option value="1">1</ion-select-option>
+							<ion-select-option value="2">2</ion-select-option>
+							<ion-select-option value="3">3</ion-select-option>
+							<ion-select-option value="4">4</ion-select-option>
+							<ion-select-option value="5">5</ion-select-option>
+							<ion-select-option value="6">6</ion-select-option>
+							<ion-select-option value="7">7</ion-select-option>
+							<ion-select-option value="8">8</ion-select-option>
+							<ion-select-option value="9">9</ion-select-option>
+							<ion-select-option value="10">10</ion-select-option>
+							<ion-select-option value="11">11</ion-select-option>
+							<ion-select-option value="12">12</ion-select-option>
+							<ion-select-option value="13">13</ion-select-option>
+							<ion-select-option value="14">14</ion-select-option>
+							<ion-select-option value="15">15</ion-select-option>
+							<ion-select-option value="16">16</ion-select-option>
+							<ion-select-option value="17">17</ion-select-option>
+							<ion-select-option value="18">18</ion-select-option>
+							<ion-select-option value="19">19</ion-select-option>
+							<ion-select-option value="20">20</ion-select-option>
+						</ion-select>
+					</ion-item>				
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col style="text-align: center;">
+				<ion-button>Save</ion-button>
+			</ion-col>
+		</ion-row>
 	</div>
-	
 	<app-menu></app-menu>
 </ion-content>

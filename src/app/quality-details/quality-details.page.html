@@ -21,7 +21,7 @@
 						<ion-label>Packing</ion-label>
 						<ion-select placeholder="Select" (ionChange)="changeBag($event)">
 						  	<ion-select-option *ngFor="let bag of packing" value="{{ bag?.PMT_USD }}">
-								{{ bag?.bag_size }} ({{ bag?.bag_type }})
+								<p style="width: 200px;height: 200px;">{{ bag?.bag_size }}</p>&nbsp; &nbsp; &nbsp; &nbsp; <p>({{ bag?.bag_type }})</p>
 							</ion-select-option>
 						</ion-select>
 					  </ion-item>

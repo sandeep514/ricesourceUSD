@@ -18,7 +18,6 @@ export class CalculatorPage implements OnInit {
 	public bagcost:any;
 	public localCharges:any;
 	public dollaerate:any;
-	public supplierCharge:any;
 	public total:any = 0;
 	public exchange:any = 0;
 	public FOB:any = 0;
@@ -28,6 +27,27 @@ export class CalculatorPage implements OnInit {
 	public selectedBag:any;
 	public selectedBagId:any=0;
 	public selectedRice:any;
+
+
+	public riceone:any;
+	public riceonepercentage:any;
+	public ricetwo:any;
+	public ricetwopercentage:any;
+	public ricethree:any;
+	public ricethreepercentage:any;
+	public ricefour:any;
+	public ricefourpercentage:any;
+	public processingCharges:any;
+	public bagSize:any;
+	public domesticTransport:any;
+	public lccharges:any;
+	public oceanfreight:any;
+	public thirdpartyinspection:any;
+	public legalisationcharges:any;
+	public coc:any;
+	public eiacost:any;
+	public supplierCharge:any;
+
 
 	constructor(public apiService: RestService , public navCtrl: NavController,public location:Location) { }
 
