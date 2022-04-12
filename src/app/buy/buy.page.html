@@ -73,10 +73,14 @@
 			<ion-textarea rows="6" cols="20" [(ngModel)]="remarks" ></ion-textarea>
 		</ion-item>
 
-		<div *ngIf="validateFails" style="text-align: center;color: red;font-weight: 600">
-			<span>Required Fields are missing</span>
+		<ion-item>
+			<ion-label position="">Deal Valid for days</ion-label>
+			<ion-input [(ngModel)]="validDays" type="text" style=" text-align: right;" placeholder="2"></ion-input>
+		</ion-item>
+		
+		<div *ngIf="isError" style="text-align: center;color: red;font-weight: 600">
+			<span>{{ errorMessage }}</span>
 		</div>
-
 		<ion-button color="success" expand="full" shape="round" (click)="save()">Submit</ion-button>
 	</div>
 	<app-menu></app-menu>

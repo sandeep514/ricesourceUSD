@@ -29,30 +29,69 @@ export class CalculatorPage implements OnInit {
 	public selectedRice:any;
 
 
-	public riceone:any;
-	public riceonepercentage:any;
-	public ricetwo:any;
-	public ricetwopercentage:any;
-	public ricethree:any;
-	public ricethreepercentage:any;
-	public ricefour:any;
-	public ricefourpercentage:any;
-	public processingCharges:any;
-	public bagSize:any;
-	public domesticTransport:any;
-	public lccharges:any;
-	public oceanfreight:any;
-	public thirdpartyinspection:any;
-	public legalisationcharges:any;
-	public coc:any;
-	public eiacost:any;
-	public supplierCharge:any;
+	public riceone:any = 0;
+	public riceonepercentage:any = 0;
+	public ricetwo:any = 0;
+	public ricetwopercentage:any = 0;
+	public ricethree:any = 0;
+	public ricethreepercentage:any = 0;
+	public ricefour:any = 0;
+	public ricefourpercentage:any = 0;
+	public processingCharges:any = 0;
+	public bagSize:any = 0;
+	public domesticTransport:any = 0;
+	public lccharges:any = 0;
+	public oceanfreight:any = 0;
+	public thirdpartyinspection:any = 0;
+	public legalisationcharges:any = 0;
+	public coc:any = 0;
+	public eiacost:any = 0;
+	public supplierCharge:any = 1;
+	public financecost:any = 0;
+	public PMT:any = 0;
 
+	public costOfRice1:any = 0;
+	public costOfRice2:any = 0;
+	public costOfRice3:any = 0;
+	public costOfRice4:any = 0;
+
+	public totalPriceINR:any = 0;
+	public PMTusd:any = 0;
+	public finalCIFPrice:any = 0;
 
 	constructor(public apiService: RestService , public navCtrl: NavController,public location:Location) { }
 
 	ngOnInit() {
 		this.getCalculatorData();
+	}
+	calculateData(){
+
+		if(this.riceone != undefined && this.riceonepercentage != undefined){
+			this.costOfRice1 = parseFloat(((this.riceone *this.riceonepercentage)/100).toFixed(2));
+		}
+		if(this.ricetwo != undefined && this.ricetwopercentage != undefined){
+			this.costOfRice2 = ((this.ricetwo *this.ricetwopercentage)/100);
+		}
+		if(this.ricethree != undefined && this.ricethreepercentage != undefined){
+			this.costOfRice3 = ((this.ricethree *this.ricethreepercentage)/100);
+		}
+		if(this.ricefour != undefined && this.ricefourpercentage != undefined){
+			this.costOfRice4 = ((this.ricefour *this.ricefourpercentage)/100);
+		}
+
+
+		this.PMT = (this.costOfRice1+this.costOfRice2+this.costOfRice3+this.costOfRice4+parseFloat(this.processingCharges)+this.updatedUserPrice);
+
+		this.totalPriceINR = (this.costOfRice1+this.costOfRice2+this.costOfRice3+this.costOfRice4+parseFloat(this.processingCharges)+this.updatedUserPrice+parseFloat(this.domesticTransport)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
+
+		this.PMTusd = ((((this.totalPriceINR/this.dollaerate)*this.supplierCharge)/100)+(this.totalPriceINR/this.dollaerate))
+
+		this.finalCIFPrice = (parseFloat(this.PMTusd)+parseFloat(this.lccharges)+parseFloat(this.oceanfreight)+parseFloat(this.thirdpartyinspection)+parseFloat(this.legalisationcharges)+parseFloat(this.coc)+parseFloat(this.eiacost))
+
+ 
+
+
+		console.log(this.PMTusd);
 	}
 
 	getCalculatorData(){
@@ -63,13 +102,14 @@ export class CalculatorPage implements OnInit {
 			this.dollaerate = res.defaultValues.dollarvalue;
 			this.bagcost = res.defaultValues.bagcost;
 			this.localCharges = res.defaultValues.localcharges;
+			this.financecost = res.defaultValues.financecost;
 			this.USD_master = res.USD_master;
 			this.selectedFiftykg = res.fiftykg.PMT_USD;
 
 		} ,(err:any) =>{ 
 			console.log(err);
 		});
-	}
+	} 
 	save(){
 		if (this.riceMinPrice == '' || this.riceMinPrice == undefined){
 			this.riceMinPrice = 0;
@@ -149,7 +189,7 @@ export class CalculatorPage implements OnInit {
 	bagChange(event){
 		let value = event.detail.value;
 		let splitedValue = value.split('_');
-		
+
 		let bagSize = splitedValue[0];
 		let bagNme = splitedValue[1];
 		let bagPrice = splitedValue[2];
@@ -158,6 +198,8 @@ export class CalculatorPage implements OnInit {
 		let updatedPrice = parseFloat(bagPrice);
 		this.selectedBag = bagSize+'_'+bagNme;
 		this.updatedUserPrice = updatedPrice;
+
+		this.PMT = updatedPrice
 	}
 
 	changeQuality(event){

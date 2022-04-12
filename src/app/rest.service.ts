@@ -157,6 +157,17 @@ export class RestService {
 			});
 		});
 	}
+	updateCounterStatus(formData){
+		
+		let token = localStorage.getItem('token');
+		return new Promise((resolve,reject) => {
+			this.http.post(this.APIURL+'update/counter/status?api_token='+token,JSON.stringify(formData)).subscribe((res)=>{
+				resolve(res);
+			},err=>{
+				reject(err);
+			});
+		});
+	}
 
 
 	async presentModal(modalPage) {
@@ -582,6 +593,17 @@ export class RestService {
 	getUSDCounties(){
 		return new Promise( (resolve , reject) => {
 			this.http.get(this.APIURL+'get/countries/list').subscribe( (res:any) => {
+				
+				resolve(res);
+			} ,(err:any) => {
+				reject(err);
+			});
+		} );
+	}
+
+	contact(){
+		return new Promise( (resolve , reject) => {
+			this.http.get(this.APIURL+'get/contact/details').subscribe( (res:any) => {
 				
 				resolve(res);
 			} ,(err:any) => {

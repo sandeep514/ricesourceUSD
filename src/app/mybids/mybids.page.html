@@ -10,9 +10,9 @@
 <ion-content id="content" class="lightgreen"  style="height: 100%;">
 	<div style="height: 90%;overflow: scroll;">
 		<div>
-			<ul>
-				<li *ngFor="let bids of mybids" class="demandedData">
-					<div>
+			<ul style="padding: 10px;">
+				<li *ngFor="let bids of mybids" class="demandedData" style="border-bottom: 2px solid #ededed;">
+					<div style="margin: 0;padding: 15px 0px;">
 						<ion-row>
 							<ion-col size="4" class="demandHeaders">Rice</ion-col> 
 							<ion-col>
@@ -35,8 +35,33 @@
 							<ion-col size="4" class="demandHeaders">Port</ion-col> 
 							<ion-col>: {{ bids.portName }}</ion-col>
 						</ion-row>
+
+						<ion-row>
+							<ion-col size="4" class="demandHeaders">Valid Date</ion-col> 
+							<ion-col>: {{ bids.validDate | date :  'M/d/yyyy' }}</ion-col>
+						</ion-row>
+
 						<ion-row *ngIf="bids?.get_bids.length > 0"  style="margin-top: 5px;">
-							your bids is <span class="demandHeaders"> ${{ bids?.get_bids[0].bid_amount }} </span> on <span class="demandHeaders"> {{ bids?.get_bids[0].created_at | date:'dd/MM/yyyy ' }}</span>
+							your bids is <span class="demandHeaders" style="padding: 0px 10px;"> ${{ bids?.get_bids[0].bid_amount }} </span> on <span class="demandHeaders" style="padding: 0px 10px;"> {{ bids?.get_bids[0].created_at | date:'dd/MM/yyyy' }}</span>
+
+							<ion-row *ngIf="bids?.get_bids[0].counter_amount != 0 && bids?.get_bids[0].counter_status == 0" style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;">
+								SNTC send you a counter offer of ${{bids?.get_bids[0].counter_amount}}
+								<ion-col> 
+									<ion-button class="green" style="color: #fff;border-radius: 12px;" (click)="accept( bids?.get_bids[0].id )" >Accept</ion-button>
+								</ion-col>
+								<ion-col>
+									<ion-button class="red" style="color: #fff;border-radius: 12px;" (click)="reject( bids?.get_bids[0].id  )" >Reject</ion-button>
+								</ion-col>
+							</ion-row>
+							
+							<ion-row *ngIf="bids?.get_bids[0].counter_amount != 0 && bids?.get_bids[0].counter_status != 1" style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;width: 100%;">
+								You accepted a counter offer of ${{bids?.get_bids[0].counter_amount}}
+							</ion-row>
+
+							<ion-row *ngIf="bids?.get_bids[0].counter_amount != 0 && bids?.get_bids[0].counter_status != 2" style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;width: 100%;">
+								You have declined a counter offer of ${{bids?.get_bids[0].counter_amount}}
+							</ion-row>
+
 						</ion-row>
 
 						<ion-row *ngIf="bids?.get_bids.length <= 0"  style="margin-top: 5px;margin-bottom: 35px;">

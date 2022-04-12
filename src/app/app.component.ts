@@ -48,6 +48,11 @@ export class AppComponent implements OnInit {
 			title: 'Change Password',
 			url: '/updatepassword',
 			icon: 'albums'
+		},
+		{
+			title: 'Contact us',
+			url: '/contact',
+			icon: 'albums'
 		}
 	];
 	public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
@@ -281,6 +286,7 @@ export class AppComponent implements OnInit {
 
 	initializeApp() {
 		this.platform.ready().then(async () => {
+			let isExpiredUsd = localStorage.getItem('isExpiryUSD');
 			this.statusBar.styleDefault();
             this.statusBar.overlaysWebView(false);
             this.statusBar.backgroundColorByHexString('#92B243');
@@ -332,7 +338,12 @@ export class AppComponent implements OnInit {
 									return false
 								}
 							});
-							this.navCtrl.navigateForward(['priceusd']);
+							console.log("jhbjhnjnm ijknjm");
+							if( isExpiredUsd == 'true' ){
+								this.navCtrl.navigateForward(['price']);
+							}else{
+								this.navCtrl.navigateForward(['priceusd']);
+							}
 
 						}else{
 							this.firebase.onBackgroundMessage().subscribe(function(payload) {
@@ -341,7 +352,13 @@ export class AppComponent implements OnInit {
 									return false
 								}
 							});
-							this.navCtrl.navigateForward(['priceusd']);
+
+							console.log( isExpiredUsd);
+							if( isExpiredUsd == 'true' ){
+								this.navCtrl.navigateForward(['prices']);
+							}else{
+								this.navCtrl.navigateForward(['priceusd']);
+							}
 						}
 					}, 4000);
 				}

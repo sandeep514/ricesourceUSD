@@ -9,7 +9,7 @@
         "parents": {
           "/manifest/application": [
             {
-              "xml": "<application android:usesCleartextTraffic=\"true\" />",
+              "xml": "<application android:networkSecurityConfig=\"@xml/network_security_config\" />",
               "count": 2,
               "mode": "merge",
               "id": "config.xml",
@@ -23,7 +23,7 @@
               }
             },
             {
-              "xml": "<application android:networkSecurityConfig=\"@xml/network_security_config\" />",
+              "xml": "<application android:usesCleartextTraffic=\"true\" />",
               "count": 1,
               "mode": "merge",
               "id": "config.xml",
@@ -76,6 +76,34 @@
             },
             {
               "xml": "<feature name=\"FirebaseMessaging\"><param name=\"android-package\" value=\"by.chemerisuk.cordova.firebase.FirebaseMessagingPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"FacebookConnectPlugin\"><param name=\"android-package\" value=\"org.apache.cordova.facebook.ConnectPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<access origin=\"https://m.facebook.com\" />",
+              "count": 1
+            },
+            {
+              "xml": "<access origin=\"https://graph.facebook.com\" />",
+              "count": 1
+            },
+            {
+              "xml": "<access origin=\"https://api.facebook.com\" />",
+              "count": 1
+            },
+            {
+              "xml": "<access origin=\"https://*.fbcdn.net\" />",
+              "count": 1
+            },
+            {
+              "xml": "<access origin=\"https://*.akamaihd.net\" />",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"android-minSdkVersion\" value=\"15\" />",
               "count": 1
             }
           ]
@@ -133,11 +161,39 @@
             {
               "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
               "count": 1
+            },
+            {
+              "xml": "<queries><package android:name=\"com.facebook.katana\" /></queries>",
+              "count": 1
             }
           ],
           "application": [
             {
               "xml": "<provider android:authorities=\"${applicationId}.provider\" android:exported=\"false\" android:grantUriPermissions=\"true\" android:name=\"org.apache.cordova.camera.FileProvider\"><meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/camera_provider_paths\" /></provider>",
+              "count": 1
+            },
+            {
+              "xml": "<meta-data android:name=\"com.facebook.sdk.ApplicationId\" android:value=\"@string/fb_app_id\" />",
+              "count": 1
+            },
+            {
+              "xml": "<meta-data android:name=\"com.facebook.sdk.ApplicationName\" android:value=\"@string/fb_app_name\" />",
+              "count": 1
+            },
+            {
+              "xml": "<meta-data android:name=\"com.facebook.sdk.AutoLogAppEventsEnabled\" android:value=\"@bool/fb_auto_log_app_events_enabled\" />",
+              "count": 1
+            },
+            {
+              "xml": "<meta-data android:name=\"com.facebook.sdk.AdvertiserIDCollectionEnabled\" android:value=\"@bool/fb_advertiser_id_collection_enabled\" />",
+              "count": 1
+            },
+            {
+              "xml": "<activity android:configChanges=\"keyboard|keyboardHidden|screenLayout|screenSize|orientation\" android:label=\"@string/fb_app_name\" android:name=\"com.facebook.FacebookActivity\" />",
+              "count": 1
+            },
+            {
+              "xml": "<provider android:authorities=\"com.facebook.app.FacebookContentProviderapp.sntcrice.sourcing\" android:exported=\"true\" android:name=\"com.facebook.FacebookContentProvider\" />",
               "count": 1
             }
           ],
@@ -156,6 +212,32 @@
             },
             {
               "xml": "<meta-data android:name=\"com.google.firebase.messaging.default_notification_channel_id\" android:value=\"default\" />",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "app/src/main/res/values/facebookconnect.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<string name=\"fb_app_id\">app.sntcrice.sourcing</string>",
+              "count": 1
+            },
+            {
+              "xml": "<string name=\"fb_app_name\">SNTC Rice Sourcing</string>",
+              "count": 1
+            },
+            {
+              "xml": "<bool name=\"fb_auto_log_app_events_enabled\">true</bool>",
+              "count": 1
+            },
+            {
+              "xml": "<bool name=\"fb_hybrid_app_events\">false</bool>",
+              "count": 1
+            },
+            {
+              "xml": "<bool name=\"fb_advertiser_id_collection_enabled\">true</bool>",
               "count": 1
             }
           ]
@@ -211,6 +293,19 @@
       "ANALYTICS_COLLECTION_ENABLED": "true",
       "AUTOMATIC_SCREEN_REPORTING_ENABLED": "true",
       "ANDROID_FIREBASE_ANALYTICS_VERSION": "19.0.+",
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-facebook-connect": {
+      "APP_ID": "app.sntcrice.sourcing",
+      "APP_NAME": "SNTC Rice Sourcing",
+      "FACEBOOK_URL_SCHEME_SUFFIX": " ",
+      "OTHER_APP_SCHEMES": " ",
+      "FACEBOOK_AUTO_LOG_APP_EVENTS": "true",
+      "FACEBOOK_HYBRID_APP_EVENTS": "false",
+      "FACEBOOK_ADVERTISER_ID_COLLECTION": "true",
+      "FACEBOOK_ANDROID_SDK_VERSION": "11.3.0",
+      "FACEBOOK_IOS_SDK_VERSION": "11.1.0",
+      "FACEBOOK_BROWSER_SDK_VERSION": "v11.0",
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     }
   },
@@ -319,6 +414,14 @@
       "merges": [
         "cordova.plugins.firebase.messaging"
       ]
+    },
+    {
+      "id": "cordova-plugin-facebook-connect.FacebookConnectPlugin",
+      "file": "plugins/cordova-plugin-facebook-connect/www/facebook-native.js",
+      "pluginId": "cordova-plugin-facebook-connect",
+      "clobbers": [
+        "facebookConnectPlugin"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -334,6 +437,7 @@
     "com.razorpay.cordova": "0.16.1",
     "cordova-support-android-plugin": "1.0.2",
     "cordova-plugin-firebase-analytics": "6.1.0",
-    "cordova-plugin-firebase-messaging": "6.1.1"
+    "cordova-plugin-firebase-messaging": "6.1.1",
+    "cordova-plugin-facebook-connect": "3.2.0"
   }
 }

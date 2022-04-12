@@ -10,23 +10,41 @@
 <ion-content id="content" class="lightgreen"  style="height: 100%;">
 	<div style="height: 90%;overflow: scroll;">
 		<div>
-			<ul>
-				<ng-container *ngFor="let buyers of myBuyers">
-					<li  class="demandedData" *ngIf="buyers.contact_person != '' || buyers.contact_person != null">
-						<div >
-							<p>
-								<span class="demandHeaders">Buyer Name</span> : {{ buyers.contact_person }}
-							</p>
-							<p>
-								<span class="demandHeaders">Buyer Contact</span> : {{ buyers.contact_number }}
-							</p>
-							<p>
-								<span class="demandHeaders">Specialised</span> : {{ buyers.specialised }}
-							</p>
+			
+			<ion-row>
+				<ion-col>
+					<ion-item style="width: 100%;">
+						<ion-label>Bag Vendors Type*</ion-label>
+						<ion-select placeholder="Select One" (ionChange)="changeBuyer($event)" [(ngModel)]="selectedBuyer" selectedText="{{selectedBuyer}}">
+							<ion-select-option *ngFor="let buyerType of buyerTypes" >{{ buyerType }}</ion-select-option>
+						</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+	
+			<ul style="padding: 0px 20px">
+				<ng-container *ngFor="let buyers of selectedBuyers">
+					<li  class="demandedData" *ngIf="buyers.contact_person != '' || buyers.contact_person != null" style="list-style: none;padding: 15px 0px;border-bottom: 2px solid #ededed;">
+						<div style="margin: 0;">
+							<div>
+								<p class="demandHeaders" style="float: left;min-width: 150px">Buyer Name</p> 
+								<p style="line-height: 1.5;text-transform: capitalize;">: {{ buyers.contact_person }}</p>
+							</div>
+							<div>
+								<p class="demandHeaders" style="float: left;min-width: 150px;">Buyer Contact</p> 
+								<p style="line-height: 1.5;">: {{ buyers.contact_number }}</p>
+							</div>
+							<div>
+								<p class="demandHeaders" style="float: left;min-width: 150px;">Specialised</p> 
+								<p style="line-height: 1.5;">: {{ buyers.specialised }}</p>
+							</div>
 							
 	
 						</div>
 					</li>
+				</ng-container>
+				<ng-container *ngIf="selectedBuyerslength <= 0">
+					<p style="padding: 0px 20px;text-align: center;font-weight: bold;font-size: 18px;">No List is available for this beg vendor</p>
 				</ng-container>
 			</ul>
 		</div>

@@ -66,11 +66,11 @@ export class PricesPage implements OnInit {
 
 	constructor(public platform: Platform,public restService: RestService,public componentService: ComponentsService,public modalController: ModalController,public navCtrl: NavController,public route: Router ,public versionMdel : VersionmodalPage) {
 		// this.componentService.compareTwoDates( localStorage.getItem('expired_on') );
-		console.log(typeof localStorage.getItem('isExpired') );
 
-		if( localStorage.getItem('isExpired') == 'true' ){
-			this.navCtrl.navigateRoot( 'planpage', { animationDirection : 'forward' } );
-		}
+		
+		// if( localStorage.getItem('isExpired') == 'true' ){
+		// 	this.navCtrl.navigateRoot( 'planpage', { animationDirection : 'forward' } );
+		// }
 
 		var today = new Date();
 		var dd = String(today.getDate()).padStart(2, '0');
@@ -249,7 +249,7 @@ export class PricesPage implements OnInit {
 
 	ionViewDidEnter() {
 		if (this.route.url == "/prices") {
-			console.log(localStorage.getItem("popupCanceled"));
+
 			if (localStorage.getItem("popupCanceled") == null) {
 				this.myVar = setTimeout(() => {
 				this.showCOntactModal();
@@ -267,7 +267,6 @@ export class PricesPage implements OnInit {
 		
 			this.getLoadedData("basmati").then((res: any) => {
 				this.basmatiprice = res;
-				
 			} , (err:any) => {
 			});
 			this.getLoadedData("non-basmati").then((res: any) => {
@@ -281,6 +280,16 @@ export class PricesPage implements OnInit {
 		
 
 		this.restService.CheckUserExpired().then( (res:any) => {
+			localStorage.setItem('isExpiryUSD' , res.isExpiry)
+			localStorage.setItem('ExpiryUSDDate' , res.data)
+
+			console.log("mbnjkjbj");
+			if( res.isExpiry == false ){
+				localStorage.setItem('apptype' , 'USD');
+			}else{
+				localStorage.setItem('apptype' , 'OTHER');
+			}
+
 			localStorage.setItem('expired_on' , res.data);
 			this.componentService.compareTwoDates(localStorage.getItem('expired_on'));
 		} , (err:any) => {
@@ -305,15 +314,15 @@ export class PricesPage implements OnInit {
 	}
 	getVersion() {
 		this.restService.getLatestVersion().then((res:any) => {
-			console.log(res.data.version)
+
 			let elemem = this;
 			if( '1.0.0' != res.data.version ){
 				setTimeout(function(){ elemem.showVersionModal() }, 8000);
 			}
 		}  , (err) => {
-			console.log(err)
+
 		}).catch((err) => {
-			console.log(err)
+
 		});
 	}
 
@@ -400,7 +409,7 @@ export class PricesPage implements OnInit {
 		this.componentService.presentLoading().then(() => {
 			this.fetchRiceForm(event.detail.value, "basmati").then((res: any) => {
 				this.basmatiprice = res;
-				console.log('res here');
+
 				console.log(res);
 				
 				this.componentService.loadingController.dismiss();
@@ -424,7 +433,7 @@ export class PricesPage implements OnInit {
 
 		this.fetchRiceForm(event.detail.value, "non-basmati").then((res: any) => {
 			// this.componentService.loadingController.dismiss();
-			console.log(res);
+
 			this.nonbasmatiprice = res;
 		});
 		if (event.detail.value == "kota_bundi") {
@@ -452,7 +461,7 @@ export class PricesPage implements OnInit {
 						this.nonBasmatiColumns = nonBasmati;
 					}
 					this.lastupdatedDate = res.latest;
-					console.log("here data");
+
 					// this.componentService.loadingController.dismiss();
 					resolve(res.prices);
 				} , (err:any) => {
@@ -527,7 +536,7 @@ export class PricesPage implements OnInit {
 		if( this.currentPaidStatus == 'true' ) {
 			this.showPaymentModel();
 		}else{
-			console.log(riceName);
+
 			let newRiceName = riceName.split(" ");
 			newRiceName = newRiceName.join("_");
 	
@@ -606,9 +615,14 @@ export class PricesPage implements OnInit {
 	}
 	changeAppType(){
 		let isUSDActive = localStorage.getItem('is_usd_active');
-		if( isUSDActive == '0' ){
+		let isUserExpiredStatus = localStorage.getItem('isExpiryUSD');
+
+		if( isUserExpiredStatus == 'true' ){
 			this.navCtrl.navigateForward(['planpage']);
+		}else{
+			this.navCtrl.navigateForward(['priceusd']);
 		}
+
 		return false;
 		localStorage.setItem('apptype' , 'USD');
 		this.navCtrl.navigateForward(['priceusd']);

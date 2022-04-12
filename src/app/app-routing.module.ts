@@ -151,6 +151,10 @@ const routes: Routes = [
   {
     path: 'otherservices',
     loadChildren: () => import('./otherservices/otherservices.module').then( m => m.OtherservicesPageModule)
+  },
+  {
+    path: 'contact',
+    loadChildren: () => import('./contact/contact.module').then( m => m.ContactPageModule)
   }
 
 

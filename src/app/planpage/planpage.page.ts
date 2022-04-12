@@ -26,7 +26,8 @@ export class PlanpagePage implements OnInit {
 	}
 
 	closeme(){
-		this.modelController.dismiss();
+		// this.modelController.dismiss();
+		this.navCtrl.navigateForward(['prices']);
 	}
 	
 	getPlans(){
@@ -48,7 +49,7 @@ export class PlanpagePage implements OnInit {
 	}
 
 	buynow(plan){
-
+		
 		// key: 'rzp_test_LA2o3rFXhgtfmS',
 		// key: 'rzp_live_igtbdlPLfbiw6d',
 		let paymentAmount = plan.discounted_prie;
@@ -58,7 +59,7 @@ export class PlanpagePage implements OnInit {
 			description: 'Rice Data',
 			image: 'https://ricebrok-staging.webcooks.in/images/sitelogo.png',
 			currency: 'INR',
-			key: 'rzp_live_igtbdlPLfbiw6d',
+			key: 'rzp_test_LA2o3rFXhgtfmS',
 			amount: (paymentAmount*100),
 			name: 'SNTC',
 			prefill: {
@@ -82,18 +83,11 @@ export class PlanpagePage implements OnInit {
 			let plan_id = planid;
 
 			this.apiser.addOrder({ transaction_id: tran_id , user_id : localStorage.getItem('id') , plan_id : planid }).then((res:any) => {
-				localStorage.setItem('chartInt' , 'true');
-				localStorage.setItem('isExpired' , 'false');
 
 				this.compSer.isUserExpired.next('false');
-				this.navCtrl.navigateForward(['port']);
+				localStorage.setItem('apptype' , 'USD');
+				this.navCtrl.navigateForward(['priceusd']);
 
-				this.apiser.CheckUserExpired().then( (res:any) => {
-					localStorage.setItem('expired_on' , res.data);
-					this.closeme();
-				});
-
-				
 			} , (err:any) => {
 
 			});
@@ -101,7 +95,7 @@ export class PlanpagePage implements OnInit {
 		};
 	
 		var cancelCallback = (error) => {
-			alert("Something went wrong.");
+			alert(JSON.stringify(error));
 			// this.compSer.chartInterval.next("15 Days");
 		};
 	

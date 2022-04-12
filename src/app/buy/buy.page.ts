@@ -13,7 +13,7 @@ export class BuyPage implements OnInit {
 	party:any;
 	mobile:any;
 	remarks:any;
-	validateFails:any = false;
+	validDays:any;
 	riceQualityType:any;
 	riceQualityData:any;
 	ports:any;
@@ -24,7 +24,8 @@ export class BuyPage implements OnInit {
 	selectedPackageName:any;
 	riceQualityDataArray:any;
 	riceQualityDataSelectedArray:any;
-
+	isError:any = false;
+	errorMessage:any = '';
 
 	constructor(public apiser: RestService,public location:Location) { }
 
@@ -33,29 +34,35 @@ export class BuyPage implements OnInit {
 	}
 
 	save(){
-		// this.validateFails = false;
-		if( this.quality != undefined && this.quantity != undefined && this.party != undefined && this.mobile != undefined && this.remarks != undefined ){
-			this.validateFails = false;
-			let postedData = {
-				'selectedQualityType' : this.selectedQualityType,
-				'quality' : this.quality,
-				'changePackingType' : this.changePackingType,
-				'quantity' : this.quantity,
-				'portName' : this.portName,
+		this.isError = false;
+		if( isNaN(parseFloat(this.validDays)) == true ){
+			this.isError = true;
+			this.errorMessage = "Deal Valid should be number";
+			return false;
+		}
 
-				'party' : this.party,
-				'mobile' : this.mobile,
-				'remarks' : this.remarks,
+		if( this.quality != undefined && this.quantity != undefined && this.party != undefined && this.mobile != undefined && this.remarks != undefined ){
+			let postedData = {
+				'selectedQualityType' 	: this.selectedQualityType,
+				'quality' 				: this.quality,
+				'changePackingType' 	: this.changePackingType,
+				'quantity' 				: this.quantity,
+				'validDays' 			: this.validDays,
+				'portName' 				: this.portName,
+				'party' 				: this.party,
+				'mobile' 				: this.mobile,
+				'remarks' 				: this.remarks,
+				'user'					: localStorage.getItem('id')
 			};
-		
 
 			this.apiser.saveRiceQuery(postedData).then((res:any) => {
 				console.log(res);
 			} , (err:any) => {
 				console.log(err);
 			})
-		}else{
-			this.validateFails = true;
+		}else{ 
+			this.isError = true;
+			this.errorMessage = "Required fields are missing";
 			console.log( 'validate fails' );
 			console.log("here");
 		}

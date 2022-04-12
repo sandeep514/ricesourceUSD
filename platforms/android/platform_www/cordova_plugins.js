@@ -103,6 +103,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "merges": [
         "cordova.plugins.firebase.messaging"
       ]
+    },
+    {
+      "id": "cordova-plugin-facebook-connect.FacebookConnectPlugin",
+      "file": "plugins/cordova-plugin-facebook-connect/www/facebook-native.js",
+      "pluginId": "cordova-plugin-facebook-connect",
+      "clobbers": [
+        "facebookConnectPlugin"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -118,6 +126,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "com.razorpay.cordova": "0.16.1",
     "cordova-support-android-plugin": "1.0.2",
     "cordova-plugin-firebase-analytics": "6.1.0",
-    "cordova-plugin-firebase-messaging": "6.1.1"
+    "cordova-plugin-firebase-messaging": "6.1.1",
+    "cordova-plugin-facebook-connect": "3.2.0"
   };
 });

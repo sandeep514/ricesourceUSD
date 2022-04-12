@@ -94,7 +94,6 @@
 		
 	</div> -->
 	<div style="height: 90%;overflow: scroll;">
-		<ion-row style="justify-content: center;">Cost of Rice1: </ion-row>
 		<ion-row>
 			<ion-col size="6">
 				<ion-item>
@@ -109,7 +108,8 @@
 				</ion-item>
 			</ion-col>
 		</ion-row>
-		<ion-row style="justify-content: center;">Cost of Rice2: </ion-row>
+		<ion-row style="justify-content: center;">Cost of Rice1: {{costOfRice1}}</ion-row>
+
 		<ion-row>
 			<ion-col size="6">
 				<ion-item>
@@ -124,7 +124,8 @@
 				</ion-item>
 			</ion-col>
 		</ion-row>
-		<ion-row style="justify-content: center;">Cost of Rice3: </ion-row>
+		<ion-row style="justify-content: center;">Cost of Rice2: {{costOfRice2}}</ion-row>
+
 
 		<ion-row>
 			<ion-col size="6">
@@ -140,7 +141,8 @@
 				</ion-item>
 			</ion-col>
 		</ion-row>
-		<ion-row style="justify-content: center;">Cost of Rice4: </ion-row>
+		<ion-row style="justify-content: center;">Cost of Rice3: {{costOfRice3}} </ion-row>
+
 
 		<ion-row>
 			<ion-col size="6">
@@ -156,7 +158,9 @@
 				</ion-item>
 			</ion-col>
 		</ion-row>
+		<ion-row style="justify-content: center;">Cost of Rice4: {{costOfRice4}}</ion-row>
 
+		
 		<ion-row>
 			<ion-col size="12">
 				<ion-item>
@@ -170,14 +174,15 @@
 				<ion-item>
 					<ion-label>Bag size*</ion-label>
 					<ion-select placeholder="Select One" [(ngModel)]="bagSize" (ionChange)="bagChange($event)">
-						<ion-select-option *ngFor="let data of USD_master" value="{{ data.bag_size }}_{{ data.bag_type }}_{{ data.PMT_USD }}" >{{ data.bag_size }}_{{ data.bag_type }}</ion-select-option>
+						<ion-select-option *ngFor="let data of USD_master" value="{{ data.bag_size }}_{{ data.bag_type }}_{{ data.bag_cost }}" >{{ data.bag_size }}_{{ data.bag_type }}</ion-select-option>
 					</ion-select>
 				</ion-item>
 			</ion-col>
 		</ion-row>
 		<ion-row>
-			PMT:
+			PMT: {{PMT}}
 		</ion-row>
+		
 		<ion-row>
 			<ion-col size="12">
 				<ion-item>
@@ -187,14 +192,15 @@
 			</ion-col>
 		</ion-row>
 		<ion-row>
-			Local Charges: ₹2500
+			Local Charges: {{DefaultValues?.localcharges}}
 		</ion-row>
 		<ion-row>
-			Finance Cost: ₹350
+			Finance Cost: ₹{{ DefaultValues?.financecost }}
 		</ion-row>
 		<ion-row>
-			Total: ₹0
+			Total: ₹ {{ totalPriceINR }}
 		</ion-row>
+		
 		<ion-row>
 			<ion-col size="12">
 				<ion-item>
@@ -207,8 +213,8 @@
 			<ion-col>
 				<ion-item>
 					<ion-label>Supplier Markup% +SNTC Service charge (1 - 20%)*</ion-label>
-					<ion-select placeholder="Select One" [(ngModel)]="supplierCharge">
-						<ion-select-option value="1">1</ion-select-option>
+					<ion-select placeholder="Select One" [(ngModel)]="supplierCharge" selectedText="{{supplierCharge}}">
+						<ion-select-option value="1" >1</ion-select-option>
 						<ion-select-option value="2">2</ion-select-option>
 						<ion-select-option value="3">3</ion-select-option>
 						<ion-select-option value="4">4</ion-select-option>
@@ -234,7 +240,7 @@
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				PMT FOB Price in $0
+				PMT FOB Price in ${{PMTusd}}
 			</ion-col>
 		</ion-row>
 
@@ -296,7 +302,7 @@
 			<ion-col size="12">
 					<ion-item>
 						<ion-label>Supplier Charge</ion-label>
-						<ion-select placeholder="Select One" [(ngModel)]="supplierCharge">
+						<ion-select placeholder="Select One" [(ngModel)]="supplierCharge" selectedText="{{supplierCharge}}">
 							<ion-select-option value="1">1</ion-select-option>
 							<ion-select-option value="2">2</ion-select-option>
 							<ion-select-option value="3">3</ion-select-option>
@@ -322,10 +328,13 @@
 			</ion-col>
 		</ion-row>
 		<ion-row>
-			<ion-col style="text-align: center;">
-				<ion-button>Save</ion-button>
+			Final CIF Price: {{finalCIFPrice}}
+		</ion-row>
+		<ion-row>
+			<ion-col style="text-align: center;" >
+				<ion-button (click)="calculateData()" >Save</ion-button>
 			</ion-col>
 		</ion-row>
 	</div>
 	<app-menu></app-menu>
-</ion-content>
+</ion-content> 

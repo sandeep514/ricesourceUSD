@@ -30,6 +30,7 @@ export class PriceusdPage implements OnInit {
 	public ImageGallerySlider: any;
 	public lastupdatedDate: any;
 	public appType: any;
+	public height = true;
 
 	latestDateBasmati: any;
 	latestDateNONBasmati: any;
@@ -281,7 +282,18 @@ export class PriceusdPage implements OnInit {
 		
 
 		this.restService.CheckUserExpired().then( (res:any) => {
+			console.log(res);
+			localStorage.setItem('isExpiryUSD' , res.isExpiry)
+			localStorage.setItem('ExpiryUSDDate' , res.data)
+
 			localStorage.setItem('expired_on' , res.data);
+			let isUserExpiredStatus = localStorage.getItem('isExpiryUSD');
+			console.log(isUserExpiredStatus)
+
+			if( isUserExpiredStatus == 'true' ){
+				this.navCtrl.navigateForward(['price']);
+			}
+			
 			this.componentService.compareTwoDates(localStorage.getItem('expired_on'));
 		} , (err:any) => {
 		});
@@ -290,11 +302,8 @@ export class PriceusdPage implements OnInit {
 		this.getSlider();
 		this.username = localStorage.getItem("name");
 		this.userFirstName = localStorage.getItem("name")[0];
-		// this.getBasmatiState();
-		// this.getNONBasmatiState();
-		// this.getPlans();
+
 		this.getUSDPrices();
-		// this.getGallery();
 	}
 	async showVersionModal() {
 		const modal = await this.modalController.create({
@@ -624,5 +633,13 @@ export class PriceusdPage implements OnInit {
 
 	openQuality(id){
 		this.navCtrl.navigateForward(['quality-details' , {riceQuality: id}]);
+	}
+
+	changeHeight(){
+		if(this.height == true){
+			this.height = false; 
+		}else{
+			this.height = true;
+		}
 	}
 }
