@@ -83,24 +83,22 @@ export class PlanpagePage implements OnInit {
 			let plan_id = planid;
 
 			this.apiser.addOrder({ transaction_id: tran_id , user_id : localStorage.getItem('id') , plan_id : planid }).then((res:any) => {
-
 				this.compSer.isUserExpired.next('false');
 				localStorage.setItem('apptype' , 'USD');
-				this.navCtrl.navigateForward(['priceusd']);
-
+				this.closeme();
+				// this.navCtrl.navigateForward(['priceusd']);
 			} , (err:any) => {
 
 			});
-
 		};
 	
 		var cancelCallback = (error) => {
 			alert(JSON.stringify(error));
 			// this.compSer.chartInterval.next("15 Days");
 		};
-	
 		RazorpayCheckout.open(options, successCallback, cancelCallback);
 	}
+
 	getUSDPlans(){
 		this.apiser.getUSDPlan().then((res:any) => {
 			this.listUSDPlans = res.plans;
@@ -109,5 +107,4 @@ export class PlanpagePage implements OnInit {
 			console.log(err);
 		})
 	}
-
 }

@@ -322,7 +322,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n\t<ion-toolbar>\n\t\t<ion-title>Available Plans</ion-title>\n\t\t<ion-buttons slot=\"end\" (click)=\"closeme()\">\n\t\t\t<a href=\"javascript:void(0);\" style=\"color:black;text-decoration: none;padding-right: 10px;color: #FFFBD6 ;\">Back</a>\n\t\t</ion-buttons>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content class=\"lightgreen\">\n\t<!-- <div *ngFor=\"let plan of listPlans | keyvalue\">\n\t\t<div>\n\t\t\t<h2 class=\"planName green font-lightgreen\" >{{ plan.key }}</h2>\n\t\t\t<ion-row>\n\t\t\t\t<ion-col size=\"4\" size-md *ngFor=\"let subPlan of plan.value.SubPlan | keyvalue\">\n\n\t\t\t\t\t<h5 class=\"planName font-darkgreen\">{{ subPlan.value.data.name }}</h5>\n\t\t\t\t\t<div class=\"price green\">\n\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-bottom: 0; margin-bottom: 0;text-decoration: line-through\">₨ {{ subPlan.value.price.actualPrice }}</h5>\n\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-top: 0; margin-top: 0;font-weight: 600;margin-bottom: 0px;\">₨ {{ subPlan.value.price.offerPrice }}</h5>\n\t\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t\t<p class=\"font-darkgreen\" style=\"font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;\">Launch Offer</p>\n\t\t\t\t\t<p style=\"text-align: center;padding-top: 0;margin-top: 0;\" class=\"font-darkgreen\">\n\t\t\t\t\t\t<small style=\"font-size: 100%;\">Save {{ floatingTwo(subPlan.value.price.offerPrice , subPlan.value.price.actualPrice) }}%</small>\n\t\t\t\t\t</p>\n\t\t\t\t\t{{ getSplitsValue( subPlan.value.price.feature ) }}\n\t\t\t\t\t\n\t\t\t\t\t<div class=\"benefits\">\n\t\t\t\t\t\t<p>Benefits</p>\n\t\t\t\t\t\t<p *ngFor=\"let featureSpl of featureSplit\" style=\"margin-bottom: 0;font-size: 13px;margin-top: 3px;\">\n\t\t\t\t\t\t\t{{ featureSpl }}\n\t\t\t\t\t\t</p>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<ion-button class=\"buynow\" fill=\"outline\" (click)=\"buynow( plan.value.plan.id , subPlan.value.data.id ,subPlan.value.price )\">Subscribe</ion-button>\n\t\t\t\t</ion-col>\n\t\t\t</ion-row>\n\t\t</div>\n\t</div> -->\n\n\t<p class=\"font-darkgreen\" style=\"font-size: 18px;text-align: center;padding-bottom: 0;margin-bottom: 10px;padding: 0 10px; \">This is a paid Service, But Relax you can access this by subscribing Following Plan.</p>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n\t<ion-toolbar>\n\t\t<ion-title>Available Plans</ion-title>\n\t\t<ion-buttons slot=\"end\" (click)=\"closeme()\">\n\t\t\t<a href=\"javascript:void(0);\" style=\"color:black;text-decoration: none;padding-right: 10px;color: #FFFBD6 ;\">Back</a>\n\t\t</ion-buttons>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content class=\"lightgreen\">\n\t<!-- <div *ngFor=\"let plan of listPlans | keyvalue\">\n\t\t<div>\n\t\t\t<h2 class=\"planName green font-lightgreen\" >{{ plan.key }}</h2>\n\t\t\t<ion-row>\n\t\t\t\t<ion-col size=\"4\" size-md *ngFor=\"let subPlan of plan.value.SubPlan | keyvalue\">\n\n\t\t\t\t\t<h5 class=\"planName font-darkgreen\">{{ subPlan.value.data.name }}</h5>\n\t\t\t\t\t<div class=\"price green\">\n\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-bottom: 0; margin-bottom: 0;text-decoration: line-through\">₨ {{ subPlan.value.price.actualPrice }}</h5>\n\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-top: 0; margin-top: 0;font-weight: 600;margin-bottom: 0px;\">₨ {{ subPlan.value.price.offerPrice }}</h5>\n\t\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t\t<p class=\"font-darkgreen\" style=\"font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;\">Launch Offer</p>\n\t\t\t\t\t<p style=\"text-align: center;padding-top: 0;margin-top: 0;\" class=\"font-darkgreen\">\n\t\t\t\t\t\t<small style=\"font-size: 100%;\">Save {{ floatingTwo(subPlan.value.price.offerPrice , subPlan.value.price.actualPrice) }}%</small>\n\t\t\t\t\t</p>\n\t\t\t\t\t{{ getSplitsValue( subPlan.value.price.feature ) }}\n\t\t\t\t\t\n\t\t\t\t\t<div class=\"benefits\">\n\t\t\t\t\t\t<p>Benefits</p>\n\t\t\t\t\t\t<p *ngFor=\"let featureSpl of featureSplit\" style=\"margin-bottom: 0;font-size: 13px;margin-top: 3px;\">\n\t\t\t\t\t\t\t{{ featureSpl }}\n\t\t\t\t\t\t</p>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<ion-button class=\"buynow\" fill=\"outline\" (click)=\"buynow( plan.value.plan.id , subPlan.value.data.id ,subPlan.value.price )\">Subscribe</ion-button>\n\t\t\t\t</ion-col>\n\t\t\t</ion-row>\n\t\t</div>\n\t</div> -->\n\n\t<div >\n\t\t<div>\n\t\t\t<ion-row>\n\t\t\t\t<p class=\"font-darkgreen\" style=\"font-size: 18px;text-align: center;padding-bottom: 0;margin-bottom: 10px;padding: 0 10px; \">This is a paid Service, But Relax you can access this by subscribing Following Plan.</p>\n\n\t\t\t\t<ion-col size=\"4\" size-md *ngFor=\"let plan of listUSDPlans\" >\n\t\t\t\t\t<h2 class=\"planName green font-lightgreen\"  style=\"text-transform: uppercase;\">{{ plan.plan_name }}</h2>\n\t\t\t\t\t<h5 class=\"planName font-darkgreen\">{{ plan.plan_desc }}</h5>\n\n\t\t\t\t\t<div class=\"price green\">\n\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-bottom: 0; margin-bottom: 0;text-decoration: line-through\">\n\t\t\t\t\t\t\t₨ {{ plan.actual_price }}\n\t\t\t\t\t\t</h5>\n\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-top: 0; margin-top: 0;font-weight: 600;margin-bottom: 0px;\">\n\t\t\t\t\t\t\t₨ {{ plan.discounted_prie }}\n\t\t\t\t\t\t</h5>\n\t\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t\t<p class=\"font-darkgreen\" style=\"font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;\">Launch Offer</p>\n\t\t\t\t\t<p style=\"text-align: center;padding-top: 0;margin-top: 0;\" class=\"font-darkgreen\">\n\t\t\t\t\t\t<small style=\"font-size: 100%;\">Valid for: {{plan.valid_months}} Months`</small>\n\t\t\t\t\t</p>\n\t\n\t\t\t\t\t<ion-button class=\"buynow\" fill=\"outline\" (click)=\"buynow( plan )\">Subscribe</ion-button>\n\t\t\t\t</ion-col>\n\t\t\t</ion-row>\n\n\t\t</div>\n\t</div>\n\n</ion-content>");
 
 /***/ }),
 
@@ -387,7 +387,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-content class=\"bg-lightgreen\">\n\t<div class=\"logo\">\n\t\t<img src=\"../../assets/icon_logo.png\" class=\"app-logo\"/>\n\t</div>\n\t<a href=\"javascript:void(0);\" (click)=\"closeModal()\" class=\"closeModal\"> X </a>\n\t<div class=\"content\">\n\t\t<p style=\"padding-bottom: 10px;\">You are using a older version of SNTC App. Please update to get latest features. </p>\n\t\t<div>\n\t\t\t<p (click)=\"redirectToPlaystore()\" style=\"color: green\">Download Now</p>\n\t\t</div>\n\t</div>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-content class=\"bg-lightgreen\">\n\t<div class=\"logo\">\n\t\t<img src=\"../../assets/icon_logo.png\" class=\"app-logo\"/>\n\t</div>\n\t<a href=\"javascript:void(0);\" (click)=\"closeModal()\" class=\"closeModal\"> X </a>\n\t<div class=\"content\">\n\t\t<p style=\"padding-bottom: 10px;\">You are using an older version of SNTC app. Please update to get latest Verison. </p>\n\t\t<div>\n\t\t\t<p (click)=\"redirectToPlaystore()\" style=\"color: green\">Update Now</p>\n\t\t</div>\n\t</div>\n</ion-content>");
 
 /***/ }),
 
@@ -683,16 +683,16 @@ const routes = [
     },
     {
         path: 'prices',
-        loadChildren: () => Promise.all(/*! import() | prices-prices-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("common"), __webpack_require__.e("prices-prices-module")]).then(__webpack_require__.bind(null, /*! ./prices/prices.module */ "./src/app/prices/prices.module.ts")).then(m => m.PricesPageModule),
+        loadChildren: () => Promise.all(/*! import() | prices-prices-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("common"), __webpack_require__.e("prices-prices-module")]).then(__webpack_require__.bind(null, /*! ./prices/prices.module */ "./src/app/prices/prices.module.ts")).then(m => m.PricesPageModule),
         canActivate: [_islogin_guard__WEBPACK_IMPORTED_MODULE_3__["IsloginGuard"]]
     },
     {
         path: 'about',
-        loadChildren: () => Promise.all(/*! import() | about-about-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("about-about-module")]).then(__webpack_require__.bind(null, /*! ./about/about.module */ "./src/app/about/about.module.ts")).then(m => m.AboutPageModule)
+        loadChildren: () => Promise.all(/*! import() | about-about-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("about-about-module")]).then(__webpack_require__.bind(null, /*! ./about/about.module */ "./src/app/about/about.module.ts")).then(m => m.AboutPageModule)
     },
     {
         path: 'port',
-        loadChildren: () => Promise.all(/*! import() | port-port-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("port-port-module")]).then(__webpack_require__.bind(null, /*! ./port/port.module */ "./src/app/port/port.module.ts")).then(m => m.PortPageModule)
+        loadChildren: () => Promise.all(/*! import() | port-port-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("port-port-module")]).then(__webpack_require__.bind(null, /*! ./port/port.module */ "./src/app/port/port.module.ts")).then(m => m.PortPageModule)
     },
     {
         path: 'contactmodal',
@@ -700,7 +700,7 @@ const routes = [
     },
     {
         path: 'ricechart',
-        loadChildren: () => Promise.all(/*! import() | ricechart-ricechart-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("ricechart-ricechart-module")]).then(__webpack_require__.bind(null, /*! ./ricechart/ricechart.module */ "./src/app/ricechart/ricechart.module.ts")).then(m => m.RicechartPageModule)
+        loadChildren: () => Promise.all(/*! import() | ricechart-ricechart-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("ricechart-ricechart-module")]).then(__webpack_require__.bind(null, /*! ./ricechart/ricechart.module */ "./src/app/ricechart/ricechart.module.ts")).then(m => m.RicechartPageModule)
     },
     {
         path: 'splashscreen',
@@ -708,11 +708,11 @@ const routes = [
     },
     {
         path: 'gallery',
-        loadChildren: () => Promise.all(/*! import() | gallery-gallery-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("gallery-gallery-module")]).then(__webpack_require__.bind(null, /*! ./gallery/gallery.module */ "./src/app/gallery/gallery.module.ts")).then(m => m.GalleryPageModule)
+        loadChildren: () => Promise.all(/*! import() | gallery-gallery-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("gallery-gallery-module")]).then(__webpack_require__.bind(null, /*! ./gallery/gallery.module */ "./src/app/gallery/gallery.module.ts")).then(m => m.GalleryPageModule)
     },
     {
         path: 'gallerydetails',
-        loadChildren: () => Promise.all(/*! import() | gallerydetails-gallerydetails-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("gallerydetails-gallerydetails-module")]).then(__webpack_require__.bind(null, /*! ./gallerydetails/gallerydetails.module */ "./src/app/gallerydetails/gallerydetails.module.ts")).then(m => m.GallerydetailsPageModule)
+        loadChildren: () => Promise.all(/*! import() | gallerydetails-gallerydetails-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("gallerydetails-gallerydetails-module")]).then(__webpack_require__.bind(null, /*! ./gallerydetails/gallerydetails.module */ "./src/app/gallerydetails/gallerydetails.module.ts")).then(m => m.GallerydetailsPageModule)
     },
     {
         path: 'imageprev',
@@ -768,7 +768,7 @@ const routes = [
     },
     {
         path: 'notifications',
-        loadChildren: () => Promise.all(/*! import() | notifications-notifications-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("notifications-notifications-module")]).then(__webpack_require__.bind(null, /*! ./notifications/notifications.module */ "./src/app/notifications/notifications.module.ts")).then(m => m.NotificationsPageModule)
+        loadChildren: () => Promise.all(/*! import() | notifications-notifications-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("notifications-notifications-module")]).then(__webpack_require__.bind(null, /*! ./notifications/notifications.module */ "./src/app/notifications/notifications.module.ts")).then(m => m.NotificationsPageModule)
     },
     {
         path: 'updatepassword',
@@ -784,35 +784,39 @@ const routes = [
     },
     {
         path: 'priceusd',
-        loadChildren: () => Promise.all(/*! import() | priceusd-priceusd-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("common"), __webpack_require__.e("priceusd-priceusd-module")]).then(__webpack_require__.bind(null, /*! ./priceusd/priceusd.module */ "./src/app/priceusd/priceusd.module.ts")).then(m => m.PriceusdPageModule)
+        loadChildren: () => Promise.all(/*! import() | priceusd-priceusd-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("common"), __webpack_require__.e("priceusd-priceusd-module")]).then(__webpack_require__.bind(null, /*! ./priceusd/priceusd.module */ "./src/app/priceusd/priceusd.module.ts")).then(m => m.PriceusdPageModule)
     },
     {
         path: 'oceanfreights',
-        loadChildren: () => Promise.all(/*! import() | oceanfreights-oceanfreights-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("oceanfreights-oceanfreights-module")]).then(__webpack_require__.bind(null, /*! ./oceanfreights/oceanfreights.module */ "./src/app/oceanfreights/oceanfreights.module.ts")).then(m => m.OceanfreightsPageModule)
+        loadChildren: () => Promise.all(/*! import() | oceanfreights-oceanfreights-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("oceanfreights-oceanfreights-module")]).then(__webpack_require__.bind(null, /*! ./oceanfreights/oceanfreights.module */ "./src/app/oceanfreights/oceanfreights.module.ts")).then(m => m.OceanfreightsPageModule)
     },
     {
         path: 'quality-details',
-        loadChildren: () => Promise.all(/*! import() | quality-details-quality-details-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("quality-details-quality-details-module")]).then(__webpack_require__.bind(null, /*! ./quality-details/quality-details.module */ "./src/app/quality-details/quality-details.module.ts")).then(m => m.QualityDetailsPageModule)
+        loadChildren: () => Promise.all(/*! import() | quality-details-quality-details-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("quality-details-quality-details-module")]).then(__webpack_require__.bind(null, /*! ./quality-details/quality-details.module */ "./src/app/quality-details/quality-details.module.ts")).then(m => m.QualityDetailsPageModule)
     },
     {
         path: 'buy',
-        loadChildren: () => Promise.all(/*! import() | buy-buy-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("buy-buy-module")]).then(__webpack_require__.bind(null, /*! ./buy/buy.module */ "./src/app/buy/buy.module.ts")).then(m => m.BuyPageModule)
+        loadChildren: () => Promise.all(/*! import() | buy-buy-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("buy-buy-module")]).then(__webpack_require__.bind(null, /*! ./buy/buy.module */ "./src/app/buy/buy.module.ts")).then(m => m.BuyPageModule)
     },
     {
         path: 'bid',
-        loadChildren: () => Promise.all(/*! import() | bid-bid-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("bid-bid-module")]).then(__webpack_require__.bind(null, /*! ./bid/bid.module */ "./src/app/bid/bid.module.ts")).then(m => m.BidPageModule)
+        loadChildren: () => Promise.all(/*! import() | bid-bid-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("bid-bid-module")]).then(__webpack_require__.bind(null, /*! ./bid/bid.module */ "./src/app/bid/bid.module.ts")).then(m => m.BidPageModule)
     },
     {
         path: 'calculator',
-        loadChildren: () => Promise.all(/*! import() | calculator-calculator-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("calculator-calculator-module")]).then(__webpack_require__.bind(null, /*! ./calculator/calculator.module */ "./src/app/calculator/calculator.module.ts")).then(m => m.CalculatorPageModule)
+        loadChildren: () => Promise.all(/*! import() | calculator-calculator-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("calculator-calculator-module")]).then(__webpack_require__.bind(null, /*! ./calculator/calculator.module */ "./src/app/calculator/calculator.module.ts")).then(m => m.CalculatorPageModule)
     },
     {
         path: 'mybids',
-        loadChildren: () => Promise.all(/*! import() | mybids-mybids-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("mybids-mybids-module")]).then(__webpack_require__.bind(null, /*! ./mybids/mybids.module */ "./src/app/mybids/mybids.module.ts")).then(m => m.MybidsPageModule)
+        loadChildren: () => Promise.all(/*! import() | mybids-mybids-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("mybids-mybids-module")]).then(__webpack_require__.bind(null, /*! ./mybids/mybids.module */ "./src/app/mybids/mybids.module.ts")).then(m => m.MybidsPageModule)
     },
     {
         path: 'otherservices',
-        loadChildren: () => Promise.all(/*! import() | otherservices-otherservices-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("otherservices-otherservices-module")]).then(__webpack_require__.bind(null, /*! ./otherservices/otherservices.module */ "./src/app/otherservices/otherservices.module.ts")).then(m => m.OtherservicesPageModule)
+        loadChildren: () => Promise.all(/*! import() | otherservices-otherservices-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("otherservices-otherservices-module")]).then(__webpack_require__.bind(null, /*! ./otherservices/otherservices.module */ "./src/app/otherservices/otherservices.module.ts")).then(m => m.OtherservicesPageModule)
+    },
+    {
+        path: 'contact',
+        loadChildren: () => Promise.all(/*! import() | contact-contact-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("contact-contact-module")]).then(__webpack_require__.bind(null, /*! ./contact/contact.module */ "./src/app/contact/contact.module.ts")).then(m => m.ContactPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -923,6 +927,11 @@ let AppComponent = class AppComponent {
             {
                 title: 'Change Password',
                 url: '/updatepassword',
+                icon: 'albums'
+            },
+            {
+                title: 'Contact us',
+                url: '/contact',
                 icon: 'albums'
             }
         ];
@@ -1100,6 +1109,7 @@ let AppComponent = class AppComponent {
     }
     initializeApp() {
         this.platform.ready().then(() => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            let isExpiredUsd = localStorage.getItem('isExpiryUSD');
             this.statusBar.styleDefault();
             this.statusBar.overlaysWebView(false);
             this.statusBar.backgroundColorByHexString('#92B243');
@@ -1146,7 +1156,13 @@ let AppComponent = class AppComponent {
                                     return false;
                                 }
                             });
-                            this.navCtrl.navigateForward(['priceusd']);
+                            console.log("jhbjhnjnm ijknjm");
+                            if (isExpiredUsd == 'true') {
+                                this.navCtrl.navigateForward(['prices']);
+                            }
+                            else {
+                                this.navCtrl.navigateForward(['priceusd']);
+                            }
                         }
                         else {
                             this.firebase.onBackgroundMessage().subscribe(function (payload) {
@@ -1155,7 +1171,13 @@ let AppComponent = class AppComponent {
                                     return false;
                                 }
                             });
-                            this.navCtrl.navigateForward(['priceusd']);
+                            console.log(isExpiredUsd);
+                            if (isExpiredUsd == 'true') {
+                                this.navCtrl.navigateForward(['prices']);
+                            }
+                            else {
+                                this.navCtrl.navigateForward(['priceusd']);
+                            }
                         }
                     }, 4000);
                 }
@@ -2080,7 +2102,7 @@ PlanpagePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".planName {\n  text-align: center;\n  font-size: 25px;\n  font-weight: bold;\n}\n\n.bar {\n  border-left: 1px solid green;\n  height: 500px;\n  display: inline;\n}\n\n.subPlan {\n  padding: 20px;\n  display: inline;\n}\n\n.title {\n  display: block;\n}\n\n@font-face {\n  font-family: \"GlacialIndifference-Regular\";\n  font-style: normal;\n  font-weight: normal;\n  src: url('GlacialIndifference-Regular.otf');\n}\n\n@font-face {\n  font-family: \"GlacialIndifference-Italic\";\n  font-style: italic;\n  font-weight: normal;\n  src: url('GlacialIndifference-Italic.otf');\n}\n\nion-card {\n  font-family: initial;\n}\n\nion-title {\n  position: absolute;\n  top: 0;\n  left: 0;\n  padding: 0 90px 1px;\n  width: 100%;\n  height: 100%;\n  text-align: center;\n  background-color: #92B243 !important;\n  color: #FFFBD6 !important;\n}\n\nion-content {\n  --padding-bottom: 81px;\n}\n\n.buynow {\n  --color: white !important;\n  --background: #92B243 !important ;\n  --border: 2px solid #92B243 !important;\n  --border-color: #92B243 !important;\n  width: 100%;\n  color: white !important;\n  background: #92B243 !important;\n  border: 2px solid #92B243 !important;\n  border-radius: 5px;\n}\n\n.benefits {\n  background: #92b243;\n  text-align: center;\n  color: #fcf9d1;\n  padding-top: 1px;\n  padding-bottom: 10px;\n  margin-bottom: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9jaGV0YW4vRGVza3RvcC9yaWNlX21vYmlsZS9zcmMvYXBwL3BsYW5wYWdlL3BsYW5wYWdlLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGxhbnBhZ2UvcGxhbnBhZ2UucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUE7QUNDSjs7QURDQTtFQUNJLDRCQUFBO0VBQ0EsYUFBQTtFQUNBLGVBQUE7QUNFSjs7QURBQTtFQUNJLGFBQUE7RUFDQSxlQUFBO0FDR0o7O0FEREE7RUFDSSxjQUFBO0FDSUo7O0FERkE7RUFDSSwwQ0FBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSwyQ0FBQTtBQ0tKOztBRE1BO0VBQ0kseUNBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsMENBQUE7QUNKSjs7QURPQTtFQUdJLG9CQUFBO0FDUEo7O0FEVUE7RUFDSSxrQkFBQTtFQUNBLE1BQUE7RUFDQSxPQUFBO0VBQ0EsbUJBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0Esb0NBQUE7RUFDQSx5QkFBQTtBQ1BKOztBRFVBO0VBRUksc0JBQUE7QUNSSjs7QURXQTtFQUNJLHlCQUFBO0VBQ0EsaUNBQUE7RUFDQSxzQ0FBQTtFQUNBLGtDQUFBO0VBRUEsV0FBQTtFQUNBLHVCQUFBO0VBQ0EsOEJBQUE7RUFDQSxvQ0FBQTtFQUNBLGtCQUFBO0FDVEo7O0FEWUE7RUFDSSxtQkFBQTtFQUNBLGtCQUFBO0VBQ0EsY0FBQTtFQUNBLGdCQUFBO0VBQ0Esb0JBQUE7RUFDQSxtQkFBQTtBQ1RKIiwiZmlsZSI6InNyYy9hcHAvcGxhbnBhZ2UvcGxhbnBhZ2UucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnBsYW5OYW1le1xuICAgIHRleHQtYWxpZ246Y2VudGVyO1xuICAgIGZvbnQtc2l6ZTogMjVweDtcbiAgICBmb250LXdlaWdodDogYm9sZDtcbn1cbi5iYXJ7XG4gICAgYm9yZGVyLWxlZnQ6IDFweCBzb2xpZCBncmVlbjtcbiAgICBoZWlnaHQ6IDUwMHB4O1xuICAgIGRpc3BsYXk6IGlubGluZTtcbiAgfVxuLnN1YlBsYW57XG4gICAgcGFkZGluZzoyMHB4O1xuICAgIGRpc3BsYXk6IGlubGluZTtcbn1cbi50aXRsZXtcbiAgICBkaXNwbGF5OiBibG9jaztcbn1cbkBmb250LWZhY2Uge1xuICAgIGZvbnQtZmFtaWx5OiAnR2xhY2lhbEluZGlmZmVyZW5jZS1SZWd1bGFyJztcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XG4gICAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgICBzcmM6IHVybCgnLi4vLi4vYXNzZXRzL2ZvbnRzL2dsYWNpYWwvR2xhY2lhbEluZGlmZmVyZW5jZS1SZWd1bGFyLm90ZicpO1xufVxuXG5cbi8vIEBmb250LWZhY2Uge1xuLy8gICAgIGZvbnQtZmFtaWx5OiAnQXJpYWwnO1xuLy8gICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcbi8vICAgICBmb250LXdlaWdodDogYm9sZDtcbi8vICAgICBzcmM6IHVybCgnLi4vLi4vYXNzZXRzL2ZvbnRzL2dsYWNpYWwvQXJpYWwub3RmJyk7XG4vLyB9XG5cbkBmb250LWZhY2Uge1xuICAgIGZvbnQtZmFtaWx5OiAnR2xhY2lhbEluZGlmZmVyZW5jZS1JdGFsaWMnO1xuICAgIGZvbnQtc3R5bGU6IGl0YWxpYztcbiAgICBmb250LXdlaWdodDogbm9ybWFsO1xuICAgIHNyYzogdXJsKCcuLi8uLi9hc3NldHMvZm9udHMvZ2xhY2lhbC9HbGFjaWFsSW5kaWZmZXJlbmNlLUl0YWxpYy5vdGYnKTtcbn1cblxuaW9uLWNhcmR7XG4gICAgLy8gYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSwgI0RGRUM1MSAwJSwgIzczQUEwQSAxMDAlKSAhaW1wb3J0YW50O1xuICAgIC8vIGNvbG9yOiBibGFjayAhaW1wb3J0YW50O1xuICAgIGZvbnQtZmFtaWx5OiBpbml0aWFsO1xufVxuXG5pb24tdGl0bGUge1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB0b3A6IDA7XG4gICAgbGVmdDogMDtcbiAgICBwYWRkaW5nOiAwIDkwcHggMXB4O1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogMTAwJTtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzkyQjI0MyAhaW1wb3J0YW50O1xuICAgIGNvbG9yOiAjRkZGQkQ2ICFpbXBvcnRhbnQ7XG59XG5cbmlvbi1jb250ZW50e1xuICAgIC8vIC0tYmFja2dyb3VuZDogdXJsKCcuLi8uLi9hc3NldHMvYmFja2dyb3VuZC5wbmcnKSBuby1yZXBlYXQgY2VudGVyL2NvdmVyIGZpeGVkO1xuICAgIC0tcGFkZGluZy1ib3R0b206IDgxcHg7XG59XG5cbi5idXlub3d7XG4gICAgLS1jb2xvcjogd2hpdGUgIWltcG9ydGFudDtcbiAgICAtLWJhY2tncm91bmQ6ICM5MkIyNDMgIWltcG9ydGFudCA7XG4gICAgLS1ib3JkZXI6IDJweCBzb2xpZCAjOTJCMjQzICFpbXBvcnRhbnQ7XG4gICAgLS1ib3JkZXItY29sb3I6ICM5MkIyNDMgIWltcG9ydGFudDsgXG5cbiAgICB3aWR0aDoxMDAlO1xuICAgIGNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xuICAgIGJhY2tncm91bmQ6ICM5MkIyNDMgIWltcG9ydGFudCA7XG4gICAgYm9yZGVyOiAycHggc29saWQgIzkyQjI0MyAhaW1wb3J0YW50O1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbn1cblxuLmJlbmVmaXRze1xuICAgIGJhY2tncm91bmQ6ICM5MmIyNDM7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIGNvbG9yOiAjZmNmOWQxOyAgIFxuICAgIHBhZGRpbmctdG9wOiAxcHg7XG4gICAgcGFkZGluZy1ib3R0b206IDEwcHg7XG4gICAgbWFyZ2luLWJvdHRvbTogMTBweDsgXG59IiwiLnBsYW5OYW1lIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBmb250LXNpemU6IDI1cHg7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuXG4uYmFyIHtcbiAgYm9yZGVyLWxlZnQ6IDFweCBzb2xpZCBncmVlbjtcbiAgaGVpZ2h0OiA1MDBweDtcbiAgZGlzcGxheTogaW5saW5lO1xufVxuXG4uc3ViUGxhbiB7XG4gIHBhZGRpbmc6IDIwcHg7XG4gIGRpc3BsYXk6IGlubGluZTtcbn1cblxuLnRpdGxlIHtcbiAgZGlzcGxheTogYmxvY2s7XG59XG5cbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogXCJHbGFjaWFsSW5kaWZmZXJlbmNlLVJlZ3VsYXJcIjtcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBzcmM6IHVybChcIi4uLy4uL2Fzc2V0cy9mb250cy9nbGFjaWFsL0dsYWNpYWxJbmRpZmZlcmVuY2UtUmVndWxhci5vdGZcIik7XG59XG5AZm9udC1mYWNlIHtcbiAgZm9udC1mYW1pbHk6IFwiR2xhY2lhbEluZGlmZmVyZW5jZS1JdGFsaWNcIjtcbiAgZm9udC1zdHlsZTogaXRhbGljO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBzcmM6IHVybChcIi4uLy4uL2Fzc2V0cy9mb250cy9nbGFjaWFsL0dsYWNpYWxJbmRpZmZlcmVuY2UtSXRhbGljLm90ZlwiKTtcbn1cbmlvbi1jYXJkIHtcbiAgZm9udC1mYW1pbHk6IGluaXRpYWw7XG59XG5cbmlvbi10aXRsZSB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAwO1xuICBsZWZ0OiAwO1xuICBwYWRkaW5nOiAwIDkwcHggMXB4O1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGJhY2tncm91bmQtY29sb3I6ICM5MkIyNDMgIWltcG9ydGFudDtcbiAgY29sb3I6ICNGRkZCRDYgIWltcG9ydGFudDtcbn1cblxuaW9uLWNvbnRlbnQge1xuICAtLXBhZGRpbmctYm90dG9tOiA4MXB4O1xufVxuXG4uYnV5bm93IHtcbiAgLS1jb2xvcjogd2hpdGUgIWltcG9ydGFudDtcbiAgLS1iYWNrZ3JvdW5kOiAjOTJCMjQzICFpbXBvcnRhbnQgO1xuICAtLWJvcmRlcjogMnB4IHNvbGlkICM5MkIyNDMgIWltcG9ydGFudDtcbiAgLS1ib3JkZXItY29sb3I6ICM5MkIyNDMgIWltcG9ydGFudDtcbiAgd2lkdGg6IDEwMCU7XG4gIGNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xuICBiYWNrZ3JvdW5kOiAjOTJCMjQzICFpbXBvcnRhbnQ7XG4gIGJvcmRlcjogMnB4IHNvbGlkICM5MkIyNDMgIWltcG9ydGFudDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xufVxuXG4uYmVuZWZpdHMge1xuICBiYWNrZ3JvdW5kOiAjOTJiMjQzO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGNvbG9yOiAjZmNmOWQxO1xuICBwYWRkaW5nLXRvcDogMXB4O1xuICBwYWRkaW5nLWJvdHRvbTogMTBweDtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = (".planName {\n  text-align: center;\n  font-size: 17px;\n  font-weight: bold;\n}\n\n.bar {\n  border-left: 1px solid green;\n  height: 500px;\n  display: inline;\n}\n\n.subPlan {\n  padding: 20px;\n  display: inline;\n}\n\n.title {\n  display: block;\n}\n\n@font-face {\n  font-family: \"GlacialIndifference-Regular\";\n  font-style: normal;\n  font-weight: normal;\n  src: url('GlacialIndifference-Regular.otf');\n}\n\n@font-face {\n  font-family: \"GlacialIndifference-Italic\";\n  font-style: italic;\n  font-weight: normal;\n  src: url('GlacialIndifference-Italic.otf');\n}\n\nion-card {\n  font-family: initial;\n}\n\nion-title {\n  position: absolute;\n  top: 0;\n  left: 0;\n  padding: 0 90px 1px;\n  width: 100%;\n  height: 100%;\n  text-align: center;\n  background-color: #92B243 !important;\n  color: #FFFBD6 !important;\n}\n\nion-content {\n  --padding-bottom: 81px;\n}\n\n.buynow {\n  --color: white !important;\n  --background: #92B243 !important ;\n  --border: 2px solid #92B243 !important;\n  --border-color: #92B243 !important;\n  width: 100%;\n  color: white !important;\n  background: #92B243 !important;\n  border: 2px solid #92B243 !important;\n  border-radius: 5px;\n}\n\n.benefits {\n  background: #92b243;\n  text-align: center;\n  color: #fcf9d1;\n  padding-top: 1px;\n  padding-bottom: 10px;\n  margin-bottom: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9jaGV0YW4vRGVza3RvcC9yaWNlX21vYmlsZS9zcmMvYXBwL3BsYW5wYWdlL3BsYW5wYWdlLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGxhbnBhZ2UvcGxhbnBhZ2UucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUE7QUNDSjs7QURDQTtFQUNJLDRCQUFBO0VBQ0EsYUFBQTtFQUNBLGVBQUE7QUNFSjs7QURBQTtFQUNJLGFBQUE7RUFDQSxlQUFBO0FDR0o7O0FEREE7RUFDSSxjQUFBO0FDSUo7O0FERkE7RUFDSSwwQ0FBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSwyQ0FBQTtBQ0tKOztBRE1BO0VBQ0kseUNBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsMENBQUE7QUNKSjs7QURPQTtFQUdJLG9CQUFBO0FDUEo7O0FEVUE7RUFDSSxrQkFBQTtFQUNBLE1BQUE7RUFDQSxPQUFBO0VBQ0EsbUJBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0Esb0NBQUE7RUFDQSx5QkFBQTtBQ1BKOztBRFVBO0VBRUksc0JBQUE7QUNSSjs7QURXQTtFQUNJLHlCQUFBO0VBQ0EsaUNBQUE7RUFDQSxzQ0FBQTtFQUNBLGtDQUFBO0VBRUEsV0FBQTtFQUNBLHVCQUFBO0VBQ0EsOEJBQUE7RUFDQSxvQ0FBQTtFQUNBLGtCQUFBO0FDVEo7O0FEWUE7RUFDSSxtQkFBQTtFQUNBLGtCQUFBO0VBQ0EsY0FBQTtFQUNBLGdCQUFBO0VBQ0Esb0JBQUE7RUFDQSxtQkFBQTtBQ1RKIiwiZmlsZSI6InNyYy9hcHAvcGxhbnBhZ2UvcGxhbnBhZ2UucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnBsYW5OYW1le1xuICAgIHRleHQtYWxpZ246Y2VudGVyO1xuICAgIGZvbnQtc2l6ZTogMTdweDtcbiAgICBmb250LXdlaWdodDogYm9sZDtcbn1cbi5iYXJ7XG4gICAgYm9yZGVyLWxlZnQ6IDFweCBzb2xpZCBncmVlbjtcbiAgICBoZWlnaHQ6IDUwMHB4O1xuICAgIGRpc3BsYXk6IGlubGluZTtcbiAgfVxuLnN1YlBsYW57XG4gICAgcGFkZGluZzoyMHB4O1xuICAgIGRpc3BsYXk6IGlubGluZTtcbn1cbi50aXRsZXtcbiAgICBkaXNwbGF5OiBibG9jaztcbn1cbkBmb250LWZhY2Uge1xuICAgIGZvbnQtZmFtaWx5OiAnR2xhY2lhbEluZGlmZmVyZW5jZS1SZWd1bGFyJztcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XG4gICAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgICBzcmM6IHVybCgnLi4vLi4vYXNzZXRzL2ZvbnRzL2dsYWNpYWwvR2xhY2lhbEluZGlmZmVyZW5jZS1SZWd1bGFyLm90ZicpO1xufVxuXG5cbi8vIEBmb250LWZhY2Uge1xuLy8gICAgIGZvbnQtZmFtaWx5OiAnQXJpYWwnO1xuLy8gICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcbi8vICAgICBmb250LXdlaWdodDogYm9sZDtcbi8vICAgICBzcmM6IHVybCgnLi4vLi4vYXNzZXRzL2ZvbnRzL2dsYWNpYWwvQXJpYWwub3RmJyk7XG4vLyB9XG5cbkBmb250LWZhY2Uge1xuICAgIGZvbnQtZmFtaWx5OiAnR2xhY2lhbEluZGlmZmVyZW5jZS1JdGFsaWMnO1xuICAgIGZvbnQtc3R5bGU6IGl0YWxpYztcbiAgICBmb250LXdlaWdodDogbm9ybWFsO1xuICAgIHNyYzogdXJsKCcuLi8uLi9hc3NldHMvZm9udHMvZ2xhY2lhbC9HbGFjaWFsSW5kaWZmZXJlbmNlLUl0YWxpYy5vdGYnKTtcbn1cblxuaW9uLWNhcmR7XG4gICAgLy8gYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSwgI0RGRUM1MSAwJSwgIzczQUEwQSAxMDAlKSAhaW1wb3J0YW50O1xuICAgIC8vIGNvbG9yOiBibGFjayAhaW1wb3J0YW50O1xuICAgIGZvbnQtZmFtaWx5OiBpbml0aWFsO1xufVxuXG5pb24tdGl0bGUge1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB0b3A6IDA7XG4gICAgbGVmdDogMDtcbiAgICBwYWRkaW5nOiAwIDkwcHggMXB4O1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogMTAwJTtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzkyQjI0MyAhaW1wb3J0YW50O1xuICAgIGNvbG9yOiAjRkZGQkQ2ICFpbXBvcnRhbnQ7XG59XG5cbmlvbi1jb250ZW50e1xuICAgIC8vIC0tYmFja2dyb3VuZDogdXJsKCcuLi8uLi9hc3NldHMvYmFja2dyb3VuZC5wbmcnKSBuby1yZXBlYXQgY2VudGVyL2NvdmVyIGZpeGVkO1xuICAgIC0tcGFkZGluZy1ib3R0b206IDgxcHg7XG59XG5cbi5idXlub3d7XG4gICAgLS1jb2xvcjogd2hpdGUgIWltcG9ydGFudDtcbiAgICAtLWJhY2tncm91bmQ6ICM5MkIyNDMgIWltcG9ydGFudCA7XG4gICAgLS1ib3JkZXI6IDJweCBzb2xpZCAjOTJCMjQzICFpbXBvcnRhbnQ7XG4gICAgLS1ib3JkZXItY29sb3I6ICM5MkIyNDMgIWltcG9ydGFudDsgXG5cbiAgICB3aWR0aDoxMDAlO1xuICAgIGNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xuICAgIGJhY2tncm91bmQ6ICM5MkIyNDMgIWltcG9ydGFudCA7XG4gICAgYm9yZGVyOiAycHggc29saWQgIzkyQjI0MyAhaW1wb3J0YW50O1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbn1cblxuLmJlbmVmaXRze1xuICAgIGJhY2tncm91bmQ6ICM5MmIyNDM7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIGNvbG9yOiAjZmNmOWQxOyAgIFxuICAgIHBhZGRpbmctdG9wOiAxcHg7XG4gICAgcGFkZGluZy1ib3R0b206IDEwcHg7XG4gICAgbWFyZ2luLWJvdHRvbTogMTBweDsgXG59IiwiLnBsYW5OYW1lIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBmb250LXNpemU6IDE3cHg7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuXG4uYmFyIHtcbiAgYm9yZGVyLWxlZnQ6IDFweCBzb2xpZCBncmVlbjtcbiAgaGVpZ2h0OiA1MDBweDtcbiAgZGlzcGxheTogaW5saW5lO1xufVxuXG4uc3ViUGxhbiB7XG4gIHBhZGRpbmc6IDIwcHg7XG4gIGRpc3BsYXk6IGlubGluZTtcbn1cblxuLnRpdGxlIHtcbiAgZGlzcGxheTogYmxvY2s7XG59XG5cbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogXCJHbGFjaWFsSW5kaWZmZXJlbmNlLVJlZ3VsYXJcIjtcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBzcmM6IHVybChcIi4uLy4uL2Fzc2V0cy9mb250cy9nbGFjaWFsL0dsYWNpYWxJbmRpZmZlcmVuY2UtUmVndWxhci5vdGZcIik7XG59XG5AZm9udC1mYWNlIHtcbiAgZm9udC1mYW1pbHk6IFwiR2xhY2lhbEluZGlmZmVyZW5jZS1JdGFsaWNcIjtcbiAgZm9udC1zdHlsZTogaXRhbGljO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBzcmM6IHVybChcIi4uLy4uL2Fzc2V0cy9mb250cy9nbGFjaWFsL0dsYWNpYWxJbmRpZmZlcmVuY2UtSXRhbGljLm90ZlwiKTtcbn1cbmlvbi1jYXJkIHtcbiAgZm9udC1mYW1pbHk6IGluaXRpYWw7XG59XG5cbmlvbi10aXRsZSB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAwO1xuICBsZWZ0OiAwO1xuICBwYWRkaW5nOiAwIDkwcHggMXB4O1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGJhY2tncm91bmQtY29sb3I6ICM5MkIyNDMgIWltcG9ydGFudDtcbiAgY29sb3I6ICNGRkZCRDYgIWltcG9ydGFudDtcbn1cblxuaW9uLWNvbnRlbnQge1xuICAtLXBhZGRpbmctYm90dG9tOiA4MXB4O1xufVxuXG4uYnV5bm93IHtcbiAgLS1jb2xvcjogd2hpdGUgIWltcG9ydGFudDtcbiAgLS1iYWNrZ3JvdW5kOiAjOTJCMjQzICFpbXBvcnRhbnQgO1xuICAtLWJvcmRlcjogMnB4IHNvbGlkICM5MkIyNDMgIWltcG9ydGFudDtcbiAgLS1ib3JkZXItY29sb3I6ICM5MkIyNDMgIWltcG9ydGFudDtcbiAgd2lkdGg6IDEwMCU7XG4gIGNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xuICBiYWNrZ3JvdW5kOiAjOTJCMjQzICFpbXBvcnRhbnQ7XG4gIGJvcmRlcjogMnB4IHNvbGlkICM5MkIyNDMgIWltcG9ydGFudDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xufVxuXG4uYmVuZWZpdHMge1xuICBiYWNrZ3JvdW5kOiAjOTJiMjQzO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGNvbG9yOiAjZmNmOWQxO1xuICBwYWRkaW5nLXRvcDogMXB4O1xuICBwYWRkaW5nLWJvdHRvbTogMTBweDtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcbn0iXX0= */");
 
 /***/ }),
 
@@ -2095,29 +2117,34 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PlanpagePage", function() { return PlanpagePage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
-/* harmony import */ var _components_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components.service */ "./src/app/components.service.ts");
-/* harmony import */ var _rest_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../rest.service */ "./src/app/rest.service.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+/* harmony import */ var _components_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components.service */ "./src/app/components.service.ts");
+/* harmony import */ var _rest_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../rest.service */ "./src/app/rest.service.ts");
+
 
 
 
 
 
 let PlanpagePage = class PlanpagePage {
-    constructor(apiser, modelController, compSer, navCtrl) {
+    constructor(apiser, modelController, compSer, navCtrl, location) {
         this.apiser = apiser;
         this.modelController = modelController;
         this.compSer = compSer;
         this.navCtrl = navCtrl;
+        this.location = location;
         this.featureSplit = [];
+        this.getUSDPlans();
+        console.log("kjnjk");
     }
     ngOnInit() {
         // this.apiser.presentLoader("Fetching Plans...");
-        this.getUSDPlans();
     }
     closeme() {
-        this.modelController.dismiss();
+        // this.modelController.dismiss();
+        this.navCtrl.navigateForward(['prices']);
     }
     getPlans() {
         this.apiser.getPlans().then((res) => {
@@ -2134,15 +2161,17 @@ let PlanpagePage = class PlanpagePage {
     getSplitsValue(feature) {
         this.featureSplit = feature.split(',');
     }
-    buynow(planId, subPlanId, paymentAmount) {
+    buynow(plan) {
         // key: 'rzp_test_LA2o3rFXhgtfmS',
         // key: 'rzp_live_igtbdlPLfbiw6d',
+        let paymentAmount = plan.discounted_prie;
+        let planid = plan.id;
         var options = {
             description: 'Rice Data',
             image: 'https://ricebrok-staging.webcooks.in/images/sitelogo.png',
             currency: 'INR',
-            key: 'rzp_live_igtbdlPLfbiw6d',
-            amount: (paymentAmount.offerPrice * 100),
+            key: 'rzp_test_LA2o3rFXhgtfmS',
+            amount: (paymentAmount * 100),
             name: 'SNTC',
             prefill: {
                 email: localStorage.getItem('email'),
@@ -2161,47 +2190,44 @@ let PlanpagePage = class PlanpagePage {
         var successCallback = (payment_id) => {
             let tran_id = payment_id;
             let userId = localStorage.getItem('id');
-            let plan_id = planId;
-            let subPlanid = subPlanId;
-            this.apiser.addOrder({ transaction_id: tran_id, user_id: userId, plan_id: plan_id, sub_plan_id: subPlanid }).then((res) => {
-                localStorage.setItem('chartInt', 'true');
-                localStorage.setItem('isExpired', 'false');
+            let plan_id = planid;
+            this.apiser.addOrder({ transaction_id: tran_id, user_id: localStorage.getItem('id'), plan_id: planid }).then((res) => {
                 this.compSer.isUserExpired.next('false');
-                this.navCtrl.navigateForward(['port']);
-                this.apiser.CheckUserExpired().then((res) => {
-                    localStorage.setItem('expired_on', res.data);
-                    this.closeme();
-                });
+                localStorage.setItem('apptype', 'USD');
+                this.closeme();
+                // this.navCtrl.navigateForward(['priceusd']);
             }, (err) => {
             });
         };
         var cancelCallback = (error) => {
-            alert("Something went wrong.");
+            alert(JSON.stringify(error));
             // this.compSer.chartInterval.next("15 Days");
         };
         RazorpayCheckout.open(options, successCallback, cancelCallback);
     }
     getUSDPlans() {
         this.apiser.getUSDPlan().then((res) => {
-            console.log(res);
+            this.listUSDPlans = res.plans;
+            console.log(res.plans);
         }, (err) => {
             console.log(err);
         });
     }
 };
 PlanpagePage.ctorParameters = () => [
-    { type: _rest_service__WEBPACK_IMPORTED_MODULE_4__["RestService"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
-    { type: _components_service__WEBPACK_IMPORTED_MODULE_3__["ComponentsService"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"] }
+    { type: _rest_service__WEBPACK_IMPORTED_MODULE_5__["RestService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] },
+    { type: _components_service__WEBPACK_IMPORTED_MODULE_4__["ComponentsService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"] },
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_1__["Location"] }
 ];
 PlanpagePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
         selector: 'app-planpage',
         template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./planpage.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/planpage/planpage.page.html")).default,
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./planpage.page.scss */ "./src/app/planpage/planpage.page.scss")).default]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_rest_service__WEBPACK_IMPORTED_MODULE_4__["RestService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _components_service__WEBPACK_IMPORTED_MODULE_3__["ComponentsService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_rest_service__WEBPACK_IMPORTED_MODULE_5__["RestService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"], _components_service__WEBPACK_IMPORTED_MODULE_4__["ComponentsService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"], _angular_common__WEBPACK_IMPORTED_MODULE_1__["Location"]])
 ], PlanpagePage);
 
 
@@ -2417,6 +2443,16 @@ let RestService = class RestService {
         let token = localStorage.getItem('token');
         return new Promise((resolve, reject) => {
             this.http.post(this.APIURL + 'add/rice/query?api_token=' + token, JSON.stringify(formData)).subscribe((res) => {
+                resolve(res);
+            }, err => {
+                reject(err);
+            });
+        });
+    }
+    updateCounterStatus(formData) {
+        let token = localStorage.getItem('token');
+        return new Promise((resolve, reject) => {
+            this.http.post(this.APIURL + 'update/counter/status?api_token=' + token, JSON.stringify(formData)).subscribe((res) => {
                 resolve(res);
             }, err => {
                 reject(err);
@@ -2797,6 +2833,24 @@ let RestService = class RestService {
     getUSDPlan() {
         return new Promise((resolve, reject) => {
             this.http.get(this.APIURL + 'get/usd/plans').subscribe((res) => {
+                resolve(res);
+            }, (err) => {
+                reject(err);
+            });
+        });
+    }
+    getUSDCounties() {
+        return new Promise((resolve, reject) => {
+            this.http.get(this.APIURL + 'get/countries/list').subscribe((res) => {
+                resolve(res);
+            }, (err) => {
+                reject(err);
+            });
+        });
+    }
+    contact() {
+        return new Promise((resolve, reject) => {
+            this.http.get(this.APIURL + 'get/contact/details').subscribe((res) => {
                 resolve(res);
             }, (err) => {
                 reject(err);

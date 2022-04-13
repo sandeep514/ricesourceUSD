@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header class=\"green\">\n\t<ion-toolbar  mode=\"ios\"  style=\"background: transparent; --background: transparent\">\n\t\t<ion-buttons slot=\"start\" class=\"back-button\" (click)=\"back()\">\n\t\t\t<ion-icon name=\"arrow-back-outline\"></ion-icon>\n\t\t</ion-buttons>\n\t\t<ion-title class=\"header-title porttitle\">Our Other Services</ion-title>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content id=\"content\" class=\"lightgreen\"  style=\"height: 100%;\">\n\t<div style=\"height: 90%;overflow: scroll;\">\n\t\t<div>\n\t\t\t<ul>\n\t\t\t\t<ng-container *ngFor=\"let buyers of myBuyers\">\n\t\t\t\t\t<li  class=\"demandedData\" *ngIf=\"buyers.contact_person != '' || buyers.contact_person != null\">\n\t\t\t\t\t\t<div >\n\t\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t\t<span class=\"demandHeaders\">Buyer Name</span> : {{ buyers.contact_person }}\n\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t\t<span class=\"demandHeaders\">Buyer Contact</span> : {{ buyers.contact_number }}\n\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t<p>\n\t\t\t\t\t\t\t\t<span class=\"demandHeaders\">Specialised</span> : {{ buyers.specialised }}\n\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t\n\t\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</li>\n\t\t\t\t</ng-container>\n\t\t\t</ul>\n\t\t</div>\n\t</div>\n\t<app-menu></app-menu>\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header class=\"green\">\n\t<ion-toolbar  mode=\"ios\"  style=\"background: transparent; --background: transparent\">\n\t\t<ion-buttons slot=\"start\" class=\"back-button\" (click)=\"back()\">\n\t\t\t<ion-icon name=\"arrow-back-outline\"></ion-icon>\n\t\t</ion-buttons>\n\t\t<ion-title class=\"header-title porttitle\">Our Other Services</ion-title>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content id=\"content\" class=\"lightgreen\"  style=\"height: 100%;\">\n\t<div style=\"height: 90%;overflow: scroll;\">\n\t\t<div>\n\t\t\t\n\t\t\t<ion-row>\n\t\t\t\t<ion-col>\n\t\t\t\t\t<ion-item style=\"width: 100%;\">\n\t\t\t\t\t\t<ion-label>Bag Vendors Type*</ion-label>\n\t\t\t\t\t\t<ion-select placeholder=\"Select One\" (ionChange)=\"changeBuyer($event)\" [(ngModel)]=\"selectedBuyer\" selectedText=\"{{selectedBuyer}}\">\n\t\t\t\t\t\t\t<ion-select-option *ngFor=\"let buyerType of buyerTypes\" >{{ buyerType }}</ion-select-option>\n\t\t\t\t\t\t</ion-select>\n\t\t\t\t\t</ion-item>\n\t\t\t\t</ion-col>\n\t\t\t</ion-row>\n\t\n\t\t\t<ul style=\"padding: 0px 20px\">\n\t\t\t\t<ng-container *ngFor=\"let buyers of selectedBuyers\">\n\t\t\t\t\t<li  class=\"demandedData\" *ngIf=\"buyers.contact_person != '' || buyers.contact_person != null\" style=\"list-style: none;padding: 15px 0px;border-bottom: 2px solid #ededed;\">\n\t\t\t\t\t\t<div style=\"margin: 0;\">\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<p class=\"demandHeaders\" style=\"float: left;min-width: 150px\">Buyer Name</p> \n\t\t\t\t\t\t\t\t<p style=\"line-height: 1.5;text-transform: capitalize;\">: {{ buyers.contact_person }}</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<p class=\"demandHeaders\" style=\"float: left;min-width: 150px;\">Buyer Contact</p> \n\t\t\t\t\t\t\t\t<p style=\"line-height: 1.5;\">: {{ buyers.contact_number }}</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t<p class=\"demandHeaders\" style=\"float: left;min-width: 150px;\">Specialised</p> \n\t\t\t\t\t\t\t\t<p style=\"line-height: 1.5;\">: {{ buyers.specialised }}</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\n\t\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</li>\n\t\t\t\t</ng-container>\n\t\t\t\t<ng-container *ngIf=\"selectedBuyerslength <= 0\">\n\t\t\t\t\t<p style=\"padding: 0px 20px;text-align: center;font-weight: bold;font-size: 18px;\">No List is available for this beg vendor</p>\n\t\t\t\t</ng-container>\n\t\t\t</ul>\n\t\t</div>\n\t</div>\n\t<app-menu></app-menu>\n</ion-content>";
     /***/
   },
 
@@ -234,6 +234,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.apiService = apiService;
         this.location = location;
+        this.selectedBuyerslength = 1;
       }
 
       _createClass(OtherservicesPage, [{
@@ -249,7 +250,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.apiService.presentLoader('Fetching Queries');
           this.apiService.getBuyerList().then(function (res) {
             _this.myBuyers = res.data;
-            console.log(res);
+            _this.buyerTypes = Object.keys(res.data);
             setTimeout(function () {
               _this.apiService.dismissLoader();
             }, 1000);
@@ -258,6 +259,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               _this.apiService.dismissLoader();
             }, 1000);
           });
+        }
+      }, {
+        key: "changeBuyer",
+        value: function changeBuyer(event) {
+          this.selectedBuyerType = event.detail.value;
+          this.selectedBuyers = this.myBuyers[this.selectedBuyerType][0]['get_vendor_list'];
+          this.selectedBuyerslength = this.selectedBuyers.length;
         }
       }, {
         key: "back",

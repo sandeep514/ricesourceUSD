@@ -340,7 +340,7 @@ export class AppComponent implements OnInit {
 							});
 							console.log("jhbjhnjnm ijknjm");
 							if( isExpiredUsd == 'true' ){
-								this.navCtrl.navigateForward(['price']);
+								this.navCtrl.navigateForward(['prices']);
 							}else{
 								this.navCtrl.navigateForward(['priceusd']);
 							}

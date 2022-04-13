@@ -148,6 +148,7 @@ __webpack_require__.r(__webpack_exports__);
 
 let PricesPage = class PricesPage {
     constructor(platform, restService, componentService, modalController, navCtrl, route, versionMdel) {
+        // this.componentService.compareTwoDates( localStorage.getItem('expired_on') );
         this.platform = platform;
         this.restService = restService;
         this.componentService = componentService;
@@ -174,11 +175,9 @@ let PricesPage = class PricesPage {
         this.basmatiSt = "punjab_haryana";
         this.nonbasmatists = "punjab_haryana";
         this.restDays = 0;
-        // this.componentService.compareTwoDates( localStorage.getItem('expired_on') );
-        console.log(typeof localStorage.getItem('isExpired'));
-        if (localStorage.getItem('isExpired') == 'true') {
-            this.navCtrl.navigateRoot('planpage', { animationDirection: 'forward' });
-        }
+        // if( localStorage.getItem('isExpired') == 'true' ){
+        // 	this.navCtrl.navigateRoot( 'planpage', { animationDirection : 'forward' } );
+        // }
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -320,7 +319,6 @@ let PricesPage = class PricesPage {
     }
     ionViewDidEnter() {
         if (this.route.url == "/prices") {
-            console.log(localStorage.getItem("popupCanceled"));
             if (localStorage.getItem("popupCanceled") == null) {
                 this.myVar = setTimeout(() => {
                     this.showCOntactModal();
@@ -344,6 +342,15 @@ let PricesPage = class PricesPage {
         });
         // });
         this.restService.CheckUserExpired().then((res) => {
+            localStorage.setItem('isExpiryUSD', res.isExpiry);
+            localStorage.setItem('ExpiryUSDDate', res.data);
+            console.log("mbnjkjbj");
+            if (res.isExpiry == false) {
+                localStorage.setItem('apptype', 'USD');
+            }
+            else {
+                localStorage.setItem('apptype', 'OTHER');
+            }
             localStorage.setItem('expired_on', res.data);
             this.componentService.compareTwoDates(localStorage.getItem('expired_on'));
         }, (err) => {
@@ -369,15 +376,12 @@ let PricesPage = class PricesPage {
     }
     getVersion() {
         this.restService.getLatestVersion().then((res) => {
-            console.log(res.data.version);
             let elemem = this;
             if ('1.0.0' != res.data.version) {
                 setTimeout(function () { elemem.showVersionModal(); }, 8000);
             }
         }, (err) => {
-            console.log(err);
         }).catch((err) => {
-            console.log(err);
         });
     }
     refresh() {
@@ -451,7 +455,6 @@ let PricesPage = class PricesPage {
         this.componentService.presentLoading().then(() => {
             this.fetchRiceForm(event.detail.value, "basmati").then((res) => {
                 this.basmatiprice = res;
-                console.log('res here');
                 console.log(res);
                 this.componentService.loadingController.dismiss();
             });
@@ -471,7 +474,6 @@ let PricesPage = class PricesPage {
         this.selectedBasmatiState = event.detail.value;
         this.fetchRiceForm(event.detail.value, "non-basmati").then((res) => {
             // this.componentService.loadingController.dismiss();
-            console.log(res);
             this.nonbasmatiprice = res;
         });
         if (event.detail.value == "kota_bundi") {
@@ -495,7 +497,6 @@ let PricesPage = class PricesPage {
                     this.nonBasmatiColumns = nonBasmati;
                 }
                 this.lastupdatedDate = res.latest;
-                console.log("here data");
                 // this.componentService.loadingController.dismiss();
                 resolve(res.prices);
             }, (err) => {
@@ -559,7 +560,6 @@ let PricesPage = class PricesPage {
             this.showPaymentModel();
         }
         else {
-            console.log(riceName);
             let newRiceName = riceName.split(" ");
             newRiceName = newRiceName.join("_");
             localStorage.setItem("riceType", riceType.split(" ").join("_").toLowerCase());
@@ -621,11 +621,15 @@ let PricesPage = class PricesPage {
         });
     }
     changeAppType() {
-        // let isUSDActive = localStorage.getItem('is_usd_active');
-        // if( isUSDActive == '0' ){
-        // 	this.navCtrl.navigateForward(['planpage']);
-        // }
-        // return false;
+        let isUSDActive = localStorage.getItem('is_usd_active');
+        let isUserExpiredStatus = localStorage.getItem('isExpiryUSD');
+        if (isUserExpiredStatus == 'true') {
+            this.navCtrl.navigateForward(['planpage']);
+        }
+        else {
+            this.navCtrl.navigateForward(['priceusd']);
+        }
+        return false;
         localStorage.setItem('apptype', 'USD');
         this.navCtrl.navigateForward(['priceusd']);
     }

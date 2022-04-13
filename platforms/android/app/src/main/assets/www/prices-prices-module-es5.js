@@ -286,6 +286,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _classCallCheck(this, PricesPage);
 
+        // this.componentService.compareTwoDates( localStorage.getItem('expired_on') );
         this.platform = platform;
         this.restService = restService;
         this.componentService = componentService;
@@ -311,15 +312,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
         this.basmatiSt = "punjab_haryana";
         this.nonbasmatists = "punjab_haryana";
-        this.restDays = 0; // this.componentService.compareTwoDates( localStorage.getItem('expired_on') );
-
-        console.log(typeof localStorage.getItem('isExpired'));
-
-        if (localStorage.getItem('isExpired') == 'true') {
-          this.navCtrl.navigateRoot('planpage', {
-            animationDirection: 'forward'
-          });
-        }
+        this.restDays = 0; // if( localStorage.getItem('isExpired') == 'true' ){
+        // 	this.navCtrl.navigateRoot( 'planpage', { animationDirection : 'forward' } );
+        // }
 
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
@@ -515,8 +510,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this7 = this;
 
           if (this.route.url == "/prices") {
-            console.log(localStorage.getItem("popupCanceled"));
-
             if (localStorage.getItem("popupCanceled") == null) {
               this.myVar = setTimeout(function () {
                 _this7.showCOntactModal();
@@ -540,6 +533,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }, function (err) {}); // });
 
           this.restService.CheckUserExpired().then(function (res) {
+            localStorage.setItem('isExpiryUSD', res.isExpiry);
+            localStorage.setItem('ExpiryUSDDate', res.data);
+            console.log("mbnjkjbj");
+
+            if (res.isExpiry == false) {
+              localStorage.setItem('apptype', 'USD');
+            } else {
+              localStorage.setItem('apptype', 'OTHER');
+            }
+
             localStorage.setItem('expired_on', res.data);
 
             _this7.componentService.compareTwoDates(localStorage.getItem('expired_on'));
@@ -590,7 +593,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this8 = this;
 
           this.restService.getLatestVersion().then(function (res) {
-            console.log(res.data.version);
             var elemem = _this8;
 
             if ('1.0.0' != res.data.version) {
@@ -598,11 +600,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 elemem.showVersionModal();
               }, 8000);
             }
-          }, function (err) {
-            console.log(err);
-          })["catch"](function (err) {
-            console.log(err);
-          });
+          }, function (err) {})["catch"](function (err) {});
         }
       }, {
         key: "refresh",
@@ -747,7 +745,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.componentService.presentLoading().then(function () {
             _this10.fetchRiceForm(event.detail.value, "basmati").then(function (res) {
               _this10.basmatiprice = res;
-              console.log('res here');
               console.log(res);
 
               _this10.componentService.loadingController.dismiss();
@@ -774,7 +771,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.selectedBasmatiState = event.detail.value;
           this.fetchRiceForm(event.detail.value, "non-basmati").then(function (res) {
             // this.componentService.loadingController.dismiss();
-            console.log(res);
             _this11.nonbasmatiprice = res;
           });
 
@@ -805,8 +801,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 _this12.nonBasmatiColumns = nonBasmati;
               }
 
-              _this12.lastupdatedDate = res.latest;
-              console.log("here data"); // this.componentService.loadingController.dismiss();
+              _this12.lastupdatedDate = res.latest; // this.componentService.loadingController.dismiss();
 
               resolve(res.prices);
             }, function (err) {
@@ -904,7 +899,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (this.currentPaidStatus == 'true') {
             this.showPaymentModel();
           } else {
-            console.log(riceName);
             var newRiceName = riceName.split(" ");
             newRiceName = newRiceName.join("_");
             localStorage.setItem("riceType", riceType.split(" ").join("_").toLowerCase());
@@ -980,11 +974,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "changeAppType",
         value: function changeAppType() {
-          // let isUSDActive = localStorage.getItem('is_usd_active');
-          // if( isUSDActive == '0' ){
-          // 	this.navCtrl.navigateForward(['planpage']);
-          // }
-          // return false;
+          var isUSDActive = localStorage.getItem('is_usd_active');
+          var isUserExpiredStatus = localStorage.getItem('isExpiryUSD');
+
+          if (isUserExpiredStatus == 'true') {
+            this.navCtrl.navigateForward(['planpage']);
+          } else {
+            this.navCtrl.navigateForward(['priceusd']);
+          }
+
+          return false;
           localStorage.setItem('apptype', 'USD');
           this.navCtrl.navigateForward(['priceusd']);
         }

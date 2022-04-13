@@ -212,7 +212,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-title>Available Plans</ion-title>\n\t\t<ion-buttons slot=\"end\" (click)=\"closeme()\">\n\t\t\t<a href=\"javascript:void(0);\" style=\"color:black;text-decoration: none;padding-right: 10px;color: #FFFBD6 ;\">Back</a>\n\t\t</ion-buttons>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content class=\"lightgreen\">\n\t<!-- <div *ngFor=\"let plan of listPlans | keyvalue\">\n\t\t<div>\n\t\t\t<h2 class=\"planName green font-lightgreen\" >{{ plan.key }}</h2>\n\t\t\t<ion-row>\n\t\t\t\t<ion-col size=\"4\" size-md *ngFor=\"let subPlan of plan.value.SubPlan | keyvalue\">\n\n\t\t\t\t\t<h5 class=\"planName font-darkgreen\">{{ subPlan.value.data.name }}</h5>\n\t\t\t\t\t<div class=\"price green\">\n\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-bottom: 0; margin-bottom: 0;text-decoration: line-through\">₨ {{ subPlan.value.price.actualPrice }}</h5>\n\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-top: 0; margin-top: 0;font-weight: 600;margin-bottom: 0px;\">₨ {{ subPlan.value.price.offerPrice }}</h5>\n\t\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t\t<p class=\"font-darkgreen\" style=\"font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;\">Launch Offer</p>\n\t\t\t\t\t<p style=\"text-align: center;padding-top: 0;margin-top: 0;\" class=\"font-darkgreen\">\n\t\t\t\t\t\t<small style=\"font-size: 100%;\">Save {{ floatingTwo(subPlan.value.price.offerPrice , subPlan.value.price.actualPrice) }}%</small>\n\t\t\t\t\t</p>\n\t\t\t\t\t{{ getSplitsValue( subPlan.value.price.feature ) }}\n\t\t\t\t\t\n\t\t\t\t\t<div class=\"benefits\">\n\t\t\t\t\t\t<p>Benefits</p>\n\t\t\t\t\t\t<p *ngFor=\"let featureSpl of featureSplit\" style=\"margin-bottom: 0;font-size: 13px;margin-top: 3px;\">\n\t\t\t\t\t\t\t{{ featureSpl }}\n\t\t\t\t\t\t</p>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<ion-button class=\"buynow\" fill=\"outline\" (click)=\"buynow( plan.value.plan.id , subPlan.value.data.id ,subPlan.value.price )\">Subscribe</ion-button>\n\t\t\t\t</ion-col>\n\t\t\t</ion-row>\n\t\t</div>\n\t</div> -->\n\n\t<p class=\"font-darkgreen\" style=\"font-size: 18px;text-align: center;padding-bottom: 0;margin-bottom: 10px;padding: 0 10px; \">This is a paid Service, But Relax you can access this by subscribing Following Plan.</p>\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-title>Available Plans</ion-title>\n\t\t<ion-buttons slot=\"end\" (click)=\"closeme()\">\n\t\t\t<a href=\"javascript:void(0);\" style=\"color:black;text-decoration: none;padding-right: 10px;color: #FFFBD6 ;\">Back</a>\n\t\t</ion-buttons>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content class=\"lightgreen\">\n\t<!-- <div *ngFor=\"let plan of listPlans | keyvalue\">\n\t\t<div>\n\t\t\t<h2 class=\"planName green font-lightgreen\" >{{ plan.key }}</h2>\n\t\t\t<ion-row>\n\t\t\t\t<ion-col size=\"4\" size-md *ngFor=\"let subPlan of plan.value.SubPlan | keyvalue\">\n\n\t\t\t\t\t<h5 class=\"planName font-darkgreen\">{{ subPlan.value.data.name }}</h5>\n\t\t\t\t\t<div class=\"price green\">\n\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-bottom: 0; margin-bottom: 0;text-decoration: line-through\">₨ {{ subPlan.value.price.actualPrice }}</h5>\n\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-top: 0; margin-top: 0;font-weight: 600;margin-bottom: 0px;\">₨ {{ subPlan.value.price.offerPrice }}</h5>\n\t\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t\t<p class=\"font-darkgreen\" style=\"font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;\">Launch Offer</p>\n\t\t\t\t\t<p style=\"text-align: center;padding-top: 0;margin-top: 0;\" class=\"font-darkgreen\">\n\t\t\t\t\t\t<small style=\"font-size: 100%;\">Save {{ floatingTwo(subPlan.value.price.offerPrice , subPlan.value.price.actualPrice) }}%</small>\n\t\t\t\t\t</p>\n\t\t\t\t\t{{ getSplitsValue( subPlan.value.price.feature ) }}\n\t\t\t\t\t\n\t\t\t\t\t<div class=\"benefits\">\n\t\t\t\t\t\t<p>Benefits</p>\n\t\t\t\t\t\t<p *ngFor=\"let featureSpl of featureSplit\" style=\"margin-bottom: 0;font-size: 13px;margin-top: 3px;\">\n\t\t\t\t\t\t\t{{ featureSpl }}\n\t\t\t\t\t\t</p>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<ion-button class=\"buynow\" fill=\"outline\" (click)=\"buynow( plan.value.plan.id , subPlan.value.data.id ,subPlan.value.price )\">Subscribe</ion-button>\n\t\t\t\t</ion-col>\n\t\t\t</ion-row>\n\t\t</div>\n\t</div> -->\n\n\t<div >\n\t\t<div>\n\t\t\t<ion-row>\n\t\t\t\t<p class=\"font-darkgreen\" style=\"font-size: 18px;text-align: center;padding-bottom: 0;margin-bottom: 10px;padding: 0 10px; \">This is a paid Service, But Relax you can access this by subscribing Following Plan.</p>\n\n\t\t\t\t<ion-col size=\"4\" size-md *ngFor=\"let plan of listUSDPlans\" >\n\t\t\t\t\t<h2 class=\"planName green font-lightgreen\"  style=\"text-transform: uppercase;\">{{ plan.plan_name }}</h2>\n\t\t\t\t\t<h5 class=\"planName font-darkgreen\">{{ plan.plan_desc }}</h5>\n\n\t\t\t\t\t<div class=\"price green\">\n\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-bottom: 0; margin-bottom: 0;text-decoration: line-through\">\n\t\t\t\t\t\t\t₨ {{ plan.actual_price }}\n\t\t\t\t\t\t</h5>\n\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-top: 0; margin-top: 0;font-weight: 600;margin-bottom: 0px;\">\n\t\t\t\t\t\t\t₨ {{ plan.discounted_prie }}\n\t\t\t\t\t\t</h5>\n\t\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t\t<p class=\"font-darkgreen\" style=\"font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;\">Launch Offer</p>\n\t\t\t\t\t<p style=\"text-align: center;padding-top: 0;margin-top: 0;\" class=\"font-darkgreen\">\n\t\t\t\t\t\t<small style=\"font-size: 100%;\">Valid for: {{plan.valid_months}} Months`</small>\n\t\t\t\t\t</p>\n\t\n\t\t\t\t\t<ion-button class=\"buynow\" fill=\"outline\" (click)=\"buynow( plan )\">Subscribe</ion-button>\n\t\t\t\t</ion-col>\n\t\t\t</ion-row>\n\n\t\t</div>\n\t</div>\n\n</ion-content>";
     /***/
   },
 
@@ -312,7 +312,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-content class=\"bg-lightgreen\">\n\t<div class=\"logo\">\n\t\t<img src=\"../../assets/icon_logo.png\" class=\"app-logo\"/>\n\t</div>\n\t<a href=\"javascript:void(0);\" (click)=\"closeModal()\" class=\"closeModal\"> X </a>\n\t<div class=\"content\">\n\t\t<p style=\"padding-bottom: 10px;\">You are using a older version of SNTC App. Please update to get latest features. </p>\n\t\t<div>\n\t\t\t<p (click)=\"redirectToPlaystore()\" style=\"color: green\">Download Now</p>\n\t\t</div>\n\t</div>\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-content class=\"bg-lightgreen\">\n\t<div class=\"logo\">\n\t\t<img src=\"../../assets/icon_logo.png\" class=\"app-logo\"/>\n\t</div>\n\t<a href=\"javascript:void(0);\" (click)=\"closeModal()\" class=\"closeModal\"> X </a>\n\t<div class=\"content\">\n\t\t<p style=\"padding-bottom: 10px;\">You are using an older version of SNTC app. Please update to get latest Verison. </p>\n\t\t<div>\n\t\t\t<p (click)=\"redirectToPlaystore()\" style=\"color: green\">Update Now</p>\n\t\t</div>\n\t</div>\n</ion-content>";
     /***/
   },
 
@@ -1006,7 +1006,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | prices-prices-module */
-        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("common"), __webpack_require__.e("prices-prices-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("common"), __webpack_require__.e("prices-prices-module")]).then(__webpack_require__.bind(null,
         /*! ./prices/prices.module */
         "./src/app/prices/prices.module.ts")).then(function (m) {
           return m.PricesPageModule;
@@ -1018,7 +1018,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | about-about-module */
-        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("about-about-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("about-about-module")]).then(__webpack_require__.bind(null,
         /*! ./about/about.module */
         "./src/app/about/about.module.ts")).then(function (m) {
           return m.AboutPageModule;
@@ -1029,7 +1029,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | port-port-module */
-        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("port-port-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("port-port-module")]).then(__webpack_require__.bind(null,
         /*! ./port/port.module */
         "./src/app/port/port.module.ts")).then(function (m) {
           return m.PortPageModule;
@@ -1051,7 +1051,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | ricechart-ricechart-module */
-        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("ricechart-ricechart-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("ricechart-ricechart-module")]).then(__webpack_require__.bind(null,
         /*! ./ricechart/ricechart.module */
         "./src/app/ricechart/ricechart.module.ts")).then(function (m) {
           return m.RicechartPageModule;
@@ -1071,7 +1071,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | gallery-gallery-module */
-        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("gallery-gallery-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("gallery-gallery-module")]).then(__webpack_require__.bind(null,
         /*! ./gallery/gallery.module */
         "./src/app/gallery/gallery.module.ts")).then(function (m) {
           return m.GalleryPageModule;
@@ -1082,7 +1082,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | gallerydetails-gallerydetails-module */
-        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("gallerydetails-gallerydetails-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("gallerydetails-gallerydetails-module")]).then(__webpack_require__.bind(null,
         /*! ./gallerydetails/gallerydetails.module */
         "./src/app/gallerydetails/gallerydetails.module.ts")).then(function (m) {
           return m.GallerydetailsPageModule;
@@ -1232,7 +1232,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | notifications-notifications-module */
-        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("notifications-notifications-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("notifications-notifications-module")]).then(__webpack_require__.bind(null,
         /*! ./notifications/notifications.module */
         "./src/app/notifications/notifications.module.ts")).then(function (m) {
           return m.NotificationsPageModule;
@@ -1276,7 +1276,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | priceusd-priceusd-module */
-        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("common"), __webpack_require__.e("priceusd-priceusd-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("common"), __webpack_require__.e("priceusd-priceusd-module")]).then(__webpack_require__.bind(null,
         /*! ./priceusd/priceusd.module */
         "./src/app/priceusd/priceusd.module.ts")).then(function (m) {
           return m.PriceusdPageModule;
@@ -1287,7 +1287,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | oceanfreights-oceanfreights-module */
-        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("oceanfreights-oceanfreights-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("oceanfreights-oceanfreights-module")]).then(__webpack_require__.bind(null,
         /*! ./oceanfreights/oceanfreights.module */
         "./src/app/oceanfreights/oceanfreights.module.ts")).then(function (m) {
           return m.OceanfreightsPageModule;
@@ -1298,7 +1298,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | quality-details-quality-details-module */
-        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("quality-details-quality-details-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("quality-details-quality-details-module")]).then(__webpack_require__.bind(null,
         /*! ./quality-details/quality-details.module */
         "./src/app/quality-details/quality-details.module.ts")).then(function (m) {
           return m.QualityDetailsPageModule;
@@ -1309,7 +1309,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | buy-buy-module */
-        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("buy-buy-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("buy-buy-module")]).then(__webpack_require__.bind(null,
         /*! ./buy/buy.module */
         "./src/app/buy/buy.module.ts")).then(function (m) {
           return m.BuyPageModule;
@@ -1320,7 +1320,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | bid-bid-module */
-        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("bid-bid-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("bid-bid-module")]).then(__webpack_require__.bind(null,
         /*! ./bid/bid.module */
         "./src/app/bid/bid.module.ts")).then(function (m) {
           return m.BidPageModule;
@@ -1331,7 +1331,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | calculator-calculator-module */
-        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("calculator-calculator-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("calculator-calculator-module")]).then(__webpack_require__.bind(null,
         /*! ./calculator/calculator.module */
         "./src/app/calculator/calculator.module.ts")).then(function (m) {
           return m.CalculatorPageModule;
@@ -1342,7 +1342,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | mybids-mybids-module */
-        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("mybids-mybids-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("mybids-mybids-module")]).then(__webpack_require__.bind(null,
         /*! ./mybids/mybids.module */
         "./src/app/mybids/mybids.module.ts")).then(function (m) {
           return m.MybidsPageModule;
@@ -1353,10 +1353,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return Promise.all(
         /*! import() | otherservices-otherservices-module */
-        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~gallery-galler~25849ce0"), __webpack_require__.e("otherservices-otherservices-module")]).then(__webpack_require__.bind(null,
+        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("otherservices-otherservices-module")]).then(__webpack_require__.bind(null,
         /*! ./otherservices/otherservices.module */
         "./src/app/otherservices/otherservices.module.ts")).then(function (m) {
           return m.OtherservicesPageModule;
+        });
+      }
+    }, {
+      path: 'contact',
+      loadChildren: function loadChildren() {
+        return Promise.all(
+        /*! import() | contact-contact-module */
+        [__webpack_require__.e("default~about-about-module~bid-bid-module~buy-buy-module~calculator-calculator-module~contact-contac~522076c7"), __webpack_require__.e("contact-contact-module")]).then(__webpack_require__.bind(null,
+        /*! ./contact/contact.module */
+        "./src/app/contact/contact.module.ts")).then(function (m) {
+          return m.ContactPageModule;
         });
       }
     }];
@@ -1535,6 +1546,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }, {
           title: 'Change Password',
           url: '/updatepassword',
+          icon: 'albums'
+        }, {
+          title: 'Contact us',
+          url: '/contact',
           icon: 'albums'
         }];
         this.labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
@@ -1768,11 +1783,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this4, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
               var _this5 = this;
 
-              var splash, apiPre, navigation;
+              var isExpiredUsd, splash, apiPre, navigation;
               return regeneratorRuntime.wrap(function _callee2$(_context2) {
                 while (1) {
                   switch (_context2.prev = _context2.next) {
                     case 0:
+                      isExpiredUsd = localStorage.getItem('isExpiryUSD');
                       this.statusBar.styleDefault();
                       this.statusBar.overlaysWebView(false);
                       this.statusBar.backgroundColorByHexString('#92B243');
@@ -1797,12 +1813,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       setTimeout(function () {
                         _this5.componentSer.compareTwoDates(localStorage.getItem('expired_on'));
                       }, 1000);
-                      _context2.next = 9;
+                      _context2.next = 10;
                       return this.modalCtrl.create({
                         component: _splashscreen_splashscreen_page__WEBPACK_IMPORTED_MODULE_7__["SplashscreenPage"]
                       });
 
-                    case 9:
+                    case 10:
                       splash = _context2.sent;
                       splash.present();
 
@@ -1828,7 +1844,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                 }
                               });
 
-                              _this5.navCtrl.navigateForward(['priceusd']);
+                              console.log("jhbjhnjnm ijknjm");
+
+                              if (isExpiredUsd == 'true') {
+                                _this5.navCtrl.navigateForward(['prices']);
+                              } else {
+                                _this5.navCtrl.navigateForward(['priceusd']);
+                              }
                             } else {
                               _this5.firebase.onBackgroundMessage().subscribe(function (payload) {
                                 if ('buyerQuery' in payload) {
@@ -1839,7 +1861,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                 }
                               });
 
-                              _this5.navCtrl.navigateForward(['priceusd']);
+                              console.log(isExpiredUsd);
+
+                              if (isExpiredUsd == 'true') {
+                                _this5.navCtrl.navigateForward(['prices']);
+                              } else {
+                                _this5.navCtrl.navigateForward(['priceusd']);
+                              }
                             }
                           }, 4000);
                         }
@@ -1959,7 +1987,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       // 	});
                       // }
 
-                    case 17:
+                    case 18:
                     case "end":
                       return _context2.stop();
                   }
@@ -3355,7 +3383,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".planName {\n  text-align: center;\n  font-size: 25px;\n  font-weight: bold;\n}\n\n.bar {\n  border-left: 1px solid green;\n  height: 500px;\n  display: inline;\n}\n\n.subPlan {\n  padding: 20px;\n  display: inline;\n}\n\n.title {\n  display: block;\n}\n\n@font-face {\n  font-family: \"GlacialIndifference-Regular\";\n  font-style: normal;\n  font-weight: normal;\n  src: url('GlacialIndifference-Regular.otf');\n}\n\n@font-face {\n  font-family: \"GlacialIndifference-Italic\";\n  font-style: italic;\n  font-weight: normal;\n  src: url('GlacialIndifference-Italic.otf');\n}\n\nion-card {\n  font-family: initial;\n}\n\nion-title {\n  position: absolute;\n  top: 0;\n  left: 0;\n  padding: 0 90px 1px;\n  width: 100%;\n  height: 100%;\n  text-align: center;\n  background-color: #92B243 !important;\n  color: #FFFBD6 !important;\n}\n\nion-content {\n  --padding-bottom: 81px;\n}\n\n.buynow {\n  --color: white !important;\n  --background: #92B243 !important ;\n  --border: 2px solid #92B243 !important;\n  --border-color: #92B243 !important;\n  width: 100%;\n  color: white !important;\n  background: #92B243 !important;\n  border: 2px solid #92B243 !important;\n  border-radius: 5px;\n}\n\n.benefits {\n  background: #92b243;\n  text-align: center;\n  color: #fcf9d1;\n  padding-top: 1px;\n  padding-bottom: 10px;\n  margin-bottom: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9jaGV0YW4vRGVza3RvcC9yaWNlX21vYmlsZS9zcmMvYXBwL3BsYW5wYWdlL3BsYW5wYWdlLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGxhbnBhZ2UvcGxhbnBhZ2UucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUE7QUNDSjs7QURDQTtFQUNJLDRCQUFBO0VBQ0EsYUFBQTtFQUNBLGVBQUE7QUNFSjs7QURBQTtFQUNJLGFBQUE7RUFDQSxlQUFBO0FDR0o7O0FEREE7RUFDSSxjQUFBO0FDSUo7O0FERkE7RUFDSSwwQ0FBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSwyQ0FBQTtBQ0tKOztBRE1BO0VBQ0kseUNBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsMENBQUE7QUNKSjs7QURPQTtFQUdJLG9CQUFBO0FDUEo7O0FEVUE7RUFDSSxrQkFBQTtFQUNBLE1BQUE7RUFDQSxPQUFBO0VBQ0EsbUJBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0Esb0NBQUE7RUFDQSx5QkFBQTtBQ1BKOztBRFVBO0VBRUksc0JBQUE7QUNSSjs7QURXQTtFQUNJLHlCQUFBO0VBQ0EsaUNBQUE7RUFDQSxzQ0FBQTtFQUNBLGtDQUFBO0VBRUEsV0FBQTtFQUNBLHVCQUFBO0VBQ0EsOEJBQUE7RUFDQSxvQ0FBQTtFQUNBLGtCQUFBO0FDVEo7O0FEWUE7RUFDSSxtQkFBQTtFQUNBLGtCQUFBO0VBQ0EsY0FBQTtFQUNBLGdCQUFBO0VBQ0Esb0JBQUE7RUFDQSxtQkFBQTtBQ1RKIiwiZmlsZSI6InNyYy9hcHAvcGxhbnBhZ2UvcGxhbnBhZ2UucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnBsYW5OYW1le1xuICAgIHRleHQtYWxpZ246Y2VudGVyO1xuICAgIGZvbnQtc2l6ZTogMjVweDtcbiAgICBmb250LXdlaWdodDogYm9sZDtcbn1cbi5iYXJ7XG4gICAgYm9yZGVyLWxlZnQ6IDFweCBzb2xpZCBncmVlbjtcbiAgICBoZWlnaHQ6IDUwMHB4O1xuICAgIGRpc3BsYXk6IGlubGluZTtcbiAgfVxuLnN1YlBsYW57XG4gICAgcGFkZGluZzoyMHB4O1xuICAgIGRpc3BsYXk6IGlubGluZTtcbn1cbi50aXRsZXtcbiAgICBkaXNwbGF5OiBibG9jaztcbn1cbkBmb250LWZhY2Uge1xuICAgIGZvbnQtZmFtaWx5OiAnR2xhY2lhbEluZGlmZmVyZW5jZS1SZWd1bGFyJztcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XG4gICAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgICBzcmM6IHVybCgnLi4vLi4vYXNzZXRzL2ZvbnRzL2dsYWNpYWwvR2xhY2lhbEluZGlmZmVyZW5jZS1SZWd1bGFyLm90ZicpO1xufVxuXG5cbi8vIEBmb250LWZhY2Uge1xuLy8gICAgIGZvbnQtZmFtaWx5OiAnQXJpYWwnO1xuLy8gICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcbi8vICAgICBmb250LXdlaWdodDogYm9sZDtcbi8vICAgICBzcmM6IHVybCgnLi4vLi4vYXNzZXRzL2ZvbnRzL2dsYWNpYWwvQXJpYWwub3RmJyk7XG4vLyB9XG5cbkBmb250LWZhY2Uge1xuICAgIGZvbnQtZmFtaWx5OiAnR2xhY2lhbEluZGlmZmVyZW5jZS1JdGFsaWMnO1xuICAgIGZvbnQtc3R5bGU6IGl0YWxpYztcbiAgICBmb250LXdlaWdodDogbm9ybWFsO1xuICAgIHNyYzogdXJsKCcuLi8uLi9hc3NldHMvZm9udHMvZ2xhY2lhbC9HbGFjaWFsSW5kaWZmZXJlbmNlLUl0YWxpYy5vdGYnKTtcbn1cblxuaW9uLWNhcmR7XG4gICAgLy8gYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSwgI0RGRUM1MSAwJSwgIzczQUEwQSAxMDAlKSAhaW1wb3J0YW50O1xuICAgIC8vIGNvbG9yOiBibGFjayAhaW1wb3J0YW50O1xuICAgIGZvbnQtZmFtaWx5OiBpbml0aWFsO1xufVxuXG5pb24tdGl0bGUge1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB0b3A6IDA7XG4gICAgbGVmdDogMDtcbiAgICBwYWRkaW5nOiAwIDkwcHggMXB4O1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogMTAwJTtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzkyQjI0MyAhaW1wb3J0YW50O1xuICAgIGNvbG9yOiAjRkZGQkQ2ICFpbXBvcnRhbnQ7XG59XG5cbmlvbi1jb250ZW50e1xuICAgIC8vIC0tYmFja2dyb3VuZDogdXJsKCcuLi8uLi9hc3NldHMvYmFja2dyb3VuZC5wbmcnKSBuby1yZXBlYXQgY2VudGVyL2NvdmVyIGZpeGVkO1xuICAgIC0tcGFkZGluZy1ib3R0b206IDgxcHg7XG59XG5cbi5idXlub3d7XG4gICAgLS1jb2xvcjogd2hpdGUgIWltcG9ydGFudDtcbiAgICAtLWJhY2tncm91bmQ6ICM5MkIyNDMgIWltcG9ydGFudCA7XG4gICAgLS1ib3JkZXI6IDJweCBzb2xpZCAjOTJCMjQzICFpbXBvcnRhbnQ7XG4gICAgLS1ib3JkZXItY29sb3I6ICM5MkIyNDMgIWltcG9ydGFudDsgXG5cbiAgICB3aWR0aDoxMDAlO1xuICAgIGNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xuICAgIGJhY2tncm91bmQ6ICM5MkIyNDMgIWltcG9ydGFudCA7XG4gICAgYm9yZGVyOiAycHggc29saWQgIzkyQjI0MyAhaW1wb3J0YW50O1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbn1cblxuLmJlbmVmaXRze1xuICAgIGJhY2tncm91bmQ6ICM5MmIyNDM7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIGNvbG9yOiAjZmNmOWQxOyAgIFxuICAgIHBhZGRpbmctdG9wOiAxcHg7XG4gICAgcGFkZGluZy1ib3R0b206IDEwcHg7XG4gICAgbWFyZ2luLWJvdHRvbTogMTBweDsgXG59IiwiLnBsYW5OYW1lIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBmb250LXNpemU6IDI1cHg7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuXG4uYmFyIHtcbiAgYm9yZGVyLWxlZnQ6IDFweCBzb2xpZCBncmVlbjtcbiAgaGVpZ2h0OiA1MDBweDtcbiAgZGlzcGxheTogaW5saW5lO1xufVxuXG4uc3ViUGxhbiB7XG4gIHBhZGRpbmc6IDIwcHg7XG4gIGRpc3BsYXk6IGlubGluZTtcbn1cblxuLnRpdGxlIHtcbiAgZGlzcGxheTogYmxvY2s7XG59XG5cbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogXCJHbGFjaWFsSW5kaWZmZXJlbmNlLVJlZ3VsYXJcIjtcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBzcmM6IHVybChcIi4uLy4uL2Fzc2V0cy9mb250cy9nbGFjaWFsL0dsYWNpYWxJbmRpZmZlcmVuY2UtUmVndWxhci5vdGZcIik7XG59XG5AZm9udC1mYWNlIHtcbiAgZm9udC1mYW1pbHk6IFwiR2xhY2lhbEluZGlmZmVyZW5jZS1JdGFsaWNcIjtcbiAgZm9udC1zdHlsZTogaXRhbGljO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBzcmM6IHVybChcIi4uLy4uL2Fzc2V0cy9mb250cy9nbGFjaWFsL0dsYWNpYWxJbmRpZmZlcmVuY2UtSXRhbGljLm90ZlwiKTtcbn1cbmlvbi1jYXJkIHtcbiAgZm9udC1mYW1pbHk6IGluaXRpYWw7XG59XG5cbmlvbi10aXRsZSB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAwO1xuICBsZWZ0OiAwO1xuICBwYWRkaW5nOiAwIDkwcHggMXB4O1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGJhY2tncm91bmQtY29sb3I6ICM5MkIyNDMgIWltcG9ydGFudDtcbiAgY29sb3I6ICNGRkZCRDYgIWltcG9ydGFudDtcbn1cblxuaW9uLWNvbnRlbnQge1xuICAtLXBhZGRpbmctYm90dG9tOiA4MXB4O1xufVxuXG4uYnV5bm93IHtcbiAgLS1jb2xvcjogd2hpdGUgIWltcG9ydGFudDtcbiAgLS1iYWNrZ3JvdW5kOiAjOTJCMjQzICFpbXBvcnRhbnQgO1xuICAtLWJvcmRlcjogMnB4IHNvbGlkICM5MkIyNDMgIWltcG9ydGFudDtcbiAgLS1ib3JkZXItY29sb3I6ICM5MkIyNDMgIWltcG9ydGFudDtcbiAgd2lkdGg6IDEwMCU7XG4gIGNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xuICBiYWNrZ3JvdW5kOiAjOTJCMjQzICFpbXBvcnRhbnQ7XG4gIGJvcmRlcjogMnB4IHNvbGlkICM5MkIyNDMgIWltcG9ydGFudDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xufVxuXG4uYmVuZWZpdHMge1xuICBiYWNrZ3JvdW5kOiAjOTJiMjQzO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGNvbG9yOiAjZmNmOWQxO1xuICBwYWRkaW5nLXRvcDogMXB4O1xuICBwYWRkaW5nLWJvdHRvbTogMTBweDtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcbn0iXX0= */";
+    __webpack_exports__["default"] = ".planName {\n  text-align: center;\n  font-size: 17px;\n  font-weight: bold;\n}\n\n.bar {\n  border-left: 1px solid green;\n  height: 500px;\n  display: inline;\n}\n\n.subPlan {\n  padding: 20px;\n  display: inline;\n}\n\n.title {\n  display: block;\n}\n\n@font-face {\n  font-family: \"GlacialIndifference-Regular\";\n  font-style: normal;\n  font-weight: normal;\n  src: url('GlacialIndifference-Regular.otf');\n}\n\n@font-face {\n  font-family: \"GlacialIndifference-Italic\";\n  font-style: italic;\n  font-weight: normal;\n  src: url('GlacialIndifference-Italic.otf');\n}\n\nion-card {\n  font-family: initial;\n}\n\nion-title {\n  position: absolute;\n  top: 0;\n  left: 0;\n  padding: 0 90px 1px;\n  width: 100%;\n  height: 100%;\n  text-align: center;\n  background-color: #92B243 !important;\n  color: #FFFBD6 !important;\n}\n\nion-content {\n  --padding-bottom: 81px;\n}\n\n.buynow {\n  --color: white !important;\n  --background: #92B243 !important ;\n  --border: 2px solid #92B243 !important;\n  --border-color: #92B243 !important;\n  width: 100%;\n  color: white !important;\n  background: #92B243 !important;\n  border: 2px solid #92B243 !important;\n  border-radius: 5px;\n}\n\n.benefits {\n  background: #92b243;\n  text-align: center;\n  color: #fcf9d1;\n  padding-top: 1px;\n  padding-bottom: 10px;\n  margin-bottom: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9jaGV0YW4vRGVza3RvcC9yaWNlX21vYmlsZS9zcmMvYXBwL3BsYW5wYWdlL3BsYW5wYWdlLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGxhbnBhZ2UvcGxhbnBhZ2UucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUE7QUNDSjs7QURDQTtFQUNJLDRCQUFBO0VBQ0EsYUFBQTtFQUNBLGVBQUE7QUNFSjs7QURBQTtFQUNJLGFBQUE7RUFDQSxlQUFBO0FDR0o7O0FEREE7RUFDSSxjQUFBO0FDSUo7O0FERkE7RUFDSSwwQ0FBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSwyQ0FBQTtBQ0tKOztBRE1BO0VBQ0kseUNBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsMENBQUE7QUNKSjs7QURPQTtFQUdJLG9CQUFBO0FDUEo7O0FEVUE7RUFDSSxrQkFBQTtFQUNBLE1BQUE7RUFDQSxPQUFBO0VBQ0EsbUJBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0Esb0NBQUE7RUFDQSx5QkFBQTtBQ1BKOztBRFVBO0VBRUksc0JBQUE7QUNSSjs7QURXQTtFQUNJLHlCQUFBO0VBQ0EsaUNBQUE7RUFDQSxzQ0FBQTtFQUNBLGtDQUFBO0VBRUEsV0FBQTtFQUNBLHVCQUFBO0VBQ0EsOEJBQUE7RUFDQSxvQ0FBQTtFQUNBLGtCQUFBO0FDVEo7O0FEWUE7RUFDSSxtQkFBQTtFQUNBLGtCQUFBO0VBQ0EsY0FBQTtFQUNBLGdCQUFBO0VBQ0Esb0JBQUE7RUFDQSxtQkFBQTtBQ1RKIiwiZmlsZSI6InNyYy9hcHAvcGxhbnBhZ2UvcGxhbnBhZ2UucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnBsYW5OYW1le1xuICAgIHRleHQtYWxpZ246Y2VudGVyO1xuICAgIGZvbnQtc2l6ZTogMTdweDtcbiAgICBmb250LXdlaWdodDogYm9sZDtcbn1cbi5iYXJ7XG4gICAgYm9yZGVyLWxlZnQ6IDFweCBzb2xpZCBncmVlbjtcbiAgICBoZWlnaHQ6IDUwMHB4O1xuICAgIGRpc3BsYXk6IGlubGluZTtcbiAgfVxuLnN1YlBsYW57XG4gICAgcGFkZGluZzoyMHB4O1xuICAgIGRpc3BsYXk6IGlubGluZTtcbn1cbi50aXRsZXtcbiAgICBkaXNwbGF5OiBibG9jaztcbn1cbkBmb250LWZhY2Uge1xuICAgIGZvbnQtZmFtaWx5OiAnR2xhY2lhbEluZGlmZmVyZW5jZS1SZWd1bGFyJztcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XG4gICAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgICBzcmM6IHVybCgnLi4vLi4vYXNzZXRzL2ZvbnRzL2dsYWNpYWwvR2xhY2lhbEluZGlmZmVyZW5jZS1SZWd1bGFyLm90ZicpO1xufVxuXG5cbi8vIEBmb250LWZhY2Uge1xuLy8gICAgIGZvbnQtZmFtaWx5OiAnQXJpYWwnO1xuLy8gICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcbi8vICAgICBmb250LXdlaWdodDogYm9sZDtcbi8vICAgICBzcmM6IHVybCgnLi4vLi4vYXNzZXRzL2ZvbnRzL2dsYWNpYWwvQXJpYWwub3RmJyk7XG4vLyB9XG5cbkBmb250LWZhY2Uge1xuICAgIGZvbnQtZmFtaWx5OiAnR2xhY2lhbEluZGlmZmVyZW5jZS1JdGFsaWMnO1xuICAgIGZvbnQtc3R5bGU6IGl0YWxpYztcbiAgICBmb250LXdlaWdodDogbm9ybWFsO1xuICAgIHNyYzogdXJsKCcuLi8uLi9hc3NldHMvZm9udHMvZ2xhY2lhbC9HbGFjaWFsSW5kaWZmZXJlbmNlLUl0YWxpYy5vdGYnKTtcbn1cblxuaW9uLWNhcmR7XG4gICAgLy8gYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSwgI0RGRUM1MSAwJSwgIzczQUEwQSAxMDAlKSAhaW1wb3J0YW50O1xuICAgIC8vIGNvbG9yOiBibGFjayAhaW1wb3J0YW50O1xuICAgIGZvbnQtZmFtaWx5OiBpbml0aWFsO1xufVxuXG5pb24tdGl0bGUge1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB0b3A6IDA7XG4gICAgbGVmdDogMDtcbiAgICBwYWRkaW5nOiAwIDkwcHggMXB4O1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogMTAwJTtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzkyQjI0MyAhaW1wb3J0YW50O1xuICAgIGNvbG9yOiAjRkZGQkQ2ICFpbXBvcnRhbnQ7XG59XG5cbmlvbi1jb250ZW50e1xuICAgIC8vIC0tYmFja2dyb3VuZDogdXJsKCcuLi8uLi9hc3NldHMvYmFja2dyb3VuZC5wbmcnKSBuby1yZXBlYXQgY2VudGVyL2NvdmVyIGZpeGVkO1xuICAgIC0tcGFkZGluZy1ib3R0b206IDgxcHg7XG59XG5cbi5idXlub3d7XG4gICAgLS1jb2xvcjogd2hpdGUgIWltcG9ydGFudDtcbiAgICAtLWJhY2tncm91bmQ6ICM5MkIyNDMgIWltcG9ydGFudCA7XG4gICAgLS1ib3JkZXI6IDJweCBzb2xpZCAjOTJCMjQzICFpbXBvcnRhbnQ7XG4gICAgLS1ib3JkZXItY29sb3I6ICM5MkIyNDMgIWltcG9ydGFudDsgXG5cbiAgICB3aWR0aDoxMDAlO1xuICAgIGNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xuICAgIGJhY2tncm91bmQ6ICM5MkIyNDMgIWltcG9ydGFudCA7XG4gICAgYm9yZGVyOiAycHggc29saWQgIzkyQjI0MyAhaW1wb3J0YW50O1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbn1cblxuLmJlbmVmaXRze1xuICAgIGJhY2tncm91bmQ6ICM5MmIyNDM7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIGNvbG9yOiAjZmNmOWQxOyAgIFxuICAgIHBhZGRpbmctdG9wOiAxcHg7XG4gICAgcGFkZGluZy1ib3R0b206IDEwcHg7XG4gICAgbWFyZ2luLWJvdHRvbTogMTBweDsgXG59IiwiLnBsYW5OYW1lIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBmb250LXNpemU6IDE3cHg7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuXG4uYmFyIHtcbiAgYm9yZGVyLWxlZnQ6IDFweCBzb2xpZCBncmVlbjtcbiAgaGVpZ2h0OiA1MDBweDtcbiAgZGlzcGxheTogaW5saW5lO1xufVxuXG4uc3ViUGxhbiB7XG4gIHBhZGRpbmc6IDIwcHg7XG4gIGRpc3BsYXk6IGlubGluZTtcbn1cblxuLnRpdGxlIHtcbiAgZGlzcGxheTogYmxvY2s7XG59XG5cbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogXCJHbGFjaWFsSW5kaWZmZXJlbmNlLVJlZ3VsYXJcIjtcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBzcmM6IHVybChcIi4uLy4uL2Fzc2V0cy9mb250cy9nbGFjaWFsL0dsYWNpYWxJbmRpZmZlcmVuY2UtUmVndWxhci5vdGZcIik7XG59XG5AZm9udC1mYWNlIHtcbiAgZm9udC1mYW1pbHk6IFwiR2xhY2lhbEluZGlmZmVyZW5jZS1JdGFsaWNcIjtcbiAgZm9udC1zdHlsZTogaXRhbGljO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBzcmM6IHVybChcIi4uLy4uL2Fzc2V0cy9mb250cy9nbGFjaWFsL0dsYWNpYWxJbmRpZmZlcmVuY2UtSXRhbGljLm90ZlwiKTtcbn1cbmlvbi1jYXJkIHtcbiAgZm9udC1mYW1pbHk6IGluaXRpYWw7XG59XG5cbmlvbi10aXRsZSB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAwO1xuICBsZWZ0OiAwO1xuICBwYWRkaW5nOiAwIDkwcHggMXB4O1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGJhY2tncm91bmQtY29sb3I6ICM5MkIyNDMgIWltcG9ydGFudDtcbiAgY29sb3I6ICNGRkZCRDYgIWltcG9ydGFudDtcbn1cblxuaW9uLWNvbnRlbnQge1xuICAtLXBhZGRpbmctYm90dG9tOiA4MXB4O1xufVxuXG4uYnV5bm93IHtcbiAgLS1jb2xvcjogd2hpdGUgIWltcG9ydGFudDtcbiAgLS1iYWNrZ3JvdW5kOiAjOTJCMjQzICFpbXBvcnRhbnQgO1xuICAtLWJvcmRlcjogMnB4IHNvbGlkICM5MkIyNDMgIWltcG9ydGFudDtcbiAgLS1ib3JkZXItY29sb3I6ICM5MkIyNDMgIWltcG9ydGFudDtcbiAgd2lkdGg6IDEwMCU7XG4gIGNvbG9yOiB3aGl0ZSAhaW1wb3J0YW50O1xuICBiYWNrZ3JvdW5kOiAjOTJCMjQzICFpbXBvcnRhbnQ7XG4gIGJvcmRlcjogMnB4IHNvbGlkICM5MkIyNDMgIWltcG9ydGFudDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xufVxuXG4uYmVuZWZpdHMge1xuICBiYWNrZ3JvdW5kOiAjOTJiMjQzO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGNvbG9yOiAjZmNmOWQxO1xuICBwYWRkaW5nLXRvcDogMXB4O1xuICBwYWRkaW5nLWJvdHRvbTogMTBweDtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcbn0iXX0= */";
     /***/
   },
 
@@ -3387,49 +3415,57 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
     /* harmony import */
 
 
-    var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @ionic/angular */
     "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
     /* harmony import */
 
 
-    var _components_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _components_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ../components.service */
     "./src/app/components.service.ts");
     /* harmony import */
 
 
-    var _rest_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _rest_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ../rest.service */
     "./src/app/rest.service.ts");
 
     var PlanpagePage = /*#__PURE__*/function () {
-      function PlanpagePage(apiser, modelController, compSer, navCtrl) {
+      function PlanpagePage(apiser, modelController, compSer, navCtrl, location) {
         _classCallCheck(this, PlanpagePage);
 
         this.apiser = apiser;
         this.modelController = modelController;
         this.compSer = compSer;
         this.navCtrl = navCtrl;
+        this.location = location;
         this.featureSplit = [];
+        this.getUSDPlans();
+        console.log("kjnjk");
       }
 
       _createClass(PlanpagePage, [{
         key: "ngOnInit",
-        value: function ngOnInit() {
-          // this.apiser.presentLoader("Fetching Plans...");
-          this.getUSDPlans();
+        value: function ngOnInit() {// this.apiser.presentLoader("Fetching Plans...");
         }
       }, {
         key: "closeme",
         value: function closeme() {
-          this.modelController.dismiss();
+          // this.modelController.dismiss();
+          this.navCtrl.navigateForward(['prices']);
         }
       }, {
         key: "getPlans",
@@ -3457,17 +3493,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "buynow",
-        value: function buynow(planId, subPlanId, paymentAmount) {
+        value: function buynow(plan) {
           var _this9 = this;
 
           // key: 'rzp_test_LA2o3rFXhgtfmS',
           // key: 'rzp_live_igtbdlPLfbiw6d',
+          var paymentAmount = plan.discounted_prie;
+          var planid = plan.id;
           var options = {
             description: 'Rice Data',
             image: 'https://ricebrok-staging.webcooks.in/images/sitelogo.png',
             currency: 'INR',
-            key: 'rzp_live_igtbdlPLfbiw6d',
-            amount: paymentAmount.offerPrice * 100,
+            key: 'rzp_test_LA2o3rFXhgtfmS',
+            amount: paymentAmount * 100,
             name: 'SNTC',
             prefill: {
               email: localStorage.getItem('email'),
@@ -3487,32 +3525,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var successCallback = function successCallback(payment_id) {
             var tran_id = payment_id;
             var userId = localStorage.getItem('id');
-            var plan_id = planId;
-            var subPlanid = subPlanId;
+            var plan_id = planid;
 
             _this9.apiser.addOrder({
               transaction_id: tran_id,
-              user_id: userId,
-              plan_id: plan_id,
-              sub_plan_id: subPlanid
+              user_id: localStorage.getItem('id'),
+              plan_id: planid
             }).then(function (res) {
-              localStorage.setItem('chartInt', 'true');
-              localStorage.setItem('isExpired', 'false');
-
               _this9.compSer.isUserExpired.next('false');
 
-              _this9.navCtrl.navigateForward(['port']);
+              localStorage.setItem('apptype', 'USD');
 
-              _this9.apiser.CheckUserExpired().then(function (res) {
-                localStorage.setItem('expired_on', res.data);
+              _this9.closeme(); // this.navCtrl.navigateForward(['priceusd']);
 
-                _this9.closeme();
-              });
             }, function (err) {});
           };
 
           var cancelCallback = function cancelCallback(error) {
-            alert("Something went wrong."); // this.compSer.chartInterval.next("15 Days");
+            alert(JSON.stringify(error)); // this.compSer.chartInterval.next("15 Days");
           };
 
           RazorpayCheckout.open(options, successCallback, cancelCallback);
@@ -3520,8 +3550,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUSDPlans",
         value: function getUSDPlans() {
+          var _this10 = this;
+
           this.apiser.getUSDPlan().then(function (res) {
-            console.log(res);
+            _this10.listUSDPlans = res.plans;
+            console.log(res.plans);
           }, function (err) {
             console.log(err);
           });
@@ -3533,17 +3566,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     PlanpagePage.ctorParameters = function () {
       return [{
-        type: _rest_service__WEBPACK_IMPORTED_MODULE_4__["RestService"]
+        type: _rest_service__WEBPACK_IMPORTED_MODULE_5__["RestService"]
       }, {
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]
       }, {
-        type: _components_service__WEBPACK_IMPORTED_MODULE_3__["ComponentsService"]
+        type: _components_service__WEBPACK_IMPORTED_MODULE_4__["ComponentsService"]
       }, {
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"]
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"]
+      }, {
+        type: _angular_common__WEBPACK_IMPORTED_MODULE_1__["Location"]
       }];
     };
 
-    PlanpagePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+    PlanpagePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
       selector: 'app-planpage',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./planpage.page.html */
@@ -3551,7 +3586,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./planpage.page.scss */
       "./src/app/planpage/planpage.page.scss"))["default"]]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_rest_service__WEBPACK_IMPORTED_MODULE_4__["RestService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _components_service__WEBPACK_IMPORTED_MODULE_3__["ComponentsService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"]])], PlanpagePage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_rest_service__WEBPACK_IMPORTED_MODULE_5__["RestService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"], _components_service__WEBPACK_IMPORTED_MODULE_4__["ComponentsService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"], _angular_common__WEBPACK_IMPORTED_MODULE_1__["Location"]])], PlanpagePage);
     /***/
   },
 
@@ -3777,10 +3812,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "login",
         value: function login(userDetails) {
-          var _this10 = this;
+          var _this11 = this;
 
           return new Promise(function (resolve, reject) {
-            _this10.http.post(_this10.APIURL + 'login', userDetails).subscribe(function (res) {
+            _this11.http.post(_this11.APIURL + 'login', userDetails).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3790,11 +3825,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "sampleEntryPreLoaddata",
         value: function sampleEntryPreLoaddata() {
-          var _this11 = this;
+          var _this12 = this;
 
           var token = localStorage.getItem('token');
           return new Promise(function (resolve, reject) {
-            _this11.http.get(_this11.APIURL + 'pre-load-sample-data?api_token=' + token).subscribe(function (res) {
+            _this12.http.get(_this12.APIURL + 'pre-load-sample-data?api_token=' + token).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3804,11 +3839,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getLatestNotifications",
         value: function getLatestNotifications() {
-          var _this12 = this;
+          var _this13 = this;
 
           var id = localStorage.getItem('id');
           return new Promise(function (resolve, reject) {
-            _this12.http.get(_this12.APIURL + 'get/user/notification/' + id).subscribe(function (res) {
+            _this13.http.get(_this13.APIURL + 'get/user/notification/' + id).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3818,10 +3853,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getTransportStates",
         value: function getTransportStates() {
-          var _this13 = this;
+          var _this14 = this;
 
           return new Promise(function (resolve, reject) {
-            _this13.http.get(_this13.APIURL + 'get/transport/states').subscribe(function (res) {
+            _this14.http.get(_this14.APIURL + 'get/transport/states').subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3831,11 +3866,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "saveSampleEntry",
         value: function saveSampleEntry(formData) {
-          var _this14 = this;
+          var _this15 = this;
 
           var token = localStorage.getItem('token');
           return new Promise(function (resolve, reject) {
-            _this14.http.post(_this14.APIURL + 'sample/save?api_token=' + token, JSON.stringify(formData)).subscribe(function (res) {
+            _this15.http.post(_this15.APIURL + 'sample/save?api_token=' + token, JSON.stringify(formData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3845,11 +3880,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "pubdingCourierSamples",
         value: function pubdingCourierSamples() {
-          var _this15 = this;
+          var _this16 = this;
 
           var token = localStorage.getItem('token');
           return new Promise(function (resolve, reject) {
-            _this15.http.get(_this15.APIURL + 'pending/courier/samples?api_token=' + token).subscribe(function (res) {
+            _this16.http.get(_this16.APIURL + 'pending/courier/samples?api_token=' + token).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3859,11 +3894,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "listPorts",
         value: function listPorts() {
-          var _this16 = this;
+          var _this17 = this;
 
           var token = localStorage.getItem('token');
           return new Promise(function (resolve, reject) {
-            _this16.http.get(_this16.APIURL + 'list/port').subscribe(function (res) {
+            _this17.http.get(_this17.APIURL + 'list/port').subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3873,11 +3908,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getImagesForDashboard",
         value: function getImagesForDashboard() {
-          var _this17 = this;
+          var _this18 = this;
 
           var token = localStorage.getItem('token');
           return new Promise(function (resolve, reject) {
-            _this17.http.get(_this17.APIURL + 'get/images/for/dashboard').subscribe(function (res) {
+            _this18.http.get(_this18.APIURL + 'get/images/for/dashboard').subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3887,11 +3922,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "saveCourier",
         value: function saveCourier(formData) {
-          var _this18 = this;
+          var _this19 = this;
 
           var token = localStorage.getItem('token');
           return new Promise(function (resolve, reject) {
-            _this18.http.post(_this18.APIURL + 'courier/save?api_token=' + token, JSON.stringify(formData)).subscribe(function (res) {
+            _this19.http.post(_this19.APIURL + 'courier/save?api_token=' + token, JSON.stringify(formData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3901,11 +3936,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "saveMillStatus",
         value: function saveMillStatus(formData) {
-          var _this19 = this;
+          var _this20 = this;
 
           var token = localStorage.getItem('token');
           return new Promise(function (resolve, reject) {
-            _this19.http.post(_this19.APIURL + 'millstatus/save?api_token=' + token, JSON.stringify(formData)).subscribe(function (res) {
+            _this20.http.post(_this20.APIURL + 'millstatus/save?api_token=' + token, JSON.stringify(formData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3915,11 +3950,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "saveRiceQuery",
         value: function saveRiceQuery(formData) {
-          var _this20 = this;
+          var _this21 = this;
 
           var token = localStorage.getItem('token');
           return new Promise(function (resolve, reject) {
-            _this20.http.post(_this20.APIURL + 'add/rice/query?api_token=' + token, JSON.stringify(formData)).subscribe(function (res) {
+            _this21.http.post(_this21.APIURL + 'add/rice/query?api_token=' + token, JSON.stringify(formData)).subscribe(function (res) {
+              resolve(res);
+            }, function (err) {
+              reject(err);
+            });
+          });
+        }
+      }, {
+        key: "updateCounterStatus",
+        value: function updateCounterStatus(formData) {
+          var _this22 = this;
+
+          var token = localStorage.getItem('token');
+          return new Promise(function (resolve, reject) {
+            _this22.http.post(_this22.APIURL + 'update/counter/status?api_token=' + token, JSON.stringify(formData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3960,10 +4009,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPrices",
         value: function getPrices(state, type) {
-          var _this21 = this;
+          var _this23 = this;
 
           return new Promise(function (resolve, reject) {
-            _this21.http.get(_this21.APIURL + 'prices/' + state + '/' + type).subscribe(function (res) {
+            _this23.http.get(_this23.APIURL + 'prices/' + state + '/' + type).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3973,11 +4022,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getChartData",
         value: function getChartData(state, riceType, rice, timePeriod) {
-          var _this22 = this;
+          var _this24 = this;
 
           timePeriod = timePeriod.split(' ').join('_');
           return new Promise(function (resolve, reject) {
-            _this22.http.get(_this22.APIURL + 'get/price/' + btoa(state) + '/' + btoa(riceType) + '/' + btoa(rice) + '/' + btoa(timePeriod)).subscribe(function (res) {
+            _this24.http.get(_this24.APIURL + 'get/price/' + btoa(state) + '/' + btoa(riceType) + '/' + btoa(rice) + '/' + btoa(timePeriod)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3987,10 +4036,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPlans",
         value: function getPlans() {
-          var _this23 = this;
+          var _this25 = this;
 
           return new Promise(function (resolve, reject) {
-            _this23.http.get(_this23.APIURL + 'get/plans').subscribe(function (res) {
+            _this25.http.get(_this25.APIURL + 'get/plans').subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4000,10 +4049,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "checkUserPlan",
         value: function checkUserPlan() {
-          var _this24 = this;
+          var _this26 = this;
 
           return new Promise(function (resolve, reject) {
-            _this24.http.get(_this24.APIURL + 'check/user/plan/' + localStorage.getItem('id')).subscribe(function (res) {
+            _this26.http.get(_this26.APIURL + 'check/user/plan/' + localStorage.getItem('id')).subscribe(function (res) {
               resolve(res.data);
             }, function (err) {
               reject(err);
@@ -4013,11 +4062,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addOrder",
         value: function addOrder(jsonData) {
-          var _this25 = this;
+          var _this27 = this;
 
           var token = localStorage.getItem('token');
           return new Promise(function (resolve, reject) {
-            _this25.http.post(_this25.APIURL + 'save/order?api_token=' + token, JSON.stringify(jsonData)).subscribe(function (res) {
+            _this27.http.post(_this27.APIURL + 'save/order?api_token=' + token, JSON.stringify(jsonData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4027,10 +4076,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getGallery",
         value: function getGallery() {
-          var _this26 = this;
+          var _this28 = this;
 
           return new Promise(function (resolve, reject) {
-            _this26.http.get(_this26.APIURL + 'get/gallery/list').subscribe(function (res) {
+            _this28.http.get(_this28.APIURL + 'get/gallery/list').subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4040,10 +4089,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getGalleryData",
         value: function getGalleryData(_getGalleryData) {
-          var _this27 = this;
+          var _this29 = this;
 
           return new Promise(function (resolve, reject) {
-            _this27.http.get(_this27.APIURL + 'get/gallery/details/' + _getGalleryData).subscribe(function (res) {
+            _this29.http.get(_this29.APIURL + 'get/gallery/details/' + _getGalleryData).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4053,11 +4102,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "regsiterUser",
         value: function regsiterUser(formdata) {
-          var _this28 = this;
+          var _this30 = this;
 
           var token = localStorage.getItem('token');
           return new Promise(function (resolve, reject) {
-            _this28.http.post(_this28.APIURL + 'save/user?api_token=' + token, JSON.stringify(formdata)).subscribe(function (res) {
+            _this30.http.post(_this30.APIURL + 'save/user?api_token=' + token, JSON.stringify(formdata)).subscribe(function (res) {
               console.log(res);
               resolve(res);
             }, function (err) {
@@ -4069,11 +4118,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateUser",
         value: function updateUser(formdata) {
-          var _this29 = this;
+          var _this31 = this;
 
           var token = localStorage.getItem('token');
           return new Promise(function (resolve, reject) {
-            _this29.http.post(_this29.APIURL + 'update/user?api_token=' + token, JSON.stringify(formdata)).subscribe(function (res) {
+            _this31.http.post(_this31.APIURL + 'update/user?api_token=' + token, JSON.stringify(formdata)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4083,12 +4132,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "verifyUser",
         value: function verifyUser(formdata) {
-          var _this30 = this;
+          var _this32 = this;
 
           console.log(formdata);
           var token = localStorage.getItem('token');
           return new Promise(function (resolve, reject) {
-            _this30.http.post(_this30.APIURL + 'verify/user?api_token=' + token, JSON.stringify(formdata)).subscribe(function (res) {
+            _this32.http.post(_this32.APIURL + 'verify/user?api_token=' + token, JSON.stringify(formdata)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4098,10 +4147,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "sendOTP",
         value: function sendOTP(number) {
-          var _this31 = this;
+          var _this33 = this;
 
           return new Promise(function (resolve, reject) {
-            _this31.http.get(_this31.APIURL + 'send/otp/' + number).subscribe(function (res) {
+            _this33.http.get(_this33.APIURL + 'send/otp/' + number).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4111,10 +4160,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "verifyOTP",
         value: function verifyOTP(number, otp) {
-          var _this32 = this;
+          var _this34 = this;
 
           return new Promise(function (resolve, reject) {
-            _this32.http.get(_this32.APIURL + 'verify/otp/' + number + '/' + otp).subscribe(function (res) {
+            _this34.http.get(_this34.APIURL + 'verify/otp/' + number + '/' + otp).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4124,11 +4173,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "changePassword",
         value: function changePassword(formData) {
-          var _this33 = this;
+          var _this35 = this;
 
           var token = localStorage.getItem('token');
           return new Promise(function (resolve, reject) {
-            _this33.http.post(_this33.APIURL + 'change/password?api_token=' + token, JSON.stringify(formData)).subscribe(function (res) {
+            _this35.http.post(_this35.APIURL + 'change/password?api_token=' + token, JSON.stringify(formData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4138,10 +4187,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getBasmatiState",
         value: function getBasmatiState() {
-          var _this34 = this;
+          var _this36 = this;
 
           return new Promise(function (resolve, reject) {
-            _this34.http.get(_this34.APIURL + 'get/basmati/state').subscribe(function (res) {
+            _this36.http.get(_this36.APIURL + 'get/basmati/state').subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4151,10 +4200,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getNONBasmatiState",
         value: function getNONBasmatiState() {
-          var _this35 = this;
+          var _this37 = this;
 
           return new Promise(function (resolve, reject) {
-            _this35.http.get(_this35.APIURL + 'get/nonbasmati/state').subscribe(function (res) {
+            _this37.http.get(_this37.APIURL + 'get/nonbasmati/state').subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4164,10 +4213,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getChartInterval",
         value: function getChartInterval() {
-          var _this36 = this;
+          var _this38 = this;
 
           return new Promise(function (resolve, reject) {
-            _this36.http.get(_this36.APIURL + 'get/chartinterval').subscribe(function (res) {
+            _this38.http.get(_this38.APIURL + 'get/chartinterval').subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4177,10 +4226,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "sendMessage",
         value: function sendMessage(userDetails) {
-          var _this37 = this;
+          var _this39 = this;
 
           return new Promise(function (resolve, reject) {
-            _this37.http.post(_this37.APIURL + 'save/message', userDetails).subscribe(function (res) {
+            _this39.http.post(_this39.APIURL + 'save/message', userDetails).subscribe(function (res) {
               console.log("jnhjkn");
               resolve(res);
             }, function (err) {
@@ -4192,10 +4241,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateToken",
         value: function updateToken(id, token) {
-          var _this38 = this;
+          var _this40 = this;
 
           return new Promise(function (resolve, reject) {
-            _this38.http.post(_this38.APIURL + 'update/user/token', JSON.stringify({
+            _this40.http.post(_this40.APIURL + 'update/user/token', JSON.stringify({
               id: id,
               user_token: token
             })).subscribe(function (res) {
@@ -4208,10 +4257,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getMessages",
         value: function getMessages(from, to) {
-          var _this39 = this;
+          var _this41 = this;
 
           return new Promise(function (resolve, reject) {
-            _this39.http.get(_this39.APIURL + 'get/message/' + from + '/' + to).subscribe(function (res) {
+            _this41.http.get(_this41.APIURL + 'get/message/' + from + '/' + to).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4221,10 +4270,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getChatPerson",
         value: function getChatPerson() {
-          var _this40 = this;
+          var _this42 = this;
 
           return new Promise(function (resolve, reject) {
-            _this40.http.get(_this40.APIURL + 'get/message/contacts/list').subscribe(function (res) {
+            _this42.http.get(_this42.APIURL + 'get/message/contacts/list').subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4234,10 +4283,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getChatCount",
         value: function getChatCount() {
-          var _this41 = this;
+          var _this43 = this;
 
           return new Promise(function (resolve, reject) {
-            _this41.http.get(_this41.APIURL + 'get/user/messages/count/' + localStorage.getItem('id')).subscribe(function (res) {
+            _this43.http.get(_this43.APIURL + 'get/user/messages/count/' + localStorage.getItem('id')).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4247,10 +4296,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "CheckUserExpired",
         value: function CheckUserExpired() {
-          var _this42 = this;
+          var _this44 = this;
 
           return new Promise(function (resolve, reject) {
-            _this42.http.get(_this42.APIURL + 'check/user/expired/' + localStorage.getItem('id')).subscribe(function (res) {
+            _this44.http.get(_this44.APIURL + 'check/user/expired/' + localStorage.getItem('id')).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4260,10 +4309,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPriceBasmatiState",
         value: function getPriceBasmatiState() {
-          var _this43 = this;
+          var _this45 = this;
 
           return new Promise(function (resolve, reject) {
-            _this43.http.get(_this43.APIURL + 'get/price/states').subscribe(function (res) {
+            _this45.http.get(_this45.APIURL + 'get/price/states').subscribe(function (res) {
               console.log(res);
             }, function (err) {
               console.log(err);
@@ -4282,10 +4331,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPortDetails",
         value: function getPortDetails(state) {
-          var _this44 = this;
+          var _this46 = this;
 
           return new Promise(function (resolve, reject) {
-            _this44.http.get(_this44.APIURL + 'get/port/details/' + state).subscribe(function (res) {
+            _this46.http.get(_this46.APIURL + 'get/port/details/' + state).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4295,10 +4344,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUserPlanDetails",
         value: function getUserPlanDetails() {
-          var _this45 = this;
+          var _this47 = this;
 
           return new Promise(function (resolve, reject) {
-            _this45.http.get(_this45.APIURL + 'get/user/plan/' + localStorage.getItem('id')).subscribe(function (res) {
+            _this47.http.get(_this47.APIURL + 'get/user/plan/' + localStorage.getItem('id')).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4308,10 +4357,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getChatStatus",
         value: function getChatStatus() {
-          var _this46 = this;
+          var _this48 = this;
 
           return new Promise(function (resolve, reject) {
-            _this46.http.get(_this46.APIURL + 'get/chat/status').subscribe(function (res) {
+            _this48.http.get(_this48.APIURL + 'get/chat/status').subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4321,10 +4370,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getLatestVersion",
         value: function getLatestVersion() {
-          var _this47 = this;
+          var _this49 = this;
 
           return new Promise(function (resolve, reject) {
-            _this47.http.get(_this47.APIURL + 'get/latest/version').subscribe(function (res) {
+            _this49.http.get(_this49.APIURL + 'get/latest/version').subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4334,10 +4383,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUSDPrice",
         value: function getUSDPrice() {
-          var _this48 = this;
+          var _this50 = this;
 
           return new Promise(function (resolve, reject) {
-            _this48.http.get(_this48.APIURL + 'get/usd/prices').subscribe(function (res) {
+            _this50.http.get(_this50.APIURL + 'get/usd/prices').subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4347,10 +4396,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getOceanPorts",
         value: function getOceanPorts() {
-          var _this49 = this;
+          var _this51 = this;
 
           return new Promise(function (resolve, reject) {
-            _this49.http.get(_this49.APIURL + 'get/distinct/region').subscribe(function (res) {
+            _this51.http.get(_this51.APIURL + 'get/distinct/region').subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4360,10 +4409,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllPorts",
         value: function getAllPorts(riceQualityId) {
-          var _this50 = this;
+          var _this52 = this;
 
           return new Promise(function (resolve, reject) {
-            _this50.http.get(_this50.APIURL + 'get/all/ports/' + riceQualityId).subscribe(function (res) {
+            _this52.http.get(_this52.APIURL + 'get/all/ports/' + riceQualityId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4373,10 +4422,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getDataForBuyer",
         value: function getDataForBuyer() {
-          var _this51 = this;
+          var _this53 = this;
 
           return new Promise(function (resolve, reject) {
-            _this51.http.get(_this51.APIURL + 'get/data/for/buyer').subscribe(function (res) {
+            _this53.http.get(_this53.APIURL + 'get/data/for/buyer').subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4386,10 +4435,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getBuyerDetails",
         value: function getBuyerDetails(queryId) {
-          var _this52 = this;
+          var _this54 = this;
 
           return new Promise(function (resolve, reject) {
-            _this52.http.get(_this52.APIURL + 'get/buyer/details/' + queryId).subscribe(function (res) {
+            _this54.http.get(_this54.APIURL + 'get/buyer/details/' + queryId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4399,10 +4448,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "saveUserBid",
         value: function saveUserBid(postedData) {
-          var _this53 = this;
+          var _this55 = this;
 
           return new Promise(function (resolve, reject) {
-            _this53.http.post(_this53.APIURL + 'save/bid', JSON.stringify(postedData)).subscribe(function (res) {
+            _this55.http.post(_this55.APIURL + 'save/bid', JSON.stringify(postedData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4412,10 +4461,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getCalculatorDetails",
         value: function getCalculatorDetails() {
-          var _this54 = this;
+          var _this56 = this;
 
           return new Promise(function (resolve, reject) {
-            _this54.http.get(_this54.APIURL + 'get/calculator/data').subscribe(function (res) {
+            _this56.http.get(_this56.APIURL + 'get/calculator/data').subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4425,10 +4474,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "saveUSDPrices",
         value: function saveUSDPrices(postedData) {
-          var _this55 = this;
+          var _this57 = this;
 
           return new Promise(function (resolve, reject) {
-            _this55.http.post(_this55.APIURL + 'save/usd/prices', postedData).subscribe(function (res) {
+            _this57.http.post(_this57.APIURL + 'save/usd/prices', postedData).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4438,10 +4487,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addBidOnBuyerQuery",
         value: function addBidOnBuyerQuery(postedData) {
-          var _this56 = this;
+          var _this58 = this;
 
           return new Promise(function (resolve, reject) {
-            _this56.http.post(_this56.APIURL + 'save/user/bid', postedData).subscribe(function (res) {
+            _this58.http.post(_this58.APIURL + 'save/user/bid', postedData).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4451,10 +4500,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getMyBids",
         value: function getMyBids(userid) {
-          var _this57 = this;
+          var _this59 = this;
 
           return new Promise(function (resolve, reject) {
-            _this57.http.get(_this57.APIURL + 'get/my/bids/' + userid).subscribe(function (res) {
+            _this59.http.get(_this59.APIURL + 'get/my/bids/' + userid).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4464,10 +4513,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getBuyerList",
         value: function getBuyerList() {
-          var _this58 = this;
+          var _this60 = this;
 
           return new Promise(function (resolve, reject) {
-            _this58.http.get(_this58.APIURL + 'get/buyer/list').subscribe(function (res) {
+            _this60.http.get(_this60.APIURL + 'get/buyer/list').subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4477,10 +4526,36 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUSDPlan",
         value: function getUSDPlan() {
-          var _this59 = this;
+          var _this61 = this;
 
           return new Promise(function (resolve, reject) {
-            _this59.http.get(_this59.APIURL + 'get/usd/plans').subscribe(function (res) {
+            _this61.http.get(_this61.APIURL + 'get/usd/plans').subscribe(function (res) {
+              resolve(res);
+            }, function (err) {
+              reject(err);
+            });
+          });
+        }
+      }, {
+        key: "getUSDCounties",
+        value: function getUSDCounties() {
+          var _this62 = this;
+
+          return new Promise(function (resolve, reject) {
+            _this62.http.get(_this62.APIURL + 'get/countries/list').subscribe(function (res) {
+              resolve(res);
+            }, function (err) {
+              reject(err);
+            });
+          });
+        }
+      }, {
+        key: "contact",
+        value: function contact() {
+          var _this63 = this;
+
+          return new Promise(function (resolve, reject) {
+            _this63.http.get(_this63.APIURL + 'get/contact/details').subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4603,54 +4678,54 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPicture",
         value: function getPicture() {
-          var _this60 = this;
+          var _this64 = this;
 
           this.componentService.takePicture().then(function (imageData) {
             var base64Image = 'data:image/jpeg;base64,' + imageData;
-            _this60.sampleImage = base64Image;
-            _this60.selectedImage = base64Image;
+            _this64.sampleImage = base64Image;
+            _this64.selectedImage = base64Image;
           });
         }
       }, {
         key: "ionViewDidEnter",
         value: function ionViewDidEnter() {
-          var _this61 = this;
+          var _this65 = this;
 
           this.componentService.presentLoading().then(function () {
-            _this61.restService.sampleEntryPreLoaddata().then(function (res) {
-              _this61.componentService.loadingController.dismiss();
+            _this65.restService.sampleEntryPreLoaddata().then(function (res) {
+              _this65.componentService.loadingController.dismiss();
 
-              _this61.sellers = res.seller;
-              _this61.qualities = res.quality;
-              _this61.packings = res.packing;
-              _this61.packingTypes = res.packing_type;
+              _this65.sellers = res.seller;
+              _this65.qualities = res.quality;
+              _this65.packings = res.packing;
+              _this65.packingTypes = res.packing_type;
             });
           });
         }
       }, {
         key: "saveSample",
         value: function saveSample() {
-          var _this62 = this;
+          var _this66 = this;
 
           this.componentService.validateInput(this.formData, ['date', 'seller', 'packing', 'packing_type', 'qty']).then(function (isValid) {
             if (isValid) {
-              if (_this62.selectedImage == '') {
-                _this62.componentService.presentToastWithOptions('Please capture the sample image!');
+              if (_this66.selectedImage == '') {
+                _this66.componentService.presentToastWithOptions('Please capture the sample image!');
               } else {
-                _this62.formData['image'] = _this62.selectedImage;
+                _this66.formData['image'] = _this66.selectedImage;
 
-                _this62.componentService.presentLoading().then(function () {
-                  _this62.restService.saveSampleEntry(_this62.formData).then(function (res) {
-                    _this62.componentService.loadingController.dismiss();
+                _this66.componentService.presentLoading().then(function () {
+                  _this66.restService.saveSampleEntry(_this66.formData).then(function (res) {
+                    _this66.componentService.loadingController.dismiss();
 
-                    _this62.componentService.presentToastWithOptions('Sample entry saved successfully!', 'Success');
+                    _this66.componentService.presentToastWithOptions('Sample entry saved successfully!', 'Success');
 
-                    _this62.componentService.modalCtrl.dismiss();
+                    _this66.componentService.modalCtrl.dismiss();
                   });
                 });
               }
             } else {
-              _this62.componentService.presentToastWithOptions('Please fill all fields!');
+              _this66.componentService.presentToastWithOptions('Please fill all fields!');
             }
           });
         }
@@ -4767,53 +4842,53 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPicture",
         value: function getPicture() {
-          var _this63 = this;
+          var _this67 = this;
 
           this.componentService.takePicture().then(function (imageData) {
             var base64Image = 'data:image/jpeg;base64,' + imageData;
-            _this63.courierImage = base64Image;
-            _this63.selectedImage = base64Image;
+            _this67.courierImage = base64Image;
+            _this67.selectedImage = base64Image;
           });
         }
       }, {
         key: "ionViewDidEnter",
         value: function ionViewDidEnter() {
-          var _this64 = this;
+          var _this68 = this;
 
           this.componentService.presentLoading().then(function () {
-            _this64.restService.pubdingCourierSamples().then(function (res) {
-              _this64.componentService.loadingController.dismiss();
+            _this68.restService.pubdingCourierSamples().then(function (res) {
+              _this68.componentService.loadingController.dismiss();
 
-              _this64.samples = res.samples;
-              _this64.sentVia = res.sent_via;
+              _this68.samples = res.samples;
+              _this68.sentVia = res.sent_via;
             });
           });
         }
       }, {
         key: "saveCourier",
         value: function saveCourier() {
-          var _this65 = this;
+          var _this69 = this;
 
           this.componentService.validateInput(this.formData, ['date', 'details', 'sent_via', 'sample']).then(function (isValid) {
             if (isValid) {
-              var samples = _this65.formData.sample;
+              var samples = _this69.formData.sample;
               var arrangedSamples = {};
               samples.forEach(function (sample) {
                 arrangedSamples[sample] = 'on';
               });
-              _this65.formData['sample'] = arrangedSamples;
+              _this69.formData['sample'] = arrangedSamples;
 
-              _this65.componentService.presentLoading().then(function () {
-                _this65.restService.saveCourier(_this65.formData).then(function (res) {
-                  _this65.componentService.loadingController.dismiss();
+              _this69.componentService.presentLoading().then(function () {
+                _this69.restService.saveCourier(_this69.formData).then(function (res) {
+                  _this69.componentService.loadingController.dismiss();
 
-                  _this65.componentService.modalCtrl.dismiss();
+                  _this69.componentService.modalCtrl.dismiss();
 
-                  _this65.componentService.presentToastWithOptions('Courier saved successfully!', 'Success');
+                  _this69.componentService.presentToastWithOptions('Courier saved successfully!', 'Success');
                 });
               });
             } else {
-              _this65.componentService.presentToastWithOptions('Please fill required fileds');
+              _this69.componentService.presentToastWithOptions('Please fill required fileds');
             }
           });
         }

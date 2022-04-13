@@ -19,22 +19,22 @@ export class LoginPage implements OnInit {
   	}
 
   	ngOnInit() {
+
 	}
 	registernow(){
 		this.navCtrl.navigateForward(['register']);
 	}
+
 	loginNow(){
 		if(this.email == undefined || this.email == '' || this.password == '' || this.password == undefined){
 			this.componentService.presentToastWithOptions('Please fill email and password');
 			return false;
 		}
-
 		this.componentService.presentLoading();
 		let userDetails = {
 			email: this.email,
 			password: this.password
 		}
-
 		this.restService.login(userDetails).then((res:any)=>{
 			this.componentService.loadingController.dismiss();
 			if(res.status == 'success'){
@@ -42,7 +42,6 @@ export class LoginPage implements OnInit {
 					localStorage.setItem('mobile' , res.user.mobile);
 					this.navCtrl.navigateForward(['verifyotp']);
 				}else{
-					console.log(res)
 					localStorage.setItem('id' , res.user.id);
 					localStorage.setItem('name' , res.user.name);
 					localStorage.setItem('email' , res.user.email);
@@ -59,12 +58,9 @@ export class LoginPage implements OnInit {
 					localStorage.setItem('user',JSON.stringify(res.user));
 					localStorage.setItem('token',res.user.user_token);
 
-
 					this.componentService.loginUser.next(res.user.name);
 					this.componentService.firePushNotif.next(res.user.name);
 					
-					console.log(localStorage.getItem('role'));
-
 					if(localStorage.getItem('role') == '2'){						
 						this.navCtrl.navigateForward(['admin/chat']);
 					}else{
@@ -78,11 +74,14 @@ export class LoginPage implements OnInit {
 		});
 
 	}
+	
 	forgotpassword(){
 		this.navCtrl.navigateForward(['forgotpassword']);
 	}
+	
 	hideShowPassword() {
 		this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
 		this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
 	}
+
 }
