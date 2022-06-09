@@ -9,7 +9,7 @@
 					<h5>Live Pricess</h5>
 				</ion-col>
 
-				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" *ngIf=" apptype != 'USD'" (click)="goTo('port')">
+				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" (click)="goTo('port')">
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
 					<img src="../../assets/menu/transport.png" class="truck" style="width: 60px !important"/>
 					<h5>Transport</h5>
@@ -47,16 +47,22 @@
 					<h5>Ocean Freight</h5>
 				</ion-col>
 
-				<ion-col class="tab-icon ion-activatable ripple-parent" *ngIf="seledctedRole == 5 " align="center" (click)='goTo("buy")'>
+				<ion-col class="tab-icon ion-activatable ripple-parent" *ngIf="seledctedRole == 5 && apptype == 'USD' " align="center" (click)='goTo("buy")'>
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
 					<img src="../../assets/menu/486-4865980_shopping-cart-png-vector-shopping-cart-png-transparent-removebg-preview.png" style="width: 34px !important" />
 					<h5>Buy	</h5>
 				</ion-col>
 
-				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" *ngIf="seledctedRole == 4 || seledctedRole == 6" (click)='goTo("calculator")'>
+				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" *ngIf="seledctedRole == 4 || seledctedRole == 6 || seledctedRole == 7  && apptype == 'USD'" (click)='goTo("calculator")'>
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
 					<img src="../../assets/menu/calculator.png" style="width: 21px !important" />
 					<h5>Calculator</h5>
+				</ion-col>
+
+				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" *ngIf="seledctedRole == 5  && apptype == 'USD'" (click)='goTo("hotdeals")'>
+					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
+					<img src="../../assets/menu/fire-sign-fire-flame-icon-isolated-on-white-background-illustration-free-vector-removebg-preview.png" style="width: 34px !important" />
+					<h5>Hot Deals</h5>
 				</ion-col>
 
 				<!-- <ion-col class="tab-icon ion-activatable ripple-parent" align="center" *ngIf=" isCurrentUser == 'false' " (click)='goTo("gallery")'>
@@ -65,13 +71,13 @@
 					<h5>Gallery</h5>
 				</ion-col> -->
 
-				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" *ngIf="seledctedRole == 4 || seledctedRole == 6" (click)='goToBids()'>
+				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" *ngIf="seledctedRole == 4 || seledctedRole == 6 || seledctedRole == 7 && apptype == 'USD'" (click)='goToBids()'>
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
-					<img src="../../assets/menu/gallery.png" />
-					<h5>Bids</h5>
+					<img src="../../assets/offers.png" style="width: 27px;" />
+					<h5>Offer</h5>
 				</ion-col>
 
-				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" (click)="goTo('otherservices')" menuToggle>
+				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" *ngIf="apptype == 'USD'" (click)="goTo('otherservices')" menuToggle>
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
 					<img src="../../assets/menu/images__1_-removebg-preview.png" style="width: 27px;" />
 					<h5>Other services</h5>
@@ -79,7 +85,7 @@
 			</ng-container>
 
 		</ion-row>
-		<button id="clickButton" (click)="updateNotification()">kjhnj</button>
-		<button id="clickButtonforPayment" (click)="clickButtonforPayment()">kjhnj</button>
+		<button style="display: none;" id="clickButton" (click)="updateNotification()">kjhnj</button>
+		<button style="display: none;" id="clickButtonforPayment" (click)="clickButtonforPayment()">kjhnj</button>
 	</ion-col>
 </ion-row>

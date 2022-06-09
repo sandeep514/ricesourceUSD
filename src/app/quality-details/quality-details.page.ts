@@ -55,8 +55,12 @@ export class QualityDetailsPage implements OnInit {
 	CIFminData:any;
 	CIFmaxData:any;
 	riceQualityId:any;
+	selectedPackage:any;
+	selectedUserCountry:any;
+	selectedUserRegion:any;
 
 	constructor(public navCtrl:NavController ,public apiser:RestService,public loading:LoadingController,public compSer: ComponentsService,public ModelCtrl: ModalController,public componentService: ComponentsService,public activRoute: ActivatedRoute) {
+
 		this.selectedstate = localStorage.getItem('state');
 		this.selectedriceType = localStorage.getItem('riceType');
 		this.chartInt = localStorage.getItem('chartInt');
@@ -148,6 +152,10 @@ export class QualityDetailsPage implements OnInit {
 	getAllCountryPorts(riceQualityId){
 		this.componentService.presentLoading().then(() => {
 			this.apiser.getAllPorts(riceQualityId).then( (res:any) => {
+				this.selectedUserCountry = res.defalutPortDetail[0].country;
+				this.selectedUserRegion = res.defalutPortDetail[0].region;
+
+				this.selectedPackage = res.fiftykgMaster.bag_size+' '+res.fiftykgMaster.bag_type;
 				Highcharts.stockChart('highcharts',{
 					chart: {
 						alignTicks: false,
@@ -240,7 +248,8 @@ export class QualityDetailsPage implements OnInit {
 					}
 					}]
 				});
-
+				console.log("kjnk");
+				
 				this.componentService.loadingController.dismiss();
 				this.packing = res.packing;
 				this.FOB = res.FOB;
@@ -266,7 +275,18 @@ export class QualityDetailsPage implements OnInit {
 	}
 
 	changeBag(data){
-		let modifiedAmount:any = parseFloat(data.detail.value).toFixed(2);
+		console.log(data)
+		console.log(this.packing);
+
+		let bag_size = this.packing[data.detail.value]['bag_size'];
+		let bag_type = this.packing[data.detail.value]['bag_type'];
+		let bag_PMT_USD = this.packing[data.detail.value]['PMT_USD'];
+
+
+		this.selectedPackage = bag_size+' '+bag_type;
+		let packingPMT_USD = bag_PMT_USD;
+
+		let modifiedAmount:any = parseFloat(packingPMT_USD).toFixed(2);
 		let fobmin:any = parseFloat(this.fobminData).toFixed(2)
 		let fobmax:any = parseFloat(this.fobmaxData).toFixed(2);
 		let fiftyKGBagSize:any = parseFloat(this.fiftykgMaster.PMT_USD).toFixed(2);
@@ -287,6 +307,8 @@ export class QualityDetailsPage implements OnInit {
 		let region = data.detail.value;
 		this.selectedRegion = region;
 		this.country = ((Object.keys(this.ports[region])).sort());
+		this.defalutPort = '';
+		this.selectedUserCountry = '';
 	}
 	changeCountry(data){
 		let countries = data.detail.value;
@@ -294,6 +316,7 @@ export class QualityDetailsPage implements OnInit {
 
 		this.selectedPorts = this.ports[this.selectedRegion][this.selectedCountry];
 		this.selectedPorts = (Object.keys(this.selectedPorts).sort());
+		this.selectedUserCountry = this.selectedCountry
 	}
 
 	changePort(data){

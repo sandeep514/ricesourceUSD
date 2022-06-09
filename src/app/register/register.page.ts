@@ -29,6 +29,9 @@ export class RegisterPage implements OnInit {
 	public zipcode:any;
 	public contactperson:any;
 	public selectedCountry:any;
+	public bagVendorCategory:any;
+	public selectedBagVendorCategory:any = 0;
+	public selectedCountryMobileCode:any = '';
 
 	password2Type: string = 'password';
 	password2Icon: string = 'eye-off';
@@ -45,6 +48,7 @@ export class RegisterPage implements OnInit {
 	ngOnInit() {
 		this.userState = "supplier";
 		this.getCountries();
+		this.getBagVendors();
 	}
 	
 	changeState(state){
@@ -72,12 +76,12 @@ export class RegisterPage implements OnInit {
 						'mobile' :  this.mobile,
 						'password' :  this.password,
 						'import_port' :  this.mySelectedPort,
-						'userState' : this.userState
-
+						'userState' : this.userState,
+						'bagCategory' : this.selectedBagVendorCategory
 					}
 
 					this.api.regsiterUser(postData).then((res:any) => {
-		
+						console.log(res);
 						localStorage.setItem('id' , res.data.id);
 						localStorage.setItem('name' , res.data.name);
 						localStorage.setItem('email' , res.data.email);
@@ -86,6 +90,7 @@ export class RegisterPage implements OnInit {
 						localStorage.setItem('companyname' , res.data.companyname);
 						localStorage.setItem('expired_on' , res.data.expired_on);
 						localStorage.setItem('apptype' , 'USD');
+						localStorage.setItem('isUserActivatedUSD' , res.data.is_usd_active);
 						
 						this.componentSer.compareTwoDates(res.data.expired_on);
 						this.navCtrl.navigateForward(['verifyotp']);
@@ -178,9 +183,24 @@ export class RegisterPage implements OnInit {
 		})
 	}
 
+	changebagVendor(event){
+		this.selectedBagVendorCategory = event.detail.value;
+	}
+
+	getBagVendors() {
+		this.api.getBagVendors().then((res:any) => {
+			console.log(res)
+			this.bagVendorCategory = res.data;
+		} , (err:any) => {
+			console.log(err);
+		})
+	}
+
 	changeCountry(event) {
 		this.selectedCountry = event.detail.value;
 		this.selectedPort = this.data[this.selectedCountry];
+		this.selectedCountryMobileCode = (this.data[this.selectedCountry][0].mobile_code);
+
 	}
 
 	changePort(event) {

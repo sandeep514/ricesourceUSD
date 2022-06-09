@@ -50,6 +50,11 @@ export class AppComponent implements OnInit {
 			icon: 'albums'
 		},
 		{
+			title: 'Gallery',
+			url: '/gallery',
+			icon: 'albums'
+		},
+		{
 			title: 'Contact us',
 			url: '/contact',
 			icon: 'albums'
@@ -80,19 +85,21 @@ export class AppComponent implements OnInit {
 	) {
 
 		this.initializeApp();
+		
 		this.menuCtrl.open();
 		this.user = localStorage.getItem('prices');
 		this.hasUser = localStorage.getItem('name');
 		this.componentSer.loginUser.subscribe(function(userName){
 			this.user = userName;
 		});
+
 		this.componentSer.firePushNotif.subscribe(function() {
-			this.firebasepushnotif()
+		this.firebasepushnotif()
+
 			this.firebase.requestPermission().then(() => {
 					
 				this.firebase.getToken().then(function(token) {
 
-					console.log(token)
 					if( localStorage.getItem('id') != null ){
 						this.apiser.updateToken(localStorage.getItem('id') , token);
 					}
@@ -115,10 +122,8 @@ export class AppComponent implements OnInit {
 				
 				
 				this.firebase.onBackgroundMessage().subscribe(function(payload) {
-					console.log(payload)
 				})
 				this.firebase.onMessage().subscribe((payload) => {
-					console.log(payload);
 					this.componentSer.hasMessage.next(1);
 					
 					
@@ -177,11 +182,11 @@ export class AppComponent implements OnInit {
 
 	firebasepushnotif(){
 		let apiHn = this.apiser;
+		let navigation = this.navCtrl;
 		this.firebase.requestPermission().then(() => {
 					
 			this.firebase.getToken().then(function(token) {
 
-				console.log(token)
 				if( localStorage.getItem('id') != null ){
 					apiHn.updateToken(localStorage.getItem('id') , token);
 				}
@@ -203,10 +208,19 @@ export class AppComponent implements OnInit {
 			
 			
 			this.firebase.onBackgroundMessage().subscribe(function(payload) {
-				console.log(payload)
+				
+				if( 'extra' in payload ){
+					let jsonDecodedPayload = JSON.parse(payload.extra);
+					if( 'hotDealId' in jsonDecodedPayload ){
+						if (jsonDecodedPayload.hotDealId != null){
+
+							navigation.navigateRoot(['hotdeals']);
+							return false;
+						}
+					}
+				}
 			})
 			this.firebase.onMessage().subscribe((payload) => {
-				console.log(payload);
 				this.componentSer.hasMessage.next(1);
 				
 				
@@ -328,6 +342,7 @@ export class AppComponent implements OnInit {
 				}else{
 					setTimeout(() => {
 						splash.dismiss();
+						let navigation = this.navCtrl;
 						
 						// this.navCtrl.navigateForward(['quality-details']);
 						if( this.appType == 'USD' ){
@@ -337,12 +352,42 @@ export class AppComponent implements OnInit {
 									navigation.navigateForward(['bid' , {'buy_query' : payload.buyerQuery }]);
 									return false
 								}
+								if ( 'extra' in payload){
+									let jsonDecodedPayload = JSON.parse(payload.extra);
+							if( 'hotDealId' in jsonDecodedPayload ){
+										if (payload.extra.hotDealId != null){
+
+											navigation.navigateForward(['hotdeals']);
+											return false;
+										}
+									}
+								}
 							});
-							console.log("jhbjhnjnm ijknjm");
+							
+
 							if( isExpiredUsd == 'true' ){
 								this.navCtrl.navigateForward(['prices']);
 							}else{
-								this.navCtrl.navigateForward(['priceusd']);
+								this.firebase.onBackgroundMessage().subscribe(function(payload) {
+				
+									if( 'extra' in payload ){
+										let jsonDecodedPayload = JSON.parse(payload.extra);
+										if( 'hotDealId' in jsonDecodedPayload ){
+											if (jsonDecodedPayload.hotDealId != null){
+					
+												navigation.navigateRoot(['hotdeals']);
+												return false;
+											}
+										}
+									}
+								})
+								console.log("jnk");
+								if( localStorage.getItem('isUserActivatedUSD') == '0' ){
+									this.navCtrl.navigateRoot('planpage')
+								}else{
+									this.navCtrl.navigateForward(['planpage']);
+									// this.navCtrl.navigateForward(['priceusd']);
+								}
 							}
 
 						}else{
@@ -353,11 +398,11 @@ export class AppComponent implements OnInit {
 								}
 							});
 
-							console.log( isExpiredUsd);
 							if( isExpiredUsd == 'true' ){
 								this.navCtrl.navigateForward(['prices']);
 							}else{
-								this.navCtrl.navigateForward(['priceusd']);
+								this.navCtrl.navigateForward(['planpage']);
+								// this.navCtrl.navigateForward(['priceusd']);
 							}
 						}
 					}, 4000);
@@ -377,9 +422,7 @@ export class AppComponent implements OnInit {
 							
 					this.firebase.getToken().then(function(token) {
 
-						console.log(token)
 						if( localStorage.getItem('id') != null ){
-							console.log("kjnik")
 							apiPre.updateToken(localStorage.getItem('id') , token);
 						}
 					});
@@ -399,13 +442,31 @@ export class AppComponent implements OnInit {
 					});
 					
 					this.firebase.onBackgroundMessage().subscribe(function(payload) {
+						if ( 'extra' in payload){
+							let jsonDecodedPayload = JSON.parse(payload.extra);
+							if( 'hotDealId' in jsonDecodedPayload ){
+								if (payload.extra.hotDealId != null){
+
+									this.navCtrl.navigateForward(['hotdeals']);
+									return false;
+								}
+							}
+						}
 						if( 'buyerQuery' in payload ){
 							navigation.navigateForward(['bid' , {'buy_query' : payload.buyerQuery }]);
 						}
 					});
 
 					this.firebase.onMessage().subscribe((payload) => {
-						console.log(payload);
+						if ( 'extra' in payload){
+							let jsonDecodedPayload = JSON.parse(payload.extra);
+							if( 'hotDealId' in jsonDecodedPayload ){
+								if (payload.extra.hotDealId != null){
+									this.navCtrl.navigateForward(['hotdeals']);
+									return false
+								}
+							}
+						}
 						this.componentSer.hasMessage.next(1);
 						let routee = this.route.url.split('/');
 						let routeArray = [];
@@ -549,7 +610,8 @@ export class AppComponent implements OnInit {
 	}
 	goToUSD(){
 		this.menuCtrl.close();
-		this.navCtrl.navigateForward(['priceusd'])
+		this.navCtrl.navigateForward(['planpage'])
+		// this.navCtrl.navigateForward(['priceusd'])
 		localStorage.setItem('apptype' , 'USD')
 	}
 }

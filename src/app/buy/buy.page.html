@@ -17,13 +17,20 @@
 				<ion-select-option *ngFor="let qualityType of riceQualityType" style="text-transform: capitalize;">{{ qualityType | uppercase }}</ion-select-option>
 			</ion-select>
 		</ion-item>
-		<ion-item>
-			<ion-label>Quality</ion-label>
-			<ion-select placeholder="Select" (ionChange)="changeQuality($event)">
-				<ion-select-option *ngFor="let qualityType of riceQualityDataSelectedArray" style="text-transform: capitalize;">{{ qualityType.quality }} {{ qualityType.quality_name }}</ion-select-option>
-				<!-- <ion-select-option style="text-transform: capitalize;">Other</ion-select-option> -->
-			</ion-select>
-		</ion-item>
+		
+		<ion-row style="margin-bottom: 10px;">
+			<ion-col size="12" style="border: 3px solid #92b243;border-radius: 10px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
+				<ion-item style="border: 0px;margin-bottom: 0;">
+					<ion-label>Quality</ion-label>
+					<ion-select placeholder="Select" (ionChange)="changeQuality($event)">
+						<ion-select-option *ngFor="let qualityType of riceQualityDataSelectedArray" style="text-transform: capitalize;">{{ qualityType.quality }} {{ qualityType.quality_name }}</ion-select-option>
+						<!-- <ion-select-option style="text-transform: capitalize;">Other</ion-select-option> -->
+					</ion-select>
+				</ion-item>
+				<p style="padding: 0;margin: 0;margin-left: 15px;text-align: left;padding: 5px;">{{quality}}</p>
+			</ion-col>				
+					
+		</ion-row>
 
 		<!-- <ion-item>
 			<ion-label position="">Quality</ion-label>
@@ -37,27 +44,41 @@
 					<ion-select placeholder="Select" (ionChange)="changePacking($event)">
 						<ion-select-option *ngFor="let package of selectedPackageData" value="{{ package.id+'_'+package.bag_size+'_'+package.bag_type }}">
 							<p>{{package.bag_size}} </p>
-							<p>({{package.bag_type}})</p>
+							<p>{{package.bag_type}}</p>
 						</ion-select-option>
 					</ion-select>
-				</ion-item>
-				<p style="padding: 0;margin: 0;margin-left: 15px;text-align: right;padding: 5px;">{{selectedPackageName}}</p>
+				</ion-item> 
+				<p style="padding: 0;margin: 0;margin-left: 15px;text-align: left;padding: 5px;">{{selectedPackageName}}</p>
 			</ion-col>				
 			
 		</ion-row>
 
 		<ion-item>
 			<ion-label position="">Quantity (MT)</ion-label>
-			<ion-input [(ngModel)]="quantity" type="text" style="    text-align: right;"></ion-input>
+			<ion-input [(ngModel)]="quantity" type="text" style=" text-align: right;"></ion-input>
 		</ion-item>
-		<ion-item>
+		<!-- <ion-item>
 			<ion-label>Port</ion-label>
-			<!-- (ionChange)="changecountry($event)" -->
 			<ion-select placeholder="Select" (ionChange)="changePort($event)">
 				<ion-select-option *ngFor="let port of ports" value="{{ port.port+'_'+port.freight_25MT }}">{{ port.port }}</ion-select-option>
 			</ion-select>
+		</ion-item> -->
+		
+		<ion-item>
+			<ion-label>Port</ion-label>
+			<!-- <ionic-selectable
+				[(ngModel)]="port"
+				[items]="ports"
+				itemValueField="id"
+				itemTextField="port"
+				[canSearch]="true"
+				(onChange)="changePort($event)"
+				(ionChange)="changePort($event)"
+				
+			>
+			</ionic-selectable> -->
 		</ion-item>
-	
+
 		<ion-item>
 			<ion-label position="">Buyer Name</ion-label>
 			<ion-input [(ngModel)]="party" type="text" style="    text-align: right;"></ion-input>
@@ -73,10 +94,10 @@
 			<ion-textarea rows="6" cols="20" [(ngModel)]="remarks" ></ion-textarea>
 		</ion-item>
 
-		<ion-item>
+		<!-- <ion-item>
 			<ion-label position="">Deal Valid for days</ion-label>
 			<ion-input [(ngModel)]="validDays" type="text" style=" text-align: right;" placeholder="2"></ion-input>
-		</ion-item>
+		</ion-item> -->
 		
 		<div *ngIf="isError" style="text-align: center;color: red;font-weight: 600">
 			<span>{{ errorMessage }}</span>

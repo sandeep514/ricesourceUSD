@@ -16,16 +16,24 @@
 			<p style="font-size: 18px;font-weight: bold;text-align: center;">Customised Packing Price</p>
 			<ion-row>
 				<ion-col size="3" style="font-size: 20px;line-height: 2.6">Packing: </ion-col>
-				<ion-col size="9" >
-					<ion-item class="select" style="background: #fffbd6;--background: #fffbd6;border: 2px solid #92b243;border-radius: 9px">
-						<ion-label>Packing</ion-label>
-						<ion-select placeholder="Select" (ionChange)="changeBag($event)">
-						  	<ion-select-option *ngFor="let bag of packing" value="{{ bag?.PMT_USD }}">
-								<p style="width: 200px;height: 200px;">{{ bag?.bag_size }}</p>&nbsp; &nbsp; &nbsp; &nbsp; <p>({{ bag?.bag_type }})</p>
-							</ion-select-option>
-						</ion-select>
-					  </ion-item>
+				<ion-col size="8.5" style="border: 2px solid #92b243;border-radius: 9px">
+					<ion-row >
+						<ion-col>
+							<ion-item class="select" style="background: #fffbd6;--background: #fffbd6;">
+								<ion-label>Packing</ion-label>
+								<ion-select placeholder="Select" (ionChange)="changeBag($event)">
+									  <ion-select-option *ngFor="let bag of packing | keyvalue" value="{{ bag.key }}"> {{ bag.value?.bag_size }} &nbsp; &nbsp; &nbsp; &nbsp; {{ bag.value?.bag_type }}
+									</ion-select-option>
+								</ion-select>
+							  </ion-item>		
+						</ion-col>
+					</ion-row>
+					<ion-row style="width: 100%;">
+						<ion-col style="text-align: right;margin-right: 15px;">{{ selectedPackage }}</ion-col>
+					</ion-row>
+					  
 				</ion-col>
+				
 			</ion-row>
 
 			<ion-row >
@@ -40,33 +48,39 @@
 			
 			<ion-row >
 				<ion-col size="3" style="font-size: 20px;line-height: 2.6">Port: </ion-col>
-				<ion-col size="9">
+				<ion-col size="8.5">
 					<ion-row>
-						<ion-col size="12" >
-							<ion-item class="select" style="background: #fffbd6;--background: #fffbd6;border: 2px solid #92b243;border-radius: 9px">
+						<ion-col size="12" style="background: #fffbd6;--background: #fffbd6;border: 2px solid #92b243;border-radius: 9px;margin-top: 15px;">
+							<ion-item class="select" style="background: #fffbd6;--background: #fffbd6">
 								<ion-label>REGION</ion-label>
-								<ion-select placeholder="Select" (ionChange)="changeRegion($event)">
+								<ion-select placeholder="Select" [(ngModel)]="selectedUserRegion" (ionChange)="changeRegion($event)">
 										<ion-select-option *ngFor="let region of regions">{{ region }}</ion-select-option>
 								</ion-select>
 							</ion-item>
+							<p style="padding: 0;margin: 0;float: right;margin-right: 10px;">{{ selectedUserRegion }}</p>
+
 						</ion-col>
-						<ion-col size="12" >
-							<ion-item class="select" style="background: #fffbd6;--background: #fffbd6;border: 2px solid #92b243;border-radius: 9px">
+						<ion-col size="12" style="background: #fffbd6;--background: #fffbd6;border: 2px solid #92b243;border-radius: 9px;margin-top: 15px;">
+							<ion-item class="select" style="background: #fffbd6;--background: #fffbd6">
 								<ion-label>COUNTRY</ion-label>
 		
 								<ion-select placeholder="Select" (ionChange)="changeCountry($event)">
 										<ion-select-option *ngFor="let ctry of country">{{ ctry }}</ion-select-option>
 								</ion-select>
 							</ion-item>
+							<p style="padding: 0;margin: 0;float: right;margin-right: 10px;">{{  selectedUserCountry }}</p>
+
 						</ion-col>
-						<ion-col size="12" >
-							<ion-item class="select" style="background: #fffbd6;--background: #fffbd6;border: 2px solid #92b243;border-radius: 9px">
+						<ion-col size="12" style="background: #fffbd6;--background: #fffbd6;border: 2px solid #92b243;border-radius: 9px;margin-top: 15px;">
+							<ion-item class="select" style="background: #fffbd6;--background: #fffbd6">
 								<ion-label>PORT</ion-label>
 		
 								<ion-select placeholder="Select" (ionChange)="changePort($event)">
 										<ion-select-option *ngFor="let ctry of selectedPorts">{{ ctry }}</ion-select-option>
 								</ion-select>
 							</ion-item>
+							<p style="padding: 0;margin: 0;float: right;margin-right: 10px;">{{  defalutPort }}</p>
+
 						</ion-col>
 					</ion-row>
 				</ion-col>

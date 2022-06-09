@@ -1,6 +1,8 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
+import { ComponentsService } from '../components.service';
+import { OceanfreightsPage } from '../oceanfreights/oceanfreights.page';
 import { RestService } from '../rest.service';
 
 @Component({
@@ -18,25 +20,25 @@ export class CalculatorPage implements OnInit {
 	public bagcost:any;
 	public localCharges:any;
 	public dollaerate:any;
-	public total:any = 0;
-	public exchange:any = 0;
-	public FOB:any = 0;
+	public total:any = '';
+	public exchange:any = '';
+	public FOB:any = '';
 	public USD_master:any;
-	public selectedFiftykg:any = 0;
+	public selectedFiftykg:any = '';
 	public updatedUserPrice:any = 0;
 	public selectedBag:any;
-	public selectedBagId:any=0;
+	public selectedBagId:any='';
 	public selectedRice:any;
 
 
-	public riceone:any = 0;
-	public riceonepercentage:any = 0;
-	public ricetwo:any = 0;
-	public ricetwopercentage:any = 0;
-	public ricethree:any = 0;
-	public ricethreepercentage:any = 0;
-	public ricefour:any = 0;
-	public ricefourpercentage:any = 0;
+	public riceone:any = '';
+	public riceonepercentage:any = 100;
+	public ricetwo:any = '';
+	public ricetwopercentage:any = '';
+	public ricethree:any = '';
+	public ricethreepercentage:any = '';
+	public ricefour:any = '';
+	public ricefourpercentage:any = '';
 	public processingCharges:any = 0;
 	public bagSize:any = 0;
 	public domesticTransport:any = 0;
@@ -46,9 +48,10 @@ export class CalculatorPage implements OnInit {
 	public legalisationcharges:any = 0;
 	public coc:any = 0;
 	public eiacost:any = 0;
-	public supplierCharge:any = 1;
+	public supplierCharge:any = 0;
 	public financecost:any = 0;
 	public PMT:any = 0;
+	public bagSizePrice:any = 0;
 
 	public costOfRice1:any = 0;
 	public costOfRice2:any = 0;
@@ -58,11 +61,21 @@ export class CalculatorPage implements OnInit {
 	public totalPriceINR:any = 0;
 	public PMTusd:any = 0;
 	public finalCIFPrice:any = 0;
+	public beforeMarkup:any = 0;
 
-	constructor(public apiService: RestService , public navCtrl: NavController,public location:Location) { }
+	public regions: any;
+	public data: any;
+	public countries: any;
+	public selectedResign: any;
+	public ports: any;
+	public modalStatus: any = false;
+	public AverageRiceCostPMT: any = 0;
+
+	constructor(public apiService: RestService , public navCtrl: NavController,public location:Location, public modalCtrl: ModalController,public componentService: ComponentsService) { }
 
 	ngOnInit() {
 		this.getCalculatorData();
+		this.getTransportState();
 	}
 	calculateData(){
 
@@ -82,16 +95,41 @@ export class CalculatorPage implements OnInit {
 
 		this.PMT = (this.costOfRice1+this.costOfRice2+this.costOfRice3+this.costOfRice4+parseFloat(this.processingCharges)+this.updatedUserPrice);
 
-		this.totalPriceINR = (this.costOfRice1+this.costOfRice2+this.costOfRice3+this.costOfRice4+parseFloat(this.processingCharges)+this.updatedUserPrice+parseFloat(this.domesticTransport)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
+		this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.processingCharges)+parseFloat(this.updatedUserPrice)+parseFloat(this.domesticTransport)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
+		
+		// this.PMTusd = ((((this.totalPriceINR/this.dollaerate)*this.supplierCharge)/100)+(this.totalPriceINR/this.dollaerate)).toFixed(2);
+		this.PMTusd = (this.totalPriceINR/this.dollaerate).toFixed(2);
 
-		this.PMTusd = ((((this.totalPriceINR/this.dollaerate)*this.supplierCharge)/100)+(this.totalPriceINR/this.dollaerate))
+		if( isNaN(Number(this.lccharges)) ){
+			this.lccharges = 0;
+		}
+		if( isNaN(Number(this.lccharges)) ){
+			this.lccharges = 0;
+		}
+		if( isNaN(Number(this.oceanfreight)) ){
+			this.oceanfreight = 0;
+		}
+		if( isNaN(Number(this.thirdpartyinspection)) ){
+			this.thirdpartyinspection = 0;
+		}
+		if( isNaN(Number(this.legalisationcharges)) ){
+			this.legalisationcharges = 0;
+		}
+		if( isNaN(Number(this.coc)) ){
+			this.coc = 0;
+		}
+		if( isNaN(Number(this.eiacost)) ){
+			this.eiacost = 0;
+		}
 
-		this.finalCIFPrice = (parseFloat(this.PMTusd)+parseFloat(this.lccharges)+parseFloat(this.oceanfreight)+parseFloat(this.thirdpartyinspection)+parseFloat(this.legalisationcharges)+parseFloat(this.coc)+parseFloat(this.eiacost))
-
- 
-
-
-		console.log(this.PMTusd);
+		this.beforeMarkup = Math.floor((parseFloat(this.PMTusd)+parseFloat(this.lccharges)+parseFloat(this.oceanfreight)+parseFloat(this.thirdpartyinspection)+parseFloat(this.legalisationcharges)+parseFloat(this.coc)+parseFloat(this.eiacost)));
+		
+		if( this.supplierCharge != '' || this.supplierCharge != 0 ){
+			this.finalCIFPrice = Math.floor(((this.beforeMarkup * this.supplierCharge)/100) + this.beforeMarkup);
+		}else{
+			this.finalCIFPrice = this.beforeMarkup;
+		}
+		this.AverageRiceCostPMT = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4));
 	}
 
 	getCalculatorData(){
@@ -104,10 +142,10 @@ export class CalculatorPage implements OnInit {
 			this.localCharges = res.defaultValues.localcharges;
 			this.financecost = res.defaultValues.financecost;
 			this.USD_master = res.USD_master;
+			console.log(this.USD_master)
 			this.selectedFiftykg = res.fiftykg.PMT_USD;
 
 		} ,(err:any) =>{ 
-			console.log(err);
 		});
 	} 
 	save(){
@@ -142,7 +180,6 @@ export class CalculatorPage implements OnInit {
 
 		let exchangeRatemin = ((parseFloat(this.riceMinPrice)+parseFloat(this.bagcost)+parseFloat(this.transportMin) ) / this.dollaerate).toFixed(2);
 		let exchangeRatemax = ((parseFloat(this.riceMaxPrice)+parseFloat(this.bagcost)+parseFloat(this.transportMax) ) / this.dollaerate).toFixed(2);
-		console.log(exchangeRatemin)
 
 		let Fobmin = 0;
 		let Fobmax = 0;
@@ -159,33 +196,168 @@ export class CalculatorPage implements OnInit {
 		this.exchange = '$'+exchangeRatemin+' - $'+exchangeRatemax ;
 		this.FOB = '$'+Fobmin+' - $'+Fobmax ;
 
-		let postedData = JSON.stringify({ 
-			'rice' : this.selectedRice,
-			'ricemin' : this.riceMinPrice,
-			'ricemax' : this.riceMaxPrice,
-			'transportmin' : this.transportMin,
-			'transportmax' : this.transportMax,
-			'category' : this.bagcost,
-			'charges' : this.localCharges,
-			'dollarrate' : this.dollaerate,
-			'percentageValue' : this.supplierCharge,
-			'totalMin' : minValue,
-			'totalMax' : maxValue,
-			'exchangeRatemin' : exchangeRatemin,
-			'exchangeRatemax' : exchangeRatemax,
-			'fobmin' : Fobmin,
-			'fobmax' : Fobmax,
-			'user_id' : localStorage.getItem('id'),
-			'usd_defaultMaster_id' : this.selectedBagId
-		});
+		// let postedData = JSON.stringify({ 
+		// 	'rice' : this.selectedRice,
+		// 	'ricemin' : this.riceMinPrice,
+		// 	'ricemax' : this.riceMaxPrice,
+		// 	'transportmin' : this.transportMin,
+		// 	'transportmax' : this.transportMax,
+		// 	'category' : this.bagcost,
+		// 	'charges' : this.localCharges,
+		// 	'dollarrate' : this.dollaerate,
+		// 	'percentageValue' : this.supplierCharge,
+		// 	'totalMin' : minValue,
+		// 	'totalMax' : maxValue,
+		// 	'exchangeRatemin' : exchangeRatemin,
+		// 	'exchangeRatemax' : exchangeRatemax,
+		// 	'fobmin' : Fobmin,
+		// 	'fobmax' : Fobmax,
+		// 	'user_id' : localStorage.getItem('id'),
+		// 	'usd_defaultMaster_id' : this.selectedBagId
+		// });
 
-		this.apiService.saveUSDPrices(postedData).then((res:any) => {
-			console.log(res);
-		} , (err:any) => {
-			console.log(err)
-		})
+		// this.apiService.saveUSDPrices(postedData).then((res:any) => {
+		// } , (err:any) => {
+		// })
 	}
 
+	checkInput(event, riceType){
+
+		if( riceType == 'one' ){
+			if(this.ricetwopercentage == ''){
+				this.ricetwopercentage = 0;
+			}
+			if(this.ricethreepercentage == ''){
+				this.ricethreepercentage = 0;
+			}
+			if(this.ricefourpercentage == ''){
+				this.ricefourpercentage = 0;
+			}
+
+			let percentage = (parseFloat(this.ricetwopercentage) + parseFloat(this.ricethreepercentage) + parseFloat(this.ricefourpercentage));
+
+			let totalPercentage = (parseFloat(this.riceonepercentage)+parseFloat(this.ricetwopercentage) + parseFloat(this.ricethreepercentage) + parseFloat(this.ricefourpercentage));
+
+
+			if( !isNaN(Number(totalPercentage) )){
+				if( totalPercentage <= 100 ){
+					if( percentage == 0 ){
+						this.riceonepercentage = 100;
+					}else{
+						this.riceonepercentage = (100 -percentage);
+					}
+					this.costOfRice1 = ((this.riceone * this.riceonepercentage)/100);
+					this.AverageRiceCostPMT =  this.costOfRice1;
+				}else{
+
+					alert('Total Percentage should not > 100')
+				}
+			}
+		}
+		if( riceType == 'two' ){
+			if(this.riceonepercentage == ''){
+				this.riceonepercentage = 0;
+			}
+			if(this.ricethreepercentage == ''){
+				this.ricethreepercentage = 0;
+			}
+			if(this.ricefourpercentage == ''){
+				this.ricefourpercentage = 0;
+			}
+
+			let percentage = (parseFloat(this.riceonepercentage) + parseFloat(this.ricethreepercentage) + parseFloat(this.ricefourpercentage));
+			// this.costOfRice1 = (  this.riceonepercentage);
+
+			let totalPercentage = (parseFloat(this.riceonepercentage)+parseFloat(this.ricetwopercentage) + parseFloat(this.ricethreepercentage) + parseFloat(this.ricefourpercentage));
+
+
+
+			if( !isNaN(Number(totalPercentage)) ){
+				if( totalPercentage <= 100 ){
+					if( percentage == 0 ){
+						this.ricetwopercentage = 100;
+					}else{
+						this.ricetwopercentage = (100 - percentage);
+					}
+
+				}else{
+
+					alert('Total Percentage should not > 100')
+				}	
+			}
+			this.costOfRice2 = ((this.ricetwo * this.ricetwopercentage)/100);
+			this.AverageRiceCostPMT =  (this.costOfRice1+this.costOfRice2);
+			
+		}
+		if( riceType == 'three' ){
+			if(this.riceonepercentage == ''){
+				this.riceonepercentage = 0;
+			}
+			if(this.ricetwopercentage == ''){
+				this.ricetwopercentage = 0;
+			}
+			if(this.ricefourpercentage == ''){
+				this.ricefourpercentage = 0;
+			}
+			let percentage = (parseFloat(this.riceonepercentage) + parseFloat(this.ricetwopercentage) + parseFloat(this.ricefourpercentage));
+
+			let totalPercentage = (parseFloat(this.riceonepercentage)+parseFloat(this.ricetwopercentage) + parseFloat(this.ricethreepercentage) + parseFloat(this.ricefourpercentage));
+
+			if( !isNaN(Number(totalPercentage) )){
+				if( totalPercentage <= 100 ){
+					if( percentage == 0 ){
+						this.ricethreepercentage = 100;
+					}else{
+						this.ricethreepercentage = (100 -percentage);
+					}
+
+				}else{
+					
+
+					alert('Total Percentage should not > 100')
+				}
+			}
+			this.costOfRice3 = ((this.ricethree * this.ricethreepercentage)/100);
+			this.AverageRiceCostPMT = (this.costOfRice1 + this.costOfRice3 + this.costOfRice3)
+		}
+		if( riceType == 'four' ){
+			if(this.riceonepercentage == ''){
+				this.riceonepercentage = 0;
+			}
+			if(this.ricetwopercentage == ''){
+				this.ricetwopercentage = 0;
+			}
+			if(this.ricethreepercentage == ''){
+				this.ricethreepercentage = 0;
+			}
+
+			let percentage = (parseFloat(this.riceonepercentage) + parseFloat(this.ricetwopercentage) + parseFloat(this.ricethreepercentage));
+
+			let totalPercentage = (parseFloat(this.riceonepercentage)+parseFloat(this.ricetwopercentage) + parseFloat(this.ricethreepercentage) + parseFloat(this.ricefourpercentage));
+
+
+
+			if( !isNaN(Number(totalPercentage) )){
+				if( totalPercentage <= 100 ){
+					if( percentage == 0 ){
+						this.ricefourpercentage = 100;
+					}else{
+						this.ricefourpercentage = (100 - percentage);
+					}
+
+				}else{
+
+					alert('Total Percentage should not > 100')
+				}
+			}
+			this.costOfRice4 = ((this.ricefour * this.ricefourpercentage)/100);
+			this.AverageRiceCostPMT = (this.costOfRice1 + this.costOfRice2 + this.costOfRice3+this.costOfRice4)
+		}
+
+		this.save()
+		this.calculateData()
+	}
+	
 	bagChange(event){
 		let value = event.detail.value;
 		let splitedValue = value.split('_');
@@ -196,10 +368,13 @@ export class CalculatorPage implements OnInit {
 		this.selectedBagId = splitedValue[3];
 
 		let updatedPrice = parseFloat(bagPrice);
+		this.bagSizePrice = updatedPrice;
+
 		this.selectedBag = bagSize+'_'+bagNme;
 		this.updatedUserPrice = updatedPrice;
 
-		this.PMT = updatedPrice
+		this.save()
+		this.calculateData()
 	}
 
 	changeQuality(event){
@@ -208,7 +383,55 @@ export class CalculatorPage implements OnInit {
 	getLatestQueries(){
 		this.navCtrl.navigateForward('mybids');
 	}
+
 	back(){
 		this.location.back();
 	}
+
+	async presentModel(){
+		// const model = await this.modalCtrl.create({
+		// 	component: OceanfreightsPage,
+		// 	animated: true
+		// })
+		// await model.present();
+		this.modalStatus = true
+	}
+	getTransportState(){
+		this.componentService.presentLoading().then(() => {
+			this.apiService.getOceanPorts().then( (res:any) => {
+				this.componentService.loadingController.dismiss();
+				this.regions = Object.values(res.region).sort();
+				console.log(res.data)
+
+				this.data = res.data;
+			} , (err:any) => {
+				this.componentService.loadingController.dismiss();
+
+			});
+		});
+	}
+
+	changecountry(resign){
+		let resignValue = resign.detail.value;
+		this.selectedResign = resignValue;
+		this.countries = Object.keys(this.data[resignValue]).sort();
+	}
+
+	getPortList(resign){
+		let region = this.selectedResign;
+		let countryName = resign.detail.value;
+		let portsOfCountry = this.data[region][countryName];
+		console.log(portsOfCountry)
+		this.ports = portsOfCountry;
+	}
+	
+	updateModel(){
+		if( this.modalStatus == false ){
+			this.modalStatus = true;
+		}
+		if( this.modalStatus == true ){
+			this.modalStatus = false;
+		}
+	}
+	
 }

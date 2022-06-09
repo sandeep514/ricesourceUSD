@@ -64,7 +64,13 @@ export class LoginPage implements OnInit {
 					if(localStorage.getItem('role') == '2'){						
 						this.navCtrl.navigateForward(['admin/chat']);
 					}else{
-						this.navCtrl.navigateRoot('prices',{animationDirection: 'forward'});
+						if(res.user.is_usd_active == 0){
+							localStorage.setItem('apptype' , 'OTHER');
+							this.navCtrl.navigateRoot('prices',{animationDirection: 'forward'});
+						}else{
+							localStorage.setItem('apptype' , 'USD');
+							this.navCtrl.navigateRoot('pricesusd',{animationDirection: 'forward'});
+						}
 					}
 				}
 			}else{

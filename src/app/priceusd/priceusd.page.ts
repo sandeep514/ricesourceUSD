@@ -64,11 +64,13 @@ export class PriceusdPage implements OnInit {
 	listBasmatiStates:any;
 	listNONBasmatiStates:any;
 	firstBasmatiState:any;
+	defalutPort:any;
 
 	constructor(public platform: Platform,public restService: RestService,public componentService: ComponentsService,public modalController: ModalController,public navCtrl: NavController,public route: Router ,public versionMdel : VersionmodalPage) {
 		// this.componentService.compareTwoDates( localStorage.getItem('expired_on') );
-		console.log(typeof localStorage.getItem('isExpired') );
-
+		if( localStorage.getItem('isUserActivatedUSD') == '0' ){
+			this.navCtrl.navigateRoot('planpage')
+		}
 		if( localStorage.getItem('isExpired') == 'true' ){
 			this.navCtrl.navigateRoot( 'planpage', { animationDirection : 'forward' } );
 		}
@@ -102,6 +104,17 @@ export class PriceusdPage implements OnInit {
 		}else{
 			this.appType = 'other'
 		}
+	}
+
+	doRefresh(event) {
+		this.componentService.presentLoading().then(() => {
+			setTimeout(() => {
+				this.refresh();
+				event.target.complete();
+				this.componentService.loadingController.dismiss();
+			}, 2000);
+		})
+		
 	}
 
 	ionViewDidLoad(){
@@ -250,7 +263,7 @@ export class PriceusdPage implements OnInit {
 
 	ionViewDidEnter() {
 		if (this.route.url == "/prices") {
-			console.log(localStorage.getItem("popupCanceled"));
+
 			if (localStorage.getItem("popupCanceled") == null) {
 				this.myVar = setTimeout(() => {
 				this.showCOntactModal();
@@ -282,14 +295,14 @@ export class PriceusdPage implements OnInit {
 		
 
 		this.restService.CheckUserExpired().then( (res:any) => {
-			console.log(res);
+
 			localStorage.setItem('isExpiryUSD' , res.isExpiry)
 			localStorage.setItem('ExpiryUSDDate' , res.data)
 
 			localStorage.setItem('expired_on' , res.data);
 			let isUserExpiredStatus = localStorage.getItem('isExpiryUSD');
-			console.log(isUserExpiredStatus)
 
+			
 			if( isUserExpiredStatus == 'true' ){
 				this.navCtrl.navigateForward(['price']);
 			}
@@ -303,7 +316,7 @@ export class PriceusdPage implements OnInit {
 		this.username = localStorage.getItem("name");
 		this.userFirstName = localStorage.getItem("name")[0];
 
-		this.getUSDPrices();
+		this.getUSDPrices(localStorage.getItem('id'));
 	}
 	async showVersionModal() {
 		const modal = await this.modalController.create({
@@ -314,15 +327,15 @@ export class PriceusdPage implements OnInit {
 	}
 	getVersion() {
 		this.restService.getLatestVersion().then((res:any) => {
-			console.log(res.data.version)
+
 			let elemem = this;
 			if( '1.0.0' != res.data.version ){
 				setTimeout(function(){ elemem.showVersionModal() }, 8000);
 			}
 		}  , (err) => {
-			console.log(err)
+
 		}).catch((err) => {
-			console.log(err)
+
 		});
 	}
 
@@ -330,7 +343,7 @@ export class PriceusdPage implements OnInit {
 		// this.getBasmatiState();
 		// this.getNONBasmatiState();
 		// this.getPlans();
-		this.getUSDPrices();
+		this.getUSDPrices(localStorage.getItem('id'));
 	}
 	
 	ngOnInit() {
@@ -409,7 +422,7 @@ export class PriceusdPage implements OnInit {
 		this.componentService.presentLoading().then(() => {
 			this.fetchRiceForm(event.detail.value, "basmati").then((res: any) => {
 				this.basmatiprice = res;
-				console.log('res here');
+
 				console.log(res);
 				
 				this.componentService.loadingController.dismiss();
@@ -433,7 +446,7 @@ export class PriceusdPage implements OnInit {
 
 		this.fetchRiceForm(event.detail.value, "non-basmati").then((res: any) => {
 			// this.componentService.loadingController.dismiss();
-			console.log(res);
+
 			this.nonbasmatiprice = res;
 		});
 		if (event.detail.value == "kota_bundi") {
@@ -461,7 +474,7 @@ export class PriceusdPage implements OnInit {
 						this.nonBasmatiColumns = nonBasmati;
 					}
 					this.lastupdatedDate = res.latestDate;
-					console.log("here data");
+
 					resolve(res.prices);
 				} , (err:any) => {
 					reject(err)
@@ -470,6 +483,10 @@ export class PriceusdPage implements OnInit {
 		});
 	}
 
+	AddData(fob , defuaultValue){
+		console.log(fob)
+		// return (parseFloat(fob) + parseFloat(defuaultValue))
+	}
 	navToPort() {
 		this.navCtrl.navigateForward(["port"]);
 	}
@@ -534,7 +551,7 @@ export class PriceusdPage implements OnInit {
 		if( this.currentPaidStatus == 'true' ) {
 			this.showPaymentModel();
 		}else{
-			console.log(riceName);
+
 			let newRiceName = riceName.split(" ");
 			newRiceName = newRiceName.join("_");
 	
@@ -605,17 +622,21 @@ export class PriceusdPage implements OnInit {
 		return 0;
 	}
 
-	getUSDPrices(){
-		this.restService.getUSDPrice().then((res:any) => {
-			console.log(res)
+	getUSDPrices(userId){
+		this.componentService.presentLoading().then(() => {
+			this.restService.getUSDPrice(userId).then((res:any) => {
+				this.listBasmatiStates = Object.values(res.basmatiPrices);
+				this.listNONBasmatiStates = Object.values(res.nonbasmatiPrices);
+				this.defaultCIFPrice = parseFloat(res.defaultCIFPrice);
+				this.defalutPort = res.defalutPort;
+				this.lastupdatedDate = res.latestDate;
 
-			this.listBasmatiStates = Object.values(res.basmatiPrices);
-			this.listNONBasmatiStates = Object.values(res.nonbasmatiPrices);
-			this.defaultCIFPrice = parseFloat(res.defaultCIFPrice);
-			this.lastupdatedDate = res.latestDate;
-
-		} , (err:any) => {
-		} );
+				this.componentService.loadingController.dismiss();
+			} , (err:any) => {
+				this.componentService.loadingController.dismiss();
+			} );
+		})
+		
 	}
 
 	// getPriceNONBasmatiState(){
@@ -626,7 +647,7 @@ export class PriceusdPage implements OnInit {
 	// }
 
 	changeAppType(){
-		// console.log("jk");
+
 		localStorage.setItem('apptype' , 'OTHER');
 		this.navCtrl.navigateForward(['prices']);
 	}

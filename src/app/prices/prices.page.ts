@@ -67,7 +67,6 @@ export class PricesPage implements OnInit {
 	constructor(public platform: Platform,public restService: RestService,public componentService: ComponentsService,public modalController: ModalController,public navCtrl: NavController,public route: Router ,public versionMdel : VersionmodalPage) {
 		// this.componentService.compareTwoDates( localStorage.getItem('expired_on') );
 
-		
 		// if( localStorage.getItem('isExpired') == 'true' ){
 		// 	this.navCtrl.navigateRoot( 'planpage', { animationDirection : 'forward' } );
 		// }
@@ -102,7 +101,13 @@ export class PricesPage implements OnInit {
 			this.appType = 'other'
 		}
 	}
+	doRefresh(event) {
+		setTimeout(() => {
 
+			this.refresh();
+			event.target.complete();
+		}, 2000);
+	}
 	ionViewDidLoad(){
 		this.componentService.isUserExpired.subscribe((res:any) => {
 			this.currentPaidStatus = res;
@@ -284,11 +289,11 @@ export class PricesPage implements OnInit {
 			localStorage.setItem('ExpiryUSDDate' , res.data)
 
 			console.log("mbnjkjbj");
-			if( res.isExpiry == false ){
-				localStorage.setItem('apptype' , 'USD');
-			}else{
-				localStorage.setItem('apptype' , 'OTHER');
-			}
+			// if( res.isExpiry == false ){
+			// 	localStorage.setItem('apptype' , 'USD');
+			// }else{
+			// 	localStorage.setItem('apptype' , 'OTHER');
+			// }
 
 			localStorage.setItem('expired_on' , res.data);
 			this.componentService.compareTwoDates(localStorage.getItem('expired_on'));
@@ -460,7 +465,8 @@ export class PricesPage implements OnInit {
 					if (nonBasmati != undefined) {
 						this.nonBasmatiColumns = nonBasmati;
 					}
-					this.lastupdatedDate = res.latest;
+					console.log(res);
+					this.lastupdatedDate = res.lastUpdatedDate;
 
 					// this.componentService.loadingController.dismiss();
 					resolve(res.prices);
@@ -614,13 +620,18 @@ export class PricesPage implements OnInit {
 		} );
 	}
 	changeAppType(){
+		localStorage.setItem('apptype' , 'USD');
+
 		let isUSDActive = localStorage.getItem('is_usd_active');
 		let isUserExpiredStatus = localStorage.getItem('isExpiryUSD');
-
-		if( isUserExpiredStatus == 'true' ){
-			this.navCtrl.navigateForward(['planpage']);
+		if( isUSDActive != '0' ){
+			if( isUserExpiredStatus == 'true' ){
+				this.navCtrl.navigateForward(['planpage']);
+			}else{
+				this.navCtrl.navigateForward(['priceusd']);
+			}
 		}else{
-			this.navCtrl.navigateForward(['priceusd']);
+			this.navCtrl.navigateForward(['planpage']);
 		}
 
 		return false;

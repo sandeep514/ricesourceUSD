@@ -1,5 +1,5 @@
 <ion-content id="content" [scrollEvents]="true" (ionScroll)="logScrolling($event)" class="lightgreen">
-  <div class="header-data green"  style="min-height: 240px;">
+  <div class="header-data green"  style="height: auto;">
         <div style="min-height: 80px">
             <ion-row >
                 <ion-col size="3" align="center">
@@ -53,7 +53,6 @@
                 <ion-row>
                     <ion-col size="8" style="text-align: right;margin-top: 5px;">
                         <img src="../../assets/sntc_rice_logo.png" alt="" style="width: 100px;margin-right: 1%;">
-                       
                     </ion-col>
                     <ion-col size="4" align="center" class="notification" >
                         <ion-button (click)="changeAppType('OTHER')"  size="small" style="background-color: #fffbd6;--background: #fffbd6;border-radius: 5px;margin-top: 7px;">
@@ -73,18 +72,21 @@
             <ion-col class="title" size="2.2">
                 <img style="width: 40px;float: left" src="./../../assets/img/1350px-Flag_of_India.svg.webp" alt="" (click)="scroll('left','table-responsive-1')" class="righticon">
             </ion-col>
+
             <ion-col class="title" size="9.6">
-                <h2 class="" style="font-size: 17px; padding: 3px 7px; font-weight: bold">
+                <h2 class="" style="font-size: 17px; padding: 3px 0px; font-weight: bold">
                     Indian Basmati Live Price
                 </h2>
+                <ion-row>
+                    <p style="padding: 0;margin:0;width: 100%;">(All Prices are in USD PMT)</p>
+                </ion-row>
             </ion-col>
+            
             <!-- <ion-col class="title" size="2">
                 <img style="width: 40px;float: left;" src="./../../assets/img/1350px-Flag_of_India.svg.webp" alt="" (click)="scroll('left','table-responsive-1')" class="righticon">
             </ion-col> -->
         </ion-row>
-      <ion-row>
-          <p style="text-align: center;align-items: center;padding: 0;margin:0;width: 100%;">(All Prices are in USD PMT)</p>
-      </ion-row>
+      
       
       <ng-container *ngIf="listBasmatiStates == null">
           <div class="center">
@@ -133,7 +135,7 @@
                               </th>
 							  <th class="sticky-col bg-lightgreen first-col left pl-10" style="width: 60%" >
 								<ng-container  >
-									<h4 class="black ricetype" style="font-size: 13px;text-align: center;">CIF <br> Jebel Ali </h4>
+									<h4 class="black ricetype" style="font-size: 13px;text-align: center;">CIF <br> {{defalutPort}} </h4>
 								</ng-container>
 							</th>
                           </tr>
@@ -143,8 +145,8 @@
                       <tbody >
                         <tr *ngFor="let basmati of listBasmatiStates" (click)="openQuality(basmati?.rice)">
                             <td class="sticky-col bg-transparent first-col left pl-10"  >
-                                <p style="font-size: 19px; padding: 0px;margin: 0px;font-weight: bold;">{{basmati?.quality}}</p>
-                                <p style="padding: 0px;margin: 0px;font-size: 13px;">{{basmati?.quality_name}}</p>
+                                <p style="font-size: 19px; padding: 0px;margin: 0px;font-weight: bold;">{{basmati?.get_rice_quality.quality}}</p>
+                                <p style="padding: 0px;margin: 0px;font-size: 13px;">{{basmati?.get_rice_quality.quality_name}}</p>
                             </td>
 
                             <td class="sticky-col bg-transparent first-col left pl-10" style="font-size: 13px !important;font-weight: bold;"  >
@@ -167,12 +169,21 @@
           </ion-row>
           <ion-row style="justify-content: center;margin: 0 auto;width: 100%;z-index: 99999999;">
               <button (click)="changeHeight()" style="font-size: 35px;padding: 0;margin: 0;border-radius: 0px 0px 10px 10px;height: 35px;width: 100px;background-color: #92b243;">
-                <ion-icon name="chevron-up-outline" style="background: #92b243;overflow: hidden;border-radius: 100px;font-size: 30px;padding: 0;margin: 0;border-radius: 100px;height: 35px;"></ion-icon>
+
+                    <ion-icon *ngIf="(height == true)" name="chevron-down-outline" style="background: #92b243;overflow: hidden;border-radius: 100px;font-size: 30px;padding: 0;margin: 0;border-radius: 100px;height: 35px;"></ion-icon>
+
+                    <ion-icon *ngIf="(height != true)" name="chevron-up-outline" style="background: #92b243;overflow: hidden;border-radius: 100px;font-size: 30px;padding: 0;margin: 0;border-radius: 100px;height: 35px;"></ion-icon> 
+
+                    
               </button>
           </ion-row>
       </ng-container>
 
         <div style="margin-top: 20px">
+            <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+                <ion-refresher-content>
+                </ion-refresher-content>
+              </ion-refresher>
             <!-- non basmati -->
             <ion-row class="ion-padding title-padding ">
                 <ion-col class="title" size="2.2">
@@ -235,7 +246,7 @@
                                     </th>
                                     <th class="sticky-col bg-lightgreen first-col left pl-10" style="width: 60%" >
                                     <ng-container  >
-                                        <h4 class="black ricetype" style="font-size: 13px;text-align: center;">CIF <br> Jebel Ali </h4>
+                                        <h4 class="black ricetype" style="font-size: 13px;text-align: center;">CIF <br> {{defalutPort}} </h4>
                                     </ng-container>
                                 </th>
                                 </tr>
@@ -245,8 +256,8 @@
                             <tbody >
                             <tr *ngFor="let nonbasmati of listNONBasmatiStates"  (click)="openQuality(nonbasmati?.rice)">
                                 <td class="sticky-col bg-transparent first-col left pl-10"  >
-                                    <p style="font-size: 19px; padding: 0px;margin: 0px;font-weight: bold;">{{nonbasmati?.quality}}</p>
-                                    <p style="padding: 0px;margin: 0px;    font-size: 13px;">{{nonbasmati?.quality_name}}</p>
+                                    <p style="font-size: 19px; padding: 0px;margin: 0px;font-weight: bold;">{{nonbasmati?.get_rice_quality.quality}}</p>
+                                    <p style="padding: 0px;margin: 0px;    font-size: 13px;">{{nonbasmati?.get_rice_quality.quality_name}}</p>
                                 </td>
 
                                 <td class="sticky-col bg-transparent first-col left pl-10" style="font-size: 13px !important;font-weight: bold;"  >

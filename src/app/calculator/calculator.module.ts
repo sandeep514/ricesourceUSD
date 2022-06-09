@@ -17,6 +17,6 @@ import { ComponentsModule } from '../components/components.module';
     ComponentsModule,
     CalculatorPageRoutingModule
   ],
-  declarations: [CalculatorPage]
+  declarations: [CalculatorPage],
 })
 export class CalculatorPageModule {}

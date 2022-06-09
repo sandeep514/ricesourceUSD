@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { Location } from '@angular/common';
+import { NavController } from '@ionic/angular';
 
 @Component({
 	selector: 'app-buy',
@@ -13,7 +14,7 @@ export class BuyPage implements OnInit {
 	party:any;
 	mobile:any;
 	remarks:any;
-	validDays:any;
+	validDays:any=0;
 	riceQualityType:any;
 	riceQualityData:any;
 	ports:any;
@@ -27,7 +28,7 @@ export class BuyPage implements OnInit {
 	isError:any = false;
 	errorMessage:any = '';
 
-	constructor(public apiser: RestService,public location:Location) { }
+	constructor(public apiser: RestService,public location:Location,public navCtrl : NavController) { }
 
 	ngOnInit() {
 		this.getData();
@@ -35,11 +36,11 @@ export class BuyPage implements OnInit {
 
 	save(){
 		this.isError = false;
-		if( isNaN(parseFloat(this.validDays)) == true ){
-			this.isError = true;
-			this.errorMessage = "Deal Valid should be number";
-			return false;
-		}
+		// if( isNaN(parseFloat(this.validDays)) == true ){
+		// 	this.isError = true;
+		// 	this.errorMessage = "Deal Valid should be number";
+		// 	return false;
+		// }
 
 		if( this.quality != undefined && this.quantity != undefined && this.party != undefined && this.mobile != undefined && this.remarks != undefined ){
 			let postedData = {
@@ -56,11 +57,12 @@ export class BuyPage implements OnInit {
 			};
 
 			this.apiser.saveRiceQuery(postedData).then((res:any) => {
-				console.log(res);
+				this.apiser.presentToast('Query generated successfully.');
+				this.navCtrl.back();
 			} , (err:any) => {
 				console.log(err);
 			})
-		}else{ 
+		}else{  
 			this.isError = true;
 			this.errorMessage = "Required fields are missing";
 			console.log( 'validate fails' );
@@ -95,7 +97,7 @@ export class BuyPage implements OnInit {
 	changePacking(data){
 		let unprocessdata = (data.detail.value).split('_');
 		this.changePackingType = unprocessdata[0];
-		this.selectedPackageName = unprocessdata[1]+' ('+unprocessdata[2]+')';
+		this.selectedPackageName = unprocessdata[1]+' '+unprocessdata[2];
 	}
 	
 	back(){
@@ -104,10 +106,10 @@ export class BuyPage implements OnInit {
 	
 	changePort(data){
 		console.log(data);
-		let myData = (data.detail.value).split('_');
-		let selectedPortName = myData[0];
+		// let myData = (data.detail.value).split('_');
+		let selectedPortName = data.port;
 
-		let portValue = parseFloat(myData[1]).toFixed(2);
+		let portValue = parseFloat(data.freight_25MT).toFixed(2);
 		this.portName = selectedPortName;
 	}
 

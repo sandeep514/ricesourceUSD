@@ -16,7 +16,9 @@ export class OceanfreightsPage implements OnInit {
 	countries: any;
 	selectedResign: any;
 	ports: any;
-
+	showFreights: any;
+	selectedCoun = '';
+	
 	constructor(public apiser: RestService,public navCtrl: NavController,public componentService: ComponentsService,public location:Location) {
 	}
 
@@ -43,12 +45,16 @@ export class OceanfreightsPage implements OnInit {
 		let resignValue = resign.detail.value;
 		this.selectedResign = resignValue;
 		this.countries = Object.keys(this.data[resignValue]).sort();
+		this.ports = []; 
+		this.selectedCoun  = ''
 	}
 
 	getPortList(resign){
 		let region = this.selectedResign;
 		let countryName = resign.detail.value;
 		let portsOfCountry = this.data[region][countryName];
+		console.log(this.selectedCoun);
+
 		this.ports = portsOfCountry;
 		console.log(portsOfCountry);
 	}

@@ -23,17 +23,64 @@
     	<div class="overlay-header"></div>
     
     	<div class="body">
-		<div class="body-image userCaps" >
-			{{ name[0] | uppercase }}
-		</div>
+			<div class="body-image userCaps" >
+				{{ name[0] | uppercase }}
+			</div>
 
-		<div class="u-clearfix"></div>
-		<div style="margin-top: 30px;">
-			<span class="body-stats"><span style="font-size: font-size:13px;">Plan Name</span> <span>{{ planName }}</span></span>
-			<span class="body-stats"><span style="font-size: font-size:13px;">Plan Month</span> <span>{{ planMonths }}</span></span>
-			<span class="body-stats"><span style="font-size: font-size:13px;">EXPIRED ON</span> <span>{{ expired_on }}</span></span>
-		</div>
-		
+			<div class="u-clearfix"></div>
+			<div style="margin-top: 30px;">
+				<span class="body-stats">
+					<span style="font-size:13px;">Plan Name</span> <span>{{ planName }}</span>
+				</span>
+				<span class="body-stats">
+					<span style="font-size:13px;">Plan Month</span> <span>{{ planMonths }}</span>
+				</span>
+				<span class="body-stats">
+					<span style="font-size:13px;">EXPIRED ON</span> <span>{{ expired_on }}</span>
+				</span>
+			</div>
+			<ion-row style="padding-top: 14px;">
+				<!-- <ion-col size="6" >
+					<ion-item class="select" style="background: #fffbd6;--background: #fffbd6;border: 4px solid #92b243;border-radius: 9px;">
+						<ion-select placeholder="Region" (ionChange)="changecountry($event)">
+						  <ion-select-option *ngFor="let region of regions">{{ region }}</ion-select-option>
+						</ion-select>
+					  </ion-item>
+				</ion-col> -->
+				<ion-col size="12" >
+					<ion-item class="select" style="border: 4px solid #92b243;border-radius: 9px;">
+						<ion-label>Select Country</ion-label>
+						<ion-select placeholder="Country" (ionChange)="getPortList($event)">
+							<ion-select-option *ngFor="let country of countries">{{ country }}</ion-select-option>
+						</ion-select>
+					  </ion-item>
+				</ion-col>
+				<ion-col size="12" >
+					<ion-item class="select" style="border: 4px solid #92b243;border-radius: 9px;">
+						<ion-label>Select State</ion-label>
+						<ion-select placeholder="State" (ionChange)="getPortListFromState($event)">
+							<ion-select-option *ngFor="let stat of state">{{ stat }}</ion-select-option>
+						</ion-select>
+					  </ion-item>
+				</ion-col>
+				<ion-col size="12" >
+					<ion-item class="select" style="border: 4px solid #92b243;border-radius: 9px;">
+						<ion-label>Select State</ion-label>
+						<ion-select placeholder="State" (ionChange)="getPortListFromCity($event)">
+							<ion-select-option *ngFor="let citie of city">{{ citie.port }}</ion-select-option>
+						</ion-select>
+					  </ion-item>
+				</ion-col>
+				<ion-col style="text-align: center;">
+					<ion-label style="font-size: 18px;">{{ selectedCity }}</ion-label>
+				</ion-col>
+				<ion-col size="12" style="text-align: center;">
+					<ion-button style="--background: #92b243" (click)="saveport()">Save</ion-button>
+				</ion-col>
+				
+			</ion-row>
+			
+	
     	</div>
     
   </div>

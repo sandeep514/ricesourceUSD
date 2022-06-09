@@ -3,7 +3,7 @@
 		<ion-buttons slot="start" class="back-button" (click)="back()">
 			<ion-icon name="arrow-back-outline"></ion-icon>
 		</ion-buttons>
-		<ion-title class="header-title porttitle">My Bids</ion-title>
+		<ion-title class="header-title porttitle">Bids</ion-title>
 	</ion-toolbar>
 </ion-header>
 
@@ -16,62 +16,98 @@
 						<ion-row>
 							<ion-col size="4" class="demandHeaders">Rice</ion-col> 
 							<ion-col>
-								: {{ bids.qualityName }} {{ bids.qualityType }}
+								<div style="float: left;width: 10px;margin: 0px;">:</div>
+								<div style="margin: 0px">
+									{{ bids.qualityName }} {{ bids.qualityType | titlecase }}
+								</div>
 							</ion-col>
 						</ion-row>
 						<ion-row>
 							<ion-col size="4" class="demandHeaders">Quantity MT</ion-col> 
 							<ion-col>: {{ bids.quantity }}</ion-col>
 						</ion-row>
+						
 						<ion-row>
-							<ion-col size="4" class="demandHeaders">Remarks</ion-col> 
-							<ion-col>: {{ bids.remarks }}</ion-col>
-						</ion-row>
-						<ion-row>
-							<ion-col size="4" class="demandHeaders">Packing</ion-col> 
-							<ion-col>: {{ bids.get_packing_type.bag_size }} {{ bids.get_packing_type.bag_type }}</ion-col>
+							<ion-col size="4" class="demandHeaders">Packing:</ion-col> 
+							<ion-col>
+								<div style="float: left;width: 10px;margin: 0px;">:</div>
+								<div style="margin: 0px">{{ bids.get_packing_type.bag_size }} {{ bids.get_packing_type.bag_type }}</div>
+							</ion-col>
+
 						</ion-row>
 						<ion-row>
 							<ion-col size="4" class="demandHeaders">Port</ion-col> 
 							<ion-col>: {{ bids.portName }}</ion-col>
 						</ion-row>
-
 						<ion-row>
-							<ion-col size="4" class="demandHeaders">Valid Date</ion-col> 
-							<ion-col>: {{ bids.validDate | date :  'M/d/yyyy' }}</ion-col>
+							<ion-col size="4" class="demandHeaders">Remarks</ion-col> 
+							<ion-col>: {{ bids.remarks | titlecase}}</ion-col>
 						</ion-row>
 
-						<ion-row *ngIf="bids?.get_bids.length > 0"  style="margin-top: 5px;">
-							your bids is <span class="demandHeaders" style="padding: 0px 10px;"> ${{ bids?.get_bids[0].bid_amount }} </span> on <span class="demandHeaders" style="padding: 0px 10px;"> {{ bids?.get_bids[0].created_at | date:'dd/MM/yyyy' }}</span>
+						<!-- <ion-row>
+							<ion-col size="4" class="demandHeaders">Valid Date</ion-col> 
+							<ion-col>: {{ bids.validDate | date :  'M/d/yyyy' }}</ion-col>
+						</ion-row> -->
 
-							<ion-row *ngIf="bids?.get_bids[0].counter_amount != 0 && bids?.get_bids[0].counter_status == 0" style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;">
-								SNTC send you a counter offer of ${{bids?.get_bids[0].counter_amount}}
+						<ion-row *ngIf="bids?.get_bids.length"  style="margin-top: 5px;">
+							<ion-row *ngIf="bids?.user_bid_amount">
+								<div>your offer is 
+									<span class="demandHeaders" style="padding: 0px 10px;"> 
+										${{ bids?.get_bids[0].bid_amount }} 
+									</span>PMT on 
+									<span class="demandHeaders" style="padding: 0px 10px;">
+										dated {{ bids?.user_bid_date | date:'dd/MM/yyyy' }}
+									</span> valid till <span class="demandHeaders" style="padding: 0px 10px;">{{ bids?.get_bids[0].validTill | date:'dd/MM/yyyy' }}
+									</span></div>
+							</ion-row>
+							
+							<ion-row *ngIf="bids?.is_bid_accepted_by_me == 'pending'" style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;">
+								SNTC send you a counter offer of ${{bids?.user_bid_amount}}
 								<ion-col> 
-									<ion-button class="green" style="color: #fff;border-radius: 12px;" (click)="accept( bids?.get_bids[0].id )" >Accept</ion-button>
+									<ion-button class="green" style="color: #fff;border-radius: 12px;" (click)="accept( bids?.get_bids[0].id )" >Interested</ion-button>
 								</ion-col>
 								<ion-col>
-									<ion-button class="red" style="color: #fff;border-radius: 12px;" (click)="reject( bids?.get_bids[0].id  )" >Reject</ion-button>
+									<ion-button class="red" style="color: #fff;border-radius: 12px;" (click)="reject( bids?.get_bids[0].id  )" >Not Interested</ion-button>
 								</ion-col>
 							</ion-row>
 							
-							<ion-row *ngIf="bids?.get_bids[0].counter_amount != 0 && bids?.get_bids[0].counter_status != 1" style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;width: 100%;">
-								You accepted a counter offer of ${{bids?.get_bids[0].counter_amount}}
+							<ion-row *ngIf="bids?.is_bid_closed == 'true' " style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;width: 100%;">
+								Deal has been closed @ {{bids?.bid_closed_amount}}$, keep trying.
 							</ion-row>
 
-							<ion-row *ngIf="bids?.get_bids[0].counter_amount != 0 && bids?.get_bids[0].counter_status != 2" style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;width: 100%;">
-								You have declined a counter offer of ${{bids?.get_bids[0].counter_amount}}
+							<ion-row *ngIf="bids?.is_bid_accepted_by_me == 'true' " style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;width: 100%;">
+								Congratulation your deal has been closed @ {{bids?.user_bid_amount}}$
 							</ion-row>
 
+							<ion-row *ngIf="bids?.is_bid_accepted_by_me == 'false' " style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;width: 100%;">
+								You have declined a counter offer of ${{bids?.user_bid_amount}}
+							</ion-row>
 						</ion-row>
 
-						<ion-row *ngIf="bids?.get_bids.length <= 0"  style="margin-top: 5px;margin-bottom: 35px;">
-							<ion-item>
-								<ion-label position="floating">Place your bid</ion-label>
-								<ion-input (ionChange)="yourbidfunction($event , bids.id)" type="number"></ion-input>
+						<ion-row *ngIf="bids?.get_bids.length <= 0"  style="margin-top: 5px	">
+							
+							<div style="padding: 10;border-radius: 10;border: 2px solid #92b243;border-radius: 12px;">
+								<div style="float: left;padding: 0px 10px;margin-top: 23px;font-size: 18px;">
+									$
+								</div>
+								<div style="float: left;border-bottom: 2px solid #92b243;margin: 0px;padding: 6px 0px;">
+									<ion-label position="floating">Place your offer</ion-label>
+									<ion-input (ionChange)="yourbidfunction($event , bids.id)" type="number" style="--padding-top: 0px;--padding-bottom: 0px;"></ion-input>	
+								</div>
+								<div style="float: left;padding: 0px 10px;margin-top: 23px;font-size: 18px;">
+									PMT
+								</div>
+							</div>
+
+							
+						</ion-row>
+						<ion-row *ngIf="bids?.get_bids.length <= 0"  style="margin-top: 5px;margin-bottom: 10px;">
+							<ion-item style="width: 70%">
+								<ion-label position="floating">Validity (Days)</ion-label>
+								<ion-input (ionChange)="validDays($event , bids.id)" type="number"></ion-input>
 							</ion-item>
 							<ion-button class="green" style="color: #fff;border-radius: 12px;" (click)="saveUserBid()">Save</ion-button>
 						</ion-row>
-
 					</div>
 				</li>
 			</ul>

@@ -30,7 +30,7 @@
 			<ion-col size="6" >
 				<ion-item class="select" style="background: #fffbd6;--background: #fffbd6;border: 4px solid #92b243;border-radius: 9px;">
 					<!-- <ion-label>Country</ion-label> -->
-					<ion-select placeholder="Country" (ionChange)="getPortList($event)">
+					<ion-select [(ngModel)]="selectedCoun" placeholder="Country" (ionChange)="getPortList($event)">
 						<ion-select-option *ngFor="let country of countries">{{ country }}</ion-select-option>
 					</ion-select>
 				  </ion-item>
@@ -44,28 +44,22 @@
 					<table class="table" >
 						<thead>
 							<tr>
-								<th class=" type-columns black" style="font-weight: bold;width:40%;font-size: 14px;" >
-									Port
+								<th class=" type-columns black" style="font-weight: bold;width:40%;font-size: 14px;padding-left: 10px;text-align: left;" >
+									Ports
 								</th>
 								<th class=" type-columns black" style="font-weight: bold;width:30%;font-size: 14px;">
-									21MT
-								</th>
-								<th class=" type-columns black" style="font-weight: bold;width:30%;font-size: 14px;">
-									25MT
+									25MT Mundra
 								</th>
 							</tr>
 						</thead>
 
 						<tbody class="user_price" >
 							<tr *ngFor="let list of ports" class="green">
-								<td class="sticky-col first-col left pl-10" >
+								<td class="sticky-col first-col left pl-10" style="color: #000;font-weight: bold;font-size: 18px;width:40%;" >
 									{{ list.port }}
 								</td>
-								<td class="type-columns" style="width:180px;border: none ;--border: none," >
-									${{ list.freight_21MT }}
-								</td>
-								<td class="type-columns" style="width:180px;border: none ;--border: none," >
-									${{ list.freight_25MT }}
+								<td class="type-columns" style="color: #000;width:30%;font-weight: 500;" >
+									${{ list.freight_21MT }} - ${{ list.freight_25MT }}
 								</td>
 							</tr>
 							<tr *ngIf="isNull == true" >

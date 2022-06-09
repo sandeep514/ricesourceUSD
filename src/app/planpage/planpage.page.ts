@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { ComponentsService } from '../components.service';
 import { RestService } from '../rest.service';
+// import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
+
 declare var RazorpayCheckout:any;
 
 @Component({
@@ -20,6 +22,34 @@ export class PlanpagePage implements OnInit {
 		console.log("kjnjk");
 	}
 
+	paymentAmount: string = '3.33';
+	currency: string = 'USD';
+	currencyIcon: string = '₹';
+
+	// payWithPaypal() {
+	// 	console.log("jnk");
+	// 	this.payPal.init({
+	// 		PayPalEnvironmentProduction: 'ARNC1YzHCEPir1DCmzRW9F9eksQVDJxbceTPzwPd3yEx2F2NFjxHydc8a2gLx2qcvUhc697apiR88_Fi',
+	// 		PayPalEnvironmentSandbox: 'Af5Op1UABAes1X3EKCYbVAwjZITlKe9Oqlvjxh1bHM8hQWhLNJ4DLdsMcL6AmaeeKOZ_CdDWZVvWm75q' 
+	// 	}).then(() => {
+
+	// 		this.payPal.prepareToRender('PayPalEnvironmentProduction', new PayPalConfiguration({
+
+	// 		})).then(() => {
+	// 			let payment = new PayPalPayment(this.paymentAmount, this.currency, 'Description', 'sale');
+	// 			this.payPal.renderSinglePaymentUI(payment).then((res) => {
+	// 				console.log(res);
+	// 			}, (err:any) => {
+	// 				alert(JSON.stringify(err));
+	// 			});
+	// 		}, (err:any) => {
+	// 			alert(JSON.stringify(err));
+
+	// 		});
+	// 	}, (err:any) => {
+	// 		alert(JSON.stringify(err));
+	// 	});
+	// }
 	ngOnInit() {
 		// this.apiser.presentLoader("Fetching Plans...");
 		

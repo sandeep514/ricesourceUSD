@@ -1,9 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">SNTC Rice Sourcing</string>
-    <string name="launcher_name">@string/app_name</string>
-    <string name="activity_name">@string/launcher_name</string>
-    <string name="facebook_app_id">294793669485581</string>
-    <string name="fb_login_protocol_scheme">fb294793669485581</string>
-    <string name="facebook_client_token">d058d04c4f8e6f3a437db42a93ecd9c6</string>
-</resources>

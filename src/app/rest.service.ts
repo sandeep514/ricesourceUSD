@@ -276,7 +276,6 @@ export class RestService {
 	}
 
 	verifyUser(formdata){
-		console.log(formdata);
 		let token = localStorage.getItem('token');
 		return new Promise((resolve,reject) => {
 			this.http.post(this.APIURL+'verify/user?api_token='+token,JSON.stringify(formdata)).subscribe((res)=>{
@@ -470,9 +469,9 @@ export class RestService {
 		});
 	}
 
-	getUSDPrice(){
+	getUSDPrice(userId){
 		return new Promise((resolve , reject) => {
-			this.http.get( this.APIURL+'get/usd/prices' ).subscribe((res:any) =>{
+			this.http.get( this.APIURL+'get/usd/prices/'+userId ).subscribe((res:any) =>{
 				resolve(res);
 			}, (err:any)=>{
 				reject(err);
@@ -492,7 +491,7 @@ export class RestService {
 
 	getAllPorts(riceQualityId){
 		return new Promise( (resolve , reject) => {
-			this.http.get(this.APIURL+'get/all/ports/'+riceQualityId).subscribe( (res:any) => {
+			this.http.get(this.APIURL+'get/all/ports/'+riceQualityId+'/'+localStorage.getItem('id')).subscribe( (res:any) => {
 				resolve(res);
 			} ,(err:any) => {
 				reject(err);
@@ -601,6 +600,16 @@ export class RestService {
 		} );
 	}
 
+	getBagVendors(){
+		return new Promise( (resolve , reject) => {
+			this.http.get(this.APIURL+'get/bag/vendors').subscribe( (res:any) => {
+				resolve(res);
+			} ,(err:any) => {
+				reject(err);
+			});
+		} );
+	}
+
 	contact(){
 		return new Promise( (resolve , reject) => {
 			this.http.get(this.APIURL+'get/contact/details').subscribe( (res:any) => {
@@ -612,4 +621,32 @@ export class RestService {
 		} );
 	}
 
-}
+	getHotDeals(userId){
+		return new Promise( (resolve , reject) => {
+			this.http.get(this.APIURL+'get/hot/deals/'+userId).subscribe( (res:any) => {
+				resolve(res);
+			} ,(err:any) => {
+				reject(err);
+			});
+		} );
+	}
+
+	updatePort(postedData){
+		return new Promise((resolve,reject)=>{
+			this.http.post(this.APIURL+'update/port',postedData).subscribe((res)=>{
+				resolve(res);
+			},err=>{
+				reject(err);
+			})
+		});
+	}
+	acceptHotDeal(postedData){
+		return new Promise((resolve,reject)=>{
+			this.http.post(this.APIURL+'accept/hot/deal/notification',postedData).subscribe((res)=>{
+				resolve(res);
+			},err=>{
+				reject(err);
+			})
+		});
+	}
+ }

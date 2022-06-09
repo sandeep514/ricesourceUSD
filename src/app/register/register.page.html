@@ -156,20 +156,33 @@
 				<ion-icon slot="start" name="earth-outline" style="color: black; margin-top: 17px;"></ion-icon>
 			</ion-item>
 
+			<ion-item *ngIf="userState == 'guest' ">
+				<ion-item style="width: 100%" class="ion-no-padding">
+					<ion-label position="floating">Bag Vendor</ion-label>
+					<ion-select placeholder="Select One"  [(ngModel)]="bagVendor" name="bagVendor" (ionChange)="changebagVendor($event)">
+					  	<ion-select-option value="{{ vendors.id }}" *ngFor="let vendors of bagVendorCategory">{{ vendors.name }}</ion-select-option>
+					</ion-select>
+				  </ion-item>
+				<ion-icon slot="start" name="earth-outline" style="color: black; margin-top: 17px;"></ion-icon>
+			</ion-item>
+
 			<ion-item>
 				<ion-label position="floating">Zip Code</ion-label>
 				<ion-input [(ngModel)]="zipcode" name="zipcode"></ion-input>
-				<ion-icon slot="start" name="globe-outline" style="color: black; margin-top: 17px;"></ion-icon>
+				<!-- <ion-icon slot="start" name="globe-outline" style="color: black; margin-top: 17px;"></ion-icon> -->
+				<img slot="start" src="../../assets/menu/zipcode1.png" style="width: 7%;margin-top: 13px;"/>
+
 			</ion-item>
 				
 			<ion-item>
 				<ion-item style="width: 100%" class="ion-no-padding">
 					<ion-label position="floating">Import Port</ion-label>
 					<ion-select placeholder="Select One" [(ngModel)]="import" name="import" (ionChange)="changePort($event)">
-							<ion-select-option value="{{ country.port }}" *ngFor="let country of selectedPort">{{country.port}}</ion-select-option>
+						<ion-select-option value="{{ country.port }}" *ngFor="let country of selectedPort">{{country.port}}</ion-select-option>
 					</ion-select>
 					</ion-item>
-				<ion-icon slot="start" name="earth-outline" style="color: black; margin-top: 17px;"></ion-icon>
+					<img slot="start" src="../../assets/menu/images-removebg-preview.png" style="width: 8%;"/>
+				<!-- <ion-icon slot="start" name="earth-outline" style="color: black; margin-top: 17px;"></ion-icon> -->
 			</ion-item>
 
 			<ion-item>
@@ -179,7 +192,7 @@
 			</ion-item>
 
 			<ion-item>
-				<ion-label position="floating">Mobile no</ion-label>
+				<ion-label position="">Mobile no: +{{ selectedCountryMobileCode }}</ion-label>
 				<ion-input [(ngModel)]="mobile" name="mobile"></ion-input>
 				<img src="../../assets/svg/call-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
 			</ion-item>

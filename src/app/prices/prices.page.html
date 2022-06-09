@@ -58,14 +58,17 @@
                             <p style="font-size: 11px;">Prices in USD</p>
                         </ion-button>
                     </ion-col>
+                    <!-- <p style="padding: 0;margin: 0;text-align: center;width: 100%;color: #fffbd6;">Pull to refresh</p> -->
                 </ion-row>
-
             </ion-col>
-
         </ion-row>
     </div>
 
     <div class="otherbackground">
+        <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+            <ion-refresher-content>
+            </ion-refresher-content>
+          </ion-refresher>
         <div *ngIf="basmatiprice?.basmati != null" style="text-align: right;">
             <span style="margin-right: 20px;font-size: 11px;">last updated at: {{ lastupdatedDate }}</span>
         </div>
