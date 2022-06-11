@@ -182,6 +182,7 @@ export class RestService {
 		return new Promise((resolve,reject)=>{
 			this.http.get(this.APIURL+'prices/'+state+'/'+type).subscribe((res)=>{
 				resolve(res);
+				console.log("jnk");
 			},err=>{
 				reject(err);
 			});

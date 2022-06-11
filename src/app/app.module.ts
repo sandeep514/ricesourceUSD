@@ -25,6 +25,7 @@ import { FirebaseMessaging } from '@ionic-native/firebase-messaging/ngx';
 import { VersionmodalPage } from './versionmodal/versionmodal.page';
 // import { IonicSelectableModule } from 'ionic-selectable';
 import { IonicSelectableModule } from 'ionic-selectable';
+import { PayPal } from '@ionic-native/paypal/ngx';
 
 @NgModule({
   	declarations: [
@@ -62,6 +63,7 @@ import { IonicSelectableModule } from 'ionic-selectable';
 		ThemeDetection,
 		Camera,
 		FirebaseMessaging,
+		PayPal,
 		VersionmodalPage,
     	{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     	{ provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptorService, multi: true }

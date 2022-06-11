@@ -932,6 +932,13 @@
   dependencies:
     "@types/cordova" "latest"
 
+"@ionic-native/paypal@^5.36.0":
+  "integrity" "sha512-GSkNVfIwqmn1sMhlHPuNjGIzHCEm0k1+GL+LNDOQKh3+Bwl26CZBCv03KnYVTaM5S92FEzw5yJLweUDf7AmrAw=="
+  "resolved" "https://registry.npmjs.org/@ionic-native/paypal/-/paypal-5.36.0.tgz"
+  "version" "5.36.0"
+  dependencies:
+    "@types/cordova" "latest"
+
 "@ionic-native/splash-screen@^5.29.0":
   "integrity" "sha512-BfNknY1rrGE8JRnCdKfL5wz8yFLhpPU5FRr8/LA3L+EncvPvcb9LGidePoeH3gVLMkolm2DI2a/rCelNrJ1Sxw=="
   "resolved" "https://registry.npmjs.org/@ionic-native/splash-screen/-/splash-screen-5.36.0.tgz"
@@ -1223,6 +1230,8 @@
   "version" "2.10.0"
 
 "@types/cordova@latest":
+  "integrity" "sha512-rkiiTuf/z2wTd4RxFOb+clE7PF4AEJU0hsczbUdkHHBtkUmpWQpEddynNfJYKYtZFJKbq4F+brfekt1kx85IZA=="
+  "resolved" "https://registry.npmjs.org/@types/cordova/-/cordova-0.0.34.tgz"
   "version" "0.0.34"
 
 "@types/glob@^7.1.1":
@@ -2372,6 +2381,11 @@
   "resolved" "https://registry.npmjs.org/canonical-path/-/canonical-path-1.0.0.tgz"
   "version" "1.0.0"
 
+"card.io.cordova.mobilesdk@^2.1.0":
+  "integrity" "sha512-mjImf1/tqZEDIQUBxS0LoDGGIMpv7Plod9ICTIMUbhXaxYFkbhQFNYGLpYoDZETSlz1sA6aXAm734xTT4KlLaw=="
+  "resolved" "https://registry.npmjs.org/card.io.cordova.mobilesdk/-/card.io.cordova.mobilesdk-2.1.0.tgz"
+  "version" "2.1.0"
+
 "caseless@~0.12.0":
   "integrity" "sha512-4tYFyifaFfGacoiObjJegolkwSU4xQNGbVgUiNYVUxbQ2x2lUsFvY4hVgVzGiIe6WLOPqycWXA40l+PWsxthUw=="
   "resolved" "https://registry.npmjs.org/caseless/-/caseless-0.12.0.tgz"
@@ -2622,6 +2636,11 @@
   "integrity" "sha512-ENwblkFQpqqia6b++zLD/KUWafYlVY/UNnAp7oz7LY7E924wmpye416wBOmvv/HMWzl8gL1kJlfvId/1Dg176w=="
   "resolved" "https://registry.npmjs.org/colors/-/colors-1.1.2.tgz"
   "version" "1.1.2"
+
+"com.paypal.cordova.mobilesdk@^3.5.0":
+  "integrity" "sha512-8O+Veo1bpPKROIO5PZGoCW/IOlU9zYnD4PviufyuPwSL4CV+a8XoW+hi6XPr13I9apsuBgP5O+8HhKQP9tZt0A=="
+  "resolved" "https://registry.npmjs.org/com.paypal.cordova.mobilesdk/-/com.paypal.cordova.mobilesdk-3.5.0.tgz"
+  "version" "3.5.0"
 
 "com.razorpay.cordova@^1.4.12":
   "integrity" "sha512-475M4yWy9eGlUWsdK/OUsuuDdIgelFFk5biIqxF0qcBwS+R76xtSZL/ykrwlQia+wbpqz9e2+/mS4sWDpfzMCg=="

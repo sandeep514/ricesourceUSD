@@ -385,8 +385,8 @@ export class AppComponent implements OnInit {
 								if( localStorage.getItem('isUserActivatedUSD') == '0' ){
 									this.navCtrl.navigateRoot('planpage')
 								}else{
-									this.navCtrl.navigateForward(['planpage']);
-									// this.navCtrl.navigateForward(['priceusd']);
+									// this.navCtrl.navigateForward(['planpage']);
+									this.navCtrl.navigateForward(['priceusd']);
 								}
 							}
 
@@ -401,8 +401,8 @@ export class AppComponent implements OnInit {
 							if( isExpiredUsd == 'true' ){
 								this.navCtrl.navigateForward(['prices']);
 							}else{
-								this.navCtrl.navigateForward(['planpage']);
-								// this.navCtrl.navigateForward(['priceusd']);
+								// this.navCtrl.navigateForward(['planpage']);
+								this.navCtrl.navigateForward(['priceusd']);
 							}
 						}
 					}, 4000);
@@ -610,7 +610,7 @@ export class AppComponent implements OnInit {
 	}
 	goToUSD(){
 		this.menuCtrl.close();
-		this.navCtrl.navigateForward(['planpage'])
+		// this.navCtrl.navigateForward(['planpage'])
 		// this.navCtrl.navigateForward(['priceusd'])
 		localStorage.setItem('apptype' , 'USD')
 	}

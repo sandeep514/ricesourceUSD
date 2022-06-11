@@ -6,6 +6,7 @@ import { RestService } from '../rest.service';
 // import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
 
 declare var RazorpayCheckout:any;
+declare var paypal: any;
 
 @Component({
   selector: 'app-planpage',
@@ -17,15 +18,20 @@ export class PlanpagePage implements OnInit {
 	public listUSDPlans:any;
 	public featureSplit:any = [];
 
+	public price;
+	public priceToPay = 10;
+	public payPalConfig: any;
+	public PAYPAL_CLIENT_ID_TEST = "Af5Op1UABAes1X3EKCYbVAwjZITlKe9Oqlvjxh1bHM8hQWhLNJ4DLdsMcL6AmaeeKOZ_CdDWZVvWm75q"
+	public PAYPAL_CLIENT_ID_LIVE = "ARNC1YzHCEPir1DCmzRW9F9eksQVDJxbceTPzwPd3yEx2F2NFjxHydc8a2gLx2qcvUhc697apiR88_Fi"
+	public PAYPAL_CLIENT_ID = this.PAYPAL_CLIENT_ID_TEST
+
+
 	constructor(public apiser:RestService, public modelController:ModalController,public compSer:ComponentsService,public navCtrl:NavController,public location:Location) { 
 		this.getUSDPlans();
 		console.log("kjnjk");
 	}
 
-	paymentAmount: string = '3.33';
-	currency: string = 'USD';
-	currencyIcon: string = '₹';
-
+	
 	// payWithPaypal() {
 	// 	console.log("jnk");
 	// 	this.payPal.init({
@@ -51,14 +57,81 @@ export class PlanpagePage implements OnInit {
 	// 	});
 	// }
 	ngOnInit() {
-		// this.apiser.presentLoader("Fetching Plans...");
-		
-	}
+		console.log("kjnk");
 
+		this.price = this.priceToPay + " $"
+		let enviroment = ""
+		
+		if (this.PAYPAL_CLIENT_ID == this.PAYPAL_CLIENT_ID_TEST) {
+			enviroment = "sandbox"
+		}else {
+			enviroment = "live"
+		}
+
+		this.payPalConfig = {
+			style: {
+				layout: 'horizontal',
+				color:  'blue',
+				shape:  'rect',
+				label:  'paypal',
+				agline: 'false'
+
+			},
+			env: enviroment,
+			client: {
+				sandbox: this.PAYPAL_CLIENT_ID,
+			},
+
+			commit: false,
+
+			createOrder: (data, actions)=> {
+				return actions.order.create({
+					purchase_units: [{
+						amount: {
+							value: 20,
+							currency: 'USD' 
+						}
+					}]
+				});
+			},
+
+			onApprove: (data, actions) => {
+				return actions.order.capture().then((details) => {
+					console.log(details)
+
+					let status = details["status"];
+					let id = details["id"];
+
+					if (status == "COMPLETED") {
+						this.validPurchase(id)
+					}else {
+
+					}
+
+					console.log('Transaction completed by ' + details.payer.name.given_name + '!');
+				})
+				.catch(err => {
+					console.log(err);
+				})
+			},
+
+			onError: (err) => {
+				console.log(err)
+			}
+		}
+	}
+	ionViewDidEnter() {
+		paypal.Buttons(this.payPalConfig).render('#paypal-button');
+	}
 	closeme(){
 		// this.modelController.dismiss();
 		this.navCtrl.navigateForward(['prices']);
 	}
+	validPurchase(id) {
+		// Purchase confirm 
+		//Do whatever you want to do
+	  }
+	
 	
 	getPlans(){
 		this.apiser.getPlans().then((res:any) => {

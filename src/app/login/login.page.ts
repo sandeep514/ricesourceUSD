@@ -69,7 +69,7 @@ export class LoginPage implements OnInit {
 							this.navCtrl.navigateRoot('prices',{animationDirection: 'forward'});
 						}else{
 							localStorage.setItem('apptype' , 'USD');
-							this.navCtrl.navigateRoot('pricesusd',{animationDirection: 'forward'});
+							this.navCtrl.navigateRoot('priceusd',{animationDirection: 'forward'});
 						}
 					}
 				}

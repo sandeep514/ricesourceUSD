@@ -154,12 +154,12 @@
                             </td>
                             <td class="type-columns">
                                 <!-- <div class="priceVal" style="font-size: 13px !important;">${{ ((riceVal.value[latestDateBasmati].min_price) / 74).toFixed(2) }} - {{ ((riceVal.value[latestDateBasmati].max_price) / 74).toFixed(2) }} </div>  -->
-                                <div class="priceVal" style="font-size: 13px !important; font-weight: bold;" [ngClass]="basmati?.color_status == 3 ? 'black-price' : basmati?.color_status == 2 ? 'red-price' : 'green-price' ">${{ basmati?.fobmin }}-{{ basmati?.fobmax }} </div> 
+                                <div class="priceVal" style="font-size: 13px !important; font-weight: bold;" [ngClass]="basmati?.color_status == 3 ? 'black-price' : ( basmati?.color_status == 2 ) ? 'red-price' :  (basmati?.color_status == 1)? 'green-price': '' ">${{ basmati?.fobmin }}-{{ basmati?.fobmax }}</div> 
                             </td>
 
                             <td class="type-columns">
-                                <!-- <div class="priceVal" style="font-size: 13px !important; font-weight: bold;" [ngClass]="basmati?.color_status == 3 ? 'black-price' : basmati?.color_status == 2 ? 'red-price' : 'green-price' ">${{ ((riceVal.value[latestDateBasmati].min_price) / 74).toFixed(2) }} - {{ ((riceVal.value[latestDateBasmati].max_price) / 74).toFixed(2) }} </div>  -->
-                                <div class="priceVal" style="font-size: 13px !important; font-weight: bold;" [ngClass]="basmati?.color_status == 3 ? 'black-price' : basmati?.color_status == 2 ? 'red-price' : 'green-price' ">${{ ((basmati?.fobmin) + defaultCIFPrice) }}-{{ (basmati?.fobmax + defaultCIFPrice) }} <img src="./../../assets/RINGH.png" alt="" style="    width: 8px;transform: rotate(90deg);" (click)="scroll('left','table-responsive-1')" class="righticon"></div>
+                                <!-- <div class="priceVal" style="font-size: 13px !important; font-weight: bold;" [ngClass]="basmati?.color_status == 3 ? 'black-price' : ( basmati?.color_status == 2 ) ? 'red-price' :  'green-price' ">${{ ((riceVal.value[latestDateBasmati].min_price) / 74).toFixed(2) }} - {{ ((riceVal.value[latestDateBasmati].max_price) / 74).toFixed(2) }} </div>  -->
+                                <div class="priceVal" style="font-size: 13px !important; font-weight: bold;" [ngClass]="basmati?.color_status == 3 ? 'black-price' : ( basmati?.color_status == 2 ) ? 'red-price' :  (basmati?.color_status == 1)? 'green-price': '' ">${{ ((basmati?.fobmin) + defaultCIFPrice) }}-{{ (basmati?.fobmax + defaultCIFPrice) }} <img src="./../../assets/RINGH.png" alt="" style="width: 8px;transform: rotate(90deg);" (click)="scroll('left','table-responsive-1')" class="righticon"></div>
                             </td>
                         </tr>
                       </tbody>
@@ -265,12 +265,12 @@
                                 </td>
                                 <td class="type-columns">
                                     <!-- <div class="priceVal" style="font-size: 13px !important;">${{ ((riceVal.value[latestDateBasmati].min_price) / 74).toFixed(2) }} - {{ ((riceVal.value[latestDateBasmati].max_price) / 74).toFixed(2) }} </div>  -->
-                                    <div class="priceVal" style="font-size: 13px !important;" [ngClass]="basmati?.color_status == 3 ? 'black-price' : basmati?.color_status == 2 ? 'red-price' : 'green-price' ">${{ nonbasmati?.fobmin }}-{{ nonbasmati?.fobmax }} </div> 
+                                    <div class="priceVal" style="font-size: 13px !important;" [ngClass]="nonbasmati?.color_status == 3 ? 'black-price' : ( nonbasmati?.color_status == 2 ) ? 'red-price' : (nonbasmati?.color_status == 1)? 'green-price': '' ">${{ nonbasmati?.fobmin }}-{{ nonbasmati?.fobmax }} </div> 
                                 </td>
 
                                 <td class="type-columns">
                                     <!-- <div class="priceVal" style="font-size: 13px !important;">${{ ((riceVal.value[latestDateBasmati].min_price) / 74).toFixed(2) }} - {{ ((riceVal.value[latestDateBasmati].max_price) / 74).toFixed(2) }} </div>  -->
-                                    <div class="priceVal" style="font-size: 13px !important;" [ngClass]="basmati?.color_status == 3 ? 'black-price' : basmati?.color_status == 2 ? 'red-price' : 'green-price' ">${{ ((nonbasmati?.fobmin) + defaultCIFPrice) }}-{{ (nonbasmati?.fobmax + defaultCIFPrice) }} <img src="./../../assets/RINGH.png" alt="" style="    width: 8px;transform: rotate(90deg);" (click)="scroll('left','table-responsive-1')" class="righticon"></div> 
+                                    <div class="priceVal" style="font-size: 13px !important;" [ngClass]="nonbasmati?.color_status == 3 ? 'black-price' : ( nonbasmati?.color_status == 2 ) ? 'red-price' : (nonbasmati?.color_status == 1)? 'green-price': '' ">${{ ((nonbasmati?.fobmin) + defaultCIFPrice) }}-{{ (nonbasmati?.fobmax + defaultCIFPrice) }} <img src="./../../assets/RINGH.png" alt="" style="    width: 8px;transform: rotate(90deg);" (click)="scroll('left','table-responsive-1')" class="righticon"></div> 
                                 </td>
                             </tr>
                             </tbody>
