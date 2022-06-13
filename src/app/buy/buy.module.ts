@@ -8,7 +8,7 @@ import { BuyPageRoutingModule } from './buy-routing.module';
 
 import { BuyPage } from './buy.page';
 import { ComponentsModule } from '../components/components.module';
-// import { IonicSelectableModule } from 'ionic-selectable';
+import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({
 	imports: [
@@ -17,7 +17,7 @@ import { ComponentsModule } from '../components/components.module';
 		IonicModule,
 		ComponentsModule,
 		BuyPageRoutingModule,
-		// IonicSelectableModule
+		IonicSelectableModule
 	],
 	declarations: [BuyPage]
 })

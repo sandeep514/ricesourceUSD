@@ -29,6 +29,7 @@ export class CalculatorPage implements OnInit {
 	public selectedBag:any;
 	public selectedBagId:any='';
 	public selectedRice:any;
+	public isNull:any;
 
 
 	public riceone:any = '';

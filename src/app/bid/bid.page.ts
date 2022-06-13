@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RestService } from '../rest.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-bid',
@@ -14,8 +15,9 @@ export class BidPage implements OnInit {
 	public qualityType : any;
 	public bidprice : any;
 	public queryDataId : any;
+	public validateFails : any;
 	
-	constructor(public ActRoute: ActivatedRoute , public apiser: RestService) {
+	constructor(public ActRoute: ActivatedRoute , public apiser: RestService,public location:Location) {
 		let queryId = this.ActRoute.snapshot.params.buy_query;
 		this.queryDataId = queryId; 
 		// alert(queryId)
@@ -30,7 +32,9 @@ export class BidPage implements OnInit {
 	ngOnInit() {
 
 	}
-
+	back(){
+		this.location.back();
+	}
 	save(){
 		if( this.bidprice != 0 ){
 			let postedData = { 'bidPrice' : this.bidprice , 'user_id' : localStorage.getItem('id') , queryDataId : this.queryDataId};

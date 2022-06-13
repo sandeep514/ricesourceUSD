@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { Location } from '@angular/common';
 import { NavController } from '@ionic/angular';
+import { IonicSelectableModule } from 'ionic-selectable';
 
 @Component({
 	selector: 'app-buy',
@@ -17,6 +18,7 @@ export class BuyPage implements OnInit {
 	validDays:any=0;
 	riceQualityType:any;
 	riceQualityData:any;
+	port:any;
 	ports:any;
 	selectedPackageData:any;
 	changePackingType:any;

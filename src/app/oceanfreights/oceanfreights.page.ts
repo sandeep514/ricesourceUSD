@@ -17,6 +17,7 @@ export class OceanfreightsPage implements OnInit {
 	selectedResign: any;
 	ports: any;
 	showFreights: any;
+	isNull: any;
 	selectedCoun = '';
 	
 	constructor(public apiser: RestService,public navCtrl: NavController,public componentService: ComponentsService,public location:Location) {

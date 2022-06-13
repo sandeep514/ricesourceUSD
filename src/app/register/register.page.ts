@@ -30,6 +30,8 @@ export class RegisterPage implements OnInit {
 	public contactperson:any;
 	public selectedCountry:any;
 	public bagVendorCategory:any;
+	public bagVendor:any;
+	public import:any;
 	public selectedBagVendorCategory:any = 0;
 	public selectedCountryMobileCode:any = '';
 

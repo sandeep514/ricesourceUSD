@@ -264,7 +264,7 @@ export class QualityDetailsPage implements OnInit {
 				this.defalutPort = res.defalutPort; 
 				this.defalutPortPrice = parseFloat(res.defalutPortPrice);
 
-				this.CIFminData = (parseFloat(res.FOB.fobmin) + this.defalutPortPrice);
+				this.CIFminData = (parseFloat(res.FOB.fobmin) + (this.defalutPortPrice));
 				this.CIFmaxData = (parseFloat(res.FOB.fobmax) + (this.defalutPortPrice));
 
 			} , (err:any) => {
@@ -293,14 +293,18 @@ export class QualityDetailsPage implements OnInit {
 		let removedMinFiftyKgBag:any = (fobmin - fiftyKGBagSize);
 		let removedMaxFiftyKgBag:any = (fobmax - fiftyKGBagSize);
 
-		let newFOBminDATA = parseFloat( removedMinFiftyKgBag + parseFloat(modifiedAmount) );
+		let newFOBminDATA = parseFloat( (removedMinFiftyKgBag) + parseFloat(modifiedAmount) );
 		let newFOBmaxDATA = parseFloat( removedMaxFiftyKgBag + parseFloat(modifiedAmount) );
 		
 		this.fobminData = newFOBminDATA;
 		this.fobmaxData = newFOBmaxDATA;
 
-		this.CIFminData = (newFOBminDATA + this.defalutPortPrice);
-		this.CIFmaxData = (newFOBmaxDATA + (this.defalutPortPrice));
+		console.log(newFOBminDATA);
+		console.log(newFOBmaxDATA);
+		console.log(this.defalutPortPrice);
+
+		this.CIFminData = ((newFOBminDATA) + (Number(this.defalutPortPrice)));
+		this.CIFmaxData = (newFOBmaxDATA + (Number(this.defalutPortPrice)));
 	}
 
 	changeRegion(data){

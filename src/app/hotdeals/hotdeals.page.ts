@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 
@@ -10,7 +11,7 @@ export class HotdealsPage implements OnInit {
 	public notifs:any;
 	public todayDate:any;
 
-    constructor(public apiService: RestService) { }
+    constructor(public apiService: RestService,public location: Location) { }
 
     ngOnInit() {
 		const d = new Date();
@@ -42,6 +43,9 @@ export class HotdealsPage implements OnInit {
 				this.apiService.dismissLoader()
 			} , 1000)
 		});
+	}
+	back(){
+		this.location.back();
 	}
 
 	acceptHotDeal(bidId){

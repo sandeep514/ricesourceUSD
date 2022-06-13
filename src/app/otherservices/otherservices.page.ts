@@ -11,6 +11,7 @@ export class OtherservicesPage implements OnInit {
   	public myBuyers:any;
   	public buyerTypes:any;
   	public selectedBuyerType:any;
+  	public selectedBuyer:any;
   	public selectedBuyers:any;
   	public selectedBuyerslength:any = 1;
 

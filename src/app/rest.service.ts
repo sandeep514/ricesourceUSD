@@ -10,8 +10,8 @@ export class RestService {
 	public loading:any;
 
 	// public APIURL:any = 'http://localhost/rice/rice_brokerage/public/api/';
-	public APIURL:any = 'https://snjtradelink.com/admin/public/api/';
-	public imageUrl = "https://snjtradelink.com/admin/public/";
+	public APIURL:any = 'https://snjtradelink.com/staging/public/api/';
+	public imageUrl = "https://snjtradelink.com/staging/public/";
 
 	constructor(public http: HttpClient, public modalController: ModalController , public loaderCtrl:LoadingController,public toastCtrl:ToastController) { 
  
