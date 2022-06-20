@@ -14,13 +14,36 @@ export class MybidsPage implements OnInit {
 	public mybid:any;
 	public QueryId:any;
 	public validTill:any;
+	public mindate:any;
+	public maxDate:any;
+	public lastDate:any;
 	
 	constructor(public apiService: RestService,public location:Location) { 
-
+		var today = new Date();
+		// this.mindate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
+		this.mindate = new Date(today.setDate((today.getDate() + 1))).toISOString();
+		this.maxDate = today.setFullYear(today.getFullYear() + 1);
+		this.lastDate = new Date(this.maxDate).toISOString()
 	}
 
 	ngOnInit() {
 		this.getListBids();
+	}
+	changed(event){
+		let todayDate = new Date();
+		let todayFormatedDate = todayDate.getDate()+'/'+todayDate.getMonth()+'/'+todayDate.getFullYear();
+
+		let selectedDate = new Date(event.detail.value);
+		let getFullYear = selectedDate.getFullYear();
+		let getDate = selectedDate.getDate();
+		let getMonth = selectedDate.getMonth();
+		let selectedFormatedDate = getDate+'/'+getMonth+'/'+getFullYear;
+
+		var date1 = todayDate;
+		var date2 = selectedDate;
+		var diffDays = date2.getDate() - date1.getDate(); 
+		this.validTill = diffDays;
+		// console.log(diffDays);
 	}
 
 	getListBids(){
@@ -49,8 +72,10 @@ export class MybidsPage implements OnInit {
 		this.QueryId = buyQueryId;
 	}
 
-	saveUserBid(){
-		this.apiService.presentLoader("Please wait");
+	saveUserBid(buyQueryId){
+		this.QueryId = buyQueryId;
+
+		this.apiService.presentLoader("Fetching Queries");
 		if( this.QueryId != undefined && this.mybid != undefined ){
 			this.apiService.addBidOnBuyerQuery({buyQueryId : this.QueryId , validTill : this.validTill , amount : this.mybid , userid : localStorage.getItem('id')}).then((res:any)=>{
 				this.apiService.dismissLoader()

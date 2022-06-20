@@ -9,6 +9,7 @@ declare let RazorpayCheckout:any;
 declare var Highcharts : any;
 import { StockChart } from 'angular-highcharts';
 import { ActivatedRoute } from '@angular/router';
+import { resolve } from 'url';
 
 @Component({
   selector: 'app-quality-details',
@@ -252,6 +253,7 @@ export class QualityDetailsPage implements OnInit {
 				
 				this.componentService.loadingController.dismiss();
 				this.packing = res.packing;
+				console.log(res.packing)
 				this.FOB = res.FOB;
 				this.fobminData = res.FOB.fobmin;
 				this.fobmaxData = res.FOB.fobmax;
@@ -273,38 +275,54 @@ export class QualityDetailsPage implements OnInit {
 			});
 		});
 	}
+	getbagIndex(selectedData){
+		let packingList = this.packing;
+		return new Promise(function(resolve , reject){
+			if( packingList.length == 0 ){
+				reject(false);
+			}else{
+				for(let i = 0 ; i < packingList.length ; i++){
+					if( selectedData == packingList[i].id ) {
+						resolve(i);
+					}
+				}	
+			}
+		});
+	}
+	changeBag(data ){
 
-	changeBag(data){
-		console.log(data)
-		console.log(this.packing);
-
-		let bag_size = this.packing[data.detail.value]['bag_size'];
-		let bag_type = this.packing[data.detail.value]['bag_type'];
-		let bag_PMT_USD = this.packing[data.detail.value]['PMT_USD'];
+		this.getbagIndex(data.detail.value).then((res: any) => {
+			let bag_size = this.packing[res]['bag_size'];
+			let bag_type = this.packing[res]['bag_type'];
+			let bag_PMT_USD = this.packing[res]['PMT_USD'];
 
 
-		this.selectedPackage = bag_size+' '+bag_type;
-		let packingPMT_USD = bag_PMT_USD;
+			this.selectedPackage = bag_size+' '+bag_type;
+			let packingPMT_USD = bag_PMT_USD;
 
-		let modifiedAmount:any = parseFloat(packingPMT_USD).toFixed(2);
-		let fobmin:any = parseFloat(this.fobminData).toFixed(2)
-		let fobmax:any = parseFloat(this.fobmaxData).toFixed(2);
-		let fiftyKGBagSize:any = parseFloat(this.fiftykgMaster.PMT_USD).toFixed(2);
-		let removedMinFiftyKgBag:any = (fobmin - fiftyKGBagSize);
-		let removedMaxFiftyKgBag:any = (fobmax - fiftyKGBagSize);
+			let modifiedAmount:any = parseFloat(packingPMT_USD).toFixed(2);
+			let fobmin:any = parseFloat(this.fobminData).toFixed(2)
+			let fobmax:any = parseFloat(this.fobmaxData).toFixed(2);
+			let fiftyKGBagSize:any = parseFloat(this.fiftykgMaster.PMT_USD).toFixed(2);
+			let removedMinFiftyKgBag:any = (fobmin - fiftyKGBagSize);
+			let removedMaxFiftyKgBag:any = (fobmax - fiftyKGBagSize);
 
-		let newFOBminDATA = parseFloat( (removedMinFiftyKgBag) + parseFloat(modifiedAmount) );
-		let newFOBmaxDATA = parseFloat( removedMaxFiftyKgBag + parseFloat(modifiedAmount) );
+			let newFOBminDATA = parseFloat( (removedMinFiftyKgBag) + parseFloat(modifiedAmount) );
+			let newFOBmaxDATA = parseFloat( removedMaxFiftyKgBag + parseFloat(modifiedAmount) );
+			
+			this.fobminData = newFOBminDATA;
+			this.fobmaxData = newFOBmaxDATA;
+
+			console.log(newFOBminDATA);
+			console.log(newFOBmaxDATA);
+			console.log(this.defalutPortPrice);
+
+			this.CIFminData = ((newFOBminDATA) + (Number(this.defalutPortPrice)));
+			this.CIFmaxData = (newFOBmaxDATA + (Number(this.defalutPortPrice)));
+		} , (err:any) => {
+			console.log(err)
+		})
 		
-		this.fobminData = newFOBminDATA;
-		this.fobmaxData = newFOBmaxDATA;
-
-		console.log(newFOBminDATA);
-		console.log(newFOBmaxDATA);
-		console.log(this.defalutPortPrice);
-
-		this.CIFminData = ((newFOBminDATA) + (Number(this.defalutPortPrice)));
-		this.CIFmaxData = (newFOBmaxDATA + (Number(this.defalutPortPrice)));
 	}
 
 	changeRegion(data){

@@ -16,32 +16,43 @@
 						<ion-row>
 							<ion-col size="4" class="demandHeaders">Rice</ion-col> 
 							<ion-col>
-								<div style="float: left;width: 10px;margin: 0px;">:</div>
+								<div style="float: left;width: 10px;margin: 0px;height: 25px">:</div>
 								<div style="margin: 0px">
 									{{ bids.qualityName }} {{ bids.qualityType | titlecase }}
 								</div>
 							</ion-col>
 						</ion-row>
+						
 						<ion-row>
 							<ion-col size="4" class="demandHeaders">Quantity MT</ion-col> 
-							<ion-col>: {{ bids.quantity }}</ion-col>
+							<ion-col>
+								<div style="float: left;width: 10px;margin: 0px;height: 25px">:</div>
+								<div style="margin: 0px">{{ bids.quantity}}</div>
+							</ion-col>
 						</ion-row>
 						
 						<ion-row>
-							<ion-col size="4" class="demandHeaders">Packing:</ion-col> 
+							<ion-col size="4" class="demandHeaders">Packing</ion-col> 
 							<ion-col>
-								<div style="float: left;width: 10px;margin: 0px;">:</div>
+								<div style="float: left;width: 10px;margin: 0px;height: 25px">:</div>
 								<div style="margin: 0px">{{ bids.get_packing_type.bag_size }} {{ bids.get_packing_type.bag_type }}</div>
+							</ion-col>
+						</ion-row>
+
+						<ion-row>
+							<ion-col size="4" class="demandHeaders">Port</ion-col> 
+							<ion-col>
+								<div style="float: left;width: 10px;margin: 0px;height: 25px">:</div>
+								<div style="margin: 0px">{{  bids.portName }}</div>
 							</ion-col>
 
 						</ion-row>
 						<ion-row>
-							<ion-col size="4" class="demandHeaders">Port</ion-col> 
-							<ion-col>: {{ bids.portName }}</ion-col>
-						</ion-row>
-						<ion-row>
 							<ion-col size="4" class="demandHeaders">Remarks</ion-col> 
-							<ion-col>: {{ bids.remarks | titlecase}}</ion-col>
+							<ion-col>
+								<div style="float: left;width: 10px;margin: 0px;height: 25px">:</div>
+								<div style="margin: 0px">{{ bids.remarks | titlecase}}</div>
+							</ion-col>
 						</ion-row>
 
 						<!-- <ion-row>
@@ -51,14 +62,9 @@
 
 						<ion-row *ngIf="bids?.get_bids.length"  style="margin-top: 5px;">
 							<ion-row *ngIf="bids?.user_bid_amount">
-								<div>your offer is 
-									<span class="demandHeaders" style="padding: 0px 10px;"> 
-										${{ bids?.get_bids[0].bid_amount }} 
-									</span>PMT on 
-									<span class="demandHeaders" style="padding: 0px 10px;">
-										dated {{ bids?.user_bid_date | date:'dd/MM/yyyy' }}
-									</span> valid till <span class="demandHeaders" style="padding: 0px 10px;">{{ bids?.get_bids[0].validTill | date:'dd/MM/yyyy' }}
-									</span></div>
+								<div>
+									Your Offer <span class="demandHeaders">${{ bids?.get_bids[0].bid_amount }} </span> PMT Validity <span class="demandHeaders">{{ bids?.get_bids[0].validTill | date:'dd/MM/yyyy' }}</span>
+								</div>
 							</ion-row>
 							
 							<ion-row *ngIf="bids?.is_bid_accepted_by_me == 'pending'" style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;">
@@ -86,11 +92,11 @@
 
 						<ion-row *ngIf="bids?.get_bids.length <= 0"  style="margin-top: 5px	">
 							
-							<div style="padding: 10;border-radius: 10;border: 2px solid #92b243;border-radius: 12px;">
+							<div style="padding: 10;border-radius: 10;border: 2px solid #92b243;border-radius: 12px;width: 70%">
 								<div style="float: left;padding: 0px 10px;margin-top: 23px;font-size: 18px;">
 									$
 								</div>
-								<div style="float: left;border-bottom: 2px solid #92b243;margin: 0px;padding: 6px 0px;">
+								<div style="float: left;border-bottom: 2px solid #92b243;margin: 0px;padding: 6px 0px;width: 60%">
 									<ion-label position="floating">Place your offer</ion-label>
 									<ion-input (ionChange)="yourbidfunction($event , bids.id)" type="number" style="--padding-top: 0px;--padding-bottom: 0px;"></ion-input>	
 								</div>
@@ -104,9 +110,16 @@
 						<ion-row *ngIf="bids?.get_bids.length <= 0"  style="margin-top: 5px;margin-bottom: 10px;">
 							<ion-item style="width: 70%">
 								<ion-label position="floating">Validity (Days)</ion-label>
-								<ion-input (ionChange)="validDays($event , bids.id)" type="number"></ion-input>
+								<!-- <ion-input (ionChange)="validDays($event , bids.id)" type="number"></ion-input> -->
+								<ion-datetime
+									displayFormat="DD.MM.YYYY"
+									presentation="date"
+									[min]="mindate"
+									[max]="lastDate"
+									(ionChange)="changed($event)"
+								></ion-datetime>
 							</ion-item>
-							<ion-button class="green" style="color: #fff;border-radius: 12px;" (click)="saveUserBid()">Save</ion-button>
+							<ion-button class="green" style="color: #fff;border-radius: 12px;" (click)="saveUserBid(bids.id)">Save</ion-button>
 						</ion-row>
 					</div>
 				</li>

@@ -3,7 +3,7 @@
 		<ion-buttons slot="start" class="back-button" (click)="back()">
 			<ion-icon name="arrow-back-outline"></ion-icon>
 		</ion-buttons>
-			<ion-title class="header-title porttitle">Calculator</ion-title>
+			<ion-title class="header-title porttitle">Calculator (PMT)</ion-title>
 	</ion-toolbar>
 </ion-header>
 
@@ -18,37 +18,37 @@
 		</ion-item>
 	
 		<ion-item>
-			<ion-label position="floating">Cost of Rice Ex Mill Min Price*</ion-label>
+			<ion-label position="floating" class="inputlabel">Cost of Rice Ex Mill Min Price*</ion-label>
 			<ion-input placeholder="Cost of Rice Ex Mill Min Price" [(ngModel)]="riceMinPrice"></ion-input>
 		</ion-item>
 	
 		<ion-item>
-			<ion-label position="floating">Cost of Rice Ex Mill Max Price*</ion-label>
+			<ion-label position="floating" class="inputlabel">Cost of Rice Ex Mill Max Price*</ion-label>
 			<ion-input placeholder="Cost of Rice Ex Mill Max Price" [(ngModel)]="riceMaxPrice"></ion-input>
 		</ion-item>
 	
 		<ion-item>
-			<ion-label position="floating">Transport Min Price</ion-label>
+			<ion-label position="floating" class="inputlabel">Transport Min Price</ion-label>
 			<ion-input placeholder="Transport Min Price" [(ngModel)]="transportMin"></ion-input>
 		</ion-item>
 	
 		<ion-item>
-			<ion-label position="floating">Transport Max Price</ion-label>
+			<ion-label position="floating" class="inputlabel">Transport Max Price</ion-label>
 			<ion-input placeholder="Transport Max Price" [(ngModel)]="transportMax"></ion-input>
 		</ion-item>
 	
 		<ion-item>
-			<ion-label position="floating">Bag Cost including Sortexing & packing labour*</ion-label>
+			<ion-label position="floating" class="inputlabel">Bag Cost including Sortexing & packing labour*</ion-label>
 			<ion-input placeholder="Bag Cost including Sortexing & packing labour*" [(ngModel)]="bagcost"></ion-input>
 		</ion-item>
 	
 		<ion-item>
-			<ion-label position="floating">All Local charges( CFS Handling, B/L, THC ), Finance cost*</ion-label>
+			<ion-label position="floating" class="inputlabel">All Local charges( CFS Handling, B/L, THC ), Finance cost*</ion-label>
 			<ion-input placeholder="All Local charges( CFS Handling, B/L, THC ), Finance cost*" [(ngModel)]="localCharges"></ion-input>
 		</ion-item>
 	
 		<ion-item>
-			<ion-label position="floating">Today's Dollar rate *</ion-label>
+			<ion-label position="floating" class="inputlabel">Today's Dollar rate *</ion-label>
 			<ion-input placeholder="Today's Dollar rate *" [(ngModel)]="dollaerate"></ion-input>
 		</ion-item>
 	
@@ -97,13 +97,13 @@
 		<ion-row>
 			<ion-col size="6">
 				<ion-item style="margin-right: 10px;">
-					<ion-label position="floating">Rice cost 1 *</ion-label>
-					<ion-input placeholder="" [(ngModel)]="riceone" (ionChange)="checkInput($event , 'one')"></ion-input>
+					<ion-label position="floating" class="inputlabel">Rice cost 1 *</ion-label>
+					<ion-input style="border-bottom: 0px; --border-bottom: 0px" type="text" placeholder="" [(ngModel)]="riceone" maxlength="5" max="5" [attr.maxlength]="5" (ionChange)="checkInput($event , 'one')"></ion-input>
 				</ion-item>
 			</ion-col>
 			<ion-col size="6">
 				<ion-item>
-					<ion-label position="floating">%</ion-label>
+					<ion-label position="floating" class="inputlabel">%</ion-label>
 					<ion-input placeholder="" [(ngModel)]="riceonepercentage" (ionChange)="calculateData()"></ion-input>
 				</ion-item>
 			</ion-col>
@@ -113,13 +113,13 @@
 		<ion-row>
 			<ion-col size="6">
 				<ion-item style="margin-right: 10px;">
-					<ion-label position="floating">Blend Rice 2 *</ion-label>
-					<ion-input placeholder="" [(ngModel)]="ricetwo" (ionChange)="checkInput($event , 'two')"></ion-input>
+					<ion-label position="floating" class="inputlabel">Blend Rice 2 *</ion-label>
+					<ion-input placeholder="" [(ngModel)]="ricetwo" maxlength="5" max="5" [attr.maxlength]="5" (ionChange)="checkInput($event , 'two')"></ion-input>
 				</ion-item>
 			</ion-col>
 			<ion-col size="6">
 				<ion-item>
-					<ion-label position="floating">%</ion-label>
+					<ion-label position="floating" class="inputlabel">%</ion-label>
 					<ion-input placeholder="" [(ngModel)]="ricetwopercentage" (ionChange)="calculateData()"></ion-input>
 				</ion-item>
 			</ion-col>
@@ -130,13 +130,13 @@
 		<ion-row>
 			<ion-col size="6">
 				<ion-item style="margin-right: 10px;">
-					<ion-label position="floating">Blend Rice 3 *</ion-label>
-					<ion-input placeholder="" [(ngModel)]="ricethree" (ionChange)="checkInput($event , 'three')"></ion-input>
+					<ion-label position="floating" class="inputlabel">Blend Rice 3 *</ion-label>
+					<ion-input placeholder="" [(ngModel)]="ricethree" maxlength="5" max="5" [attr.maxlength]="5" (ionChange)="checkInput($event , 'three')"></ion-input>
 				</ion-item>
 			</ion-col>
 			<ion-col size="6">
 				<ion-item>
-					<ion-label position="floating">%</ion-label>
+					<ion-label position="floating" class="inputlabel">%</ion-label>
 					<ion-input placeholder="" [(ngModel)]="ricethreepercentage" (ionChange)="calculateData()"></ion-input>
 				</ion-item>
 			</ion-col>
@@ -147,26 +147,30 @@
 		<ion-row>
 			<ion-col size="6">
 				<ion-item style="margin-right: 10px;">
-					<ion-label position="floating">Blend Rice 4 *</ion-label>
-					<ion-input placeholder="" [(ngModel)]="ricefour" (ionChange)="checkInput($event , 'four')"></ion-input>
+					<ion-label position="floating" class="inputlabel">Blend Rice 4 *</ion-label>
+					<ion-input placeholder="" [(ngModel)]="ricefour" maxlength="5" max="5" [attr.maxlength]="5" (ionChange)="checkInput($event , 'four')"></ion-input>
 				</ion-item>
 			</ion-col>
 			<ion-col size="6">
 				<ion-item>
-					<ion-label position="floating">%</ion-label>
+					<ion-label position="floating" class="inputlabel">%</ion-label>
 					<ion-input placeholder="" [(ngModel)]="ricefourpercentage" (ionChange)="calculateData()"></ion-input>
 				</ion-item>
 			</ion-col>
 		</ion-row>
 		<ion-row style="justify-content: center;">Cost of Rice4: {{costOfRice4}}</ion-row>
 		<ion-row>
-			<div style="font-weight: bold;">Avg. Rice Cost PMT</div>: {{AverageRiceCostPMT}}
+			<ul style="list-style: none;padding: 0;margin: 0;width: 100%">
+				<li style="font-weight: bold;float: left;">Avg. Rice Cost PMT: </li>
+				<li style="float: right;"> ₹{{ AverageRiceCostPMT }}</li>
+			</ul>
+			<!-- <div style="font-weight: bold;">Avg. Rice Cost PMT</div>: {{AverageRiceCostPMT}} -->
 		</ion-row>
 		
 		<ion-row>
 			<ion-col size="12">
 				<ion-item>
-					<ion-label position="floating">Processing Charges PMT</ion-label>
+					<ion-label position="floating" class="inputlabel">Processing Charges PMT</ion-label>
 					<ion-input placeholder="Processing Charges PMT" [(ngModel)]="processingCharges" (ionChange)="calculateData()"></ion-input>
 				</ion-item>
 			</ion-col>
@@ -180,49 +184,67 @@
 					</ion-select>
 				</ion-item>
 					<div>
-						<div style="font-weight: bold;float: left;">Bag cost PMT</div>: {{ bagSizePrice }}
+						<ul style="list-style: none;padding: 0;margin: 0;width: 100%">
+							<li style="font-weight: bold;float: left;">Bag cost PMT: </li>
+							<li style="float: right;"> ₹{{ bagSizePrice }}</li>
+						</ul>
 					</div>
 			</ion-col>
 		</ion-row>
 		<ion-row>
-			<div style="font-weight: bold;float: left;">PMT</div>: {{PMT}}
+			<ul style="list-style: none;padding: 0;margin: 0;width: 100%">
+				<li style="font-weight: bold;float: left;">PMT: </li>
+				<li style="float: right;"> ₹{{PMT}}</li>
+			</ul>
 		</ion-row>
 		
 		<ion-row>
 			<ion-col size="12">
 				<ion-item>
-					<ion-label position="floating">Domestic Transport Upto Mundra PMT</ion-label>
+					<ion-label position="floating" class="inputlabel">Domestic Transport Upto Mundra PMT</ion-label>
 					<ion-input placeholder="Domestic Transport Upto Mundra PMT" [(ngModel)]="domesticTransport"  (ionChange)="calculateData()"></ion-input>
 				</ion-item>
 			</ion-col>
 		</ion-row>
 		<ion-row>
-			<div style="font-weight: bold;">Port exp (CHA, THC, B/l)) PMT:</div> ₹{{DefaultValues?.localcharges}}
+			<ul style="list-style: none;padding: 0;margin: 0;width: 100%">
+				<li style="font-weight: bold;float: left;">Port exp (CHA, THC, B/l)) PMT: </li>
+				<li style="float: right;"> ₹{{DefaultValues?.localcharges}}</li>
+			</ul>
 		</ion-row>
 		<ion-row>
-			<div style="font-weight: bold;">Finance cost (Bank exp/Ins) PMT:</div> ₹{{ DefaultValues?.financecost }}
+			<ul style="list-style: none;padding: 0;margin: 0;width: 100%">
+				<li style="font-weight: bold;float: left;">Finance cost (Bank exp/Ins) PMT: </li>
+				<li style="float: right;"> ₹{{ DefaultValues?.financecost }}</li>
+			</ul>
 		</ion-row>
 		<ion-row>
-			<div style="font-weight: bold;">Total Cost upto Port </div>: ₹ {{ totalPriceINR }}
+			<ul style="list-style: none;padding: 0;margin: 0;width: 100%">
+				<li style="font-weight: bold;float: left;">Total Cost upto Port: </li>
+				<li style="float: right;"> ₹{{ totalPriceINR }}</li>
+			</ul>
 		</ion-row>
 		
 		<ion-row>
 			<ion-col size="12">
 				<ion-item>
-					<ion-label position="floating">Todays US Dollar Rate $</ion-label>
-					<ion-input placeholder="Todays US Dollar Rate $" [(ngModel)]="dollaerate" (ionChange)="checkInput($event , 'three')"></ion-input>
+					<ion-label position="floating" class="inputlabel">Today's US Dollar Rate $</ion-label>
+					<ion-input placeholder="Today's US Dollar Rate $" [(ngModel)]="dollaerate" (ionChange)="checkInput($event , 'three')"></ion-input>
 				</ion-item>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col>
-				<div style="font-weight: bold;float: left">FOB in USD</div> : ${{PMTusd}}
+				<ul style="list-style: none;padding: 0;margin: 0;width: 100%">
+					<li style="font-weight: bold;float: left;">FOB in USD: </li>
+					<li style="float: right;"> ${{PMTusd}}</li>
+				</ul>
 			</ion-col>
 		</ion-row>
 		<ion-row>
 			<ion-col size="12">
 				<ion-item>
-					<ion-label position="floating">LC Charges PMT (Optional) </ion-label>
+					<ion-label position="floating" class="inputlabel">LC Charges PMT (Optional) </ion-label>
 					<ion-input placeholder="L/C Charges" [(ngModel)]="lccharges" (ionChange)="checkInput($event , 'three')"></ion-input>
 				</ion-item>
 			</ion-col>
@@ -231,7 +253,7 @@
 		<ion-row>
 			<ion-col size="9">
 				<ion-item>
-					<ion-label position="floating">Ocean Freight PMT (Optional)</ion-label>
+					<ion-label position="floating" class="inputlabel">Ocean Freight PMT (Optional)</ion-label>
 					<ion-input (ionChange)="save()" placeholder="Ocean Freight Per MT" [(ngModel)]="oceanfreight"></ion-input>
 				</ion-item>
 			</ion-col>
@@ -244,7 +266,7 @@
 		<ion-row>
 			<ion-col size="12">
 				<ion-item>
-					<ion-label position="floating">Third Party Inspection PMT(Optional)</ion-label>
+					<ion-label position="floating" class="inputlabel">Third Party Inspection PMT(Optional)</ion-label>
 					<ion-input (ionChange)="save()" placeholder="Third Party Inspection" [(ngModel)]="thirdpartyinspection"></ion-input>
 				</ion-item>
 			</ion-col>
@@ -253,7 +275,7 @@
 		<ion-row>
 			<ion-col size="12">
 				<ion-item>
-					<ion-label position="floating">Legalisation Charges PMT (Optional)</ion-label>
+					<ion-label position="floating" class="inputlabel">Legalisation Charges PMT (Optional)</ion-label>
 					<ion-input (ionChange)="save()" placeholder="Legalisation Charges" [(ngModel)]="legalisationcharges"></ion-input>
 				</ion-item>
 			</ion-col>
@@ -262,7 +284,7 @@
 		<ion-row>
 			<ion-col size="12">
 				<ion-item>
-					<ion-label position="floating">COC PMT (Optional)</ion-label>
+					<ion-label position="floating" class="inputlabel">COC PMT (Optional)</ion-label>
 					<ion-input (ionChange)="save()" placeholder="COC" [(ngModel)]="coc"></ion-input>
 				</ion-item>
 			</ion-col>
@@ -271,7 +293,7 @@
 		<ion-row>
 			<ion-col size="12">
 				<ion-item>
-					<ion-label position="floating">EIA Cost PMT (For EU Only) (Optional )</ion-label>
+					<ion-label position="floating" class="inputlabel">EIA Cost PMT (For EU Only) (Optional )</ion-label>
 					<ion-input (ionChange)="save()" placeholder="EIA cost ( for EU Only )" [(ngModel)]="eiacost"></ion-input>
 				</ion-item>
 			</ion-col>
@@ -291,16 +313,6 @@
 						<ion-select-option value="8">8</ion-select-option>
 						<ion-select-option value="9">9</ion-select-option>
 						<ion-select-option value="10">10</ion-select-option>
-						<!-- <ion-select-option value="11">11</ion-select-option>
-						<ion-select-option value="12">12</ion-select-option>
-						<ion-select-option value="13">13</ion-select-option>
-						<ion-select-option value="14">14</ion-select-option>
-						<ion-select-option value="15">15</ion-select-option>
-						<ion-select-option value="16">16</ion-select-option>
-						<ion-select-option value="17">17</ion-select-option>
-						<ion-select-option value="18">18</ion-select-option>
-						<ion-select-option value="19">19</ion-select-option>
-						<ion-select-option value="20">20</ion-select-option> -->
 					</ion-select>
 				</ion-item>
 			</ion-col>
@@ -335,11 +347,18 @@
 					</ion-item>				
 			</ion-col>
 		</ion-row> -->
-		<ion-row *ngIf="supplierCharge != 0">
+		<!-- <ion-row *ngIf="supplierCharge != 0">
 			Markup Cost:$ {{beforeMarkup}}
-		</ion-row>
+		</ion-row> -->
 		<ion-row>
-			FINAL CIF Cost Or FOB cost:$ {{finalCIFPrice}}
+			<ul style="padding: 0px;list-style: none;margin: 0px;width: 100%">
+				<li><p style="font-weight: bold;padding: 0;margin: 0;margin-bottom: 5px;">FINAL CIF</p></li>
+				<li><p style="width: 40%;float: left;padding: 0;margin: 0;;">FOB Cost </p>:${{lastFOBAmount}}</li>
+				<li><p style="width: 40%;float: left;padding: 0;margin: 0;;">CIF Cost </p>:${{finalCIFPrice}}</li>
+			</ul>
+			
+			
+			
 		</ion-row>
 		<ion-row style="position: fixed;z-index: 9999999;bottom: 60px;right: 0;">
 			<ion-col style="text-align: center;" >
@@ -349,7 +368,7 @@
 
 
 
-		<ion-row *ngIf="modalStatus == true" style="background: #fffbd6;position: absolute;z-index: 9999999;top: 0;width: 100%;height: 80%;box-shadow: 21px 4px 33px 13px lightgrey;border-radius: 23px;border: 2px solid #92b243;overflow: hidden;top: 5%">
+		<ion-row *ngIf="modalStatus == true" style="background: #fffbd6;position: absolute;z-index: 9999999;top: 0;width: 95%;height: 80%;border-radius: 23px;border: 2px solid #92b243;overflow: hidden;top: 5%">
 			
 
 			<ion-row style="width: 100%;">
@@ -360,7 +379,7 @@
 					<div>
 						<ion-row style="padding-top: 14px;">
 							<ion-col size="6" >
-								<ion-item class="select" style="background: #fffbd6;--background: #fffbd6;border: 4px solid #92b243;border-radius: 9px;">
+								<ion-item class="select" style="background: #fffbd6;--background: #fffbd6;border: 4px solid #92b243;border-radius: 9px;margin-right: 5px;">
 									<!-- <ion-label>Region</ion-label> -->
 									<ion-select placeholder="Region" (ionChange)="changecountry($event)">
 									  <ion-select-option *ngFor="let region of regions">{{ region }}</ion-select-option>
@@ -384,28 +403,22 @@
 									<table class="table" >
 										<thead>
 											<tr>
-												<th class=" type-columns black" style="font-weight: bold;width:40%;font-size: 14px;" >
+												<th class=" type-columns black" style="font-weight: bold;width:40%;font-size: 14px !important;" >
 													Port
 												</th>
-												<th class=" type-columns black" style="font-weight: bold;width:30%;font-size: 14px;">
-													21MT
-												</th>
-												<th class=" type-columns black" style="font-weight: bold;width:30%;font-size: 14px;">
-													25MT
+												<th class=" type-columns black" style="font-weight: bold;width:30%;font-size: 14px !important">
+													25MT(Per MT)
 												</th>
 											</tr>
 										</thead>
 				
 										<tbody class="user_price" >
 											<tr *ngFor="let list of ports" class="green">
-												<td class="sticky-col first-col left pl-10" style="font-size: 14px;" >
+												<td class="sticky-col first-col left pl-10" style="font-size: 14px !important;width: 40%" >
 													{{ list.port }}
 												</td>
-												<td class="type-columns" style="width:180px;border: none; --border: none;font-size: 13px;" >
-													${{ list.freight_21MT }}
-												</td>
-												<td class="type-columns" style="width:180px;border: none ;--border: none;font-size: 13px;" >
-													${{ list.freight_25MT }}
+												<td class="type-columns" style="width:180px;border: none ;--border: none;font-size: 14px !important;" >
+													${{ list.freight_21MT_1MT }} - ${{ list.freight_25MT_1MT }}
 												</td>
 											</tr>
 											<tr *ngIf="isNull == true" >

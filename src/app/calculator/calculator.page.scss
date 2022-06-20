@@ -393,3 +393,17 @@ ion-segment {
         margin: 7px 0px
     }
 }
+
+:host(.item-interactive.ion-valid) {
+    --highlight-background: transparent;
+    --highlight-background: transparent !important;
+}
+
+ion-item{
+    --highlight-background: transparent;
+    --highlight-background: transparent !important;
+}
+
+.inputlabel{
+    font-size: 15px !important;
+}
