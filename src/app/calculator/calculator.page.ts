@@ -85,7 +85,6 @@ export class CalculatorPage implements OnInit {
 		this.getTransportState();
 	}
 	calculateData(){
-		
 		if( this.ricefour != '' ){
 			if (this.ricefour.length < 5){
 				this.blendError4 = true;
@@ -93,120 +92,113 @@ export class CalculatorPage implements OnInit {
 				this.blendError4 = false;
 			}
 		}
-		( this.riceone.length > 4 )? this.blendError1 = false : '';
-		( this.ricetwo.length > 4 )? this.blendError2 = false : '';
-		( this.ricethree.length > 4 )? this.blendError3 = false : '';
-		( this.ricefour.length > 4 )? this.blendError4 = false : '';
+
+		( this.riceone.length != 0 || this.riceone != '') ?( this.riceone.length > 4 )? this.blendError1 = false : this.blendError1 = true  : '';
+		( this.ricetwo.length != 0 || this.ricetwo != '') ?( this.ricetwo.length > 4 )? this.blendError2 = false : this.blendError2 = true  : '';
+		( this.ricethree.length != 0 || this.ricethree != '') ?( this.ricethree.length > 4 )? this.blendError3 = false : this.blendError3 = true  : '';
+		( this.ricefour.length != 0 || this.ricefour != '') ?( this.ricefour.length > 4 )? this.blendError4 = false : this.blendError4 = true  : '';
 		
-		console.log(this.riceone.length);
-		console.log(this.ricetwo.length);
-		console.log(this.ricethree.length);
-		console.log(this.ricefour.length);
+		if(this.riceone != undefined && this.riceonepercentage != undefined){
+			this.costOfRice1 = parseFloat(((this.riceone *this.riceonepercentage)/100).toFixed(2));
+		}
+		if(this.ricetwo != undefined && this.ricetwopercentage != undefined){
+			this.costOfRice2 = ((this.ricetwo *this.ricetwopercentage)/100);
+		}
+		if(this.ricethree != undefined && this.ricethreepercentage != undefined){
+			this.costOfRice3 = ((this.ricethree *this.ricethreepercentage)/100);
+		}
+		if(this.ricefour != undefined && this.ricefourpercentage != undefined){
+			this.costOfRice4 = ((this.ricefour *this.ricefourpercentage)/100);
+		}
 
+		if( this.processingCharges == '' ){
+			this.PMT = (this.costOfRice1+this.costOfRice2+this.costOfRice3+this.costOfRice4+this.updatedUserPrice);
 
-			this.blendError1 ,this.blendError2 ,this.blendError3 ,this.blendError4 = false;
-
-			if(this.riceone != undefined && this.riceonepercentage != undefined){
-				this.costOfRice1 = parseFloat(((this.riceone *this.riceonepercentage)/100).toFixed(2));
-			}
-			if(this.ricetwo != undefined && this.ricetwopercentage != undefined){
-				this.costOfRice2 = ((this.ricetwo *this.ricetwopercentage)/100);
-			}
-			if(this.ricethree != undefined && this.ricethreepercentage != undefined){
-				this.costOfRice3 = ((this.ricethree *this.ricethreepercentage)/100);
-			}
-			if(this.ricefour != undefined && this.ricefourpercentage != undefined){
-				this.costOfRice4 = ((this.ricefour *this.ricefourpercentage)/100);
-			}
-
-			if( this.processingCharges == '' ){
-				this.PMT = (this.costOfRice1+this.costOfRice2+this.costOfRice3+this.costOfRice4+this.updatedUserPrice);
-
-				if( this.domesticTransport== '' ){
-					this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.updatedUserPrice)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
-				}else{
-					this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.updatedUserPrice)+parseFloat(this.domesticTransport)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
-				}
-
+			if( this.domesticTransport== '' ){
+				this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.updatedUserPrice)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
 			}else{
-				this.PMT = (this.costOfRice1+this.costOfRice2+this.costOfRice3+this.costOfRice4+parseFloat(this.processingCharges)+this.updatedUserPrice);
+				this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.updatedUserPrice)+parseFloat(this.domesticTransport)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
+			}
+		}else{
+			this.PMT = (this.costOfRice1+this.costOfRice2+this.costOfRice3+this.costOfRice4+parseFloat(this.processingCharges)+this.updatedUserPrice);
 
-				this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.processingCharges)+parseFloat(this.updatedUserPrice)+parseFloat(this.domesticTransport)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
-			}
-			let dollaerateData = 0;
-			if (this.dollaerate == '' || this.dollaerate == undefined){
-				dollaerateData = 0;
-			}else{
-				dollaerateData = this.dollaerate;
-			}
-			
-			// this.PMTusd = ((((this.totalPriceINR/this.dollaerate)*this.supplierCharge)/100)+(this.totalPriceINR/this.dollaerate)).toFixed(2);
-
-			if( (this.totalPriceINR/dollaerateData) == Infinity ){
-				this.PMTusd = 0;
-			}else{
-				this.PMTusd = (this.totalPriceINR/dollaerateData).toFixed(2);
-			}
-			console.log(this.PMTusd)
-
-			// if( isNaN(Number(this.lccharges)) ){
-			// 	this.lccharges = 0;
-			// }
-			// if( isNaN(Number(this.lccharges)) ){
-			// 	this.lccharges = 0;
-			// }
-			// if( isNaN(Number(this.oceanfreight)) ){
-			// 	this.oceanfreight = 0;
-			// }
-			// if( isNaN(Number(this.thirdpartyinspection)) ){
-			// 	this.thirdpartyinspection = 0;
-			// }
-			// if( isNaN(Number(this.legalisationcharges)) ){
-			// 	this.legalisationcharges = 0;
-			// }
-			// if( isNaN(Number(this.coc)) ){
-			// 	this.coc = 0;
-			// }
-			// if( isNaN(Number(this.eiacost)) ){
-			// 	this.eiacost = 0;
-			// }
-			this.beforeMarkup = Math.floor((parseFloat(this.PMTusd)));
-			let processedAmount = 0;
-			if(this.lccharges != ''){
-				processedAmount = Math.floor(((processedAmount)+parseFloat(this.lccharges)));
-			}
-			if(this.oceanfreight != ''){
-				processedAmount = Math.floor(((processedAmount)+parseFloat(this.oceanfreight)));
-			}
-			if(this.thirdpartyinspection != ''){
-				processedAmount = Math.floor(((processedAmount)+parseFloat(this.thirdpartyinspection)));
-			}
-			if(this.legalisationcharges != ''){
-				processedAmount = Math.floor(((processedAmount)+parseFloat(this.legalisationcharges)));
-			}
-			if(this.coc != ''){
-				processedAmount = Math.floor(((processedAmount)+parseFloat(this.coc)));
-			}
-			if(this.eiacost != ''){
-				processedAmount = Math.floor(((processedAmount)+parseFloat(this.eiacost)));
-			}
-
-			this.beforeMarkup = this.beforeMarkup+processedAmount;
-			if( this.oceanfreight != '' ){
-				this.lastFOBAmount = Math.floor(this.beforeMarkup-parseFloat(this.oceanfreight));
-			}else{
-				this.lastFOBAmount = this.beforeMarkup;
-			}
-			// this.beforeMarkup = Math.floor((parseFloat(this.PMTusd)+parseFloat(this.lccharges)+parseFloat(this.oceanfreight)+parseFloat(this.thirdpartyinspection)+parseFloat(this.legalisationcharges)+parseFloat(this.coc)+parseFloat(this.eiacost)));
-
-			if( this.supplierCharge != '' || this.supplierCharge != 0 ){
-				this.lastFOBAmount = Math.floor(((this.lastFOBAmount * this.supplierCharge)/100) + this.lastFOBAmount);
-				this.finalCIFPrice = Math.floor(((this.beforeMarkup * this.supplierCharge)/100) + this.beforeMarkup);
-			}else{
-				this.finalCIFPrice = this.beforeMarkup;
-			}
-			this.AverageRiceCostPMT = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4));
+			this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.processingCharges)+parseFloat(this.updatedUserPrice)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
+		}
+		let dollaerateData = 0;
+		if (this.dollaerate == '' || this.dollaerate == undefined){
+			dollaerateData = 0;
+		}else{
+			dollaerateData = this.dollaerate;
+		}
 		
+		// this.PMTusd = ((((this.totalPriceINR/this.dollaerate)*this.supplierCharge)/100)+(this.totalPriceINR/this.dollaerate)).toFixed(2);
+		console.log(this.totalPriceINR);
+		console.log(dollaerateData);
+		if( (this.totalPriceINR/dollaerateData) == Infinity ){
+			this.PMTusd = 0;
+		}else{
+			this.PMTusd = (this.totalPriceINR/dollaerateData).toFixed(2);
+		}
+		console.log(this.PMTusd)
+
+		// if( isNaN(Number(this.lccharges)) ){
+		// 	this.lccharges = 0;
+		// }
+		// if( isNaN(Number(this.lccharges)) ){
+		// 	this.lccharges = 0;
+		// }
+		// if( isNaN(Number(this.oceanfreight)) ){
+		// 	this.oceanfreight = 0;
+		// }
+		// if( isNaN(Number(this.thirdpartyinspection)) ){
+		// 	this.thirdpartyinspection = 0;
+		// }
+		// if( isNaN(Number(this.legalisationcharges)) ){
+		// 	this.legalisationcharges = 0;
+		// }
+		// if( isNaN(Number(this.coc)) ){
+		// 	this.coc = 0;
+		// }
+		// if( isNaN(Number(this.eiacost)) ){
+		// 	this.eiacost = 0;
+		// }
+		this.beforeMarkup = Math.floor((parseFloat(this.PMTusd)));
+		let processedAmount = 0;
+		if(this.lccharges != ''){
+			processedAmount = Math.floor(((processedAmount)+parseFloat(this.lccharges)));
+		}
+		if(this.oceanfreight != ''){
+			processedAmount = Math.floor(((processedAmount)+parseFloat(this.oceanfreight)));
+		}
+		if(this.thirdpartyinspection != ''){
+			processedAmount = Math.floor(((processedAmount)+parseFloat(this.thirdpartyinspection)));
+		}
+		if(this.legalisationcharges != ''){
+			processedAmount = Math.floor(((processedAmount)+parseFloat(this.legalisationcharges)));
+		}
+		if(this.coc != ''){
+			processedAmount = Math.floor(((processedAmount)+parseFloat(this.coc)));
+		}
+		if(this.eiacost != ''){
+			processedAmount = Math.floor(((processedAmount)+parseFloat(this.eiacost)));
+		}
+
+		this.beforeMarkup = this.beforeMarkup+processedAmount;
+		if( this.oceanfreight != '' ){
+			this.lastFOBAmount = Math.floor(this.beforeMarkup-parseFloat(this.oceanfreight));
+		}else{
+			this.lastFOBAmount = this.beforeMarkup;
+		}
+		// this.beforeMarkup = Math.floor((parseFloat(this.PMTusd)+parseFloat(this.lccharges)+parseFloat(this.oceanfreight)+parseFloat(this.thirdpartyinspection)+parseFloat(this.legalisationcharges)+parseFloat(this.coc)+parseFloat(this.eiacost)));
+
+		if( this.supplierCharge != '' || this.supplierCharge != 0 ){
+			this.lastFOBAmount = Math.floor(((this.lastFOBAmount * this.supplierCharge)/100) + this.lastFOBAmount);
+			this.finalCIFPrice = Math.floor(((this.beforeMarkup * this.supplierCharge)/100) + this.beforeMarkup);
+		}else{
+			this.finalCIFPrice = this.beforeMarkup;
+		}
+		this.AverageRiceCostPMT = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4));
+	
 	}
 
 	getCalculatorData(){
