@@ -175,6 +175,7 @@
 				</ion-item>
 			</ion-col>
 		</ion-row>
+		<ion-row style="justify-content: center;font-weight: bold;color: red;" *ngIf="blendError1">Blend rice 1 should be greater than 10,000.</ion-row>
 		<ion-row style="justify-content: center;">Cost of Rice1: {{costOfRice1}}</ion-row>
 
 		<ion-row>
@@ -191,6 +192,7 @@
 				</ion-item>
 			</ion-col>
 		</ion-row>
+		<ion-row style="justify-content: center;font-weight: bold;color: red;" *ngIf="blendError2">Blend rice 2 should be greater than 10,000.</ion-row>
 		<ion-row style="justify-content: center;">Cost of Rice2: {{costOfRice2}}</ion-row>
 
 
@@ -208,6 +210,7 @@
 				</ion-item>
 			</ion-col>
 		</ion-row>
+		<ion-row style="justify-content: center;font-weight: bold;color: red;" *ngIf="blendError3">Blend rice 3 should be greater than 10,000.</ion-row>
 		<ion-row style="justify-content: center;">Cost of Rice3: {{costOfRice3}} </ion-row>
 
 
@@ -225,7 +228,10 @@
 				</ion-item>
 			</ion-col>
 		</ion-row>
+		<ion-row style="justify-content: center;font-weight: bold;color: red;" *ngIf="blendError4">Blend rice 4 should be greater than 10,000.</ion-row>
 		<ion-row style="justify-content: center;">Cost of Rice4: {{costOfRice4}}</ion-row>
+
+
 		<ion-row>
 			<ul style="list-style: none;padding: 0;margin: 0;width: 100%">
 				<li style="font-weight: bold;float: left;">Avg. Rice Cost PMT: </li>

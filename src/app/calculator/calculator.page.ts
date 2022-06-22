@@ -73,6 +73,11 @@ export class CalculatorPage implements OnInit {
 	public modalStatus: any = false;
 	public AverageRiceCostPMT: any = 0;
 
+	public blendError1: any = false;
+	public blendError2: any = false;
+	public blendError3: any = false;
+	public blendError4: any = false;
+
 	constructor(public apiService: RestService , public navCtrl: NavController,public location:Location, public modalCtrl: ModalController,public componentService: ComponentsService) { }
 
 	ngOnInit() {
@@ -80,112 +85,128 @@ export class CalculatorPage implements OnInit {
 		this.getTransportState();
 	}
 	calculateData(){
+		
 		if( this.ricefour != '' ){
 			if (this.ricefour.length < 5){
-				alert('Blend rice 4 shoult not be greater than 10,000.');
-				return false;
-			}	
+				this.blendError4 = true;
+			}	else{
+				this.blendError4 = false;
+			}
 		}
-		if(this.riceone != undefined && this.riceonepercentage != undefined){
-			this.costOfRice1 = parseFloat(((this.riceone *this.riceonepercentage)/100).toFixed(2));
-		}
-		if(this.ricetwo != undefined && this.ricetwopercentage != undefined){
-			this.costOfRice2 = ((this.ricetwo *this.ricetwopercentage)/100);
-		}
-		if(this.ricethree != undefined && this.ricethreepercentage != undefined){
-			this.costOfRice3 = ((this.ricethree *this.ricethreepercentage)/100);
-		}
-		if(this.ricefour != undefined && this.ricefourpercentage != undefined){
-			this.costOfRice4 = ((this.ricefour *this.ricefourpercentage)/100);
-		}
+		( this.riceone.length > 4 )? this.blendError1 = false : '';
+		( this.ricetwo.length > 4 )? this.blendError2 = false : '';
+		( this.ricethree.length > 4 )? this.blendError3 = false : '';
+		( this.ricefour.length > 4 )? this.blendError4 = false : '';
+		
+		console.log(this.riceone.length);
+		console.log(this.ricetwo.length);
+		console.log(this.ricethree.length);
+		console.log(this.ricefour.length);
 
-		if( this.processingCharges == '' ){
-			this.PMT = (this.costOfRice1+this.costOfRice2+this.costOfRice3+this.costOfRice4+this.updatedUserPrice);
 
-			if( this.domesticTransport== '' ){
-				this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.updatedUserPrice)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
-			}else{
-				this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.updatedUserPrice)+parseFloat(this.domesticTransport)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
+			this.blendError1 ,this.blendError2 ,this.blendError3 ,this.blendError4 = false;
+
+			if(this.riceone != undefined && this.riceonepercentage != undefined){
+				this.costOfRice1 = parseFloat(((this.riceone *this.riceonepercentage)/100).toFixed(2));
+			}
+			if(this.ricetwo != undefined && this.ricetwopercentage != undefined){
+				this.costOfRice2 = ((this.ricetwo *this.ricetwopercentage)/100);
+			}
+			if(this.ricethree != undefined && this.ricethreepercentage != undefined){
+				this.costOfRice3 = ((this.ricethree *this.ricethreepercentage)/100);
+			}
+			if(this.ricefour != undefined && this.ricefourpercentage != undefined){
+				this.costOfRice4 = ((this.ricefour *this.ricefourpercentage)/100);
 			}
 
-		}else{
-			this.PMT = (this.costOfRice1+this.costOfRice2+this.costOfRice3+this.costOfRice4+parseFloat(this.processingCharges)+this.updatedUserPrice);
+			if( this.processingCharges == '' ){
+				this.PMT = (this.costOfRice1+this.costOfRice2+this.costOfRice3+this.costOfRice4+this.updatedUserPrice);
 
-			this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.processingCharges)+parseFloat(this.updatedUserPrice)+parseFloat(this.domesticTransport)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
-		}
-		let dollaerateData = 0;
-		if (this.dollaerate == '' || this.dollaerate == undefined){
-			dollaerateData = 0;
-		}else{
-			dollaerateData = this.dollaerate;
-		}
+				if( this.domesticTransport== '' ){
+					this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.updatedUserPrice)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
+				}else{
+					this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.updatedUserPrice)+parseFloat(this.domesticTransport)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
+				}
+
+			}else{
+				this.PMT = (this.costOfRice1+this.costOfRice2+this.costOfRice3+this.costOfRice4+parseFloat(this.processingCharges)+this.updatedUserPrice);
+
+				this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.processingCharges)+parseFloat(this.updatedUserPrice)+parseFloat(this.domesticTransport)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
+			}
+			let dollaerateData = 0;
+			if (this.dollaerate == '' || this.dollaerate == undefined){
+				dollaerateData = 0;
+			}else{
+				dollaerateData = this.dollaerate;
+			}
+			
+			// this.PMTusd = ((((this.totalPriceINR/this.dollaerate)*this.supplierCharge)/100)+(this.totalPriceINR/this.dollaerate)).toFixed(2);
+
+			if( (this.totalPriceINR/dollaerateData) == Infinity ){
+				this.PMTusd = 0;
+			}else{
+				this.PMTusd = (this.totalPriceINR/dollaerateData).toFixed(2);
+			}
+			console.log(this.PMTusd)
+
+			// if( isNaN(Number(this.lccharges)) ){
+			// 	this.lccharges = 0;
+			// }
+			// if( isNaN(Number(this.lccharges)) ){
+			// 	this.lccharges = 0;
+			// }
+			// if( isNaN(Number(this.oceanfreight)) ){
+			// 	this.oceanfreight = 0;
+			// }
+			// if( isNaN(Number(this.thirdpartyinspection)) ){
+			// 	this.thirdpartyinspection = 0;
+			// }
+			// if( isNaN(Number(this.legalisationcharges)) ){
+			// 	this.legalisationcharges = 0;
+			// }
+			// if( isNaN(Number(this.coc)) ){
+			// 	this.coc = 0;
+			// }
+			// if( isNaN(Number(this.eiacost)) ){
+			// 	this.eiacost = 0;
+			// }
+			this.beforeMarkup = Math.floor((parseFloat(this.PMTusd)));
+			let processedAmount = 0;
+			if(this.lccharges != ''){
+				processedAmount = Math.floor(((processedAmount)+parseFloat(this.lccharges)));
+			}
+			if(this.oceanfreight != ''){
+				processedAmount = Math.floor(((processedAmount)+parseFloat(this.oceanfreight)));
+			}
+			if(this.thirdpartyinspection != ''){
+				processedAmount = Math.floor(((processedAmount)+parseFloat(this.thirdpartyinspection)));
+			}
+			if(this.legalisationcharges != ''){
+				processedAmount = Math.floor(((processedAmount)+parseFloat(this.legalisationcharges)));
+			}
+			if(this.coc != ''){
+				processedAmount = Math.floor(((processedAmount)+parseFloat(this.coc)));
+			}
+			if(this.eiacost != ''){
+				processedAmount = Math.floor(((processedAmount)+parseFloat(this.eiacost)));
+			}
+
+			this.beforeMarkup = this.beforeMarkup+processedAmount;
+			if( this.oceanfreight != '' ){
+				this.lastFOBAmount = Math.floor(this.beforeMarkup-parseFloat(this.oceanfreight));
+			}else{
+				this.lastFOBAmount = this.beforeMarkup;
+			}
+			// this.beforeMarkup = Math.floor((parseFloat(this.PMTusd)+parseFloat(this.lccharges)+parseFloat(this.oceanfreight)+parseFloat(this.thirdpartyinspection)+parseFloat(this.legalisationcharges)+parseFloat(this.coc)+parseFloat(this.eiacost)));
+
+			if( this.supplierCharge != '' || this.supplierCharge != 0 ){
+				this.lastFOBAmount = Math.floor(((this.lastFOBAmount * this.supplierCharge)/100) + this.lastFOBAmount);
+				this.finalCIFPrice = Math.floor(((this.beforeMarkup * this.supplierCharge)/100) + this.beforeMarkup);
+			}else{
+				this.finalCIFPrice = this.beforeMarkup;
+			}
+			this.AverageRiceCostPMT = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4));
 		
-		// this.PMTusd = ((((this.totalPriceINR/this.dollaerate)*this.supplierCharge)/100)+(this.totalPriceINR/this.dollaerate)).toFixed(2);
-
-		if( (this.totalPriceINR/dollaerateData) == Infinity ){
-			this.PMTusd = 0;
-		}else{
-			this.PMTusd = (this.totalPriceINR/dollaerateData).toFixed(2);
-		}
-		console.log(this.PMTusd)
-
-		// if( isNaN(Number(this.lccharges)) ){
-		// 	this.lccharges = 0;
-		// }
-		// if( isNaN(Number(this.lccharges)) ){
-		// 	this.lccharges = 0;
-		// }
-		// if( isNaN(Number(this.oceanfreight)) ){
-		// 	this.oceanfreight = 0;
-		// }
-		// if( isNaN(Number(this.thirdpartyinspection)) ){
-		// 	this.thirdpartyinspection = 0;
-		// }
-		// if( isNaN(Number(this.legalisationcharges)) ){
-		// 	this.legalisationcharges = 0;
-		// }
-		// if( isNaN(Number(this.coc)) ){
-		// 	this.coc = 0;
-		// }
-		// if( isNaN(Number(this.eiacost)) ){
-		// 	this.eiacost = 0;
-		// }
-		this.beforeMarkup = Math.floor((parseFloat(this.PMTusd)));
-		let processedAmount = 0;
-		if(this.lccharges != ''){
-			processedAmount = Math.floor(((processedAmount)+parseFloat(this.lccharges)));
-		}
-		if(this.oceanfreight != ''){
-			processedAmount = Math.floor(((processedAmount)+parseFloat(this.oceanfreight)));
-		}
-		if(this.thirdpartyinspection != ''){
-			processedAmount = Math.floor(((processedAmount)+parseFloat(this.thirdpartyinspection)));
-		}
-		if(this.legalisationcharges != ''){
-			processedAmount = Math.floor(((processedAmount)+parseFloat(this.legalisationcharges)));
-		}
-		if(this.coc != ''){
-			processedAmount = Math.floor(((processedAmount)+parseFloat(this.coc)));
-		}
-		if(this.eiacost != ''){
-			processedAmount = Math.floor(((processedAmount)+parseFloat(this.eiacost)));
-		}
-
-		this.beforeMarkup = this.beforeMarkup+processedAmount;
-		if( this.oceanfreight != '' ){
-			this.lastFOBAmount = Math.floor(this.beforeMarkup-parseFloat(this.oceanfreight));
-		}else{
-			this.lastFOBAmount = this.beforeMarkup;
-		}
-		// this.beforeMarkup = Math.floor((parseFloat(this.PMTusd)+parseFloat(this.lccharges)+parseFloat(this.oceanfreight)+parseFloat(this.thirdpartyinspection)+parseFloat(this.legalisationcharges)+parseFloat(this.coc)+parseFloat(this.eiacost)));
-
-		if( this.supplierCharge != '' || this.supplierCharge != 0 ){
-			this.lastFOBAmount = Math.floor(((this.lastFOBAmount * this.supplierCharge)/100) + this.lastFOBAmount);
-			this.finalCIFPrice = Math.floor(((this.beforeMarkup * this.supplierCharge)/100) + this.beforeMarkup);
-		}else{
-			this.finalCIFPrice = this.beforeMarkup;
-		}
-		this.AverageRiceCostPMT = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4));
 	}
 
 	getCalculatorData(){
@@ -328,10 +349,14 @@ export class CalculatorPage implements OnInit {
 				}
 			}
 			if( riceType == 'two' ){
-				console.log(this.riceone.length)
-				if (this.riceone.length < 5){
-					alert('Blend rice 1 shoult not be greater than 10,000.');
-					return false;
+				if( this.riceone != '' ){
+					if (this.riceone.length < 5){
+						// alert('Blend rice 1 shoult be greater than 10,000.');
+						this.blendError1 = true
+						return false;
+					}else{
+						this.blendError1 = false;
+					}
 				}
 				if(this.riceonepercentage == ''){
 					this.riceonepercentage = 0;
@@ -368,10 +393,15 @@ export class CalculatorPage implements OnInit {
 				
 			}
 			if( riceType == 'three' ){
-				if (this.ricetwo.length < 5){
-					alert('Blend rice 2 shoult not be greater than 10,000.');
-					return false;
+				if( this.ricetwo != '' ){
+					if (this.ricetwo.length < 5){
+						this.blendError2 = true;
+						return false;
+					}else{
+						this.blendError2 = false;
+					}
 				}
+				
 				if(this.riceonepercentage == ''){
 					this.riceonepercentage = 0;
 				}
@@ -403,9 +433,14 @@ export class CalculatorPage implements OnInit {
 				this.AverageRiceCostPMT = (this.costOfRice1 + this.costOfRice3 + this.costOfRice3)
 			}
 			if( riceType == 'four' ){
-				if (this.ricethree.length < 5){
-					alert('Blend rice 3 shoult not be greater than 10,000.');
-					return false;
+				if( this.ricethree != '' ){
+					if (this.ricethree.length < 5){
+						// alert('Blend rice 3 shoult be greater than 10,000.');
+						this.blendError3 = true;
+						return false;
+					}else{
+						this.blendError3 = false;
+					}
 				}
 				
 				
