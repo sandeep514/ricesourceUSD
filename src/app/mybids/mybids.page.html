@@ -112,15 +112,17 @@
 								<ion-label position="floating">Validity (Days)</ion-label>
 								<!-- <ion-input (ionChange)="validDays($event , bids.id)" type="number"></ion-input> -->
 								<ion-datetime
-									displayFormat="DD.MM.YYYY"
+									displayFormat="DD MMMM YYYY"
 									presentation="date"
 									[min]="mindate"
 									[max]="lastDate"
 									(ionChange)="changed($event)"
+									aria-placeholder="here"
 								></ion-datetime>
 							</ion-item>
 							<ion-button class="green" style="color: #fff;border-radius: 12px;" (click)="saveUserBid(bids.id)">Save</ion-button>
 						</ion-row>
+						
 					</div>
 				</li>
 			</ul>

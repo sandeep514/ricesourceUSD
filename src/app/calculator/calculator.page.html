@@ -6,8 +6,75 @@
 			<ion-title class="header-title porttitle">Calculator (PMT)</ion-title>
 	</ion-toolbar>
 </ion-header>
+<ion-row *ngIf="modalStatus == true" class="overlay" style="position: absolute;z-index: 9999;background: #000;height: 100%;width: 100%;top: 0;opacity: 0.7;"></ion-row>
 
+	<ion-row *ngIf="modalStatus == true" style="background: #fffbd6;position: absolute;z-index: 9999999;top: 9%;width: 95%;height: 80%;border-radius: 23px;border: 2px solid #92b243;overflow: hidden;/* top: 5%; */margin: 0 auto;left: 2%;">
+		<ion-row style="width: 100%;">
+			<ion-row style="height: 40px;width: 100%;">
+				<p style="width: 100%;text-align: right;margin-right: 20px" (click)="updateModel()" >Close</p>
+			</ion-row>
+			<ion-content class="lightgreen">
+				<div>
+					<ion-row style="padding-top: 14px;">
+						<ion-col size="6" >
+							<ion-item class="select" style="background: #fffbd6;--background: #fffbd6;border: 4px solid #92b243;border-radius: 9px;margin-right: 5px;">
+								<!-- <ion-label>Region</ion-label> -->
+								<ion-select placeholder="Region" (ionChange)="changecountry($event)">
+									<ion-select-option *ngFor="let region of regions">{{ region }}</ion-select-option>
+								</ion-select>
+								</ion-item>
+						</ion-col>
+						<ion-col size="6" >
+							<ion-item class="select" style="background: #fffbd6;--background: #fffbd6;border: 4px solid #92b243;border-radius: 9px;">
+								<!-- <ion-label>Country</ion-label> -->
+								<ion-select placeholder="Country" (ionChange)="getPortList($event)">
+									<ion-select-option *ngFor="let country of countries">{{ country }}</ion-select-option>
+								</ion-select>
+								</ion-item>
+						</ion-col>
+					</ion-row>
+			
+					<ng-container >
+						<ion-row class="ion-padding table-row padd-5 paddingBottom100" style="padding: 0px;margin: 0px;">
+							<ion-col class="price-table dashboard">
+								
+								<table class="table" >
+									<thead>
+										<tr>
+											<th class=" type-columns black" style="font-weight: bold;width:40%;font-size: 14px !important;text-align: left;padding-left: 12px;" >
+												Port
+											</th>
+											<th class=" type-columns black" style="font-weight: bold;width:30%;font-size: 14px !important">
+												25MT(Per MT)
+											</th>
+										</tr>
+									</thead>
+			
+									<tbody class="user_price" >
+										<tr *ngFor="let list of ports" class="green">
+											<td class="sticky-col first-col left pl-10" style="font-size: 14px !important;width: 40%" >
+												{{ list.port }}
+											</td>
+											<td class="type-columns" style="width:180px;border: none ;--border: none;font-size: 14px !important;" >
+												${{ list.freight_21MT_1MT }} - ${{ list.freight_25MT_1MT }}
+											</td>
+										</tr>
+										<tr *ngIf="isNull == true" >
+											<td colspan="2" style="text-align: center;">
+												No port found
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</ion-col>
+						</ion-row>
+					</ng-container>
+				</div>
+			</ion-content>
+		</ion-row>
+	</ion-row>
 <ion-content id="content" class="lightgreen"  style="height: 100%;">
+
 	<!-- <div style="height: 90%;overflow: scroll;">
 
 		<ion-item>
@@ -366,76 +433,7 @@
 			</ion-col>
 		</ion-row>
 
-
-
-		<ion-row *ngIf="modalStatus == true" style="background: #fffbd6;position: absolute;z-index: 9999999;top: 0;width: 95%;height: 80%;border-radius: 23px;border: 2px solid #92b243;overflow: hidden;top: 5%">
-			
-
-			<ion-row style="width: 100%;">
-				<ion-row style="height: 40px;width: 100%;">
-					<p style="width: 100%;text-align: right;margin-right: 20px" (click)="updateModel()" >Close</p>
-				</ion-row>
-				<ion-content class="lightgreen">
-					<div>
-						<ion-row style="padding-top: 14px;">
-							<ion-col size="6" >
-								<ion-item class="select" style="background: #fffbd6;--background: #fffbd6;border: 4px solid #92b243;border-radius: 9px;margin-right: 5px;">
-									<!-- <ion-label>Region</ion-label> -->
-									<ion-select placeholder="Region" (ionChange)="changecountry($event)">
-									  <ion-select-option *ngFor="let region of regions">{{ region }}</ion-select-option>
-									</ion-select>
-								  </ion-item>
-							</ion-col>
-							<ion-col size="6" >
-								<ion-item class="select" style="background: #fffbd6;--background: #fffbd6;border: 4px solid #92b243;border-radius: 9px;">
-									<!-- <ion-label>Country</ion-label> -->
-									<ion-select placeholder="Country" (ionChange)="getPortList($event)">
-										<ion-select-option *ngFor="let country of countries">{{ country }}</ion-select-option>
-									</ion-select>
-								  </ion-item>
-							</ion-col>
-						</ion-row>
-				
-						<ng-container >
-							<ion-row class="ion-padding table-row padd-5 paddingBottom100" style="padding: 0px;margin: 0px;">
-								<ion-col class="price-table dashboard">
-									
-									<table class="table" >
-										<thead>
-											<tr>
-												<th class=" type-columns black" style="font-weight: bold;width:40%;font-size: 14px !important;" >
-													Port
-												</th>
-												<th class=" type-columns black" style="font-weight: bold;width:30%;font-size: 14px !important">
-													25MT(Per MT)
-												</th>
-											</tr>
-										</thead>
-				
-										<tbody class="user_price" >
-											<tr *ngFor="let list of ports" class="green">
-												<td class="sticky-col first-col left pl-10" style="font-size: 14px !important;width: 40%" >
-													{{ list.port }}
-												</td>
-												<td class="type-columns" style="width:180px;border: none ;--border: none;font-size: 14px !important;" >
-													${{ list.freight_21MT_1MT }} - ${{ list.freight_25MT_1MT }}
-												</td>
-											</tr>
-											<tr *ngIf="isNull == true" >
-												<td colspan="2" style="text-align: center;">
-													No port found
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</ion-col>
-							</ion-row>
-						</ng-container>
-					</div>
-					<app-menu></app-menu>
-				</ion-content>
-			</ion-row>
-		</ion-row>
+		
 	</div>
 	<app-menu></app-menu>
 </ion-content> 

@@ -300,6 +300,13 @@ export class AppComponent implements OnInit {
 
 	initializeApp() {
 		this.platform.ready().then(async () => {
+			let ifUsdActive = localStorage.getItem('is_usd_active');
+			if(ifUsdActive == '0'){
+				localStorage.setItem('apptype' , 'OTHER');
+			}else{
+				localStorage.setItem('apptype' , 'USD');
+			}
+
 			let isExpiredUsd = localStorage.getItem('isExpiryUSD');
 			this.statusBar.styleDefault();
             this.statusBar.overlaysWebView(false);

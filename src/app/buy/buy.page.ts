@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { Location } from '@angular/common';
 import { NavController } from '@ionic/angular';
-import { IonicSelectableModule } from 'ionic-selectable';
 
 @Component({
 	selector: 'app-buy',
@@ -12,8 +11,8 @@ import { IonicSelectableModule } from 'ionic-selectable';
 export class BuyPage implements OnInit {
 	quality:any;
 	quantity:any;
-	party:any;
-	mobile:any;
+	party:any = 	localStorage.getItem('name');
+	mobile:any = 	localStorage.getItem('mobile');
 	remarks:any;
 	validDays:any=0;
 	riceQualityType:any;
@@ -29,7 +28,6 @@ export class BuyPage implements OnInit {
 	riceQualityDataSelectedArray:any;
 	isError:any = false;
 	errorMessage:any = '';
-
 	constructor(public apiser: RestService,public location:Location,public navCtrl : NavController) { }
 
 	ngOnInit() {
@@ -37,14 +35,15 @@ export class BuyPage implements OnInit {
 	}
 
 	save(){
+		console.log(this.portName);
 		this.isError = false;
-		// if( isNaN(parseFloat(this.validDays)) == true ){
-		// 	this.isError = true;
-		// 	this.errorMessage = "Deal Valid should be number";
-		// 	return false;
-		// }
-
-		if( this.quality != undefined && this.quantity != undefined && this.party != undefined && this.mobile != undefined && this.remarks != undefined ){
+		if( this.quality != undefined &&
+			this.quantity != undefined &&
+			this.party != undefined &&
+			this.mobile != undefined &&
+			this.remarks != undefined && 
+			this.portName != '' || this.portName != undefined
+		){
 			let postedData = {
 				'selectedQualityType' 	: this.selectedQualityType,
 				'quality' 				: this.quality,
@@ -108,8 +107,8 @@ export class BuyPage implements OnInit {
 	
 	changePort(data){
 		console.log(data);
-		// let myData = (data.detail.value).split('_');
-		let selectedPortName = data.port;
+		let myData = (data.detail.value).split('_');
+		let selectedPortName = myData[0];
 
 		let portValue = parseFloat(data.freight_25MT).toFixed(2);
 		this.portName = selectedPortName;

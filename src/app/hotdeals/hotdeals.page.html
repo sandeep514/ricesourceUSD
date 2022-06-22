@@ -11,7 +11,7 @@
 	<div style="height: 90%;overflow: scroll;">
 		<div>
 			<ul style="padding: 10px;">
-				<li class="demandedData" *ngFor="let bids of notifs" style="border-bottom: 2px solid #ededed;">
+				<li class="demandedData" *ngFor="let bids of notifs" style="border-bottom: 2px solid #91b243;">
 					<ng-container >
 						<div style="margin: 0;padding: 15px 0px;">
 							<ion-row>
@@ -22,30 +22,33 @@
 								<ion-col size="4" class="demandHeaders">Packing</ion-col> 
 								<ion-col>: {{ bids?.get_u_s_d_default_master?.bag_size }} {{ bids?.get_u_s_d_default_master?.bag_type }}</ion-col>
 							</ion-row>
+							
 							<ion-row>
-								<ion-col size="4" class="demandHeaders">FOB</ion-col> 
-								<ion-col>: {{ bids?.fob }}</ion-col>
-							</ion-row>
-							<ion-row>
-								<ion-col size="4" class="demandHeaders">Qty</ion-col> 
+								<ion-col size="4" class="demandHeaders">Quantity in MT</ion-col> 
 								<ion-col>: {{ bids?.qty }}</ion-col>
 							</ion-row>
 							<ion-row>
+								<ion-col size="4" class="demandHeaders">FOB PMT</ion-col> 
+								<ion-col>: {{ bids?.fob }}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="4" class="demandHeaders">Remarks</ion-col>
+								<ion-col style="text-transform: capitalize;">: {{ bids?.message }}</ion-col>
+							</ion-row>
+
+							<ion-row>
 								<ion-col size="4" class="demandHeaders">Posted on</ion-col>
-								<ion-col style="text-transform: capitalize;">: {{ bids?.created_at | date:'dd-MM-yyyy | H:i' }}</ion-col>
+								<ion-col style="text-transform: capitalize;">: {{ bids?.created_at | date:'dd-MM-yyyy | hh:mm a' }}</ion-col>
 							</ion-row>
 							<ion-row>
 								<ion-col size="4" class="demandHeaders">Valid Date</ion-col>
-								<ion-col style="text-transform: capitalize;">: {{ bids?.validDate  | date:'dd-MM-yyyy | H:i' }}</ion-col>
+								<ion-col style="text-transform: capitalize;">: {{ bids?.validDate  | date:'dd-MM-yyyy | hh:mm a' }}</ion-col>
 							</ion-row>
-							<ion-row>
+							<!-- <ion-row>
 								<ion-col size="4" class="demandHeaders">Title</ion-col>
 								<ion-col style="text-transform: capitalize;">: {{ bids?.title }}</ion-col>
 							</ion-row>
-							<ion-row>
-								<ion-col size="4" class="demandHeaders">Message</ion-col>
-								<ion-col style="text-transform: capitalize;">: {{ bids?.message }}</ion-col>
-							</ion-row>
+							 -->
 							
 	
 							<!-- <ion-row *ngIf="bids?.get_bids.length"  style="margin-top: 5px;">
@@ -86,9 +89,10 @@
 							</ion-row> -->
 							
 							<ion-row *ngIf="bids?.hot_deal_accept.length <= 0"  >
-								<ion-col size="12" *ngIf="bids?.status == 0 && bids.isExpired == 'true' || bids.isExpired == 'true' && bids.status == 1" style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: red;">
+								<ion-col size="12" *ngIf="bids?.status == 0 && bids.isExpired == 'true' || bids.isExpired == 'true' && bids.status == 1" style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: red;font-weight: bold;">
 									{{ bids.isExpiredMessage }}
 								</ion-col>
+								
 								<ion-col size="12" *ngIf="bids.isExpired == 'false' && bids.status == 1 " style="margin-top: 5px;margin-bottom: 0px;text-align: right;font-size: 19px;color: red;" >
 									<ion-button class="green" style="color: #fff;border-radius: 12px;" (click)="acceptHotDeal(bids?.id)">Interested</ion-button>
 								</ion-col>
@@ -97,16 +101,16 @@
 								</ion-col> -->
 							</ion-row>
 							<ion-row *ngIf="bids?.status == 0 && bids.isExpired != 'true'"  >
-								<ion-col size="12" style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;">Deal is sold
+								<ion-col size="12" style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;font-weight: bold;">Deal is sold
 								</ion-col>
 							</ion-row>
 							<ion-row *ngIf="bids?.status == 2 && bids.isExpired != 'true'"  >
-								<ion-col size="12" style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;">
+								<ion-col size="12" style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;font-weight: bold;">
 									Deal is taken
 								</ion-col>
 							</ion-row>
-							<ion-row *ngIf="bids?.status == 0 && bids?.hot_deal_accept.length > 0"  >
-								<ion-col size="12" style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;">{{ bids?.isDealAcceptedMessage }}
+							<ion-row *ngIf="bids?.hot_deal_accept.length > 0"  >
+								<ion-col size="12" style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;font-weight: bold;">{{ bids?.isDealAcceptedMessage }}
 								</ion-col>
 							</ion-row>
 	

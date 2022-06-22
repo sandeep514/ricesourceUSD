@@ -32,7 +32,7 @@ export class HotdealsPage implements OnInit {
 	
 	getListBids(){
 		let userid = localStorage.getItem('id');
-		this.apiService.presentLoader('Fetching Queries');
+		this.apiService.presentLoader('Fetching deals');
 		this.apiService.getHotDeals(userid).then((res:any) => {
 			this.notifs = res.data;
 			setTimeout(() => {
