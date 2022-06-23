@@ -197,7 +197,7 @@ export class CalculatorPage implements OnInit {
 		}else{
 			this.finalCIFPrice = this.beforeMarkup;
 		}
-		this.AverageRiceCostPMT = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4));
+		this.AverageRiceCostPMT = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)).toFixed(2);
 	
 	}
 
@@ -332,7 +332,7 @@ export class CalculatorPage implements OnInit {
 						}else{
 							this.riceonepercentage = (100 -percentage);
 						}
-						this.costOfRice1 = ((this.riceone * this.riceonepercentage)/100);
+						this.costOfRice1 = ((this.riceone * this.riceonepercentage)/100).toFixed(2);
 						this.AverageRiceCostPMT =  this.costOfRice1;
 					}else{
 
@@ -381,7 +381,7 @@ export class CalculatorPage implements OnInit {
 					}	
 				}
 				this.costOfRice2 = ((this.ricetwo * this.ricetwopercentage)/100);
-				this.AverageRiceCostPMT =  (this.costOfRice1+this.costOfRice2);
+				this.AverageRiceCostPMT =  (this.costOfRice1+this.costOfRice2).toFixed(2);
 				
 			}
 			if( riceType == 'three' ){
@@ -422,7 +422,7 @@ export class CalculatorPage implements OnInit {
 					}
 				}
 				this.costOfRice3 = ((this.ricethree * this.ricethreepercentage)/100);
-				this.AverageRiceCostPMT = (this.costOfRice1 + this.costOfRice3 + this.costOfRice3)
+				this.AverageRiceCostPMT = (this.costOfRice1 + this.costOfRice3 + this.costOfRice3).toFixed(2)
 			}
 			if( riceType == 'four' ){
 				if( this.ricethree != '' ){
@@ -466,7 +466,7 @@ export class CalculatorPage implements OnInit {
 					}
 				}
 				this.costOfRice4 = ((this.ricefour * this.ricefourpercentage)/100);
-				this.AverageRiceCostPMT = (this.costOfRice1 + this.costOfRice2 + this.costOfRice3+this.costOfRice4)
+				this.AverageRiceCostPMT = (this.costOfRice1 + this.costOfRice2 + this.costOfRice3+this.costOfRice4).toFixed(2)
 			}
 
 			this.save()

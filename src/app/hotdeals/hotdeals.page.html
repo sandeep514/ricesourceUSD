@@ -15,6 +15,10 @@
 					<ng-container >
 						<div style="margin: 0;padding: 15px 0px;">
 							<ion-row>
+								<ion-col size="4" class="demandHeaders">Deal No.</ion-col> 
+								<ion-col style="font-weight: bold;">: {{ bids?.id  }}</ion-col>
+							</ion-row>
+							<ion-row>
 								<ion-col size="4" class="demandHeaders">Quality</ion-col> 
 								<ion-col>: {{ bids?.get_rice_quality?.quality }} {{ bids?.get_rice_quality?.quality_name }}</ion-col>
 							</ion-row>
@@ -43,6 +47,14 @@
 							<ion-row>
 								<ion-col size="4" class="demandHeaders">Valid Date</ion-col>
 								<ion-col style="text-transform: capitalize;">: {{ bids?.validDate  | date:'dd-MM-yyyy | hh:mm a' }}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="4" class="demandHeaders">Rice Picture</ion-col>
+								<ion-col style="text-transform: capitalize;">image</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="4" class="demandHeaders">Cooked Picture</ion-col>
+								<ion-col style="text-transform: capitalize;">image</ion-col>
 							</ion-row>
 							<!-- <ion-row>
 								<ion-col size="4" class="demandHeaders">Title</ion-col>
@@ -93,7 +105,7 @@
 									{{ bids.isExpiredMessage }}
 								</ion-col>
 								
-								<ion-col size="12" *ngIf="bids.isExpired == 'false' && bids.status == 1 " style="margin-top: 5px;margin-bottom: 0px;text-align: right;font-size: 19px;color: red;" >
+								<ion-col size="12"  *ngIf="bids.isExpired == 'false' && bids.status == 1 " style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: red;" >
 									<ion-button class="green" style="color: #fff;border-radius: 12px;" (click)="acceptHotDeal(bids?.id)">Interested</ion-button>
 								</ion-col>
 								<!-- <ion-col size="12" *ngIf="bids.isExpired == 'true' && bids.status == 1 " style="margin-top: 5px;margin-bottom: 0px;text-align: right;font-size: 19px;color: red;" >
