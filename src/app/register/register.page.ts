@@ -51,6 +51,10 @@ export class RegisterPage implements OnInit {
 		this.userState = "supplier";
 		this.getCountries();
 		this.getBagVendors();
+
+		if(localStorage.getItem('registerUserAs') != null){
+			this.registerForm = localStorage.getItem('registerUserAs');
+		}
 	}
 	
 	changeState(state){
@@ -93,10 +97,17 @@ export class RegisterPage implements OnInit {
 						localStorage.setItem('expired_on' , res.data.expired_on);
 						localStorage.setItem('apptype' , 'USD');
 						localStorage.setItem('isUserActivatedUSD' , res.data.is_usd_active);
+						localStorage.setItem('status' , (res.data.status).toString());
+
+						localStorage.setItem('user',JSON.stringify(res.data));
+						localStorage.setItem('token',res.data.user_token);
+
+						localStorage.setItem('is_INR_active',res.data.is_INR_active);
+						localStorage.setItem('usd_role',res.data.usd_role);
 						
 						this.componentSer.compareTwoDates(res.data.expired_on);
 						this.navCtrl.navigateForward(['verifyotp']);
-						this.api.loaderCtrl.dismiss();
+						// this.api.loaderCtrl.dismiss();
 					},(err:any) => {
 						this.api.presentToast(err.error.error);
 						this.api.loaderCtrl.dismiss();
@@ -132,6 +143,19 @@ export class RegisterPage implements OnInit {
 	
 									this.componentSer.compareTwoDates(res.data.expired_on);
 	
+
+									localStorage.setItem('apptype' , 'OTHER');
+									localStorage.setItem('isUserActivatedUSD' , res.data.is_usd_active);
+									localStorage.setItem('status' , (res.data.status).toString());
+
+									localStorage.setItem('user',JSON.stringify(res.data));
+									localStorage.setItem('token',res.data.user_token);
+
+									localStorage.setItem('is_INR_active',res.data.is_INR_active);
+									localStorage.setItem('usd_role', res.data.usd_role);
+									localStorage.setItem('transaction_id', res.data.transaction_id);
+									
+									this.componentSer.compareTwoDates(res.data.expired_on);
 									
 									this.navCtrl.navigateForward(['verifyotp']);
 									// this.navCtrl.navigateForward(['prices']);
@@ -173,6 +197,7 @@ export class RegisterPage implements OnInit {
 	}
 
 	registerFormType(formtype){
+		console.log(formtype);
 		this.registerForm = formtype;
 	}
 

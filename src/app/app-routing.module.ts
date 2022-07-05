@@ -159,6 +159,10 @@ const routes: Routes = [
   {
     path: 'hotdeals',
     loadChildren: () => import('./hotdeals/hotdeals.module').then( m => m.HotdealsPageModule)
+  },
+  {
+    path: 'pre-register',
+    loadChildren: () => import('./pre-register/pre-register.module').then( m => m.PreRegisterPageModule)
   }
 
 

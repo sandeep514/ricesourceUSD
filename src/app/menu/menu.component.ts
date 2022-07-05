@@ -33,7 +33,10 @@ export class MenuComponent implements OnInit {
 			}
 		});
 		this.getChatStatus();
+		
+		console.log(localStorage.getItem('apptype'))
 		this.apptype = localStorage.getItem('apptype');
+		console.log(localStorage.getItem('apptype'))
 	}
 	
 	updateNotification(){
@@ -41,7 +44,17 @@ export class MenuComponent implements OnInit {
 	}
 
   	ngOnInit() {
-		this.seledctedRole = localStorage.getItem('role');
+		console.log(localStorage.getItem('apptype') );
+		if( localStorage.getItem('apptype') == 'USD' ){
+			console.log(localStorage.getItem('role') )
+			this.seledctedRole = localStorage.getItem('usd_role');
+		}else{
+			console.log(localStorage.getItem('role') )
+
+			this.seledctedRole = localStorage.getItem('role');
+		}
+		
+		console.log(this.seledctedRole)
 	}
 	async showChatUnavailableModal(){
 		let presentToast = await this.toastCtrl.create({

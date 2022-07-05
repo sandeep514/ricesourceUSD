@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
 import { ComponentsService } from '../components.service';
 import { RestService } from '../rest.service';
@@ -16,6 +17,9 @@ declare var paypal: any;
 export class PlanpagePage implements OnInit {
 	public listPlans:any;
 	public listUSDPlans:any;
+	public selectedPlanId:any;
+	public selectedPlanDiscountedAmountINR:any;
+	public selectedPlanDiscountedAmountUSD:any;
 	public featureSplit:any = [];
 
 	public price;
@@ -26,7 +30,7 @@ export class PlanpagePage implements OnInit {
 	public PAYPAL_CLIENT_ID = this.PAYPAL_CLIENT_ID_TEST
 
 
-	constructor(public apiser:RestService, public modelController:ModalController,public compSer:ComponentsService,public navCtrl:NavController,public location:Location) { 
+	constructor(public apiser:RestService, public modelController:ModalController,public compSer:ComponentsService,public navCtrl:NavController,public location:Location,public route: Router) { 
 		this.getUSDPlans();
 		console.log("kjnjk");
 	}
@@ -56,10 +60,10 @@ export class PlanpagePage implements OnInit {
 	// 		alert(JSON.stringify(err));
 	// 	});
 	// }
-	ngOnInit() {
-		console.log("kjnk");
 
-		this.price = this.priceToPay + " $"
+
+	ngOnInit() {
+		this.price = this.selectedPlanDiscountedAmountUSD + " $"
 		let enviroment = ""
 		
 		if (this.PAYPAL_CLIENT_ID == this.PAYPAL_CLIENT_ID_TEST) {
@@ -74,21 +78,18 @@ export class PlanpagePage implements OnInit {
 				color:  'blue',
 				shape:  'rect',
 				label:  'paypal',
-				agline: 'false'
-
+				tagline: 'false'
 			},
 			env: enviroment,
 			client: {
 				sandbox: this.PAYPAL_CLIENT_ID,
 			},
-
 			commit: false,
-
 			createOrder: (data, actions)=> {
 				return actions.order.create({
 					purchase_units: [{
 						amount: {
-							value: 20,
+							value: this.selectedPlanDiscountedAmountUSD,
 							currency: 'USD' 
 						}
 					}]
@@ -103,7 +104,8 @@ export class PlanpagePage implements OnInit {
 					let id = details["id"];
 
 					if (status == "COMPLETED") {
-						this.validPurchase(id)
+						this.validPurchase(id);
+						alert('i am here paypal success')
 					}else {
 
 					}
@@ -112,6 +114,7 @@ export class PlanpagePage implements OnInit {
 				})
 				.catch(err => {
 					console.log(err);
+					alert('paypal error');
 				})
 			},
 
@@ -125,7 +128,10 @@ export class PlanpagePage implements OnInit {
 	}
 	closeme(){
 		// this.modelController.dismiss();
-		this.navCtrl.navigateForward(['prices']);
+		if( localStorage.getItem('isUserActivatedUSD') != '1' ){
+			this.navCtrl.navigateForward(['prices']);
+		}
+		
 	}
 	validPurchase(id) {
 		// Purchase confirm 
@@ -151,12 +157,12 @@ export class PlanpagePage implements OnInit {
 		this.featureSplit =  feature.split(',');
 	}
 
-	buynow(plan){
+	buynow(){
 		
 		// key: 'rzp_test_LA2o3rFXhgtfmS',
 		// key: 'rzp_live_igtbdlPLfbiw6d',
-		let paymentAmount = plan.discounted_prie;
-		let planid = plan.id;
+		let paymentAmount = this.selectedPlanDiscountedAmountINR;
+		let planid = this.selectedPlanId;
 
 		var options = {
 			description: 'Rice Data',
@@ -183,13 +189,20 @@ export class PlanpagePage implements OnInit {
 		var successCallback = (payment_id) => {
 			let tran_id = payment_id
 			let userId = localStorage.getItem('id');
-			let plan_id = planid;
+			let plan_id = this.selectedPlanId;
 
-			this.apiser.addOrder({ transaction_id: tran_id , user_id : localStorage.getItem('id') , plan_id : planid }).then((res:any) => {
+			this.apiser.addOrder({ transaction_id: tran_id , user_id : localStorage.getItem('id') , plan_id : plan_id }).then((res:any) => {
+
 				this.compSer.isUserExpired.next('false');
+				
 				localStorage.setItem('apptype' , 'USD');
+				localStorage.setItem('is_usd_active' , '1');
+				localStorage.setItem('usd_role' , res.userDetails[0]['usd_role']);
+				localStorage.setItem('transaction_id' , res.userDetails[0]['transaction_id']);
+				localStorage.setItem('isUserActivatedUSD' , '1');
+
 				this.closeme();
-				// this.navCtrl.navigateForward(['priceusd']);
+				this.navCtrl.navigateForward(['priceusd']);
 			} , (err:any) => {
 
 			});
@@ -205,9 +218,20 @@ export class PlanpagePage implements OnInit {
 	getUSDPlans(){
 		this.apiser.getUSDPlan().then((res:any) => {
 			this.listUSDPlans = res.plans;
-			console.log(res.plans);
+			this.selectedPlanId = res.plans[0].id;
+			this.selectedPlanDiscountedAmountINR = res.plans[0].discounted_prie;
+			this.selectedPlanDiscountedAmountUSD = res.plans[0].discounted_price_usd;
+			
 		} , (err:any) => {
 			console.log(err);
 		})
 	}
+	
+	updateSelectedPlan(PlanDetails){
+		this.selectedPlanId = PlanDetails.id;
+
+		this.selectedPlanDiscountedAmountINR = PlanDetails.discounted_prie
+		this.selectedPlanDiscountedAmountUSD = PlanDetails.discounted_price_usd
+	}
+
 }

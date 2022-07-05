@@ -650,4 +650,14 @@ export class RestService {
 			})
 		});
 	}
- }
+
+	updateUserPlan(postedData){
+		return new Promise((resolve,reject)=>{
+			this.http.post(this.APIURL+'payment/success',postedData).subscribe((res)=>{
+				resolve(res);
+			},err=>{
+				reject(err);
+			})
+		});
+	}
+}

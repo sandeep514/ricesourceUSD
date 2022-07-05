@@ -94,7 +94,7 @@ export class AppComponent implements OnInit {
 		});
 
 		this.componentSer.firePushNotif.subscribe(function() {
-		this.firebasepushnotif()
+		// this.firebasepushnotif()
 
 			this.firebase.requestPermission().then(() => {
 					
@@ -300,13 +300,24 @@ export class AppComponent implements OnInit {
 
 	initializeApp() {
 		this.platform.ready().then(async () => {
-			let ifUsdActive = localStorage.getItem('is_usd_active');
-			if(ifUsdActive == '0'){
-				localStorage.setItem('apptype' , 'OTHER');
-			}else{
-				localStorage.setItem('apptype' , 'USD');
-			}
 
+			console.log( new Date() );
+
+			this.componentSer.firePushNotif.subscribe(function() {
+				this.firebasepushnotif()
+			});
+			if( localStorage.getItem('id') != undefined || localStorage.getItem('id') != '' ){
+				let ifUsdActive = localStorage.getItem('is_usd_active');
+				if(ifUsdActive == '0'){
+					localStorage.setItem('apptype' , 'OTHER');
+				}else{
+					localStorage.setItem('apptype' , 'USD');
+				}
+	
+				if( localStorage.getItem('is_INR_active') == '1' ){
+					localStorage.setItem('apptype' , 'OTHER');
+				}
+			}
 			let isExpiredUsd = localStorage.getItem('isExpiryUSD');
 			this.statusBar.styleDefault();
             this.statusBar.overlaysWebView(false);
@@ -390,10 +401,22 @@ export class AppComponent implements OnInit {
 								})
 								console.log("jnk");
 								if( localStorage.getItem('isUserActivatedUSD') == '0' ){
-									this.navCtrl.navigateRoot('planpage')
+									if( localStorage.getItem('is_INR_active') == '1' ){
+										this.navCtrl.navigateRoot('prices');
+									}else{
+										console.log("jnk,");
+										this.navCtrl.navigateRoot('planpage');
+									}
 								}else{
-									// this.navCtrl.navigateForward(['planpage']);
-									this.navCtrl.navigateForward(['priceusd']);
+									if( localStorage.getItem('status') != '0'){
+										if( localStorage.getItem('is_INR_active') == '0' && localStorage.getItem('transaction_id') == 'null'){
+											this.navCtrl.navigateRoot('planpage');
+										}else{
+											this.navCtrl.navigateForward(['priceusd']);
+										}
+									}else{
+										this.navCtrl.navigateForward(['verifyotp']);
+									}
 								}
 							}
 
@@ -405,19 +428,29 @@ export class AppComponent implements OnInit {
 								}
 							});
 
-							if( isExpiredUsd == 'true' ){
+							if( localStorage.getItem('is_INR_active') == '1' ){
 								this.navCtrl.navigateForward(['prices']);
-							}else{
-								// this.navCtrl.navigateForward(['planpage']);
-								this.navCtrl.navigateForward(['priceusd']);
 							}
+
+							if( localStorage.getItem('is_INR_active') == '0' && localStorage.getItem('isUserActivatedUSD') == '1' && localStorage.getItem('isExpired') != 'true' ){
+								if( localStorage.getItem('is_INR_active') == '0' && localStorage.getItem('transaction_id') == null){
+									this.navCtrl.navigateRoot('planpage');
+								}else{
+									this.navCtrl.navigateForward(['priceusd']);
+								}
+							}
+
+							if( localStorage.getItem('is_INR_active') == '0' && localStorage.getItem('isUserActivatedUSD') == '1' && localStorage.getItem('isExpired') != 'false' ){
+								this.navCtrl.navigateForward(['planpage']);
+							}
+
 						}
 					}, 4000);
 				}
 			}else{
 				setTimeout(() => {
 					splash.dismiss();
-					this.navCtrl.navigateForward(['login']);
+					this.navCtrl.navigateForward(['pre-register']);
 				}, 4000);
 			}
 
@@ -617,7 +650,9 @@ export class AppComponent implements OnInit {
 	}
 	goToUSD(){
 		this.menuCtrl.close();
-		// this.navCtrl.navigateForward(['planpage'])
+		
+		console.log('i am here')
+		console.log("jnk,s");
 		// this.navCtrl.navigateForward(['priceusd'])
 		localStorage.setItem('apptype' , 'USD')
 	}

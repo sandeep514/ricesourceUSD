@@ -1,0 +1,36 @@
+<ion-content class="register lightgreen">
+
+	<ion-row>
+		<ion-col class="h-260 green brlb-30">
+			<img src="../../assets/sntc_nobackground.png" class="registerlogo" alt="">
+		</ion-col>
+	</ion-row>
+	<ion-row>
+		<ion-col>
+			<h3>
+				Register as
+			</h3>
+		</ion-col>
+	</ion-row>
+	
+	<ion-row class="formData ">
+		<ion-col class="form">
+			<ion-item style="width: 50%;float: left;">
+				<ion-button class="green" (click)="registerUserAs('domestic')" expand="full" style="width: 100%;">Indian user</ion-button>
+			</ion-item>
+			<ion-item style="width: 50%;float: left;">
+				<ion-button class="green" (click)="registerUserAs('international')" expand="full" style="width: 100%;">International user</ion-button>
+			</ion-item>
+
+			<div class="center mt10">
+				<p>OR</p>
+			</div>
+			<div class="center mt10">				
+				<ion-button class="green" (click)="signin()" expand="full"> Sign in </ion-button>
+			</div>
+		</ion-col>
+	</ion-row>
+	<ion-row class="center">
+		
+	</ion-row>
+</ion-content>

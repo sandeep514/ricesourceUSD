@@ -65,6 +65,8 @@ export class PriceusdPage implements OnInit {
 	listNONBasmatiStates:any;
 	firstBasmatiState:any;
 	defalutPort:any;
+	USDActive:any;
+	INRActive:any;
 
 	constructor(public platform: Platform,public restService: RestService,public componentService: ComponentsService,public modalController: ModalController,public navCtrl: NavController,public route: Router ,public versionMdel : VersionmodalPage) {
 		// this.componentService.compareTwoDates( localStorage.getItem('expired_on') );
@@ -348,12 +350,24 @@ export class PriceusdPage implements OnInit {
 	
 	ngOnInit() {
 		this.platform.ready().then(() => {
-		$("#brown_percentage").css({ display: "none" });
-		$("#creamy_sella_percentage").css({ display: "none" });
-		$("#golden_selle_percentage").css({ display: "none" });
-		$("#raw_percentage").css({ display: "none" });
-		$("#steam_percentage").css({ display: "none" });
-		let api = this.restService;
+			$("#brown_percentage").css({ display: "none" });
+			$("#creamy_sella_percentage").css({ display: "none" });
+			$("#golden_selle_percentage").css({ display: "none" });
+			$("#raw_percentage").css({ display: "none" });
+			$("#steam_percentage").css({ display: "none" });
+			let api = this.restService;
+
+			if( localStorage.getItem('is_usd_active') == '1'){
+				this.USDActive = 1;
+			}else{
+				this.USDActive = 0;
+			}
+
+			if( localStorage.getItem('is_INR_active') == '1'){	
+				this.INRActive = 1;
+			}else{
+				this.INRActive = 0;
+			}
 		});
 	}
 	async showPaymentModel(){

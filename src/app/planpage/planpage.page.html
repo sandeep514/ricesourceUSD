@@ -46,27 +46,42 @@
 				<p class="font-darkgreen" style="font-size: 18px;text-align: center;padding-bottom: 0;margin-bottom: 10px;padding: 0 10px; ">This is a paid Service, But Relax you can access this by subscribing Following Plan.</p>
 
 				<ion-col size="4" size-md *ngFor="let plan of listUSDPlans" >
-					<h2 class="planName green font-lightgreen"  style="text-transform: uppercase;">{{ plan.plan_name }}</h2>
-					<h5 class="planName font-darkgreen">{{ plan.plan_desc }}</h5>
+					<div style="border: 1px solid #92B242;border-radius: 10px;overflow: hidden;" [class.activeCurrentPlan]="selectedPlanId == plan.id" (click)="updateSelectedPlan(plan)">
+						<h2 class="planName green font-lightgreen"  style="text-transform: uppercase;padding: 0;margin: 0px 0px;
+						padding: 7px;">{{ plan.plan_name }}</h2>
+						<h5 class="planName font-darkgreen">{{ plan.plan_desc }}</h5>
 
-					<div class="price green">
-						<h5 class="planName font-lightgreen" style="padding-bottom: 0; margin-bottom: 0;text-decoration: line-through">
-							₨ {{ plan.actual_price }}
-						</h5>
-						<h5 class="planName font-lightgreen" style="padding-top: 0; margin-top: 0;font-weight: 600;margin-bottom: 0px;">
-							₨ {{ plan.discounted_prie }}
-						</h5>
+						<div class="price green" style="padding: 7px 0px">
+							<h5 class="planName font-lightgreen" style="padding-bottom: 0; margin-bottom: 0;text-decoration: line-through;padding: 0;margin: 0px">
+								₨ {{ plan.actual_price }}
+							</h5>
+							<h5 class="planName font-lightgreen" style="padding-top: 0; margin-top: 0;font-weight: 600;margin-bottom: 0px;">
+								₨ {{ plan.discounted_prie }}
+							</h5>
+						</div>
+						
+						<p class="font-darkgreen" style="font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;">Launch Offer</p>
+						<p style="text-align: center;padding-top: 0;margin-top: 0;" class="font-darkgreen">
+							<small style="font-size: 100%;">Valid for: {{plan.valid_months}} Months</small>
+						</p>
 					</div>
-					
-					<p class="font-darkgreen" style="font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;">Launch Offer</p>
-					<p style="text-align: center;padding-top: 0;margin-top: 0;" class="font-darkgreen">
-						<small style="font-size: 100%;">Valid for: {{plan.valid_months}} Months</small>
-					</p>
-	
-					<!-- <ion-button class="buynow" fill="outline" (click)="buynow( plan )">Subscribe</ion-button> -->
-					
 				</ion-col>
 			</ion-row>
+
+			<div>
+				<ul style="list-style: none;">
+					<li style="float: left;width: 70%;text-align: right;margin-top: 5px;">Total in INR: </li>
+					<li style="width: 30%;float: left;"><h2 style="text-align: right;margin-right: 20px; padding: 0;margin: 0;margin-left: 10px;text-align: left;">₹{{ selectedPlanDiscountedAmountINR }}</h2></li>
+				</ul>
+				<ul style="list-style: none;">
+					<li style="float: left;width: 70%;text-align: right;margin-top: 5px;">Total in USD: </li>
+					<li style="width: 30%;float: left;"><h2 style="text-align: right;margin-right: 20px; padding: 0;margin: 0;margin-left: 10px;text-align: left;">${{ selectedPlanDiscountedAmountUSD }}</h2></li>
+				</ul>
+			</div>
+
+			<ion-button fill="outline" (click)="buynow( plan )" style="background-color: #fff;min-height: 43px;margin: 10px 6px;"><img src="../../assets/rzp-logo-positive-padding.png" style="width: 50%" /></ion-button>
+			<!-- <ion-button class="buynow" fill="outline" (click)="buynow( plan )" style="width: 40%;float: left;"><img src="../../assets/rzp-logo-positive-padding.png" /></ion-button> -->
+					
 			<ion-row>
 				<ion-col>
 					<div>

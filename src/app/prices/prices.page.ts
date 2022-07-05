@@ -63,6 +63,8 @@ export class PricesPage implements OnInit {
 	listBasmatiStates:any;
 	listNONBasmatiStates:any;
 	firstBasmatiState:any;
+	USDActive:any;
+	INRActive:any;
 
 	constructor(public platform: Platform,public restService: RestService,public componentService: ComponentsService,public modalController: ModalController,public navCtrl: NavController,public route: Router ,public versionMdel : VersionmodalPage) {
 		// this.componentService.compareTwoDates( localStorage.getItem('expired_on') );
@@ -340,12 +342,24 @@ export class PricesPage implements OnInit {
 	
 	ngOnInit() {
 		this.platform.ready().then(() => {
-		$("#brown_percentage").css({ display: "none" });
-		$("#creamy_sella_percentage").css({ display: "none" });
-		$("#golden_selle_percentage").css({ display: "none" });
-		$("#raw_percentage").css({ display: "none" });
-		$("#steam_percentage").css({ display: "none" });
-		let api = this.restService;
+			$("#brown_percentage").css({ display: "none" });
+			$("#creamy_sella_percentage").css({ display: "none" });
+			$("#golden_selle_percentage").css({ display: "none" });
+			$("#raw_percentage").css({ display: "none" });
+			$("#steam_percentage").css({ display: "none" });
+			let api = this.restService;
+
+			if( localStorage.getItem('is_usd_active') == '1'){
+				this.USDActive = 1;
+			}else{
+				this.USDActive = 0;
+			}
+
+			if( localStorage.getItem('is_INR_active') == '1'){	
+				this.INRActive = 1;
+			}else{
+				this.INRActive = 0;
+			}
 		});
 	}
 	async showPaymentModel(){
@@ -557,26 +571,26 @@ export class PricesPage implements OnInit {
 	extractRiceName(riceName) {
 		let riceNameArray = riceName.split(" ");
 		if (
-		riceNameArray[1] == "Basmati" ||
-		riceNameArray[1] == "non-basmati" ||
-		riceNameArray[1] == "rice" ||
-		riceNameArray[1] == "Rice"
+			riceNameArray[1] == "Basmati" ||
+			riceNameArray[1] == "non-basmati" ||
+			riceNameArray[1] == "rice" ||
+			riceNameArray[1] == "Rice"
 		) {
 		return riceNameArray[0];
 		}
 		if (
-		riceNameArray[2] == "Basmati" ||
-		riceNameArray[2] == "non-basmati" ||
-		riceNameArray[2] == "rice" ||
-		riceNameArray[2] == "Rice"
+			riceNameArray[2] == "Basmati" ||
+			riceNameArray[2] == "non-basmati" ||
+			riceNameArray[2] == "rice" ||
+			riceNameArray[2] == "Rice"
 		) {
 		return riceNameArray[0] + " " + riceNameArray[1];
 		}
 		if (
-		riceNameArray[3] == "Basmati" ||
-		riceNameArray[3] == "non-basmati" ||
-		riceNameArray[3] == "rice" ||
-		riceNameArray[3] == "Rice"
+			riceNameArray[3] == "Basmati" ||
+			riceNameArray[3] == "non-basmati" ||
+			riceNameArray[3] == "rice" ||
+			riceNameArray[3] == "Rice"
 		) {
 		return riceNameArray[0] + " " + riceNameArray[1] + " " + riceNameArray[2];
 		}
@@ -620,7 +634,6 @@ export class PricesPage implements OnInit {
 		} );
 	}
 	changeAppType(){
-		localStorage.setItem('apptype' , 'USD');
 
 		let isUSDActive = localStorage.getItem('is_usd_active');
 		let isUserExpiredStatus = localStorage.getItem('isExpiryUSD');
@@ -629,6 +642,8 @@ export class PricesPage implements OnInit {
 				this.navCtrl.navigateForward(['planpage']);
 			}else{
 				this.navCtrl.navigateForward(['priceusd']);
+				localStorage.setItem('apptype' , 'USD');
+
 			}
 		}else{
 			this.navCtrl.navigateForward(['planpage']);
