@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { ComponentsService } from '../components.service';
 
 @Component({
@@ -11,10 +11,15 @@ import { ComponentsService } from '../components.service';
 export class ContactmodalPage implements OnInit {
 	public userRole:any;
 	public roleTitle:any;
-	constructor(public modalctrl:ModalController, public componentserv: ComponentsService) {
+	constructor(public modalctrl:ModalController, public componentserv: ComponentsService,public navCtrl: NavController) {
 		this.isBuyer();
 	}
+	
 
+	closeModal(){
+		this.modalctrl.dismiss();
+	}
+	
 	ngOnInit() {
 	}
 
@@ -54,9 +59,5 @@ export class ContactmodalPage implements OnInit {
 		this.roleTitle = "You are using a older version of app, Would you like to update?";
 	}
 	
-	closeModal(){
-		this.modalctrl.dismiss();
-		localStorage.setItem('popupCanceled' , 'true');
-		this.componentserv.cancelPopup.next('true');
-	}
+	 
 }

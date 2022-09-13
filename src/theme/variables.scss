@@ -528,3 +528,13 @@ ion-title {
 .alert-radio-label.sc-ion-alert-md{
     white-space: normal;
 }
+.checkbox-icon{
+    margin-top: 3px;
+}
+.confirm .alert-wrapper{
+    height: auto !important;
+    min-height: auto !important;
+    max-height: auto !important;
+    --min-height: auto !important;
+    --max-height: auto !important;
+}

@@ -54,38 +54,45 @@ export class RegisterPage implements OnInit {
 
 		if(localStorage.getItem('registerUserAs') != null){
 			this.registerForm = localStorage.getItem('registerUserAs');
+			if( localStorage.getItem('registerUserAs') == 'international' ){
+				this.userState = "buyer";
+			}else{
+				this.userState = "supplier";
+			}
 		}
 	}
 	
 	changeState(state){
 		this.userState = state;
+		console.log(state)
 	}
+
 	isValidEmail( value ) {
 		return /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,5}$/.test( value );
 	}
+	
 	termsandcondition(){
 		this.navCtrl.navigateForward(['termsandcondition']);
 	}
+	
 	registerUser(){
+	
 		var form = new FormData();
 		if( this.termsAndConditions == true ){
-			if( this.zipcode != undefined ){
-				if(this.username != undefined && this.email != undefined && this.companyname != undefined && this.address != undefined && this.country != undefined && this.zipcode != undefined && this.contactperson != undefined && this.mobile != undefined && this.password != undefined && this.confpassword != undefined && this.mySelectedPort != undefined && this.selectedCountry != undefined){
+			if( this.registerForm == 'international' && this.userState == 'guest' ){
+				if( this.username != undefined && this.email && this.companyname && this.address && this.contactperson && this.mobile && this.password && this.userState && this.selectedBagVendorCategory ){
 					let postData = {
 						'username' :  this.username,
 						'email' :  this.email,
 						'companyname' :  this.companyname,
 						'address' :  this.address,
-						'country' :  this.country,
-						'zipcode' :  this.zipcode,
 						'contactperson' :  this.contactperson,
 						'mobile' :  this.mobile,
 						'password' :  this.password,
-						'import_port' :  this.mySelectedPort,
 						'userState' : this.userState,
-						'bagCategory' : this.selectedBagVendorCategory
+						'bagCategory' : this.selectedBagVendorCategory,
+						'registerForm' : this.registerForm
 					}
-
 					this.api.regsiterUser(postData).then((res:any) => {
 						console.log(res);
 						localStorage.setItem('id' , res.data.id);
@@ -115,71 +122,120 @@ export class RegisterPage implements OnInit {
 				}else{
 					this.api.presentToast('Data not correct');
 				}
+				
 			}else{
-				if( this.username != '' && this.email != '' && this.mobile != '' && this.password != '' && this.confpassword != ''){
-					if( this.isValidEmail(this.email) == true ){
-						if(this.mobile.length == 10 || this.mobile.length == 11 || this.mobile.length == 12){
-							if( this.password == this.confpassword ){
-		
-								let postData = {
-									'username' : this.username,
-									'email' : this.email,
-									'mobile' : this.mobile,
-									'companyname' : this.companyname,
-									'password' : this.password,
-									'userState' : this.userState
-								}
-		
-								this.api.presentLoader('Please wait...');
-								this.api.regsiterUser(postData).then((res:any) => {
-		
-									localStorage.setItem('id' , res.data.id);
-									localStorage.setItem('name' , res.data.name);
-									localStorage.setItem('email' , res.data.email);
-									localStorage.setItem('mobile' , res.data.mobile);
-									localStorage.setItem('role' , res.data.role);
-									localStorage.setItem('companyname' , res.data.companyname);
-									localStorage.setItem('expired_on' , res.data.expired_on);
-	
-									this.componentSer.compareTwoDates(res.data.expired_on);
-	
-
-									localStorage.setItem('apptype' , 'OTHER');
-									localStorage.setItem('isUserActivatedUSD' , res.data.is_usd_active);
-									localStorage.setItem('status' , (res.data.status).toString());
-
-									localStorage.setItem('user',JSON.stringify(res.data));
-									localStorage.setItem('token',res.data.user_token);
-
-									localStorage.setItem('is_INR_active',res.data.is_INR_active);
-									localStorage.setItem('usd_role', res.data.usd_role);
-									localStorage.setItem('transaction_id', res.data.transaction_id);
-									
-									this.componentSer.compareTwoDates(res.data.expired_on);
-									
-									this.navCtrl.navigateForward(['verifyotp']);
-									// this.navCtrl.navigateForward(['prices']);
-									// this.api.presentToast('User register successfully.');
-									this.api.loaderCtrl.dismiss();
-								},(err:any) => {
-									this.api.presentToast(err.error.error);
-									this.api.loaderCtrl.dismiss();
-								});
-		
-							}else{
-								this.api.presentToast('Password and Confirm Password is invalid.');
-							}
-						}else{
-							this.api.presentToast('Mobile number is invalid.');
+				if( this.zipcode != undefined ){
+					if(this.username != undefined && this.email != undefined && this.companyname != undefined && this.address != undefined && this.country != undefined && this.zipcode != undefined && this.contactperson != undefined && this.mobile != undefined && this.password != undefined && this.confpassword != undefined && this.mySelectedPort != undefined && this.selectedCountry != undefined){
+						let postData = {
+							'username' :  this.username,
+							'email' :  this.email,
+							'companyname' :  this.companyname,
+							'address' :  this.address,
+							'country' :  this.country,
+							'zipcode' :  this.zipcode,
+							'contactperson' :  this.contactperson,
+							'mobile' :  this.mobile,
+							'password' :  this.password,
+							'import_port' :  this.mySelectedPort,
+							'userState' : this.userState,
+							'bagCategory' : this.selectedBagVendorCategory
 						}
+	
+						this.api.regsiterUser(postData).then((res:any) => {
+							console.log(res);
+							localStorage.setItem('id' , res.data.id);
+							localStorage.setItem('name' , res.data.name);
+							localStorage.setItem('email' , res.data.email);
+							localStorage.setItem('mobile' , res.data.mobile);
+							localStorage.setItem('role' , res.data.role);
+							localStorage.setItem('companyname' , res.data.companyname);
+							localStorage.setItem('expired_on' , res.data.expired_on);
+							localStorage.setItem('apptype' , 'USD');
+							localStorage.setItem('isUserActivatedUSD' , res.data.is_usd_active);
+							localStorage.setItem('status' , (res.data.status).toString());
+	
+							localStorage.setItem('user',JSON.stringify(res.data));
+							localStorage.setItem('token',res.data.user_token);
+	
+							localStorage.setItem('is_INR_active',res.data.is_INR_active);
+							localStorage.setItem('usd_role',res.data.usd_role);
+							
+							this.componentSer.compareTwoDates(res.data.expired_on);
+							this.navCtrl.navigateForward(['verifyotp']);
+							// this.api.loaderCtrl.dismiss();
+						},(err:any) => {
+							this.api.presentToast(err.error.error);
+							this.api.loaderCtrl.dismiss();
+						});
 					}else{
-						this.api.presentToast('Email is invalid.');
+						this.api.presentToast('Data not correct');
 					}
 				}else{
-					this.api.presentToast('Required field are missing.');
+					if( this.username != '' && this.email != '' && this.mobile != '' && this.password != '' && this.confpassword != ''){
+						if( this.isValidEmail(this.email) == true ){
+							if(this.mobile.length == 10){
+								if( this.password == this.confpassword ){
+									
+									let postData = {
+										'username' : this.username,
+										'email' : this.email,
+										'mobile' : this.mobile,
+										'companyname' : this.companyname,
+										'password' : this.password,
+										'userState' : this.userState
+									}
+			
+									this.api.presentLoader('Please wait...');
+									this.api.regsiterUser(postData).then((res:any) => {
+			
+										localStorage.setItem('id' , res.data.id);
+										localStorage.setItem('name' , res.data.name);
+										localStorage.setItem('email' , res.data.email);
+										localStorage.setItem('mobile' , res.data.mobile);
+										localStorage.setItem('role' , res.data.role);
+										localStorage.setItem('companyname' , res.data.companyname);
+										localStorage.setItem('expired_on' , res.data.expired_on);
+		
+										this.componentSer.compareTwoDates(res.data.expired_on);
+		
+	
+										localStorage.setItem('apptype' , 'OTHER');
+										localStorage.setItem('isUserActivatedUSD' , res.data.is_usd_active);
+										localStorage.setItem('status' , (res.data.status).toString());
+	
+										localStorage.setItem('user',JSON.stringify(res.data));
+										localStorage.setItem('token',res.data.user_token);
+	
+										localStorage.setItem('is_INR_active',res.data.is_INR_active);
+										localStorage.setItem('usd_role', res.data.usd_role);
+										localStorage.setItem('transaction_id', res.data.transaction_id);
+										
+										this.componentSer.compareTwoDates(res.data.expired_on);
+										
+										this.navCtrl.navigateForward(['verifyotp']);
+										// this.navCtrl.navigateForward(['prices']);
+										// this.api.presentToast('User register successfully.');
+										this.api.loaderCtrl.dismiss();
+									},(err:any) => {
+										this.api.presentToast(err.error.error);
+										this.api.loaderCtrl.dismiss();
+									});
+			
+								}else{
+									this.api.presentToast('Password and Confirm Password is invalid.');
+								}
+							}else{
+								this.api.presentToast('Mobile number is invalid.');
+							}
+						}else{
+							this.api.presentToast('Email is invalid.');
+						}
+					}else{
+						this.api.presentToast('Required field are missing.');
+					}
 				}
 			}
-
+			
 
 			
 		}else{
@@ -199,6 +255,13 @@ export class RegisterPage implements OnInit {
 	registerFormType(formtype){
 		console.log(formtype);
 		this.registerForm = formtype;
+
+		if( formtype == 'international' ){
+			this.userState = "buyer";
+		}else{
+			this.userState = "supplier";
+		}
+		
 	}
 
 	getCountries() {
@@ -232,5 +295,14 @@ export class RegisterPage implements OnInit {
 
 	changePort(event) {
 		this.mySelectedPort = event.detail.value;
+	}
+
+	checkboxClick(e){
+		// console.log(e.detail.checked)
+		this.termsAndConditions = e.detail.checked
+		// var statement = true;
+		// if(statement){
+		//   	e.checked = true;
+		// }
 	}
 }

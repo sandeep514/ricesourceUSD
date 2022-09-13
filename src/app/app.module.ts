@@ -26,6 +26,8 @@ import { VersionmodalPage } from './versionmodal/versionmodal.page';
 // import { IonicSelectableModule } from 'ionic-selectable';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { PayPal } from '@ionic-native/paypal/ngx';
+import { UsdconvertmodalPageModule } from './usdconvertmodal/usdconvertmodal.module';
+import { TrialperiodPageModule } from './trialperiod/trialperiod.module';
 
 @NgModule({
   	declarations: [
@@ -51,6 +53,8 @@ import { PayPal } from '@ionic-native/paypal/ngx';
 		FormsModule,
 		IonicSelectableModule,
 		PlanpagePageModule,
+		UsdconvertmodalPageModule,
+		TrialperiodPageModule,
     	IonicModule.forRoot({
       		scrollPadding: false,
       		scrollAssist: true,

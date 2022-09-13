@@ -10,9 +10,9 @@
                 <ion-col size="6" align="center" class="font-lightgreen">
                     <!-- <h3>Dashboard</h3> -->
                     <div *ngIf="restDays >= 0">
-                        <p *ngIf="restDays <= 30">
+                        <p *ngIf="restDays <= 10">
                             {{restDays}} Days Left
-                        </p>	
+                        </p>
                     </div>
                     <p>
                         <button (click)="showPaymentModel()" *ngIf="restDays < 0" style="color: #92b243; text-decoration: none; background: #fffbd6; padding: 5px; border-radius: 8px;">Subscribe Now</button>
@@ -159,7 +159,7 @@
 
                             <td class="type-columns">
                                 <!-- <div class="priceVal" style="font-size: 13px !important; font-weight: bold;" [ngClass]="basmati?.color_status == 3 ? 'black-price' : ( basmati?.color_status == 2 ) ? 'red-price' :  'green-price' ">${{ ((riceVal.value[latestDateBasmati].min_price) / 74).toFixed(2) }} - {{ ((riceVal.value[latestDateBasmati].max_price) / 74).toFixed(2) }} </div>  -->
-                                <div class="priceVal" style="font-size: 13px !important; font-weight: bold;" [ngClass]="basmati?.color_status == 3 ? 'black-price' : ( basmati?.color_status == 2 ) ? 'black-price' :  (basmati?.color_status == 1)? 'black-price': '' ">${{ ((basmati?.fobmin) + defaultCIFPrice) }}-{{ (basmati?.fobmax + defaultCIFPrice) }} <ion-icon name="caret-down-outline"></ion-icon></div>
+                                <div class="priceVal" style="font-size: 13px !important; font-weight: bold;" [ngClass]="basmati?.color_status == 3 ? 'black-price' : ( basmati?.color_status == 2 ) ? 'red-price' :  (basmati?.color_status == 1)? 'green-price': '' ">${{ ((basmati?.fobmin) + defaultCIFPrice) }}-{{ (basmati?.fobmax + defaultCIFPrice) }} <ion-icon name="caret-down-outline"></ion-icon></div>
                             </td>
                         </tr>
                       </tbody>
@@ -270,7 +270,7 @@
 
                                 <td class="type-columns">
                                     <!-- <div class="priceVal" style="font-size: 13px !important;">${{ ((riceVal.value[latestDateBasmati].min_price) / 74).toFixed(2) }} - {{ ((riceVal.value[latestDateBasmati].max_price) / 74).toFixed(2) }} </div>  -->
-                                    <div class="priceVal" style="font-size: 13px !important;" [ngClass]="nonbasmati?.color_status == 3 ? 'black-price' : ( nonbasmati?.color_status == 2 ) ? 'black-price' : (nonbasmati?.color_status == 1)? 'black-price': '' ">${{ ((nonbasmati?.fobmin) + defaultCIFPrice) }}-{{ (nonbasmati?.fobmax + defaultCIFPrice) }} 
+                                    <div class="priceVal" style="font-size: 13px !important;" [ngClass]="nonbasmati?.color_status == 3 ? 'black-price' : ( nonbasmati?.color_status == 2 ) ? 'red-price' : (nonbasmati?.color_status == 1)? 'green-price': '' ">${{ ((nonbasmati?.fobmin) + defaultCIFPrice) }}-{{ (nonbasmati?.fobmax + defaultCIFPrice) }} 
                                         <ion-icon name="caret-down-outline"></ion-icon>
                                     </div> 
                                 </td>

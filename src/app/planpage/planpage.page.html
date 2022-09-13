@@ -43,52 +43,102 @@
 	<div >
 		<div>
 			<ion-row style="padding: 0px 10px">
-				<p class="font-darkgreen" style="font-size: 18px;text-align: center;padding-bottom: 0;margin-bottom: 10px;padding: 0 10px; ">This is a paid Service, But Relax you can access this by subscribing Following Plan.</p>
+				<ion-row style="width: 100%;" >
+					<ion-col size="8"></ion-col>
+					<ng-container *ngIf="showScreenshotStatus == 0">
+						<ion-col size="4">
+							<p (click)="showScreenshot()" style="padding: 10px;background: #92b243;color: white;border-radius: 10px;width: 100%;text-align: center;font-size: 20px;
+							font-weight: bold;">Demo</p>
+						</ion-col>
+					</ng-container>
 
-				<ion-col size="4" size-md *ngFor="let plan of listUSDPlans" >
-					<div style="border: 1px solid #92B242;border-radius: 10px;overflow: hidden;" [class.activeCurrentPlan]="selectedPlanId == plan.id" (click)="updateSelectedPlan(plan)">
-						<h2 class="planName green font-lightgreen"  style="text-transform: uppercase;padding: 0;margin: 0px 0px;
-						padding: 7px;">{{ plan.plan_name }}</h2>
-						<h5 class="planName font-darkgreen">{{ plan.plan_desc }}</h5>
+					<ng-container *ngIf="showScreenshotStatus == 1">
+						<ion-col size="4" >
+							<p (click)="showScreenshot()" style="padding: 10px;background: #92b243;color: white;border-radius: 10px;width: 100%;text-align: center;font-size: 20px;
+							font-weight: bold;">Back</p>
+						</ion-col>	
+					</ng-container>
+				</ion-row>
 
-						<div class="price green" style="padding: 7px 0px">
-							<h5 class="planName font-lightgreen" style="padding-bottom: 0; margin-bottom: 0;text-decoration: line-through;padding: 0;margin: 0px">
-								₨ {{ plan.actual_price }}
-							</h5>
-							<h5 class="planName font-lightgreen" style="padding-top: 0; margin-top: 0;font-weight: 600;margin-bottom: 0px;">
-								₨ {{ plan.discounted_prie }}
-							</h5>
-						</div>
-						
-						<p class="font-darkgreen" style="font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;">Launch Offer</p>
-						<p style="text-align: center;padding-top: 0;margin-top: 0;" class="font-darkgreen">
-							<small style="font-size: 100%;">Valid for: {{plan.valid_months}} Months</small>
-						</p>
+				<ng-container  *ngIf="showScreenshotStatus == 1">
+					<div style="position: absolute;top: 36%;left: 16px;font-size: 25px;z-index: 2;" (click)="slidePrev()">
+						<ion-icon name="arrow-back" style="font-size: 30px" > </ion-icon>
 					</div>
-				</ion-col>
+					<div style="position: absolute;top: 36%;right: 16px;font-size: 25px;z-index: 2;" (click)="slideNext()">
+						<ion-icon name="arrow-forward" style="font-size: 30px" > </ion-icon>
+					</div>
+					
+					<ion-slides pager="true" [options]="slideOpts" style="height: auto;" #slides>
+						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
+							<img src="../../assets/Screen Shot 2022-07-26 at 11.00.22 PM.png" style="width: 80%"/>
+						</ion-slide>
+						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
+							<img src="../../assets/Screen Shot 2022-08-12 at 1.39.30 PM.png" style="width: 80%"/>
+						</ion-slide>
+					</ion-slides>
+				</ng-container>
+				<!-- <p class="font-darkgreen" style="font-size: 18px;text-align: center;padding-bottom: 0;margin-bottom: 10px;padding: 0 10px; ">This is a paid Service, But Relax you can access this by subscribing Following Plan.</p> -->
+
+				<ion-row style="width: 100%;text-align: center;" *ngIf="showTrialPeriod == false">
+					<ion-col>
+						<button style="background: #92b245;padding: 10px 20px;border-radius: 20px;font-size: 20px;width: auto;text-transform: capitalize;" (click)="startTrial()"> Use 7 days free trial period</button>
+					</ion-col>
+				</ion-row>
+				<ion-row style="width: 100%;justify-content: center;">
+					<ion-col size="{(listUSDPlans.length > 2) ? 4 : 6}" size-md *ngFor="let plan of listUSDPlans" >
+						<div style="border: 1px solid #92B242;border-radius: 10px;overflow: hidden;" [class.activeCurrentPlan]="selectedPlanId == plan.id" (click)="updateSelectedPlan(plan)">
+							<h2 class="planName green font-lightgreen"  style="text-transform: uppercase;padding: 0;margin: 0px 0px;
+							padding: 7px;">{{ plan.plan_name }}</h2>
+							<h5 class="planName font-darkgreen"></h5>
+	
+							<div class="price green" style="padding: 7px 0px">
+								<h5 class="planName font-lightgreen" style="padding-bottom: 0; margin-bottom: 0;text-decoration: line-through;padding: 0;margin: 0px">
+									₨ {{ plan.actual_price }}
+								</h5>
+								<h5 class="planName font-lightgreen" style="padding-top: 0;margin-top: 0;font-weight: 600;margin-bottom: 0px;">
+									₨ {{ plan.discounted_prie }}
+								</h5>
+							</div>
+							<p style="text-align: center;padding-top: 0;margin-top: 0;padding: 0 10px;" class="font-darkgreen">
+								<small style="font-size: 12px;">{{ plan.plan_desc }}</small>
+							</p>
+							<!-- <p class="font-darkgreen" style="font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;">Launch Offer</p> -->
+							<!-- <p style="text-align: center;padding-top: 0;margin-top: 0;" class="font-darkgreen">
+								<small style="font-size: 100%;">Valid for: {{plan.valid_months}} Months</small>
+							</p> -->
+						</div>
+					</ion-col>
+	
+				</ion-row>
 			</ion-row>
 
 			<div>
-				<ul style="list-style: none;">
+				<ul style="list-style: none;" *ngIf="isDomesticRoleAvailable == true && isUSDRoleAvailable != true" >
 					<li style="float: left;width: 70%;text-align: right;margin-top: 5px;">Total in INR: </li>
 					<li style="width: 30%;float: left;"><h2 style="text-align: right;margin-right: 20px; padding: 0;margin: 0;margin-left: 10px;text-align: left;">₹{{ selectedPlanDiscountedAmountINR }}</h2></li>
 				</ul>
-				<ul style="list-style: none;">
+				<ul style="list-style: none;" *ngIf="isUSDRoleAvailable == true">
 					<li style="float: left;width: 70%;text-align: right;margin-top: 5px;">Total in USD: </li>
 					<li style="width: 30%;float: left;"><h2 style="text-align: right;margin-right: 20px; padding: 0;margin: 0;margin-left: 10px;text-align: left;">${{ selectedPlanDiscountedAmountUSD }}</h2></li>
 				</ul>
 			</div>
+			
+			<p style="font-size: 1px">{{ isDomesticRoleAvailable }}{{ isUSDRoleAvailable }}</p>
 
-			<ion-button fill="outline" (click)="buynow( plan )" style="background-color: #fff;min-height: 43px;margin: 10px 6px;"><img src="../../assets/rzp-logo-positive-padding.png" style="width: 50%" /></ion-button>
+			<ion-button *ngIf="isDomesticRoleAvailable == true && isUSDRoleAvailable != true"  fill="outline" (click)="buynow( )" style="background-color: #fff;min-height: 43px;margin: 10px 6px;">
+				<img src="../../assets/rzp-logo-positive-padding.png" style="width: 50%" />
+			</ion-button>
 			<!-- <ion-button class="buynow" fill="outline" (click)="buynow( plan )" style="width: 40%;float: left;"><img src="../../assets/rzp-logo-positive-padding.png" /></ion-button> -->
-					
-			<ion-row>
+
+			<ion-row *ngIf="isUSDRoleAvailable == true">
 				<ion-col>
 					<div>
 						<div id="paypal-button"></div>
 					</div>
 				</ion-col>
 			</ion-row>
+
+			
 		</div>
 	</div>
 

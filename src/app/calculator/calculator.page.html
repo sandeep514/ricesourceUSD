@@ -10,7 +10,7 @@
 	<ion-row *ngIf="modalStatus == true" style="background: #fffbd6;position: absolute;z-index: 9999999;top: 9%;width: 95%;height: 80%;border-radius: 23px;border: 2px solid #92b243;overflow: hidden;/* top: 5%; */margin: 0 auto;left: 2%;">
 		<ion-row style="width: 100%;">
 			<ion-row style="height: 40px;width: 100%;">
-				<p style="width: 100%;text-align: right;margin-right: 20px" (click)="updateModel()" >Close</p>
+				<p style="width: 100%;text-align: right;margin-right: 20px;font-weight: bold;color: #92b243;" (click)="updateModel()" >Close</p>
 			</ion-row>
 			<ion-content class="lightgreen">
 				<div>
@@ -166,6 +166,8 @@
 		
 	</div> -->
 	<div style="height: 90%;overflow: scroll;" class="calc">
+		<ion-row style="justify-content: center;"><div style="font-weight: bold;">Cost of Rice1: &nbsp;</div> ₹{{costOfRice1}}</ion-row>
+
 		<ion-row>
 			<ion-col size="6">
 				<ion-item style="margin-right: 10px;">
@@ -181,8 +183,8 @@
 			</ion-col>
 		</ion-row>
 		<ion-row style="justify-content: center;font-weight: bold;color: red;" *ngIf="blendError1">Cost Rice 1 must be in 5 Digit.</ion-row>
-		<ion-row style="justify-content: center;">Cost of Rice1: {{costOfRice1}}</ion-row>
 
+		<ion-row style="justify-content: center;"><div style="font-weight: bold;">Cost of Rice2: &nbsp;</div> ₹{{costOfRice2}}</ion-row>
 		<ion-row>
 			<ion-col size="6">
 				<ion-item style="margin-right: 10px;">
@@ -198,9 +200,8 @@
 			</ion-col>
 		</ion-row>
 		<ion-row style="justify-content: center;font-weight: bold;color: red;" *ngIf="blendError2">Blend rice 2 must be in 5 Digit.</ion-row>
-		<ion-row style="justify-content: center;">Cost of Rice2: {{costOfRice2}}</ion-row>
 
-
+		<ion-row style="justify-content: center;"><div style="font-weight: bold;">Cost of Rice3: &nbsp;</div> ₹{{costOfRice3}} </ion-row>
 		<ion-row>
 			<ion-col size="6">
 				<ion-item style="margin-right: 10px;">
@@ -216,9 +217,8 @@
 			</ion-col>
 		</ion-row>
 		<ion-row style="justify-content: center;font-weight: bold;color: red;" *ngIf="blendError3">Blend rice 3 must be in 5 Digit.</ion-row>
-		<ion-row style="justify-content: center;">Cost of Rice3: {{costOfRice3}} </ion-row>
 
-
+		<ion-row style="justify-content: center;"><div style="font-weight: bold;">Cost of Rice4: &nbsp;</div> ₹{{costOfRice4}}</ion-row>
 		<ion-row>
 			<ion-col size="6">
 				<ion-item style="margin-right: 10px;">
@@ -234,7 +234,6 @@
 			</ion-col>
 		</ion-row>
 		<ion-row style="justify-content: center;font-weight: bold;color: red;" *ngIf="blendError4">Blend rice 4 must be in 5 Digit.</ion-row>
-		<ion-row style="justify-content: center;">Cost of Rice4: {{costOfRice4}}</ion-row>
 
 
 		<ion-row>
@@ -322,7 +321,7 @@
 		<ion-row>
 			<ion-col size="12">
 				<ion-item>
-					<ion-label position="floating" class="inputlabel">LC Charges PMT (Optional) </ion-label>
+					<ion-label position="floating" class="inputlabel">LC Charges PMT in $ (Optional) </ion-label>
 					<ion-input placeholder="L/C Charges" [(ngModel)]="lccharges" (ionChange)="checkInput($event , 'three')"></ion-input>
 				</ion-item>
 			</ion-col>
@@ -331,7 +330,7 @@
 		<ion-row>
 			<ion-col size="9">
 				<ion-item>
-					<ion-label position="floating" class="inputlabel">Ocean Freight PMT (Optional)</ion-label>
+					<ion-label position="floating" class="inputlabel">Ocean Freight PMT in $ (Optional)</ion-label>
 					<ion-input (ionChange)="save()" placeholder="Ocean Freight Per MT" [(ngModel)]="oceanfreight"></ion-input>
 				</ion-item>
 			</ion-col>
@@ -344,7 +343,7 @@
 		<ion-row>
 			<ion-col size="12">
 				<ion-item>
-					<ion-label position="floating" class="inputlabel">Third Party Inspection PMT(Optional)</ion-label>
+					<ion-label position="floating" class="inputlabel">Third Party Inspection PMT in $ (Optional)</ion-label>
 					<ion-input (ionChange)="save()" placeholder="Third Party Inspection" [(ngModel)]="thirdpartyinspection"></ion-input>
 				</ion-item>
 			</ion-col>
@@ -353,7 +352,7 @@
 		<ion-row>
 			<ion-col size="12">
 				<ion-item>
-					<ion-label position="floating" class="inputlabel">Legalisation Charges PMT (Optional)</ion-label>
+					<ion-label position="floating" class="inputlabel">Legalisation Charges PMT in $ (Optional)</ion-label>
 					<ion-input (ionChange)="save()" placeholder="Legalisation Charges" [(ngModel)]="legalisationcharges"></ion-input>
 				</ion-item>
 			</ion-col>
@@ -362,7 +361,7 @@
 		<ion-row>
 			<ion-col size="12">
 				<ion-item>
-					<ion-label position="floating" class="inputlabel">COC PMT (Optional)</ion-label>
+					<ion-label position="floating" class="inputlabel">COC PMT in $ (Optional)</ion-label>
 					<ion-input (ionChange)="save()" placeholder="COC" [(ngModel)]="coc"></ion-input>
 				</ion-item>
 			</ion-col>
@@ -371,7 +370,7 @@
 		<ion-row>
 			<ion-col size="12">
 				<ion-item>
-					<ion-label position="floating" class="inputlabel">EIA Cost PMT (For EU Only) (Optional )</ion-label>
+					<ion-label position="floating" class="inputlabel">EIA Cost PMT in $ (For EU Only) (Optional )</ion-label>
 					<ion-input (ionChange)="save()" placeholder="EIA cost ( for EU Only )" [(ngModel)]="eiacost"></ion-input>
 				</ion-item>
 			</ion-col>
@@ -437,7 +436,7 @@
 		</ion-row>
 		<ion-row style="position: fixed;z-index: 9999999;bottom: 60px;right: 0;">
 			<ion-col style="text-align: center;" >
-				<ion-button (click)="calculateData()" style="font-size: 27px;height: 60px;width: 60px;--border-radius: 100px;color: white;">=</ion-button>
+				<ion-button (click)="calculateData()" style="font-size: 27px;height: 60px;width: 60px;--border-radius: 100px;color: white; --background: #92b243;">=</ion-button>
 			</ion-col>
 		</ion-row>
 	</div>

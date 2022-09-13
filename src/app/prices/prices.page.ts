@@ -42,6 +42,7 @@ export class PricesPage implements OnInit {
 	riceUserType: any;
 	myVar: any;
 	imagePrefix: any;
+
 	slideOpts = {
 		initialSlide: 0,
 		slidesPerView: 3,
@@ -52,6 +53,7 @@ export class PricesPage implements OnInit {
 		autoplay: true,
 		loop: true,
 	};
+	
 	username: any;
 	userFirstName: any;
 	basmatiState: any;
@@ -63,6 +65,7 @@ export class PricesPage implements OnInit {
 	listBasmatiStates:any;
 	listNONBasmatiStates:any;
 	firstBasmatiState:any;
+	lastBasmatiState:any;
 	USDActive:any;
 	INRActive:any;
 
@@ -85,8 +88,30 @@ export class PricesPage implements OnInit {
 		var Expiredyyyy = ExpiredDate.getFullYear();
 		var ExpiredDateDate = Expiredmm + '/' + Expireddd + '/' + Expiredyyyy;
 
-		this.componentService.differanceTwoDate(todayDate ,ExpiredDateDate ).then((res:any) => {
-			this.restDays = res;
+		this.componentService.isUserExpired.subscribe((res:any) => {
+			var today = new Date();
+			var dd = String(today.getDate()).padStart(2, '0');
+			var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+			var yyyy = today.getFullYear();
+			var todayDate = mm + '/' + dd + '/' + yyyy;
+			console.log(localStorage.getItem('expired_on'));
+
+			if( localStorage.getItem('expired_on') != null && localStorage.getItem('expired_on') != 'null' ){
+				var ExpiredDate = new Date(localStorage.getItem('expired_on'));
+				var Expireddd = String(ExpiredDate.getDate()).padStart(2, '0');
+				var Expiredmm = String(ExpiredDate.getMonth() + 1).padStart(2, '0'); //January is 0!
+				var Expiredyyyy = ExpiredDate.getFullYear();
+				var ExpiredDateDate = Expiredmm + '/' + Expireddd + '/' + Expiredyyyy;
+				
+				this.componentService.differanceTwoDate(todayDate ,ExpiredDateDate ).then((res:any) => {
+					this.restDays = res;
+				} );
+			}else{
+				this.restDays = -1
+			}
+			console.log(this.restDays)
+
+			
 		} );
 
 		this.componentService.isUserExpired.subscribe((res:any) => {
@@ -103,6 +128,7 @@ export class PricesPage implements OnInit {
 			this.appType = 'other'
 		}
 	}
+
 	doRefresh(event) {
 		setTimeout(() => {
 
@@ -110,6 +136,7 @@ export class PricesPage implements OnInit {
 			event.target.complete();
 		}, 2000);
 	}
+	
 	ionViewDidLoad(){
 		this.componentService.isUserExpired.subscribe((res:any) => {
 			this.currentPaidStatus = res;
@@ -159,9 +186,15 @@ export class PricesPage implements OnInit {
 			this.restService.getBasmatiState().then((res: any) => {
 				if( res.data.length > 0 ){
 					this.firstBasmatiState = res.data[0];
-					setTimeout(() => {
+					this.lastBasmatiState = res.data[ (res.data.length - 1) ];
+					console.log(this.lastBasmatiState);
+					setTimeout( () =>{
+						document.getElementById(this.lastBasmatiState).click();
+					},1200)
+					
+					setTimeout(() => {	
 						document.getElementById(this.firstBasmatiState).click();
-					}, 1000);
+					}, 2000);
 				}
 				this.basmatiState = res.data;
 				this.componentService.loadingController.dismiss();
@@ -637,13 +670,14 @@ export class PricesPage implements OnInit {
 
 		let isUSDActive = localStorage.getItem('is_usd_active');
 		let isUserExpiredStatus = localStorage.getItem('isExpiryUSD');
+		console.log("kjnk");
 		if( isUSDActive != '0' ){
 			if( isUserExpiredStatus == 'true' ){
 				this.navCtrl.navigateForward(['planpage']);
 			}else{
-				this.navCtrl.navigateForward(['priceusd']);
+				console.log("mnk n ");
 				localStorage.setItem('apptype' , 'USD');
-
+				this.navCtrl.navigateForward(['priceusd']);
 			}
 		}else{
 			this.navCtrl.navigateForward(['planpage']);

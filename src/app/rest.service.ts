@@ -632,6 +632,16 @@ export class RestService {
 		} );
 	}
 
+	startTrialPeriod(userId){
+		return new Promise( (resolve , reject) => {
+			this.http.get(this.APIURL+'start/trial/period/'+userId).subscribe( (res:any) => {
+				resolve(res);
+			} ,(err:any) => {
+				reject(err);
+			});
+		} );
+	}
+
 	updatePort(postedData){
 		return new Promise((resolve,reject)=>{
 			this.http.post(this.APIURL+'update/port',postedData).subscribe((res)=>{

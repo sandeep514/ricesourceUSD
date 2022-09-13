@@ -35,14 +35,15 @@ export class BuyPage implements OnInit {
 	}
 
 	save(){
-		console.log(this.portName);
+		
 		this.isError = false;
 		if( this.quality != undefined &&
 			this.quantity != undefined &&
 			this.party != undefined &&
 			this.mobile != undefined &&
 			this.remarks != undefined && 
-			this.portName != '' || this.portName != undefined
+			this.portName != '' &&
+			this.portName != undefined
 		){
 			let postedData = {
 				'selectedQualityType' 	: this.selectedQualityType,
@@ -59,7 +60,8 @@ export class BuyPage implements OnInit {
 
 			this.apiser.saveRiceQuery(postedData).then((res:any) => {
 				this.apiser.presentToast('Query generated successfully.');
-				this.navCtrl.back();
+				this.navCtrl.navigateRoot(['thankyou']);
+
 			} , (err:any) => {
 				console.log(err);
 			})

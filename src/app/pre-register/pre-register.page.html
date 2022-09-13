@@ -8,24 +8,28 @@
 	<ion-row>
 		<ion-col>
 			<h3>
-				Register as
+				Register
 			</h3>
 		</ion-col>
 	</ion-row>
 	
 	<ion-row class="formData ">
 		<ion-col class="form">
-			<ion-item style="width: 50%;float: left;">
-				<ion-button class="green" (click)="registerUserAs('domestic')" expand="full" style="width: 100%;">Indian user</ion-button>
-			</ion-item>
-			<ion-item style="width: 50%;float: left;">
-				<ion-button class="green" (click)="registerUserAs('international')" expand="full" style="width: 100%;">International user</ion-button>
-			</ion-item>
 
+			<ion-item>
+				<ion-item style="width: 100%" class="ion-no-padding">
+					<ion-label position="floating">Country</ion-label>
+					<ion-select placeholder="Select One" (ionChange)="registerUserAs($event)">
+						<ion-select-option value="domestic">India</ion-select-option>
+						<ion-select-option value="international">Rest of the world</ion-select-option>
+					</ion-select>
+				  </ion-item>
+				<ion-icon slot="start" name="earth-outline" style="color: black; margin-top: 17px;"></ion-icon>
+			</ion-item>
 			<div class="center mt10">
 				<p>OR</p>
 			</div>
-			<div class="center mt10">				
+			<div class="center mt10">
 				<ion-button class="green" (click)="signin()" expand="full"> Sign in </ion-button>
 			</div>
 		</ion-col>

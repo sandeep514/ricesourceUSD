@@ -339,7 +339,6 @@ ion-segment {
     padding-bottom: 100px;
 }
 
-
 .item-ionic-selectable{
     border: 2px solid #92b243;
     border-radius: 10px;
@@ -350,19 +349,23 @@ ion-segment {
         --background: transparent;
     }
 }
+
 .demandHeaders{
     font-weight: bold;
     font-size: 18px;
 }
+
 .demandedData{
     p{
         padding: 0;
         margin: 0;
     }
     div{
-        margin-bottom: 20px;
+        // margin-bottom: 20px;
+        height: auto;
     }
 }
+
 ion-item{
     width: 65%;
     float: left;
@@ -374,3 +377,4 @@ ion-item{
     --background: transparent !important;
     --background-color: transparent !important;
 }
+

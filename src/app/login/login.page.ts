@@ -10,8 +10,8 @@ import { RestService } from '../rest.service';
 })
 export class LoginPage implements OnInit {
 
-	email:any= 'fyy@gh.yu';
-	password:any = '1234567';
+	email:any= '';
+	password:any = '';
 	passwordType: string = 'password';
 	passwordIcon: string = 'eye-off';
   	constructor(private menu: MenuController,public navCtrl: NavController,public componentService: ComponentsService,public restService: RestService) { 
@@ -60,6 +60,7 @@ export class LoginPage implements OnInit {
 				localStorage.setItem('is_INR_active',res.user.is_INR_active);
 				localStorage.setItem('usd_role',res.user.usd_role);
 				localStorage.setItem('transaction_id',res.user.transaction_id);
+				localStorage.setItem('isUserActivatedUSD' , res.user.is_usd_active);
 
 				this.componentService.loginUser.next(res.user.name);
 				this.componentService.firePushNotif.next(res.user.name);

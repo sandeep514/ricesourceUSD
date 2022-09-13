@@ -13,7 +13,8 @@ export class PreRegisterPage implements OnInit {
 	}
 
 	registerUserAs(registerType){
-		localStorage.setItem('registerUserAs' , registerType);
+		console.log(registerType.detail.value)
+		localStorage.setItem('registerUserAs' , registerType.detail.value);
 		this.navCtrl.navigateRoot(['register']);
 	}
 

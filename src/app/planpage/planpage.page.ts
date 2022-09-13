@@ -1,11 +1,14 @@
 import { Location } from '@angular/common';
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
 import { ComponentsService } from '../components.service';
 import { RestService } from '../rest.service';
+import { TrialperiodPage } from '../trialperiod/trialperiod.page';
 // import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
-
+import { ViewChild } from '@angular/core';
+import { IonSlides } from '@ionic/angular';
 declare var RazorpayCheckout:any;
 declare var paypal: any;
 
@@ -14,25 +17,67 @@ declare var paypal: any;
   templateUrl: './planpage.page.html',
   styleUrls: ['./planpage.page.scss'],
 })
+
 export class PlanpagePage implements OnInit {
+	@ViewChild('slides', {static: false}) slides: IonSlides;
+
+	slidePrev() {
+		this.slides.slidePrev()
+	}
+	slideNext() {
+		this.slides.slideNext()
+	}
 	public listPlans:any;
 	public listUSDPlans:any;
 	public selectedPlanId:any;
 	public selectedPlanDiscountedAmountINR:any;
 	public selectedPlanDiscountedAmountUSD:any;
 	public featureSplit:any = [];
-
+	slideOpts = {
+		initialSlide: 0,
+		slidesPerView: 1,
+		spaceBetween: 1,
+		freeMode: true,
+		pagination: true,
+		speed: 600,
+		autoplay: false,
+		loop: false,
+	};
 	public price;
+	public showScreenshotStatus= 0;
 	public priceToPay = 10;
 	public payPalConfig: any;
 	public PAYPAL_CLIENT_ID_TEST = "Af5Op1UABAes1X3EKCYbVAwjZITlKe9Oqlvjxh1bHM8hQWhLNJ4DLdsMcL6AmaeeKOZ_CdDWZVvWm75q"
 	public PAYPAL_CLIENT_ID_LIVE = "ARNC1YzHCEPir1DCmzRW9F9eksQVDJxbceTPzwPd3yEx2F2NFjxHydc8a2gLx2qcvUhc697apiR88_Fi"
 	public PAYPAL_CLIENT_ID = this.PAYPAL_CLIENT_ID_TEST
-
+	public isDomesticRoleAvailable = false;
+	public isUSDRoleAvailable = false;
+	public showTrialPeriod = false;
 
 	constructor(public apiser:RestService, public modelController:ModalController,public compSer:ComponentsService,public navCtrl:NavController,public location:Location,public route: Router) { 
 		this.getUSDPlans();
-		console.log("kjnjk");
+		// this.presentModel()
+		if( localStorage.getItem('role') != '' && localStorage.getItem('role') != undefined && localStorage.getItem('role') != '0' ){
+			console.log("knjk");
+			this.isDomesticRoleAvailable = true;
+		}
+		if( localStorage.getItem('usd_role') != '' && localStorage.getItem('usd_role') != undefined  && localStorage.getItem('usd_role') != '0' ){
+			console.log("ljmk");
+			this.isUSDRoleAvailable = true;
+		}
+
+		if( localStorage.getItem('ExpiryUSDDate') != undefined && localStorage.getItem('ExpiryUSDDate') != '' && localStorage.getItem('ExpiryUSDDate') != 'null' ) {
+			this.showTrialPeriod = true
+		}
+		console.log(this.showTrialPeriod);
+	}
+	async presentModel(){
+		const model = await this.modelController.create({
+			component: TrialperiodPage,
+			cssClass: "contactModal",
+			animated: true
+		})
+		await model.present();
 	}
 
 	
@@ -124,11 +169,15 @@ export class PlanpagePage implements OnInit {
 		}
 	}
 	ionViewDidEnter() {
-		paypal.Buttons(this.payPalConfig).render('#paypal-button');
+		if( localStorage.getItem('usd_role') ){
+			paypal.Buttons(this.payPalConfig).render('#paypal-button');
+		}
 	}
 	closeme(){
-		// this.modelController.dismiss();
-		if( localStorage.getItem('isUserActivatedUSD') != '1' ){
+		this.modelController.dismiss();
+		if( localStorage.getItem('is_INR_active') == '1' ){
+			this.navCtrl.navigateForward(['prices']);
+		}else if( localStorage.getItem('isUserActivatedUSD') != '1' ){
 			this.navCtrl.navigateForward(['prices']);
 		}
 		
@@ -157,6 +206,28 @@ export class PlanpagePage implements OnInit {
 		this.featureSplit =  feature.split(',');
 	}
 
+	startTrial(){
+		let userEmail = localStorage.getItem('user');
+		let userId = JSON.parse(userEmail).id;
+		
+		this.apiser.startTrialPeriod(userId).then((res:any) => {
+			localStorage.setItem('is_usd_active' , '1');
+			localStorage.setItem('usd_role' , res.data.usd_role);
+			localStorage.setItem('isExpiryUSD' ,'false');
+			localStorage.setItem('isUserActivatedUSD', '1');
+			localStorage.setItem('expired_on' , res.data.expired_on);
+			localStorage.setItem('ExpiryUSDDate' , res.data.expired_on);
+			localStorage.setItem('apptype', 'USD');
+
+			setTimeout(() => {
+				this.navCtrl.navigateForward('priceusd');
+			} , 2000)
+			this.closeme()
+		} , (err:any) => {
+		  	console.log(err)
+		});
+		
+	}
 	buynow(){
 		
 		// key: 'rzp_test_LA2o3rFXhgtfmS',
@@ -217,6 +288,7 @@ export class PlanpagePage implements OnInit {
 
 	getUSDPlans(){
 		this.apiser.getUSDPlan().then((res:any) => {
+			console.log(res.plans[0]);
 			this.listUSDPlans = res.plans;
 			this.selectedPlanId = res.plans[0].id;
 			this.selectedPlanDiscountedAmountINR = res.plans[0].discounted_prie;
@@ -234,4 +306,12 @@ export class PlanpagePage implements OnInit {
 		this.selectedPlanDiscountedAmountUSD = PlanDetails.discounted_price_usd
 	}
 
+	showScreenshot(){
+		if(this.showScreenshotStatus == 0){
+			this.showScreenshotStatus = 1;
+		}else{
+			this.showScreenshotStatus = 0;
+		}
+		console.log(this.showScreenshotStatus);
+	}
 }

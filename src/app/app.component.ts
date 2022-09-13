@@ -12,6 +12,7 @@ import { PlanpagePage } from './planpage/planpage.page';
 import { Location } from '@angular/common';
 declare let RazorpayCheckout:any;
 import { FirebaseMessaging } from '@ionic-native/firebase-messaging/ngx';
+import { UsdconvertmodalPage } from './usdconvertmodal/usdconvertmodal.page';
 
 @Component({
 	selector: 'app-root',
@@ -83,13 +84,13 @@ export class AppComponent implements OnInit {
 		public location : Location,
 		public firebase: FirebaseMessaging
 	) {
-
 		this.initializeApp();
 		
 		this.menuCtrl.open();
 		this.user = localStorage.getItem('prices');
 		this.hasUser = localStorage.getItem('name');
 		this.componentSer.loginUser.subscribe(function(userName){
+			console.log("kjnk");
 			this.user = userName;
 		});
 
@@ -299,7 +300,28 @@ export class AppComponent implements OnInit {
 	}
 
 	initializeApp() {
+
 		this.platform.ready().then(async () => {
+			if( localStorage.getItem('usd_role') != undefined || localStorage.getItem('usd_role') != '' ){
+				const model = await this.modalCtrl.create({
+					component: UsdconvertmodalPage,
+					animated: true,
+					cssClass: "contactModal"
+				})
+				await model.present();
+			}
+			this.apiser.CheckUserExpired().then( (res:any) => {
+				console.log(res)
+				localStorage.setItem('isExpiryUSD' , res.isExpiry)
+				localStorage.setItem('ExpiryUSDDate' , res.data)
+
+				localStorage.setItem('expired_on' , res.data);
+				this.componentSer.compareTwoDates(localStorage.getItem('expired_on'));
+				this.componentSer.isUserExpired.next('true');
+
+			} , (err:any) => {
+
+			});
 
 			console.log( new Date() );
 
@@ -385,6 +407,7 @@ export class AppComponent implements OnInit {
 
 							if( isExpiredUsd == 'true' ){
 								this.navCtrl.navigateForward(['prices']);
+								localStorage.setItem('apptype' , 'OTHER')
 							}else{
 								this.firebase.onBackgroundMessage().subscribe(function(payload) {
 				
@@ -403,6 +426,8 @@ export class AppComponent implements OnInit {
 								if( localStorage.getItem('isUserActivatedUSD') == '0' ){
 									if( localStorage.getItem('is_INR_active') == '1' ){
 										this.navCtrl.navigateRoot('prices');
+										localStorage.setItem('apptype' , 'OTHER')
+
 									}else{
 										console.log("jnk,");
 										this.navCtrl.navigateRoot('planpage');
@@ -413,6 +438,7 @@ export class AppComponent implements OnInit {
 											this.navCtrl.navigateRoot('planpage');
 										}else{
 											this.navCtrl.navigateForward(['priceusd']);
+											localStorage.setItem('apptype' , 'USD')
 										}
 									}else{
 										this.navCtrl.navigateForward(['verifyotp']);
@@ -430,6 +456,8 @@ export class AppComponent implements OnInit {
 
 							if( localStorage.getItem('is_INR_active') == '1' ){
 								this.navCtrl.navigateForward(['prices']);
+								localStorage.setItem('apptype' , 'OTHER')
+
 							}
 
 							if( localStorage.getItem('is_INR_active') == '0' && localStorage.getItem('isUserActivatedUSD') == '1' && localStorage.getItem('isExpired') != 'true' ){
@@ -437,6 +465,7 @@ export class AppComponent implements OnInit {
 									this.navCtrl.navigateRoot('planpage');
 								}else{
 									this.navCtrl.navigateForward(['priceusd']);
+									localStorage.setItem('apptype' , 'USD')
 								}
 							}
 

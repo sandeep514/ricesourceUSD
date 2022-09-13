@@ -121,8 +121,12 @@ export class CalculatorPage implements OnInit {
 			}
 		}else{
 			this.PMT = (this.costOfRice1+this.costOfRice2+this.costOfRice3+this.costOfRice4+parseFloat(this.processingCharges)+this.updatedUserPrice);
-
-			this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.processingCharges)+parseFloat(this.updatedUserPrice)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
+			if( this.domesticTransport== '' ){
+				this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.updatedUserPrice)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
+			}else{
+				this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.updatedUserPrice)+parseFloat(this.domesticTransport)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
+			}
+			// this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.processingCharges)+parseFloat(this.updatedUserPrice)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
 		}
 		let dollaerateData = 0;
 		if (this.dollaerate == '' || this.dollaerate == undefined){
@@ -192,8 +196,11 @@ export class CalculatorPage implements OnInit {
 		// this.beforeMarkup = Math.floor((parseFloat(this.PMTusd)+parseFloat(this.lccharges)+parseFloat(this.oceanfreight)+parseFloat(this.thirdpartyinspection)+parseFloat(this.legalisationcharges)+parseFloat(this.coc)+parseFloat(this.eiacost)));
 
 		if( this.supplierCharge != '' || this.supplierCharge != 0 ){
-			this.lastFOBAmount = Math.floor(((this.lastFOBAmount * this.supplierCharge)/100) + this.lastFOBAmount);
-			this.finalCIFPrice = Math.floor(((this.beforeMarkup * this.supplierCharge)/100) + this.beforeMarkup);
+			console.log((((this.lastFOBAmount * this.supplierCharge)/100) + this.lastFOBAmount));
+			console.log((((this.beforeMarkup * this.supplierCharge)/100) + this.beforeMarkup));
+
+			this.lastFOBAmount = Math.round(((this.lastFOBAmount * this.supplierCharge)/100) + this.lastFOBAmount);
+			this.finalCIFPrice = Math.round(((this.beforeMarkup * this.supplierCharge)/100) + this.beforeMarkup);
 		}else{
 			this.finalCIFPrice = this.beforeMarkup;
 		}

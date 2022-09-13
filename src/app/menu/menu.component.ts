@@ -25,12 +25,22 @@ export class MenuComponent implements OnInit {
 				this.hasMessage = 0;
 			}
 		});
+
 		this.compSer.isUserExpired.subscribe((res:any) => {
-			console.log(res)
 			this.isUserExpire = res;
 			if( document.getElementById('clickButtonforPayment') != undefined){
 				document.getElementById('clickButtonforPayment').click();
 			}
+
+			if( localStorage.getItem('apptype') == 'USD' ){
+				this.apptype = localStorage.getItem('apptype');
+				console.log(localStorage.getItem('role') )
+				this.seledctedRole = localStorage.getItem('usd_role');
+			}else{
+				console.log(localStorage.getItem('role') )
+				this.apptype = localStorage.getItem('apptype');
+				this.seledctedRole = localStorage.getItem('role');
+			}	
 		});
 		this.getChatStatus();
 		

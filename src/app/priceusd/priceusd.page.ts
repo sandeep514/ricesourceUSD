@@ -88,9 +88,11 @@ export class PriceusdPage implements OnInit {
 		var Expiredmm = String(ExpiredDate.getMonth() + 1).padStart(2, '0'); //January is 0!
 		var Expiredyyyy = ExpiredDate.getFullYear();
 		var ExpiredDateDate = Expiredmm + '/' + Expireddd + '/' + Expiredyyyy;
-
-		this.componentService.differanceTwoDate(todayDate ,ExpiredDateDate ).then((res:any) => {
-			this.restDays = res;
+		
+		this.componentService.isUserExpired.subscribe((res:any) => {
+			this.componentService.differanceTwoDate(todayDate ,ExpiredDateDate ).then((res:any) => {
+				this.restDays = res;
+			} );
 		} );
 
 		this.componentService.isUserExpired.subscribe((res:any) => {
@@ -306,7 +308,7 @@ export class PriceusdPage implements OnInit {
 
 			
 			if( isUserExpiredStatus == 'true' ){
-				this.navCtrl.navigateForward(['price']);
+				this.navCtrl.navigateForward(['prices']);
 			}
 			
 			this.componentService.compareTwoDates(localStorage.getItem('expired_on'));
@@ -377,7 +379,7 @@ export class PriceusdPage implements OnInit {
 		const modal = await this.modalController.create({
 		component: ContactmodalPage,
 		cssClass: "contactModal",
-		});
+	});
 		return await modal.present();
 	}
 

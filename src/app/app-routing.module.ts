@@ -163,6 +163,18 @@ const routes: Routes = [
   {
     path: 'pre-register',
     loadChildren: () => import('./pre-register/pre-register.module').then( m => m.PreRegisterPageModule)
+  },
+  {
+    path: 'usdconvertmodal',
+    loadChildren: () => import('./usdconvertmodal/usdconvertmodal.module').then( m => m.UsdconvertmodalPageModule)
+  },
+  {
+    path: 'trialperiod',
+    loadChildren: () => import('./trialperiod/trialperiod.module').then( m => m.TrialperiodPageModule)
+  },
+  {
+    path: 'thankyou',
+    loadChildren: () => import('./thankyou/thankyou.module').then( m => m.ThankyouPageModule)
   }
 
 

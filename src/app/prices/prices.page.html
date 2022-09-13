@@ -10,7 +10,7 @@
                 <ion-col size="6" align="center" class="font-lightgreen">
                     <!-- <h3>Dashboard</h3> -->
                     <div *ngIf="restDays >= 0">
-                        <p *ngIf="restDays <= 30">
+                        <p *ngIf="restDays <= 10">
                             {{restDays}} Days Left
                         </p>	
                     </div>
@@ -146,7 +146,7 @@
                                             <td class="sticky-col bg-transparent first-col left pl-10" style="text-transform: uppercase;" >
                                                 {{ extractRiceName(riceVal.key) | uppercase }}
                                             </td>
-                                            <td class="type-columns" style="width:180px" [class.blur]="riceVal.value.is_hide == 'true' && currentPaidStatus == 'true' " [class.font-grey]="riceVal.value[latestDateBasmati].up_down == 'stable'" [class.font-green]="riceVal.value[latestDateBasmati].up_down == 'up' " [class.red]="riceVal.value[latestDateBasmati].up_down == 'down' ">
+                                            <td class="type-columns" style="width:180px"  [class.font-grey]="riceVal.value[latestDateBasmati].up_down == 'stable'" [class.font-green]="riceVal.value[latestDateBasmati].up_down == 'up' " [class.red]="riceVal.value[latestDateBasmati].up_down == 'down' ">
                                                 <div class="priceVal">&#8377; {{ riceVal.value[latestDateBasmati].min_price }} - {{ riceVal.value[latestDateBasmati].max_price }} </div> 
                                             </td>
                                         </tr>
@@ -219,7 +219,7 @@
                                             <td class="sticky-col bg-transparent first-col left pl-10" style="text-transform: uppercase;" >
                                                 {{ extractRiceName(riceVal.key) | uppercase }}
                                             </td>
-                                            <td class="type-columns" style="width:180px" [class.blur]="riceVal.value.is_hide == 'true' && currentPaidStatus == 'true' " [class.font-grey]="riceVal.value[latestDateBasmati].up_down == 'stable'" [class.font-green]="riceVal.value[latestDateBasmati].up_down == 'up' " [class.font-red]="riceVal.value[latestDateBasmati].up_down == 'down' ">
+                                            <td class="type-columns" style="width:180px"  [class.font-grey]="riceVal.value[latestDateBasmati].up_down == 'stable'" [class.font-green]="riceVal.value[latestDateBasmati].up_down == 'up' " [class.font-red]="riceVal.value[latestDateBasmati].up_down == 'down' ">
                                                 <div class="priceVal">&#8377; {{ riceVal.value[latestDateBasmati].min_price }} - {{ riceVal.value[latestDateBasmati].max_price }} </div> 
                                             </td>
                                         </tr>

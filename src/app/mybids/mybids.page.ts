@@ -21,8 +21,8 @@ export class MybidsPage implements OnInit {
 	constructor(public apiService: RestService,public location:Location) { 
 		var today = new Date();
 		// this.mindate = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()
-		this.mindate = new Date(today.setDate((today.getDate() + 1))).toISOString();
-		this.maxDate = today.setFullYear(today.getFullYear() + 1);
+		this.mindate = new Date(today.setDate((today.getDate() + 2))).toISOString();
+		this.maxDate = today.setFullYear(today.getFullYear() + 2);
 		this.lastDate = new Date(this.maxDate).toISOString()
 	}
 
@@ -52,6 +52,7 @@ export class MybidsPage implements OnInit {
 
 		this.apiService.getMyBids(userid).then((res:any) => {
 			this.mybids = res.bids;
+			console.log(res.bids)
 			setTimeout(() => { 
 				this.apiService.dismissLoader()
 			} , 1000)
