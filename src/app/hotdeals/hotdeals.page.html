@@ -18,7 +18,7 @@
 								<ion-col size="4" class="demandHeaders">Deal No.</ion-col> 
 								<ion-col style="font-weight: bold;">: {{ (i+1)  }}</ion-col>
 							</ion-row>
-							<ion-row>
+							<ion-row *ngIf="bids?.get_rice_quality?.quality != '' && bids?.get_rice_quality?.quality != null && bids?.get_rice_quality?.quality != undefined && bids?.get_rice_quality?.quality_name != '' && bids?.get_rice_quality?.quality_name != null && bids?.get_rice_quality?.quality_name != undefined ">
 								<ion-col size="4" class="demandHeaders">Quality</ion-col> 
 								<ion-col>: {{ bids?.get_rice_quality?.quality }} {{ bids?.get_rice_quality?.quality_name }}</ion-col>
 							</ion-row>
@@ -34,35 +34,35 @@
 									<div style="margin: 0px">Kett - 33</div>
 								</ion-col>
 							</ion-row> -->
-							<ion-row>
+							<ion-row *ngIf="bids?.get_u_s_d_default_master?.bag_size != '' && bids?.get_u_s_d_default_master?.bag_size != null && bids?.get_u_s_d_default_master?.bag_size != undefined && bids?.get_u_s_d_default_master?.bag_type != '' && bids?.get_u_s_d_default_master?.bag_type != null && bids?.get_u_s_d_default_master?.bag_type != undefined ">
 								<ion-col size="4" class="demandHeaders">Packing</ion-col> 
 								<ion-col>: {{ bids?.get_u_s_d_default_master?.bag_size }} {{ bids?.get_u_s_d_default_master?.bag_type }}</ion-col>
 							</ion-row>
 							
-							<ion-row>
+							<ion-row *ngIf="bids?.qty != '' && bids?.qty != null && bids?.qty != undefined">
 								<ion-col size="4" class="demandHeaders">Quantity (MT)</ion-col> 
 								<ion-col>: {{ bids?.qty }}</ion-col>
 							</ion-row>
-							<ion-row>
+							<ion-row  *ngIf="bids?.fob != '' && bids?.fob != null && bids?.fob != undefined">
 								<ion-col size="4" class="demandHeaders">FOB PMT</ion-col> 
 								<ion-col>: ${{ bids?.fob }}</ion-col>
 							</ion-row>
-							<ion-row>
+							<ion-row  *ngIf="bids?.message != '' && bids?.message != null && bids?.message != undefined">
 								<ion-col size="4" class="demandHeaders">Remarks</ion-col>
-								<ion-col style="text-transform: capitalize;"><div style="float: left;margin-right: 4px;">:</div> {{ bids?.message }}</ion-col>
+								<ion-col style="text-transform: capitalize;"><div style="float: left;margin-right: 4px;height: 100%">:</div> {{ bids?.message }}</ion-col>
 							</ion-row>
 
-							<ion-row>
+							<ion-row *ngIf="bids?.created_at != '' && bids?.created_at != null && bids?.created_at != undefined">
 								<ion-col size="4" class="demandHeaders">Posted on</ion-col>
 								<ion-col style="text-transform: capitalize;">: {{ bids?.created_at | date:'dd-MM-yyyy | hh:mm a' }}</ion-col>
 							</ion-row>
 
-							<ion-row>
+							<ion-row *ngIf="bids?.validDate != '' && bids?.validDate != null && bids?.validDate != undefined">
 								<ion-col size="4" class="demandHeaders">Valid Till</ion-col>
 								<ion-col style="text-transform: capitalize;">: {{ bids?.validDate  | date:'dd-MM-yyyy | hh:mm a' }}</ion-col>
 							</ion-row>
 
-							<ion-row>
+							<ion-row *ngIf="bids?.attachment1 != '' && bids?.attachment1 != null && bids?.attachment1 != undefined">
 								<ion-col size="4" class="demandHeaders">Rice Picture</ion-col>
 								<ion-col>
 									<img *ngIf=" bids?.attachment1 != '' && bids?.attachment1 != null " src="{{ imageUrl }}uploads/notifications/{{ bids?.attachment1 }}" (click)="openImage(imageUrl,'uploads/notifications',bids?.attachment1)" style="width: 80px;height: 120px;"/>
@@ -70,7 +70,7 @@
 								</ion-col>
 							</ion-row>
 
-							<ion-row>
+							<ion-row *ngIf="bids?.attachment2 != '' && bids?.attachment2 != null && bids?.attachment2 != undefined">
 								<ion-col size="4" class="demandHeaders">Cooked Picture</ion-col>
 								<ion-col>
 									<img *ngIf=" bids?.attachment2 != '' && bids?.attachment2 != null " src="{{ imageUrl }}uploads/notifications/{{ bids?.attachment2 }}" (click)="openImage(imageUrl,'uploads/notifications/',bids?.attachment2)" style="width: 80px;height: 120px;"/>
@@ -158,18 +158,19 @@
 								</ion-row>
 	
 							</ion-row> -->
-							
-							<ion-row *ngIf="bids?.hot_deal_accept.length >= 0"  >
-								<ion-col size="12" *ngIf="bids?.status == 0 && bids.isExpired == 'true' || bids.isExpired == 'true' && bids.status == 1" style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: red;font-weight: bold;">
-									<img src="../../assets/STAMP EXPIRED.png" style="width: 100px;" />
-								</ion-col>
-							</ion-row>
 
-							
-							<ion-row *ngIf="bids?.hot_deal_accept.length <= 0"  >
+							<!-- <ion-row *ngIf="bids?.hot_deal_accept.length >= 0"  >
 								<ion-col size="12" *ngIf="bids?.status == 0 && bids.isExpired == 'true' || bids.isExpired == 'true' && bids.status == 1" style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: red;font-weight: bold;">
 									<img src="../../assets/STAMP EXPIRED.png" style="width: 100px;" />
 								</ion-col>
+							</ion-row> -->
+							<ion-row>
+								<ion-col size="12" *ngIf="bids?.status == 0 && bids.isExpired == 'true' || bids.isExpired == 'true' && bids.status == 1" style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: red;font-weight: bold;">
+									<img src="../../assets/STAMP EXPIRED.png" style="width: 100px;" />
+								</ion-col>	
+							</ion-row>
+						
+							<ion-row *ngIf="bids?.hot_deal_accept.length <= 0"  >
 								<ion-col *ngIf="bids.isExpired == 'false' && bids.status == 1" size="12" style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: red;" >
 									<ion-button class="green" style="color: #fff;border-radius: 12px;" (click)="acceptHotDeal(bids?.id)">Interested</ion-button>
 								</ion-col>

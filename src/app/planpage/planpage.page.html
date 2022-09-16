@@ -84,8 +84,9 @@
 						<button style="background: #92b245;padding: 10px 20px;border-radius: 20px;font-size: 20px;width: auto;text-transform: capitalize;" (click)="startTrial()"> Use 7 days free trial period</button>
 					</ion-col>
 				</ion-row>
-				<ion-row style="width: 100%;justify-content: center;">
-					<ion-col size="{(listUSDPlans.length > 2) ? 4 : 6}" size-md *ngFor="let plan of listUSDPlans" >
+
+				<ion-row style="width: 100%;justify-content: center;" *ngIf="isUSDRoleAvailable != true">
+					<ion-col size="6" size-md *ngFor="let plan of listUSDPlans" >
 						<div style="border: 1px solid #92B242;border-radius: 10px;overflow: hidden;" [class.activeCurrentPlan]="selectedPlanId == plan.id" (click)="updateSelectedPlan(plan)">
 							<h2 class="planName green font-lightgreen"  style="text-transform: uppercase;padding: 0;margin: 0px 0px;
 							padding: 7px;">{{ plan.plan_name }}</h2>
@@ -110,10 +111,38 @@
 					</ion-col>
 	
 				</ion-row>
+
+				<ion-row style="width: 100%;justify-content: center;" *ngIf="isUSDRoleAvailable == true">
+					<ion-col size="6" size-md *ngFor="let plan of listUSDPlans" >
+						<div style="border: 1px solid #92B242;border-radius: 10px;overflow: hidden;" [class.activeCurrentPlan]="selectedPlanId == plan.id" (click)="updateSelectedPlan(plan)">
+							<h2 class="planName green font-lightgreen"  style="text-transform: uppercase;padding: 0;margin: 0px 0px;
+							padding: 7px;">{{ plan.plan_name }}</h2>
+							<h5 class="planName font-darkgreen"></h5>
+	
+							<div class="price green" style="padding: 7px 0px">
+								<h5 class="planName font-lightgreen" style="padding-bottom: 0; margin-bottom: 0;text-decoration: line-through;padding: 0;margin: 0px">
+									$ {{ plan.actual_price_usd }}
+								</h5>
+								<h5 class="planName font-lightgreen" style="padding-top: 0;margin-top: 0;font-weight: 600;margin-bottom: 0px;">
+									$ {{ plan.discounted_price_usd }}
+								</h5>
+							</div>
+							<p style="text-align: center;padding-top: 0;margin-top: 0;padding: 0 10px;" class="font-darkgreen">
+								<small style="font-size: 12px;">{{ plan.plan_desc }}</small>
+							</p>
+							<!-- <p class="font-darkgreen" style="font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;">Launch Offer</p> -->
+							<!-- <p style="text-align: center;padding-top: 0;margin-top: 0;" class="font-darkgreen">
+								<small style="font-size: 100%;">Valid for: {{plan.valid_months}} Months</small>
+							</p> -->
+						</div>
+					</ion-col>
+	
+				</ion-row>
+
 			</ion-row>
 
 			<div>
-				<ul style="list-style: none;" *ngIf="isDomesticRoleAvailable == true && isUSDRoleAvailable != true" >
+				<ul style="list-style: none;" *ngIf="isUSDRoleAvailable != true" >
 					<li style="float: left;width: 70%;text-align: right;margin-top: 5px;">Total in INR: </li>
 					<li style="width: 30%;float: left;"><h2 style="text-align: right;margin-right: 20px; padding: 0;margin: 0;margin-left: 10px;text-align: left;">₹{{ selectedPlanDiscountedAmountINR }}</h2></li>
 				</ul>

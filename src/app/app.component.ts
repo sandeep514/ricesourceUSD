@@ -464,7 +464,7 @@ export class AppComponent implements OnInit {
 								if( localStorage.getItem('is_INR_active') == '0' && localStorage.getItem('transaction_id') == null){
 									this.navCtrl.navigateRoot('planpage');
 								}else{
-									this.navCtrl.navigateForward(['priceusd']);
+									this.navCtrl.navigateForward(['planpage']);
 									localStorage.setItem('apptype' , 'USD')
 								}
 							}
@@ -682,7 +682,7 @@ export class AppComponent implements OnInit {
 		
 		console.log('i am here')
 		console.log("jnk,s");
-		// this.navCtrl.navigateForward(['priceusd'])
+		// this.navCtrl.navigateForward(['planpage'])
 		localStorage.setItem('apptype' , 'USD')
 	}
 }

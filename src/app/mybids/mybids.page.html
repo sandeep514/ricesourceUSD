@@ -158,11 +158,15 @@
 							<ion-row *ngIf="bids?.is_bid_closed == 'true' && bids?.get_bids_extra.length > 0" style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;width: 100%;">
 								The Deal has been closed @ ${{bids?.bid_closed_amount}}
 							</ion-row>
-
+<!-- 
 							<ion-row *ngIf="bids?.is_bid_accepted_by_me == 'true' " style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;width: 100%;">
 								<span class="demandHeaders">CONGRATULATIONS,</span> Your offer has been closed @ <span class="demandHeaders">${{bids?.user_bid_amount}}</span>
-							</ion-row>
+							</ion-row> -->
 
+							<ion-row *ngIf="bids?.is_bid_accepted_by_me == 'true' " style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;width: 100%;">
+								<span class="demandHeaders"></span> Thanks for showing the interest in counter offer.Team SNTC will confirm you shortly <span class="demandHeaders">${{bids?.user_bid_amount}}</span>
+							</ion-row>
+							
 							<ion-row *ngIf="bids?.is_bid_accepted_by_me == 'false' " style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;width: 100%;color: red;">
 								You have declined counter offer of ${{bids?.user_bid_amount}}
 							</ion-row>
