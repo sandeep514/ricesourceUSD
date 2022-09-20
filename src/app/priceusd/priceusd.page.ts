@@ -31,6 +31,7 @@ export class PriceusdPage implements OnInit {
 	public lastupdatedDate: any;
 	public appType: any;
 	public height = true;
+	public isNotifAvailable = 'false';
 
 	latestDateBasmati: any;
 	latestDateNONBasmati: any;
@@ -69,6 +70,8 @@ export class PriceusdPage implements OnInit {
 	INRActive:any;
 
 	constructor(public platform: Platform,public restService: RestService,public componentService: ComponentsService,public modalController: ModalController,public navCtrl: NavController,public route: Router ,public versionMdel : VersionmodalPage) {
+		
+
 		// this.componentService.compareTwoDates( localStorage.getItem('expired_on') );
 		if( localStorage.getItem('isUserActivatedUSD') == '0' ){
 			this.navCtrl.navigateRoot('planpage')
@@ -110,6 +113,7 @@ export class PriceusdPage implements OnInit {
 		}
 	}
 
+	
 	doRefresh(event) {
 		this.componentService.presentLoading().then(() => {
 			setTimeout(() => {
@@ -136,7 +140,12 @@ export class PriceusdPage implements OnInit {
 				document.getElementById('getCurrentStatus').click();
 			} , 1500);
 		});
+		
+
 	}
+
+	
+	
 	
 	getNotications(){
 		this.navCtrl.navigateForward(['notifications']);
@@ -149,8 +158,7 @@ export class PriceusdPage implements OnInit {
 	getPlans() {
 		this.restService.checkUserPlan().then((res: any) => {
 			localStorage.setItem("chartInt", "true");
-			},
-			(err: any) => {
+			},(err: any) => {
 				localStorage.setItem("chartInt", "false");
 			}
 		);
@@ -159,8 +167,7 @@ export class PriceusdPage implements OnInit {
 	getGallery() {
 		this.restService.getImagesForDashboard().then( (res: any) => {
 			
-		},
-		(err: any) => {
+		},(err: any) => {
 
 		});
 	}
@@ -266,6 +273,9 @@ export class PriceusdPage implements OnInit {
 	}
 
 	ionViewDidEnter() {
+		this.isNotifAvailable = localStorage.getItem('isNewNotification');
+		console.log(this.isNotifAvailable);
+		
 		if (this.route.url == "/prices") {
 
 			if (localStorage.getItem("popupCanceled") == null) {

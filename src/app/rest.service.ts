@@ -670,4 +670,24 @@ export class RestService {
 			})
 		});
 	}
+
+	userNotification(userId){
+		return new Promise( (resolve , reject) => {
+			this.http.get(this.APIURL+'user/notification/'+userId).subscribe( (res:any) => {
+				resolve(res);
+			} ,(err:any) => {
+				reject(err);
+			});
+		} );
+	}
+
+	clearNotification(userId){
+		return new Promise( (resolve , reject) => {
+			this.http.get(this.APIURL+'clear/notification/'+userId).subscribe( (res:any) => {
+				resolve(res);
+			} ,(err:any) => {
+				reject(err);
+			});
+		} );
+	}
 }

@@ -31,6 +31,7 @@ export class PricesPage implements OnInit {
 	public ImageGallerySlider: any;
 	public lastupdatedDate: any;
 	public appType: any;
+	public isNotifAvailable = 'false';
 
 	latestDateBasmati: any;
 	latestDateNONBasmati: any;
@@ -70,6 +71,8 @@ export class PricesPage implements OnInit {
 	INRActive:any;
 
 	constructor(public platform: Platform,public restService: RestService,public componentService: ComponentsService,public modalController: ModalController,public navCtrl: NavController,public route: Router ,public versionMdel : VersionmodalPage) {
+		this.isNotifAvailable = localStorage.getItem('isNewNotification')
+
 		// this.componentService.compareTwoDates( localStorage.getItem('expired_on') );
 
 		// if( localStorage.getItem('isExpired') == 'true' ){

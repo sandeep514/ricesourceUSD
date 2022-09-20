@@ -302,6 +302,8 @@ export class AppComponent implements OnInit {
 	initializeApp() {
 
 		this.platform.ready().then(async () => {
+			this.getlatestNotifCount();
+
 			if( localStorage.getItem('usd_role') != undefined || localStorage.getItem('usd_role') != '' ){
 				const model = await this.modalCtrl.create({
 					component: UsdconvertmodalPage,
@@ -685,4 +687,19 @@ export class AppComponent implements OnInit {
 		// this.navCtrl.navigateForward(['planpage'])
 		localStorage.setItem('apptype' , 'USD')
 	}
+
+	getlatestNotifCount(){
+		let userId = localStorage.getItem('id');
+		this.apiser.userNotification(userId).then((res:any) => {
+			console.log(res.data);
+			if( res.data > 0 ){
+				localStorage.setItem('isNewNotification' , 'true');
+			}else{
+				localStorage.setItem('isNewNotification' , 'false');
+			}
+		}, (err:any) => {
+			console.log(err)
+		})
+	}
+
 }
