@@ -59,7 +59,7 @@
 							</ion-col>
 
 						</ion-row>
-						<ion-row>
+						<ion-row *ngIf="bids.remarks != null && bids.remarks != '' ">
 							<ion-col size="4" class="demandHeaders">Remarks</ion-col> 
 							<ion-col>
 								<div style="float: left;width: 10px;margin: 0px;height: 100%">:</div>
@@ -158,8 +158,8 @@
 							<ion-row *ngIf="bids?.is_bid_closed == 'true' && bids?.get_bids_extra.length > 0" style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;width: 100%;">
 								The Deal has been closed @ ${{bids?.bid_closed_amount}}
 							</ion-row>
-<!-- 
-							<ion-row *ngIf="bids?.is_bid_accepted_by_me == 'true' " style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;width: 100%;">
+
+							<!-- <ion-row *ngIf="bids?.is_bid_accepted_by_me == 'true' " style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;width: 100%;">
 								<span class="demandHeaders">CONGRATULATIONS,</span> Your offer has been closed @ <span class="demandHeaders">${{bids?.user_bid_amount}}</span>
 							</ion-row> -->
 
@@ -177,45 +177,52 @@
 								<img src="../../assets/STAMP EXPIRED.png" style="width: 100px;" />
 							</div>
 						</ng-container>
-						<ng-container *ngIf=" bids?.get_bids_extra.length > 0 && bids?.is_accepted_by_admin != 'true'  ">
+
+						<ng-container *ngIf=" bids?.status == 2 ">
 							<div style="padding: 0;margin: 0;text-align: center;">
 								<img src="../../assets/STAMP SOLD.png" style="width: 100px;" />
 							</div>
 						</ng-container>
 
-						<ng-container *ngIf="bids?.is_expired == 'false'">
-							<ion-row *ngIf="bids?.get_bids.length <= 0"  style="margin-top: 5px	">
 
-								<div style="padding: 10;border-radius: 10;border: 2px solid #92b243;border-radius: 12px;width: 70%">
-									<div style="float: left;padding: 0px 10px;margin-top: 23px;font-size: 18px;">
-										$
-									</div>
-									<div style="float: left;border-bottom: 2px solid #92b243;margin: 0px;padding: 6px 0px;width: 40%">
-										<ion-label position="floating">Place your offer</ion-label>
-										<ion-input (ionChange)="yourbidfunction($event , bids.id)" type="number" style="--padding-top: 0px;--padding-bottom: 0px;"></ion-input>	
-									</div>
-									<div style="float: left;padding: 0px 10px;margin-top: 23px;font-size: 18px;">
-										PMT
-									</div>
-								</div>
-	
+						<ng-container *ngIf=" bids?.get_bids_extra.length == 0 && bids?.is_accepted_by_admin != 'true'  ">	
+							<ng-container *ngIf="bids?.is_expired == 'false' && bids?.status != 2 ">
 								
-							</ion-row>
-							<ion-row *ngIf="bids?.get_bids.length <= 0"  style="margin-top: 5px;margin-bottom: 10px;">
-								<ion-item style="width: 70%">
-									<ion-label position="floating">Validity</ion-label>
-									<!-- <ion-input (ionChange)="validDays($event , bids.id)" type="number"></ion-input> -->
-									<ion-datetime
-										displayFormat="DD MMMM YYYY"
-										presentation="date"
-										[min]="mindate"
-										[max]="lastDate"
-										(ionChange)="changed($event)"
-										aria-placeholder="here"
-									></ion-datetime>
-								</ion-item>
-								<ion-button class="green" style="color: #fff;border-radius: 12px;" (click)="saveUserBid(bids.id)">Save</ion-button>
-							</ion-row>
+								<ion-row *ngIf="bids?.get_bids.length <= 0 "  style="margin-top: 5px">
+
+									<div style="padding: 10;border-radius: 10;border: 2px solid #92b243;border-radius: 12px;width: 70%">
+										<div style="float: left;padding: 0px 10px;margin-top: 23px;font-size: 18px;">
+											$
+										</div>
+										<div style="float: left;border-bottom: 2px solid #92b243;margin: 0px;padding: 6px 0px;width: 40%">
+											<ion-label position="floating">Place your offer</ion-label>
+											<ion-input (ionChange)="yourbidfunction($event , bids.id)" type="number" style="--padding-top: 0px;--padding-bottom: 0px;"></ion-input>	
+										</div>
+										<div style="float: left;padding: 0px 10px;margin-top: 23px;font-size: 18px;">
+											PMT
+										</div>
+									</div>
+		
+									
+								</ion-row>
+
+								<ion-row *ngIf="bids?.get_bids.length <= 0"  style="margin-top: 5px;margin-bottom: 10px;">
+									<ion-item style="width: 70%">
+										<ion-label position="floating">Validity</ion-label>
+										<!-- <ion-input (ionChange)="validDays($event , bids.id)" type="number"></ion-input> -->
+										<ion-datetime
+											displayFormat="DD MMMM YYYY"
+											presentation="date"
+											[min]="mindate"
+											[max]="lastDate"
+											(ionChange)="changed($event)"
+											aria-placeholder="here"
+										></ion-datetime>
+									</ion-item>
+									<ion-button class="green" style="color: #fff;border-radius: 12px;" (click)="saveUserBid(bids.id)">Save</ion-button>
+								</ion-row>
+
+							</ng-container>
 						</ng-container>
 						
 						

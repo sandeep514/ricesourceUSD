@@ -301,7 +301,7 @@ export class CalculatorPage implements OnInit {
 	}
 
 	checkInput(event, riceType){
-		if((event.detail.value).length > 5){
+		if((event.detail.value).length >= 5){
 
 			if( riceType == 'one' ){
 				this.riceone = (event.detail.value).substring(0, 5); 

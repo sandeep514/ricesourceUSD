@@ -37,11 +37,13 @@
 			<ng-container *ngIf="apptype != 'OTHER' ">
 				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" (click)="goTo((apptype != 'USD')? 'prices' :'priceusd' )">
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
-					<img src="../../assets/menu/live prices.png" />
+						<img src="../../assets/menu/live prices.png" *ngIf="apptype != 'USD'" />
+						<img src="../../assets/menu/doller.png" *ngIf="apptype == 'USD'" />
+
 					<h5>Live Prices</h5>
 				</ion-col>
 
-				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" *ngIf=" isCurrentUser == 'false' && apptype == 'USD'" (click)="goTo('oceanfreights')">
+				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" *ngIf="isCurrentUser == 'false' && apptype == 'USD'" (click)="goTo('oceanfreights')">
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
 					<img src="../../assets/menu/images-removebg-preview.png" class="truck" style="width: 39px !important"/>
 					<h5>Ocean Freight</h5>

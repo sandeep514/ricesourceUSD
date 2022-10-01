@@ -48,7 +48,7 @@ export class MybidsPage implements OnInit {
 
 	getListBids(){
 		let userid = localStorage.getItem('id');
-		this.apiService.presentLoader('Fetching Queries');
+		this.apiService.presentLoader('Please wait...');
 
 		this.apiService.getMyBids(userid).then((res:any) => {
 			this.mybids = res.bids;
@@ -76,15 +76,17 @@ export class MybidsPage implements OnInit {
 	saveUserBid(buyQueryId){
 		this.QueryId = buyQueryId;
 
-		this.apiService.presentLoader("Fetching Queries");
-		if( this.QueryId != undefined && this.mybid != undefined ){
+		if( this.QueryId != undefined && this.mybid != undefined && this.validTill != undefined ){
+			this.apiService.presentLoader("Please Wait...");
+
 			this.apiService.addBidOnBuyerQuery({buyQueryId : this.QueryId , validTill : this.validTill , amount : this.mybid , userid : localStorage.getItem('id')}).then((res:any)=>{
 				this.apiService.dismissLoader()
-				// this.mybids = res.data
 				this.getListBids();
 			} , (err:any) => {
 				this.apiService.dismissLoader()
 			});	
+		}else{
+			this.apiService.presentToast('Bid amount & Bid expired date is required...');
 		}
 	}
 	

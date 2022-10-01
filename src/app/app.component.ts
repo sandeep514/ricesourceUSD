@@ -466,7 +466,7 @@ export class AppComponent implements OnInit {
 								if( localStorage.getItem('is_INR_active') == '0' && localStorage.getItem('transaction_id') == null){
 									this.navCtrl.navigateRoot('planpage');
 								}else{
-									this.navCtrl.navigateForward(['planpage']);
+									this.navCtrl.navigateForward(['priceusd']);
 									localStorage.setItem('apptype' , 'USD')
 								}
 							}

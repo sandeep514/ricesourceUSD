@@ -27,6 +27,7 @@ export class MenuComponent implements OnInit {
 		});
 
 		this.compSer.isUserExpired.subscribe((res:any) => {
+			console.log(res)
 			this.isUserExpire = res;
 			if( document.getElementById('clickButtonforPayment') != undefined){
 				document.getElementById('clickButtonforPayment').click();

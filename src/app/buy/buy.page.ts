@@ -13,7 +13,7 @@ export class BuyPage implements OnInit {
 	quantity:any;
 	party:any = 	localStorage.getItem('name');
 	mobile:any = 	localStorage.getItem('mobile');
-	remarks:any;
+	remarks:any = '';
 	validDays:any=0;
 	riceQualityType:any;
 	riceQualityData:any;
@@ -41,7 +41,6 @@ export class BuyPage implements OnInit {
 			this.quantity != undefined &&
 			this.party != undefined &&
 			this.mobile != undefined &&
-			this.remarks != undefined && 
 			this.portName != '' &&
 			this.portName != undefined
 		){

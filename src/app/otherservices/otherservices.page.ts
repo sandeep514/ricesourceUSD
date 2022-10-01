@@ -23,7 +23,7 @@ export class OtherservicesPage implements OnInit {
 		this.getBuyers();
 	}
 	getBuyers(){
-		this.apiService.presentLoader('Fetching Queries');
+		this.apiService.presentLoader('Please wait...');
 
 		this.apiService.getBuyerList().then((res:any) => {
 			this.myBuyers = res.data;
