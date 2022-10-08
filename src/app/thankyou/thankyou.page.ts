@@ -28,5 +28,8 @@ export class ThankyouPage implements OnInit {
 	gotobuy(){
 		this.navCtrl.navigateForward(['buy']);
 	}
+	gotoHome(){
+		this.navCtrl.navigateForward(['priceusd']);
+	}
 
 }

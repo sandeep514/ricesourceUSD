@@ -49,7 +49,7 @@ export class PlanpagePage implements OnInit {
 	public payPalConfig: any;
 	public PAYPAL_CLIENT_ID_TEST = "Af5Op1UABAes1X3EKCYbVAwjZITlKe9Oqlvjxh1bHM8hQWhLNJ4DLdsMcL6AmaeeKOZ_CdDWZVvWm75q"
 	public PAYPAL_CLIENT_ID_LIVE = "ARNC1YzHCEPir1DCmzRW9F9eksQVDJxbceTPzwPd3yEx2F2NFjxHydc8a2gLx2qcvUhc697apiR88_Fi"
-	public PAYPAL_CLIENT_ID = this.PAYPAL_CLIENT_ID_TEST
+	public PAYPAL_CLIENT_ID = this.PAYPAL_CLIENT_ID_LIVE
 	public isDomesticRoleAvailable = false;
 	public isUSDRoleAvailable = false;
 	public showTrialPeriod = false;

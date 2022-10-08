@@ -306,7 +306,7 @@
 			<ion-col size="12">
 				<ion-item>
 					<ion-label position="floating" class="inputlabel">Today's US Dollar Rate $</ion-label>
-					<ion-input type="number" placeholder="Today's US Dollar Rate $" [(ngModel)]="dollaerate" (ionChange)="checkInput($event , 'three')"></ion-input>
+					<ion-input type="number" placeholder="Today's US Dollar Rate $" [(ngModel)]="dollaerate"></ion-input>
 				</ion-item>
 			</ion-col>
 		</ion-row>
@@ -322,7 +322,7 @@
 			<ion-col size="12">
 				<ion-item>
 					<ion-label position="floating" class="inputlabel">LC Charges PMT in $ (Optional) </ion-label>
-					<ion-input type="number" placeholder="L/C Charges" [(ngModel)]="lccharges" (ionChange)="checkInput($event , 'three')"></ion-input>
+					<ion-input type="number" placeholder="L/C Charges" [(ngModel)]="lccharges"></ion-input>
 				</ion-item>
 			</ion-col>
 		</ion-row>

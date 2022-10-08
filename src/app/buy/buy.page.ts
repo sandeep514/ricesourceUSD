@@ -44,6 +44,8 @@ export class BuyPage implements OnInit {
 			this.portName != '' &&
 			this.portName != undefined
 		){
+			this.apiser.presentLoader('Please wait...');
+
 			let postedData = {
 				'selectedQualityType' 	: this.selectedQualityType,
 				'quality' 				: this.quality,
@@ -58,6 +60,8 @@ export class BuyPage implements OnInit {
 			};
 
 			this.apiser.saveRiceQuery(postedData).then((res:any) => {
+				this.apiser.loaderCtrl.dismiss();
+
 				this.apiser.presentToast('Query generated successfully.');
 				this.navCtrl.navigateRoot(['thankyou']);
 

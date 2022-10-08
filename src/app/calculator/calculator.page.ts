@@ -124,7 +124,7 @@ export class CalculatorPage implements OnInit {
 			if( this.domesticTransport== '' ){
 				this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.updatedUserPrice)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
 			}else{
-				this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.updatedUserPrice)+parseFloat(this.domesticTransport)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
+				this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.processingCharges)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.updatedUserPrice)+parseFloat(this.domesticTransport)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
 			}
 			// this.totalPriceINR = (parseFloat(this.costOfRice1)+parseFloat(this.costOfRice2)+parseFloat(this.costOfRice3)+parseFloat(this.costOfRice4)+parseFloat(this.processingCharges)+parseFloat(this.updatedUserPrice)+parseFloat(this.localCharges)+parseFloat(this.financecost) );
 		}

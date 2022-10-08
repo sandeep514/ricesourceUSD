@@ -689,4 +689,7 @@ export class PriceusdPage implements OnInit {
 			this.height = true;
 		}
 	}
+	gotoPlan(){
+		this.navCtrl.navigateForward('planpage');
+	}
 }

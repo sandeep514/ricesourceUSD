@@ -70,10 +70,25 @@
 					
 					<ion-slides pager="true" [options]="slideOpts" style="height: auto;" #slides>
 						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
-							<img src="../../assets/Screen Shot 2022-07-26 at 11.00.22 PM.png" style="width: 80%"/>
+							<img src="../../assets/img/demo/prices.png" style="width: 80%"/>
 						</ion-slide>
 						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
-							<img src="../../assets/Screen Shot 2022-08-12 at 1.39.30 PM.png" style="width: 80%"/>
+							<img src="../../assets/img/demo/detail.png" style="width: 80%"/>
+						</ion-slide>
+						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
+							<img src="../../assets/img/demo/buyquery.png" style="width: 80%"/>
+						</ion-slide>
+						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
+							<img src="../../assets/img/demo/bids.png" style="width: 80%"/>
+						</ion-slide>
+						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
+							<img src="../../assets/img/demo/otherservices.png" style="width: 80%"/>
+						</ion-slide>
+						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
+							<img src="../../assets/img/demo/calculator.png" style="width: 80%"/>
+						</ion-slide>
+						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
+							<img src="../../assets/img/demo/hotdeals.png" style="width: 80%"/>
 						</ion-slide>
 					</ion-slides>
 				</ng-container>
@@ -101,7 +116,7 @@
 								</h5>
 							</div>
 							<p style="text-align: center;padding-top: 0;margin-top: 0;padding: 0 10px;" class="font-darkgreen">
-								<small style="font-size: 12px;">{{ plan.plan_desc }}</small>
+								<small style="font-size: 14px;">{{ plan.plan_desc }}</small>
 							</p>
 							<!-- <p class="font-darkgreen" style="font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;">Launch Offer</p> -->
 							<!-- <p style="text-align: center;padding-top: 0;margin-top: 0;" class="font-darkgreen">
@@ -121,14 +136,14 @@
 	
 							<div class="price green" style="padding: 7px 0px">
 								<h5 class="planName font-lightgreen" style="padding-bottom: 0; margin-bottom: 0;text-decoration: line-through;padding: 0;margin: 0px">
-									$ {{ plan.actual_price_usd }}
+									${{ plan.actual_price_usd }}
 								</h5>
 								<h5 class="planName font-lightgreen" style="padding-top: 0;margin-top: 0;font-weight: 600;margin-bottom: 0px;">
-									$ {{ plan.discounted_price_usd }}
+									${{ plan.discounted_price_usd }}
 								</h5>
 							</div>
 							<p style="text-align: center;padding-top: 0;margin-top: 0;padding: 0 10px;" class="font-darkgreen">
-								<small style="font-size: 12px;">{{ plan.plan_desc }}</small>
+								<small style="font-size: 14px;">{{ plan.plan_desc }}</small>
 							</p>
 							<!-- <p class="font-darkgreen" style="font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;">Launch Offer</p> -->
 							<!-- <p style="text-align: center;padding-top: 0;margin-top: 0;" class="font-darkgreen">
@@ -152,8 +167,6 @@
 				</ul>
 			</div>
 			
-			<p style="font-size: 1px">{{ isDomesticRoleAvailable }}{{ isUSDRoleAvailable }}</p>
-
 			<ion-button *ngIf="isDomesticRoleAvailable == true && isUSDRoleAvailable != true"  fill="outline" (click)="buynow( )" style="background-color: #fff;min-height: 43px;margin: 10px 6px;">
 				<img src="../../assets/rzp-logo-positive-padding.png" style="width: 50%" />
 			</ion-button>
@@ -166,8 +179,6 @@
 					</div>
 				</ion-col>
 			</ion-row>
-
-			
 		</div>
 	</div>
 

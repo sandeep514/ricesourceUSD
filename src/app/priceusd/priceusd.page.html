@@ -71,6 +71,7 @@
         <div *ngIf="lastupdatedDate != null" style="text-align: right;">
             <span style="margin-right: 20px;font-size: 11px;">Last updated at: {{ lastupdatedDate }} (IST)</span>
         </div>
+                
         <ion-row class="ion-padding title-padding ">
             <ion-col class="title" size="2.2">
                 <img style="width: 40px;float: left" src="./../../assets/img/1350px-Flag_of_India.svg.webp" alt="" (click)="scroll('left','table-responsive-1')" class="righticon">
@@ -172,12 +173,8 @@
           </ion-row>
           <ion-row style="justify-content: center;margin: 0 auto;width: 100%;z-index: 99999999;">
               <button (click)="changeHeight()" style="font-size: 35px;padding: 0;margin: 0;border-radius: 0px 0px 10px 10px;height: 35px;width: 100px;background-color: #92b243;">
-
                     <ion-icon *ngIf="(height == true)" name="chevron-down-outline" style="background: #92b243;overflow: hidden;border-radius: 100px;font-size: 30px;padding: 0;margin: 0;border-radius: 100px;height: 35px;"></ion-icon>
-
                     <ion-icon *ngIf="(height != true)" name="chevron-up-outline" style="background: #92b243;overflow: hidden;border-radius: 100px;font-size: 30px;padding: 0;margin: 0;border-radius: 100px;height: 35px;"></ion-icon> 
-
-                    
               </button>
           </ion-row>
       </ng-container>
