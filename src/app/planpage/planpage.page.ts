@@ -47,9 +47,9 @@ export class PlanpagePage implements OnInit {
 	public showScreenshotStatus= 0;
 	public priceToPay = 10;
 	public payPalConfig: any;
-	public PAYPAL_CLIENT_ID_TEST = "Af5Op1UABAes1X3EKCYbVAwjZITlKe9Oqlvjxh1bHM8hQWhLNJ4DLdsMcL6AmaeeKOZ_CdDWZVvWm75q"
-	public PAYPAL_CLIENT_ID_LIVE = "ARNC1YzHCEPir1DCmzRW9F9eksQVDJxbceTPzwPd3yEx2F2NFjxHydc8a2gLx2qcvUhc697apiR88_Fi"
-	public PAYPAL_CLIENT_ID = this.PAYPAL_CLIENT_ID_LIVE
+	public PAYPAL_CLIENT_ID_TEST = "Af5Op1UABAes1X3EKCYbVAwjZITlKe9Oqlvjxh1bHM8hQWhLNJ4DLdsMcL6AmaeeKOZ_CdDWZVvWm75q" // discountindia
+	public PAYPAL_CLIENT_ID_LIVE = "ARNC1YzHCEPir1DCmzRW9F9eksQVDJxbceTPzwPd3yEx2F2NFjxHydc8a2gLx2qcvUhc697apiR88_Fi" // discountindia
+	public PAYPAL_CLIENT_ID = this.PAYPAL_CLIENT_ID_TEST
 	public isDomesticRoleAvailable = false;
 	public isUSDRoleAvailable = false;
 	public showTrialPeriod = false;
@@ -108,6 +108,17 @@ export class PlanpagePage implements OnInit {
 
 
 	ngOnInit() {
+
+		if( localStorage.getItem('usd_role') != '' && localStorage.getItem('usd_role') != undefined  && localStorage.getItem('usd_role') != '0' ){
+			console.log("ljmk");
+			this.isUSDRoleAvailable = true;
+		}
+		
+		if( localStorage.getItem('role') != '' && localStorage.getItem('role') != undefined  && localStorage.getItem('role') != '0' ){
+			this.isUSDRoleAvailable = false;
+		}
+
+
 		this.price = this.selectedPlanDiscountedAmountUSD + " $"
 		let enviroment = ""
 		
@@ -236,10 +247,11 @@ export class PlanpagePage implements OnInit {
 		let planid = this.selectedPlanId;
 
 		var options = {
-			description: 'Rice Data',
+			description: ' Plan',
 			image: 'https://ricebrok-staging.webcooks.in/images/sitelogo.png',
 			currency: 'INR',
-			key: 'rzp_test_LA2o3rFXhgtfmS',
+			// key: 'rzp_test_dvU9zyoVzyzTb5',
+			key: 'rzp_live_LfJHE2u8SRy5Eg',
 			amount: (paymentAmount*100),
 			name: 'SNTC',
 			prefill: {

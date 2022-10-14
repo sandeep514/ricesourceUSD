@@ -46,6 +46,21 @@ export class AppComponent implements OnInit {
 			icon: 'albums'
 		},
 		{
+			title: 'Privacy Policy',
+			url: '/privatepolicy',
+			icon: 'albums'
+		},
+		{
+			title: 'Return & Refund Policy',
+			url: '/refund',
+			icon: 'albums'
+		},
+		{
+			title: 'Disclaimer',
+			url: '/disclaimer',
+			icon: 'albums'
+		},
+		{
 			title: 'Change Password',
 			url: '/updatepassword',
 			icon: 'albums'

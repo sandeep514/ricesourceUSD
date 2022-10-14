@@ -72,24 +72,38 @@
 						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
 							<img src="../../assets/img/demo/prices.png" style="width: 80%"/>
 						</ion-slide>
+
+						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
+							<img src="../../assets/img/demo/ocean.png" style="width: 80%"/>
+						</ion-slide>
+						
 						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
 							<img src="../../assets/img/demo/detail.png" style="width: 80%"/>
 						</ion-slide>
+
 						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
 							<img src="../../assets/img/demo/buyquery.png" style="width: 80%"/>
 						</ion-slide>
-						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
-							<img src="../../assets/img/demo/bids.png" style="width: 80%"/>
-						</ion-slide>
-						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
-							<img src="../../assets/img/demo/otherservices.png" style="width: 80%"/>
-						</ion-slide>
+
 						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
 							<img src="../../assets/img/demo/calculator.png" style="width: 80%"/>
 						</ion-slide>
+						
+						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
+							<img src="../../assets/img/demo/bids.png" style="width: 80%"/>
+						</ion-slide>
+
 						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
 							<img src="../../assets/img/demo/hotdeals.png" style="width: 80%"/>
 						</ion-slide>
+						
+						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
+							<img src="../../assets/img/demo/otherservices.png" style="width: 80%"/>
+						</ion-slide>
+						
+						
+						
+						
 					</ion-slides>
 				</ng-container>
 				<!-- <p class="font-darkgreen" style="font-size: 18px;text-align: center;padding-bottom: 0;margin-bottom: 10px;padding: 0 10px; ">This is a paid Service, But Relax you can access this by subscribing Following Plan.</p> -->
@@ -155,6 +169,8 @@
 				</ion-row>
 
 			</ion-row>
+			
+			<p style="text-align: center; font-size: 12px; padding: 0; margin: 0; color: #92b243; font-weight: bold;">*Inclusive of GST</p>
 
 			<div>
 				<ul style="list-style: none;" *ngIf="isUSDRoleAvailable != true" >
@@ -172,6 +188,8 @@
 			</ion-button>
 			<!-- <ion-button class="buynow" fill="outline" (click)="buynow( plan )" style="width: 40%;float: left;"><img src="../../assets/rzp-logo-positive-padding.png" /></ion-button> -->
 
+			<p style="font-size: 0.1px">{{ isUSDRoleAvailable }}</p>
+
 			<ion-row *ngIf="isUSDRoleAvailable == true">
 				<ion-col>
 					<div>
@@ -179,6 +197,7 @@
 					</div>
 				</ion-col>
 			</ion-row>
+			
 		</div>
 	</div>
 

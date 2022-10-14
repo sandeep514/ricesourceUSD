@@ -24,13 +24,12 @@ export class ChatPage implements OnInit {
 	}
 	
     ionViewDidEnter(){ 
-				this.compSer.chatOpen.subscribe(() => {
-					this.apiSer.getChatPerson().then((res:any) => {
-						this.listChats = res.data;
-						// this.apiSer.loaderCtrl.dismiss();
-					});
-				});
-		// this.apiSer.presentLoader("Fetching latest chat...");     
+		this.compSer.chatOpen.subscribe(() => {
+			this.apiSer.getChatPerson().then((res:any) => {
+				this.listChats = res.data;
+				// this.apiSer.loaderCtrl.dismiss();
+			});
+		});
 	}
 	
 	showChatDetails(userId){

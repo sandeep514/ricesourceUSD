@@ -148,9 +148,9 @@
                       <!-- <button id="getCurrentStatus" style="height: 1px;width: 1px;color: red;background: transparent;padding: 0;margin: 0;" (click)="getCurrentPaidStatus()" ></button> -->
                       <tbody >
                         <tr *ngFor="let basmati of listBasmatiStates" (click)="openQuality(basmati?.rice)">
-                            <td class="sticky-col bg-transparent first-col left pl-10"  >
+                            <td class="sticky-col bg-transparent first-col left pl-10" >
                                 <p style="font-size: 19px; padding: 0px;margin: 0px;font-weight: bold;">{{basmati?.get_rice_quality.quality}}</p>
-                                <p style="padding: 0px;margin: 0px;font-size: 13px;">{{basmati?.get_rice_quality.quality_name}}</p>
+                                <p style="padding: 0px;margin: 0px;font-size: 12px;">{{basmati?.get_rice_quality.quality_name}}</p>
                             </td>
 
                             <td class="sticky-col bg-transparent first-col left pl-10" style="font-size: 13px !important;font-weight: bold;"  >
@@ -257,7 +257,7 @@
                             <tr *ngFor="let nonbasmati of listNONBasmatiStates"  (click)="openQuality(nonbasmati?.rice)">
                                 <td class="sticky-col bg-transparent first-col left pl-10"  >
                                     <p style="font-size: 19px; padding: 0px;margin: 0px;font-weight: bold;">{{nonbasmati?.get_rice_quality.quality}}</p>
-                                    <p style="padding: 0px;margin: 0px;    font-size: 13px;">{{nonbasmati?.get_rice_quality.quality_name}}</p>
+                                    <p style="padding: 0px;margin: 0px;    font-size: 12px;">{{nonbasmati?.get_rice_quality.quality_name}}</p>
                                 </td>
 
                                 <td class="sticky-col bg-transparent first-col left pl-10" style="font-size: 13px !important;font-weight: bold;"  >

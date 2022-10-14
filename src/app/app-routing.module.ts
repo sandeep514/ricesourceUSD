@@ -175,6 +175,18 @@ const routes: Routes = [
   {
     path: 'thankyou',
     loadChildren: () => import('./thankyou/thankyou.module').then( m => m.ThankyouPageModule)
+  },
+  {
+    path: 'privatepolicy',
+    loadChildren: () => import('./privatepolicy/privatepolicy.module').then( m => m.PrivatepolicyPageModule)
+  },
+  {
+    path: 'refund',
+    loadChildren: () => import('./refund/refund.module').then( m => m.RefundPageModule)
+  },
+  {
+    path: 'disclaimer',
+    loadChildren: () => import('./disclaimer/disclaimer.module').then( m => m.DisclaimerPageModule)
   }
 
 

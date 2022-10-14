@@ -28,7 +28,7 @@
 							<ion-col>
 								<div style="float: left;width: 10px;margin: 0px;height: 25px">:</div>
 								<div style="margin: 0px">
-									{{ bids.qualityName }} {{ bids.qualityType | titlecase }}
+									{{ bids.qualityName }} <ng-container *ngIf="bids.qualityType != 'NON-BASMATI' "> {{ bids.qualityType | titlecase }}  </ng-container>Rice
 								</div>
 							</ion-col>
 						</ion-row>

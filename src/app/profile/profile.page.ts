@@ -66,7 +66,11 @@ export class ProfilePage implements OnInit {
 		});
 	}
 	gotohome(){
-		this.navCtrl.navigateForward(['prices']);
+		if( localStorage.getItem('usd_role') && localStorage.getItem('isExpiryUSD') == 'false' ){
+			this.navCtrl.navigateForward(['priceusd']);
+		}else{
+			this.navCtrl.navigateForward(['prices']);
+		}
 	}
 	getCountryList(){
 		this.restSer.getOceanPorts().then((res:any) => {
