@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
 			icon: 'albums'
 		},
 		{
-			title: 'Privacy Policy',
+			title: 'Private Policy',
 			url: '/privatepolicy',
 			icon: 'albums'
 		},
