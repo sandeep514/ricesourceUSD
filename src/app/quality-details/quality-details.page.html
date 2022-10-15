@@ -1,18 +1,25 @@
 <ion-header class="green">
-	<ion-toolbar  mode="ios"  style="background: transparent; --background: transparent">
-		<ion-buttons slot="start" class="back-button" (click)="closeModal()">
-			<ion-icon name="arrow-back-outline"></ion-icon>
-		</ion-buttons>
-		<ion-title class="header-title porttitle">
-			{{ riceQuality?.quality }} {{ riceQuality?.quality_name }}
-		</ion-title>
+	<ion-toolbar mode="ios" style="background: transparent; --background: transparent">
+		<div>
+			<div>
+				<ion-buttons slot="start" class="back-button" (click)="closeModal()">
+					<ion-icon name="arrow-back-outline"></ion-icon>
+				</ion-buttons>
+			</div>
+			
+		</div>
+		
+		
 	</ion-toolbar>
 </ion-header>
 
 <ion-content class="lightgreen">
 	<div style="margin-bottom: 50px;">
 
-		<div style="border-bottom: 2px solid #000;margin: 20px 0px">			
+		<div style="border-bottom: 2px solid #000;margin: 20px 0px">	
+			<div style="text-align: center;font-weight: bold;font-size: 20px;color: #92b243;">
+					{{ riceQuality?.quality }} {{ riceQuality?.quality_name }}
+			</div>		
 			<p style="font-size: 18px;font-weight: bold;text-align: center;">Customised Packing Price</p>
 			<ion-row>
 				<ion-col size="3" style="font-size: 20px;line-height: 2.6">Packing: </ion-col>

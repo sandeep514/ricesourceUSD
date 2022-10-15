@@ -144,7 +144,7 @@
 								</div>
 							</ion-row>
 							
-							<ion-row *ngIf="bids?.is_bid_accepted_by_me == 'pending' && bids?.get_bids[0].accept_status == null " style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;">
+							<ion-row *ngIf="bids?.is_bid_accepted_by_me == 'pending' && bids?.get_bids[0].accept_status == null && bids?.status != 2 " style="border: 2px solid #93b243;padding: 10px;text-align: center;align-items: center;justify-content: center;margin-top: 10px;">
 								<ion-row>
 									<ion-col>
 										Buyer's counter offer ${{bids?.user_bid_amount}}
@@ -185,17 +185,24 @@
 							</ion-row>
 						</ion-row>
 
-						<ng-container *ngIf="bids?.my_bid_expired == 'true' &&  bids?.status != 2 ">
+						<ng-container *ngIf="bids?.get_bids_extra.length <= 0 && bids?.is_accepted_by_admin != 'true' && bids?.my_bid_expired == 'true' &&  bids?.status != 2 && bids?.is_bid_accepted_by_me != 'false'">
 							<div style="padding: 0;margin: 0;text-align: center;">
 								<img src="../../assets/STAMP EXPIRED.png" style="width: 100px;" />
 							</div>
 						</ng-container>
 
-						<ng-container *ngIf="bids?.is_expired == 'true' && bids?.get_bids_extra.length == 0 && bids?.is_bid_accepted_by_me != 'false' && bids?.is_bid_accepted_by_me != 'true' && bids?.is_bid_closed != 'true' && bids?.is_accepted_by_admin != 'true'  ">
+						<ng-container *ngIf="bids?.is_expired == 'true' && bids?.get_bids_extra.length == 0 && bids?.is_bid_accepted_by_me != 'false' && bids?.is_bid_closed != 'true' && bids?.is_accepted_by_admin != 'true'  ">
 							<div style="padding: 0;margin: 0;text-align: center;">
 								<img src="../../assets/STAMP EXPIRED.png" style="width: 100px;" />
 							</div>
 						</ng-container>
+
+						<!-- <ng-container *ngIf="bids?.is_expired == 'true' && bids?.get_bids_extra.length == 0 && bids?.is_bid_accepted_by_me != 'false' && bids?.is_bid_accepted_by_me != 'true' && bids?.is_bid_closed != 'true' && bids?.is_accepted_by_admin != 'true'  ">
+							<div style="padding: 0;margin: 0;text-align: center;">
+								<img src="../../assets/STAMP EXPIRED.png" style="width: 100px;" />
+								expired 2
+							</div>
+						</ng-container> -->
 
 						<ng-container *ngIf="bids?.status == 2 ">
 							<div style="padding: 0;margin: 0;text-align: center;">
