@@ -293,11 +293,11 @@ export class PricesPage implements OnInit {
 	ionViewDidEnter() {
 		if (this.route.url == "/prices") {
 
-			if (localStorage.getItem("popupCanceled") == null) {
+			// if (localStorage.getItem("popupCanceled") == null) {
 				this.myVar = setTimeout(() => {
 				this.showCOntactModal();
 				}, 30000);
-			}
+			// }
 
 			this.componentService.cancelPopup.subscribe(() => {
 				if (localStorage.getItem("popupCanceled") != "true") {

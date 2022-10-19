@@ -221,9 +221,7 @@
 
 						<ng-container *ngIf=" bids?.get_bids_extra.length == 0 && bids?.is_accepted_by_admin != 'true'  ">	
 							<ng-container *ngIf="bids?.is_expired == 'false' && bids?.status != 2 ">
-								
 								<ion-row *ngIf="bids?.get_bids.length <= 0 "  style="margin-top: 5px">
-
 									<div style="padding: 10;border-radius: 10;border: 2px solid #92b243;border-radius: 12px;width: 70%">
 										<div style="float: left;padding: 0px 10px;margin-top: 23px;font-size: 18px;">
 											$
@@ -236,8 +234,6 @@
 											PMT
 										</div>
 									</div>
-		
-									
 								</ion-row>
 
 								<ion-row *ngIf="bids?.get_bids.length <= 0"  style="margin-top: 5px;margin-bottom: 10px;">
@@ -251,15 +247,13 @@
 											[max]="lastDate"
 											(ionChange)="changed($event)"
 											aria-placeholder="here"
+											[(ngModel)]=mindate
 										></ion-datetime>
 									</ion-item>
 									<ion-button class="green" style="color: #fff;border-radius: 12px;" (click)="saveUserBid(bids.id)">Save</ion-button>
 								</ion-row>
-
 							</ng-container>
 						</ng-container>
-						
-						
 					</div>
 				</li>
 			</ul>

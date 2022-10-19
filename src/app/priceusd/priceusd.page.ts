@@ -275,14 +275,15 @@ export class PriceusdPage implements OnInit {
 	ionViewDidEnter() {
 		this.isNotifAvailable = localStorage.getItem('isNewNotification');
 		console.log(this.isNotifAvailable);
+		console.log(this.route.url);
 		
-		if (this.route.url == "/prices") {
+		if (this.route.url == "/priceusd") {
 
-			if (localStorage.getItem("popupCanceled") == null) {
+			// if (localStorage.getItem("popupCanceled") == null) {
 				this.myVar = setTimeout(() => {
-				this.showCOntactModal();
+					this.showCOntactModal();
 				}, 30000);
-			}
+			// }
 
 			this.componentService.cancelPopup.subscribe(() => {
 				if (localStorage.getItem("popupCanceled") != "true") {
@@ -656,7 +657,8 @@ export class PriceusdPage implements OnInit {
 				this.defaultCIFPrice = parseFloat(res.defaultCIFPrice);
 				this.defalutPort = res.defalutPort;
 				this.lastupdatedDate = res.latestDate;
-
+				localStorage.setItem('defalutPort' , res.defalutPort);
+				
 				this.componentService.loadingController.dismiss();
 			} , (err:any) => {
 				this.componentService.loadingController.dismiss();

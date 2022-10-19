@@ -29,6 +29,7 @@ export class ProfilePage implements OnInit {
 	data:any;
 	error:any = "false";
 	errorMessage:any;
+	defaultPort:any;
 
 	constructor(public route:ActivatedRoute, public restSer:RestService , public navCtrl:NavController,public menuCtrl:MenuController) {
 		this.userId = this.route.snapshot.paramMap.get('id');
@@ -36,7 +37,15 @@ export class ProfilePage implements OnInit {
 		this.email = localStorage.getItem('email');
 		this.expired_on = localStorage.getItem('expired_on');
 		this.isExpired = localStorage.getItem('isExpired');
-		this.userRole = this.availableRoles[localStorage.getItem('role')];
+
+		if( localStorage.getItem('apptype') == 'USD' ){
+			this.userRole = this.availableRoles[localStorage.getItem('usd_role')];
+		}else{
+			this.userRole = this.availableRoles[localStorage.getItem('role')];
+		}
+		
+		this.defaultPort = localStorage.getItem('defalutPort');
+
 		console.log(this.userRole);
 	}
 
@@ -55,9 +64,10 @@ export class ProfilePage implements OnInit {
 			console.log(res);
 			if( res.data.length == 0 ){
 				this.planName = "Trial Period";
-				this.planMonths = "3 Months";
+				this.planMonths = "7 Days";
 			}else{
-				this.planName = res.data.plan;
+				this.planName = res.data[(res.data.length-1)].plan_name
+				// this.planName = res.data.plan;
 				this.planMonths = res.data.sub_plan_name;
 			}
 			console.log(res.data.length);
@@ -99,6 +109,8 @@ export class ProfilePage implements OnInit {
 			let postedData = { 'id' : localStorage.getItem('id') , 'country' : this.selectedCountries , 'state' : this.selectedState , 'port' : this.selectedCity };
 			this.restSer.updatePort(postedData).then((res:any) => {
 				if (res.status == true){
+					this.defaultPort = this.selectedCity;
+
 					this.restSer.presentToast("Port updated successfully");
 				}
 			} , (err:any) => {

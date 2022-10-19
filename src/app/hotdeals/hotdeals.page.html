@@ -20,7 +20,8 @@
 							</ion-row>
 							<ion-row *ngIf="bids?.get_rice_quality?.quality != '' && bids?.get_rice_quality?.quality != null && bids?.get_rice_quality?.quality != undefined && bids?.get_rice_quality?.quality_name != '' && bids?.get_rice_quality?.quality_name != null && bids?.get_rice_quality?.quality_name != undefined ">
 								<ion-col size="4" class="demandHeaders">Quality</ion-col> 
-								<ion-col>: {{ bids?.get_rice_quality?.quality }} {{ bids?.get_rice_quality?.quality_name }}</ion-col>
+								<div style="margin-top: 5px; ">:</div>
+								<ion-col> {{ bids?.get_rice_quality?.quality }} {{ bids?.get_rice_quality?.quality_name }}</ion-col>
 							</ion-row>
 							<!-- <ion-row>
 								<ion-col size="4" class="demandHeaders">Specifications:</ion-col> 
