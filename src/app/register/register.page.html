@@ -17,11 +17,11 @@
 	</ion-row>
 
 	<ion-row style="margin-bottom: 15px;">
-		<ion-col>
+		<ion-col *ngIf="registerForm == 'domestic' ">
 			<ion-button class="green" [ngClass]='((registerForm == "domestic") ? "activeFormType" : "formType")' (click)="registerFormType('domestic')" style="color: white;font-size: 12px;">Domestic</ion-button>
 			<p style="padding: 0;margin: 0;font-size: 14px;" >Prices in INR</p>
 		</ion-col>
-		<ion-col>
+		<ion-col *ngIf="registerForm == 'international' ">
 			<ion-button class="green" [ngClass]='((registerForm == "international") ? "activeFormType" : "formType")' (click)="registerFormType('international')" style="color: white;font-size: 12px;">International</ion-button>
 			<p style="padding: 0;margin: 0;font-size: 14px;">Prices in USD</p>
 		</ion-col>

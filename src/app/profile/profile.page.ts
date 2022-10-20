@@ -38,7 +38,7 @@ export class ProfilePage implements OnInit {
 		this.expired_on = localStorage.getItem('expired_on');
 		this.isExpired = localStorage.getItem('isExpired');
 
-		if( localStorage.getItem('apptype') == 'USD' ){
+		if( localStorage.getItem('apptype') == 'USD' ){  
 			this.userRole = this.availableRoles[localStorage.getItem('usd_role')];
 		}else{
 			this.userRole = this.availableRoles[localStorage.getItem('role')];

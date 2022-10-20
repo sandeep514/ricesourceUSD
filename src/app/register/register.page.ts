@@ -290,6 +290,7 @@ export class RegisterPage implements OnInit {
 		this.selectedCountry = event.detail.value;
 		this.selectedPort = this.data[this.selectedCountry];
 		console.log(this.data[this.selectedCountry]);
+		console.log(this.data);
 		this.selectedCountryMobileCode = (this.data[this.selectedCountry][0].mobile_code);
 
 	}
