@@ -71,6 +71,9 @@ export class PricesPage implements OnInit {
 	INRActive:any;
 
 	constructor(public platform: Platform,public restService: RestService,public componentService: ComponentsService,public modalController: ModalController,public navCtrl: NavController,public route: Router ,public versionMdel : VersionmodalPage) {
+		if( localStorage.getItem('is_INR_active') == '0') {
+			this.navCtrl.navigateRoot(['planpage']);
+		}
 		this.isNotifAvailable = localStorage.getItem('isNewNotification')
 
 		// this.componentService.compareTwoDates( localStorage.getItem('expired_on') );
@@ -291,6 +294,9 @@ export class PricesPage implements OnInit {
 	}
 
 	ionViewDidEnter() {
+		if( localStorage.getItem('is_INR_active') == '0') {
+			this.navCtrl.navigateRoot(['planpage']);
+		}
 		if (this.route.url == "/prices") {
 
 			// if (localStorage.getItem("popupCanceled") == null) {
@@ -337,7 +343,7 @@ export class PricesPage implements OnInit {
 			this.componentService.compareTwoDates(localStorage.getItem('expired_on'));
 		} , (err:any) => {
 		});
-
+		
 		this.imagePrefix = this.restService.imageUrl;
 		this.getSlider();
 		this.username = localStorage.getItem("name");
@@ -396,6 +402,13 @@ export class PricesPage implements OnInit {
 			}else{
 				this.INRActive = 0;
 			}
+
+			setTimeout(() => {
+				this.componentService.loadingController.dismiss();
+			} , 3000)
+			setTimeout(() => {
+				this.componentService.loadingController.dismiss();
+			} , 6000)
 		});
 	}
 	async showPaymentModel(){

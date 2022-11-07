@@ -61,7 +61,7 @@
 												25
 											</td>
 											<td class="type-columns" style="width:180px;border: none ;--border: none;font-size: 14px !important;" >
-												${{ list.freight_21MT_1MT }} - ${{ list.freight_25MT_1MT }}
+												${{ (list.freight_21MT_1MT) }} - ${{ list.freight_25MT_1MT }}
 											</td>
 										</tr>
 										<tr *ngIf="isNull == true" >
@@ -182,7 +182,7 @@
 				</ion-item>
 			</ion-col>
 		</ion-row>
-		<ion-row style="justify-content: center;font-weight: bold;color: red;" *ngIf="blendError1">Cost Rice 1 must be in 5 Digit.</ion-row>
+		<ion-row style="justify-content: center;font-weight: bold;color: red;" *ngIf="blendError1 == true">Cost Rice 1 must be in 5 Digit.</ion-row>
 
 		<ion-row style="justify-content: center;"><div style="font-weight: bold;">Cost of Rice2: &nbsp;</div> ₹{{costOfRice2}}</ion-row>
 		<ion-row>

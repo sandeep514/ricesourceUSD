@@ -24,34 +24,66 @@ export class ContactmodalPage implements OnInit {
 	}
 
 	isBuyer(){
-		if( '5' == localStorage.getItem('role') ){
-			this.roleTitle = "Are you looking to buy rice?";
+		if( localStorage.getItem('apptype') == 'OTHER' ){
+			if( '5' == localStorage.getItem('role') ){
+				this.roleTitle = "Are you looking to buy rice?";
+			}else{
+				this.isSupplier();
+			}
 		}else{
-			this.isSupplier();
+			if( '5' == localStorage.getItem('usd_role') ){
+				this.roleTitle = "Are you looking to buy rice?";
+			}else{
+				this.isSupplier();
+			}
 		}
 	}
 
 	isSupplier(){
-		if( '6' == localStorage.getItem('role') ){
-			this.roleTitle = "Are you looking to sell rice?";
+		if( localStorage.getItem('apptype') == 'OTHER' ){
+			if( '6' == localStorage.getItem('role') ){
+				this.roleTitle = "Are you looking to sell rice?";
+			}else{
+				this.isBroker();
+			}
 		}else{
-			this.isBroker();
+			if( '6' == localStorage.getItem('usd_role') ){
+				this.roleTitle = "Are you looking to sell rice?";
+			}else{
+				this.isBroker();
+			}
 		}
 	}
 
 	isBroker(){
-		if( '7' == localStorage.getItem('role') ){
-			this.roleTitle = "Are you looking to Buy/Sell rice?";
+		if( localStorage.getItem('apptype') == 'OTHER' ){
+			if( '7' == localStorage.getItem('role') ){
+				this.roleTitle = "Are you looking to Buy/Sell rice?";
+			}else{
+				this.isGuest();
+			}
 		}else{
-			this.isGuest();
+			if( '7' == localStorage.getItem('usd_role') ){
+				this.roleTitle = "Are you looking to Buy/Sell rice?";
+			}else{
+				this.isGuest();
+			}
 		}
 	}
 
 	isGuest(){
-		if( '8' == localStorage.getItem('role') ){
-			this.roleTitle = "Are you looking to Buy/Sell rice?";
+		if( localStorage.getItem('apptype') == 'OTHER' ){
+			if( '8' == localStorage.getItem('role') ){
+				this.roleTitle = "Are you looking to Buy/Sell rice?";
+			}else{
+				return false;
+			}
 		}else{
-			return false;
+			if( '8' == localStorage.getItem('usd_role') ){
+				this.roleTitle = "Are you looking to Buy/Sell rice?";
+			}else{
+				return false;
+			}
 		}
 	}
 

@@ -108,7 +108,7 @@
 				</ng-container>
 				<!-- <p class="font-darkgreen" style="font-size: 18px;text-align: center;padding-bottom: 0;margin-bottom: 10px;padding: 0 10px; ">This is a paid Service, But Relax you can access this by subscribing Following Plan.</p> -->
 
-				<ion-row style="width: 100%;text-align: center;" *ngIf="showTrialPeriod == false">
+				<ion-row style="width: 100%;text-align: center;" *ngIf="showTrialPeriod == true">
 					<ion-col>
 						<button style="background: #92b245;padding: 10px 20px;border-radius: 20px;font-size: 20px;width: auto;text-transform: capitalize;" (click)="startTrial()"> Use 7 days free trial period</button>
 					</ion-col>
@@ -183,20 +183,15 @@
 				</ul>
 			</div>
 			
-			<ion-button *ngIf="isDomesticRoleAvailable == true && isUSDRoleAvailable != true"  fill="outline" (click)="buynow( )" style="background-color: #fff;min-height: 43px;margin: 10px 6px;">
+			<ion-button *ngIf="isDomesticRoleAvailable == true && isUSDRoleAvailable != true"  fill="outline" (click)="buynow( )" style="background-color: #fff;--background-color: #fff;min-height: 43px;margin: 10px 6px;">
 				<img src="../../assets/rzp-logo-positive-padding.png" style="width: 50%" />
 			</ion-button>
 			<!-- <ion-button class="buynow" fill="outline" (click)="buynow( plan )" style="width: 40%;float: left;"><img src="../../assets/rzp-logo-positive-padding.png" /></ion-button> -->
 
-			<p style="font-size: 0.1px">{{ isUSDRoleAvailable }}</p>
-
-			<ion-row *ngIf="isUSDRoleAvailable == true">
-				<ion-col>
-					<div>
-						<div id="paypal-button"></div>
-					</div>
-				</ion-col>
-			</ion-row>
+			<p style="font-size: 0px">{{ isUSDRoleAvailable }}</p>
+			<ng-container *ngIf="isUSDRoleAvailable == true" >
+				<div id="paypal-button" style="margin-top: 20px"></div>	
+			</ng-container>
 			
 		</div>
 	</div>

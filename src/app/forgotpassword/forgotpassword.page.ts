@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { RestService } from 'src/app/rest.service';
 
 @Component({
   selector: 'app-forgotpassword',
@@ -9,7 +10,7 @@ import { NavController } from '@ionic/angular';
 export class ForgotpasswordPage implements OnInit {
 	number:any;
 
-	constructor(public navCtrl:NavController) { }
+	constructor(public navCtrl:NavController, public restAPI: RestService) { }
 
 	ngOnInit() {
 
@@ -20,7 +21,11 @@ export class ForgotpasswordPage implements OnInit {
 	}
 
 	sendOTP(){
-		this.navCtrl.navigateForward([ 'otp' , {number : this.number}]);
+		if( this.number != '' && this.number != undefined ){
+			this.navCtrl.navigateForward([ 'otp' , {number : this.number}]);
+		}else{
+			this.restAPI.presentToast('Mobile number required');
+		}
 	}
 	verifyForgotPassword(){
 		this.navCtrl.navigateForward(['otp']);

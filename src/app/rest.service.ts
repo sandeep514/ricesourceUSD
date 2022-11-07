@@ -297,6 +297,16 @@ export class RestService {
 		});
 	}
 
+	resendOTP(number){
+		return new Promise((resolve , reject) => {
+			this.http.get(this.APIURL+'resend/otp/'+number).subscribe((res) => {
+				resolve(res);
+			} , (err:any) => {
+				reject(err);
+			});
+		});
+	}
+
 	verifyOTP(number , otp){
 		return new Promise((resolve , reject) => {
 			this.http.get(this.APIURL+'verify/otp/'+number+'/'+otp).subscribe((res) => {

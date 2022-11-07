@@ -136,14 +136,11 @@ export class CalculatorPage implements OnInit {
 		}
 		
 		// this.PMTusd = ((((this.totalPriceINR/this.dollaerate)*this.supplierCharge)/100)+(this.totalPriceINR/this.dollaerate)).toFixed(2);
-		console.log(this.totalPriceINR);
-		console.log(dollaerateData);
 		if( (this.totalPriceINR/dollaerateData) == Infinity ){
 			this.PMTusd = 0;
 		}else{
 			this.PMTusd = (this.totalPriceINR/dollaerateData).toFixed(2);
 		}
-		console.log(this.PMTusd)
 
 		// if( isNaN(Number(this.lccharges)) ){
 		// 	this.lccharges = 0;
@@ -301,7 +298,7 @@ export class CalculatorPage implements OnInit {
 	}
 
 	checkInput(event, riceType){
-		if((event.detail.value).length >= 5){
+		// if((event.detail.value).length >= 5){
 
 			if( riceType == 'one' ){
 				this.riceone = (event.detail.value).substring(0, 5); 
@@ -315,7 +312,7 @@ export class CalculatorPage implements OnInit {
 			if( riceType == 'four' ){
 				this.ricefour = (event.detail.value).substring(0, 5);
 			}
-		}else{
+		// }else{
 			if( riceType == 'one' ){
 				if(this.ricetwopercentage == ''){
 					this.ricetwopercentage = 0;
@@ -339,6 +336,7 @@ export class CalculatorPage implements OnInit {
 						}else{
 							this.riceonepercentage = (100 -percentage);
 						}
+						console.log(this.riceone)
 						this.costOfRice1 = ((this.riceone * this.riceonepercentage)/100).toFixed(2);
 						this.AverageRiceCostPMT =  this.costOfRice1;
 					}else{
@@ -478,7 +476,7 @@ export class CalculatorPage implements OnInit {
 
 			this.save()
 			this.calculateData()
-		}
+		// }
 	}
 	
 	bagChange(event){

@@ -13,6 +13,7 @@ import { Location } from '@angular/common';
 declare let RazorpayCheckout:any;
 import { FirebaseMessaging } from '@ionic-native/firebase-messaging/ngx';
 import { UsdconvertmodalPage } from './usdconvertmodal/usdconvertmodal.page';
+import { ConditionalExpr } from '@angular/compiler';
 
 @Component({
 	selector: 'app-root',
@@ -317,16 +318,23 @@ export class AppComponent implements OnInit {
 	initializeApp() {
 
 		this.platform.ready().then(async () => {
+			
+
 			this.getlatestNotifCount();
 
-			if( localStorage.getItem('usd_role') != undefined || localStorage.getItem('usd_role') != '' ){
-				const model = await this.modalCtrl.create({
-					component: UsdconvertmodalPage,
-					animated: true,
-					cssClass: "contactModal"
-				})
-				await model.present();
-			}
+			this.platform.ready().then(async () => {
+				if( localStorage.getItem('id') != undefined){
+					if(  localStorage.getItem('is_usd_active') == undefined || localStorage.getItem('usd_role') == '0' ){
+						const model = await this.modalCtrl.create({
+							component: UsdconvertmodalPage,
+							animated: true,
+							cssClass: "contactModal"
+						})
+						await model.present();
+					}
+				}
+			});
+
 			this.apiser.CheckUserExpired().then( (res:any) => {
 				console.log(res)
 				localStorage.setItem('isExpiryUSD' , res.isExpiry)
@@ -345,15 +353,18 @@ export class AppComponent implements OnInit {
 			this.componentSer.firePushNotif.subscribe(function() {
 				this.firebasepushnotif()
 			});
+
 			if( localStorage.getItem('id') != undefined || localStorage.getItem('id') != '' ){
 				let ifUsdActive = localStorage.getItem('is_usd_active');
 				if(ifUsdActive == '0'){
+					console.log("kjhnijk");
 					localStorage.setItem('apptype' , 'OTHER');
 				}else{
 					localStorage.setItem('apptype' , 'USD');
 				}
 	
 				if( localStorage.getItem('is_INR_active') == '1' ){
+					console.log("kjhnijk");
 					localStorage.setItem('apptype' , 'OTHER');
 				}
 			}
@@ -423,8 +434,27 @@ export class AppComponent implements OnInit {
 							
 
 							if( isExpiredUsd == 'true' ){
-								this.navCtrl.navigateForward(['prices']);
-								localStorage.setItem('apptype' , 'OTHER')
+								if( localStorage.getItem('is_INR_active') == '0' ){
+									this.navCtrl.navigateRoot(['planpage']);
+								}else{
+									this.platform.ready().then(async () => {
+										if( localStorage.getItem('id') != undefined){
+											if(  localStorage.getItem('is_usd_active') == undefined || localStorage.getItem('usd_role') == '0' ){
+												const model = await this.modalCtrl.create({
+													component: UsdconvertmodalPage,
+													animated: true,
+													cssClass: "contactModal"
+												})
+												await model.present();
+											}
+										}
+									});
+									localStorage.setItem('apptype' , 'OTHER')	
+									
+									console.log("i am here");
+									this.navCtrl.navigateForward(['prices']);
+									console.log("kjhnijk");
+								}
 							}else{
 								this.firebase.onBackgroundMessage().subscribe(function(payload) {
 				
@@ -443,6 +473,7 @@ export class AppComponent implements OnInit {
 								if( localStorage.getItem('isUserActivatedUSD') == '0' ){
 									if( localStorage.getItem('is_INR_active') == '1' ){
 										this.navCtrl.navigateRoot('prices');
+										console.log("kjhnijk");
 										localStorage.setItem('apptype' , 'OTHER')
 
 									}else{
@@ -470,12 +501,51 @@ export class AppComponent implements OnInit {
 									return false
 								}
 							});
-
+							console.log("kjhink");
 							if( localStorage.getItem('is_INR_active') == '1' ){
-								this.navCtrl.navigateForward(['prices']);
+								this.platform.ready().then(async () => {
+									if( localStorage.getItem('id') != undefined){
+										if(  localStorage.getItem('is_usd_active') == undefined || localStorage.getItem('usd_role') == '0' ){
+											const model = await this.modalCtrl.create({
+												component: UsdconvertmodalPage,
+												animated: true,
+												cssClass: "contactModal"
+											})
+											await model.present();
+										}
+									}
+								});
+								
 								localStorage.setItem('apptype' , 'OTHER')
-
+								console.log("i am here");
+								this.navCtrl.navigateForward(['prices']);
+								console.log("kjhnijk");
 							}
+
+							if( localStorage.getItem('is_usd_active') == undefined || localStorage.getItem('is_usd_active') == '0' ){
+								if( localStorage.getItem('is_INR_active') == undefined || localStorage.getItem('is_INR_active') == '0' ){
+									localStorage.setItem('is_INR_active' , '1');
+									localStorage.setItem('apptype' , 'OTHER')
+
+									this.platform.ready().then(async () => {
+										if( localStorage.getItem('id') != undefined){
+											if(  localStorage.getItem('is_usd_active') == undefined || localStorage.getItem('usd_role') == '0' ){
+												const model = await this.modalCtrl.create({
+													component: UsdconvertmodalPage,
+													animated: true,
+													cssClass: "contactModal"
+												})
+												await model.present();
+											}
+										}
+									});
+									
+									console.log("i am here");
+									this.navCtrl.navigateForward(['prices']);
+									
+								}
+							}
+							
 
 							if( localStorage.getItem('is_INR_active') == '0' && localStorage.getItem('isUserActivatedUSD') == '1' && localStorage.getItem('isExpired') != 'true' ){
 								if( localStorage.getItem('is_INR_active') == '0' && localStorage.getItem('transaction_id') == null){
@@ -563,7 +633,7 @@ export class AppComponent implements OnInit {
 							}else{
 								routeArray.push(routee[i]);
 							}
-						}
+						} 
 
 						if (routeArray.indexOf('chat-detail') ) {
 							// if (localStorage.getItem('id') == payload.messageFrom) {
@@ -592,7 +662,11 @@ export class AppComponent implements OnInit {
 						// }
 					});
 				});
-			
+				// if(localStorage.getItem('isExpiryUSD') == 'true' ){
+				// 	if( localStorage.getItem('is_INR_active') == '0' ){
+				// 		this.navCtrl.navigateRoot(['prices']);
+				// 	}
+				// }
 			// if(this.platform.is('ios')){
 			// 	this.firebase.hasPermission().then( () => {
 			// 		this.firebase.grantPermission().then(() => {

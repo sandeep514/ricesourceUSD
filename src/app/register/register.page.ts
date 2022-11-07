@@ -76,9 +76,10 @@ export class RegisterPage implements OnInit {
 	}
 	
 	registerUser(){
-	
-		var form = new FormData();
+
 		if( this.termsAndConditions == true ){
+			var form = new FormData();
+
 			if( this.registerForm == 'international' && this.userState == 'guest' ){
 				if( this.username != undefined && this.email && this.companyname && this.address && this.contactperson && this.mobile && this.password && this.userState && this.selectedBagVendorCategory ){
 					let postData = {
@@ -93,9 +94,22 @@ export class RegisterPage implements OnInit {
 						'bagCategory' : this.selectedBagVendorCategory,
 						'registerForm' : this.registerForm
 					}
+					this.api.presentLoader('Please wait...');
+
 					this.api.regsiterUser(postData).then((res:any) => {
 						console.log(res);
+						let createdOn = res.data.created_at;
+						let year = new Date(createdOn).getFullYear().toString() ;
+						let month = (new Date(createdOn).getMonth() + 1).toString() ;
+						let date = new Date(createdOn).getDate().toString() ;
+						if( month.length == 1 ){
+							month = '0'+month;
+						}
+
+						let concatDate = year+'-'+month+'-'+date;
+
 						localStorage.setItem('id' , res.data.id);
+						localStorage.setItem('created_on' ,concatDate);
 						localStorage.setItem('name' , res.data.name);
 						localStorage.setItem('email' , res.data.email);
 						localStorage.setItem('mobile' , res.data.mobile);
@@ -114,17 +128,23 @@ export class RegisterPage implements OnInit {
 						
 						this.componentSer.compareTwoDates(res.data.expired_on);
 						this.navCtrl.navigateForward(['verifyotp']);
-						// this.api.loaderCtrl.dismiss();
+						this.api.loaderCtrl.dismiss();
+
+
 					},(err:any) => {
 						this.api.presentToast(err.error.error);
+									this.api.loaderCtrl.dismiss();
+
 						this.api.loaderCtrl.dismiss();
 					});
 				}else{
 					this.api.presentToast('Data not correct');
+								this.api.loaderCtrl.dismiss();
+
 				}
 				
 			}else{
-				if( this.zipcode != undefined ){
+				if( this.mySelectedPort != undefined ){
 					if(this.username != undefined && this.email != undefined && this.companyname != undefined && this.address != undefined && this.country != undefined && this.zipcode != undefined && this.contactperson != undefined && this.mobile != undefined && this.password != undefined && this.confpassword != undefined && this.mySelectedPort != undefined && this.selectedCountry != undefined){
 						let postData = {
 							'username' :  this.username,
@@ -140,10 +160,21 @@ export class RegisterPage implements OnInit {
 							'userState' : this.userState,
 							'bagCategory' : this.selectedBagVendorCategory
 						}
-	
+						this.api.presentLoader('Please wait...');
+
 						this.api.regsiterUser(postData).then((res:any) => {
 							console.log(res);
+							let createdOn = res.data.created_at;
+							let year = new Date(createdOn).getFullYear().toString() ;
+							let month = (new Date(createdOn).getMonth() + 1).toString() ;
+							let date = new Date(createdOn).getDate().toString() ;
+							if( month.length == 1 ){
+								month = '0'+month;
+							}
+
+							let concatDate = year+'-'+month+'-'+date;
 							localStorage.setItem('id' , res.data.id);
+							localStorage.setItem('created_on' ,concatDate);
 							localStorage.setItem('name' , res.data.name);
 							localStorage.setItem('email' , res.data.email);
 							localStorage.setItem('mobile' , res.data.mobile);
@@ -162,18 +193,23 @@ export class RegisterPage implements OnInit {
 							
 							this.componentSer.compareTwoDates(res.data.expired_on);
 							this.navCtrl.navigateForward(['verifyotp']);
-							// this.api.loaderCtrl.dismiss();
+							this.api.loaderCtrl.dismiss();
 						},(err:any) => {
 							this.api.presentToast(err.error.error);
+										this.api.loaderCtrl.dismiss();
+
 							this.api.loaderCtrl.dismiss();
 						});
 					}else{
-						this.api.presentToast('Data not correct');
+						this.api.presentToast('Required field missing.');
+									this.api.loaderCtrl.dismiss();
+
 					}
 				}else{
 					if( this.username != '' && this.email != '' && this.mobile != '' && this.password != '' && this.confpassword != ''){
 						if( this.isValidEmail(this.email) == true ){
-							if(this.mobile.length == 10){
+
+							if(this.mobile.toString().length == 10){
 								if( this.password == this.confpassword ){
 									
 									let postData = {
@@ -184,11 +220,21 @@ export class RegisterPage implements OnInit {
 										'password' : this.password,
 										'userState' : this.userState
 									}
-			
 									this.api.presentLoader('Please wait...');
+			
 									this.api.regsiterUser(postData).then((res:any) => {
 			
+										let createdOn = res.data.created_at;
+										let year = new Date(createdOn).getFullYear().toString() ;
+										let month = (new Date(createdOn).getMonth() + 1).toString() ;
+										let date = new Date(createdOn).getDate().toString() ;
+										if( month.length == 1 ){
+											month = '0'+month;
+										}
+
+										let concatDate = year+'-'+month+'-'+date;
 										localStorage.setItem('id' , res.data.id);
+										localStorage.setItem('created_on' ,concatDate);
 										localStorage.setItem('name' , res.data.name);
 										localStorage.setItem('email' , res.data.email);
 										localStorage.setItem('mobile' , res.data.mobile);
@@ -216,30 +262,45 @@ export class RegisterPage implements OnInit {
 										// this.navCtrl.navigateForward(['prices']);
 										// this.api.presentToast('User register successfully.');
 										this.api.loaderCtrl.dismiss();
+
+										this.api.loaderCtrl.dismiss();
 									},(err:any) => {
 										this.api.presentToast(err.error.error);
+													this.api.loaderCtrl.dismiss();
+
 										this.api.loaderCtrl.dismiss();
 									});
 			
 								}else{
 									this.api.presentToast('Password and Confirm Password is invalid.');
+												this.api.loaderCtrl.dismiss();
+
 								}
 							}else{
 								this.api.presentToast('Mobile number is invalid.');
+											this.api.loaderCtrl.dismiss();
+
 							}
 						}else{
 							this.api.presentToast('Email is invalid.');
+										this.api.loaderCtrl.dismiss();
+
 						}
 					}else{
 						this.api.presentToast('Required field are missing.');
+									this.api.loaderCtrl.dismiss();
+
 					}
 				}
 			}
 			
-
-			
+			// setTimeout(() => {
+			// 	this.api.loaderCtrl.dismiss();
+			// }, 2000);
 		}else{
 			this.api.presentToast("Terms and condition must be checked");
+						this.api.loaderCtrl.dismiss();
+
 		}
 	}
 

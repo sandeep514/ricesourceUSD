@@ -66,9 +66,18 @@ export class PlanpagePage implements OnInit {
 			this.isUSDRoleAvailable = true;
 		}
 
-		if( localStorage.getItem('ExpiryUSDDate') != undefined && localStorage.getItem('ExpiryUSDDate') != '' && localStorage.getItem('ExpiryUSDDate') != 'null' ) {
+		// if( localStorage.getItem('ExpiryUSDDate') != undefined && localStorage.getItem('ExpiryUSDDate') != '' && localStorage.getItem('ExpiryUSDDate') != 'null' ) {
+		// 	this.showTrialPeriod = true
+		// }
+
+		console.log(localStorage.getItem('ExpiryUSDDate'))
+		console.log(localStorage.getItem('created_on'))
+
+		if( localStorage.getItem('ExpiryUSDDate') == localStorage.getItem('created_on') ){
 			this.showTrialPeriod = true
+			console.log("khjijk,");
 		}
+		
 		console.log(this.showTrialPeriod);
 	}
 	async presentModel(){
@@ -161,7 +170,23 @@ export class PlanpagePage implements OnInit {
 
 					if (status == "COMPLETED") {
 						this.validPurchase(id);
-						alert('i am here paypal success')
+						let plan_id = this.selectedPlanId;
+
+						this.apiser.addOrder({ transaction_id: 'paypal' , user_id : localStorage.getItem('id') , plan_id : plan_id }).then((res:any) => {
+
+							this.compSer.isUserExpired.next('false');
+							
+							localStorage.setItem('apptype' , 'USD');
+							localStorage.setItem('is_usd_active' , '1');
+							localStorage.setItem('usd_role' , res.userDetails[0]['usd_role']);
+							localStorage.setItem('transaction_id' , res.userDetails[0]['transaction_id']);
+							localStorage.setItem('isUserActivatedUSD' , '1');
+
+							this.closeme();
+							this.navCtrl.navigateForward(['priceusd']);
+						} , (err:any) => {
+
+						});
 					}else {
 
 					}
@@ -275,7 +300,6 @@ export class PlanpagePage implements OnInit {
 			let plan_id = this.selectedPlanId;
 
 			this.apiser.addOrder({ transaction_id: tran_id , user_id : localStorage.getItem('id') , plan_id : plan_id }).then((res:any) => {
-
 				this.compSer.isUserExpired.next('false');
 				
 				localStorage.setItem('apptype' , 'USD');
@@ -292,7 +316,8 @@ export class PlanpagePage implements OnInit {
 		};
 	
 		var cancelCallback = (error) => {
-			alert(JSON.stringify(error));
+			// alert(JSON.stringify(error));
+			console.log(error);
 			// this.compSer.chartInterval.next("15 Days");
 		};
 		RazorpayCheckout.open(options, successCallback, cancelCallback);

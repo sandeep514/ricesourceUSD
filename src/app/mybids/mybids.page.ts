@@ -95,23 +95,33 @@ export class MybidsPage implements OnInit {
 	}
 
 	accept(  bid_id ){
+		this.apiService.presentLoader("Please Wait...");
+
 		let postedData = {'bid_id' : bid_id , 'counter_status' : 1};
 		this.apiService.updateCounterStatus(postedData ).then((res:any) => {
+			this.apiService.dismissLoader()
 			console.log(res)
 			this.getListBids();
 		}).catch((err) => {
+			this.apiService.dismissLoader()
 			this.getListBids();
 			console.log(err)
 		})
 	}
 
 	reject(  bid_id ){
+		this.apiService.presentLoader("Please Wait...");
+
 		let postedData = {'bid_id' : bid_id , 'counter_status' : 2};
 		this.apiService.updateCounterStatus(postedData ).then((res:any) => {
+			this.apiService.dismissLoader()
+
 			console.log(res)
 			this.getListBids();
 		}).catch((err) => {
 			this.getListBids();
+			this.apiService.dismissLoader()
+
 			console.log(err)
 		})
 	}

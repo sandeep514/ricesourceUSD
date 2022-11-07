@@ -39,7 +39,18 @@ export class LoginPage implements OnInit {
 		this.restService.login(userDetails).then((res:any)=>{
 			this.componentService.loadingController.dismiss();
 			if(res.status == 'success'){
+				let createdOn = res.user.created_at;
+				let year = new Date(createdOn).getFullYear().toString() ;
+				let month = (new Date(createdOn).getMonth() + 1).toString() ;
+				let date = new Date(createdOn).getDate().toString() ;
+				if( month.length == 1 ){
+					month = '0'+month;
+				}
+
+				let concatDate = year+'-'+month+'-'+date;
+
 				localStorage.setItem('id' , res.user.id);
+				localStorage.setItem('created_on' , concatDate);
 				localStorage.setItem('name' , res.user.name);
 				localStorage.setItem('email' , res.user.email);
 				localStorage.setItem('mobile' , res.user.mobile);
