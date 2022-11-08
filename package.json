@@ -38,6 +38,7 @@
     "highcharts": "^8.1.2",
     "ionic-selectable": "^4.6.0",
     "jquery": "^3.5.1",
+    "macos-release": "^3.0.1",
     "rxjs": "~6.5.1",
     "tslib": "^1.14.1",
     "zone.js": "~0.9.1"
