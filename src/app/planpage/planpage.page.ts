@@ -75,9 +75,11 @@ export class PlanpagePage implements OnInit {
 
 		if( localStorage.getItem('ExpiryUSDDate') == localStorage.getItem('created_on') ){
 			this.showTrialPeriod = true
-			console.log("khjijk,");
 		}
-		
+
+		if( localStorage.getItem('transaction_id') == undefined || localStorage.getItem('transaction_id') != null  ){
+			this.showTrialPeriod = true
+		}		
 		console.log(this.showTrialPeriod);
 	}
 	async presentModel(){
