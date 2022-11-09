@@ -73,13 +73,18 @@ export class PlanpagePage implements OnInit {
 		console.log(localStorage.getItem('ExpiryUSDDate'))
 		console.log(localStorage.getItem('created_on'))
 
+		if( localStorage.getItem('transaction_id') == undefined || localStorage.getItem('transaction_id') == null  ){
+			this.showTrialPeriod = true
+		}else{
+			this.showTrialPeriod = false
+		}
 		if( localStorage.getItem('ExpiryUSDDate') == localStorage.getItem('created_on') ){
 			this.showTrialPeriod = true
 		}
 
-		if( localStorage.getItem('transaction_id') == undefined || localStorage.getItem('transaction_id') != null  ){
-			this.showTrialPeriod = true
-		}		
+		
+
+			
 		console.log(this.showTrialPeriod);
 	}
 	async presentModel(){
@@ -176,16 +181,16 @@ export class PlanpagePage implements OnInit {
 
 						this.apiser.addOrder({ transaction_id: 'paypal' , user_id : localStorage.getItem('id') , plan_id : plan_id }).then((res:any) => {
 
-							this.compSer.isUserExpired.next('false');
 							
 							localStorage.setItem('apptype' , 'USD');
 							localStorage.setItem('is_usd_active' , '1');
 							localStorage.setItem('usd_role' , res.userDetails[0]['usd_role']);
 							localStorage.setItem('transaction_id' , res.userDetails[0]['transaction_id']);
 							localStorage.setItem('isUserActivatedUSD' , '1');
-
-							this.closeme();
+							this.compSer.isUserExpired.next('false');
 							this.navCtrl.navigateForward(['priceusd']);
+
+							// this.closeme();
 						} , (err:any) => {
 
 						});
@@ -197,7 +202,7 @@ export class PlanpagePage implements OnInit {
 				})
 				.catch(err => {
 					console.log(err);
-					alert('paypal error');
+					// alert('paypal error');
 				})
 			},
 
@@ -213,9 +218,16 @@ export class PlanpagePage implements OnInit {
 	}
 	closeme(){
 		this.modelController.dismiss();
+
+		localStorage.setItem('apptype' , 'OTHER');
+		this.navCtrl.navigateForward(['prices']);
+		return false;
+
 		if( localStorage.getItem('is_INR_active') == '1' ){
+			localStorage.setItem('apptype' , 'OTHER');
 			this.navCtrl.navigateForward(['prices']);
 		}else if( localStorage.getItem('isUserActivatedUSD') != '1' ){
+			localStorage.setItem('apptype' , 'OTHER');
 			this.navCtrl.navigateForward(['prices']);
 		}
 		
@@ -291,7 +303,7 @@ export class PlanpagePage implements OnInit {
 			},
 			modal: {
 				ondismiss: function () {
-					alert('dismissed');
+					console.log('dismissed');
 				}
 			}
 		};
@@ -302,16 +314,17 @@ export class PlanpagePage implements OnInit {
 			let plan_id = this.selectedPlanId;
 
 			this.apiser.addOrder({ transaction_id: tran_id , user_id : localStorage.getItem('id') , plan_id : plan_id }).then((res:any) => {
-				this.compSer.isUserExpired.next('false');
-				
+				// alert("payment successfull");
 				localStorage.setItem('apptype' , 'USD');
 				localStorage.setItem('is_usd_active' , '1');
+				localStorage.setItem('isExpired' , 'false');
 				localStorage.setItem('usd_role' , res.userDetails[0]['usd_role']);
 				localStorage.setItem('transaction_id' , res.userDetails[0]['transaction_id']);
 				localStorage.setItem('isUserActivatedUSD' , '1');
-
-				this.closeme();
+				this.compSer.isUserExpired.next('false');
 				this.navCtrl.navigateForward(['priceusd']);
+
+				// this.closeme();
 			} , (err:any) => {
 
 			});

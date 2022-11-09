@@ -94,7 +94,7 @@ export class ComponentsService {
 		let todayDate = new Date();
 		let expiredDate = new Date(date2);
 
-		if( todayDate > expiredDate ){
+		if( todayDate >= expiredDate ){
 			localStorage.setItem('isExpired' , 'true');
 			this.isUserExpired.next('true');
 		}else{

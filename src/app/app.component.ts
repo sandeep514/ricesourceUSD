@@ -319,6 +319,7 @@ export class AppComponent implements OnInit {
 
 		this.platform.ready().then(async () => {
 			
+			this.componentSer.compareTwoDates( localStorage.getItem('ExpiryUSDDate') );
 
 			this.getlatestNotifCount();
 
@@ -337,8 +338,13 @@ export class AppComponent implements OnInit {
 
 			this.apiser.CheckUserExpired().then( (res:any) => {
 				console.log(res)
-				localStorage.setItem('isExpiryUSD' , res.isExpiry)
-				localStorage.setItem('ExpiryUSDDate' , res.data)
+				if( localStorage.getItem('is_usd_active') != '0' ){
+					localStorage.setItem('isExpiryUSD' , res.isExpiry)
+					localStorage.setItem('ExpiryUSDDate' , res.data)
+				}else{
+					localStorage.setItem('isExpiryUSD' , 'true')
+					localStorage.setItem('ExpiryUSDDate' , null)	
+				}
 
 				localStorage.setItem('expired_on' , res.data);
 				this.componentSer.compareTwoDates(localStorage.getItem('expired_on'));
@@ -349,24 +355,29 @@ export class AppComponent implements OnInit {
 			});
 
 			console.log( new Date() );
-
+			let classThis = this;
 			this.componentSer.firePushNotif.subscribe(function() {
-				this.firebasepushnotif()
+				classThis.firebasepushnotif()
 			});
 
 			if( localStorage.getItem('id') != undefined || localStorage.getItem('id') != '' ){
 				let ifUsdActive = localStorage.getItem('is_usd_active');
+				if( localStorage.getItem('is_INR_active') == '1' ){
+					console.log("kjhnijk");
+					console.log("apptype OTHER");
+					localStorage.setItem('apptype' , 'OTHER');
+				}
+				
 				if(ifUsdActive == '0'){
 					console.log("kjhnijk");
+					console.log("apptype OTHER");
 					localStorage.setItem('apptype' , 'OTHER');
 				}else{
+					console.log("apptype USD");
 					localStorage.setItem('apptype' , 'USD');
 				}
 	
-				if( localStorage.getItem('is_INR_active') == '1' ){
-					console.log("kjhnijk");
-					localStorage.setItem('apptype' , 'OTHER');
-				}
+				
 			}
 			let isExpiredUsd = localStorage.getItem('isExpiryUSD');
 			this.statusBar.styleDefault();
@@ -449,6 +460,7 @@ export class AppComponent implements OnInit {
 											}
 										}
 									});
+									console.log("apptype OTHER");
 									localStorage.setItem('apptype' , 'OTHER')	
 									
 									console.log("i am here");
@@ -474,6 +486,7 @@ export class AppComponent implements OnInit {
 									if( localStorage.getItem('is_INR_active') == '1' ){
 										this.navCtrl.navigateRoot('prices');
 										console.log("kjhnijk");
+										console.log("apptype OTHER");
 										localStorage.setItem('apptype' , 'OTHER')
 
 									}else{
@@ -486,6 +499,7 @@ export class AppComponent implements OnInit {
 											this.navCtrl.navigateRoot('planpage');
 										}else{
 											this.navCtrl.navigateForward(['priceusd']);
+											console.log("apptype USD");
 											localStorage.setItem('apptype' , 'USD')
 										}
 									}else{
@@ -516,6 +530,7 @@ export class AppComponent implements OnInit {
 									}
 								});
 								
+								console.log("apptype OTHER");
 								localStorage.setItem('apptype' , 'OTHER')
 								console.log("i am here");
 								this.navCtrl.navigateForward(['prices']);
@@ -525,6 +540,7 @@ export class AppComponent implements OnInit {
 							if( localStorage.getItem('is_usd_active') == undefined || localStorage.getItem('is_usd_active') == '0' ){
 								if( localStorage.getItem('is_INR_active') == undefined || localStorage.getItem('is_INR_active') == '0' ){
 									localStorage.setItem('is_INR_active' , '1');
+									console.log("apptype OTHER");
 									localStorage.setItem('apptype' , 'OTHER')
 
 									this.platform.ready().then(async () => {
@@ -552,6 +568,7 @@ export class AppComponent implements OnInit {
 									this.navCtrl.navigateRoot('planpage');
 								}else{
 									this.navCtrl.navigateForward(['priceusd']);
+									console.log("apptype USD");
 									localStorage.setItem('apptype' , 'USD')
 								}
 							}
@@ -774,6 +791,7 @@ export class AppComponent implements OnInit {
 		console.log('i am here')
 		console.log("jnk,s");
 		// this.navCtrl.navigateForward(['planpage'])
+		console.log("apptype USD");
 		localStorage.setItem('apptype' , 'USD')
 	}
 

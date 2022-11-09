@@ -27,7 +27,6 @@ export class MenuComponent implements OnInit {
 		});
 
 		this.compSer.isUserExpired.subscribe((res:any) => {
-			console.log(res)
 			this.isUserExpire = res;
 			if( document.getElementById('clickButtonforPayment') != undefined){
 				document.getElementById('clickButtonforPayment').click();
@@ -35,19 +34,15 @@ export class MenuComponent implements OnInit {
 
 			if( localStorage.getItem('apptype') == 'USD' ){
 				this.apptype = localStorage.getItem('apptype');
-				console.log(localStorage.getItem('role') )
 				this.seledctedRole = localStorage.getItem('usd_role');
 			}else{
-				console.log(localStorage.getItem('role') )
 				this.apptype = localStorage.getItem('apptype');
 				this.seledctedRole = localStorage.getItem('role');
 			}	
 		});
 		this.getChatStatus();
 		
-		console.log(localStorage.getItem('apptype'))
 		this.apptype = localStorage.getItem('apptype');
-		console.log(localStorage.getItem('apptype'))
 	}
 	
 	updateNotification(){
@@ -55,17 +50,13 @@ export class MenuComponent implements OnInit {
 	}
 
   	ngOnInit() {
-		console.log(localStorage.getItem('apptype') );
 		if( localStorage.getItem('apptype') == 'USD' ){
-			console.log(localStorage.getItem('role') )
 			this.seledctedRole = localStorage.getItem('usd_role');
 		}else{
-			console.log(localStorage.getItem('role') )
 
 			this.seledctedRole = localStorage.getItem('role');
 		}
 		
-		console.log(this.seledctedRole)
 	}
 	async showChatUnavailableModal(){
 		let presentToast = await this.toastCtrl.create({
@@ -78,11 +69,19 @@ export class MenuComponent implements OnInit {
 
 	goTo(page){
 		// this.compSer.compareTwoDates(localStorage.getItem('expired_on'));
-		console.log(localStorage.getItem('isExpired'));
-		if( localStorage.getItem('isExpired') == 'false' ){
+		if( localStorage.getItem('apptype') == 'OTHER' ){
 			this.navCtrl.navigateRoot( page, { animationDirection : 'forward' } );
 		}else{
-			this.navCtrl.navigateRoot( 'planpage', { animationDirection : 'forward' } );
+			if( localStorage.getItem('isExpired') == 'false' ){
+				this.navCtrl.navigateRoot( page, { animationDirection : 'forward' } );
+			}else{
+				this.navCtrl.navigateRoot( 'planpage', { animationDirection : 'forward' } );
+			}
+		}
+
+		if( localStorage.getItem('transaction_id') == undefined || localStorage.getItem('transaction_id') == null ){
+		}else{
+							
 		}
 	}
 	
@@ -99,7 +98,6 @@ export class MenuComponent implements OnInit {
 			this.chatStatus = res.data;
 			this.chat();
 		} , (err:any) => {
-			console.log(err);
 		});
 	}
 
@@ -115,9 +113,7 @@ export class MenuComponent implements OnInit {
 	getChatStatus(){
 		this.restApi.getChatStatus().then((res:any) => {
 			this.chatStatus = res.data;
-			console.log(res);
 		} , (err:any) => {
-			console.log(err);
 		});
 	}
 

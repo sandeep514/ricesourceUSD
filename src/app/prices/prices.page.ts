@@ -122,6 +122,11 @@ export class PricesPage implements OnInit {
 
 		this.componentService.isUserExpired.subscribe((res:any) => {
 			this.currentPaidStatus = res;
+			if(localStorage.getItem('apptype') == 'USD'){
+				this.appType = "usd";
+			}else{
+				this.appType = 'other'
+			}
 			setTimeout(() => {
 				// document.getElementById('getCurrentStatus').click();
 			} , 3000);
@@ -170,6 +175,7 @@ export class PricesPage implements OnInit {
 
 	getPlans() {
 		this.restService.checkUserPlan().then((res: any) => {
+
 			localStorage.setItem("chartInt", "true");
 			},
 			(err: any) => {
@@ -180,6 +186,7 @@ export class PricesPage implements OnInit {
 
 	getGallery() {
 		this.restService.getImagesForDashboard().then( (res: any) => {
+			console.log('i am here 2')
 			
 		},
 		(err: any) => {
@@ -188,31 +195,31 @@ export class PricesPage implements OnInit {
 	}
 
 	getBasmatiState() {
-		this.componentService.presentLoading().then(() => {
-			this.restService.getBasmatiState().then((res: any) => {
-				if( res.data.length > 0 ){
-					this.firstBasmatiState = res.data[0];
-					this.lastBasmatiState = res.data[ (res.data.length - 1) ];
-					console.log(this.lastBasmatiState);
-					setTimeout( () =>{
-						document.getElementById(this.lastBasmatiState).click();
-					},1200)
-					
-					setTimeout(() => {	
-						document.getElementById(this.firstBasmatiState).click();
-					}, 2000);
-				}
-				this.basmatiState = res.data;
-				this.componentService.loadingController.dismiss();
-			},(err: any) => {
-				this.componentService.loadingController.dismiss();
-			});
-		});
+		return new Promise((resolve , reject) => {
+			this.componentService.presentLoading().then(() => {
+
+				this.restService.getBasmatiState().then((res: any) => {
+					console.log('i am here 2')
+					if( res.data.length > 0 ){
+						this.firstBasmatiState = res.data[0];
+						this.lastBasmatiState = res.data[ (res.data.length - 1) ];
+						this.basmatiState = res.data;
+					}
+					this.componentService.loadingController.dismiss();
+					resolve(true);
+
+				},(err: any) => {
+					this.componentService.loadingController.dismiss();
+					reject(false);
+				});	
+			})
+		})
+		
 	}
 
 	getNONBasmatiState() {
-		this.restService.getNONBasmatiState().then(
-		(res: any) => {
+		this.restService.getNONBasmatiState().then((res: any) => {
+
 			this.NONbasmatiState = res.data;
 		},
 		(err: any) => {}
@@ -220,8 +227,8 @@ export class PricesPage implements OnInit {
 	}
 
 	getSlider() {
-		this.restService.getGallery().then(
-		(res: any) => {
+		this.restService.getGallery().then((res: any) => {
+
 			this.ImageGallerySlider = res.data.basmati;
 		},
 		(err: any) => {}
@@ -250,32 +257,37 @@ export class PricesPage implements OnInit {
 	getLoadedData(type) {
 		return new Promise((resolve, reject) => {
 		this.restService.getPrices(this.firstBasmatiState, type).then((res: any) => {
+			// if( type = 'basmati' ){
+			// 	let basmatiColumns = res.prices.basmati;
 
-			let basmatiColumns = res.prices.basmati;
-			if (basmatiColumns != undefined) {
+			// 	if (basmatiColumns != undefined) {
 
-				this.latestDateBasmati = res.latest;
-				this.oldDateBasmati = res.oldDate;
-				this.basmatiColumns = basmatiColumns;
-				// 	basmatiColumns = Object.keys(basmatiColumns);
-				// 	if (basmatiColumns.length != 0) {
-				// 		basmatiColumns = Object.keys(res.prices.basmati[basmatiColumns[0]]);
-				// 		this.basmatiColumns = basmatiColumns;
-				// 	}
-			}
+			// 		this.latestDateBasmati = res.latest;
+			// 		this.oldDateBasmati = res.oldDate;
+			// 		this.basmatiColumns = basmatiColumns;
+			// 		// 	basmatiColumns = Object.keys(basmatiColumns);
+			// 		// 	if (basmatiColumns.length != 0) {
+			// 		// 		basmatiColumns = Object.keys(res.prices.basmati[basmatiColumns[0]]);
+			// 		// 		this.basmatiColumns = basmatiColumns;
+			// 		// 	}
+			// 	}
 
-			let nonBasmati = res.prices["non_basmati"];
-			if (nonBasmati != undefined) {
-			this.nonBasmatiColumns = nonBasmati;
-			this.latestDateNONBasmati = res.oldDate;
-			this.oldDateNONBasmati = res.latest;
-
-			// nonBasmati = Object.keys(nonBasmati);
-			// if (nonBasmati.length != 0) {
-			// 	nonBasmati = Object.keys(res.prices.non_basmati[nonBasmati[0]]);
-			// 	this.nonBasmatiColumns = nonBasmati;
+			// }else{
+			// 	let nonBasmati = res.prices["non_basmati"];
+			// 	if (nonBasmati != undefined) {
+			// 		this.nonBasmatiColumns = nonBasmati;
+			// 		this.latestDateNONBasmati = res.oldDate;
+			// 		this.oldDateNONBasmati = res.latest;
+	
+			// 		// nonBasmati = Object.keys(nonBasmati);
+			// 		// if (nonBasmati.length != 0) {
+			// 		// 	nonBasmati = Object.keys(res.prices.non_basmati[nonBasmati[0]]);
+			// 		// 	this.nonBasmatiColumns = nonBasmati;
+			// 		// }
+			// 	}
 			// }
-			}
+			
+			
 			this.myContent.getScrollElement().then((res) => {
 			if (res != null) {
 				this.fullScrollHeight = res.scrollHeight + 400;
@@ -313,24 +325,34 @@ export class PricesPage implements OnInit {
 				}
 			});
 		}
-		
-			this.getLoadedData("basmati").then((res: any) => {
-				this.basmatiprice = res;
-			} , (err:any) => {
-			});
-			this.getLoadedData("non-basmati").then((res: any) => {
-				this.nonbasmatiprice = res;
-			}, (err:any) => {
-			});
-			
-		// });
-		
-		
+
+		this.getLoadedData("basmati").then((res: any) => {
+			this.basmatiprice = res;
+		} , (err:any) => {
+
+		});
+
+		this.getLoadedData("non-basmati").then((res: any) => {
+			this.nonbasmatiprice = res;
+		}, (err:any) => {
+
+		});	
 		
 
 		this.restService.CheckUserExpired().then( (res:any) => {
-			localStorage.setItem('isExpiryUSD' , res.isExpiry)
-			localStorage.setItem('ExpiryUSDDate' , res.data)
+
+			// localStorage.setItem('isExpiryUSD' , res.isExpiry)
+			// localStorage.setItem('ExpiryUSDDate' , res.data)
+
+			if( localStorage.getItem('is_usd_active') != '0' ){
+				localStorage.setItem('isExpiryUSD' , res.isExpiry)
+				localStorage.setItem('ExpiryUSDDate' , res.data)
+			}else{
+				localStorage.setItem('isExpiryUSD' , 'true')
+				localStorage.setItem('ExpiryUSDDate' , null)	
+			}
+
+
 
 			console.log("mbnjkjbj");
 			// if( res.isExpiry == false ){
@@ -345,10 +367,22 @@ export class PricesPage implements OnInit {
 		});
 		
 		this.imagePrefix = this.restService.imageUrl;
+
 		this.getSlider();
 		this.username = localStorage.getItem("name");
 		this.userFirstName = localStorage.getItem("name")[0];
-		this.getBasmatiState();
+		this.getBasmatiState().then((res:any) => {
+			// setTimeout( () =>{
+			// 	console.log(this.firstBasmatiState);
+			// 	document.getElementById(this.lastBasmatiState).click();
+			// },1000)
+			
+			setTimeout(() => {	
+				document.getElementById(this.firstBasmatiState).click();
+			}, 1500);
+		}).catch((err:any) => {
+
+		});
 		this.getNONBasmatiState();
 		this.getPlans();
 		this.getPriceBasmatiState();
@@ -363,6 +397,7 @@ export class PricesPage implements OnInit {
 	}
 	getVersion() {
 		this.restService.getLatestVersion().then((res:any) => {
+			console.log('i am here 2')
 
 			let elemem = this;
 			if( '1.0.0' != res.data.version ){
@@ -404,11 +439,11 @@ export class PricesPage implements OnInit {
 			}
 
 			setTimeout(() => {
-				this.componentService.loadingController.dismiss();
-			} , 3000)
+				// this.componentService.loadingController.dismiss();
+			} , 4000)
 			setTimeout(() => {
-				this.componentService.loadingController.dismiss();
-			} , 6000)
+				// this.componentService.loadingController.dismiss();
+			} , 10000)
 		});
 	}
 	async showPaymentModel(){
@@ -447,6 +482,7 @@ export class PricesPage implements OnInit {
 
 	loginProfile() {
 		this.restService.presentModal(BrokLoginComponent).then(() => {});
+		console.log('i am here 2')
 	}
 
 	scroll(direction, className) {
@@ -476,11 +512,12 @@ export class PricesPage implements OnInit {
 		this.selectedNONBasmatiState = event.detail.value;
 		this.componentService.presentLoading().then(() => {
 			this.fetchRiceForm(event.detail.value, "basmati").then((res: any) => {
+				this.componentService.loadingController.dismiss();
+
 				this.basmatiprice = res;
 
 				console.log(res);
 				
-				this.componentService.loadingController.dismiss();
 			});
 		})
 
@@ -515,29 +552,37 @@ export class PricesPage implements OnInit {
 		return new Promise((resolve, reject) => {
 			// this.componentService.presentLoading().then(() => {
 				this.restService.getPrices(event, type).then((res: any) => {
+					console.log('i am here 2')
+					// this.componentService.loadingController.dismiss();
+					// this.componentService.loadingController.dismiss();
+					this.latestDateBasmati = res.latest;
+					console.log(type)
+					if( type == 'basmati' ){
+						this.basmatiColumns = res.prices.basmati;
+					}else{
+						this.nonBasmatiColumns = res.prices["non_basmati"];
+						this.lastupdatedDate = res.lastUpdatedDate;
+					}
+
 					
 
-					let basmatiColumns = res.prices.basmati;
-					this.latestDateBasmati = res.latest;
+					// if (basmatiColumns != undefined) {
+					// 	this.basmatiColumns = basmatiColumns;
+					// }
 
-					if (basmatiColumns != undefined) {
-						this.basmatiColumns = basmatiColumns;
-					}
+					// if (nonBasmati != undefined) {
+					// 	this.nonBasmatiColumns = nonBasmati;
+					// }
 
-					let nonBasmati = res.prices["non_basmati"];
-					if (nonBasmati != undefined) {
-						this.nonBasmatiColumns = nonBasmati;
-					}
-					console.log(res);
-					this.lastupdatedDate = res.lastUpdatedDate;
-
-					// this.componentService.loadingController.dismiss();
 					resolve(res.prices);
-				} , (err:any) => {
-					reject(err)
-					// this.componentService.loadingController.dismiss();
-				});
-			// });
+				// } , (err:any) => {
+				// 	// this.componentService.loadingController.dismiss();
+				// 	reject(err)
+				// });
+			}).catch(() => {
+				// this.componentService.loadingController.dismiss();
+	
+			});
 		});
 	}
 
@@ -678,6 +723,7 @@ export class PricesPage implements OnInit {
 
 	getPriceBasmatiState(){
 		this.restService.getPriceBasmatiState().then((res:any) => {
+			console.log('i am here 2')
 			this.listBasmatiStates = res;
 		} , (err:any) => {
 		} );
@@ -705,6 +751,7 @@ export class PricesPage implements OnInit {
 	}
 	// getPriceNONBasmatiState(){
 	// 	this.restService.getPriceNONBasmatiState().then((res:any) => {
+	// console.log('i am here 2')
 	// 		this.listBasmatiStates = res;
 	// 	} , (err:any) => {
 	// 	} );

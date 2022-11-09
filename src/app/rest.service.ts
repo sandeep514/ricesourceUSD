@@ -180,12 +180,13 @@ export class RestService {
 	
 	getPrices(state , type){
 		return new Promise((resolve,reject)=>{
-			this.http.get(this.APIURL+'prices/'+state+'/'+type).subscribe((res)=>{
-				resolve(res);
-				console.log("jnk");
-			},err=>{
-				reject(err);
-			});
+			if( state != undefined ){
+				this.http.get(this.APIURL+'prices/'+state+'/'+type).subscribe((res)=>{
+					resolve(res);
+				},err=>{
+					reject(err);
+				});	
+			}
 		});
 	}
 

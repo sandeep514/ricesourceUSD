@@ -53,6 +53,7 @@ export class ProfilePage implements OnInit {
 
 	}
 	showMenu(){
+		this.menuCtrl.close();
 		this.menuCtrl.open();
 	}
 	ngOnInit() {
@@ -76,7 +77,7 @@ export class ProfilePage implements OnInit {
 		});
 	}
 	gotohome(){
-		if( localStorage.getItem('usd_role') && localStorage.getItem('isExpiryUSD') == 'false' ){
+		if( localStorage.getItem('usd_role') != '0' && localStorage.getItem('is_usd_active') != '0' && localStorage.getItem('isExpiryUSD') == 'false' ){
 			this.navCtrl.navigateForward(['priceusd']);
 		}else{
 			this.navCtrl.navigateForward(['prices']);

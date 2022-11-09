@@ -100,6 +100,11 @@ export class PriceusdPage implements OnInit {
 
 		this.componentService.isUserExpired.subscribe((res:any) => {
 			this.currentPaidStatus = res;
+			if(localStorage.getItem('apptype') == 'USD'){
+				this.appType = "usd";
+			}else{
+				this.appType = 'other'
+			}
 			setTimeout(() => {
 				// document.getElementById('getCurrentStatus').clic k();
 			} , 3000);
@@ -126,22 +131,26 @@ export class PriceusdPage implements OnInit {
 	}
 
 	ionViewDidLoad(){
+		if(localStorage.getItem('apptype') == 'USD'){
+			this.appType = "usd";
+		}else{
+			this.appType = 'other'
+		}
 		this.componentService.isUserExpired.subscribe((res:any) => {
 			this.currentPaidStatus = res;
 			
 			setTimeout(() => {
 				document.getElementById('getCurrentStatus').click();
 			} , 1000);
-
 		});
+
 		this.componentService.isUserExpired.subscribe((res:any) => {
 			this.currentPaidStatus = res;
+			
 			setTimeout(() => {
 				document.getElementById('getCurrentStatus').click();
 			} , 1500);
 		});
-		
-
 	}
 
 	
@@ -173,6 +182,7 @@ export class PriceusdPage implements OnInit {
 	}
 
 	getBasmatiState() {
+		
 		this.componentService.presentLoading().then(() => {
 			this.restService.getBasmatiState().then((res: any) => {
 				if( res.data.length > 0 ){
@@ -311,8 +321,16 @@ export class PriceusdPage implements OnInit {
 
 		this.restService.CheckUserExpired().then( (res:any) => {
 
-			localStorage.setItem('isExpiryUSD' , res.isExpiry)
-			localStorage.setItem('ExpiryUSDDate' , res.data)
+			// localStorage.setItem('isExpiryUSD' , res.isExpiry)
+			// localStorage.setItem('ExpiryUSDDate' , res.data)
+			
+			if( localStorage.getItem('is_usd_active') != '0' ){
+				localStorage.setItem('isExpiryUSD' , res.isExpiry)
+				localStorage.setItem('ExpiryUSDDate' , res.data)
+			}else{
+				localStorage.setItem('isExpiryUSD' , 'true')
+				localStorage.setItem('ExpiryUSDDate' , null)	
+			}
 
 			localStorage.setItem('expired_on' , res.data);
 			let isUserExpiredStatus = localStorage.getItem('isExpiryUSD');
