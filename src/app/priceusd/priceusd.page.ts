@@ -126,8 +126,9 @@ export class PriceusdPage implements OnInit {
 				event.target.complete();
 				this.componentService.loadingController.dismiss();
 			}, 2000);
+		}).catch(() => {
+			this.componentService.loadingController.dismiss();
 		})
-		
 	}
 
 	ionViewDidLoad(){
@@ -149,6 +150,7 @@ export class PriceusdPage implements OnInit {
 			
 			setTimeout(() => {
 				document.getElementById('getCurrentStatus').click();
+				this.componentService.loadingController.dismiss();
 			} , 1500);
 		});
 	}
@@ -196,6 +198,8 @@ export class PriceusdPage implements OnInit {
 			},(err: any) => {
 				this.componentService.loadingController.dismiss();
 			});
+		}).catch(() => {
+			this.componentService.loadingController.dismiss();
 		});
 	}
 
@@ -337,6 +341,7 @@ export class PriceusdPage implements OnInit {
 
 			
 			if( isUserExpiredStatus == 'true' ){
+				localStorage.setItem('apptype' , 'OTHER')	
 				this.navCtrl.navigateForward(['prices']);
 			}
 			
@@ -472,6 +477,9 @@ export class PriceusdPage implements OnInit {
 				
 				this.componentService.loadingController.dismiss();
 			});
+		}).catch(() => {
+			this.componentService.loadingController.dismiss();
+
 		})
 
 		if (event.detail.value == "kota_bundi") {
@@ -681,6 +689,8 @@ export class PriceusdPage implements OnInit {
 			} , (err:any) => {
 				this.componentService.loadingController.dismiss();
 			} );
+		}).catch(() => {
+			this.componentService.loadingController.dismiss();
 		})
 		
 	}

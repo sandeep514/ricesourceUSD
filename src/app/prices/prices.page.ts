@@ -161,6 +161,7 @@ export class PricesPage implements OnInit {
 			this.currentPaidStatus = res;
 			setTimeout(() => {
 				document.getElementById('getCurrentStatus').click();
+				this.componentService.loadingController.dismiss();
 			} , 1500);
 		});
 	}

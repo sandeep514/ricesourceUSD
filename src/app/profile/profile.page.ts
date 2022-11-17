@@ -31,6 +31,8 @@ export class ProfilePage implements OnInit {
 	errorMessage:any;
 	defaultPort:any;
 
+	apptype:any;
+
 	constructor(public route:ActivatedRoute, public restSer:RestService , public navCtrl:NavController,public menuCtrl:MenuController) {
 		this.userId = this.route.snapshot.paramMap.get('id');
 		this.name = localStorage.getItem('name');
@@ -44,8 +46,8 @@ export class ProfilePage implements OnInit {
 			this.userRole = this.availableRoles[localStorage.getItem('role')];
 		}
 		
+		this.apptype = localStorage.getItem('apptype');
 		this.defaultPort = localStorage.getItem('defalutPort');
-
 		console.log(this.userRole);
 	}
 
@@ -53,6 +55,7 @@ export class ProfilePage implements OnInit {
 
 	}
 	showMenu(){
+		console.log("jknk");
 		this.menuCtrl.close();
 		this.menuCtrl.open();
 	}
@@ -78,8 +81,10 @@ export class ProfilePage implements OnInit {
 	}
 	gotohome(){
 		if( localStorage.getItem('usd_role') != '0' && localStorage.getItem('is_usd_active') != '0' && localStorage.getItem('isExpiryUSD') == 'false' ){
+			localStorage.setItem('apptype' , 'USD')	
 			this.navCtrl.navigateForward(['priceusd']);
 		}else{
+			localStorage.setItem('apptype' , 'OTHER')	
 			this.navCtrl.navigateForward(['prices']);
 		}
 	}

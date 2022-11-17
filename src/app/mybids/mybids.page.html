@@ -184,18 +184,27 @@
 								You have declined counter offer of ${{bids?.user_bid_amount}}
 							</ion-row>
 						</ion-row>
-
-						<ng-container *ngIf="bids?.get_bids_extra.length <= 0 && bids?.is_accepted_by_admin != 'true' && bids?.my_bid_expired == 'true' &&  bids?.status != 2 && bids?.is_bid_accepted_by_me != 'false'">
-							<div style="padding: 0;margin: 0;text-align: center;">
-								<img src="../../assets/STAMP EXPIRED.png" style="width: 100px;" />
-							</div>
+						
+						<ng-container *ngIf="bids?.get_bids.length > 0">
+							<ng-container *ngIf="bids?.get_bids[0].status == 0">
+								<ng-container *ngIf="bids?.get_bids_extra.length == 0 && bids?.is_accepted_by_admin != 'true' && bids?.my_bid_expired == 'true' &&  bids?.status != 2 && bids?.is_bid_accepted_by_me != 'false'  && bids?.status != 2 ">
+									<div style="padding: 0;margin: 0;text-align: center;">
+										<img src="../../assets/STAMP EXPIRED.png" style="width: 100px;" />
+									</div>
+								</ng-container>
+							</ng-container>								
 						</ng-container>
 
-						<ng-container *ngIf="bids?.is_expired == 'true' && bids?.get_bids_extra.length == 0 && bids?.is_bid_accepted_by_me != 'false' && bids?.is_bid_closed != 'true' && bids?.is_accepted_by_admin != 'true'  ">
-							<div style="padding: 0;margin: 0;text-align: center;">
-								<img src="../../assets/STAMP EXPIRED.png" style="width: 100px;" />
-							</div>
+
+
+						<ng-container *ngIf="bids?.get_bids.length == 0">						
+							<ng-container *ngIf="bids?.is_expired == 'true' && bids?.get_bids_extra.length == 0 && bids?.is_bid_accepted_by_me != 'false' && bids?.is_bid_closed != 'true' && bids?.is_accepted_by_admin != 'true' && bids?.status != 2 ">
+								<div style="padding: 0;margin: 0;text-align: center;">
+									<img src="../../assets/STAMP EXPIRED.png" style="width: 100px;" />
+								</div>
+							</ng-container>
 						</ng-container>
+
 
 						<!-- <ng-container *ngIf="bids?.is_expired == 'true' && bids?.get_bids_extra.length == 0 && bids?.is_bid_accepted_by_me != 'false' && bids?.is_bid_accepted_by_me != 'true' && bids?.is_bid_closed != 'true' && bids?.is_accepted_by_admin != 'true'  ">
 							<div style="padding: 0;margin: 0;text-align: center;">
@@ -247,8 +256,8 @@
 											[max]="lastDate"
 											(ionChange)="changed($event)"
 											aria-placeholder="here"
-											[(ngModel)]=mindate
 										></ion-datetime>
+										<!-- [(ngModel)]=mindate -->
 									</ion-item>
 									<ion-button class="green" style="color: #fff;border-radius: 12px;" (click)="saveUserBid(bids.id)">Save</ion-button>
 								</ion-row>

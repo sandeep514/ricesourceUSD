@@ -38,6 +38,7 @@ export class LoginPage implements OnInit {
 		}
 		this.restService.login(userDetails).then((res:any)=>{
 			this.componentService.loadingController.dismiss();
+			console.log(res)
 			if(res.status == 'success'){
 				let createdOn = res.user.created_at;
 				let year = new Date(createdOn).getFullYear().toString() ;
@@ -95,6 +96,7 @@ export class LoginPage implements OnInit {
 						}
 					}
 				}
+
 			}else{
 				this.componentService.presentToastWithOptions('Wrong User details!');
 				return false;

@@ -79,6 +79,7 @@ export class EditprofilePage implements OnInit {
 		}
 	}
 	home(){
+		localStorage.setItem('apptype' , 'OTHER')	
 		this.navCtrl.navigateForward('prices')
 	}
 	updateUserDetails(){
@@ -154,6 +155,7 @@ export class EditprofilePage implements OnInit {
 	}
 
 	gotohome(){
+		localStorage.setItem('apptype' , 'OTHER')	
 		this.navCtrl.navigateForward(['prices']);
 	}
 

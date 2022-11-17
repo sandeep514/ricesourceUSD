@@ -484,10 +484,11 @@ export class AppComponent implements OnInit {
 								console.log("jnk");
 								if( localStorage.getItem('isUserActivatedUSD') == '0' ){
 									if( localStorage.getItem('is_INR_active') == '1' ){
+										localStorage.setItem('apptype' , 'OTHER')
+
 										this.navCtrl.navigateRoot('prices');
 										console.log("kjhnijk");
 										console.log("apptype OTHER");
-										localStorage.setItem('apptype' , 'OTHER')
 
 									}else{
 										console.log("jnk,");

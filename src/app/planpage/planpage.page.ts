@@ -72,14 +72,17 @@ export class PlanpagePage implements OnInit {
 
 		console.log(localStorage.getItem('ExpiryUSDDate'))
 		console.log(localStorage.getItem('created_on'))
+		console.log(typeof localStorage.getItem('transaction_id'))
 
-		if( localStorage.getItem('transaction_id') == undefined || localStorage.getItem('transaction_id') == null  ){
+		if( localStorage.getItem('transaction_id') == undefined || localStorage.getItem('transaction_id') == null || localStorage.getItem('transaction_id') == 'null'  ){
 			this.showTrialPeriod = true
+			console.log('i am here');
 		}else{
 			this.showTrialPeriod = false
 		}
 		if( localStorage.getItem('ExpiryUSDDate') == localStorage.getItem('created_on') ){
 			this.showTrialPeriod = true
+			console.log('i am here');
 		}
 
 		

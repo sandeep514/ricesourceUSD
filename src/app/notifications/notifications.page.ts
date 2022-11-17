@@ -38,6 +38,7 @@ export class NotificationsPage implements OnInit {
 
 
 	gotoProfile() {
+		localStorage.setItem('apptype' , 'OTHER')
 		this.navCtrl.navigateForward('prices');
 	}
 	formatDate(date){

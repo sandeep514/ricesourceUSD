@@ -35,20 +35,11 @@
         <ion-row class="ion-padding rice-gallery">
             <ion-col>
                 <ion-slides pager="false" [options]="slideOpts">
-                    <ng-container *ngIf="currentPaidStatus == 'true'">
-                        <ion-slide *ngFor="let slider of ImageGallerySlider" (click)="showPaymentModel()">
-                            <div class="background-image">
-                                <img src="{{ imagePrefix }}uploads/gallery/{{ slider.attachment }}" alt="" style="width: 100%;height: 100%;">
-                            </div>
-                        </ion-slide>
-                    </ng-container>
-                    <ng-container *ngIf="currentPaidStatus == 'false'">
-                        <ion-slide *ngFor="let slider of ImageGallerySlider" (click)="getGalleryData(slider.id)">
-                            <div class="background-image">
-                                <img src="{{ imagePrefix }}uploads/gallery/{{ slider.attachment }}" alt="" style="width: 100%;height: 100%;">
-                            </div>
-                        </ion-slide>
-                    </ng-container>
+                    <ion-slide *ngFor="let slider of ImageGallerySlider" (click)="getGalleryData(slider.id)">
+                        <div class="background-image">
+                            <img src="{{ imagePrefix }}uploads/gallery/{{ slider.attachment }}" alt="" style="width: 100%;height: 100%;">
+                        </div>
+                    </ion-slide>
                 </ion-slides>
                 <ion-row>
                     <ion-col size="8" style="text-align: center;margin-top: 5px;text-align: right;">

@@ -63,11 +63,14 @@ export class HotdealsPage implements OnInit {
 					text: 'Yes',
 					role: 'confirm',
 					handler: () => {
+						this.apiService.presentLoader('Please wait');
 						this.apiService.acceptHotDeal({'user_id' : localStorage.getItem('id') , 'bid_id' : bidId }).then( (res:any) => {
 							this.getListBids();
 							console.log(res)
+							this.apiService.dismissLoader()
 						} , (err:any) => {
 							console.log(err)
+							this.apiService.dismissLoader()
 						});
 					},
 				},

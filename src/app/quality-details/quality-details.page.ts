@@ -81,9 +81,9 @@ export class QualityDetailsPage implements OnInit {
 			{ id: 3, name: 'Navlakhi' }
 		];
 
-		activRoute.params.subscribe((params:any) => {
+		this.activRoute.params.subscribe((params:any) => {
 			this.riceQualityId = params.riceQuality
-			this.getAllCountryPorts(params.riceQuality);
+			this.getAllCountryPorts();
 		});
 	}
 	
@@ -150,13 +150,35 @@ export class QualityDetailsPage implements OnInit {
 		return newname;
 	}
 
-	getAllCountryPorts(riceQualityId){
+	getAllCountryPorts(){
 		this.componentService.presentLoading().then(() => {
-			this.apiser.getAllPorts(riceQualityId).then( (res:any) => {
+			this.apiser.getAllPorts(this.riceQualityId).then( (res:any) => {
+				this.packing = res.packing;
+
+				this.FOB = res.FOB;
+				this.fobminData = res.FOB.fobmin;
+				this.fobmaxData = res.FOB.fobmax;
+				this.ports = res.ports;
+				this.regions = (Object.keys(res.ports)).sort();
+
+				this.portsArray = Object.values(res.ports);
+				this.riceQuality = res.riceQuality;
+				this.fiftykgMaster = res.fiftykgMaster;
+				this.defalutPort = res.defalutPort; 
+				
 				this.selectedUserCountry = res.defalutPortDetail[0].country;
 				this.selectedUserRegion = res.defalutPortDetail[0].region;
 
+				
+				console.log(this.defalutPort);
+
+				this.defalutPortPrice = parseFloat(res.defalutPortPrice);
+
+				this.CIFminData = (parseFloat(res.FOB.fobmin) + (this.defalutPortPrice));
+				this.CIFmaxData = (parseFloat(res.FOB.fobmax) + (this.defalutPortPrice));
+
 				this.selectedPackage = res.fiftykgMaster.bag_size+' '+res.fiftykgMaster.bag_type;
+
 				Highcharts.stockChart('highcharts',{
 					chart: {
 						alignTicks: false,
@@ -249,25 +271,11 @@ export class QualityDetailsPage implements OnInit {
 					}
 					}]
 				});
+				
 				console.log("kjnk");
 				
 				this.componentService.loadingController.dismiss();
-				this.packing = res.packing;
-				console.log(res.packing)
-				this.FOB = res.FOB;
-				this.fobminData = res.FOB.fobmin;
-				this.fobmaxData = res.FOB.fobmax;
-				this.ports = res.ports;
-				this.regions = (Object.keys(res.ports)).sort();
-				console.log(this.regions);
-				this.portsArray = Object.values(res.ports);
-				this.riceQuality = res.riceQuality;
-				this.fiftykgMaster = res.fiftykgMaster;
-				this.defalutPort = res.defalutPort; 
-				this.defalutPortPrice = parseFloat(res.defalutPortPrice);
-
-				this.CIFminData = (parseFloat(res.FOB.fobmin) + (this.defalutPortPrice));
-				this.CIFmaxData = (parseFloat(res.FOB.fobmax) + (this.defalutPortPrice));
+				
 
 			} , (err:any) => {
 				this.componentService.loadingController.dismiss();
@@ -354,5 +362,11 @@ export class QualityDetailsPage implements OnInit {
 
 	closeModal(){
 		this.navCtrl.pop();
+
+		if( localStorage.getItem('apptype') == 'OTHER' ){
+			this.navCtrl.navigateForward(['prices']);
+		}else{
+			this.navCtrl.navigateForward(['priceusd']);
+		}
 	}
 }

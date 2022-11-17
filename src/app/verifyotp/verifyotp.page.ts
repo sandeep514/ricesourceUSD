@@ -37,9 +37,11 @@ export class VerifyotpPage implements OnInit {
 					if( localStorage.getItem('isExpiryUSD') == 'true' || localStorage.getItem('isExpired') == 'true' ){
 						this.navCtrl.navigateForward(['planpage']);
 					}else{
+						localStorage.setItem('apptype' , 'USD')	
 						this.navCtrl.navigateForward(['priceusd']);
 					}
 				}else{
+					localStorage.setItem('apptype' , 'OTHER')
 					this.navCtrl.navigateRoot(['prices']);
 				}
 		} ,(err:any) => {
