@@ -286,6 +286,7 @@ export class AppComponent implements OnInit {
 	}
 
 	async presentModel(){
+		console.log("Hey i am here");
 		const model = await this.modalCtrl.create({
 			component: PlanpagePage,
 			animated: true
@@ -446,6 +447,7 @@ export class AppComponent implements OnInit {
 
 							if( isExpiredUsd == 'true' ){
 								if( localStorage.getItem('is_INR_active') == '0' ){
+									console.log("hey i am here");
 									this.navCtrl.navigateRoot(['planpage']);
 								}else{
 									this.platform.ready().then(async () => {
@@ -492,18 +494,20 @@ export class AppComponent implements OnInit {
 
 									}else{
 										console.log("jnk,");
+										console.log("hey i am here");
 										this.navCtrl.navigateRoot('planpage');
 									}
 								}else{
 									if( localStorage.getItem('status') != '0'){
 										if( localStorage.getItem('is_INR_active') == '0' && localStorage.getItem('transaction_id') == 'null'){
+											console.log("hey i am here");
 											this.navCtrl.navigateRoot('planpage');
 										}else{
 											this.navCtrl.navigateForward(['priceusd']);
 											console.log("apptype USD");
 											localStorage.setItem('apptype' , 'USD')
 										}
-									}else{
+									}else{ 
 										this.navCtrl.navigateForward(['verifyotp']);
 									}
 								}
@@ -566,6 +570,7 @@ export class AppComponent implements OnInit {
 
 							if( localStorage.getItem('is_INR_active') == '0' && localStorage.getItem('isUserActivatedUSD') == '1' && localStorage.getItem('isExpired') != 'true' ){
 								if( localStorage.getItem('is_INR_active') == '0' && localStorage.getItem('transaction_id') == null){
+									console.log("hey i am here");
 									this.navCtrl.navigateRoot('planpage');
 								}else{
 									this.navCtrl.navigateForward(['priceusd']);
@@ -575,6 +580,7 @@ export class AppComponent implements OnInit {
 							}
 
 							if( localStorage.getItem('is_INR_active') == '0' && localStorage.getItem('isUserActivatedUSD') == '1' && localStorage.getItem('isExpired') != 'false' ){
+								console.log("hey i am here");
 								this.navCtrl.navigateForward(['planpage']);
 							}
 
@@ -584,6 +590,7 @@ export class AppComponent implements OnInit {
 			}else{
 				setTimeout(() => {
 					splash.dismiss();
+					// this.navCtrl.navigateForward(['forgotpassword']);
 					this.navCtrl.navigateForward(['pre-register']);
 				}, 4000);
 			}
@@ -791,6 +798,7 @@ export class AppComponent implements OnInit {
 		
 		console.log('i am here')
 		console.log("jnk,s");
+		console.log("hey i am here");
 		// this.navCtrl.navigateForward(['planpage'])
 		console.log("apptype USD");
 		localStorage.setItem('apptype' , 'USD')

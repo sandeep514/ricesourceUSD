@@ -9,9 +9,7 @@ import { RestService } from 'src/app/rest.service';
 })
 export class ForgotpasswordPage implements OnInit {
 	number:any;
-
 	constructor(public navCtrl:NavController, public restAPI: RestService) { }
-
 	ngOnInit() {
 
 	}
@@ -27,7 +25,9 @@ export class ForgotpasswordPage implements OnInit {
 			this.restAPI.presentToast('Mobile number required');
 		}
 	}
+	
 	verifyForgotPassword(){
 		this.navCtrl.navigateForward(['otp']);
 	}
+
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,  } from '@angular/common/http';
+import { HttpClient, HttpHeaders,  } from '@angular/common/http';
 import { ModalController, LoadingController, ToastController } from '@ionic/angular';
 import { ContactmodalPage } from './contactmodal/contactmodal.page';
 
@@ -84,6 +84,16 @@ export class RestService {
 		let token = localStorage.getItem('token');
 		return new Promise((resolve,reject)=>{
 			this.http.post(this.APIURL+'sample/save?api_token='+token,JSON.stringify(formData)).subscribe((res)=>{
+				resolve(res);
+			},err=>{
+				reject(err);
+			});
+		});
+	}
+	getCustomerStripe(postedData){
+		let token = localStorage.getItem('token');
+		return new Promise((resolve,reject)=>{
+			this.http.post(this.APIURL+'check/customer?api_token='+token,JSON.stringify(postedData)).subscribe((res)=>{
 				resolve(res);
 			},err=>{
 				reject(err);
@@ -217,6 +227,26 @@ export class RestService {
 			this.http.get(this.APIURL+'check/user/plan/'+localStorage.getItem('id')).subscribe((res:any) => {
 				resolve(res.data);
 			} , (err:any) => {
+				reject(err);
+			});
+		});
+	}
+
+	getOrderIdFromRazorpay(jsonData){
+		return new Promise((resolve,reject)=>{
+			this.http.post(this.APIURL+'get/orderid/razorpay',JSON.stringify(jsonData)).subscribe((res)=>{
+				resolve(res);
+			},err=>{
+				reject(err);
+			});
+		});
+	}
+	
+	chargeStripe(jsonData){
+		return new Promise((resolve,reject)=>{
+			this.http.post(this.APIURL+'stripe-payment',JSON.stringify(jsonData)).subscribe((res)=>{
+				resolve(res);
+			},err=>{
 				reject(err);
 			});
 		});

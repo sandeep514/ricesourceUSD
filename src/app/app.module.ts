@@ -28,6 +28,7 @@ import { IonicSelectableModule } from 'ionic-selectable';
 import { PayPal } from '@ionic-native/paypal/ngx';
 import { UsdconvertmodalPageModule } from './usdconvertmodal/usdconvertmodal.module';
 import { TrialperiodPageModule } from './trialperiod/trialperiod.module';
+import { Stripe } from '@ionic-native/stripe/ngx';
 
 @NgModule({
   	declarations: [
@@ -68,6 +69,7 @@ import { TrialperiodPageModule } from './trialperiod/trialperiod.module';
 		Camera,
 		FirebaseMessaging,
 		PayPal,
+		Stripe,
 		VersionmodalPage,
     	{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     	{ provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptorService, multi: true }

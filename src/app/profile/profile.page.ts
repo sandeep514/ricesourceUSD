@@ -124,4 +124,8 @@ export class ProfilePage implements OnInit {
 			})
 		}
 	}
+	openModel(){
+		this.menuCtrl.enable(true);
+		this.menuCtrl.open();
+	}
 }

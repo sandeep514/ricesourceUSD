@@ -88,7 +88,14 @@ export class LoginPage implements OnInit {
 							if( localStorage.getItem('isExpired') == 'false' ){
 								this.navCtrl.navigateRoot('priceusd',{animationDirection: 'forward'});
 							}else{
-								this.navCtrl.navigateRoot('planpage',{animationDirection: 'forward'});
+								console.log("jjnjkn");
+								if( localStorage.getItem('is_INR_active') != '1' && localStorage.getItem('isExpired') == 'true' && localStorage.getItem('transaction_id') != null ){
+									this.navCtrl.navigateRoot('planpage',{animationDirection: 'forward'});
+								}else{
+									localStorage.setItem('apptype' , 'OTHER');
+									this.navCtrl.navigateRoot('prices',{animationDirection: 'forward'});
+								}
+								// this.navCtrl.navigateRoot('planpage',{animationDirection: 'forward'});
 							}
 						}else{
 							localStorage.setItem('apptype' , 'OTHER');

@@ -74,10 +74,16 @@ export class PriceusdPage implements OnInit {
 
 		// this.componentService.compareTwoDates( localStorage.getItem('expired_on') );
 		if( localStorage.getItem('isUserActivatedUSD') == '0' ){
+			console.log("iukhjik");
 			this.navCtrl.navigateRoot('planpage')
 		}
 		if( localStorage.getItem('isExpired') == 'true' ){
-			this.navCtrl.navigateRoot( 'planpage', { animationDirection : 'forward' } );
+			if( localStorage.getItem('is_INR_active') == '1' ){
+				this.navCtrl.navigateRoot( 'prices', { animationDirection : 'forward' } );
+			}else{
+				console.log("iukhjik");
+				this.navCtrl.navigateRoot( 'planpage', { animationDirection : 'forward' } );	
+			}
 		}
 
 		var today = new Date();
@@ -720,6 +726,7 @@ export class PriceusdPage implements OnInit {
 		}
 	}
 	gotoPlan(){
+		console.log("iukhjik");
 		this.navCtrl.navigateForward('planpage');
 	}
 }

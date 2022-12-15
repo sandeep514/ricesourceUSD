@@ -1,0 +1,42 @@
+<ion-content id="content" [scrollEvents]="true" class="lightgreen">
+	<div class="header-data green"  style="height: auto;">
+		  <div style="min-height: 80px">
+			  <ion-row >
+				  <ion-col align="center">
+					  <div class="user-profile-icon" (click)="gotoProfile()">
+						  <span>{{ userFirstName | uppercase }}</span>
+					  </div>
+				  </ion-col>
+				  
+				  <ion-col align="right" class="notification" >
+					  <ion-icon name="notifications" (click)="getNotications()" style="font-size: 30px;"></ion-icon>
+				  </ion-col>
+				  
+			  </ion-row>
+		  </div>
+	</div>
+	<ion-row class="ion-padding">
+		<h1 style="text-align: center;width: 100%"><img src="../../assets/Eo_circle_green_checkmark.svg" style="width: 200px" alt="thanks" /></h1>
+		<section class="login-main-wrapper">
+			<div class="main-container">
+				<div class="login-process">
+					<div class="login-main-container">
+						<div class="thankyou-wrapper">
+							<p style="font-size: 20px;">Your subscription has been confirmed and is valid until {{ expired_on }} </p>
+							<div>
+								<p (click)="gotoHome()" style="background: #43a047;color: white;border-radius: 20px;font-size: 18px;padding: 10px 0px;">Back to Home</p>
+							</div>
+							<div class="clr"></div>
+						</div>
+						<div class="clr"></div>
+					</div>
+				</div>
+				<div class="clr"></div>
+			</div>
+		</section>
+	
+	  </ion-row>
+
+	
+	  <app-menu></app-menu>
+  </ion-content>

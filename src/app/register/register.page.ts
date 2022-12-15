@@ -206,7 +206,7 @@ export class RegisterPage implements OnInit {
 
 					}
 				}else{
-					if( this.username != '' && this.email != '' && this.mobile != '' && this.password != '' && this.confpassword != ''){
+					if( this.username != '' && this.email != '' && this.mobile != '' && this.password != '' && this.confpassword != '' && this.username != undefined && this.email != undefined && this.mobile != undefined && this.password != undefined && this.confpassword != undefined){
 						if( this.isValidEmail(this.email) == true ){
 
 							if(this.mobile.toString().length == 10){
@@ -282,7 +282,7 @@ export class RegisterPage implements OnInit {
 
 							}
 						}else{
-							this.api.presentToast('Email is invalid.');
+							this.api.presentToast('Email is invalid or empty.');
 										this.api.loaderCtrl.dismiss();
 
 						}

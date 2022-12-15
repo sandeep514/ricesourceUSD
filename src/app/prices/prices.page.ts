@@ -72,6 +72,7 @@ export class PricesPage implements OnInit {
 
 	constructor(public platform: Platform,public restService: RestService,public componentService: ComponentsService,public modalController: ModalController,public navCtrl: NavController,public route: Router ,public versionMdel : VersionmodalPage) {
 		if( localStorage.getItem('is_INR_active') == '0') {
+			console.log("jknk");
 			this.navCtrl.navigateRoot(['planpage']);
 		}
 		this.isNotifAvailable = localStorage.getItem('isNewNotification')
@@ -79,6 +80,7 @@ export class PricesPage implements OnInit {
 		// this.componentService.compareTwoDates( localStorage.getItem('expired_on') );
 
 		// if( localStorage.getItem('isExpired') == 'true' ){
+			console.log("jknk");
 		// 	this.navCtrl.navigateRoot( 'planpage', { animationDirection : 'forward' } );
 		// }
 
@@ -308,6 +310,7 @@ export class PricesPage implements OnInit {
 
 	ionViewDidEnter() {
 		if( localStorage.getItem('is_INR_active') == '0') {
+			console.log("jknk");
 			this.navCtrl.navigateRoot(['planpage']);
 		}
 		if (this.route.url == "/prices") {
@@ -736,6 +739,7 @@ export class PricesPage implements OnInit {
 		console.log("kjnk");
 		if( isUSDActive != '0' ){
 			if( isUserExpiredStatus == 'true' ){
+				console.log("jknk");
 				this.navCtrl.navigateForward(['planpage']);
 			}else{
 				console.log("mnk n ");
@@ -743,6 +747,7 @@ export class PricesPage implements OnInit {
 				this.navCtrl.navigateForward(['priceusd']);
 			}
 		}else{
+			console.log("jknk");
 			this.navCtrl.navigateForward(['planpage']);
 		}
 

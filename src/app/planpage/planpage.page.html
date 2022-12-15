@@ -1,6 +1,12 @@
 <ion-header>
 	<ion-toolbar>
+		<ion-buttons slot="start" style="color: #fff " (click)='openModel()'>
+			<img src="../../assets/menu/whitemenu.png" style="width: 25px;margin-left: 10px;" />
+			  <!-- Menu -->
+		</ion-buttons>
+
 		<ion-title>Available Plans</ion-title>
+
 		<ion-buttons slot="end" (click)="closeme()">
 			<a href="javascript:void(0);" style="color:black;text-decoration: none;padding-right: 10px;color: #FFFBD6 ;">Back</a>
 		</ion-buttons>
@@ -100,15 +106,11 @@
 						<ion-slide style="width: 260px;margin-right: 1px;height: 485px;">
 							<img src="../../assets/img/demo/otherservices.png" style="width: 80%"/>
 						</ion-slide>
-						
-						
-						
-						
 					</ion-slides>
 				</ng-container>
 				<!-- <p class="font-darkgreen" style="font-size: 18px;text-align: center;padding-bottom: 0;margin-bottom: 10px;padding: 0 10px; ">This is a paid Service, But Relax you can access this by subscribing Following Plan.</p> -->
 
-				<ion-row style="width: 100%;text-align: center;">
+				<ion-row style="width: 100%;text-align: center;" *ngIf="showTrialPeriod == true">
 					<ion-col>
 						Use 7 days free trial period <button style="background: #92b245;padding: 10px 12px;border-radius: 20px;font-size: 17px;width: auto;text-transform: capitalize;" (click)="startTrial()">Activate Now</button>
 					</ion-col>
@@ -171,6 +173,7 @@
 			</ion-row>
 			
 			<p style="text-align: center; font-size: 12px; padding: 0; margin: 0; color: #92b243; font-weight: bold;">*Inclusive of GST</p>
+			<!-- <button (click)="checkIfPaypal()">pay with paypal</button> -->
 
 			<div>
 				<ul style="list-style: none;" *ngIf="isUSDRoleAvailable != true" >
@@ -187,6 +190,34 @@
 				<img src="../../assets/rzp-logo-positive-padding.png" style="width: 50%" />
 			</ion-button>
 			<!-- <ion-button class="buynow" fill="outline" (click)="buynow( plan )" style="width: 40%;float: left;"><img src="../../assets/rzp-logo-positive-padding.png" /></ion-button> -->
+			<ng-container *ngIf="isUSDRoleAvailable == true">
+				<ion-button #stripeButton style="width: 1px;padding: 0;margin: 0px;height: 0px;"></ion-button>
+
+				<ion-card class="welcome-card">
+					<ion-img src="../../assets/png-clipart-earring-necklace-gemstone-logo-glass-visa-logo-gemstone-glass-removebg-preview.png"></ion-img>
+					<ion-card-header>
+					  <ion-card-subtitle>SNTC</ion-card-subtitle>
+					<ion-card-title></ion-card-title>
+					  <ion-row>
+						<ion-col>Total Payment</ion-col>
+						<ion-col> {{currencyIcon}}{{ selectedPlanDiscountedAmountUSD }} </ion-col>
+					  </ion-row>
+					</ion-card-header>
+					<ion-card-content>
+					  <form action="/" method="post" id="payment-form">
+						<div class="form-row">
+						  <div id="card-element"> <!-- a Stripe Element will be inserted here. --> </div>
+						  <!-- Used to display Element errors -->
+						  
+						</div>
+						<ion-button type="submit" (click)="makepaymentButton()" color="success" expand="full">Make Payment</ion-button>
+						<div id="card-errors" role="alert" style="color: red;"></div>
+					  </form>
+					</ion-card-content>
+				  </ion-card>
+	
+			</ng-container>
+			
 
 			<p style="font-size: 0px">{{ isUSDRoleAvailable }}</p>
 			<ng-container *ngIf="isUSDRoleAvailable == true" >

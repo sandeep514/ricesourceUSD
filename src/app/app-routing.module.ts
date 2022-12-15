@@ -187,6 +187,18 @@ const routes: Routes = [
   {
     path: 'disclaimer',
     loadChildren: () => import('./disclaimer/disclaimer.module').then( m => m.DisclaimerPageModule)
+  },
+  {
+    path: 'payment-success',
+    loadChildren: () => import('./payment-success/payment-success.module').then( m => m.PaymentSuccessPageModule)
+  },
+  {
+    path: 'cancel-success',
+    loadChildren: () => import('./cancel-success/cancel-success.module').then( m => m.CancelSuccessPageModule)
+  },
+  {
+    path: 'payment-cancel',
+    loadChildren: () => import('./payment-cancel/payment-cancel.module').then( m => m.PaymentCancelPageModule)
   }
 
 
