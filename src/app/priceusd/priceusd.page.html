@@ -1,13 +1,14 @@
 <ion-content id="content" [scrollEvents]="true" (ionScroll)="logScrolling($event)" class="lightgreen">
-  <div class="header-data green"  style="height: auto;">
+  <div >
+    <div class="header-data green"  style="height: auto;">
         <div style="min-height: 80px">
             <ion-row >
-                <ion-col size="3" align="center">
+                <ion-col size="4" align="center">
                     <div class="user-profile-icon" (click)="gotoProfile()">
                         <span>{{ userFirstName | uppercase }}</span>
                     </div>
                 </ion-col>
-                <ion-col size="6" align="center" class="font-lightgreen">
+                <ion-col size="4" align="center" class="font-lightgreen">
                     <!-- <h3>Dashboard</h3> -->
                     <div *ngIf="restDays > 0">
                         <p *ngIf="restDays <= 10">
@@ -19,7 +20,7 @@
                     </p> -->
                 </ion-col>
                 
-                <ion-col size="3" align="right" class="notification" >
+                <ion-col size="4" align="right" class="notification" >
                     <ion-icon name="refresh-outline" (click)="refresh()" style="font-size: 30px;float: left"></ion-icon>
                     <div>
                         <div *ngIf="isNotifAvailable == 'true' " style="height: 10px;width: 10px;background-color: red;position: absolute;right: 20px;top: 20px;z-index: 99999;border-radius: 100px;"></div>
@@ -65,224 +66,225 @@
                 </ion-row>
             </ion-col>
         </ion-row>
-  </div>
+    </div>
 
-  <div class="otherbackground">
-        <div *ngIf="lastupdatedDate != null" style="text-align: right;">
-            <span style="margin-right: 20px;font-size: 11px;">Last updated at: {{ lastupdatedDate }} (IST)</span>
-        </div>
-                
-        <ion-row class="ion-padding title-padding ">
-            <ion-col class="title" size="2.2">
-                <img style="width: 40px;float: left" src="./../../assets/img/1350px-Flag_of_India.svg.webp" alt="" (click)="scroll('left','table-responsive-1')" class="righticon">
-            </ion-col>
-
-            <ion-col class="title" size="9.6">
-                <h2 class="" style="font-size: 17px; padding: 3px 0px; font-weight: bold">
-                    Indian Basmati Live Price
-                </h2>
-                <ion-row>
-                    <p style="padding: 0;margin:0;width: 100%;">(All Prices are in USD PMT)</p>
-                </ion-row>
-            </ion-col>
-            
-            <!-- <ion-col class="title" size="2">
-                <img style="width: 40px;float: left;" src="./../../assets/img/1350px-Flag_of_India.svg.webp" alt="" (click)="scroll('left','table-responsive-1')" class="righticon">
-            </ion-col> -->
-        </ion-row>
-      
-      
-      <ng-container *ngIf="listBasmatiStates == null">
-          <div class="center">
-              <p>No item found</p>
-          </div>
-      </ng-container>
-      
-      <ng-container *ngIf="listBasmatiStates != null" style="padding-bottom: 20px;margin-bottom: 30px;">
-          <ion-row class="ion-padding table-row padd-5" [ngClass]="(height==true)?'height200':'heightAuto'">
-              <ion-col class="price-table dashboard lightgreen">
-                  <table class="table" >
-                      <thead>
-                          <tr>
-							<th class="sticky-col bg-lightgreen first-col left pl-10" style="width: 45%" >
-								<ng-container   >
-									<h6 class="black ricetype" style="font-size: 13px;">Quality</h6>
-								</ng-container>
-							</th>
-							<th class="sticky-col bg-lightgreen first-col left pl-10" style="width: 60%" >
-								<ng-container  >
-									<h4 class="black ricetype" style="font-size: 13px;">Packing</h4>
-								</ng-container>
-							</th>
-							
-						  	<th class="font-17 type-columns black">
-                                  <ul class="table-filter">
-                                      <li class="filter-content" style="font-size: 13px;">
-                                          FOB Mundra
-                                      </li>
-                                      <!-- <li class="filter">
-                                          <ion-icon name="ellipsis-vertical-outline" (click)="openPopup(convertToLowerCase(basmatiPrice.key))"></ion-icon>
-                                          <div class="popover" [id]="convertToLowerCase(basmatiPrice.key)">
-                                              <ul>
-                                                  <li>
-                                                      <label for="price"> Last price
-                                                      <input id="price" class="priceRadio" type="radio" name="radio" checked="checked" (click)="changeState(convertToLowerCase(basmatiPrice.key)+'_price')"></label>															
-                                                  </li>
-                                                  <li>
-                                                      <label for="percentage"> Percentage 
-                                                      <input id="percentage" type="radio" name="radio" (click)="changeState(convertToLowerCase(basmatiPrice.key)+'_percentage')"></label>
-                                                  </li>
-                                              </ul>
-                                          </div>
-                                      </li> -->
-                                  </ul>
-                              </th>
-							  <th class="sticky-col bg-lightgreen first-col left pl-10" style="width: 60%" >
-								<ng-container  >
-									<h4 class="black ricetype" style="font-size: 13px;text-align: center;">CIF <br> {{defalutPort}} </h4>
-								</ng-container>
-							</th>
-                          </tr>
-                          <div class="popoverley" (click)="removePopover()"></div>
-                      </thead>
-                      <!-- <button id="getCurrentStatus" style="height: 1px;width: 1px;color: red;background: transparent;padding: 0;margin: 0;" (click)="getCurrentPaidStatus()" ></button> -->
-                      <tbody >
-                        <tr *ngFor="let basmati of listBasmatiStates" (click)="openQuality(basmati?.rice)">
-                            <td class="sticky-col bg-transparent first-col left pl-10" >
-                                <p style="font-size: 19px; padding: 0px;margin: 0px;font-weight: bold;">{{basmati?.get_rice_quality.quality}}</p>
-                                <p style="padding: 0px;margin: 0px;font-size: 12px;">{{basmati?.get_rice_quality.quality_name}}</p>
-                            </td>
-
-                            <td class="sticky-col bg-transparent first-col left pl-10" style="font-size: 13px !important;font-weight: bold;"  >
-                                50kg PP <ion-icon name="caret-down-outline"></ion-icon>
-                            </td>
-                            <td class="type-columns">
-                                <!-- <div class="priceVal" style="font-size: 13px !important;">${{ ((riceVal.value[latestDateBasmati].min_price) / 74).toFixed(2) }} - {{ ((riceVal.value[latestDateBasmati].max_price) / 74).toFixed(2) }} </div>  -->
-                                <div class="priceVal" style="font-size: 13px !important; font-weight: bold;" [ngClass]="basmati?.color_status == 3 ? 'black-price' : ( basmati?.color_status == 2 ) ? 'red-price' :  (basmati?.color_status == 1)? 'green-price': '' ">${{ basmati?.fobmin }}-{{ basmati?.fobmax }}</div> 
-                            </td>
-
-                            <td class="type-columns">
-                                <!-- <div class="priceVal" style="font-size: 13px !important; font-weight: bold;" [ngClass]="basmati?.color_status == 3 ? 'black-price' : ( basmati?.color_status == 2 ) ? 'red-price' :  'green-price' ">${{ ((riceVal.value[latestDateBasmati].min_price) / 74).toFixed(2) }} - {{ ((riceVal.value[latestDateBasmati].max_price) / 74).toFixed(2) }} </div>  -->
-                                <div class="priceVal" style="font-size: 13px !important; font-weight: bold;" [ngClass]="basmati?.color_status == 3 ? 'black-price' : ( basmati?.color_status == 2 ) ? 'red-price' :  (basmati?.color_status == 1)? 'green-price': '' ">${{ ((basmati?.fobmin) + defaultCIFPrice) }}-{{ (basmati?.fobmax + defaultCIFPrice) }} <ion-icon name="caret-down-outline"></ion-icon></div>
-                            </td>
-                        </tr>
-                      </tbody>
-                  </table>
-      
-              </ion-col>
-          </ion-row>
-          <ion-row style="justify-content: center;margin: 0 auto;width: 100%;z-index: 99999999;">
-              <button (click)="changeHeight()" style="font-size: 35px;padding: 0;margin: 0;border-radius: 0px 0px 10px 10px;height: 35px;width: 100px;background-color: #92b243;">
-                    <ion-icon *ngIf="(height == true)" name="chevron-down-outline" style="background: #92b243;overflow: hidden;border-radius: 100px;font-size: 30px;padding: 0;margin: 0;border-radius: 100px;height: 35px;"></ion-icon>
-                    <ion-icon *ngIf="(height != true)" name="chevron-up-outline" style="background: #92b243;overflow: hidden;border-radius: 100px;font-size: 30px;padding: 0;margin: 0;border-radius: 100px;height: 35px;"></ion-icon> 
-              </button>
-          </ion-row>
-      </ng-container>
-
-        <div style="margin-top: 20px">
-            <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-                <ion-refresher-content>
-                </ion-refresher-content>
-              </ion-refresher>
-            <!-- non basmati -->
+    <div class="otherbackground">
+            <div *ngIf="lastupdatedDate != null" style="text-align: right;">
+                <span style="margin-right: 20px;font-size: 11px;">Last updated at: {{ lastupdatedDate }} (IST)</span>
+            </div>
+                    
             <ion-row class="ion-padding title-padding ">
                 <ion-col class="title" size="2.2">
                     <img style="width: 40px;float: left" src="./../../assets/img/1350px-Flag_of_India.svg.webp" alt="" (click)="scroll('left','table-responsive-1')" class="righticon">
                 </ion-col>
+
                 <ion-col class="title" size="9.6">
-                        <h2 class="" style="font-size: 17px;float: left;padding: 3px 7px;font-weight: bold">
-                            Indian Non-Basmati Live Price
-                        </h2>
+                    <h2 class="" style="font-size: 17px; padding: 3px 0px; font-weight: bold">
+                        Indian Basmati Live Price
+                    </h2>
+                    <ion-row>
+                        <p style="padding: 0;margin:0;width: 100%;">(All Prices are in USD PMT)</p>
+                    </ion-row>
                 </ion-col>
+                
                 <!-- <ion-col class="title" size="2">
                     <img style="width: 40px;float: left;" src="./../../assets/img/1350px-Flag_of_India.svg.webp" alt="" (click)="scroll('left','table-responsive-1')" class="righticon">
                 </ion-col> -->
             </ion-row>
-            
-            <ng-container *ngIf="listNONBasmatiStates == null">
-                <div class="center">
-                    <p>No item found</p>
-                </div>
-            </ng-container>
-            
-            <ng-container *ngIf="listNONBasmatiStates != null">
-                <ion-row class="ion-padding table-row padd-5">
-                    <ion-col class="price-table dashboard lightgreen">
-                        <table class="table" >
-                            <thead>
-                                <tr>
+        
+        
+        <ng-container *ngIf="listBasmatiStates == null">
+            <div class="center">
+                <p>No item found</p>
+            </div>
+        </ng-container>
+        
+        <ng-container *ngIf="listBasmatiStates != null" style="padding-bottom: 20px;margin-bottom: 30px;width: 100%;">
+            <ion-row class="ion-padding table-row padd-5" [ngClass]="(height==true)?'height200':'heightAuto'">
+                <ion-col class="price-table dashboard lightgreen">
+                    <table class="table" >
+                        <thead>
+                            <tr>
                                 <th class="sticky-col bg-lightgreen first-col left pl-10" style="width: 45%" >
                                     <ng-container   >
-                                        <h6 class="black ricetype" style="font-size: 13px;">Quality</h6>
+                                        <h6 class="black ricetype" style="font-size: 12px;">Quality</h6>
                                     </ng-container>
                                 </th>
                                 <th class="sticky-col bg-lightgreen first-col left pl-10" style="width: 60%" >
                                     <ng-container  >
-                                        <h4 class="black ricetype" style="font-size: 13px;">Packing</h4>
+                                        <h4 class="black ricetype" style="font-size: 12px;">Packing</h4>
                                     </ng-container>
                                 </th>
                                 
-                                    <th class="font-17 type-columns black">
-                                        <ul class="table-filter">
-                                            <li class="filter-content" style="font-size: 13px;">
-                                                FOB Mundra
-                                            </li>
-                                            <!-- <li class="filter">
-                                                <ion-icon name="ellipsis-vertical-outline" (click)="openPopup(convertToLowerCase(basmatiPrice.key))"></ion-icon>
-                                                <div class="popover" [id]="convertToLowerCase(basmatiPrice.key)">
-                                                    <ul>
-                                                        <li>
-                                                            <label for="price"> Last price
-                                                            <input id="price" class="priceRadio" type="radio" name="radio" checked="checked" (click)="changeState(convertToLowerCase(basmatiPrice.key)+'_price')"></label>															
-                                                        </li>
-                                                        <li>
-                                                            <label for="percentage"> Percentage 
-                                                            <input id="percentage" type="radio" name="radio" (click)="changeState(convertToLowerCase(basmatiPrice.key)+'_percentage')"></label>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </li> -->
-                                        </ul>
-                                    </th>
-                                    <th class="sticky-col bg-lightgreen first-col left pl-10" style="width: 60%" >
+                                <th class="font-17 type-columns black">
+                                    <ul class="table-filter">
+                                        <li class="filter-content" style="font-size: 12px;">
+                                            FOB Mundra
+                                        </li>
+                                        <!-- <li class="filter">
+                                            <ion-icon name="ellipsis-vertical-outline" (click)="openPopup(convertToLowerCase(basmatiPrice.key))"></ion-icon>
+                                            <div class="popover" [id]="convertToLowerCase(basmatiPrice.key)">
+                                                <ul>
+                                                    <li>
+                                                        <label for="price"> Last price
+                                                        <input id="price" class="priceRadio" type="radio" name="radio" checked="checked" (click)="changeState(convertToLowerCase(basmatiPrice.key)+'_price')"></label>															
+                                                    </li>
+                                                    <li>
+                                                        <label for="percentage"> Percentage 
+                                                        <input id="percentage" type="radio" name="radio" (click)="changeState(convertToLowerCase(basmatiPrice.key)+'_percentage')"></label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li> -->
+                                    </ul>
+                                </th>
+                                <th class="sticky-col bg-lightgreen first-col left pl-10" style="width: 60%" >
                                     <ng-container  >
-                                        <h4 class="black ricetype" style="font-size: 13px;text-align: center;">CIF <br> {{defalutPort}} </h4>
+                                        <h4 class="black ricetype" style="font-size: 12px;text-align: center;">CIF <br> {{defalutPort}} </h4>
                                     </ng-container>
                                 </th>
-                                </tr>
-                                <div class="popoverley" (click)="removePopover()"></div>
-                            </thead>
-                            <!-- <button id="getCurrentStatus" style="height: 1px;width: 1px;color: red;background: transparent;padding: 0;margin: 0;" (click)="getCurrentPaidStatus()" ></button> -->
-                            <tbody >
-                            <tr *ngFor="let nonbasmati of listNONBasmatiStates"  (click)="openQuality(nonbasmati?.rice)">
-                                <td class="sticky-col bg-transparent first-col left pl-10"  >
-                                    <p style="font-size: 19px; padding: 0px;margin: 0px;font-weight: bold;">{{nonbasmati?.get_rice_quality.quality}}</p>
-                                    <p style="padding: 0px;margin: 0px;    font-size: 12px;">{{nonbasmati?.get_rice_quality.quality_name}}</p>
+                            </tr>
+                            <div class="popoverley" (click)="removePopover()"></div>
+                        </thead>
+                        <!-- <button id="getCurrentStatus" style="height: 1px;width: 1px;color: red;background: transparent;padding: 0;margin: 0;" (click)="getCurrentPaidStatus()" ></button> -->
+                        <tbody class="priceusd">
+                            <tr *ngFor="let basmati of listBasmatiStates" (click)="openQuality(basmati?.rice)">
+                                <td class="sticky-col bg-transparent first-col left pl-10" >
+                                    <p style="font-size: 17px; padding: 0px;margin: 0px;font-weight: bold;">{{basmati?.get_rice_quality.quality}}</p>
+                                    <p style="padding: 0px;margin: 0px;font-size: 12px;">{{basmati?.get_rice_quality.quality_name}}</p>
                                 </td>
 
-                                <td class="sticky-col bg-transparent first-col left pl-10" style="font-size: 13px !important;font-weight: bold;"  >
+                                <td class="sticky-col bg-transparent first-col left pl-10" style="font-size: 12px !important;font-weight: bold;"  >
                                     50kg PP <ion-icon name="caret-down-outline"></ion-icon>
                                 </td>
                                 <td class="type-columns">
-                                    <!-- <div class="priceVal" style="font-size: 13px !important;">${{ ((riceVal.value[latestDateBasmati].min_price) / 74).toFixed(2) }} - {{ ((riceVal.value[latestDateBasmati].max_price) / 74).toFixed(2) }} </div>  -->
-                                    <div class="priceVal" style="font-size: 13px !important;" [ngClass]="nonbasmati?.color_status == 3 ? 'black-price' : ( nonbasmati?.color_status == 2 ) ? 'red-price' : (nonbasmati?.color_status == 1)? 'green-price': '' ">${{ nonbasmati?.fobmin }}-{{ nonbasmati?.fobmax }} </div> 
+                                    <!-- <div class="priceVal" style="font-size: 12px !important;">${{ ((riceVal.value[latestDateBasmati].min_price) / 74).toFixed(2) }} - {{ ((riceVal.value[latestDateBasmati].max_price) / 74).toFixed(2) }} </div>  -->
+                                    <div class="priceVal" style="font-size: 12px !important; font-weight: bold;" [ngClass]="basmati?.color_status == 3 ? 'black-price' : ( basmati?.color_status == 2 ) ? 'red-price' :  (basmati?.color_status == 1)? 'green-price': '' ">${{ basmati?.fobmin }}-{{ basmati?.fobmax }}</div> 
                                 </td>
 
                                 <td class="type-columns">
-                                    <!-- <div class="priceVal" style="font-size: 13px !important;">${{ ((riceVal.value[latestDateBasmati].min_price) / 74).toFixed(2) }} - {{ ((riceVal.value[latestDateBasmati].max_price) / 74).toFixed(2) }} </div>  -->
-                                    <div class="priceVal" style="font-size: 13px !important;" [ngClass]="nonbasmati?.color_status == 3 ? 'black-price' : ( nonbasmati?.color_status == 2 ) ? 'red-price' : (nonbasmati?.color_status == 1)? 'green-price': '' ">${{ ((nonbasmati?.fobmin) + defaultCIFPrice) }}-{{ (nonbasmati?.fobmax + defaultCIFPrice) }} 
-                                        <ion-icon name="caret-down-outline"></ion-icon>
-                                    </div> 
+                                    <!-- <div class="priceVal" style="font-size: 12px !important; font-weight: bold;" [ngClass]="basmati?.color_status == 3 ? 'black-price' : ( basmati?.color_status == 2 ) ? 'red-price' :  'green-price' ">${{ ((riceVal.value[latestDateBasmati].min_price) / 74).toFixed(2) }} - {{ ((riceVal.value[latestDateBasmati].max_price) / 74).toFixed(2) }} </div>  -->
+                                    <div class="priceVal" style="font-size: 12px !important; font-weight: bold;" [ngClass]="basmati?.color_status == 3 ? 'black-price' : ( basmati?.color_status == 2 ) ? 'red-price' :  (basmati?.color_status == 1)? 'green-price': '' ">${{ ((basmati?.fobmin) + defaultCIFPrice) }}-{{ (basmati?.fobmax + defaultCIFPrice) }} <ion-icon name="caret-down-outline"></ion-icon></div>
                                 </td>
                             </tr>
-                            </tbody>
-                        </table>
-            
+                        </tbody>
+                    </table>
+        
+                </ion-col>
+            </ion-row>
+            <ion-row style="justify-content: center;margin: 0 auto;width: 100%;z-index: 99999999;">
+                <button (click)="changeHeight()" style="font-size: 35px;padding: 0;margin: 0;border-radius: 0px 0px 10px 10px;height: 35px;width: 100px;background-color: #92b243;">
+                        <ion-icon *ngIf="(height == true)" name="chevron-down-outline" style="background: #92b243;overflow: hidden;border-radius: 100px;font-size: 30px;padding: 0;margin: 0;border-radius: 100px;height: 35px;"></ion-icon>
+                        <ion-icon *ngIf="(height != true)" name="chevron-up-outline" style="background: #92b243;overflow: hidden;border-radius: 100px;font-size: 30px;padding: 0;margin: 0;border-radius: 100px;height: 35px;"></ion-icon> 
+                </button>
+            </ion-row>
+        </ng-container>
+
+            <div style="margin-top: 20px">
+                <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+                    <ion-refresher-content>
+                    </ion-refresher-content>
+                </ion-refresher> -->
+                <!-- non basmati -->
+                <ion-row class="ion-padding title-padding ">
+                    <ion-col class="title" size="2.2">
+                        <img style="width: 40px;float: left" src="./../../assets/img/1350px-Flag_of_India.svg.webp" alt="" (click)="scroll('left','table-responsive-1')" class="righticon">
                     </ion-col>
+                    <ion-col class="title" size="9.6">
+                            <h2 class="" style="font-size: 17px;float: left;padding: 3px 7px;font-weight: bold">
+                                Indian Non-Basmati Live Price
+                            </h2>
+                    </ion-col>
+                    <!-- <ion-col class="title" size="2">
+                        <img style="width: 40px;float: left;" src="./../../assets/img/1350px-Flag_of_India.svg.webp" alt="" (click)="scroll('left','table-responsive-1')" class="righticon">
+                    </ion-col> -->
                 </ion-row>
-            </ng-container>
-        </div>
-     
+                
+                <ng-container *ngIf="listNONBasmatiStates == null">
+                    <div class="center">
+                        <p>No item found</p>
+                    </div>
+                </ng-container>
+                
+                <ng-container *ngIf="listNONBasmatiStates != null">
+                    <ion-row class="ion-padding table-row padd-5">
+                        <ion-col class="price-table dashboard lightgreen">
+                            <table class="table" >
+                                <thead>
+                                    <tr>
+                                    <th class="sticky-col bg-lightgreen first-col left pl-10" style="width: 45%" >
+                                        <ng-container   >
+                                            <h6 class="black ricetype" style="font-size: 12px;">Quality</h6>
+                                        </ng-container>
+                                    </th>
+                                    <th class="sticky-col bg-lightgreen first-col left pl-10" style="width: 60%" >
+                                        <ng-container  >
+                                            <h4 class="black ricetype" style="font-size: 12px;">Packing</h4>
+                                        </ng-container>
+                                    </th>
+                                    
+                                        <th class="font-17 type-columns black">
+                                            <ul class="table-filter">
+                                                <li class="filter-content" style="font-size: 12px;">
+                                                    FOB Mundra
+                                                </li>
+                                                <!-- <li class="filter">
+                                                    <ion-icon name="ellipsis-vertical-outline" (click)="openPopup(convertToLowerCase(basmatiPrice.key))"></ion-icon>
+                                                    <div class="popover" [id]="convertToLowerCase(basmatiPrice.key)">
+                                                        <ul>
+                                                            <li>
+                                                                <label for="price"> Last price
+                                                                <input id="price" class="priceRadio" type="radio" name="radio" checked="checked" (click)="changeState(convertToLowerCase(basmatiPrice.key)+'_price')"></label>															
+                                                            </li>
+                                                            <li>
+                                                                <label for="percentage"> Percentage 
+                                                                <input id="percentage" type="radio" name="radio" (click)="changeState(convertToLowerCase(basmatiPrice.key)+'_percentage')"></label>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li> -->
+                                            </ul>
+                                        </th>
+                                        <th class="sticky-col bg-lightgreen first-col left pl-10" style="width: 60%" >
+                                        <ng-container  >
+                                            <h4 class="black ricetype" style="font-size: 12px;text-align: center;">CIF <br> {{defalutPort}} </h4>
+                                        </ng-container>
+                                    </th>
+                                    </tr>
+                                    <div class="popoverley" (click)="removePopover()"></div>
+                                </thead>
+                                <!-- <button id="getCurrentStatus" style="height: 1px;width: 1px;color: red;background: transparent;padding: 0;margin: 0;" (click)="getCurrentPaidStatus()" ></button> -->
+                                <tbody >
+                                <tr *ngFor="let nonbasmati of listNONBasmatiStates"  (click)="openQuality(nonbasmati?.rice)">
+                                    <td class="sticky-col bg-transparent first-col left pl-10"  >
+                                        <p style="font-size: 17px; padding: 0px;margin: 0px;font-weight: bold;">{{nonbasmati?.get_rice_quality.quality}}</p>
+                                        <p style="padding: 0px;margin: 0px;    font-size: 12px;">{{nonbasmati?.get_rice_quality.quality_name}}</p>
+                                    </td>
+
+                                    <td class="sticky-col bg-transparent first-col left pl-10" style="font-size: 12px !important;font-weight: bold;"  >
+                                        50kg PP <ion-icon name="caret-down-outline"></ion-icon>
+                                    </td>
+                                    <td class="type-columns">
+                                        <!-- <div class="priceVal" style="font-size: 12px !important;">${{ ((riceVal.value[latestDateBasmati].min_price) / 74).toFixed(2) }} - {{ ((riceVal.value[latestDateBasmati].max_price) / 74).toFixed(2) }} </div>  -->
+                                        <div class="priceVal" style="font-size: 12px !important;" [ngClass]="nonbasmati?.color_status == 3 ? 'black-price' : ( nonbasmati?.color_status == 2 ) ? 'red-price' : (nonbasmati?.color_status == 1)? 'green-price': '' ">${{ nonbasmati?.fobmin }}-{{ nonbasmati?.fobmax }} </div> 
+                                    </td>
+
+                                    <td class="type-columns">
+                                        <!-- <div class="priceVal" style="font-size: 12px !important;">${{ ((riceVal.value[latestDateBasmati].min_price) / 74).toFixed(2) }} - {{ ((riceVal.value[latestDateBasmati].max_price) / 74).toFixed(2) }} </div>  -->
+                                        <div class="priceVal" style="font-size: 12px !important;" [ngClass]="nonbasmati?.color_status == 3 ? 'black-price' : ( nonbasmati?.color_status == 2 ) ? 'red-price' : (nonbasmati?.color_status == 1)? 'green-price': '' ">${{ ((nonbasmati?.fobmin) + defaultCIFPrice) }}-{{ (nonbasmati?.fobmax + defaultCIFPrice) }} 
+                                            <ion-icon name="caret-down-outline"></ion-icon>
+                                        </div> 
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                
+                        </ion-col>
+                    </ion-row>
+                </ng-container>
+            </div>
+        
+    </div>
   </div>
     <app-menu></app-menu>
 </ion-content>

@@ -336,6 +336,9 @@ export class AppComponent implements OnInit {
 					}
 				}
 			});
+			
+			console.log('Width: ' + this.platform.width());
+      		console.log('Height: ' + this.platform.height());
 
 			this.apiser.CheckUserExpired().then( (res:any) => {
 				console.log(res)

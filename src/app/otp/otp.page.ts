@@ -15,16 +15,37 @@ export class OtpPage implements OnInit {
 	text3:any;
 	text4:any;
 
+	userType = '';
+	sendOn = '';
+	hasError = true;
+	errorMessage = '';
+
 	constructor(public activeRoute:ActivatedRoute , public restSer: RestService,public navCtrl: NavController) {
 		this.number = this.activeRoute.snapshot.paramMap.get('number');
 		this.sendOTP();
 	}
 
 	sendOTP(){
+		this.restSer.presentLoader('Please wait...');
+
 		this.restSer.sendOTP(this.number).then((res:any) => {
+			this.restSer.loaderCtrl.dismiss();
+
+			this.hasError = false;
+			if(res.user.role == 0){
+				this.userType = 'international';
+				this.sendOn = res.user.email;
+			}else{
+				this.userType = 'domestic';
+				this.sendOn = res.user.mobile;
+			}
 
 		} , (err :any) => {
+			this.restSer.loaderCtrl.dismiss();
 
+			console.log(err);
+			this.hasError = true;
+			this.errorMessage = err.error.error;
 		})
 	}
 

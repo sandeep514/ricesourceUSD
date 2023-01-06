@@ -300,7 +300,7 @@ ion-content {
     // width: 100%;
     // min-width: 120px;
     // min-width: 75px;
-    min-width: 90px;
+    min-width: 80px;
 }
 
 .slide-image {
@@ -635,4 +635,17 @@ ion-segment {
 }
 .heightAuto{
     height: auto
+}
+
+.riceTypeName{
+    font-size: 19px; padding: 0px;margin: 0px;font-weight: bold;
+}
+.riceQualityName{
+    padding: 0px;margin: 0px;font-size: 12px;
+}
+.bagSize{
+    font-size: 13px !important;
+}
+.priceVal{
+    font-size: 13px !important; font-weight: bold;
 }
