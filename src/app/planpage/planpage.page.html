@@ -173,7 +173,6 @@
 			</ion-row>
 			
 			<p style="text-align: center; font-size: 12px; padding: 0; margin: 0; color: #92b243; font-weight: bold;">*Inclusive of GST</p>
-			<!-- <button (click)="checkIfPaypal()">pay with paypal</button> -->
 
 			<div>
 				<ul style="list-style: none;" *ngIf="isUSDRoleAvailable != true" >
@@ -219,11 +218,7 @@
 			</ng-container>
 			
 
-			<p style="font-size: 0px">{{ isUSDRoleAvailable }}</p>
-			<ng-container *ngIf="isUSDRoleAvailable == true" >
-				<div id="paypal-button" style="margin-top: 20px"></div>	
-			</ng-container>
-			
+			<p style="font-size: 0px">{{ isUSDRoleAvailable }}</p>			
 		</div>
 	</div>
 

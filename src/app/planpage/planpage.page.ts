@@ -6,11 +6,9 @@ import { MenuController, ModalController, NavController } from '@ionic/angular';
 import { ComponentsService } from '../components.service';
 import { RestService } from '../rest.service';
 import { TrialperiodPage } from '../trialperiod/trialperiod.page';
-import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal/ngx';
 import { ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 declare var RazorpayCheckout:any;
-// declare var paypal: any;
 import * as $ from 'jquery';
 // import { Stripe } from '@ionic-native/stripe/ngx';
 declare var Stripe;
@@ -60,15 +58,11 @@ export class PlanpagePage implements OnInit {
 	public price;
 	public showScreenshotStatus= 0;
 	public priceToPay = 10;
-	public payPalConfig: any;
-	public PAYPAL_CLIENT_ID_TEST = "Af5Op1UABAes1X3EKCYbVAwjZITlKe9Oqlvjxh1bHM8hQWhLNJ4DLdsMcL6AmaeeKOZ_CdDWZVvWm75q"
-	public PAYPAL_CLIENT_ID_LIVE = "ARNC1YzHCEPir1DCmzRW9F9eksQVDJxbceTPzwPd3yEx2F2NFjxHydc8a2gLx2qcvUhc697apiR88_Fi"
-	public PAYPAL_CLIENT_ID = this.PAYPAL_CLIENT_ID_LIVE
 	public isDomesticRoleAvailable = false;
 	public isUSDRoleAvailable = false;
 	public showTrialPeriod = false;
 
-	constructor(public menuCtrl: MenuController ,public apiser:RestService, public modelController:ModalController ,public compSer:ComponentsService ,public navCtrl:NavController ,public location:Location ,public route: Router,private payPal: PayPal) { 
+	constructor(public menuCtrl: MenuController ,public apiser:RestService, public modelController:ModalController ,public compSer:ComponentsService ,public navCtrl:NavController ,public location:Location ,public route: Router) { 
 		console.log('order_'+Math.floor(Math.random() * 30000000)+'_'+localStorage.getItem('id')+'_'+Math.floor(Math.random() * 30000000));
 		this.getUSDPlans();
 		// this.presentModel()
@@ -306,32 +300,6 @@ export class PlanpagePage implements OnInit {
 		await model.present();
 	}
 
-	
-	// payWithPaypal() {
-	// 	console.log("jnk");
-	// 	this.payPal.init({
-	// 		PayPalEnvironmentProduction: 'ARNC1YzHCEPir1DCmzRW9F9eksQVDJxbceTPzwPd3yEx2F2NFjxHydc8a2gLx2qcvUhc697apiR88_Fi',
-	// 		PayPalEnvironmentSandbox: 'Af5Op1UABAes1X3EKCYbVAwjZITlKe9Oqlvjxh1bHM8hQWhLNJ4DLdsMcL6AmaeeKOZ_CdDWZVvWm75q' 
-	// 	}).then(() => {
-
-	// 		this.payPal.prepareToRender('PayPalEnvironmentProduction', new PayPalConfiguration({
-
-	// 		})).then(() => {
-	// 			let payment = new PayPalPayment(this.paymentAmount, this.currency, 'Description', 'sale');
-	// 			this.payPal.renderSinglePaymentUI(payment).then((res) => {
-	// 				console.log(res);
-	// 			}, (err:any) => {
-	// 				alert(JSON.stringify(err));
-	// 			});
-	// 		}, (err:any) => {
-	// 			alert(JSON.stringify(err));
-
-	// 		});
-	// 	}, (err:any) => {
-	// 		alert(JSON.stringify(err));
-	// 	});
-	// }
-
 
 	ngOnInit() {
 
@@ -348,86 +316,7 @@ export class PlanpagePage implements OnInit {
 		this.price = this.selectedPlanDiscountedAmountUSD + " $"
 		let enviroment = ""
 		
-		if (this.PAYPAL_CLIENT_ID == this.PAYPAL_CLIENT_ID_TEST) {
-			enviroment = "sandbox"
-		}else {
-			enviroment = "live"
-		}
-
-		this.payPalConfig = {
-			style: {
-				layout: 'horizontal',
-				color:  'blue',
-				shape:  'rect',
-				label:  'paypal',
-				tagline: 'false',
-			},
-			env: enviroment,
-			client: {
-				sandbox: this.PAYPAL_CLIENT_ID,
-			},
-			commit: false,
-			createOrder: (data, actions)=> {
-				console.log("onCreateOrder")
-				console.log(data)
-				console.log(actions)
-				return actions.order.create({
-					purchase_units: [{
-						amount: {
-							value: this.selectedPlanDiscountedAmountUSD,
-							currency: 'USD' 
-						}
-					}]
-				});
-			},
-			onApprove: (data, actions) => {
-				
-				console.log("onApprove")
-				console.log(data)
-				console.log(actions)
-				// setTimeout(() => {
-				// 	$('.paypal-checkout-sandbox-iframe').click();
-				// } , 2000)
-				// this.checkIfPaypal(data , actions).then((res:any) => {
-
-				// }).then((res:any) => {
-				// 	console.log(res);
-				// }).catch((err:any) => {
-				// 	setTimeout(() => {
-				// 		$('.paypal-checkout-sandbox').hide();
-				// 	}, 1000)
-				// 	setTimeout(() => {
-				// 		$('.paypal-checkout-sandbox').hide();
-				// 	}, 5000)
-				// 	setTimeout(() => {
-				// 		$('.paypal-checkout-sandbox').hide();
-				// 	}, 10000)
-				// 	setTimeout(() => {
-				// 		$('.paypal-checkout-sandbox').hide();
-				// 	}, 20000)
-					
-				// 	this.navCtrl.navigateForward(['payment-cancel']);
-				// 	this.apiser.presentToast('Something went wrong.');
-				// })
-			},
-			onCancel: (data) => {
-				console.log("oncancel")
-				console.log(data)
-				this.apiser.presentToast('Payment canceled.');
-			},
-			onError: (err) => {
-				alert(err);
-				console.log("onError")
-				console.log(err)
-
-				console.log(err)
-			},
-			onClick : (data	) => {
-				console.log('onclick');
-				console.log(data)
-			},
-
-		}
+		
 		if( this.isUSDRoleAvailable ){
 			setTimeout(() => {
 				this.setupStripe();
@@ -436,100 +325,6 @@ export class PlanpagePage implements OnInit {
 
 	}
 
-	checkIfPaypal () {
-
-		this.payPal.init({
-			PayPalEnvironmentProduction: this.PAYPAL_CLIENT_ID_LIVE,
-			PayPalEnvironmentSandbox: this.PAYPAL_CLIENT_ID_TEST
-		  }).then(() => {
-			// Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
-			this.payPal.prepareToRender('PayPalEnvironmentProduction', new PayPalConfiguration({
-			  // Only needed if you get an "Internal Service Error" after PayPal login!
-			  //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
-			})).then(() => {
-			  let payment = new PayPalPayment('3.33', 'USD', 'Description', 'sale');
-			  this.payPal.renderSinglePaymentUI(payment).then(() => {
-				// Successfully paid
-		  
-				// Example sandbox response
-				//
-				// {
-				//   "client": {
-				//     "environment": "sandbox",
-				//     "product_name": "PayPal iOS SDK",
-				//     "paypal_sdk_version": "2.16.0",
-				//     "platform": "iOS"
-				//   },
-				//   "response_type": "payment",
-				//   "response": {
-				//     "id": "PAY-1AB23456CD789012EF34GHIJ",
-				//     "state": "approved",
-				//     "create_time": "2016-10-03T13:33:33Z",
-				//     "intent": "sale"
-				//   }
-				// }
-			  }, (err) => {
-				console.log(err)
-				// Error or render dialog closed without being successful
-			  });
-			}, (err) => {
-				console.log(err)
-			  // Error in configuration
-			});
-		  }, (err) => {
-			console.log(err)
-			// Error in initialization, maybe PayPal isn't supported or something else
-		  });
-
-		  return false;
-		// return new Promise((resolve , reject) => {
-		// 	actions.order.capture().then((details) => {
-		// 		console.log(details)
-
-		// 		let status = details["status"];
-		// 		let id = details["id"];
-
-		// 		if (status == "COMPLETED") {
-		// 			this.validPurchase(id);
-		// 			let plan_id = this.selectedPlanId;
-
-		// 			this.apiser.addOrder({ transaction_id: 'paypal' , user_id : localStorage.getItem('id') , plan_id : plan_id }).then((res:any) => {
-						// localStorage.setItem('expired_on' ,res.userDetails[0]['expired_on'])
-
-						
-		// 				localStorage.setItem('apptype' , 'USD');
-		// 				localStorage.setItem('is_usd_active' , '1');
-		// 				localStorage.setItem('isExpired' , 'false');
-		// 				localStorage.setItem('usd_role' , res.userDetails[0]['usd_role']);
-		// 				localStorage.setItem('transaction_id' , res.userDetails[0]['transaction_id']);
-		// 				localStorage.setItem('isUserActivatedUSD' , '1');
-		// 				this.compSer.isUserExpired.next('false');
-		// 				this.navCtrl.navigateForward(['payment-success']);
-		// 				this.apiser.presentToast('Payment successful.');
-
-		// 				// this.closeme();
-		// 			} , (err:any) => {
-		// 				this.navCtrl.navigateForward(['payment-cancel']);
-		// 				this.apiser.presentToast('Something went wrong.');
-		// 			});
-		// 		}else {
-		// 			this.navCtrl.navigateForward(['payment-cancel']);
-		// 			this.apiser.presentToast('Payment not completed.');
-		// 		}
-
-		// 		resolve(true)
-		// 		console.log('Transaction completed by ' + details.payer.name.given_name + '!');
-		// 	} , (err) => {
-		// 		console.log(err);
-		// 	}).then((err) => {
-		// 		console.log(err)
-		// 	}).catch((err) => {
-		// 		console.log(err)
-		// 	});
-
-		// 	reject(false);
-		// })
-	}
 	ionViewDidEnter() {
 		if( localStorage.getItem('usd_role') ){
 			// paypal.Buttons(this.payPalConfig).render('#paypal-button');

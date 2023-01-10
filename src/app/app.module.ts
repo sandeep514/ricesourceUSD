@@ -25,7 +25,6 @@ import { FirebaseMessaging } from '@ionic-native/firebase-messaging/ngx';
 import { VersionmodalPage } from './versionmodal/versionmodal.page';
 // import { IonicSelectableModule } from 'ionic-selectable';
 import { IonicSelectableModule } from 'ionic-selectable';
-import { PayPal } from '@ionic-native/paypal/ngx';
 import { UsdconvertmodalPageModule } from './usdconvertmodal/usdconvertmodal.module';
 import { TrialperiodPageModule } from './trialperiod/trialperiod.module';
 import { Stripe } from '@ionic-native/stripe/ngx';
@@ -68,7 +67,6 @@ import { Stripe } from '@ionic-native/stripe/ngx';
 		ThemeDetection,
 		Camera,
 		FirebaseMessaging,
-		PayPal,
 		Stripe,
 		VersionmodalPage,
     	{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
