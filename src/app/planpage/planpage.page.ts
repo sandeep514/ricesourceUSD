@@ -84,43 +84,36 @@ export class PlanpagePage implements OnInit {
 		console.log(typeof localStorage.getItem('transaction_id'))
 
 		if( localStorage.getItem('transaction_id') == undefined || localStorage.getItem('transaction_id') == null || localStorage.getItem('transaction_id') == 'null' ){
-			console.log("her");
-			// if( localStorage.getItem('usd_role') == undefined || localStorage.getItem('usd_role') == null  || localStorage.getItem('usd_role') == 'null' || localStorage.getItem('usd_role') == '0' ){
-				console.log("her");
-				this.showTrialPeriod = true
-			// }else{
-			// 	console.log("her");
-			// 	this.showTrialPeriod = false
-			// }
+			console.log("jkni");
+			this.showTrialPeriod = true
 		}else{
-			console.log("her");
-
+			console.log("jkni");
 			this.showTrialPeriod = false
 		}
-		if( localStorage.getItem('ExpiryUSDDate') == localStorage.getItem('created_on') ){
-			console.log("her");
-			this.showTrialPeriod = true
-			console.log('i am here');
-		}
-
+		// if( localStorage.getItem('ExpiryUSDDate') == localStorage.getItem('created_on') ){
+		// 	this.showTrialPeriod = true
+		// 	console.log('i am here');
+		// }
+		setTimeout(() => {
+			this.apiser.dismissLoader();
+		} , 10000)
 	
 		console.log(this.showTrialPeriod);
 	}
-	ionViewDidLoad() {
-		if( this.isUSDRoleAvailable ){
-			setTimeout(() => {
-				this.setupStripe();
-			} ,5000)
-		}
-		console.log("jnknk");
+	// ionViewDidLoad() {
+	// 	alert(this.isUSDRoleAvailable);
+	// 	if( this.isUSDRoleAvailable ){
+	// 		setTimeout(() => {
+	// 			this.setupStripe();
+	// 		} ,5000)
+	// 	}
+	// 	console.log("jnknk");
 		
-	}
+	// }
 	setupStripe(){
-		
-
-		console.log("lkjml");
-		console.log(this.stripe)
 		let elements = this.stripe.elements();
+		console.log('elements');
+		console.log(elements);
 		var style = {
 		  base: {
 			color: '#32325d',
@@ -160,8 +153,6 @@ export class PlanpagePage implements OnInit {
 
 		  event.preventDefault();
 		  this.stripe.createSource(this.card).then(result => {
-
-			console.log(result);
 			if( 'error' in result ){
 				var errorElement = document.getElementById('card-errors');
 				errorElement.textContent = result.error.message;
@@ -317,35 +308,53 @@ export class PlanpagePage implements OnInit {
 		let enviroment = ""
 		
 		
-		if( this.isUSDRoleAvailable ){
-			setTimeout(() => {
-				this.setupStripe();
-			} ,5000)
-		}
+		// if( this.isUSDRoleAvailable ){
+		// 	setTimeout(() => {
+		// 		this.setupStripe();
+		// 	} ,5000)
+		// }
 
 	}
 
 	ionViewDidEnter() {
+		if( this.isUSDRoleAvailable ){
+			setTimeout(() => {
+				this.setupStripe();
+				console.log("i runned");
+			} ,2000)
+		}
+		console.log("jnknk");
 		if( localStorage.getItem('usd_role') ){
 			// paypal.Buttons(this.payPalConfig).render('#paypal-button');
 		}
 	}
+	
 	closeme(){
-		this.modelController.dismiss();
-
-		localStorage.setItem('apptype' , 'OTHER');
-		this.navCtrl.navigateForward(['prices']);
-		return false;
-
-		if( localStorage.getItem('is_INR_active') == '1' ){
+		if( localStorage.getItem('is_INR_active') == "1" ){
+			this.modelController.dismiss();
 			localStorage.setItem('apptype' , 'OTHER');
 			this.navCtrl.navigateForward(['prices']);
-		}else if( localStorage.getItem('isUserActivatedUSD') != '1' ){
-			localStorage.setItem('apptype' , 'OTHER');
-			this.navCtrl.navigateForward(['prices']);
+		}else{
+			if( localStorage.getItem('isExpiryUSD') == "true" ){
+				this.navCtrl.navigateForward(['planpage']);
+			}else{
+				this.modelController.dismiss();
+				// localStorage.setItem('apptype' , 'OTHER');
+				// this.navCtrl.navigateForward(['prices']);
+				// return false;
+		
+				if( localStorage.getItem('is_INR_active') == '1' ){
+					localStorage.setItem('apptype' , 'OTHER');
+					this.navCtrl.navigateForward(['prices']);
+				}else if( localStorage.getItem('isUserActivatedUSD') == '1' ){
+					localStorage.setItem('apptype' , 'USD');
+					this.navCtrl.navigateForward(['priceusd']);
+				}
+			}
 		}
 		
 	}
+
 	validPurchase(id) {
 		// Purchase confirm 
 		//Do whatever you want to do
@@ -371,12 +380,16 @@ export class PlanpagePage implements OnInit {
 	}
 
 	startTrial(){
+		this.apiser.presentLoader('Please wait...');
+
 		let userEmail = localStorage.getItem('user');
 		let userId = JSON.parse(userEmail).id;
 		
 		this.apiser.startTrialPeriod(userId).then((res:any) => {
+			localStorage.setItem('transaction_id' , 'trial');
 			localStorage.setItem('is_usd_active' , '1');
 			localStorage.setItem('usd_role' , res.data.usd_role);
+			localStorage.setItem('isExpired' ,'false');
 			localStorage.setItem('isExpiryUSD' ,'false');
 			localStorage.setItem('isUserActivatedUSD', '1');
 			localStorage.setItem('expired_on' , res.data.expired_on);
@@ -384,10 +397,14 @@ export class PlanpagePage implements OnInit {
 			localStorage.setItem('apptype', 'USD');
 
 			setTimeout(() => {
+				this.apiser.dismissLoader();
+				this.closeme()
 				this.navCtrl.navigateForward(['priceusd']);
+
 			} , 2000)
-			this.closeme()
 		} , (err:any) => {
+			this.apiser.dismissLoader();
+
 		  	console.log(err)
 		});
 		

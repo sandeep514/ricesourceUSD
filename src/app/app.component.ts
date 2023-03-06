@@ -20,17 +20,18 @@ import { ConditionalExpr } from '@angular/compiler';
 	templateUrl: 'app.component.html',
 	styleUrls: ['app.component.scss']
 })
+
 export class AppComponent implements OnInit {
 	public selectedIndex = 0;
 	public user:any = '';
 	public hasUser:any = '';
 	public cancelPopup:any = 'true';
 	public appPages = [
-		{
-			title: 'Home',
-			url: '/prices',
-			icon: 'albums'
-		},
+		// {
+		// 	title: 'Home',
+		// 	url: '/prices',
+		// 	icon: 'albums'
+		// },
 		{
 			title: 'Edit Profile',
 			url: '/editprofile',
@@ -197,6 +198,24 @@ export class AppComponent implements OnInit {
 		this.appType = localStorage.getItem('apptype')
 	}
 
+	home(){
+		if( localStorage.getItem('is_INR_active') == '1' ){
+			this.navCtrl.navigateForward('prices');
+		}else{
+			if( localStorage.getItem('isExpiryUSD') == 'true' ){
+				this.navCtrl.navigateForward(['planpage']);
+			}else{
+				if(localStorage.getItem('apptype') == 'USD'){
+					this.navCtrl.navigateForward('priceusd');
+				}else{
+					this.navCtrl.navigateForward('prices');
+				}
+			}
+		}
+		
+		this.menuCtrl.close();
+	}
+
 	firebasepushnotif(){
 		let apiHn = this.apiser;
 		let navigation = this.navCtrl;
@@ -319,7 +338,9 @@ export class AppComponent implements OnInit {
 	initializeApp() {
 
 		this.platform.ready().then(async () => {
-			
+			this.hasUser = localStorage.getItem('name');
+
+			this.appType = localStorage.getItem('apptype')
 			this.componentSer.compareTwoDates( localStorage.getItem('ExpiryUSDDate') );
 
 			this.getlatestNotifCount();
@@ -736,6 +757,11 @@ export class AppComponent implements OnInit {
 		this.navCtrl.navigateForward(['login']);
 	}
 
+	deleteaccount(){
+		this.menuCtrl.close();
+		this.navCtrl.navigateForward(['deleteaccount']);
+	}
+
 	private async isDarkModeEnabled() {
 		try {
 			let dark_mode_enabled: ThemeDetectionResponse = await this.themeDetection.isDarkModeEnabled();
@@ -747,7 +773,7 @@ export class AppComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
+		console.log(this.selectedIndex);
 		const path = window.location.pathname.split('folder/')[1];
 		if (path !== undefined) {
 			this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());

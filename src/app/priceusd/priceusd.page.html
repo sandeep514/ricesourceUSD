@@ -12,7 +12,7 @@
                     <!-- <h3>Dashboard</h3> -->
                     <div *ngIf="restDays > 0">
                         <p *ngIf="restDays <= 10">
-                            {{restDays}} Days Left
+                            {{restDays}} {{ (restDays == 1)? 'Day' : 'Days' }} Left
                         </p>
                     </div>
                     <!-- <p>

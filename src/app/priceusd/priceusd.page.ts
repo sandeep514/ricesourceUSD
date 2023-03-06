@@ -76,13 +76,16 @@ export class PriceusdPage implements OnInit {
 		if( localStorage.getItem('isUserActivatedUSD') == '0' ){
 			console.log("iukhjik");
 			this.navCtrl.navigateRoot('planpage')
+
 		}
 		if( localStorage.getItem('isExpired') == 'true' ){
 			if( localStorage.getItem('is_INR_active') == '1' ){
 				this.navCtrl.navigateRoot( 'prices', { animationDirection : 'forward' } );
 			}else{
 				console.log("iukhjik");
+				
 				this.navCtrl.navigateRoot( 'planpage', { animationDirection : 'forward' } );	
+
 			}
 		}
 
@@ -106,6 +109,7 @@ export class PriceusdPage implements OnInit {
 
 		this.componentService.isUserExpired.subscribe((res:any) => {
 			this.currentPaidStatus = res;
+
 			if(localStorage.getItem('apptype') == 'USD'){
 				this.appType = "usd";
 			}else{
@@ -728,5 +732,6 @@ export class PriceusdPage implements OnInit {
 	gotoPlan(){
 		console.log("iukhjik");
 		this.navCtrl.navigateForward('planpage');
+
 	}
 }

@@ -2,6 +2,7 @@
 	<ion-col class="ion-no-padding">	
 		<ion-row class="tabs-row">
 			<ng-container *ngIf="apptype == 'OTHER' ">
+				
 				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" (click)="goTo((apptype != 'USD')? 'prices' :'priceusd' )">
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
 					<img src="../../assets/menu/live prices.png" />
@@ -31,6 +32,7 @@
 					<img src="../../assets/menu/menu.png" />
 					<h5>Menu</h5>
 				</ion-col>
+
 			</ng-container>
 
 			<ng-container *ngIf="apptype != 'OTHER' ">

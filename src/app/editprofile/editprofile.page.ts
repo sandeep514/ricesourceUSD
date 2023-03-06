@@ -79,20 +79,23 @@ export class EditprofilePage implements OnInit {
 		}
 	}
 	home(){
-		localStorage.setItem('apptype' , 'OTHER')	
-		this.navCtrl.navigateForward('prices')
+		if(localStorage.getItem('apptype') == 'USD'){
+			this.navCtrl.navigateForward('priceusd');
+		}else{
+			this.navCtrl.navigateForward('prices');
+		}
 	}
 	updateUserDetails(){
 		if( this.username != undefined && this.email != undefined && this.mobile != undefined && this.companyname != undefined ){
 			if( this.username != '' && this.email != '' && this.mobile != '' && this.password != '' && this.confpassword != ''){
 				if( this.isValidEmail(this.email) == true ){
-					if(this.mobile.length == 10 || this.mobile.length == 11 || this.mobile.length == 12){
+					// if(this.mobile.length == 10 || this.mobile.length == 11 || this.mobile.length == 12){
 						let postData = {
 							'username' : this.username,
 							'email' : this.email,
 							'mobile' : this.mobile,
 							'companyname' : this.companyname,
-							'userState' : this.userState,
+							// 'userState' : this.userState,
 							'userId' : localStorage.getItem('id')
 						}
 
@@ -102,7 +105,7 @@ export class EditprofilePage implements OnInit {
 							localStorage.setItem('name' , res.data.name);
 							localStorage.setItem('email' , res.data.email);
 							localStorage.setItem('mobile' , res.data.mobile);
-							localStorage.setItem('role' , res.data.role);
+							// localStorage.setItem('role' , res.data.role);
 							localStorage.setItem('companyname' , res.data.companyname);
 							localStorage.setItem('expired_on' , res.data.expired_on);
 							
@@ -112,9 +115,9 @@ export class EditprofilePage implements OnInit {
 							this.restSer.presentToast(err.error.error);
 							this.restSer.loaderCtrl.dismiss();
 						});
-					}else{
-						this.restSer.presentToast('Password and confirm password should be valid.');
-					}
+					// }else{
+					// 	this.restSer.presentToast('Password and confirm password should be valid.');
+					// }
 				}else{
 					this.restSer.presentToast('Please enter a valid email address.');
 				}

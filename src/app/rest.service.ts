@@ -731,4 +731,13 @@ export class RestService {
 			});
 		} );
 	}
+	deleteUser(userId){
+		return new Promise( (resolve , reject) => {
+			this.http.get(this.APIURL+'delete/user/'+userId).subscribe( (res:any) => {
+				resolve(res);
+			} ,(err:any) => {
+				reject(err);
+			});
+		} );
+	}
 }

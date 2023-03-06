@@ -1,0 +1,53 @@
+<ion-content>
+  <div class="container">
+    <div class="header-container">
+		<div class=""></div>
+			<div class="header green">
+				<!-- <ion-button (click)="showMenu()" style="background-color: transparent;box-shadow: none;">
+					<ion-icon name="menu-outline" style="font-size: 30px;"></ion-icon>
+				</ion-button> -->
+					<ion-buttons slot="start" style="color: #fff " (click)='openModel()'>
+						<img src="../../assets/menu/whitemenu.png" style="width: 25px;margin-left: 10px;" />
+						<!-- Menu -->
+					</ion-buttons>
+
+				<div style="margin-top: 0px;">
+					<h1 class="main-heading font-30">{{ name | uppercase }}</h1>
+					<!-- <span class="tag">{{ email }}</span> -->
+				</div>
+				<div class="stats">
+				</div>
+			</div>
+    	</div>
+    
+    	<!-- <div class="overlay-header"></div> -->
+    
+    	<div class="body">
+			<div class="u-clearfix"></div>
+			<ion-row style="padding-top: 14px;clear: both;" > 
+				<div style="text-align: center;">
+					<h5 style="width: 80%;margin: 0 auto;padding: 15px 0px">Please let us know why you are leaving us.</h5>
+				</div>
+				<ul style="padding: 0;margin: 0;">
+					<li (click)="uninstallReason(reason.key)" [ngClass]="(selectedReasonIndex == reason.key)? 'active' : '' " *ngFor="let reason of reasons | keyvalue">{{reason.value}}</li>
+				</ul>
+				
+				<ion-item size="12">
+					<ion-label position="floating">Re-confirm Email / Mobile</ion-label>
+					<ion-input [(ngModel)]="email" name="email"></ion-input>
+					<img src="../../assets/svg/mail-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
+				</ion-item>
+				
+				<ion-col style="text-align: center;">
+					<ion-label style="font-size: 18px;">{{ selectedCity }}</ion-label>
+				</ion-col>
+				<ion-col size="12" style="text-align: center;">
+					<ion-button style="--background: #92b243" (click)="deleteAccount()">Delete Account</ion-button>
+				</ion-col>	
+			</ion-row>
+    	</div>    
+  </div>
+</ion-content>
+<ion-footer>
+	<ion-button expand="block" class="footerbutton" (click)="gotohome()">Go to home</ion-button>
+</ion-footer>

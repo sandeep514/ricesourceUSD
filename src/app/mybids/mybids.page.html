@@ -73,7 +73,7 @@
 							<ion-col size="4" class="demandHeaders">Remarks</ion-col> 
 							<ion-col>
 								<div style="float: left;width: 10px;margin: 0px;height: 100%">:</div>
-								<div style="margin: 0px">{{ bids.remarks | titlecase}}</div>
+								<div style="margin: 0px">{{ bids.remarks }}</div>
 							</ion-col>
 						</ion-row>
 						
@@ -140,7 +140,7 @@
 							
 							<ion-row *ngIf="bids?.user_bid_amount && bids?.get_bids_extra.length == 0 && bids?.my_bid_expired == 'false' && bids?.status != 2 " style="width: 100%;">
 								<div style="font-size: 13px;width: 100%;">
-									Your offer <span class="demandHeaders" style="font-size: 13px;">${{ bids?.get_bids[0].bid_amount }} </span> PMT validity <span class="demandHeaders" style="font-size: 13px;">{{ bids?.get_bids[0].validTill | date:'dd/MM/yyyy' }} 18:00 IST</span>
+									Your offer <span class="demandHeaders" style="font-size: 13px;">${{ bids?.get_bids[0].bid_amount }} </span> PMT validity <span class="demandHeaders" style="font-size: 13px;">{{ bids?.get_bids[0].validTill | date: 'dd/MM/yyyy' }} 18:00 IST</span>
 								</div>
 							</ion-row>
 							

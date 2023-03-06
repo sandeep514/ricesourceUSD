@@ -112,7 +112,7 @@
 
 				<ion-row style="width: 100%;text-align: center;" *ngIf="showTrialPeriod == true">
 					<ion-col>
-						Use 7 days free trial period <button style="background: #92b245;padding: 10px 12px;border-radius: 20px;font-size: 17px;width: auto;text-transform: capitalize;" (click)="startTrial()">Activate Now</button>
+						Use 30 days free trial period <button style="background: #92b245;padding: 10px 12px;border-radius: 20px;font-size: 17px;width: auto;text-transform: capitalize;" (click)="startTrial()">Activate Now</button>
 					</ion-col>
 				</ion-row>
 
@@ -184,6 +184,7 @@
 					<li style="width: 30%;float: left;"><h2 style="text-align: right;margin-right: 20px; padding: 0;margin: 0;margin-left: 10px;text-align: left;">${{ selectedPlanDiscountedAmountUSD }}</h2></li>
 				</ul>
 			</div>
+			<div class="testing"></div>
 			
 			<ion-button *ngIf="isDomesticRoleAvailable == true && isUSDRoleAvailable != true"  fill="outline" (click)="buynow( )" style="background-color: #fff;--background-color: #fff;min-height: 43px;margin: 10px 6px;">
 				<img src="../../assets/rzp-logo-positive-padding.png" style="width: 50%" />
@@ -209,7 +210,7 @@
 						  <!-- Used to display Element errors -->
 						  
 						</div>
-						<ion-button type="submit" (click)="makepaymentButton()" color="success" expand="full">Make Payment</ion-button>
+						<ion-button type="submit" color="success" expand="full">Make Payment</ion-button>
 						<div id="card-errors" role="alert" style="color: red;"></div>
 					  </form>
 					</ion-card-content>

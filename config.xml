@@ -48,6 +48,7 @@
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
     <platform name="ios">
+        <resource-file src="GoogleService-Info.plist" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
@@ -126,4 +127,7 @@
     <allow-navigation href="http://192.168.1.4:8101" sessionid="4d06dee6" />
     <allow-navigation href="http://192.168.0.110:8100" sessionid="8f9952a0" />
     <allow-navigation href="http://192.168.0.132:8100" sessionid="d7c71033" />
+    <allow-navigation href="http://localhost:8100" sessionid="84de1208" />
+    <allow-navigation href="https://*stripe.com/*" />
+    <allow-navigation href="https://*js.stripe.com/*" />
 </widget>
