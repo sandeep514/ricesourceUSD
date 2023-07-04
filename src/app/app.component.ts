@@ -14,6 +14,8 @@ declare let RazorpayCheckout:any;
 import { FirebaseMessaging } from '@ionic-native/firebase-messaging/ngx';
 import { UsdconvertmodalPage } from './usdconvertmodal/usdconvertmodal.page';
 import { ConditionalExpr } from '@angular/compiler';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
+declare var FacebookAds: any;
 
 @Component({
 	selector: 'app-root',
@@ -99,8 +101,46 @@ export class AppComponent implements OnInit {
 		public alertController: AlertController,
 		public route:Router,
 		public location : Location,
-		public firebase: FirebaseMessaging
+		public firebase: FirebaseMessaging,
+		private fb: Facebook
 	) {
+		platform.ready().then(() => {
+			this.fb.setApplicationId('294793669485581');
+			this.fb.activateApp();
+			FacebookAds.getAttributionDetails().then(details => {
+				if (details['advertiser_id']) {
+				  this.fb.logEvent('fb_mobile_install', {
+					fb_content_id: details['advertiser_id']
+				  }).then(() => console.log('Install event logged successfully'))
+					.catch(e => console.log('Error logging install event', e));
+				}
+			  }).catch(e => console.log('Error getting attribution details', e));
+
+			
+		}).catch(() => {
+
+		});
+		
+
+		// if(FacebookAds)
+		// {
+		// 	let options = {
+		// 		adId: '763416880384578_1088816394511290',
+		// 		adSize: 'SMART_BANNER',
+		// 		isTesting: false,
+		// 		autoShow: true
+		// 	};
+
+		// 	FacebookAds.getAttributionDetails().then((res:any) => {
+		// 		console.log(res);
+		// 	}).catch((err:any) => {
+		// 		console.log(err);
+		// 	})
+		// 	FacebookAds.createBanner(options, function(data){
+		// 	FacebookAds.showBanner(8);
+		// 	}, function(err){});
+		// }
+
 		this.initializeApp();
 		
 		this.menuCtrl.open();
