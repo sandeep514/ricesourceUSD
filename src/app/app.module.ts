@@ -28,7 +28,6 @@ import { IonicSelectableModule } from 'ionic-selectable';
 import { UsdconvertmodalPageModule } from './usdconvertmodal/usdconvertmodal.module';
 import { TrialperiodPageModule } from './trialperiod/trialperiod.module';
 import { Stripe } from '@ionic-native/stripe/ngx';
-import { Facebook } from '@ionic-native/facebook/ngx';
 
 @NgModule({
   	declarations: [
@@ -69,7 +68,6 @@ import { Facebook } from '@ionic-native/facebook/ngx';
 		Camera,
 		FirebaseMessaging,
 		Stripe,
-		Facebook,
 		VersionmodalPage,
     	{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     	{ provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptorService, multi: true }

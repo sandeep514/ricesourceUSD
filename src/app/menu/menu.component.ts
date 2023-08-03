@@ -39,6 +39,7 @@ export class MenuComponent implements OnInit {
 				this.apptype = localStorage.getItem('apptype');
 				this.seledctedRole = localStorage.getItem('role');
 			}	
+			console.log(this.seledctedRole);
 		});
 		this.getChatStatus();
 		

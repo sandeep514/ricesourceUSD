@@ -203,6 +203,18 @@ const routes: Routes = [
   {
     path: 'deleteaccount',
     loadChildren: () => import('./deleteaccount/deleteaccount.module').then( m => m.DeleteaccountPageModule)
+  },
+  {
+    path: 'selling-inr',
+    loadChildren: () => import('./selling-inr/selling-inr.module').then( m => m.SellingINRPageModule)
+  },
+  {
+    path: 'brands',
+    loadChildren: () => import('./brands/brands.module').then( m => m.BrandsPageModule)
+  },
+  {
+    path: 'brand-details',
+    loadChildren: () => import('./brand-details/brand-details.module').then( m => m.BrandDetailsPageModule)
   }
 
 

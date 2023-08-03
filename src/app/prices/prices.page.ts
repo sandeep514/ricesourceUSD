@@ -187,6 +187,11 @@ export class PricesPage implements OnInit {
 		);
 	}
 
+	brand(){
+		console.log("hjnjk");
+		this.navCtrl.navigateForward(['brands']);
+	}
+
 	getGallery() {
 		this.restService.getImagesForDashboard().then( (res: any) => {
 			console.log('i am here 2')
@@ -709,7 +714,11 @@ export class PricesPage implements OnInit {
 		let data = (newValue - oldValue) / 100;
 		return Math.sign(data);
 	}
+	sellerINR(){
+		console.log("i am here");
 	
+		this.navCtrl.navigateForward(["selling-inr"]);
+	}
 	openPopup(key) {
 		$(".popover").hide();
 		$(".popoverley").show();
