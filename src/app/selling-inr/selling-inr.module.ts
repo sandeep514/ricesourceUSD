@@ -17,6 +17,9 @@ import { ComponentsModule } from "../components/components.module";
     IonicModule,
     SellingINRPageRoutingModule
   ],
-  declarations: [SellingINRPage]
+  declarations: [SellingINRPage],
+  providers:[
+
+  ]
 })
 export class SellingINRPageModule {}

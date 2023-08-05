@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { NavController } from '@ionic/angular';
 import { Location } from '@angular/common';
-import { ImagePicker } from "@awesome-cordova-plugins/image-picker/ngx";
+// import { ImagePicker } from "@awesome-cordova-plugins/image-picker/ngx";
+
+import { File } from "@ionic-native/file/ngx";
+import { ActionSheetController } from "@ionic/angular";
+import { Camera , CameraOptions} from '@ionic-native/camera/ngx';
 
 @Component({
   selector: "app-selling-inr",
@@ -36,12 +40,20 @@ export class SellingINRPage implements OnInit {
   selectedRiceFormAndName: any = "";
   selectedGrade: any = "";
   sellerPackingList: any = "";
+  croppedImagepath = "";
+  isLoading = false;
 
+  imagePickerOptions = {
+    maximumImagesCount: 1,
+    quality: 50,
+  };
   constructor(
     public apiser: RestService,
     public location: Location,
     public navCtrl: NavController,
-    private imagePicker: ImagePicker
+    public actionSheetController: ActionSheetController,
+    public file: File,
+    private camera: Camera 
   ) {}
 
   ngOnInit() {
@@ -53,38 +65,49 @@ export class SellingINRPage implements OnInit {
     this.selectedGrade = selectedWantDetail.id;
     console.log(selectedWantDetail);
   }
-  showGallery(){
-    let options = {
-      // Android only. Max images to be selected, defaults to 15. If this is set to 1, upon
-      // selection of a single image, the plugin will return it.
-      maximumImagesCount: 1,
-
-      // max width and height to allow the images to be.  Will keep aspect
-      // ratio no matter what.  So if both are 800, the returned image
-      // will be at most 800 pixels wide and 800 pixels tall.  If the width is
-      // 800 and height 0 the image will be 800 pixels wide if the source
-      // is at least that wide.
-      width: 400,
-      height: 400,
-
-      // quality of resized image, defaults to 100
-      quality: 20,
-
-      // output type, defaults to FILE_URIs.
-      // available options are
-      // window.imagePicker.OutputType.FILE_URI (0) or
-      // window.imagePicker.OutputType.BASE64_STRING (1)
-      outputType: 0,
+  pickImage(sourceType) {
+    const options: CameraOptions = {
+      quality: 100,
+      sourceType: sourceType,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
     };
-    this.imagePicker.getPictures(options).then(
-      (results) => {
-        for (var i = 0; i < results.length; i++) {
-          console.log("Image URI: " + results[i]);
-        }
+    this.camera.getPicture(options).then(
+      (imageData) => {
+        // imageData is either a base64 encoded string or a file URI
+        this.croppedImagepath = "data:image/jpeg;base64," + imageData;
       },
-      (err) => {}
+      (err) => {
+        // Handle error
+      }
     );
   }
+
+  // async selectImage() {
+  //   const actionSheet = await this.actionSheetController.create({
+  //     header: "Select Image source",
+  //     buttons: [
+  //       {
+  //         text: "Load from Library",
+  //         handler: () => {
+  //           this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY);
+  //         },
+  //       },
+  //       {
+  //         text: "Use Camera",
+  //         handler: () => {
+  //           this.pickImage(this.camera.PictureSourceType.CAMERA);
+  //         },
+  //       },
+  //       {
+  //         text: "Cancel",
+  //         role: "cancel",
+  //       },
+  //     ],
+  //   });
+  //   await actionSheet.present();
+  // }
   save() {
     this.isError = false;
     if (
