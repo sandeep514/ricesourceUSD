@@ -1,0 +1,139 @@
+<ion-header class="green">
+	<ion-toolbar mode="ios" style="background: transparent; --background: transparent">
+		<ion-buttons slot="start" class="back-button" (click)="back()">
+			<ion-icon name="arrow-back-outline"></ion-icon>
+		</ion-buttons>
+		<ion-title class="header-title porttitle">Trade</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content id="content" class="lightgreen" style="height: 100%;">
+	<div style="height: 90%;overflow: scroll;">
+		<div>
+			<ul style="padding: 10px;">
+				<li *ngFor="let bids of mybids" class="demandedData" style="border-bottom: 2px solid #ededed;">
+					<div
+						style="margin: 0;border: 3px solid #92b243;border-radius: 20px;margin-bottom: 20px;overflow: hidden;">
+						<ion-row style="background: #92b243;">
+							<ion-col>
+								<div
+									style="margin: 0px;color: #fffbd6;padding: 10px 0px;font-weight: bold;margin-left: 20px;">
+									TRADE-{{ (bids?.id + 1) }}
+								</div>
+							</ion-col>
+						</ion-row>
+
+						<ion-row>
+							<ion-col size="4" class="demandHeaders">Rice</ion-col>
+							<ion-col>
+								<div style="float: left;width: 10px;margin: 0px;height: 25px">:</div>
+								<div style="margin: 0px">
+									{{ bids?.rice_quality_master.quality }} {{ bids?.rice_form_milestone3.name }} {{
+									bids?.rice_grade.get_wand_type[0].type }}
+									<ng-container *ngIf="bids?.quality_type == 1 "> Basmati Rice</ng-container>
+									<ng-container *ngIf="bids?.quality_type == 2 "> Non-Basmati Rice</ng-container>
+									({{ bids?.rice_grade.value }})
+								</div>
+							</ion-col>
+						</ion-row>
+						<!-- <ion-row>
+							<ion-col size="4" class="demandHeaders">Rice Form</ion-col>
+							<ion-col>
+								<div style="float: left;width: 10px;margin: 0px;height: 25px">:</div>
+								<div style="margin: 0px">
+									{{ bids?.rice_form_milestone3.name }} 
+								</div>
+							</ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col size="4" class="demandHeaders">Grade</ion-col>
+							<ion-col>
+								<div style="float: left;width: 10px;margin: 0px;height: 25px">:</div>
+								<div style="margin: 0px">
+									{{ bids?.rice_grade.get_wand_type[0].type }}:
+									{{ bids?.rice_grade.value }} 
+								</div>
+							</ion-col>
+						</ion-row> -->
+						<ion-row>
+							<ion-col size="4" class="demandHeaders">Packing</ion-col>
+							<ion-col>
+								<div style="float: left;width: 10px;margin: 0px;height: 25px">:</div>
+								<div style="margin: 0px">
+									{{ bids?.rice_packing.packing }}
+								</div>
+							</ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col size="4" class="demandHeaders">Quantity(MT)</ion-col>
+							<ion-col>
+								<div style="float: left;width: 10px;margin: 0px;height: 25px">:</div>
+								<div style="margin: 0px">
+									{{ bids?.quantity }}
+								</div>
+							</ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col size="4" class="demandHeaders">Price (PMT)
+							</ion-col>
+							<ion-col>
+								<div style="float: left;width: 10px;margin: 0px;height: 25px">:</div>
+								<div style="margin: 0px">
+									₹{{ bids?.offerPrice }}
+								</div>
+							</ion-col>
+						</ion-row>
+						<ion-row>
+							<ion-col size="4" class="demandHeaders">Ex-Warehouse</ion-col>
+							<ion-col>
+								<div style="float: left;width: 10px;margin: 0px;height: 25px">:</div>
+								<div style="margin: 0px">
+									{{ bids?.location }}
+								</div>
+							</ion-col>
+						</ion-row>
+						
+						<ion-row>
+							<ion-col size="4" class="demandHeaders">Validity</ion-col>
+							<ion-col>
+								<div style="float: left;width: 10px;margin: 0px;height: 25px">:</div>
+								<div style="margin: 0px">
+									{{ bids?.validDays }}
+								</div>
+							</ion-col>
+						</ion-row>
+
+						<ion-row>
+							<ion-col size="6"
+								style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;font-weight: bold;">
+								<img src="{{ imagePre }}uploads/{{ bids?.cooked_file }}"
+									style="width: 190px;height: 130px;padding: 0 5px;" alt="cooked" (click)="openModal(imagePre+'uploads/'+bids?.cooked_file)" onerror="this.src='../../assets/img/No_image_available.svg.png';">
+							</ion-col>
+							<ion-col size="6"
+								style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;font-weight: bold;">
+								<img src="{{ imagePre }}uploads/{{ bids?.uncooked_file }}"
+									style="width: 190px;height: 130px;padding: 0 5px;" alt="cooked" (click)="openModal(imagePre+'uploads/'+bids?.uncooked_file)" onerror="this.src='../../assets/img/No_image_available.svg.png';">
+							</ion-col>
+						</ion-row>
+
+						<ion-row *ngIf="bids?.status == 3 && bids?.status == '3'">
+							<ion-col size="12"
+								style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;font-weight: bold;">
+								<img src="../../assets/STAMP SOLD.png" style="width: 100px;" />
+							</ion-col>
+						</ion-row>
+
+						<ion-row *ngIf="bids?.status == 2 && bids?.status == '3'">
+							<ion-col size="12"
+								style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;font-weight: bold;">
+								<!-- Deal is taken -->
+								<img src="../../assets/STAMP SOLD.png" style="width: 100px;" />
+							</ion-col>
+						</ion-row>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<app-menu></app-menu>
+</ion-content>

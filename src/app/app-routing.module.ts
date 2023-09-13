@@ -215,6 +215,14 @@ const routes: Routes = [
   {
     path: 'brand-details',
     loadChildren: () => import('./brand-details/brand-details.module').then( m => m.BrandDetailsPageModule)
+  },
+  {
+    path: 'trade-inr',
+    loadChildren: () => import('./trade-inr/trade-inr.module').then( m => m.TradeINRPageModule)
+  },
+  {
+    path: 'buy-inr',
+    loadChildren: () => import('./buy-inr/buy-inr.module').then( m => m.BuyInrPageModule)
   }
 
 

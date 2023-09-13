@@ -84,7 +84,7 @@ export class RegisterPage implements OnInit {
 				if( this.username != undefined && this.email && this.companyname && this.address && this.contactperson && this.mobile && this.password && this.userState && this.selectedBagVendorCategory ){
 					let postData = {
 						'username' :  this.username,
-						'email' :  this.email,
+						'email' :  (this.email).trim(),
 						'companyname' :  this.companyname,
 						'address' :  this.address,
 						'contactperson' :  this.contactperson,

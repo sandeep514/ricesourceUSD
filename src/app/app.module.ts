@@ -29,6 +29,10 @@ import { UsdconvertmodalPageModule } from './usdconvertmodal/usdconvertmodal.mod
 import { TrialperiodPageModule } from './trialperiod/trialperiod.module';
 import { Stripe } from '@ionic-native/stripe/ngx';
 import { File } from "@ionic-native/file/ngx";
+import { FileTransfer } from '@ionic-native/file-transfer/ngx';
+import { FileChooser } from '@ionic-native/file-chooser/ngx';
+import { FilePath } from '@ionic-native/file-path/ngx';
+import { ImagePicker } from "@ionic-native/image-picker/ngx";
 
 @NgModule({
   	declarations: [
@@ -64,11 +68,15 @@ import { File } from "@ionic-native/file/ngx";
   	],
   	providers: [
     	StatusBar,
+		ImagePicker,
     	SplashScreen,
 		ThemeDetection,
 		Camera,
 		FirebaseMessaging,
 		Stripe,
+		FileChooser,
+		FilePath,
+		FileTransfer,
 		File,
 		VersionmodalPage,
     	{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

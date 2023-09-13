@@ -1,12 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { RestService } from '../rest.service';
-import { NavController } from '@ionic/angular';
-import { Location } from '@angular/common';
-// import { ImagePicker } from "@awesome-cordova-plugins/image-picker/ngx";
+import { Component, OnInit } from "@angular/core";
+import { RestService } from "../rest.service";
+import { NavController } from "@ionic/angular";
+import { Location } from "@angular/common";
+import { ImagePicker } from "@ionic-native/image-picker/ngx";
+import { FileChooser } from "@ionic-native/file-chooser/ngx";
+import { FilePath } from "@ionic-native/file-path/ngx";
+
+import {
+  FileTransfer,
+  FileUploadOptions,
+  FileTransferObject,
+} from "@ionic-native/file-transfer/ngx";
 
 import { File } from "@ionic-native/file/ngx";
 import { ActionSheetController } from "@ionic/angular";
-import { Camera , CameraOptions} from '@ionic-native/camera/ngx';
+import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-selling-inr",
@@ -16,10 +25,15 @@ import { Camera , CameraOptions} from '@ionic-native/camera/ngx';
 export class SellingINRPage implements OnInit {
   quality: any;
   quantity: any;
+  offerPrice: any;
+  uncookedFile: any;
+  cookedImageFile: any;
+  packageImageFile: any;
+  warehouselocation: any;
+  validDays: any = 1;
   party: any = localStorage.getItem("name");
   mobile: any = localStorage.getItem("mobile");
   remarks: any = "";
-  validDays: any = 0;
   riceQualityType: any;
   riceQualityData: any;
   port: any;
@@ -28,6 +42,7 @@ export class SellingINRPage implements OnInit {
   changePackingType: any;
   portName: any;
   selectedQualityType: any;
+  selectedQualityTypeInt: any;
   selectedPackageName: any;
   riceQualityDataArray: any;
   riceQualityDataSelectedArray: any;
@@ -41,6 +56,12 @@ export class SellingINRPage implements OnInit {
   selectedGrade: any = "";
   sellerPackingList: any = "";
   croppedImagepath = "";
+  croppedBagImagepath = "";
+  croppedUncookedImagepath = "";
+  croppedCookedImagepath = "";
+  fileTransfer = "";
+  contactperson = "";
+  contactMobile = "";
   isLoading = false;
 
   imagePickerOptions = {
@@ -52,8 +73,12 @@ export class SellingINRPage implements OnInit {
     public location: Location,
     public navCtrl: NavController,
     public actionSheetController: ActionSheetController,
+    public transfer: FileTransfer,
     public file: File,
-    private camera: Camera 
+    public filechooser: FileChooser,
+    public filePath: FilePath,
+    public httpClient: HttpClient,
+    private camera: Camera // public imgPicker: ImagePicker
   ) {}
 
   ngOnInit() {
@@ -65,23 +90,92 @@ export class SellingINRPage implements OnInit {
     this.selectedGrade = selectedWantDetail.id;
     console.log(selectedWantDetail);
   }
-  pickImage(sourceType) {
+  packageImage(event) {
+    this.packageImageFile = event.target.files[0];
+    console.log(this.packageImageFile);
+    console.log(event.target.files[0]);
+    // this.croppedImagepath = photo;
+    // this.imgPicker.getPictures(this.imagePickerOptions).then((res) => {
+    // 	console.log(res)
+    // }).catch((err) => {
+    // 	console.log(err);
+    // });
+  }
+  pickBagImage(sourceType) {
+    // this.filechooser.open().then((uri: any) => {
+    // 	this.filePath.resolveNativePath(uri).then((nativePath) => {
+    // 		this.uploadImage(nativePath,"https://snjtradelink.com/staging/public/api/submit/sell/query");
+    // 	})
+    // });
+
+    // return false;
+
     const options: CameraOptions = {
       quality: 100,
       sourceType: sourceType,
-      destinationType: this.camera.DestinationType.DATA_URL,
+      //   destinationType: this.camera.DestinationType.DATA_URL, //base64
+      destinationType: this.camera.DestinationType.FILE_URI, // imageURL
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
     };
     this.camera.getPicture(options).then(
       (imageData) => {
         // imageData is either a base64 encoded string or a file URI
-        this.croppedImagepath = "data:image/jpeg;base64," + imageData;
+        this.croppedBagImagepath = "data:image/jpeg;base64," + imageData;
+        this.uploadImage(
+          imageData,
+          "https://snjtradelink.com/staging/public/api/submit/sell/query"
+        );
+        console.log(imageData);
       },
       (err) => {
         // Handle error
       }
     );
+  }
+  getFile() {
+    // 	this.file.checkDir(this.file.dataDirectory, 'mydir').then((res) => console.log('Directory exists')).catch(err =>
+    //   console.log('Directory doesnt exist'));
+  }
+  pickUncookedImage(event) {
+    this.uncookedFile = event.target.files[0];
+    // console.log(photo);
+    // const options: CameraOptions = {
+    //   quality: 100,
+    //   sourceType: sourceType,
+    //   destinationType: this.camera.DestinationType.DATA_URL,
+    //   encodingType: this.camera.EncodingType.JPEG,
+    //   mediaType: this.camera.MediaType.PICTURE,
+    // };
+    // this.camera.getPicture(options).then(
+    //   (imageData) => {
+    //     // imageData is either a base64 encoded string or a file URI
+    //     this.croppedUncookedImagepath = "data:image/jpeg;base64," + imageData;
+    //   },
+    //   (err) => {
+    //     // Handle error
+    //   }
+    // );
+  }
+  pickCookedImage(event) {
+    this.cookedImageFile = event.target.files[0];
+    // console.log(photo);
+    // const options: CameraOptions = {
+    //   quality: 100,
+    //   sourceType: sourceType,
+    //   destinationType: this.camera.DestinationType.DATA_URL,
+    //   encodingType: this.camera.EncodingType.JPEG,
+    //   mediaType: this.camera.MediaType.PICTURE,
+    // };
+    // this.camera.getPicture(options).then(
+    //   (imageData) => {
+    //     // imageData is either a base64 encoded string or a file URI
+    //     this.croppedCookedImagepath = "data:image/jpeg;base64," + imageData;
+    //   },
+    //   (err) => {
+    //     // Handle error
+    //   }
+    // );
   }
 
   // async selectImage() {
@@ -108,7 +202,82 @@ export class SellingINRPage implements OnInit {
   //   });
   //   await actionSheet.present();
   // }
-  save() {
+
+  uploadImage(imagePath: string, serverUrl: string) {
+    const fileTransfer: FileTransferObject = this.transfer.create();
+
+    const options = {
+      fileKey: "file",
+      fileName: "my_image.jpg",
+      mimeType: "image/jpeg",
+      params: {}, // Any additional parameters to send with the request
+    };
+
+    fileTransfer
+      .upload(imagePath, serverUrl, options)
+      .then((data) => {
+        console.log("Image uploaded successfully:", data);
+      })
+      .catch((error) => {
+        console.error("Error uploading image:", error);
+      });
+  }
+  async save() {
+    console.log(this.selectedQualityTypeInt);
+    console.log(this.quality);
+    console.log(this.qualityForm);
+    console.log(this.selectedGrade);
+    console.log(this.changePackingType);
+    console.log(this.packageImageFile);
+    console.log(this.quantity);
+    console.log(this.offerPrice);
+    console.log(this.validDays);
+    console.log(this.uncookedFile);
+    console.log(this.cookedImageFile);
+
+    const headers = {
+      enctype: "multipart/form-data;",
+      Accept: "application/json",
+    };
+
+    let formData = new FormData();
+
+    formData.append("_method", "PATCH");
+    formData.append("selectedQualityTypeInt", this.selectedQualityTypeInt);
+    formData.append("quality", this.quality);
+    formData.append("qualityForm", this.qualityForm);
+    formData.append("selectedGrade", this.selectedGrade);
+    formData.append("changePackingType", this.changePackingType);
+    formData.append("warehouselocation", this.warehouselocation);
+    formData.append("contactperson", this.contactperson);
+    formData.append("contactMobile", this.contactMobile);
+	if (this.packageImageFile != undefined ) {
+		formData.append(
+			"packageImageFile",
+			this.packageImageFile,
+			this.packageImageFile.name
+        );
+	}
+    formData.append("quantity", this.quantity);
+    formData.append("offerPrice", this.offerPrice);
+    formData.append("validDays", this.validDays);
+    formData.append("uncookedFile", this.uncookedFile, this.uncookedFile.name);
+    formData.append(
+      "cookedImageFile",
+      this.cookedImageFile,
+      this.cookedImageFile.name
+    );
+
+    let posteddata = {
+      method: "POST",
+      body: formData,
+    };
+    fetch(
+      "https://snjtradelink.com/staging/public/api/submit/sell/query",
+      posteddata
+    );
+    return false;
+
     this.isError = false;
     if (
       this.quality != undefined &&
@@ -133,17 +302,17 @@ export class SellingINRPage implements OnInit {
         user: localStorage.getItem("id"),
       };
 
-      this.apiser.saveRiceQuery(postedData).then(
-        (res: any) => {
-          this.apiser.loaderCtrl.dismiss();
+      // this.apiser.saveRiceQuery(postedData).then(
+      //   (res: any) => {
+      //     this.apiser.loaderCtrl.dismiss();
 
-          this.apiser.presentToast("Query generated successfully.");
-          this.navCtrl.navigateRoot(["thankyou"]);
-        },
-        (err: any) => {
-          console.log(err);
-        }
-      );
+      //     this.apiser.presentToast("Query generated successfully.");
+      //     this.navCtrl.navigateRoot(["thankyou"]);
+      //   },
+      //   (err: any) => {
+      //     console.log(err);
+      //   }
+      // );
     } else {
       this.isError = true;
       this.errorMessage = "Required fields are missing";
@@ -224,6 +393,9 @@ export class SellingINRPage implements OnInit {
     if (this.selectedQualityType == "BASMATI") {
       selectedQualityTypeInit = 1;
     }
+
+    this.selectedQualityTypeInt = selectedQualityTypeInit;
+
     this.getCategoryQualities(selectedQualityTypeInit);
     this.riceQualityDataSelectedArray =
       this.riceQualityDataArray[data.detail.value.toLowerCase()];
@@ -232,10 +404,20 @@ export class SellingINRPage implements OnInit {
   }
 
   changeQuality(data) {
-    console.log();
+    console.log(data);
     this.quality = data.detail.value;
     this.getCategoryQualitiesForm(data.detail.value);
     console.log(this.quality);
+    this.onlyRiceName.forEach((data) => {
+      console.log(data);
+    });
+  }
+  textareaMaxLengthValidation() {
+    console.log(this.quantity.toString());
+    console.log(this.quantity.length);
+    if (this.quantity.length > 5) {
+      this.quantity = this.quantity.slice(0, 5);
+    }
   }
 
   changeQualityForm(data) {
@@ -249,6 +431,10 @@ export class SellingINRPage implements OnInit {
       }
     }
     this.getRiceWand();
+  }
+  changeGrade(data) {
+    this.selectedGrade = data.detail.value;
+    console.log(data);
   }
 
   changePacking(data) {

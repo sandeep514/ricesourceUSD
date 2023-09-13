@@ -3,7 +3,7 @@
     <name>SNTC Rice Sourcing </name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">SNTC Rice Sourcing</author>
-    <content original-src="index.html" src="https://localhost:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

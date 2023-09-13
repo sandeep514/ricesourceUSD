@@ -111,6 +111,8 @@ ext {
 // PLUGIN GRADLE EXTENSIONS START
 apply from: "../card.io.cordova.mobilesdk/sourcing-build.gradle"
 apply from: "../com.paypal.cordova.mobilesdk/sourcing-build.gradle"
+apply from: "../cordova-plugin-telerik-imagepicker/sourcing-ignorelinterrors.gradle"
+apply from: "../cordova-plugin-telerik-imagepicker/sourcing-androidtarget.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras1 = file('build-extras.gradle').exists()
