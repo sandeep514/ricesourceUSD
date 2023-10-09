@@ -90,18 +90,45 @@
 		</ion-row> -->
 
 		<ion-row style="margin-bottom: 10px;">
-			<ion-col size="12" style="border: 3px solid #92b243;border-radius: 10px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
+			<ion-col size="12"  >
+				<!-- <ion-item class="packingSelect" style="border: 0px;margin-bottom: 0;">
+					<ion-label>Packing*</ion-label> -->
+					<!-- <ion-select placeholder="Select" (ionChange)="changeBuyerPackingType($event)">
+						<ion-select-option value="0"><p>Miller Packing</p></ion-select-option>
+						<ion-select-option value="1"><p>Private Packing</p></ion-select-option>
+					</ion-select> -->
+
+					<ion-radio-group value="0" (ionChange)="changeBuyerPackingType($event)">
+						<div style="margin-top: 10px;">
+							<ion-label><span style="margin-right: 10px;">Miller Packing</span><ion-radio value="0">Miller Packing</ion-radio></ion-label><br />
+						</div>
+						
+						<div style="margin-top: 10px;">
+							<ion-label><span style="margin-right: 10px;">Private Packing</span><ion-radio value="1">Private Packing </ion-radio></ion-label>
+						</div>
+						
+					</ion-radio-group>
+				<!-- </ion-item> -->
+			</ion-col>
+		</ion-row>
+		<ion-row style="margin-bottom: 10px;" *ngIf="changedBuyerPackingType == '0' ">
+			<ion-col size="12"
+				style="border: 3px solid #92b243;border-radius: 10px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
 				<ion-item class="packingSelect" style="border: 0px;margin-bottom: 0;">
 					<ion-label>Packing*</ion-label>
-					<ion-select placeholder="Select" (ionChange)="changeBuyerPackingType($event)">
-						<ion-select-option value="miller"><p>Miller Packing</p></ion-select-option>
-						<ion-select-option value="private"><p>Private Packing</p></ion-select-option>
+					<ion-select placeholder="Select" (ionChange)="changePacking($event)">
+						<ion-select-option value="{{ '0_50KG PP' }}">
+							<p>50KG PP</p>
+						</ion-select-option>
+						<ion-select-option value="{{ '1_55KG PP' }}">
+							<p>55KG PP</p>
+						</ion-select-option>
 					</ion-select>
 				</ion-item>
 				<p style="padding: 0;margin: 0;margin-left: 15px;text-align: left;padding: 5px;">{{selectedPackageName}}</p>
 			</ion-col>
 		</ion-row>
-		<ion-row style="margin-bottom: 10px;" *ngIf="changedBuyerPackingType == 'private' ">
+		<ion-row style="margin-bottom: 10px;" *ngIf="changedBuyerPackingType == '1' ">
 			<ion-col size="12"
 				style="border: 3px solid #92b243;border-radius: 10px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
 				<ion-item class="packingSelect" style="border: 0px;margin-bottom: 0;">
@@ -123,9 +150,10 @@
 			<ion-input type="tel" maxLength="5" [(ngModel)]="quantity" (ionChange)="textareaMaxLengthValidation()"
 				style=" text-align: right;"></ion-input>
 		</ion-item>
+		
+		<ion-label position="">Additional Information*</ion-label>
 		<ion-item>
-			<ion-label position="">Additional Information*</ion-label>
-			<ion-input [(ngModel)]="additionalinfo" style=" text-align: right;"></ion-input>
+			<ion-textarea rows="4" [(ngModel)]="additionalinfo" style=""></ion-textarea>
 		</ion-item>
 
 

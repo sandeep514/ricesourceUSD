@@ -1,0 +1,39 @@
+.blink_me {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    0% {
+        opacity: 0;
+    }
+
+    ;
+
+    50% {
+        opacity: 0.5;
+    }
+
+    ;
+
+    100% {
+        opacity: 1;
+    }
+
+    ;
+}
+
+.SelectButtonColumn{
+    text-decoration: none;
+    padding: 10px 15px;
+    border: 2px solid #92b243;
+    border-radius: 10px;
+    color: #fff;
+    background-color: #92b243;
+
+}
+.buttonColumn{
+    text-decoration: none;
+    padding: 10px 15px;
+    border: 2px solid #92b243;
+    border-radius: 10px;
+}

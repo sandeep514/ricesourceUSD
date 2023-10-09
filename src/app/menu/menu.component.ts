@@ -42,8 +42,16 @@ export class MenuComponent implements OnInit {
 			console.log(this.seledctedRole);
 		});
 		this.getChatStatus();
-		
+		setTimeout(() => {
+			this.apptype = localStorage.getItem('apptype');
+			console.log(this.apptype);
+
+		},1000)
+	}
+
+	ionViewDidEnter(){
 		this.apptype = localStorage.getItem('apptype');
+		console.log(this.apptype);
 	}
 	
 	updateNotification(){

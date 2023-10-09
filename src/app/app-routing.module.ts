@@ -223,6 +223,10 @@ const routes: Routes = [
   {
     path: 'buy-inr',
     loadChildren: () => import('./buy-inr/buy-inr.module').then( m => m.BuyInrPageModule)
+  },
+  {
+    path: 'trade-inr-list',
+    loadChildren: () => import('./trade-inr-list/trade-inr-list.module').then( m => m.TradeInrListPageModule)
   }
 
 

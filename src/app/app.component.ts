@@ -38,6 +38,21 @@ export class AppComponent implements OnInit {
 			icon: 'albums'
 		},
 		{
+			title: 'Transport',
+			url: '/port',
+			icon: 'albums'
+		},
+		{
+			title: 'Gallery',
+			url: '/gallery',
+			icon: 'albums'
+		},
+		{
+			title: 'Chat',
+			url: '/chat-detail',
+			icon: 'albums'
+		},
+		{
 			title: 'About us',
 			url: '/aboutus',
 			icon: 'albums'
