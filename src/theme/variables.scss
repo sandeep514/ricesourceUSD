@@ -364,8 +364,10 @@ ion-card-title {
 
 table {
     thead {
+        border: none !important;
         tr {
             font-family: Arial !important;
+            border: none !important;
             th {
                 background-color: transparent;
                 --background-color: transparent;
@@ -537,4 +539,15 @@ ion-title {
     max-height: auto !important;
     --min-height: auto !important;
     --max-height: auto !important;
+}
+p,a,span,ion-label {
+    font-family: 'Poppins-Regular'
+}
+h1,h2,h3 {
+    font-family: 'Poppins-Bold'
+}
+
+.noPaddingMargin{
+    padding: 0px !important;
+    margin: 0px !important;
 }

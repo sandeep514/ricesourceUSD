@@ -1,85 +1,52 @@
-<!-- <ion-content>
-	<ion-row class="ion-no-padding">
-		<ion-col class="ion-no-padding header-logo" align="center">
-			<img src="../../assets/SNTC LOGO (1).png" />
-		</ion-col>
-	</ion-row>
-	<ion-row class="login-box ion-padding">
-		<ion-col>
-			<ion-list>
-				<ion-item>
-					<ion-label position="floating">Email</ion-label>
-					<ion-input [(ngModel)]="email"></ion-input>
-				</ion-item>
-				<ion-item>
-					<ion-label position="floating">Password</ion-label>
-					<ion-input [(ngModel)]="password" type="password"></ion-input>
-				</ion-item>
-			</ion-list>
-		</ion-col>
-	</ion-row>
-	<ion-row class="ion-padding">
-		<ion-col align="center">
-			<ion-button class="login-button" (click)="loginNow()">Login Now</ion-button>
-		</ion-col>
-	</ion-row>
-	<ion-row class="forget-pass-row">
-		<ion-col align="center" class="forgot-pass">
-			<u>Forgot Password?</u>
-		</ion-col>
-	</ion-row>
-</ion-content>
-
-<ion-footer class="login-footer">
-	<p>Designed and Developed by Core Innovative Solutions</p>
-</ion-footer> -->
-
-<ion-content class="register lightgreen">
+<ion-content class="register green">
 
 	<ion-row>
-		<ion-col class="h-260 green brlb-30">
+		<ion-col class="h-160  brlb-30">
 			<!-- <h3 class="userTitle">
 				Register
 			</h3> -->
-			<img src="../../assets/sntc_nobackground.png" class="registerlogo" alt="">
+			<img src="../../assets/sntc_nobackground.png" class="registerlogo" alt="" >
 		</ion-col>
 	</ion-row>
 	<ion-row>
-		<ion-col>
-			<h3>
-				Login
+		<ion-col size="12">
+			<h3 style="font-family: 'Poppins-SemiBold';font-weight: 500;color: #fff;font-size: 35px;margin: 0px;padding: 0px;">
+				Welcome back
 			</h3>
+		</ion-col>
+		<ion-col size="12">
+			<p style="font-family: 'Poppins-Regular';font-weight: 500;color: #fff;font-size: 16px;margin: 0px;padding: 0px;">
+				Login To Access Your Account
+			</p>
 		</ion-col>
 	</ion-row>
 	
 	<ion-row class="formData ">
 		<ion-col class="form">
-			<ion-item>
-				<ion-label position="floating">Email or Mobile number</ion-label>
-				<ion-input [(ngModel)]="email" name="email"></ion-input>
-				<img src="../../assets/svg/mail-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
+			<ion-item no-lines lines="none" style="background: rgba(255,255,255, 0.3);border-radius: 8px;">
+				<ion-label position="floating" style="color: #fff;">Email or Mobile number</ion-label>
+				<ion-input [(ngModel)]="email" name="email" style="font-family: 'Poppins-SemiBold';color: #fff;"></ion-input>
+				<!-- <img src="../../assets/svg/mail-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt=""> -->
 			</ion-item>
-			<ion-item>
-				<ion-label position="floating">Password</ion-label>
-				<ion-input [type]="passwordType" name='password' [(ngModel)]="password" style="width: 60%"></ion-input>
+			<ion-item no-lines lines="none" style="background: rgba(255,255,255, 0.3);border-radius: 8px;margin-top: 20px;">
+				<ion-label position="floating" style="color: #fff;">Password</ion-label>
+				<ion-input [type]="passwordType" name='password' [(ngModel)]="password" style="width: 100%;font-family: 'Poppins-SemiBold';color: #fff;"></ion-input>
 				<ion-icon slot="end" [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()' style="font-size: 1px;"></ion-icon>
-				<img src="../../assets/svg/key-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
+				<!-- <img src="../../assets/svg/key-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt=""> -->
 			</ion-item>
-			<ion-item>
-				<p class=" w-100" style="text-align: right;">
-					<a href="javascript:void(0)" class="nounderline" (click)="forgotpassword()">Forgot Password?</a>
+			<ion-item no-lines lines="none">
+				<p class=" w-100" style="text-align: center;">
+					<a href="javascript:void(0)" class="nounderline" (click)="forgotpassword()" style="color: #fff;font-family: 'Poppins-SemiBold';">Forgot Password?</a>
 				</p>
 			</ion-item>
 			<div class="center mt10">
 				<!-- <p class="center w-100">Not a member ? <a href="javascript:void(0)" class="nounderline" (click)="registernow()">Register now</a></p> -->
 			</div>
 			<div class="center mt10">				
-				<ion-button class="green" (click)="loginNow()" expand="full"> Sign in </ion-button>
-				<p>OR</p>
-				<ion-button class="green" (click)="registernow()" expand="full"> Register </ion-button>
-
+				<button (click)="loginNow()" size="large" expand="full" style="background: #fff;border-radius: 27px;padding: 18px;width: 100%;"> <p style="padding: 0px;margin:0px;font-family: 'Poppins-SemiBold';color: #677435;font-size: 16px;">Sign in</p> </button>
+				<p style="color: #fff;">OR</p>
+				<button (click)="registernow()" expand="full" style="background: #fff;border-radius: 27px;padding: 18px;width: 100%;"><p style="padding: 0px;margin:0px;font-family: 'Poppins-SemiBold';color: #677435;font-size: 16px;">Register</p> </button>
 			</div>
-			
 		</ion-col>
 	</ion-row>
 	<ion-row class="center">

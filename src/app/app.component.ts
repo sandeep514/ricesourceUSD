@@ -248,6 +248,7 @@ export class AppComponent implements OnInit {
 				this.navCtrl.navigateForward(['planpage']);
 			}else{
 				if(localStorage.getItem('apptype') == 'USD'){
+					console.log("i am here");
 					this.navCtrl.navigateForward('priceusd');
 				}else{
 					this.navCtrl.navigateForward('prices');
@@ -569,7 +570,8 @@ export class AppComponent implements OnInit {
 											console.log("hey i am here");
 											this.navCtrl.navigateRoot('planpage');
 										}else{
-											this.navCtrl.navigateForward(['priceusd']);
+											console.log("i am here");
+											this.navCtrl.navigateForward(['prices']);
 											console.log("apptype USD");
 											localStorage.setItem('apptype' , 'USD')
 										}
@@ -639,6 +641,7 @@ export class AppComponent implements OnInit {
 									console.log("hey i am here");
 									this.navCtrl.navigateRoot('planpage');
 								}else{
+									console.log("i am here");
 									this.navCtrl.navigateForward(['priceusd']);
 									console.log("apptype USD");
 									localStorage.setItem('apptype' , 'USD')

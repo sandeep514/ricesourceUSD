@@ -64,6 +64,7 @@ export class TradeINRPage implements OnInit {
 
 		this.apiService.getTrades(userid).then(
 			(res: any) => {
+				console.log('res 67');
 				console.log(res);
 				this.mybids = res.data;
 				console.log(res);

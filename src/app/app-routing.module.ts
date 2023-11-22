@@ -227,6 +227,18 @@ const routes: Routes = [
   {
     path: 'trade-inr-list',
     loadChildren: () => import('./trade-inr-list/trade-inr-list.module').then( m => m.TradeInrListPageModule)
+  },
+  {
+    path: 'welcome1',
+    loadChildren: () => import('./welcome1/welcome1.module').then( m => m.Welcome1PageModule)
+  },
+  {
+    path: 'welcome2',
+    loadChildren: () => import('./welcome2/welcome2.module').then( m => m.Welcome2PageModule)
+  },
+  {
+    path: 'welcome3',
+    loadChildren: () => import('./welcome3/welcome3.module').then( m => m.Welcome3PageModule)
   }
 
 

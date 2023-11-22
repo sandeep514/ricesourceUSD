@@ -24,14 +24,13 @@
     }
     
     .user-profile-icon {
-        width: 50px;
+        width: 40px;
         background-color: #606060;
         border-radius: 50px;
-        height: 50px;
+        height: 40px;
         line-height: 50px;
         margin-left: 15px;
         margin-top: 10px;
-        padding: 20;
         span {
             color: #FFF;
             font-size: 30px;
@@ -162,7 +161,7 @@
                     height: 35px;
                     td {
                         font-size: 12px;
-                        border-bottom: 1px solid #dfdfdf;
+                        // border-bottom: 1px solid #dfdfdf;
                         border-right: 1px solid #dfdfdf;
                     }
                 }
@@ -316,17 +315,17 @@
     }
     
     .header-segment {
-        height: 32px;
+        height: 45px;
         --padding-end: 0px;
         margin-right: 0px;
         margin: 0 auto;
         ion-segment-button {
             --indicator-color: transparent !important;
             --indicator-color-checked: transparent !important;
-            height: 0px;
+            height: fit-content;
             // margin-top: 8px;
-            border-radius: 0px;
-            min-height: 31px;
+            border-radius: 100px;
+            min-height: auto;
             margin-left: 2px;
             margin-right: 2px;
             // box-shadow: -1px 1px 9px 0px #CCC;
@@ -335,17 +334,18 @@
             --min-width: auto;
             min-width: auto;
             color: #000;
-            font-size: 12px;
-            border: 2px solid #92b243;
+            font-size: 14px;
+            padding: 8px;
+            border: 2px solid #E1E1E1;
         }
         ion-segment-button.segment-button-checked {
             // background-color: #FFF;
-            background: #92b244;
-            --background: #92b244;
+            background: #EEFCCE;
+            --background: #EEFCCE;
             ion-label {
                 margin: 0px;
                 padding: 0px;
-                color: #fff;
+                color: #779A20;
                 font-weight: 600;
                 font-size: 100%;
             }
@@ -429,13 +429,13 @@
     }
     
     .ricetitle {
-        font-size: 27px;
-        font-family: Arial;
+        font-size: 22px;
+        font-family: 'Poppins-SemiBold';
         text-align: center
     }
     
     .basmatiState {
-        margin: 0 30px
+        // margin: 0 30px
     }
     
     table {
@@ -478,11 +478,27 @@
     }
     
     .ricetype {
-        font-size: 30px;
-        font-family: Arial;
+        font-size: 16px;
+        font-family: 'Poppins-SemiBold';
         margin-bottom: 0px !important;
         margin-top: 0px !important;
-        font-weight: bold
+        font-weight: bold;
+    }
+    
+    .riceyear {
+        font-size: 14px;
+        font-family: 'Poppins-SemiBold';
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+        font-weight: bold;
+    }
+    
+    .priceinQtls {
+        font-size: 14px;
+        font-family: 'Poppins-SemiBold';
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+        font-weight: bold;
     }
     
     .font-17 {
@@ -567,11 +583,11 @@
             tbody {
                 background: transparent !important;
                 background-color: transparent !important;
-                border-bottom: 2px solid #cfcaab !important;
+                // border-bottom: 2px solid #cfcaab !important;
                 tr {
                     background: transparent !important;
                     background-color: transparent !important;
-                    border-bottom: 2px solid #cfcaab !important;
+                    border-bottom: 1px solid #ededed !important;
                     font-family: 'GlacialIndifference-Regular';
                     th {
                         background: transparent !important;
@@ -582,6 +598,14 @@
                         border-right: 0px !important;
                         font-size: 18px !important
                     }
+                }
+            }
+            thead{
+                border: 0px !important;
+                tr{
+                    border: 0px !important;
+                    background-color: #FFFBD6 !important;
+                    --background-color: #FFFBD6 !important;
                 }
             }
         }
@@ -626,4 +650,30 @@
                 border-radius: 5px;
             }
         }
+    }
+    .avatar{
+        height: 50px;
+        width: 50px;
+        background: #FFFBD6;
+        justify-content: center;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        border-radius: 100%;
+        font-size: 27px;
+        color: #92b243;
+        font-family: 'Poppins-SemiBold';
+    }
+    
+    .convertButtonParent{
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+
+    .riceCrop,.ricePrice{
+        font-size: 12px;
+        font-family: 'Poppins-SemiBold';
+        text-align: center;
     }

@@ -71,8 +71,8 @@
         // margin-right: 25px;
     }
     .registerlogo{
-        width: 34%;
-        margin-top: 10px;
+        width: 80px;
+        margin-top: 30px;
         margin-bottom: 10px;
     }
 }
@@ -88,14 +88,20 @@
         .item-native{
             background: transparent;
             --background: transparent;
+            border: 0px;
         }
     }
     button{
-        --background: #92B243  !important;
-        background: #92B243 !important;
-        background-color: #92B243 !important;
-        --background-color: #92B243 !important;
+        --background: #fff !important;
+        background: #fff !important;
+        background-color: #fff !important;
+        --background-color: #fff !important;
+        padding:25px
     }
+}
+.item-native{
+    border:0px;
+    padding: 0px;
 }
 .activeTab{
     --background: #92B243  !important;
@@ -124,4 +130,7 @@
 }
 .nounderline{
     text-decoration: none;
+}
+ion-button{
+
 }

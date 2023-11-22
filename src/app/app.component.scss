@@ -154,3 +154,22 @@ ion-item.selected {
 		margin: 0;
 	}
 }
+
+@font-face {
+  font-family: 'Poppins-Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../assets/fonts/Poppins/Poppins-Regular.ttf');
+}
+@font-face {
+  font-family: 'Poppins-Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../assets/fonts/Poppins/Poppins-Bold.ttf');
+}
+@font-face {
+  font-family: 'Poppins-SemiBold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../assets/fonts/Poppins/Poppins-SemiBold.ttf');
+}

@@ -88,6 +88,9 @@ export class ProfilePage implements OnInit {
 			this.navCtrl.navigateForward(['prices']);
 		}
 	}
+	gotoback() {
+			this.navCtrl.back();
+	}
 	getCountryList(){
 		this.restSer.getOceanPorts().then((res:any) => {
 			this.countries = (Object.keys(res.data));
