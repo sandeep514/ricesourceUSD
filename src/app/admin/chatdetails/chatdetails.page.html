@@ -29,10 +29,10 @@
                         <div class="chat-avatar">
                             <ion-avatar class="avatar-sm">
                                 <!-- <img src='assets/img/avatars/5.jpg'> -->
-                                <ng-container *ngIf="parseInt(chat.from) === parseInt(myId)">
+                                <ng-container *ngIf="parseInt(chat.from) !== parseInt(myId)">
                                     <img src='https://ui-avatars.com/api/?name={{userDetails}}&color=7F9CF5&background=EBF4FF'>
                                 </ng-container>
-                                <ng-container *ngIf="parseInt(chat.from) !== parseInt(myId)">
+                                <ng-container *ngIf="parseInt(chat.from) === parseInt(myId)">
                                     <img src='https://ui-avatars.com/api/?name=admin&color=7F9CF5&background=EBF4FF'>
                                 </ng-container>
                             </ion-avatar>

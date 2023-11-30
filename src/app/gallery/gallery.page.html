@@ -1,5 +1,5 @@
-<ion-content id="content" class="bg-lightgreen">
-	<div class="header-data green" >
+<ion-content id="content" class="">
+	<div class="header-data" style="height: auto;">
 
 		<div class="header-content">
 			<ion-row class="">
@@ -21,9 +21,9 @@
 		<ion-row class="m020 mt30">
 			<ion-col size="12" style="height: 70px;">
 				<ng-container>
-					<ion-item class="green">
+					<ion-item class="" style="--background: #EEFCCE;border-radius: 100px;">
 						<ion-label>Rice Type</ion-label>
-						<ion-select interface="popover" (ionChange)="getRiceType($event)" value="basmati">
+						<ion-select  (ionChange)="getRiceType($event)" value="basmati">
 							<ion-select-option value="basmati" selected="selected">Basmati</ion-select-option>
 							<ion-select-option value="nonbasmati">Non Basmati</ion-select-option>
 						</ion-select>
@@ -35,9 +35,9 @@
 	</div>
 	
 	<ng-container>
-		<div class="galleryImages m020 mt10">
+		<div class="galleryImages">
 			
-			<ion-row>
+			<ion-row style="justify-content: space-around;padding-bottom: 100px;">
 
 				<ng-container *ngIf="riceTypeAvailable == 'basmati' ">
 					<ng-container *ngIf="basmartiGallery == '' ">
@@ -50,12 +50,13 @@
 					
 					<ng-container *ngIf="basmartiGallery != '' ">
 						<ion-col size="6" class="galleycard" *ngFor="let list of basmartiGallery" (click)="getGalleryData(list.id)">
-							<div class="galleryImage h-200" >
-								<img src="{{ imagePre }}uploads/gallery/{{ list.attachment }}" style="width: 190px;height: 130px;padding: 0 5px;" alt="{{ list.title }}">
+							<div class="" >
+								<img src="{{ imagePre }}uploads/gallery/{{ list.attachment }}" style="width: 190px;height: 130px;border-radius: 15px;overflow: hidden;" alt="{{ list.title }}">
+								<div>
+									<p style="padding: 0;margin: 0;font-family: 'Poppins-Regular';margin-top: 5px;" class="">{{list.title | uppercase }}</p>
+								</div>
 							</div>
-							<div>
-								<p class="p0 m0 green center font-lightgreen m05" style="padding: 5px;margin: 0px 5px 0px 4px;font-size: 13px">{{ list.title | uppercase }}</p>
-							</div>
+							
 							<!-- <div class="galleryoverlay">
 								<div class="riceType">
 									<h3 class="p0 m0 ">{{ list.type | uppercase }}</h3>
@@ -75,11 +76,12 @@
 					<ng-container *ngIf="nonbasmartiGallery != '' ">
 						<ion-col size="6" class="galleycard" *ngFor="let list of nonbasmartiGallery" (click)="getGalleryData(list.id)">
 							<div class="galleryImage" >
-								<img src="{{ imagePre }}uploads/gallery/{{ list.attachment }}" style="width: 190px;height: 130px;padding: 0 5px;" alt="{{ list.title }}">
+								<img src="{{ imagePre }}uploads/gallery/{{ list.attachment }}" style="width: 190px;height: 130px;border-radius: 15px;overflow: hidden;" alt="{{ list.title }}">
+								<div>
+									<p style="padding: 0;margin: 0;font-family: 'Poppins-Regular';margin-top: 5px;" class="">{{list.title | uppercase }}</p>
+								</div>
 							</div>
-							<div>
-								<p class="p0 m0 green center font-lightgreen m05" style="padding: 5px;margin: 0px 5px 0px 4px;font-size: 13px">{{ list.title }}</p>
-							</div>
+							
 							<!-- <div class="galleryoverlay">
 								<div class="riceType">
 									<h3 class="p0 m0 ">{{ list.type | uppercase }}</h3>
@@ -91,5 +93,8 @@
 			</ion-row>
 		</div>
 	</ng-container>
-<app-menu></app-menu>
+	<ng-container>
+		<app-menu></app-menu>
+	</ng-container>
+
 </ion-content>

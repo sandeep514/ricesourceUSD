@@ -61,10 +61,10 @@
 
 						<tbody class="user_price" >
 							<tr *ngFor="let list of selectedPortData" class="green">
-								<td class="sticky-col first-col left pl-10"  style="font-size: 14px;color: #464646;font-family: 'Poppins-Regular';">
+								<td class="sticky-col first-col left pl-10"  style="font-size: 14px !important;color: #464646;font-family: 'Poppins-Regular';">
 									{{ list.route.replace('_' , ' ') }}
 								</td>
-								<td class="type-columns" style="width:180px;border: none ;--border: none;color: #232000;font-size: 16px;font-family: 'Poppins-SemiBold' ;" >
+								<td class="type-columns" style="width:180px;border: none ;--border: none;color: #232000;font-size: 16px !important;font-family: 'Poppins-SemiBold';" >
 									₹ {{ list.price }}
 								</td>
 							</tr>

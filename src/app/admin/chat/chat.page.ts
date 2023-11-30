@@ -33,7 +33,7 @@ export class ChatPage implements OnInit {
 	}
 	
 	showChatDetails(userId){
-		this.compSer.chatOpen.next();
+		// this.compSer.chatOpen.next();
 		localStorage.setItem('selectedChatUserId' , userId);
 		this.navCtrl.navigateForward([ 'admin/chatdetails' , {id : userId} ]);
     }

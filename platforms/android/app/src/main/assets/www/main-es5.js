@@ -117,7 +117,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
-    __webpack_exports__["default"] = "<ion-app>\n    <ion-split-pane contentId=\"main-content\">\n        <ion-menu contentId=\"main-content\" type=\"overlay\">\n            <ion-content class=\"menu-settings\">\n\n\t\t\t\t<ion-row class=\"menu-header ion-no-padding\" (click)=\"showProfile()\">\n                    <ion-row style=\"width: 100%\">\n                        <ion-col style=\"text-align: right;\">\n                            <ion-label>V 2.0.18 </ion-label>\n                        </ion-col>\n                    </ion-row>\n\t\t\t\t\t<ion-col class=\"user-profile\">\n\t\t\t\t\t\t<img src=\"../assets/user.png\" class=\"user-icon\" /> <br/>\n\t\t\t\t\t\t<ion-label>Welcome {{ hasUser }}</ion-label>\n\t\t\t\t\t</ion-col>\n                </ion-row>\n                \n\t\t\t\t<ion-row>\n\t\t\t\t\t<ion-col>\n                        \n                        <ion-item (click)=\"home()\">\n                            <ion-icon slot=\"start\" name=\"home-outline\"></ion-icon>\n                            <ion-label style=\"color: #616e7e !important;\">Home</ion-label>\n                        </ion-item>\n\n\t\t\t\t\t\t<ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\n\t\t\t\t\t\t\t<ion-item (click)=\"selectedIndex = i\" routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\" [class.selected]=\"selectedIndex == i\">\n\t\t\t\t\t\t\t\t<ion-icon slot=\"start\" [ios]=\"p.icon + '-outline'\" [md]=\"p.icon + '-sharp'\"></ion-icon>\n\t\t\t\t\t\t\t\t<ion-label>{{ p.title }}</ion-label>\n\t\t\t\t\t\t\t</ion-item>\n                        </ion-menu-toggle>\n\n                        <ion-item (click)=\"logout()\">\n                            <ion-icon slot=\"start\" name=\"lock-closed-outline\"></ion-icon>\n                            <ion-label style=\"color: #616e7e !important;\">Logout</ion-label>\n                        </ion-item>\n                        <ion-item (click)=\"deleteaccount()\" style=\"--background: red;--border-color: transparent\">\n                            <ion-icon slot=\"start\" name=\"lock-closed-outline\" style=\"color: #fff\"></ion-icon>\n                            <ion-label style=\"color: #fff !important;\">Delete Account</ion-label>\n                        </ion-item>\n\n                        <!-- <div style=\"--background: #92B243;width: 47%;--min-height: 40px;padding: 10px;background: #92B243;text-align: center;border-radius: 10px;\" *ngIf=\"appType == 'USD' \" (click)=\"goToUSD()\">\n                            <ion-label style=\"color: #fff !important;padding: 0;margin: 0;text-align: center;\">Switch to Rupee</ion-label>\n                        </div>\n\n                        <div style=\"--background: #92B243;width: 47%;--min-height: 40px;padding: 10px;background: #92B243;text-align: center;border-radius: 10px;\" *ngIf=\"appType != 'USD' \" (click)=\"goToUSD()\">\n                            <ion-label style=\"color: #fff !important;padding: 0;margin: 0;text-align: center;\">Switch to USD</ion-label>\n                        </div> -->\n\t\t\t\t\t</ion-col>\n                </ion-row>\n                \n                <!-- <ion-list id=\"inbox-list\">\n                    <ion-list-header>Inbox</ion-list-header>\n                    <ion-note>hi@ionicframework.com</ion-note>\n\n                    <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\n                        <ion-item (click)=\"selectedIndex = i\" routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\" [class.selected]=\"selectedIndex == i\">\n                            <ion-icon slot=\"start\" [ios]=\"p.icon + '-outline'\" [md]=\"p.icon + '-sharp'\"></ion-icon>\n                            <ion-label>{{ p.title }}</ion-label>\n                        </ion-item>\n                    </ion-menu-toggle>\n                </ion-list> -->\n\n                <!-- <ion-list id=\"labels-list\">\n                    <ion-list-header>Labels</ion-list-header>\n\n                    <ion-item *ngFor=\"let label of labels\" lines=\"none\">\n                        <ion-icon slot=\"start\" ios=\"bookmark-outline\" md=\"bookmark-sharp\"></ion-icon>\n                        <ion-label>{{ label }}</ion-label>\n                    </ion-item>\n                </ion-list> -->\n            </ion-content>\n        </ion-menu>\n        <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n    </ion-split-pane>\n</ion-app>";
+    __webpack_exports__["default"] = "<ion-app>\n    <ion-split-pane contentId=\"main-content\">\n        <ion-menu contentId=\"main-content\" type=\"overlay\">\n            <ion-content class=\"menu-settings\">\n\t\t\t\t\n                <ion-row class=\"menu-header ion-no-padding\" (click)=\"showProfile()\">\n                    <ion-row style=\"width: 100%\">\n                        <ion-col style=\"text-align: right;\">\n                            <ion-label>V 2.0.18 </ion-label>\n                        </ion-col>\n                    </ion-row>\n\t\t\t\t\t<ion-col class=\"user-profile\">\n\t\t\t\t\t\t<img src=\"../assets/user.png\" class=\"user-icon\" /> <br/>\n\t\t\t\t\t\t<ion-label>Welcome {{ hasUser }}</ion-label>\n\t\t\t\t\t</ion-col>\n                </ion-row>\n                \n\t\t\t\t<ion-row>\n\t\t\t\t\t<ion-col>        \n                        <ion-item (click)=\"home()\">\n                            <ion-icon slot=\"start\" name=\"home-outline\"></ion-icon>\n                            <ion-label style=\"color: #616e7e !important;\">Home</ion-label>\n                        </ion-item>\n\n\t\t\t\t\t\t<ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\n\t\t\t\t\t\t\t<ion-item (click)=\"selectedIndex = i\" routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\" [class.selected]=\"selectedIndex == i\">\n\t\t\t\t\t\t\t\t<ion-icon slot=\"start\" [ios]=\"p.icon + '-outline'\" [md]=\"p.icon + '-sharp'\"></ion-icon>\n\t\t\t\t\t\t\t\t<ion-label>{{ p.title }}</ion-label>\n\t\t\t\t\t\t\t</ion-item>\n                        </ion-menu-toggle>\n\n                        <ion-item (click)=\"logout()\">\n                            <ion-icon slot=\"start\" name=\"lock-closed-outline\"></ion-icon>\n                            <ion-label style=\"color: #616e7e !important;\">Logout</ion-label>\n                        </ion-item>\n                        <ion-item (click)=\"deleteaccount()\" style=\"--background: red;--border-color: transparent\">\n                            <ion-icon slot=\"start\" name=\"lock-closed-outline\" style=\"color: #fff\"></ion-icon>\n                            <ion-label style=\"color: #fff !important;\">Delete Account</ion-label>\n                        </ion-item>\n\n                        <!-- <div style=\"--background: #92B243;width: 47%;--min-height: 40px;padding: 10px;background: #92B243;text-align: center;border-radius: 10px;\" *ngIf=\"appType == 'USD' \" (click)=\"goToUSD()\">\n                            <ion-label style=\"color: #fff !important;padding: 0;margin: 0;text-align: center;\">Switch to Rupee</ion-label>\n                        </div>\n\n                        <div style=\"--background: #92B243;width: 47%;--min-height: 40px;padding: 10px;background: #92B243;text-align: center;border-radius: 10px;\" *ngIf=\"appType != 'USD' \" (click)=\"goToUSD()\">\n                            <ion-label style=\"color: #fff !important;padding: 0;margin: 0;text-align: center;\">Switch to USD</ion-label>\n                        </div> -->\n\t\t\t\t\t</ion-col>\n                </ion-row>\n                \n                <!-- <ion-list id=\"inbox-list\">\n                    <ion-list-header>Inbox</ion-list-header>\n                    <ion-note>hi@ionicframework.com</ion-note>\n\n                    <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\n                        <ion-item (click)=\"selectedIndex = i\" routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\" [class.selected]=\"selectedIndex == i\">\n                            <ion-icon slot=\"start\" [ios]=\"p.icon + '-outline'\" [md]=\"p.icon + '-sharp'\"></ion-icon>\n                            <ion-label>{{ p.title }}</ion-label>\n                        </ion-item>\n                    </ion-menu-toggle>\n                </ion-list> -->\n\n                <!-- <ion-list id=\"labels-list\">\n                    <ion-list-header>Labels</ion-list-header>\n\n                    <ion-item *ngFor=\"let label of labels\" lines=\"none\">\n                        <ion-icon slot=\"start\" ios=\"bookmark-outline\" md=\"bookmark-sharp\"></ion-icon>\n                        <ion-label>{{ label }}</ion-label>\n                    </ion-item>\n                </ion-list> -->\n            </ion-content>\n        </ion-menu>\n        <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n    </ion-split-pane>\n</ion-app>";
 
     /***/
   },
@@ -149,7 +149,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
-    __webpack_exports__["default"] = "<ion-content>\n\t<div class=\"crossModal\" (click)=\"closeModal()\">\n\t\tX\n\t</div>\n\t<ion-slides pager=\"false\" [options]=\"slideOpts\" style=\"position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;height: 450px\">\n\t\t<ion-slide >\n\t\t\t<img src=\"{{ image }}\" class=\"slide-image\">\n\t\t</ion-slide>\n\t\t\n\t</ion-slides>\n    <!-- <img src=\"\" alt=\"here\" style=\"position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;\"> -->\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-content>\n\t\n\t<ion-slides pager=\"false\" [options]=\"slideOpts\" style=\"position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;height: 450px\">\n\t\t<ion-slide >\n\t\t\t<div class=\"crossModal\" (click)=\"closeModal()\" style=\"position: absolute;top: 15px;right: 10px;\">\n\t\t\t\tX\n\t\t\t</div>\n\t\t\t<img src=\"{{ image }}\" class=\"slide-image\">\n\t\t</ion-slide>\n\t\t\n\t</ion-slides>\n    <!-- <img src=\"\" alt=\"here\" style=\"position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;\"> -->\n</ion-content>";
 
     /***/
   },
@@ -803,7 +803,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'prices',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | prices-prices-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("common"), __webpack_require__.e("prices-prices-module")]).then(__webpack_require__.bind(null, /*! ./prices/prices.module */"./src/app/prices/prices.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | prices-prices-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("common"), __webpack_require__.e("prices-prices-module")]).then(__webpack_require__.bind(null, /*! ./prices/prices.module */"./src/app/prices/prices.module.ts")).then(function (m) {
           return m.PricesPageModule;
         });
       },
@@ -811,14 +811,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'about',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | about-about-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("about-about-module")]).then(__webpack_require__.bind(null, /*! ./about/about.module */"./src/app/about/about.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | about-about-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("about-about-module")]).then(__webpack_require__.bind(null, /*! ./about/about.module */"./src/app/about/about.module.ts")).then(function (m) {
           return m.AboutPageModule;
         });
       }
     }, {
       path: 'port',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | port-port-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("port-port-module")]).then(__webpack_require__.bind(null, /*! ./port/port.module */"./src/app/port/port.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | port-port-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("port-port-module")]).then(__webpack_require__.bind(null, /*! ./port/port.module */"./src/app/port/port.module.ts")).then(function (m) {
           return m.PortPageModule;
         });
       }
@@ -832,7 +832,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'ricechart',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | ricechart-ricechart-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("ricechart-ricechart-module")]).then(__webpack_require__.bind(null, /*! ./ricechart/ricechart.module */"./src/app/ricechart/ricechart.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | ricechart-ricechart-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("ricechart-ricechart-module")]).then(__webpack_require__.bind(null, /*! ./ricechart/ricechart.module */"./src/app/ricechart/ricechart.module.ts")).then(function (m) {
           return m.RicechartPageModule;
         });
       }
@@ -846,14 +846,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'gallery',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | gallery-gallery-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("gallery-gallery-module")]).then(__webpack_require__.bind(null, /*! ./gallery/gallery.module */"./src/app/gallery/gallery.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | gallery-gallery-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("gallery-gallery-module")]).then(__webpack_require__.bind(null, /*! ./gallery/gallery.module */"./src/app/gallery/gallery.module.ts")).then(function (m) {
           return m.GalleryPageModule;
         });
       }
     }, {
       path: 'gallerydetails',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | gallerydetails-gallerydetails-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("gallerydetails-gallerydetails-module")]).then(__webpack_require__.bind(null, /*! ./gallerydetails/gallerydetails.module */"./src/app/gallerydetails/gallerydetails.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | gallerydetails-gallerydetails-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("gallerydetails-gallerydetails-module")]).then(__webpack_require__.bind(null, /*! ./gallerydetails/gallerydetails.module */"./src/app/gallerydetails/gallerydetails.module.ts")).then(function (m) {
           return m.GallerydetailsPageModule;
         });
       }
@@ -888,7 +888,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'aboutus',
       loadChildren: function loadChildren() {
-        return __webpack_require__.e( /*! import() | aboutus-aboutus-module */"aboutus-aboutus-module").then(__webpack_require__.bind(null, /*! ./aboutus/aboutus.module */"./src/app/aboutus/aboutus.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | aboutus-aboutus-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("aboutus-aboutus-module")]).then(__webpack_require__.bind(null, /*! ./aboutus/aboutus.module */"./src/app/aboutus/aboutus.module.ts")).then(function (m) {
           return m.AboutusPageModule;
         });
       }
@@ -951,7 +951,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'notifications',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | notifications-notifications-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("notifications-notifications-module")]).then(__webpack_require__.bind(null, /*! ./notifications/notifications.module */"./src/app/notifications/notifications.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | notifications-notifications-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("notifications-notifications-module")]).then(__webpack_require__.bind(null, /*! ./notifications/notifications.module */"./src/app/notifications/notifications.module.ts")).then(function (m) {
           return m.NotificationsPageModule;
         });
       }
@@ -979,70 +979,70 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'priceusd',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | priceusd-priceusd-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("common"), __webpack_require__.e("priceusd-priceusd-module")]).then(__webpack_require__.bind(null, /*! ./priceusd/priceusd.module */"./src/app/priceusd/priceusd.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | priceusd-priceusd-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("common"), __webpack_require__.e("priceusd-priceusd-module")]).then(__webpack_require__.bind(null, /*! ./priceusd/priceusd.module */"./src/app/priceusd/priceusd.module.ts")).then(function (m) {
           return m.PriceusdPageModule;
         });
       }
     }, {
       path: 'oceanfreights',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | oceanfreights-oceanfreights-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("oceanfreights-oceanfreights-module")]).then(__webpack_require__.bind(null, /*! ./oceanfreights/oceanfreights.module */"./src/app/oceanfreights/oceanfreights.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | oceanfreights-oceanfreights-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("oceanfreights-oceanfreights-module")]).then(__webpack_require__.bind(null, /*! ./oceanfreights/oceanfreights.module */"./src/app/oceanfreights/oceanfreights.module.ts")).then(function (m) {
           return m.OceanfreightsPageModule;
         });
       }
     }, {
       path: 'quality-details',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | quality-details-quality-details-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("quality-details-quality-details-module")]).then(__webpack_require__.bind(null, /*! ./quality-details/quality-details.module */"./src/app/quality-details/quality-details.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | quality-details-quality-details-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("quality-details-quality-details-module")]).then(__webpack_require__.bind(null, /*! ./quality-details/quality-details.module */"./src/app/quality-details/quality-details.module.ts")).then(function (m) {
           return m.QualityDetailsPageModule;
         });
       }
     }, {
       path: 'buy',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | buy-buy-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("buy-buy-module")]).then(__webpack_require__.bind(null, /*! ./buy/buy.module */"./src/app/buy/buy.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | buy-buy-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("buy-buy-module")]).then(__webpack_require__.bind(null, /*! ./buy/buy.module */"./src/app/buy/buy.module.ts")).then(function (m) {
           return m.BuyPageModule;
         });
       }
     }, {
       path: 'bid',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | bid-bid-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("bid-bid-module")]).then(__webpack_require__.bind(null, /*! ./bid/bid.module */"./src/app/bid/bid.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | bid-bid-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("bid-bid-module")]).then(__webpack_require__.bind(null, /*! ./bid/bid.module */"./src/app/bid/bid.module.ts")).then(function (m) {
           return m.BidPageModule;
         });
       }
     }, {
       path: 'calculator',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | calculator-calculator-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("calculator-calculator-module")]).then(__webpack_require__.bind(null, /*! ./calculator/calculator.module */"./src/app/calculator/calculator.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | calculator-calculator-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("calculator-calculator-module")]).then(__webpack_require__.bind(null, /*! ./calculator/calculator.module */"./src/app/calculator/calculator.module.ts")).then(function (m) {
           return m.CalculatorPageModule;
         });
       }
     }, {
       path: 'mybids',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | mybids-mybids-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("mybids-mybids-module")]).then(__webpack_require__.bind(null, /*! ./mybids/mybids.module */"./src/app/mybids/mybids.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | mybids-mybids-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("mybids-mybids-module")]).then(__webpack_require__.bind(null, /*! ./mybids/mybids.module */"./src/app/mybids/mybids.module.ts")).then(function (m) {
           return m.MybidsPageModule;
         });
       }
     }, {
       path: 'otherservices',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | otherservices-otherservices-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("otherservices-otherservices-module")]).then(__webpack_require__.bind(null, /*! ./otherservices/otherservices.module */"./src/app/otherservices/otherservices.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | otherservices-otherservices-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("otherservices-otherservices-module")]).then(__webpack_require__.bind(null, /*! ./otherservices/otherservices.module */"./src/app/otherservices/otherservices.module.ts")).then(function (m) {
           return m.OtherservicesPageModule;
         });
       }
     }, {
       path: 'contact',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | contact-contact-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("contact-contact-module")]).then(__webpack_require__.bind(null, /*! ./contact/contact.module */"./src/app/contact/contact.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | contact-contact-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("contact-contact-module")]).then(__webpack_require__.bind(null, /*! ./contact/contact.module */"./src/app/contact/contact.module.ts")).then(function (m) {
           return m.ContactPageModule;
         });
       }
     }, {
       path: 'hotdeals',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | hotdeals-hotdeals-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("hotdeals-hotdeals-module")]).then(__webpack_require__.bind(null, /*! ./hotdeals/hotdeals.module */"./src/app/hotdeals/hotdeals.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | hotdeals-hotdeals-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("hotdeals-hotdeals-module")]).then(__webpack_require__.bind(null, /*! ./hotdeals/hotdeals.module */"./src/app/hotdeals/hotdeals.module.ts")).then(function (m) {
           return m.HotdealsPageModule;
         });
       }
@@ -1070,7 +1070,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'thankyou',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | thankyou-thankyou-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("thankyou-thankyou-module")]).then(__webpack_require__.bind(null, /*! ./thankyou/thankyou.module */"./src/app/thankyou/thankyou.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | thankyou-thankyou-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("thankyou-thankyou-module")]).then(__webpack_require__.bind(null, /*! ./thankyou/thankyou.module */"./src/app/thankyou/thankyou.module.ts")).then(function (m) {
           return m.ThankyouPageModule;
         });
       }
@@ -1098,21 +1098,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'payment-success',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | payment-success-payment-success-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("payment-success-payment-success-module")]).then(__webpack_require__.bind(null, /*! ./payment-success/payment-success.module */"./src/app/payment-success/payment-success.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | payment-success-payment-success-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("payment-success-payment-success-module")]).then(__webpack_require__.bind(null, /*! ./payment-success/payment-success.module */"./src/app/payment-success/payment-success.module.ts")).then(function (m) {
           return m.PaymentSuccessPageModule;
         });
       }
     }, {
       path: 'cancel-success',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | cancel-success-cancel-success-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("cancel-success-cancel-success-module")]).then(__webpack_require__.bind(null, /*! ./cancel-success/cancel-success.module */"./src/app/cancel-success/cancel-success.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | cancel-success-cancel-success-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("cancel-success-cancel-success-module")]).then(__webpack_require__.bind(null, /*! ./cancel-success/cancel-success.module */"./src/app/cancel-success/cancel-success.module.ts")).then(function (m) {
           return m.CancelSuccessPageModule;
         });
       }
     }, {
       path: 'payment-cancel',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | payment-cancel-payment-cancel-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("payment-cancel-payment-cancel-module")]).then(__webpack_require__.bind(null, /*! ./payment-cancel/payment-cancel.module */"./src/app/payment-cancel/payment-cancel.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | payment-cancel-payment-cancel-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("payment-cancel-payment-cancel-module")]).then(__webpack_require__.bind(null, /*! ./payment-cancel/payment-cancel.module */"./src/app/payment-cancel/payment-cancel.module.ts")).then(function (m) {
           return m.PaymentCancelPageModule;
         });
       }
@@ -1126,22 +1126,64 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'selling-inr',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | selling-inr-selling-inr-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("selling-inr-selling-inr-module")]).then(__webpack_require__.bind(null, /*! ./selling-inr/selling-inr.module */"./src/app/selling-inr/selling-inr.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | selling-inr-selling-inr-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("selling-inr-selling-inr-module")]).then(__webpack_require__.bind(null, /*! ./selling-inr/selling-inr.module */"./src/app/selling-inr/selling-inr.module.ts")).then(function (m) {
           return m.SellingINRPageModule;
         });
       }
     }, {
       path: 'brands',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | brands-brands-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("brands-brands-module")]).then(__webpack_require__.bind(null, /*! ./brands/brands.module */"./src/app/brands/brands.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | brands-brands-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("brands-brands-module")]).then(__webpack_require__.bind(null, /*! ./brands/brands.module */"./src/app/brands/brands.module.ts")).then(function (m) {
           return m.BrandsPageModule;
         });
       }
     }, {
       path: 'brand-details',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | brand-details-brand-details-module */[__webpack_require__.e("default~about-about-module~bid-bid-module~brand-details-brand-details-module~brands-brands-module~bu~5b187e72"), __webpack_require__.e("brand-details-brand-details-module")]).then(__webpack_require__.bind(null, /*! ./brand-details/brand-details.module */"./src/app/brand-details/brand-details.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | brand-details-brand-details-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("brand-details-brand-details-module")]).then(__webpack_require__.bind(null, /*! ./brand-details/brand-details.module */"./src/app/brand-details/brand-details.module.ts")).then(function (m) {
           return m.BrandDetailsPageModule;
+        });
+      }
+    }, {
+      path: 'trade-inr',
+      loadChildren: function loadChildren() {
+        return Promise.all( /*! import() | trade-inr-trade-inr-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("trade-inr-trade-inr-module")]).then(__webpack_require__.bind(null, /*! ./trade-inr/trade-inr.module */"./src/app/trade-inr/trade-inr.module.ts")).then(function (m) {
+          return m.TradeINRPageModule;
+        });
+      }
+    }, {
+      path: 'buy-inr',
+      loadChildren: function loadChildren() {
+        return Promise.all( /*! import() | buy-inr-buy-inr-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("buy-inr-buy-inr-module")]).then(__webpack_require__.bind(null, /*! ./buy-inr/buy-inr.module */"./src/app/buy-inr/buy-inr.module.ts")).then(function (m) {
+          return m.BuyInrPageModule;
+        });
+      }
+    }, {
+      path: 'trade-inr-list',
+      loadChildren: function loadChildren() {
+        return Promise.all( /*! import() | trade-inr-list-trade-inr-list-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("trade-inr-list-trade-inr-list-module")]).then(__webpack_require__.bind(null, /*! ./trade-inr-list/trade-inr-list.module */"./src/app/trade-inr-list/trade-inr-list.module.ts")).then(function (m) {
+          return m.TradeInrListPageModule;
+        });
+      }
+    }, {
+      path: 'welcome1',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e( /*! import() | welcome1-welcome1-module */"welcome1-welcome1-module").then(__webpack_require__.bind(null, /*! ./welcome1/welcome1.module */"./src/app/welcome1/welcome1.module.ts")).then(function (m) {
+          return m.Welcome1PageModule;
+        });
+      }
+    }, {
+      path: 'welcome2',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e( /*! import() | welcome2-welcome2-module */"welcome2-welcome2-module").then(__webpack_require__.bind(null, /*! ./welcome2/welcome2.module */"./src/app/welcome2/welcome2.module.ts")).then(function (m) {
+          return m.Welcome2PageModule;
+        });
+      }
+    }, {
+      path: 'welcome3',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e( /*! import() | welcome3-welcome3-module */"welcome3-welcome3-module").then(__webpack_require__.bind(null, /*! ./welcome3/welcome3.module */"./src/app/welcome3/welcome3.module.ts")).then(function (m) {
+          return m.Welcome3PageModule;
         });
       }
     }];
@@ -1169,7 +1211,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
-    __webpack_exports__["default"] = "ion-menu ion-content {\n  --background: var(--ion-item-background, var(--ion-background-color, #fff));\n}\n\nion-menu.md ion-content {\n  --padding-start: 8px;\n  --padding-end: 8px;\n  --padding-top: 20px;\n  --padding-bottom: 20px;\n}\n\nion-menu.md ion-list {\n  padding: 20px 0;\n}\n\nion-menu.md ion-note {\n  margin-bottom: 30px;\n}\n\nion-menu.md ion-list-header,\nion-menu.md ion-note {\n  padding-left: 10px;\n}\n\nion-menu.md ion-list#inbox-list {\n  border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);\n}\n\nion-menu.md ion-list#inbox-list ion-list-header {\n  font-size: 22px;\n  font-weight: 600;\n  min-height: 20px;\n}\n\nion-menu.md ion-list#labels-list ion-list-header {\n  font-size: 16px;\n  margin-bottom: 18px;\n  color: #757575;\n  min-height: 26px;\n}\n\nion-menu.md ion-item {\n  --padding-start: 10px;\n  --padding-end: 10px;\n  border-radius: 4px;\n}\n\nion-menu.md ion-item.selected {\n  --background: rgba(var(--ion-color-primary-rgb), 0.14);\n}\n\nion-menu.md ion-item.selected ion-icon {\n  color: var(--ion-color-primary);\n}\n\nion-menu.md ion-item ion-icon {\n  color: #616e7e;\n}\n\nion-menu.md ion-item ion-label {\n  font-weight: 500;\n}\n\nion-menu.ios ion-content {\n  --padding-bottom: 20px;\n}\n\nion-menu.ios ion-list {\n  padding: 20px 0 0 0;\n}\n\nion-menu.ios ion-note {\n  line-height: 24px;\n  margin-bottom: 20px;\n}\n\nion-menu.ios ion-item {\n  --padding-start: 16px;\n  --padding-end: 16px;\n  --min-height: 50px;\n}\n\nion-menu.ios ion-item.selected ion-icon {\n  color: var(--ion-color-primary);\n}\n\nion-menu.ios ion-item ion-icon {\n  font-size: 24px;\n  color: #73849a;\n}\n\nion-menu.ios ion-list#labels-list ion-list-header {\n  margin-bottom: 8px;\n}\n\nion-menu.ios ion-list-header,\nion-menu.ios ion-note {\n  padding-left: 16px;\n  padding-right: 16px;\n}\n\nion-menu.ios ion-note {\n  margin-bottom: 8px;\n}\n\nion-note {\n  display: inline-block;\n  font-size: 16px;\n  color: var(--ion-color-medium-shade);\n}\n\nion-item.selected {\n  --color: var(--ion-color-primary);\n}\n\n.menu-header {\n  background: #449893;\n  color: #FFF;\n  height: 230px;\n}\n\n.inner-scroll {\n  padding: 0px !important;\n  margin: 0px !important;\n}\n\n.menu-settings {\n  --padding-top: 0px !important;\n  --padding-start: 0px !important;\n  --padding-end: 0px !important;\n}\n\n.user-icon {\n  width: 136px;\n  margin-top: 15px;\n}\n\n.user-profile {\n  text-align: center;\n}\n\n.user-profile ion-label {\n  margin-top: 13px;\n  display: block;\n}\n\n.switch .item-inner {\n  padding: 0;\n  margin: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9jaGV0YW4vRGVza3RvcC9vZmZpY2UvbW9iaWxlL3JpY2Vzb3VyY2VVU0Qvc3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDJFQUFBO0FDQ0Y7O0FERUE7RUFDRSxvQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxzQkFBQTtBQ0NGOztBREVBO0VBQ0UsZUFBQTtBQ0NGOztBREVBO0VBQ0UsbUJBQUE7QUNDRjs7QURFQTs7RUFFRSxrQkFBQTtBQ0NGOztBREVBO0VBQ0UsMkRBQUE7QUNDRjs7QURFQTtFQUNFLGVBQUE7RUFDQSxnQkFBQTtFQUVBLGdCQUFBO0FDQUY7O0FER0E7RUFDRSxlQUFBO0VBRUEsbUJBQUE7RUFFQSxjQUFBO0VBRUEsZ0JBQUE7QUNIRjs7QURNQTtFQUNFLHFCQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBQ0hGOztBRE1BO0VBQ0Usc0RBQUE7QUNIRjs7QURNQTtFQUNFLCtCQUFBO0FDSEY7O0FETUE7RUFDRSxjQUFBO0FDSEY7O0FETUE7RUFDRSxnQkFBQTtBQ0hGOztBRE1BO0VBQ0Usc0JBQUE7QUNIRjs7QURNQTtFQUNFLG1CQUFBO0FDSEY7O0FETUE7RUFDRSxpQkFBQTtFQUNBLG1CQUFBO0FDSEY7O0FETUE7RUFDRSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7QUNIRjs7QURNQTtFQUNFLCtCQUFBO0FDSEY7O0FETUE7RUFDRSxlQUFBO0VBQ0EsY0FBQTtBQ0hGOztBRE1BO0VBQ0Usa0JBQUE7QUNIRjs7QURNQTs7RUFFRSxrQkFBQTtFQUNBLG1CQUFBO0FDSEY7O0FETUE7RUFDRSxrQkFBQTtBQ0hGOztBRE1BO0VBQ0UscUJBQUE7RUFDQSxlQUFBO0VBRUEsb0NBQUE7QUNKRjs7QURPQTtFQUNFLGlDQUFBO0FDSkY7O0FET0E7RUFDQyxtQkFBQTtFQUNBLFdBQUE7RUFDQSxhQUFBO0FDSkQ7O0FET0E7RUFDQyx1QkFBQTtFQUNBLHNCQUFBO0FDSkQ7O0FET0E7RUFDQyw2QkFBQTtFQUNBLCtCQUFBO0VBQ0EsNkJBQUE7QUNKRDs7QURPQTtFQUNDLFlBQUE7RUFDQSxnQkFBQTtBQ0pEOztBRE9BO0VBQ0Msa0JBQUE7QUNKRDs7QURNQztFQUNDLGdCQUFBO0VBQ0EsY0FBQTtBQ0pGOztBRFFDO0VBQ0MsVUFBQTtFQUNBLFNBQUE7QUNMRiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1tZW51IGlvbi1jb250ZW50IHtcbiAgLS1iYWNrZ3JvdW5kOiB2YXIoLS1pb24taXRlbS1iYWNrZ3JvdW5kLCB2YXIoLS1pb24tYmFja2dyb3VuZC1jb2xvciwgI2ZmZikpO1xufVxuXG5pb24tbWVudS5tZCBpb24tY29udGVudCB7XG4gIC0tcGFkZGluZy1zdGFydDogOHB4O1xuICAtLXBhZGRpbmctZW5kOiA4cHg7XG4gIC0tcGFkZGluZy10b3A6IDIwcHg7XG4gIC0tcGFkZGluZy1ib3R0b206IDIwcHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1saXN0IHtcbiAgcGFkZGluZzogMjBweCAwO1xufVxuXG5pb24tbWVudS5tZCBpb24tbm90ZSB7XG4gIG1hcmdpbi1ib3R0b206IDMwcHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1saXN0LWhlYWRlcixcbmlvbi1tZW51Lm1kIGlvbi1ub3RlIHtcbiAgcGFkZGluZy1sZWZ0OiAxMHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdCNpbmJveC1saXN0IHtcbiAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkIHZhcigtLWlvbi1jb2xvci1zdGVwLTE1MCwgI2Q3ZDhkYSk7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1saXN0I2luYm94LWxpc3QgaW9uLWxpc3QtaGVhZGVyIHtcbiAgZm9udC1zaXplOiAyMnB4O1xuICBmb250LXdlaWdodDogNjAwO1xuXG4gIG1pbi1oZWlnaHQ6IDIwcHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1saXN0I2xhYmVscy1saXN0IGlvbi1saXN0LWhlYWRlciB7XG4gIGZvbnQtc2l6ZTogMTZweDtcblxuICBtYXJnaW4tYm90dG9tOiAxOHB4O1xuXG4gIGNvbG9yOiAjNzU3NTc1O1xuXG4gIG1pbi1oZWlnaHQ6IDI2cHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtIHtcbiAgLS1wYWRkaW5nLXN0YXJ0OiAxMHB4O1xuICAtLXBhZGRpbmctZW5kOiAxMHB4O1xuICBib3JkZXItcmFkaXVzOiA0cHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtLnNlbGVjdGVkIHtcbiAgLS1iYWNrZ3JvdW5kOiByZ2JhKHZhcigtLWlvbi1jb2xvci1wcmltYXJ5LXJnYiksIDAuMTQpO1xufVxuXG5pb24tbWVudS5tZCBpb24taXRlbS5zZWxlY3RlZCBpb24taWNvbiB7XG4gIGNvbG9yOiB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtIGlvbi1pY29uIHtcbiAgY29sb3I6ICM2MTZlN2U7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtIGlvbi1sYWJlbCB7XG4gIGZvbnQtd2VpZ2h0OiA1MDA7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tY29udGVudCB7XG4gIC0tcGFkZGluZy1ib3R0b206IDIwcHg7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tbGlzdCB7XG4gIHBhZGRpbmc6IDIwcHggMCAwIDA7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tbm90ZSB7XG4gIGxpbmUtaGVpZ2h0OiAyNHB4O1xuICBtYXJnaW4tYm90dG9tOiAyMHB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWl0ZW0ge1xuICAtLXBhZGRpbmctc3RhcnQ6IDE2cHg7XG4gIC0tcGFkZGluZy1lbmQ6IDE2cHg7XG4gIC0tbWluLWhlaWdodDogNTBweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1pdGVtLnNlbGVjdGVkIGlvbi1pY29uIHtcbiAgY29sb3I6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1pdGVtIGlvbi1pY29uIHtcbiAgZm9udC1zaXplOiAyNHB4O1xuICBjb2xvcjogIzczODQ5YTtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1saXN0I2xhYmVscy1saXN0IGlvbi1saXN0LWhlYWRlciB7XG4gIG1hcmdpbi1ib3R0b206IDhweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1saXN0LWhlYWRlcixcbmlvbi1tZW51LmlvcyBpb24tbm90ZSB7XG4gIHBhZGRpbmctbGVmdDogMTZweDtcbiAgcGFkZGluZy1yaWdodDogMTZweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1ub3RlIHtcbiAgbWFyZ2luLWJvdHRvbTogOHB4O1xufVxuXG5pb24tbm90ZSB7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgZm9udC1zaXplOiAxNnB4O1xuXG4gIGNvbG9yOiB2YXIoLS1pb24tY29sb3ItbWVkaXVtLXNoYWRlKTtcbn1cblxuaW9uLWl0ZW0uc2VsZWN0ZWQge1xuICAtLWNvbG9yOiB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XG59XG5cbi5tZW51LWhlYWRlcntcblx0YmFja2dyb3VuZDogIzQ0OTg5Mztcblx0Y29sb3I6ICNGRkY7XG5cdGhlaWdodDogMjMwcHg7XG59XG5cbi5pbm5lci1zY3JvbGx7XG5cdHBhZGRpbmc6IDBweCAhaW1wb3J0YW50O1xuXHRtYXJnaW46IDBweCAhaW1wb3J0YW50O1xufVxuXG4ubWVudS1zZXR0aW5nc3tcblx0LS1wYWRkaW5nLXRvcDogMHB4ICFpbXBvcnRhbnQ7XG5cdC0tcGFkZGluZy1zdGFydDogMHB4ICFpbXBvcnRhbnQ7XG5cdC0tcGFkZGluZy1lbmQ6IDBweCAhaW1wb3J0YW50O1xufVxuXG4udXNlci1pY29ue1xuXHR3aWR0aDogMTM2cHg7XG5cdG1hcmdpbi10b3A6IDE1cHg7XG59XG5cbi51c2VyLXByb2ZpbGV7XG5cdHRleHQtYWxpZ246IGNlbnRlcjtcblxuXHRpb24tbGFiZWx7XG5cdFx0bWFyZ2luLXRvcDogMTNweDtcblx0XHRkaXNwbGF5OiBibG9jaztcblx0fVxufVxuLnN3aXRjaHtcblx0Lml0ZW0taW5uZXJ7XG5cdFx0cGFkZGluZzogMDtcblx0XHRtYXJnaW46IDA7XG5cdH1cbn0iLCJpb24tbWVudSBpb24tY29udGVudCB7XG4gIC0tYmFja2dyb3VuZDogdmFyKC0taW9uLWl0ZW0tYmFja2dyb3VuZCwgdmFyKC0taW9uLWJhY2tncm91bmQtY29sb3IsICNmZmYpKTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWNvbnRlbnQge1xuICAtLXBhZGRpbmctc3RhcnQ6IDhweDtcbiAgLS1wYWRkaW5nLWVuZDogOHB4O1xuICAtLXBhZGRpbmctdG9wOiAyMHB4O1xuICAtLXBhZGRpbmctYm90dG9tOiAyMHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdCB7XG4gIHBhZGRpbmc6IDIwcHggMDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLW5vdGUge1xuICBtYXJnaW4tYm90dG9tOiAzMHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdC1oZWFkZXIsXG5pb24tbWVudS5tZCBpb24tbm90ZSB7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3QjaW5ib3gtbGlzdCB7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCB2YXIoLS1pb24tY29sb3Itc3RlcC0xNTAsICNkN2Q4ZGEpO1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdCNpbmJveC1saXN0IGlvbi1saXN0LWhlYWRlciB7XG4gIGZvbnQtc2l6ZTogMjJweDtcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbiAgbWluLWhlaWdodDogMjBweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3QjbGFiZWxzLWxpc3QgaW9uLWxpc3QtaGVhZGVyIHtcbiAgZm9udC1zaXplOiAxNnB4O1xuICBtYXJnaW4tYm90dG9tOiAxOHB4O1xuICBjb2xvcjogIzc1NzU3NTtcbiAgbWluLWhlaWdodDogMjZweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0ge1xuICAtLXBhZGRpbmctc3RhcnQ6IDEwcHg7XG4gIC0tcGFkZGluZy1lbmQ6IDEwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDRweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0uc2VsZWN0ZWQge1xuICAtLWJhY2tncm91bmQ6IHJnYmEodmFyKC0taW9uLWNvbG9yLXByaW1hcnktcmdiKSwgMC4xNCk7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtLnNlbGVjdGVkIGlvbi1pY29uIHtcbiAgY29sb3I6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0gaW9uLWljb24ge1xuICBjb2xvcjogIzYxNmU3ZTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0gaW9uLWxhYmVsIHtcbiAgZm9udC13ZWlnaHQ6IDUwMDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1jb250ZW50IHtcbiAgLS1wYWRkaW5nLWJvdHRvbTogMjBweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1saXN0IHtcbiAgcGFkZGluZzogMjBweCAwIDAgMDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1ub3RlIHtcbiAgbGluZS1oZWlnaHQ6IDI0cHg7XG4gIG1hcmdpbi1ib3R0b206IDIwcHg7XG59XG5cbmlvbi1tZW51LmlvcyBpb24taXRlbSB7XG4gIC0tcGFkZGluZy1zdGFydDogMTZweDtcbiAgLS1wYWRkaW5nLWVuZDogMTZweDtcbiAgLS1taW4taGVpZ2h0OiA1MHB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWl0ZW0uc2VsZWN0ZWQgaW9uLWljb24ge1xuICBjb2xvcjogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWl0ZW0gaW9uLWljb24ge1xuICBmb250LXNpemU6IDI0cHg7XG4gIGNvbG9yOiAjNzM4NDlhO1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWxpc3QjbGFiZWxzLWxpc3QgaW9uLWxpc3QtaGVhZGVyIHtcbiAgbWFyZ2luLWJvdHRvbTogOHB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWxpc3QtaGVhZGVyLFxuaW9uLW1lbnUuaW9zIGlvbi1ub3RlIHtcbiAgcGFkZGluZy1sZWZ0OiAxNnB4O1xuICBwYWRkaW5nLXJpZ2h0OiAxNnB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLW5vdGUge1xuICBtYXJnaW4tYm90dG9tOiA4cHg7XG59XG5cbmlvbi1ub3RlIHtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBmb250LXNpemU6IDE2cHg7XG4gIGNvbG9yOiB2YXIoLS1pb24tY29sb3ItbWVkaXVtLXNoYWRlKTtcbn1cblxuaW9uLWl0ZW0uc2VsZWN0ZWQge1xuICAtLWNvbG9yOiB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XG59XG5cbi5tZW51LWhlYWRlciB7XG4gIGJhY2tncm91bmQ6ICM0NDk4OTM7XG4gIGNvbG9yOiAjRkZGO1xuICBoZWlnaHQ6IDIzMHB4O1xufVxuXG4uaW5uZXItc2Nyb2xsIHtcbiAgcGFkZGluZzogMHB4ICFpbXBvcnRhbnQ7XG4gIG1hcmdpbjogMHB4ICFpbXBvcnRhbnQ7XG59XG5cbi5tZW51LXNldHRpbmdzIHtcbiAgLS1wYWRkaW5nLXRvcDogMHB4ICFpbXBvcnRhbnQ7XG4gIC0tcGFkZGluZy1zdGFydDogMHB4ICFpbXBvcnRhbnQ7XG4gIC0tcGFkZGluZy1lbmQ6IDBweCAhaW1wb3J0YW50O1xufVxuXG4udXNlci1pY29uIHtcbiAgd2lkdGg6IDEzNnB4O1xuICBtYXJnaW4tdG9wOiAxNXB4O1xufVxuXG4udXNlci1wcm9maWxlIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuLnVzZXItcHJvZmlsZSBpb24tbGFiZWwge1xuICBtYXJnaW4tdG9wOiAxM3B4O1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuLnN3aXRjaCAuaXRlbS1pbm5lciB7XG4gIHBhZGRpbmc6IDA7XG4gIG1hcmdpbjogMDtcbn0iXX0= */";
+    __webpack_exports__["default"] = "ion-menu ion-content {\n  --background: var(--ion-item-background, var(--ion-background-color, #fff));\n}\n\nion-menu.md ion-content {\n  --padding-start: 8px;\n  --padding-end: 8px;\n  --padding-top: 20px;\n  --padding-bottom: 20px;\n}\n\nion-menu.md ion-list {\n  padding: 20px 0;\n}\n\nion-menu.md ion-note {\n  margin-bottom: 30px;\n}\n\nion-menu.md ion-list-header,\nion-menu.md ion-note {\n  padding-left: 10px;\n}\n\nion-menu.md ion-list#inbox-list {\n  border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);\n}\n\nion-menu.md ion-list#inbox-list ion-list-header {\n  font-size: 22px;\n  font-weight: 600;\n  min-height: 20px;\n}\n\nion-menu.md ion-list#labels-list ion-list-header {\n  font-size: 16px;\n  margin-bottom: 18px;\n  color: #757575;\n  min-height: 26px;\n}\n\nion-menu.md ion-item {\n  --padding-start: 10px;\n  --padding-end: 10px;\n  border-radius: 4px;\n}\n\nion-menu.md ion-item.selected {\n  --background: rgba(var(--ion-color-primary-rgb), 0.14);\n}\n\nion-menu.md ion-item.selected ion-icon {\n  color: var(--ion-color-primary);\n}\n\nion-menu.md ion-item ion-icon {\n  color: #616e7e;\n}\n\nion-menu.md ion-item ion-label {\n  font-weight: 500;\n}\n\nion-menu.ios ion-content {\n  --padding-bottom: 20px;\n}\n\nion-menu.ios ion-list {\n  padding: 20px 0 0 0;\n}\n\nion-menu.ios ion-note {\n  line-height: 24px;\n  margin-bottom: 20px;\n}\n\nion-menu.ios ion-item {\n  --padding-start: 16px;\n  --padding-end: 16px;\n  --min-height: 50px;\n}\n\nion-menu.ios ion-item.selected ion-icon {\n  color: var(--ion-color-primary);\n}\n\nion-menu.ios ion-item ion-icon {\n  font-size: 24px;\n  color: #73849a;\n}\n\nion-menu.ios ion-list#labels-list ion-list-header {\n  margin-bottom: 8px;\n}\n\nion-menu.ios ion-list-header,\nion-menu.ios ion-note {\n  padding-left: 16px;\n  padding-right: 16px;\n}\n\nion-menu.ios ion-note {\n  margin-bottom: 8px;\n}\n\nion-note {\n  display: inline-block;\n  font-size: 16px;\n  color: var(--ion-color-medium-shade);\n}\n\nion-item.selected {\n  --color: var(--ion-color-primary);\n}\n\n.menu-header {\n  background: #449893;\n  color: #FFF;\n  height: 230px;\n}\n\n.inner-scroll {\n  padding: 0px !important;\n  margin: 0px !important;\n}\n\n.menu-settings {\n  --padding-top: 0px !important;\n  --padding-start: 0px !important;\n  --padding-end: 0px !important;\n}\n\n.user-icon {\n  width: 136px;\n  margin-top: 15px;\n}\n\n.user-profile {\n  text-align: center;\n}\n\n.user-profile ion-label {\n  margin-top: 13px;\n  display: block;\n}\n\n.switch .item-inner {\n  padding: 0;\n  margin: 0;\n}\n\n@font-face {\n  font-family: \"Poppins-Regular\";\n  font-style: normal;\n  font-weight: normal;\n  src: url('Poppins-Regular.ttf');\n}\n\n@font-face {\n  font-family: \"Poppins-Bold\";\n  font-style: normal;\n  font-weight: normal;\n  src: url('Poppins-Bold.ttf');\n}\n\n@font-face {\n  font-family: \"Poppins-SemiBold\";\n  font-style: normal;\n  font-weight: normal;\n  src: url('Poppins-SemiBold.ttf');\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9jaGV0YW4vRGVza3RvcC9vZmZpY2UvbW9iaWxlL3JpY2Vzb3VyY2VVU0Qvc3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDJFQUFBO0FDQ0Y7O0FERUE7RUFDRSxvQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxzQkFBQTtBQ0NGOztBREVBO0VBQ0UsZUFBQTtBQ0NGOztBREVBO0VBQ0UsbUJBQUE7QUNDRjs7QURFQTs7RUFFRSxrQkFBQTtBQ0NGOztBREVBO0VBQ0UsMkRBQUE7QUNDRjs7QURFQTtFQUNFLGVBQUE7RUFDQSxnQkFBQTtFQUVBLGdCQUFBO0FDQUY7O0FER0E7RUFDRSxlQUFBO0VBRUEsbUJBQUE7RUFFQSxjQUFBO0VBRUEsZ0JBQUE7QUNIRjs7QURNQTtFQUNFLHFCQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBQ0hGOztBRE1BO0VBQ0Usc0RBQUE7QUNIRjs7QURNQTtFQUNFLCtCQUFBO0FDSEY7O0FETUE7RUFDRSxjQUFBO0FDSEY7O0FETUE7RUFDRSxnQkFBQTtBQ0hGOztBRE1BO0VBQ0Usc0JBQUE7QUNIRjs7QURNQTtFQUNFLG1CQUFBO0FDSEY7O0FETUE7RUFDRSxpQkFBQTtFQUNBLG1CQUFBO0FDSEY7O0FETUE7RUFDRSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7QUNIRjs7QURNQTtFQUNFLCtCQUFBO0FDSEY7O0FETUE7RUFDRSxlQUFBO0VBQ0EsY0FBQTtBQ0hGOztBRE1BO0VBQ0Usa0JBQUE7QUNIRjs7QURNQTs7RUFFRSxrQkFBQTtFQUNBLG1CQUFBO0FDSEY7O0FETUE7RUFDRSxrQkFBQTtBQ0hGOztBRE1BO0VBQ0UscUJBQUE7RUFDQSxlQUFBO0VBRUEsb0NBQUE7QUNKRjs7QURPQTtFQUNFLGlDQUFBO0FDSkY7O0FET0E7RUFDQyxtQkFBQTtFQUNBLFdBQUE7RUFDQSxhQUFBO0FDSkQ7O0FET0E7RUFDQyx1QkFBQTtFQUNBLHNCQUFBO0FDSkQ7O0FET0E7RUFDQyw2QkFBQTtFQUNBLCtCQUFBO0VBQ0EsNkJBQUE7QUNKRDs7QURPQTtFQUNDLFlBQUE7RUFDQSxnQkFBQTtBQ0pEOztBRE9BO0VBQ0Msa0JBQUE7QUNKRDs7QURNQztFQUNDLGdCQUFBO0VBQ0EsY0FBQTtBQ0pGOztBRFFDO0VBQ0MsVUFBQTtFQUNBLFNBQUE7QUNMRjs7QURTQTtFQUNFLDhCQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtFQUNBLCtCQUFBO0FDTkY7O0FEUUE7RUFDRSwyQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSw0QkFBQTtBQ05GOztBRFFBO0VBQ0UsK0JBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsZ0NBQUE7QUNORiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1tZW51IGlvbi1jb250ZW50IHtcbiAgLS1iYWNrZ3JvdW5kOiB2YXIoLS1pb24taXRlbS1iYWNrZ3JvdW5kLCB2YXIoLS1pb24tYmFja2dyb3VuZC1jb2xvciwgI2ZmZikpO1xufVxuXG5pb24tbWVudS5tZCBpb24tY29udGVudCB7XG4gIC0tcGFkZGluZy1zdGFydDogOHB4O1xuICAtLXBhZGRpbmctZW5kOiA4cHg7XG4gIC0tcGFkZGluZy10b3A6IDIwcHg7XG4gIC0tcGFkZGluZy1ib3R0b206IDIwcHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1saXN0IHtcbiAgcGFkZGluZzogMjBweCAwO1xufVxuXG5pb24tbWVudS5tZCBpb24tbm90ZSB7XG4gIG1hcmdpbi1ib3R0b206IDMwcHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1saXN0LWhlYWRlcixcbmlvbi1tZW51Lm1kIGlvbi1ub3RlIHtcbiAgcGFkZGluZy1sZWZ0OiAxMHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdCNpbmJveC1saXN0IHtcbiAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkIHZhcigtLWlvbi1jb2xvci1zdGVwLTE1MCwgI2Q3ZDhkYSk7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1saXN0I2luYm94LWxpc3QgaW9uLWxpc3QtaGVhZGVyIHtcbiAgZm9udC1zaXplOiAyMnB4O1xuICBmb250LXdlaWdodDogNjAwO1xuXG4gIG1pbi1oZWlnaHQ6IDIwcHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1saXN0I2xhYmVscy1saXN0IGlvbi1saXN0LWhlYWRlciB7XG4gIGZvbnQtc2l6ZTogMTZweDtcblxuICBtYXJnaW4tYm90dG9tOiAxOHB4O1xuXG4gIGNvbG9yOiAjNzU3NTc1O1xuXG4gIG1pbi1oZWlnaHQ6IDI2cHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtIHtcbiAgLS1wYWRkaW5nLXN0YXJ0OiAxMHB4O1xuICAtLXBhZGRpbmctZW5kOiAxMHB4O1xuICBib3JkZXItcmFkaXVzOiA0cHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtLnNlbGVjdGVkIHtcbiAgLS1iYWNrZ3JvdW5kOiByZ2JhKHZhcigtLWlvbi1jb2xvci1wcmltYXJ5LXJnYiksIDAuMTQpO1xufVxuXG5pb24tbWVudS5tZCBpb24taXRlbS5zZWxlY3RlZCBpb24taWNvbiB7XG4gIGNvbG9yOiB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtIGlvbi1pY29uIHtcbiAgY29sb3I6ICM2MTZlN2U7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtIGlvbi1sYWJlbCB7XG4gIGZvbnQtd2VpZ2h0OiA1MDA7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tY29udGVudCB7XG4gIC0tcGFkZGluZy1ib3R0b206IDIwcHg7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tbGlzdCB7XG4gIHBhZGRpbmc6IDIwcHggMCAwIDA7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tbm90ZSB7XG4gIGxpbmUtaGVpZ2h0OiAyNHB4O1xuICBtYXJnaW4tYm90dG9tOiAyMHB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWl0ZW0ge1xuICAtLXBhZGRpbmctc3RhcnQ6IDE2cHg7XG4gIC0tcGFkZGluZy1lbmQ6IDE2cHg7XG4gIC0tbWluLWhlaWdodDogNTBweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1pdGVtLnNlbGVjdGVkIGlvbi1pY29uIHtcbiAgY29sb3I6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1pdGVtIGlvbi1pY29uIHtcbiAgZm9udC1zaXplOiAyNHB4O1xuICBjb2xvcjogIzczODQ5YTtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1saXN0I2xhYmVscy1saXN0IGlvbi1saXN0LWhlYWRlciB7XG4gIG1hcmdpbi1ib3R0b206IDhweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1saXN0LWhlYWRlcixcbmlvbi1tZW51LmlvcyBpb24tbm90ZSB7XG4gIHBhZGRpbmctbGVmdDogMTZweDtcbiAgcGFkZGluZy1yaWdodDogMTZweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1ub3RlIHtcbiAgbWFyZ2luLWJvdHRvbTogOHB4O1xufVxuXG5pb24tbm90ZSB7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgZm9udC1zaXplOiAxNnB4O1xuXG4gIGNvbG9yOiB2YXIoLS1pb24tY29sb3ItbWVkaXVtLXNoYWRlKTtcbn1cblxuaW9uLWl0ZW0uc2VsZWN0ZWQge1xuICAtLWNvbG9yOiB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XG59XG5cbi5tZW51LWhlYWRlcntcblx0YmFja2dyb3VuZDogIzQ0OTg5Mztcblx0Y29sb3I6ICNGRkY7XG5cdGhlaWdodDogMjMwcHg7XG59XG5cbi5pbm5lci1zY3JvbGx7XG5cdHBhZGRpbmc6IDBweCAhaW1wb3J0YW50O1xuXHRtYXJnaW46IDBweCAhaW1wb3J0YW50O1xufVxuXG4ubWVudS1zZXR0aW5nc3tcblx0LS1wYWRkaW5nLXRvcDogMHB4ICFpbXBvcnRhbnQ7XG5cdC0tcGFkZGluZy1zdGFydDogMHB4ICFpbXBvcnRhbnQ7XG5cdC0tcGFkZGluZy1lbmQ6IDBweCAhaW1wb3J0YW50O1xufVxuXG4udXNlci1pY29ue1xuXHR3aWR0aDogMTM2cHg7XG5cdG1hcmdpbi10b3A6IDE1cHg7XG59XG5cbi51c2VyLXByb2ZpbGV7XG5cdHRleHQtYWxpZ246IGNlbnRlcjtcblxuXHRpb24tbGFiZWx7XG5cdFx0bWFyZ2luLXRvcDogMTNweDtcblx0XHRkaXNwbGF5OiBibG9jaztcblx0fVxufVxuLnN3aXRjaHtcblx0Lml0ZW0taW5uZXJ7XG5cdFx0cGFkZGluZzogMDtcblx0XHRtYXJnaW46IDA7XG5cdH1cbn1cblxuQGZvbnQtZmFjZSB7XG4gIGZvbnQtZmFtaWx5OiAnUG9wcGlucy1SZWd1bGFyJztcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBzcmM6IHVybCgnLi4vYXNzZXRzL2ZvbnRzL1BvcHBpbnMvUG9wcGlucy1SZWd1bGFyLnR0ZicpO1xufVxuQGZvbnQtZmFjZSB7XG4gIGZvbnQtZmFtaWx5OiAnUG9wcGlucy1Cb2xkJztcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBzcmM6IHVybCgnLi4vYXNzZXRzL2ZvbnRzL1BvcHBpbnMvUG9wcGlucy1Cb2xkLnR0ZicpO1xufVxuQGZvbnQtZmFjZSB7XG4gIGZvbnQtZmFtaWx5OiAnUG9wcGlucy1TZW1pQm9sZCc7XG4gIGZvbnQtc3R5bGU6IG5vcm1hbDtcbiAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgc3JjOiB1cmwoJy4uL2Fzc2V0cy9mb250cy9Qb3BwaW5zL1BvcHBpbnMtU2VtaUJvbGQudHRmJyk7XG59XG4iLCJpb24tbWVudSBpb24tY29udGVudCB7XG4gIC0tYmFja2dyb3VuZDogdmFyKC0taW9uLWl0ZW0tYmFja2dyb3VuZCwgdmFyKC0taW9uLWJhY2tncm91bmQtY29sb3IsICNmZmYpKTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWNvbnRlbnQge1xuICAtLXBhZGRpbmctc3RhcnQ6IDhweDtcbiAgLS1wYWRkaW5nLWVuZDogOHB4O1xuICAtLXBhZGRpbmctdG9wOiAyMHB4O1xuICAtLXBhZGRpbmctYm90dG9tOiAyMHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdCB7XG4gIHBhZGRpbmc6IDIwcHggMDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLW5vdGUge1xuICBtYXJnaW4tYm90dG9tOiAzMHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdC1oZWFkZXIsXG5pb24tbWVudS5tZCBpb24tbm90ZSB7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3QjaW5ib3gtbGlzdCB7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCB2YXIoLS1pb24tY29sb3Itc3RlcC0xNTAsICNkN2Q4ZGEpO1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdCNpbmJveC1saXN0IGlvbi1saXN0LWhlYWRlciB7XG4gIGZvbnQtc2l6ZTogMjJweDtcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbiAgbWluLWhlaWdodDogMjBweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3QjbGFiZWxzLWxpc3QgaW9uLWxpc3QtaGVhZGVyIHtcbiAgZm9udC1zaXplOiAxNnB4O1xuICBtYXJnaW4tYm90dG9tOiAxOHB4O1xuICBjb2xvcjogIzc1NzU3NTtcbiAgbWluLWhlaWdodDogMjZweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0ge1xuICAtLXBhZGRpbmctc3RhcnQ6IDEwcHg7XG4gIC0tcGFkZGluZy1lbmQ6IDEwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDRweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0uc2VsZWN0ZWQge1xuICAtLWJhY2tncm91bmQ6IHJnYmEodmFyKC0taW9uLWNvbG9yLXByaW1hcnktcmdiKSwgMC4xNCk7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtLnNlbGVjdGVkIGlvbi1pY29uIHtcbiAgY29sb3I6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0gaW9uLWljb24ge1xuICBjb2xvcjogIzYxNmU3ZTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0gaW9uLWxhYmVsIHtcbiAgZm9udC13ZWlnaHQ6IDUwMDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1jb250ZW50IHtcbiAgLS1wYWRkaW5nLWJvdHRvbTogMjBweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1saXN0IHtcbiAgcGFkZGluZzogMjBweCAwIDAgMDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1ub3RlIHtcbiAgbGluZS1oZWlnaHQ6IDI0cHg7XG4gIG1hcmdpbi1ib3R0b206IDIwcHg7XG59XG5cbmlvbi1tZW51LmlvcyBpb24taXRlbSB7XG4gIC0tcGFkZGluZy1zdGFydDogMTZweDtcbiAgLS1wYWRkaW5nLWVuZDogMTZweDtcbiAgLS1taW4taGVpZ2h0OiA1MHB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWl0ZW0uc2VsZWN0ZWQgaW9uLWljb24ge1xuICBjb2xvcjogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWl0ZW0gaW9uLWljb24ge1xuICBmb250LXNpemU6IDI0cHg7XG4gIGNvbG9yOiAjNzM4NDlhO1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWxpc3QjbGFiZWxzLWxpc3QgaW9uLWxpc3QtaGVhZGVyIHtcbiAgbWFyZ2luLWJvdHRvbTogOHB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWxpc3QtaGVhZGVyLFxuaW9uLW1lbnUuaW9zIGlvbi1ub3RlIHtcbiAgcGFkZGluZy1sZWZ0OiAxNnB4O1xuICBwYWRkaW5nLXJpZ2h0OiAxNnB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLW5vdGUge1xuICBtYXJnaW4tYm90dG9tOiA4cHg7XG59XG5cbmlvbi1ub3RlIHtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBmb250LXNpemU6IDE2cHg7XG4gIGNvbG9yOiB2YXIoLS1pb24tY29sb3ItbWVkaXVtLXNoYWRlKTtcbn1cblxuaW9uLWl0ZW0uc2VsZWN0ZWQge1xuICAtLWNvbG9yOiB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XG59XG5cbi5tZW51LWhlYWRlciB7XG4gIGJhY2tncm91bmQ6ICM0NDk4OTM7XG4gIGNvbG9yOiAjRkZGO1xuICBoZWlnaHQ6IDIzMHB4O1xufVxuXG4uaW5uZXItc2Nyb2xsIHtcbiAgcGFkZGluZzogMHB4ICFpbXBvcnRhbnQ7XG4gIG1hcmdpbjogMHB4ICFpbXBvcnRhbnQ7XG59XG5cbi5tZW51LXNldHRpbmdzIHtcbiAgLS1wYWRkaW5nLXRvcDogMHB4ICFpbXBvcnRhbnQ7XG4gIC0tcGFkZGluZy1zdGFydDogMHB4ICFpbXBvcnRhbnQ7XG4gIC0tcGFkZGluZy1lbmQ6IDBweCAhaW1wb3J0YW50O1xufVxuXG4udXNlci1pY29uIHtcbiAgd2lkdGg6IDEzNnB4O1xuICBtYXJnaW4tdG9wOiAxNXB4O1xufVxuXG4udXNlci1wcm9maWxlIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuLnVzZXItcHJvZmlsZSBpb24tbGFiZWwge1xuICBtYXJnaW4tdG9wOiAxM3B4O1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuLnN3aXRjaCAuaXRlbS1pbm5lciB7XG4gIHBhZGRpbmc6IDA7XG4gIG1hcmdpbjogMDtcbn1cblxuQGZvbnQtZmFjZSB7XG4gIGZvbnQtZmFtaWx5OiBcIlBvcHBpbnMtUmVndWxhclwiO1xuICBmb250LXN0eWxlOiBub3JtYWw7XG4gIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gIHNyYzogdXJsKFwiLi4vYXNzZXRzL2ZvbnRzL1BvcHBpbnMvUG9wcGlucy1SZWd1bGFyLnR0ZlwiKTtcbn1cbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogXCJQb3BwaW5zLUJvbGRcIjtcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBzcmM6IHVybChcIi4uL2Fzc2V0cy9mb250cy9Qb3BwaW5zL1BvcHBpbnMtQm9sZC50dGZcIik7XG59XG5AZm9udC1mYWNlIHtcbiAgZm9udC1mYW1pbHk6IFwiUG9wcGlucy1TZW1pQm9sZFwiO1xuICBmb250LXN0eWxlOiBub3JtYWw7XG4gIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gIHNyYzogdXJsKFwiLi4vYXNzZXRzL2ZvbnRzL1BvcHBpbnMvUG9wcGlucy1TZW1pQm9sZC50dGZcIik7XG59Il19 */";
 
     /***/
   },
@@ -1247,6 +1289,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         {
           title: 'Edit Profile',
           url: '/editprofile',
+          icon: 'albums'
+        }, {
+          title: 'Transport',
+          url: '/port',
+          icon: 'albums'
+        }, {
+          title: 'Gallery',
+          url: '/gallery',
+          icon: 'albums'
+        }, {
+          title: 'Chat',
+          url: '/chat-detail',
           icon: 'albums'
         }, {
           title: 'About us',
@@ -1389,6 +1443,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               this.navCtrl.navigateForward(['planpage']);
             } else {
               if (localStorage.getItem('apptype') == 'USD') {
+                console.log("i am here");
                 this.navCtrl.navigateForward('priceusd');
               } else {
                 this.navCtrl.navigateForward('prices');
@@ -1729,7 +1784,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                     console.log("hey i am here");
                                     _this5.navCtrl.navigateRoot('planpage');
                                   } else {
-                                    _this5.navCtrl.navigateForward(['priceusd']);
+                                    console.log("i am here");
+                                    _this5.navCtrl.navigateForward(['prices']);
                                     console.log("apptype USD");
                                     localStorage.setItem('apptype', 'USD');
                                   }
@@ -1831,6 +1887,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                 console.log("hey i am here");
                                 _this5.navCtrl.navigateRoot('planpage');
                               } else {
+                                console.log("i am here");
                                 _this5.navCtrl.navigateForward(['priceusd']);
                                 console.log("apptype USD");
                                 localStorage.setItem('apptype', 'USD');
@@ -2207,6 +2264,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_native_stripe_ngx__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__( /*! @ionic-native/stripe/ngx */"./node_modules/@ionic-native/stripe/ngx/index.js");
     /* harmony import */
     var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__( /*! @ionic-native/file/ngx */"./node_modules/@ionic-native/file/ngx/index.js");
+    /* harmony import */
+    var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__( /*! @ionic-native/file-transfer/ngx */"./node_modules/@ionic-native/file-transfer/ngx/index.js");
+    /* harmony import */
+    var _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__( /*! @ionic-native/file-chooser/ngx */"./node_modules/@ionic-native/file-chooser/ngx/index.js");
+    /* harmony import */
+    var _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__( /*! @ionic-native/file-path/ngx */"./node_modules/@ionic-native/file-path/ngx/index.js");
+    /* harmony import */
+    var _ionic_native_image_picker_ngx__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__( /*! @ionic-native/image-picker/ngx */"./node_modules/@ionic-native/image-picker/ngx/index.js");
 
     // import { IonicSelectableModule } from 'ionic-selectable';
 
@@ -2220,7 +2285,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         scrollPadding: false,
         scrollAssist: true
       }), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"]],
-      providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_theme_detection_ngx__WEBPACK_IMPORTED_MODULE_9__["ThemeDetection"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_12__["Camera"], _ionic_native_firebase_messaging_ngx__WEBPACK_IMPORTED_MODULE_22__["FirebaseMessaging"], _ionic_native_stripe_ngx__WEBPACK_IMPORTED_MODULE_27__["Stripe"], _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_28__["File"], _versionmodal_versionmodal_page__WEBPACK_IMPORTED_MODULE_23__["VersionmodalPage"], {
+      providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_image_picker_ngx__WEBPACK_IMPORTED_MODULE_32__["ImagePicker"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], _ionic_native_theme_detection_ngx__WEBPACK_IMPORTED_MODULE_9__["ThemeDetection"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_12__["Camera"], _ionic_native_firebase_messaging_ngx__WEBPACK_IMPORTED_MODULE_22__["FirebaseMessaging"], _ionic_native_stripe_ngx__WEBPACK_IMPORTED_MODULE_27__["Stripe"], _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_30__["FileChooser"], _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_31__["FilePath"], _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_29__["FileTransfer"], _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_28__["File"], _versionmodal_versionmodal_page__WEBPACK_IMPORTED_MODULE_23__["VersionmodalPage"], {
         provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"],
         useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"]
       }, {
@@ -2652,7 +2717,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
-    __webpack_exports__["default"] = "app-imageprev {\n  --background: transparent !important ;\n}\n\nion-modal {\n  background: transparent !important;\n  --background: transparent !important;\n}\n\nion-modal .modal-wrapper {\n  background: transparent !important;\n  --background: transparent !important;\n}\n\nion-content {\n  background: transparent !important;\n  --background: transparent !important;\n}\n\n.sc-ion-modal-md-h {\n  background: transparent !important;\n  --background: transparent !important;\n}\n\n.modal-wrapper {\n  background: transparent !important;\n  --background: transparent !important;\n}\n\nion-content {\n  --background: transparent;\n}\n\n.crossModal {\n  font-size: 30px;\n  padding: 15px 20px;\n  background: white;\n  /* width: 83px; */\n  width: 60px;\n  height: 60px;\n  border-radius: 100%;\n  color: red;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9jaGV0YW4vRGVza3RvcC9vZmZpY2UvbW9iaWxlL3JpY2Vzb3VyY2VVU0Qvc3JjL2FwcC9pbWFnZXByZXYvaW1hZ2VwcmV2LnBhZ2Uuc2NzcyIsInNyYy9hcHAvaW1hZ2VwcmV2L2ltYWdlcHJldi5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxxQ0FBQTtBQ0NKOztBRENBO0VBQ0ksa0NBQUE7RUFDQSxvQ0FBQTtBQ0VKOztBRERJO0VBQ0ksa0NBQUE7RUFDQSxvQ0FBQTtBQ0dSOztBREFBO0VBQ0ksa0NBQUE7RUFDQSxvQ0FBQTtBQ0dKOztBRERBO0VBQ0ksa0NBQUE7RUFDQSxvQ0FBQTtBQ0lKOztBRERBO0VBQ0ksa0NBQUE7RUFDQSxvQ0FBQTtBQ0lKOztBREZBO0VBQ0kseUJBQUE7QUNLSjs7QURIQTtFQUNJLGVBQUE7RUFDQSxrQkFBQTtFQUNBLGlCQUFBO0VBQ0EsaUJBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLG1CQUFBO0VBQ0EsVUFBQTtBQ01KIiwiZmlsZSI6InNyYy9hcHAvaW1hZ2VwcmV2L2ltYWdlcHJldi5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJhcHAtaW1hZ2VwcmV2e1xuICAgIC0tYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudFxufVxuaW9uLW1vZGFse1xuICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7XG4gICAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50O1xuICAgIC5tb2RhbC13cmFwcGVye1xuICAgICAgICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50O1xuICAgICAgICAtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7XG4gICAgfVxufVxuaW9uLWNvbnRlbnR7XG4gICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcbiAgICAtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7ICAgIFxufVxuLnNjLWlvbi1tb2RhbC1tZC1oe1xuICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7XG4gICAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50OyAgICBcbn1cblxuLm1vZGFsLXdyYXBwZXJ7XG4gICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcbiAgICAtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7ICAgIFxufVxuaW9uLWNvbnRlbnR7XG4gICAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbn1cbi5jcm9zc01vZGFse1xuICAgIGZvbnQtc2l6ZTogMzBweDtcbiAgICBwYWRkaW5nOiAxNXB4IDIwcHg7XG4gICAgYmFja2dyb3VuZDogd2hpdGU7XG4gICAgLyogd2lkdGg6IDgzcHg7ICovXG4gICAgd2lkdGg6IDYwcHg7XG4gICAgaGVpZ2h0OiA2MHB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDEwMCU7XG4gICAgY29sb3I6IHJlZDtcbn0iLCJhcHAtaW1hZ2VwcmV2IHtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50IDtcbn1cblxuaW9uLW1vZGFsIHtcbiAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50O1xufVxuaW9uLW1vZGFsIC5tb2RhbC13cmFwcGVyIHtcbiAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50O1xufVxuXG5pb24tY29udGVudCB7XG4gIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7XG4gIC0tYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcbn1cblxuLnNjLWlvbi1tb2RhbC1tZC1oIHtcbiAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50O1xufVxuXG4ubW9kYWwtd3JhcHBlciB7XG4gIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7XG4gIC0tYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcbn1cblxuaW9uLWNvbnRlbnQge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xufVxuXG4uY3Jvc3NNb2RhbCB7XG4gIGZvbnQtc2l6ZTogMzBweDtcbiAgcGFkZGluZzogMTVweCAyMHB4O1xuICBiYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgLyogd2lkdGg6IDgzcHg7ICovXG4gIHdpZHRoOiA2MHB4O1xuICBoZWlnaHQ6IDYwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDEwMCU7XG4gIGNvbG9yOiByZWQ7XG59Il19 */";
+    __webpack_exports__["default"] = "app-imageprev {\n  --background: transparent !important ;\n}\n\nion-modal {\n  background: transparent !important;\n  --background: transparent !important;\n}\n\nion-modal .modal-wrapper {\n  background: transparent !important;\n  --background: transparent !important;\n}\n\nion-content {\n  background: transparent !important;\n  --background: transparent !important;\n}\n\n.sc-ion-modal-md-h {\n  background: transparent !important;\n  --background: transparent !important;\n}\n\n.modal-wrapper {\n  background: transparent !important;\n  --background: transparent !important;\n}\n\nion-content {\n  --background: transparent;\n}\n\n.crossModal {\n  font-size: 17px;\n  background: white;\n  width: 40px;\n  height: 40px;\n  border-radius: 100%;\n  color: red;\n  margin: 0 auto;\n  align-items: center;\n  text-align: center;\n  align-self: center;\n  font-weight: bold;\n  padding: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9jaGV0YW4vRGVza3RvcC9vZmZpY2UvbW9iaWxlL3JpY2Vzb3VyY2VVU0Qvc3JjL2FwcC9pbWFnZXByZXYvaW1hZ2VwcmV2LnBhZ2Uuc2NzcyIsInNyYy9hcHAvaW1hZ2VwcmV2L2ltYWdlcHJldi5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxxQ0FBQTtBQ0NKOztBRENBO0VBQ0ksa0NBQUE7RUFDQSxvQ0FBQTtBQ0VKOztBRERJO0VBQ0ksa0NBQUE7RUFDQSxvQ0FBQTtBQ0dSOztBREFBO0VBQ0ksa0NBQUE7RUFDQSxvQ0FBQTtBQ0dKOztBRERBO0VBQ0ksa0NBQUE7RUFDQSxvQ0FBQTtBQ0lKOztBRERBO0VBQ0ksa0NBQUE7RUFDQSxvQ0FBQTtBQ0lKOztBREZBO0VBQ0kseUJBQUE7QUNLSjs7QURIQTtFQUNJLGVBQUE7RUFDQSxpQkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsbUJBQUE7RUFDQSxVQUFBO0VBQ0EsY0FBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFDQSxrQkFBQTtFQUNBLGlCQUFBO0VBQ0EsYUFBQTtBQ01KIiwiZmlsZSI6InNyYy9hcHAvaW1hZ2VwcmV2L2ltYWdlcHJldi5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJhcHAtaW1hZ2VwcmV2e1xuICAgIC0tYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudFxufVxuaW9uLW1vZGFse1xuICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7XG4gICAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50O1xuICAgIC5tb2RhbC13cmFwcGVye1xuICAgICAgICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50O1xuICAgICAgICAtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7XG4gICAgfVxufVxuaW9uLWNvbnRlbnR7XG4gICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcbiAgICAtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7ICAgIFxufVxuLnNjLWlvbi1tb2RhbC1tZC1oe1xuICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7XG4gICAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50OyAgICBcbn1cblxuLm1vZGFsLXdyYXBwZXJ7XG4gICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcbiAgICAtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7ICAgIFxufVxuaW9uLWNvbnRlbnR7XG4gICAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbn1cbi5jcm9zc01vZGFse1xuICAgIGZvbnQtc2l6ZTogMTdweDtcbiAgICBiYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgICB3aWR0aDogNDBweDtcbiAgICBoZWlnaHQ6IDQwcHg7XG4gICAgYm9yZGVyLXJhZGl1czogMTAwJTtcbiAgICBjb2xvcjogcmVkO1xuICAgIG1hcmdpbjogMCBhdXRvO1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIGFsaWduLXNlbGY6IGNlbnRlcjtcbiAgICBmb250LXdlaWdodDogYm9sZDtcbiAgICBwYWRkaW5nOiAxMHB4O1xufSIsImFwcC1pbWFnZXByZXYge1xuICAtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQgO1xufVxuXG5pb24tbW9kYWwge1xuICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50O1xuICAtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7XG59XG5pb24tbW9kYWwgLm1vZGFsLXdyYXBwZXIge1xuICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50O1xuICAtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7XG59XG5cbmlvbi1jb250ZW50IHtcbiAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50O1xufVxuXG4uc2MtaW9uLW1vZGFsLW1kLWgge1xuICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50O1xuICAtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7XG59XG5cbi5tb2RhbC13cmFwcGVyIHtcbiAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50O1xufVxuXG5pb24tY29udGVudCB7XG4gIC0tYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XG59XG5cbi5jcm9zc01vZGFsIHtcbiAgZm9udC1zaXplOiAxN3B4O1xuICBiYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgd2lkdGg6IDQwcHg7XG4gIGhlaWdodDogNDBweDtcbiAgYm9yZGVyLXJhZGl1czogMTAwJTtcbiAgY29sb3I6IHJlZDtcbiAgbWFyZ2luOiAwIGF1dG87XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgYWxpZ24tc2VsZjogY2VudGVyO1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgcGFkZGluZzogMTBweDtcbn0iXX0= */";
 
     /***/
   },
@@ -3751,12 +3816,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
         }
       }, {
+        key: "getBuyerINRPacking",
+        value: function getBuyerINRPacking() {
+          var _this19 = this;
+          var token = localStorage.getItem("token");
+          return new Promise(function (resolve, reject) {
+            _this19.http.get(_this19.APIURL + "get/buyer/inr/packing?api_token=" + token).subscribe(function (res) {
+              resolve(res);
+            }, function (err) {
+              reject(err);
+            });
+          });
+        }
+      }, {
         key: "getLatestNotifications",
         value: function getLatestNotifications() {
-          var _this19 = this;
+          var _this20 = this;
           var id = localStorage.getItem("id");
           return new Promise(function (resolve, reject) {
-            _this19.http.get(_this19.APIURL + "get/user/notification/" + id).subscribe(function (res) {
+            _this20.http.get(_this20.APIURL + "get/user/notification/" + id).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3766,9 +3844,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getTransportStates",
         value: function getTransportStates() {
-          var _this20 = this;
+          var _this21 = this;
           return new Promise(function (resolve, reject) {
-            _this20.http.get(_this20.APIURL + "get/transport/states").subscribe(function (res) {
+            _this21.http.get(_this21.APIURL + "get/transport/states").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3778,10 +3856,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "saveSampleEntry",
         value: function saveSampleEntry(formData) {
-          var _this21 = this;
+          var _this22 = this;
           var token = localStorage.getItem("token");
           return new Promise(function (resolve, reject) {
-            _this21.http.post(_this21.APIURL + "sample/save?api_token=" + token, JSON.stringify(formData)).subscribe(function (res) {
+            _this22.http.post(_this22.APIURL + "sample/save?api_token=" + token, JSON.stringify(formData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3791,10 +3869,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getCustomerStripe",
         value: function getCustomerStripe(postedData) {
-          var _this22 = this;
+          var _this23 = this;
           var token = localStorage.getItem("token");
           return new Promise(function (resolve, reject) {
-            _this22.http.post(_this22.APIURL + "check/customer?api_token=" + token, JSON.stringify(postedData)).subscribe(function (res) {
+            _this23.http.post(_this23.APIURL + "check/customer?api_token=" + token, JSON.stringify(postedData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3804,10 +3882,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "pubdingCourierSamples",
         value: function pubdingCourierSamples() {
-          var _this23 = this;
+          var _this24 = this;
           var token = localStorage.getItem("token");
           return new Promise(function (resolve, reject) {
-            _this23.http.get(_this23.APIURL + "pending/courier/samples?api_token=" + token).subscribe(function (res) {
+            _this24.http.get(_this24.APIURL + "pending/courier/samples?api_token=" + token).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3817,10 +3895,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "listPorts",
         value: function listPorts() {
-          var _this24 = this;
+          var _this25 = this;
           var token = localStorage.getItem("token");
           return new Promise(function (resolve, reject) {
-            _this24.http.get(_this24.APIURL + "list/port").subscribe(function (res) {
+            _this25.http.get(_this25.APIURL + "list/port").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3830,10 +3908,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getImagesForDashboard",
         value: function getImagesForDashboard() {
-          var _this25 = this;
+          var _this26 = this;
           var token = localStorage.getItem("token");
           return new Promise(function (resolve, reject) {
-            _this25.http.get(_this25.APIURL + "get/images/for/dashboard").subscribe(function (res) {
+            _this26.http.get(_this26.APIURL + "get/images/for/dashboard").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3843,10 +3921,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "saveCourier",
         value: function saveCourier(formData) {
-          var _this26 = this;
+          var _this27 = this;
           var token = localStorage.getItem("token");
           return new Promise(function (resolve, reject) {
-            _this26.http.post(_this26.APIURL + "courier/save?api_token=" + token, JSON.stringify(formData)).subscribe(function (res) {
+            _this27.http.post(_this27.APIURL + "courier/save?api_token=" + token, JSON.stringify(formData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3856,10 +3934,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "saveMillStatus",
         value: function saveMillStatus(formData) {
-          var _this27 = this;
+          var _this28 = this;
           var token = localStorage.getItem("token");
           return new Promise(function (resolve, reject) {
-            _this27.http.post(_this27.APIURL + "millstatus/save?api_token=" + token, JSON.stringify(formData)).subscribe(function (res) {
+            _this28.http.post(_this28.APIURL + "millstatus/save?api_token=" + token, JSON.stringify(formData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3869,10 +3947,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "saveRiceQuery",
         value: function saveRiceQuery(formData) {
-          var _this28 = this;
+          var _this29 = this;
           var token = localStorage.getItem("token");
           return new Promise(function (resolve, reject) {
-            _this28.http.post(_this28.APIURL + "add/rice/query?api_token=" + token, JSON.stringify(formData)).subscribe(function (res) {
+            _this29.http.post(_this29.APIURL + "add/rice/query?api_token=" + token, JSON.stringify(formData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3882,10 +3960,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateCounterStatus",
         value: function updateCounterStatus(formData) {
-          var _this29 = this;
+          var _this30 = this;
           var token = localStorage.getItem("token");
           return new Promise(function (resolve, reject) {
-            _this29.http.post(_this29.APIURL + "update/counter/status?api_token=" + token, JSON.stringify(formData)).subscribe(function (res) {
+            _this30.http.post(_this30.APIURL + "update/counter/status?api_token=" + token, JSON.stringify(formData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3921,10 +3999,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPrices",
         value: function getPrices(state, type) {
-          var _this30 = this;
+          var _this31 = this;
           return new Promise(function (resolve, reject) {
             if (state != undefined) {
-              _this30.http.get(_this30.APIURL + "prices/" + state + "/" + type).subscribe(function (res) {
+              _this31.http.get(_this31.APIURL + "prices/" + state + "/" + type).subscribe(function (res) {
                 resolve(res);
               }, function (err) {
                 reject(err);
@@ -3935,10 +4013,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getChartData",
         value: function getChartData(state, riceType, rice, timePeriod) {
-          var _this31 = this;
+          var _this32 = this;
           timePeriod = timePeriod.split(" ").join("_");
           return new Promise(function (resolve, reject) {
-            _this31.http.get(_this31.APIURL + "get/price/" + btoa(state) + "/" + btoa(riceType) + "/" + btoa(rice) + "/" + btoa(timePeriod)).subscribe(function (res) {
+            _this32.http.get(_this32.APIURL + "get/price/" + btoa(state) + "/" + btoa(riceType) + "/" + btoa(rice) + "/" + btoa(timePeriod)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3948,9 +4026,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPlans",
         value: function getPlans() {
-          var _this32 = this;
+          var _this33 = this;
           return new Promise(function (resolve, reject) {
-            _this32.http.get(_this32.APIURL + "get/plans").subscribe(function (res) {
+            _this33.http.get(_this33.APIURL + "get/plans").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3960,9 +4038,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "checkUserPlan",
         value: function checkUserPlan() {
-          var _this33 = this;
+          var _this34 = this;
           return new Promise(function (resolve, reject) {
-            _this33.http.get(_this33.APIURL + "check/user/plan/" + localStorage.getItem("id")).subscribe(function (res) {
+            _this34.http.get(_this34.APIURL + "check/user/plan/" + localStorage.getItem("id")).subscribe(function (res) {
               resolve(res.data);
             }, function (err) {
               reject(err);
@@ -3972,9 +4050,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getOrderIdFromRazorpay",
         value: function getOrderIdFromRazorpay(jsonData) {
-          var _this34 = this;
+          var _this35 = this;
           return new Promise(function (resolve, reject) {
-            _this34.http.post(_this34.APIURL + "get/orderid/razorpay", JSON.stringify(jsonData)).subscribe(function (res) {
+            _this35.http.post(_this35.APIURL + "get/orderid/razorpay", JSON.stringify(jsonData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3984,9 +4062,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "chargeStripe",
         value: function chargeStripe(jsonData) {
-          var _this35 = this;
+          var _this36 = this;
           return new Promise(function (resolve, reject) {
-            _this35.http.post(_this35.APIURL + "stripe-payment", JSON.stringify(jsonData)).subscribe(function (res) {
+            _this36.http.post(_this36.APIURL + "stripe-payment", JSON.stringify(jsonData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -3996,10 +4074,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addOrder",
         value: function addOrder(jsonData) {
-          var _this36 = this;
+          var _this37 = this;
           var token = localStorage.getItem("token");
           return new Promise(function (resolve, reject) {
-            _this36.http.post(_this36.APIURL + "save/order?api_token=" + token, JSON.stringify(jsonData)).subscribe(function (res) {
+            _this37.http.post(_this37.APIURL + "save/order?api_token=" + token, JSON.stringify(jsonData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4009,9 +4087,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getGallery",
         value: function getGallery() {
-          var _this37 = this;
+          var _this38 = this;
           return new Promise(function (resolve, reject) {
-            _this37.http.get(_this37.APIURL + "get/gallery/list").subscribe(function (res) {
+            _this38.http.get(_this38.APIURL + "get/gallery/list").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4021,9 +4099,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getGalleryData",
         value: function getGalleryData(_getGalleryData) {
-          var _this38 = this;
+          var _this39 = this;
           return new Promise(function (resolve, reject) {
-            _this38.http.get(_this38.APIURL + "get/gallery/details/" + _getGalleryData).subscribe(function (res) {
+            _this39.http.get(_this39.APIURL + "get/gallery/details/" + _getGalleryData).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4033,10 +4111,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "regsiterUser",
         value: function regsiterUser(formdata) {
-          var _this39 = this;
+          var _this40 = this;
           var token = localStorage.getItem("token");
           return new Promise(function (resolve, reject) {
-            _this39.http.post(_this39.APIURL + "save/user?api_token=" + token, JSON.stringify(formdata)).subscribe(function (res) {
+            _this40.http.post(_this40.APIURL + "save/user?api_token=" + token, JSON.stringify(formdata)).subscribe(function (res) {
               console.log(res);
               resolve(res);
             }, function (err) {
@@ -4048,10 +4126,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateUser",
         value: function updateUser(formdata) {
-          var _this40 = this;
+          var _this41 = this;
           var token = localStorage.getItem("token");
           return new Promise(function (resolve, reject) {
-            _this40.http.post(_this40.APIURL + "update/user?api_token=" + token, JSON.stringify(formdata)).subscribe(function (res) {
+            _this41.http.post(_this41.APIURL + "update/user?api_token=" + token, JSON.stringify(formdata)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4061,10 +4139,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "verifyUser",
         value: function verifyUser(formdata) {
-          var _this41 = this;
+          var _this42 = this;
           var token = localStorage.getItem("token");
           return new Promise(function (resolve, reject) {
-            _this41.http.post(_this41.APIURL + "verify/user?api_token=" + token, JSON.stringify(formdata)).subscribe(function (res) {
+            _this42.http.post(_this42.APIURL + "verify/user?api_token=" + token, JSON.stringify(formdata)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4074,9 +4152,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "sendOTP",
         value: function sendOTP(number) {
-          var _this42 = this;
+          var _this43 = this;
           return new Promise(function (resolve, reject) {
-            _this42.http.get(_this42.APIURL + "send/otp/" + number).subscribe(function (res) {
+            _this43.http.get(_this43.APIURL + "send/otp/" + number).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4086,9 +4164,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "resendOTP",
         value: function resendOTP(number) {
-          var _this43 = this;
+          var _this44 = this;
           return new Promise(function (resolve, reject) {
-            _this43.http.get(_this43.APIURL + "resend/otp/" + number).subscribe(function (res) {
+            _this44.http.get(_this44.APIURL + "resend/otp/" + number).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4098,9 +4176,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "verifyOTP",
         value: function verifyOTP(number, otp) {
-          var _this44 = this;
+          var _this45 = this;
           return new Promise(function (resolve, reject) {
-            _this44.http.get(_this44.APIURL + "verify/otp/" + number + "/" + otp).subscribe(function (res) {
+            _this45.http.get(_this45.APIURL + "verify/otp/" + number + "/" + otp).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4110,10 +4188,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "changePassword",
         value: function changePassword(formData) {
-          var _this45 = this;
+          var _this46 = this;
           var token = localStorage.getItem("token");
           return new Promise(function (resolve, reject) {
-            _this45.http.post(_this45.APIURL + "change/password?api_token=" + token, JSON.stringify(formData)).subscribe(function (res) {
+            _this46.http.post(_this46.APIURL + "change/password?api_token=" + token, JSON.stringify(formData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4123,9 +4201,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getBasmatiState",
         value: function getBasmatiState() {
-          var _this46 = this;
+          var _this47 = this;
           return new Promise(function (resolve, reject) {
-            _this46.http.get(_this46.APIURL + "get/basmati/state").subscribe(function (res) {
+            _this47.http.get(_this47.APIURL + "get/basmati/state").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4135,9 +4213,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getNONBasmatiState",
         value: function getNONBasmatiState() {
-          var _this47 = this;
+          var _this48 = this;
           return new Promise(function (resolve, reject) {
-            _this47.http.get(_this47.APIURL + "get/nonbasmati/state").subscribe(function (res) {
+            _this48.http.get(_this48.APIURL + "get/nonbasmati/state").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4147,9 +4225,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getChartInterval",
         value: function getChartInterval() {
-          var _this48 = this;
+          var _this49 = this;
           return new Promise(function (resolve, reject) {
-            _this48.http.get(_this48.APIURL + "get/chartinterval").subscribe(function (res) {
+            _this49.http.get(_this49.APIURL + "get/chartinterval").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4159,9 +4237,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "sendMessage",
         value: function sendMessage(userDetails) {
-          var _this49 = this;
+          var _this50 = this;
           return new Promise(function (resolve, reject) {
-            _this49.http.post(_this49.APIURL + "save/message", userDetails).subscribe(function (res) {
+            _this50.http.post(_this50.APIURL + "save/message", userDetails).subscribe(function (res) {
               console.log("jnhjkn");
               resolve(res);
             }, function (err) {
@@ -4173,9 +4251,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateToken",
         value: function updateToken(id, token) {
-          var _this50 = this;
+          var _this51 = this;
           return new Promise(function (resolve, reject) {
-            _this50.http.post(_this50.APIURL + "update/user/token", JSON.stringify({
+            _this51.http.post(_this51.APIURL + "update/user/token", JSON.stringify({
               id: id,
               user_token: token
             })).subscribe(function (res) {
@@ -4188,9 +4266,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getMessages",
         value: function getMessages(from, to) {
-          var _this51 = this;
+          var _this52 = this;
           return new Promise(function (resolve, reject) {
-            _this51.http.get(_this51.APIURL + "get/message/" + from + "/" + to).subscribe(function (res) {
+            _this52.http.get(_this52.APIURL + "get/message/" + from + "/" + to).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4200,9 +4278,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getChatPerson",
         value: function getChatPerson() {
-          var _this52 = this;
+          var _this53 = this;
           return new Promise(function (resolve, reject) {
-            _this52.http.get(_this52.APIURL + "get/message/contacts/list").subscribe(function (res) {
+            _this53.http.get(_this53.APIURL + "get/message/contacts/list").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4212,9 +4290,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getChatCount",
         value: function getChatCount() {
-          var _this53 = this;
+          var _this54 = this;
           return new Promise(function (resolve, reject) {
-            _this53.http.get(_this53.APIURL + "get/user/messages/count/" + localStorage.getItem("id")).subscribe(function (res) {
+            _this54.http.get(_this54.APIURL + "get/user/messages/count/" + localStorage.getItem("id")).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4224,9 +4302,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "CheckUserExpired",
         value: function CheckUserExpired() {
-          var _this54 = this;
+          var _this55 = this;
           return new Promise(function (resolve, reject) {
-            _this54.http.get(_this54.APIURL + "check/user/expired/" + localStorage.getItem("id")).subscribe(function (res) {
+            _this55.http.get(_this55.APIURL + "check/user/expired/" + localStorage.getItem("id")).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4236,9 +4314,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPriceBasmatiState",
         value: function getPriceBasmatiState() {
-          var _this55 = this;
+          var _this56 = this;
           return new Promise(function (resolve, reject) {
-            _this55.http.get(_this55.APIURL + "get/price/states").subscribe(function (res) {
+            _this56.http.get(_this56.APIURL + "get/price/states").subscribe(function (res) {
               console.log(res);
             }, function (err) {
               console.log(err);
@@ -4257,9 +4335,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPortDetails",
         value: function getPortDetails(state) {
-          var _this56 = this;
+          var _this57 = this;
           return new Promise(function (resolve, reject) {
-            _this56.http.get(_this56.APIURL + "get/port/details/" + state).subscribe(function (res) {
+            _this57.http.get(_this57.APIURL + "get/port/details/" + state).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4269,9 +4347,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUserPlanDetails",
         value: function getUserPlanDetails() {
-          var _this57 = this;
+          var _this58 = this;
           return new Promise(function (resolve, reject) {
-            _this57.http.get(_this57.APIURL + "get/user/plan/" + localStorage.getItem("id")).subscribe(function (res) {
+            _this58.http.get(_this58.APIURL + "get/user/plan/" + localStorage.getItem("id")).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4281,9 +4359,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getChatStatus",
         value: function getChatStatus() {
-          var _this58 = this;
+          var _this59 = this;
           return new Promise(function (resolve, reject) {
-            _this58.http.get(_this58.APIURL + "get/chat/status").subscribe(function (res) {
+            _this59.http.get(_this59.APIURL + "get/chat/status").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4293,9 +4371,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getLatestVersion",
         value: function getLatestVersion() {
-          var _this59 = this;
+          var _this60 = this;
           return new Promise(function (resolve, reject) {
-            _this59.http.get(_this59.APIURL + "get/latest/version").subscribe(function (res) {
+            _this60.http.get(_this60.APIURL + "get/latest/version").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4305,9 +4383,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUSDPrice",
         value: function getUSDPrice(userId) {
-          var _this60 = this;
+          var _this61 = this;
           return new Promise(function (resolve, reject) {
-            _this60.http.get(_this60.APIURL + "get/usd/prices/" + userId).subscribe(function (res) {
+            _this61.http.get(_this61.APIURL + "get/usd/prices/" + userId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4317,9 +4395,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getOceanPorts",
         value: function getOceanPorts() {
-          var _this61 = this;
+          var _this62 = this;
           return new Promise(function (resolve, reject) {
-            _this61.http.get(_this61.APIURL + "get/distinct/region").subscribe(function (res) {
+            _this62.http.get(_this62.APIURL + "get/distinct/region").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4329,9 +4407,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllPorts",
         value: function getAllPorts(riceQualityId) {
-          var _this62 = this;
+          var _this63 = this;
           return new Promise(function (resolve, reject) {
-            _this62.http.get(_this62.APIURL + "get/all/ports/" + riceQualityId + "/" + localStorage.getItem("id")).subscribe(function (res) {
+            _this63.http.get(_this63.APIURL + "get/all/ports/" + riceQualityId + "/" + localStorage.getItem("id")).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4341,9 +4419,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getDataForBuyer",
         value: function getDataForBuyer() {
-          var _this63 = this;
+          var _this64 = this;
           return new Promise(function (resolve, reject) {
-            _this63.http.get(_this63.APIURL + "get/data/for/buyer").subscribe(function (res) {
+            _this64.http.get(_this64.APIURL + "get/data/for/buyer").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4353,10 +4431,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getRiceQualities",
         value: function getRiceQualities(type) {
-          var _this64 = this;
+          var _this65 = this;
           // type = 1 or 2 ( basmati or non -basmati )
           return new Promise(function (resolve, reject) {
-            _this64.http.get(_this64.APIURL + "get/rice/qualities/" + type).subscribe(function (res) {
+            _this65.http.get(_this65.APIURL + "get/rice/qualities/" + type).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4366,10 +4444,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getRiceQualitiesForms",
         value: function getRiceQualitiesForms(riceNameId) {
-          var _this65 = this;
+          var _this66 = this;
           // type = 1 or 2 ( basmati or non -basmati )
           return new Promise(function (resolve, reject) {
-            _this65.http.get(_this65.APIURL + "get/rice/qualities/name/" + riceNameId).subscribe(function (res) {
+            _this66.http.get(_this66.APIURL + "get/rice/qualities/name/" + riceNameId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4379,9 +4457,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getRiceWand",
         value: function getRiceWand(riceNameId) {
-          var _this66 = this;
+          var _this67 = this;
           return new Promise(function (resolve, reject) {
-            _this66.http.get(_this66.APIURL + "get/rice/wand/" + riceNameId).subscribe(function (res) {
+            _this67.http.get(_this67.APIURL + "get/rice/wand/" + riceNameId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4391,9 +4469,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getBuyerDetails",
         value: function getBuyerDetails(queryId) {
-          var _this67 = this;
+          var _this68 = this;
           return new Promise(function (resolve, reject) {
-            _this67.http.get(_this67.APIURL + "get/buyer/details/" + queryId).subscribe(function (res) {
+            _this68.http.get(_this68.APIURL + "get/buyer/details/" + queryId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4403,9 +4481,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "saveUserBid",
         value: function saveUserBid(postedData) {
-          var _this68 = this;
+          var _this69 = this;
           return new Promise(function (resolve, reject) {
-            _this68.http.post(_this68.APIURL + "save/bid", JSON.stringify(postedData)).subscribe(function (res) {
+            _this69.http.post(_this69.APIURL + "save/bid", JSON.stringify(postedData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4415,9 +4493,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getCalculatorDetails",
         value: function getCalculatorDetails() {
-          var _this69 = this;
+          var _this70 = this;
           return new Promise(function (resolve, reject) {
-            _this69.http.get(_this69.APIURL + "get/calculator/data").subscribe(function (res) {
+            _this70.http.get(_this70.APIURL + "get/calculator/data").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4427,9 +4505,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "saveUSDPrices",
         value: function saveUSDPrices(postedData) {
-          var _this70 = this;
+          var _this71 = this;
           return new Promise(function (resolve, reject) {
-            _this70.http.post(_this70.APIURL + "save/usd/prices", postedData).subscribe(function (res) {
+            _this71.http.post(_this71.APIURL + "save/usd/prices", postedData).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4439,9 +4517,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addBidOnBuyerQuery",
         value: function addBidOnBuyerQuery(postedData) {
-          var _this71 = this;
+          var _this72 = this;
           return new Promise(function (resolve, reject) {
-            _this71.http.post(_this71.APIURL + "save/user/bid", postedData).subscribe(function (res) {
+            _this72.http.post(_this72.APIURL + "save/user/bid", postedData).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4451,9 +4529,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getMyBids",
         value: function getMyBids(userid) {
-          var _this72 = this;
+          var _this73 = this;
           return new Promise(function (resolve, reject) {
-            _this72.http.get(_this72.APIURL + "get/my/bids/" + userid).subscribe(function (res) {
+            _this73.http.get(_this73.APIURL + "get/my/bids/" + userid).subscribe(function (res) {
+              resolve(res);
+            }, function (err) {
+              reject(err);
+            });
+          });
+        }
+      }, {
+        key: "getTrades",
+        value: function getTrades(userid) {
+          var _this74 = this;
+          return new Promise(function (resolve, reject) {
+            _this74.http.get(_this74.APIURL + "get/trades").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4463,9 +4553,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getBuyerList",
         value: function getBuyerList() {
-          var _this73 = this;
+          var _this75 = this;
           return new Promise(function (resolve, reject) {
-            _this73.http.get(_this73.APIURL + "get/buyer/list").subscribe(function (res) {
+            _this75.http.get(_this75.APIURL + "get/buyer/list").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4475,9 +4565,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUSDPlan",
         value: function getUSDPlan() {
-          var _this74 = this;
+          var _this76 = this;
           return new Promise(function (resolve, reject) {
-            _this74.http.get(_this74.APIURL + "get/usd/plans").subscribe(function (res) {
+            _this76.http.get(_this76.APIURL + "get/usd/plans").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4487,9 +4577,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUSDCounties",
         value: function getUSDCounties() {
-          var _this75 = this;
+          var _this77 = this;
           return new Promise(function (resolve, reject) {
-            _this75.http.get(_this75.APIURL + "get/countries/list").subscribe(function (res) {
+            _this77.http.get(_this77.APIURL + "get/countries/list").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4499,9 +4589,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getBagVendors",
         value: function getBagVendors() {
-          var _this76 = this;
+          var _this78 = this;
           return new Promise(function (resolve, reject) {
-            _this76.http.get(_this76.APIURL + "get/bag/vendors").subscribe(function (res) {
+            _this78.http.get(_this78.APIURL + "get/bag/vendors").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4511,9 +4601,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "contact",
         value: function contact() {
-          var _this77 = this;
+          var _this79 = this;
           return new Promise(function (resolve, reject) {
-            _this77.http.get(_this77.APIURL + "get/contact/details").subscribe(function (res) {
+            _this79.http.get(_this79.APIURL + "get/contact/details").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4523,9 +4613,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getHotDeals",
         value: function getHotDeals(userId) {
-          var _this78 = this;
+          var _this80 = this;
           return new Promise(function (resolve, reject) {
-            _this78.http.get(_this78.APIURL + "get/hot/deals/" + userId).subscribe(function (res) {
+            _this80.http.get(_this80.APIURL + "get/hot/deals/" + userId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4535,9 +4625,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "startTrialPeriod",
         value: function startTrialPeriod(userId) {
-          var _this79 = this;
+          var _this81 = this;
           return new Promise(function (resolve, reject) {
-            _this79.http.get(_this79.APIURL + "start/trial/period/" + userId).subscribe(function (res) {
+            _this81.http.get(_this81.APIURL + "start/trial/period/" + userId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4547,9 +4637,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updatePort",
         value: function updatePort(postedData) {
-          var _this80 = this;
+          var _this82 = this;
           return new Promise(function (resolve, reject) {
-            _this80.http.post(_this80.APIURL + "update/port", postedData).subscribe(function (res) {
+            _this82.http.post(_this82.APIURL + "update/port", postedData).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4559,9 +4649,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "acceptHotDeal",
         value: function acceptHotDeal(postedData) {
-          var _this81 = this;
+          var _this83 = this;
           return new Promise(function (resolve, reject) {
-            _this81.http.post(_this81.APIURL + "accept/hot/deal/notification", postedData).subscribe(function (res) {
+            _this83.http.post(_this83.APIURL + "accept/hot/deal/notification", postedData).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4571,9 +4661,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateUserPlan",
         value: function updateUserPlan(postedData) {
-          var _this82 = this;
+          var _this84 = this;
           return new Promise(function (resolve, reject) {
-            _this82.http.post(_this82.APIURL + "payment/success", postedData).subscribe(function (res) {
+            _this84.http.post(_this84.APIURL + "payment/success", postedData).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4583,9 +4673,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "userNotification",
         value: function userNotification(userId) {
-          var _this83 = this;
+          var _this85 = this;
           return new Promise(function (resolve, reject) {
-            _this83.http.get(_this83.APIURL + "user/notification/" + userId).subscribe(function (res) {
+            _this85.http.get(_this85.APIURL + "user/notification/" + userId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4595,9 +4685,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "clearNotification",
         value: function clearNotification(userId) {
-          var _this84 = this;
+          var _this86 = this;
           return new Promise(function (resolve, reject) {
-            _this84.http.get(_this84.APIURL + "clear/notification/" + userId).subscribe(function (res) {
+            _this86.http.get(_this86.APIURL + "clear/notification/" + userId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4607,9 +4697,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteUser",
         value: function deleteUser(userId) {
-          var _this85 = this;
+          var _this87 = this;
           return new Promise(function (resolve, reject) {
-            _this85.http.get(_this85.APIURL + "delete/user/" + userId).subscribe(function (res) {
+            _this87.http.get(_this87.APIURL + "delete/user/" + userId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4702,47 +4792,47 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPicture",
         value: function getPicture() {
-          var _this86 = this;
+          var _this88 = this;
           this.componentService.takePicture().then(function (imageData) {
             var base64Image = 'data:image/jpeg;base64,' + imageData;
-            _this86.sampleImage = base64Image;
-            _this86.selectedImage = base64Image;
+            _this88.sampleImage = base64Image;
+            _this88.selectedImage = base64Image;
           });
         }
       }, {
         key: "ionViewDidEnter",
         value: function ionViewDidEnter() {
-          var _this87 = this;
+          var _this89 = this;
           this.componentService.presentLoading().then(function () {
-            _this87.restService.sampleEntryPreLoaddata().then(function (res) {
-              _this87.componentService.loadingController.dismiss();
-              _this87.sellers = res.seller;
-              _this87.qualities = res.quality;
-              _this87.packings = res.packing;
-              _this87.packingTypes = res.packing_type;
+            _this89.restService.sampleEntryPreLoaddata().then(function (res) {
+              _this89.componentService.loadingController.dismiss();
+              _this89.sellers = res.seller;
+              _this89.qualities = res.quality;
+              _this89.packings = res.packing;
+              _this89.packingTypes = res.packing_type;
             });
           });
         }
       }, {
         key: "saveSample",
         value: function saveSample() {
-          var _this88 = this;
+          var _this90 = this;
           this.componentService.validateInput(this.formData, ['date', 'seller', 'packing', 'packing_type', 'qty']).then(function (isValid) {
             if (isValid) {
-              if (_this88.selectedImage == '') {
-                _this88.componentService.presentToastWithOptions('Please capture the sample image!');
+              if (_this90.selectedImage == '') {
+                _this90.componentService.presentToastWithOptions('Please capture the sample image!');
               } else {
-                _this88.formData['image'] = _this88.selectedImage;
-                _this88.componentService.presentLoading().then(function () {
-                  _this88.restService.saveSampleEntry(_this88.formData).then(function (res) {
-                    _this88.componentService.loadingController.dismiss();
-                    _this88.componentService.presentToastWithOptions('Sample entry saved successfully!', 'Success');
-                    _this88.componentService.modalCtrl.dismiss();
+                _this90.formData['image'] = _this90.selectedImage;
+                _this90.componentService.presentLoading().then(function () {
+                  _this90.restService.saveSampleEntry(_this90.formData).then(function (res) {
+                    _this90.componentService.loadingController.dismiss();
+                    _this90.componentService.presentToastWithOptions('Sample entry saved successfully!', 'Success');
+                    _this90.componentService.modalCtrl.dismiss();
                   });
                 });
               }
             } else {
-              _this88.componentService.presentToastWithOptions('Please fill all fields!');
+              _this90.componentService.presentToastWithOptions('Please fill all fields!');
             }
           });
         }
@@ -4825,46 +4915,46 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPicture",
         value: function getPicture() {
-          var _this89 = this;
+          var _this91 = this;
           this.componentService.takePicture().then(function (imageData) {
             var base64Image = 'data:image/jpeg;base64,' + imageData;
-            _this89.courierImage = base64Image;
-            _this89.selectedImage = base64Image;
+            _this91.courierImage = base64Image;
+            _this91.selectedImage = base64Image;
           });
         }
       }, {
         key: "ionViewDidEnter",
         value: function ionViewDidEnter() {
-          var _this90 = this;
+          var _this92 = this;
           this.componentService.presentLoading().then(function () {
-            _this90.restService.pubdingCourierSamples().then(function (res) {
-              _this90.componentService.loadingController.dismiss();
-              _this90.samples = res.samples;
-              _this90.sentVia = res.sent_via;
+            _this92.restService.pubdingCourierSamples().then(function (res) {
+              _this92.componentService.loadingController.dismiss();
+              _this92.samples = res.samples;
+              _this92.sentVia = res.sent_via;
             });
           });
         }
       }, {
         key: "saveCourier",
         value: function saveCourier() {
-          var _this91 = this;
+          var _this93 = this;
           this.componentService.validateInput(this.formData, ['date', 'details', 'sent_via', 'sample']).then(function (isValid) {
             if (isValid) {
-              var samples = _this91.formData.sample;
+              var samples = _this93.formData.sample;
               var arrangedSamples = {};
               samples.forEach(function (sample) {
                 arrangedSamples[sample] = 'on';
               });
-              _this91.formData['sample'] = arrangedSamples;
-              _this91.componentService.presentLoading().then(function () {
-                _this91.restService.saveCourier(_this91.formData).then(function (res) {
-                  _this91.componentService.loadingController.dismiss();
-                  _this91.componentService.modalCtrl.dismiss();
-                  _this91.componentService.presentToastWithOptions('Courier saved successfully!', 'Success');
+              _this93.formData['sample'] = arrangedSamples;
+              _this93.componentService.presentLoading().then(function () {
+                _this93.restService.saveCourier(_this93.formData).then(function (res) {
+                  _this93.componentService.loadingController.dismiss();
+                  _this93.componentService.modalCtrl.dismiss();
+                  _this93.componentService.presentToastWithOptions('Courier saved successfully!', 'Success');
                 });
               });
             } else {
-              _this91.componentService.presentToastWithOptions('Please fill required fileds');
+              _this93.componentService.presentToastWithOptions('Please fill required fileds');
             }
           });
         }

@@ -306,13 +306,12 @@ table {
     font-size: 20px
 }   
 
-
 .segment-button-checked {
     background: #EEFCCE;
     color: white !important;
     border: 2px solid #EEFCCE !important;
     ion-label {
-        color: #779A20;
+        color: #779A20 !important;
     }
 }
 
@@ -340,7 +339,21 @@ ion-segment {
             margin: 0;
             padding: 0;
             margin-top: -2px;
-            color: #779A20;
+            color: #7b7966;
+            font-size: 14px;
+            font-family: 'Poppins-Bold';
+            padding: 5px;
+        }
+    }
+}
+ion-segment.active {
+    height: 50px;
+    ion-segment-button {
+        ion-label {
+            margin: 0;
+            padding: 0;
+            margin-top: -2px;
+            color: #779A20 !important;
             font-size: 14px;
             font-family: 'Poppins-Bold';
             padding: 5px;

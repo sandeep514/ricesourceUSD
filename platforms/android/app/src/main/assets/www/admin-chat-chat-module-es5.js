@@ -15,7 +15,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
-    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\" class=\"ion-no-border green\">\n\t<ion-toolbar>\n\t \n\t  <ion-title>Chats</ion-title>\n  \n\t</ion-toolbar>\n  \n  </ion-header>\n  \n  <ion-content [fullscreen]=\"true\">\n\t\n  \n\t<div class=\"chat-list\">\n\t  <ion-list>\n\t\t<ion-item *ngFor=\"let chatItems of listChats | keyvalue\" class=\"unread\" (click)=\"showChatDetails(chatItems.value.user)\">\n\t\t  <ion-avatar class=\"avatar-md has-status\" slot=\"start\">\n\t\t\t<img src=\"https://ui-avatars.com/api/?name={{ chatItems.value.name }}&color=7F9CF5&background=EBF4FF\" alt=\"\">\n\t\t\t<div class=\"avatar-status\">\n\t\t\t\t<ng-container *ngIf=\"chatItems.value.unseenMessage >= '1'\">\n\t\t\t\t\t<div class=\"online-status active\"></div>\n\t\t\t\t</ng-container>\n\t\t\t</div>\n\t\t  </ion-avatar>\n\t\t  <ion-label>\n\t\t\t<h2 class=\"chat-name\" style=\"font-size: 20px;font-weight: 600;text-transform: capitalize;\">{{ chatItems.value.name }}</h2>\n\t\t\t<div class=\"chat-description\">\n\t\t\t  <div class=\"content-preview\">{{chatItems.value.unseenMessage}}{{chatItems.value.user}} {{ chatItems.value.last_message }} </div>\n\t\t\t</div>\n\t\t  </ion-label>\n\t\t</ion-item>\n\t\n\t  </ion-list>\n\t</div>\n  </ion-content>\n  ";
+    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\" class=\"ion-no-border green\">\n\t<ion-toolbar>\n\t \n\t  <ion-title>Chats</ion-title>\n  \n\t</ion-toolbar>\n  \n  </ion-header>\n  \n  <ion-content [fullscreen]=\"true\">\n\t\n  \n\t<div class=\"chat-list\">\n\t  <ion-list>\n\t\t<ion-item *ngFor=\"let chatItems of listChats\" class=\"unread\" (click)=\"showChatDetails(chatItems.user_rel.id)\">\n\n\t\t  <ion-avatar class=\"avatar-md has-status\" slot=\"start\">\n\t\t\t<img src=\"https://ui-avatars.com/api/?name={{ chatItems.user_rel.name }}&color=7F9CF5&background=EBF4FF\" alt=\"\">\n\t\t\t<div class=\"avatar-status\">\n\t\t\t\t<ng-container *ngIf=\"chatItems.seen == 0\">\n\t\t\t\t\t<div class=\"online-status active\"></div>\n\t\t\t\t</ng-container>\n\t\t\t</div>\n\t\t  </ion-avatar>\n\t\t  <ion-label>\n\t\t\t<h2 class=\"chat-name\" style=\"font-size: 20px;font-weight: 600;text-transform: capitalize;\">{{ chatItems.user_rel.name }}</h2>\n\t\t\t<p class=\"\" style=\"font-size: 16px;font-weight: 600;text-transform: capitalize;\">{{ chatItems.created_at | date :  \"dd.MM.y\"  }}</p>\n\t\t\t<div class=\"chat-description\">\n\t\t\t  <!-- <div class=\"content-preview\">{{chatItems.seen}}{{chatItems.user_rel}} {{ chatItems.message }} </div> -->\n\t\t\t  <div class=\"content-preview\">{{ chatItems.message }} </div>\n\t\t\t</div>\n\t\t  </ion-label>\n\t\t</ion-item>\n\t\n\t  </ion-list>\n\t</div>\n  </ion-content>\n  ";
 
     /***/
   },
@@ -167,7 +167,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "showChatDetails",
         value: function showChatDetails(userId) {
-          this.compSer.chatOpen.next();
+          // this.compSer.chatOpen.next();
           localStorage.setItem('selectedChatUserId', userId);
           this.navCtrl.navigateForward(['admin/chatdetails', {
             id: userId

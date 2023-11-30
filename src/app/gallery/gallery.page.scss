@@ -40,13 +40,17 @@
 }
 
 .galleryImages{
-    width: 89%;
-    height: 68%;
-    padding-bottom: 14%;
+    width: 100%;
+    // height: 68%;
     ion-col{
-        padding: 2px;
         margin: 0;
-        height: 134px;
+        // background: red;
+        padding: 10px;
+        border-radius: 15px;
+        width: 45% !important;
+        max-width: 45% !important;
+        box-shadow: 0px 5px 19px 0px rgba(0, 0, 0, 0.102);
+        // height: 134px;
     }
     .galleryoverlay {
         background: #cdb58e;
@@ -91,7 +95,7 @@ hr{
     margin-top: 20px;
 }
 .galleycard {
-    margin-bottom: 55px !important;
+    margin-bottom: 10px !important;
 }
 .color-black{
     color: black

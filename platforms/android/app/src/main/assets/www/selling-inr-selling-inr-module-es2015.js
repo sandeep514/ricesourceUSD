@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"green\">\n\t<ion-toolbar mode=\"ios\" style=\"background: transparent; --background: transparent\">\n\t\t<ion-buttons slot=\"start\" class=\"back-button\" (click)=\"back()\">\n\t\t\t<ion-icon name=\"arrow-back-outline\"></ion-icon>\n\t\t</ion-buttons>\n\t\t<ion-title class=\"header-title porttitle\">Sell Query</ion-title>\n\t</ion-toolbar>\n</ion-header>\n\n\n<ion-content id=\"content\" [scrollEvents]=\"true\" class=\"lightgreen\">\n\t<div style=\"padding: 10px 10px;margin-bottom: 100px;\">\n\t\t<ion-item>\n\t\t\t<ion-label>Category</ion-label>\n\t\t\t<!-- (ionChange)=\"changecountry($event)\" -->\n\t\t\t<ion-select placeholder=\"Select\" (ionChange)=\"changeQualityType($event)\">\n\t\t\t\t<ion-select-option *ngFor=\"let qualityType of riceQualityType\" style=\"text-transform: capitalize;\">{{\n\t\t\t\t\tqualityType | uppercase }}</ion-select-option>\n\t\t\t</ion-select>\n\t\t</ion-item>\n\n\t\t<ion-row style=\"margin-bottom: 10px;\">\n\t\t\t<ion-col size=\"12\"\n\t\t\t\tstyle=\"border: 3px solid #92b243;border-radius: 10px;margin-bottom: 10px;padding: 0;margin: 0;background: white;\">\n\t\t\t\t<ion-item style=\"border: 0px;margin-bottom: 0;\">\n\t\t\t\t\t<ion-label>Quality</ion-label>\n\t\t\t\t\t<ion-select placeholder=\"Select\" (ionChange)=\"changeQuality($event)\">\n\t\t\t\t\t\t<ion-select-option *ngFor=\"let riceName of onlyRiceName | keyvalue\" value={{riceName.value}}\n\t\t\t\t\t\t\tstyle=\"text-transform: capitalize;\">{{ riceName.key }}</ion-select-option>\n\t\t\t\t\t\t<!-- <ion-select-option style=\"text-transform: capitalize;\">Other</ion-select-option> -->\n\t\t\t\t\t</ion-select>\n\t\t\t\t</ion-item>\n\t\t\t\t<!-- <p style=\"padding: 0;margin: 0;margin-right: 15px;text-align: right;padding: 5px;\">{{quality}}</p> -->\n\t\t\t</ion-col>\n\n\t\t</ion-row>\n\n\t\t<ion-row style=\"margin-bottom: 10px;\">\n\t\t\t<ion-col size=\"12\"\n\t\t\t\tstyle=\"border: 3px solid #92b243;border-radius: 10px;margin-bottom: 10px;padding: 0;margin: 0;background: white;\">\n\t\t\t\t<ion-item style=\"border: 0px;margin-bottom: 0;\">\n\t\t\t\t\t<ion-label>Form</ion-label>\n\t\t\t\t\t<ion-select placeholder=\"Select\" (ionChange)=\"changeQualityForm($event)\">\n\t\t\t\t\t\t<ion-select-option *ngFor=\"let riceName of onlyRiceForms\" value={{riceName.id}}\n\t\t\t\t\t\t\tstyle=\"text-transform: capitalize;\">{{ riceName.quality_name }}</ion-select-option>\n\t\t\t\t\t\t<!-- <ion-select-option style=\"text-transform: capitalize;\">Other</ion-select-option> -->\n\t\t\t\t\t</ion-select>\n\t\t\t\t</ion-item>\n\t\t\t\t<!-- <p style=\"padding: 0;margin: 0;margin-right: 15px;text-align: right;padding: 5px;\">{{qualityForm}}</p> -->\n\t\t\t</ion-col>\n\t\t</ion-row>\n\n\t\t<ion-row>\n\t\t\t<ion-col>\n\t\t\t\t<p style=\"padding: 0px;margin: 0px;text-align: right;\">{{ selectedRiceFormAndName?.quality }}{{\n\t\t\t\t\tselectedRiceFormAndName?.quality_name }}</p>\n\t\t\t</ion-col>\n\t\t</ion-row>\n\n\t\t<ion-row>\n\t\t\t<ion-col>\n\t\t\t\t<div>\n\t\t\t\t\t<div *ngFor=\"let wand of riceWand\" style=\"padding: 0px 0px;\">\n\t\t\t\t\t\t<div (click)=\"selectedWand(wand)\" style=\"display: inline-block;width: 100%;padding: 0px 10px;border-radius: 14px;\" [ngStyle]=\"{'background': selectedGrade == wand.id ? '#92b243' : 'transparent' }\">\n\t\t\t\t\t\t\t<div style=\"width: 80%;float: left;\">\n\t\t\t\t\t\t\t\t<p style=\"margin: 10px 0px;\">{{ wand.get_wand_type[0].type }}</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div style=\"width: 20%;float: left;\">\n\t\t\t\t\t\t\t\t<p style=\"margin: 10px 0px;\">{{ wand.value }}</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</ion-col>\n\t\t</ion-row>\n\n\t\t<ion-row style=\"margin-bottom: 10px;\">\n\t\t\t<ion-col size=\"12\"\n\t\t\t\tstyle=\"border: 3px solid #92b243;border-radius: 10px;margin-bottom: 10px;padding: 0;margin: 0;background: white;\">\n\t\t\t\t<ion-item class=\"packingSelect\" style=\"border: 0px;margin-bottom: 0;\">\n\t\t\t\t\t<ion-label>Packing</ion-label>\n\t\t\t\t\t<ion-select placeholder=\"Select\" (ionChange)=\"changePacking($event)\">\n\t\t\t\t\t\t<ion-select-option *ngFor=\"let package of sellerPackingList\"\n\t\t\t\t\t\t\tvalue=\"{{ package.id+'_'+package.packing }}\">\n\t\t\t\t\t\t\t<p>{{package.packing}} </p>\n\t\t\t\t\t\t</ion-select-option>\n\t\t\t\t\t</ion-select>\n\t\t\t\t</ion-item>\n\t\t\t\t<p style=\"padding: 0;margin: 0;margin-left: 15px;text-align: left;padding: 5px;\">{{selectedPackageName}}\n\t\t\t\t</p>\n\t\t\t</ion-col>\n\t\t</ion-row>\n\t\t<ion-row>\n\t\t\t<ion-col>\n\t\t\t\t<button (click)=\"pickImage()\">Pick Image</button>\n\t\t\t</ion-col>\n\t\t</ion-row>\n\n\t\t<ion-item>\n\t\t\t<ion-label position=\"\">Quantity (MT)</ion-label>\n\t\t\t<ion-input type=\"number\" [(ngModel)]=\"quantity\" style=\" text-align: right;\"></ion-input>\n\t\t</ion-item>\n\t\t<ion-item>\n\t\t\t<ion-label>Port</ion-label>\n\t\t\t<ion-select placeholder=\"Select\" (ionChange)=\"changePort($event)\">\n\t\t\t\t<ion-select-option *ngFor=\"let port of ports\" value=\"{{ port.port+'_'+port.freight_25MT }}\">{{ port.port\n\t\t\t\t\t}}</ion-select-option>\n\t\t\t</ion-select>\n\t\t</ion-item>\n\n\t\t<!-- <ion-item>\n\t\t\t<ion-label>Port</ion-label>\n\t\t\t<ionic-selectable\n\t\t\t\t[(ngModel)]=\"port\"\n\t\t\t\t[items]=\"ports\"\n\t\t\t\titemValueField=\"id\"\n\t\t\t\titemTextField=\"port\"\n\t\t\t\t[canSearch]=\"true\"\n\t\t\t\t(onChange)=\"changePort($event)\"\n\t\t\t\t(ionChange)=\"changePort($event)\"\n\t\t\t>\n\t\t\t</ionic-selectable>\n\t\t</ion-item> -->\n\n\t\t<!-- <ion-item>\n\t\t\t<ion-label position=\"\">Buyer Name</ion-label>\n\t\t\t<ion-input [(ngModel)]=\"party\" type=\"text\" style=\"text-align: right;\"></ion-input>\n\t\t</ion-item>\n\t\n\t\t<ion-item>\n\t\t\t<ion-label position=\"\">Contact No.</ion-label>\n\t\t\t<ion-input [(ngModel)]=\"mobile\" type=\"text\" style=\"text-align: right;\"></ion-input>\n\t\t</ion-item> -->\n\n\t\t<ion-item>\n\t\t\t<ion-label position=\"stacked\">Additional Information: </ion-label>\n\t\t\t<ion-textarea rows=\"6\" cols=\"20\" [(ngModel)]=\"remarks\"></ion-textarea>\n\t\t</ion-item>\n\n\t\t<!-- <ion-item>\n\t\t\t<ion-label position=\"\">Deal Valid for days</ion-label>\n\t\t\t<ion-input [(ngModel)]=\"validDays\" type=\"text\" style=\" text-align: right;\" placeholder=\"2\"></ion-input>\n\t\t</ion-item> -->\n\n\t\t<div *ngIf=\"isError\" style=\"text-align: center;color: red;font-weight: 600\">\n\t\t\t<span>{{ errorMessage }}</span>\n\t\t</div>\n\t\t<ion-button color=\"success\" expand=\"full\" shape=\"round\" (click)=\"save()\">Submit</ion-button>\n\t</div>\n\t<app-menu></app-menu>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"green\">\n\t<ion-toolbar mode=\"ios\" style=\"background: transparent; --background: transparent\">\n\t\t<ion-buttons slot=\"start\" class=\"back-button\" (click)=\"back()\">\n\t\t\t<ion-icon name=\"arrow-back-outline\"></ion-icon>\n\t\t</ion-buttons>\n\t\t<ion-title class=\"header-title porttitle\">Sell Query</ion-title>\n\t</ion-toolbar>\n</ion-header>\n\n\n<ion-content id=\"content\" [scrollEvents]=\"true\" class=\"lightgreen\">\n\t<div style=\"padding: 10px 10px;margin-bottom: 100px;\">\n\t\t<ion-item>\n\t\t\t<ion-label>Category*</ion-label>\n\t\t\t<!-- (ionChange)=\"changecountry($event)\" -->\n\t\t\t<ion-select placeholder=\"Select\" (ionChange)=\"changeQualityType($event)\">\n\t\t\t\t<ion-select-option *ngFor=\"let qualityType of riceQualityType\" style=\"text-transform: capitalize;\">{{\n\t\t\t\t\tqualityType | uppercase }}</ion-select-option>\n\t\t\t</ion-select>\n\t\t</ion-item>\n\n\t\t<ion-row style=\"margin-bottom: 10px;\">\n\t\t\t<ion-col size=\"12\"\n\t\t\t\tstyle=\"border: 3px solid #92b243;border-radius: 10px;margin-bottom: 10px;padding: 0;margin: 0;background: white;\">\n\t\t\t\t<ion-item style=\"border: 0px;margin-bottom: 0;\">\n\t\t\t\t\t<ion-label>Quality*</ion-label>\n\t\t\t\t\t<ion-select placeholder=\"Select\" (ionChange)=\"changeQuality($event)\">\n\t\t\t\t\t\t<ion-select-option *ngFor=\"let riceName of onlyRiceName | keyvalue\" value={{riceName.value}}\n\t\t\t\t\t\t\tstyle=\"text-transform: capitalize;\">{{ riceName.key }}</ion-select-option>\n\t\t\t\t\t\t<!-- <ion-select-option style=\"text-transform: capitalize;\">Other</ion-select-option> -->\n\t\t\t\t\t</ion-select>\n\t\t\t\t</ion-item>\n\t\t\t\t<!-- <p style=\"padding: 0;margin: 0;margin-right: 15px;text-align: right;padding: 5px;\">{{quality}}</p> -->\n\t\t\t</ion-col>\n\n\t\t</ion-row>\n\n\t\t<ion-row style=\"margin-bottom: 10px;\">\n\t\t\t<ion-col size=\"12\"\n\t\t\t\tstyle=\"border: 3px solid #92b243;border-radius: 10px;margin-bottom: 10px;padding: 0;margin: 0;background: white;\">\n\t\t\t\t<ion-item style=\"border: 0px;margin-bottom: 0;\">\n\t\t\t\t\t<ion-label>Form*</ion-label>\n\t\t\t\t\t<ion-select placeholder=\"Select\" (ionChange)=\"changeQualityForm($event)\">\n\t\t\t\t\t\t<ion-select-option *ngFor=\"let riceName of onlyRiceForms\" value={{riceName.id}}\n\t\t\t\t\t\t\tstyle=\"text-transform: capitalize;\">{{ riceName.name }}</ion-select-option>\n\t\t\t\t\t\t<!-- <ion-select-option style=\"text-transform: capitalize;\">Other</ion-select-option> -->\n\t\t\t\t\t</ion-select>\n\t\t\t\t</ion-item>\n\t\t\t\t<!-- <p style=\"padding: 0;margin: 0;margin-right: 15px;text-align: right;padding: 5px;\">{{qualityForm}}</p> -->\n\t\t\t</ion-col>\n\t\t</ion-row>\n\n\t\t<ion-row>\n\t\t\t<ion-col>\n\t\t\t\t<p style=\"padding: 0px;margin: 0px;text-align: right;\">{{ selectedRiceFormAndName?.quality }}{{\n\t\t\t\t\tselectedRiceFormAndName?.quality_name }}</p>\n\t\t\t</ion-col>\n\t\t</ion-row>\n\n\t\t<ion-row style=\"margin-bottom: 10px;\">\n\t\t\t<ion-col size=\"12\"\n\t\t\t\tstyle=\"border: 3px solid #92b243;border-radius: 10px;margin-bottom: 10px;padding: 0;margin: 0;background: white;\">\n\t\t\t\t<ion-item style=\"border: 0px;margin-bottom: 0;\">\n\t\t\t\t\t<ion-label>Grade*</ion-label>\n\t\t\t\t\t<ion-select placeholder=\"Select\" (ionChange)=\"changeGrade($event)\">\n\t\t\t\t\t\t<ion-select-option *ngFor=\"let wand of riceWand\" value={{wand.id}}\n\t\t\t\t\t\t\tstyle=\"text-transform: capitalize;\">{{ wand.get_wand_type[0].type }} {{ wand.value }}</ion-select-option>\n\t\t\t\t\t</ion-select>\n\t\t\t\t</ion-item>\n\t\t\t</ion-col>\n\t\t</ion-row>\n\n\n\t\t<!-- <ion-row>\n\t\t\t<ion-col>\n\t\t\t\t<div>\n\t\t\t\t\t<div *ngFor=\"let wand of riceWand\" style=\"padding: 0px 0px;\">\n\t\t\t\t\t\t<div (click)=\"selectedWand(wand)\" style=\"display: inline-block;width: 100%;padding: 0px 10px;border-radius: 14px;\" [ngStyle]=\"{'background': selectedGrade == wand.id ? '#92b243' : 'transparent' }\">\n\t\t\t\t\t\t\t<div style=\"width: 80%;float: left;\">\n\t\t\t\t\t\t\t\t<p style=\"margin: 10px 0px;\">{{ wand.get_wand_type[0].type }}</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div style=\"width: 20%;float: left;\">\n\t\t\t\t\t\t\t\t<p style=\"margin: 10px 0px;\">{{ wand.value }}</p>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</ion-col>\n\t\t</ion-row> -->\n\n\t\t<ion-row style=\"margin-bottom: 10px;\">\n\t\t\t<ion-col size=\"12\"\n\t\t\t\tstyle=\"border: 3px solid #92b243;border-radius: 10px;margin-bottom: 10px;padding: 0;margin: 0;background: white;\">\n\t\t\t\t<ion-item class=\"packingSelect\" style=\"border: 0px;margin-bottom: 0;\">\n\t\t\t\t\t<ion-label>Packing*</ion-label>\n\t\t\t\t\t<ion-select placeholder=\"Select\" (ionChange)=\"changePacking($event)\">\n\t\t\t\t\t\t<ion-select-option *ngFor=\"let package of sellerPackingList\"\n\t\t\t\t\t\t\tvalue=\"{{ package.id+'_'+package.packing }}\">\n\t\t\t\t\t\t\t<p>{{package.packing}} </p>\n\t\t\t\t\t\t</ion-select-option>\n\t\t\t\t\t\t<ion-select-option value=\"other\">\n\t\t\t\t\t\t\t<p>Any Other</p>\n\t\t\t\t\t\t</ion-select-option>\n\t\t\t\t\t</ion-select>\n\t\t\t\t</ion-item>\n\t\t\t\t<p style=\"padding: 0;margin: 0;margin-left: 15px;text-align: left;padding: 5px;\">{{selectedPackageName}}\n\t\t\t\t</p>\n\t\t\t</ion-col>\n\t\t</ion-row>\n\t\t<ion-row *ngIf=\"selectedPackageName == '26KG BOPP' || selectedPackageName == '30KG BOPP' \">\n\t\t\t<!-- <ion-col>\n\t\t\t\t<button (click)=\"pickBagImage()\" style=\"padding: 10px;background-color: #92b243;border-radius: 5px;\">Pick packing image</button>\n\t\t\t</ion-col> -->\n\t\t\t<!-- <ion-col text-center>\n\t\t\t\t<ion-button (click)=\"imagePicker()\">Select Images</ion-button>\n\t\t\t</ion-col> -->\n\t\t\t\t<ion-label position=\"\" style=\"\">Packing Bag Image</ion-label>\n\t\t\t\t<input type=\"file\" (change)=\"packageImage($event)\" style=\"background: #91b247;--background: #91b247;padding: 10px;margin-bottom: 10px;border-radius: 5px;\"/>\n\t\t</ion-row>\n\n\t\t<ion-item>\n\t\t\t<ion-label position=\"\">Quantity (Qtls)*</ion-label>\n\t\t\t<ion-input type=\"tel\" maxLength=\"5\" [(ngModel)]=\"quantity\" (ionChange)=\"textareaMaxLengthValidation()\" style=\" text-align: right;\"></ion-input>\n\t\t</ion-item>\n\t\t<ion-item>\n\t\t\t<ion-label position=\"\">Ex-factory price ₹(Qtls)*</ion-label>\n\t\t\t<ion-input type=\"tel\" maxLength=\"5\" [(ngModel)]=\"offerPrice\" style=\" text-align: right;\"></ion-input>\n\t\t</ion-item>\n\t\t<ion-item>\n\t\t\t<ion-label position=\"\">Validity (Days)*</ion-label>\n\t\t\t<ion-input type=\"tel\" maxLength=\"5\" [(ngModel)]=\"validDays\" style=\" text-align: right;\"></ion-input>\n\t\t</ion-item>\n\t\t<ion-item>\n\t\t\t<ion-label position=\"\">Warehouse Location*</ion-label>\n\t\t\t<ion-input [(ngModel)]=\"warehouselocation\" style=\" text-align: right;\"></ion-input>\n\t\t</ion-item>\n\n\t\t<ion-row>\n\t\t\t<ion-col text-center>\n\t\t\t\t<!-- <ion-button (click)=\"pickUncookedImage($event)\">Uncooked Rice Image</ion-button> -->\n\t\t\t\t<ion-label position=\"\" style=\"\">Rice Image*</ion-label>\n\t\t\t\t<input type=\"file\" (change)=\"pickUncookedImage($event)\" style=\"    background: #91b247;--background: #91b247;padding: 10px;margin-bottom: 10px;border-radius: 5px;\"/>\n\n\t\t\t</ion-col>\n\t\t\t<ion-col text-center>\n\t\t\t\t<!-- <ion-button (click)=\"pickCookedImage($event)\">Select Images</ion-button> -->\n\t\t\t\t<ion-label position=\"\" style=\"\">Cooked Image*</ion-label>\n\t\t\t\t<input type=\"file\" (change)=\"pickCookedImage($event)\" style=\"    background: #91b247;--background: #91b247;padding: 10px;margin-bottom: 10px;border-radius: 5px;\"/>\n\n\t\t\t</ion-col>\n\t\t\t<!-- <ion-col>\n\t\t\t\t<button (click)=\"pickUncookedImage()\" style=\"padding: 10px;background-color: #92b243;border-radius: 5px;\">Uncooked Rice Image </button>\n\t\t\t</ion-col>\n\t\t\t<ion-col>\n\t\t\t\t<button (click)=\"pickCookedImage()\" style=\"padding: 10px;background-color: #92b243;border-radius: 5px;\">Cooked Rice Image</button>\n\t\t\t</ion-col> -->\n\t\t</ion-row>\n\n\t\t<ion-item>\n\t\t\t<ion-label position=\"\">Contact Person*</ion-label>\n\t\t\t<ion-input [(ngModel)]=\"contactperson\" style=\" text-align: right;\"></ion-input>\n\t\t</ion-item>\n\t\t<ion-item>\n\t\t\t<ion-label position=\"\">Contact Mobile*</ion-label>\n\t\t\t<ion-input [(ngModel)]=\"contactMobile\" style=\" text-align: right;\"></ion-input>\n\t\t</ion-item>\n\t\t\n\t\t<div *ngIf=\"isError\" style=\"text-align: center;color: red;font-weight: 600\">\n\t\t\t<span>{{ errorMessage }}</span>\n\t\t</div>\n\t\t<ion-button color=\"success\" expand=\"full\" shape=\"round\" (click)=\"save()\">Submit</ion-button>\n\t</div>\n\t<app-menu></app-menu>\n</ion-content>");
 
 /***/ }),
 
@@ -124,29 +124,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _rest_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../rest.service */ "./src/app/rest.service.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
-/* harmony import */ var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/file/ngx */ "./node_modules/@ionic-native/file/ngx/index.js");
-/* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/ngx/index.js");
+/* harmony import */ var _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/file-chooser/ngx */ "./node_modules/@ionic-native/file-chooser/ngx/index.js");
+/* harmony import */ var _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/file-path/ngx */ "./node_modules/@ionic-native/file-path/ngx/index.js");
+/* harmony import */ var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/file-transfer/ngx */ "./node_modules/@ionic-native/file-transfer/ngx/index.js");
+/* harmony import */ var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/file/ngx */ "./node_modules/@ionic-native/file/ngx/index.js");
+/* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/ngx/index.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 
 
 
 
 
-// import { ImagePicker } from "@awesome-cordova-plugins/image-picker/ngx";
+
+
+
+
 
 
 
 let SellingINRPage = class SellingINRPage {
-    constructor(apiser, location, navCtrl, actionSheetController, file, camera) {
+    constructor(apiser, location, navCtrl, actionSheetController, transfer, file, filechooser, filePath, httpClient, loaderCtrl, camera // public imgPicker: ImagePicker
+    ) {
         this.apiser = apiser;
         this.location = location;
         this.navCtrl = navCtrl;
         this.actionSheetController = actionSheetController;
+        this.transfer = transfer;
         this.file = file;
+        this.filechooser = filechooser;
+        this.filePath = filePath;
+        this.httpClient = httpClient;
+        this.loaderCtrl = loaderCtrl;
         this.camera = camera;
+        this.validDays = 1;
         this.party = localStorage.getItem("name");
         this.mobile = localStorage.getItem("mobile");
         this.remarks = "";
-        this.validDays = 0;
         this.isError = false;
         this.errorMessage = "";
         this.qualityForm = "";
@@ -154,6 +167,12 @@ let SellingINRPage = class SellingINRPage {
         this.selectedGrade = "";
         this.sellerPackingList = "";
         this.croppedImagepath = "";
+        this.croppedBagImagepath = "";
+        this.croppedUncookedImagepath = "";
+        this.croppedCookedImagepath = "";
+        this.fileTransfer = "";
+        this.contactperson = "";
+        this.contactMobile = "";
         this.isLoading = false;
         this.imagePickerOptions = {
             maximumImagesCount: 1,
@@ -168,20 +187,84 @@ let SellingINRPage = class SellingINRPage {
         this.selectedGrade = selectedWantDetail.id;
         console.log(selectedWantDetail);
     }
-    pickImage(sourceType) {
+    packageImage(event) {
+        this.packageImageFile = event.target.files[0];
+        console.log(this.packageImageFile);
+        console.log(event.target.files[0]);
+        // this.croppedImagepath = photo;
+        // this.imgPicker.getPictures(this.imagePickerOptions).then((res) => {
+        // 	console.log(res)
+        // }).catch((err) => {
+        // 	console.log(err);
+        // });
+    }
+    pickBagImage(sourceType) {
+        // this.filechooser.open().then((uri: any) => {
+        // 	this.filePath.resolveNativePath(uri).then((nativePath) => {
+        // 		this.uploadImage(nativePath,"https://snjtradelink.com/staging/public/api/submit/sell/query");
+        // 	})
+        // });
+        // return false;
         const options = {
             quality: 100,
             sourceType: sourceType,
-            destinationType: this.camera.DestinationType.DATA_URL,
+            //   destinationType: this.camera.DestinationType.DATA_URL, //base64
+            destinationType: this.camera.DestinationType.FILE_URI,
             encodingType: this.camera.EncodingType.JPEG,
             mediaType: this.camera.MediaType.PICTURE,
         };
         this.camera.getPicture(options).then((imageData) => {
             // imageData is either a base64 encoded string or a file URI
-            this.croppedImagepath = "data:image/jpeg;base64," + imageData;
+            this.croppedBagImagepath = "data:image/jpeg;base64," + imageData;
+            this.uploadImage(imageData, "https://snjtradelink.com/staging/public/api/submit/sell/query");
+            console.log(imageData);
         }, (err) => {
             // Handle error
         });
+    }
+    getFile() {
+        // 	this.file.checkDir(this.file.dataDirectory, 'mydir').then((res) => console.log('Directory exists')).catch(err =>
+        //   console.log('Directory doesnt exist'));
+    }
+    pickUncookedImage(event) {
+        this.uncookedFile = event.target.files[0];
+        // console.log(photo);
+        // const options: CameraOptions = {
+        //   quality: 100,
+        //   sourceType: sourceType,
+        //   destinationType: this.camera.DestinationType.DATA_URL,
+        //   encodingType: this.camera.EncodingType.JPEG,
+        //   mediaType: this.camera.MediaType.PICTURE,
+        // };
+        // this.camera.getPicture(options).then(
+        //   (imageData) => {
+        //     // imageData is either a base64 encoded string or a file URI
+        //     this.croppedUncookedImagepath = "data:image/jpeg;base64," + imageData;
+        //   },
+        //   (err) => {
+        //     // Handle error
+        //   }
+        // );
+    }
+    pickCookedImage(event) {
+        this.cookedImageFile = event.target.files[0];
+        // console.log(photo);
+        // const options: CameraOptions = {
+        //   quality: 100,
+        //   sourceType: sourceType,
+        //   destinationType: this.camera.DestinationType.DATA_URL,
+        //   encodingType: this.camera.EncodingType.JPEG,
+        //   mediaType: this.camera.MediaType.PICTURE,
+        // };
+        // this.camera.getPicture(options).then(
+        //   (imageData) => {
+        //     // imageData is either a base64 encoded string or a file URI
+        //     this.croppedCookedImagepath = "data:image/jpeg;base64," + imageData;
+        //   },
+        //   (err) => {
+        //     // Handle error
+        //   }
+        // );
     }
     // async selectImage() {
     //   const actionSheet = await this.actionSheetController.create({
@@ -207,41 +290,123 @@ let SellingINRPage = class SellingINRPage {
     //   });
     //   await actionSheet.present();
     // }
+    uploadImage(imagePath, serverUrl) {
+        const fileTransfer = this.transfer.create();
+        const options = {
+            fileKey: "file",
+            fileName: "my_image.jpg",
+            mimeType: "image/jpeg",
+            params: {},
+        };
+        fileTransfer
+            .upload(imagePath, serverUrl, options)
+            .then((data) => {
+            console.log("Image uploaded successfully:", data);
+        })
+            .catch((error) => {
+            console.error("Error uploading image:", error);
+        });
+    }
     save() {
-        this.isError = false;
-        if (this.quality != undefined &&
-            this.quantity != undefined &&
-            this.party != undefined &&
-            this.mobile != undefined &&
-            this.portName != "" &&
-            this.portName != undefined) {
-            this.apiser.presentLoader("Please wait...");
-            let postedData = {
-                selectedQualityType: this.selectedQualityType,
-                quality: this.quality,
-                changePackingType: this.changePackingType,
-                quantity: this.quantity,
-                validDays: this.validDays,
-                portName: this.portName,
-                party: this.party,
-                mobile: this.mobile,
-                remarks: this.remarks,
-                user: localStorage.getItem("id"),
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            this.apiser.presentLoader('Please wait...');
+            const headers = {
+                enctype: "multipart/form-data;",
+                Accept: "application/json",
             };
-            this.apiser.saveRiceQuery(postedData).then((res) => {
-                this.apiser.loaderCtrl.dismiss();
-                this.apiser.presentToast("Query generated successfully.");
-                this.navCtrl.navigateRoot(["thankyou"]);
-            }, (err) => {
-                console.log(err);
-            });
-        }
-        else {
-            this.isError = true;
-            this.errorMessage = "Required fields are missing";
-            console.log("validate fails");
-            console.log("here");
-        }
+            console.log(this.selectedQualityTypeInt);
+            console.log(this.quality);
+            console.log(this.qualityForm);
+            console.log(this.selectedGrade);
+            console.log(this.changePackingType);
+            console.log(this.warehouselocation);
+            console.log(this.contactperson);
+            console.log(this.contactMobile);
+            console.log(this.quantity);
+            console.log(this.offerPrice);
+            console.log(this.validDays);
+            console.log(this.uncookedFile);
+            console.log(this.cookedImageFile);
+            if (this.selectedQualityTypeInt != undefined || this.selectedQualityTypeInt != 'undefined' || this.quality != undefined || this.quality != 'undefined' || this.qualityForm != undefined || this.qualityForm != 'undefined' || this.selectedGrade != undefined || this.selectedGrade != 'undefined' || this.changePackingType != undefined || this.changePackingType != 'undefined' || this.warehouselocation != undefined || this.warehouselocation != 'undefined' || this.contactperson != undefined || this.contactperson != 'undefined' || this.contactMobile != undefined || this.contactMobile != 'undefined' || this.quantity != undefined || this.quantity != 'undefined' || this.offerPrice != undefined || this.offerPrice != 'undefined' || this.uncookedFile != undefined || this.uncookedFile != 'undefined' || this.cookedImageFile != undefined || this.cookedImageFile != 'undefined') {
+                this.apiser.presentToast('Required fields are missing..');
+                setTimeout(() => {
+                    this.loaderCtrl.dismiss();
+                    this.apiser.dismissLoader();
+                }, 1000);
+            }
+            else {
+                let formData = new FormData();
+                formData.append("_method", "PATCH");
+                formData.append("selectedQualityTypeInt", this.selectedQualityTypeInt);
+                formData.append("quality", this.quality);
+                formData.append("qualityForm", this.qualityForm);
+                formData.append("selectedGrade", this.selectedGrade);
+                formData.append("changePackingType", this.changePackingType);
+                formData.append("warehouselocation", this.warehouselocation);
+                formData.append("contactperson", this.contactperson);
+                formData.append("contactMobile", this.contactMobile);
+                if (this.packageImageFile != undefined) {
+                    formData.append("packageImageFile", this.packageImageFile, this.packageImageFile.name);
+                }
+                formData.append("quantity", this.quantity);
+                formData.append("offerPrice", this.offerPrice);
+                formData.append("validDays", this.validDays);
+                formData.append("uncookedFile", this.uncookedFile, this.uncookedFile.name);
+                formData.append("cookedImageFile", this.cookedImageFile, this.cookedImageFile.name);
+                let posteddata = {
+                    method: "POST",
+                    body: formData,
+                };
+                fetch("https://snjtradelink.com/staging/public/api/submit/sell/query", posteddata).then(() => {
+                    setTimeout(() => {
+                        this.apiser.dismissLoader();
+                    }, 1000);
+                }).catch(() => {
+                    setTimeout(() => {
+                        this.apiser.dismissLoader();
+                    });
+                });
+                return false;
+                this.isError = false;
+                if (this.quality != undefined &&
+                    this.quantity != undefined &&
+                    this.party != undefined &&
+                    this.mobile != undefined &&
+                    this.portName != "" &&
+                    this.portName != undefined) {
+                    this.apiser.presentLoader("Please wait...");
+                    let postedData = {
+                        selectedQualityType: this.selectedQualityType,
+                        quality: this.quality,
+                        changePackingType: this.changePackingType,
+                        quantity: this.quantity,
+                        validDays: this.validDays,
+                        portName: this.portName,
+                        party: this.party,
+                        mobile: this.mobile,
+                        remarks: this.remarks,
+                        user: localStorage.getItem("id"),
+                    };
+                    // this.apiser.saveRiceQuery(postedData).then(
+                    //   (res: any) => {
+                    //     this.apiser.loaderCtrl.dismiss();
+                    //     this.apiser.presentToast("Query generated successfully.");
+                    //     this.navCtrl.navigateRoot(["thankyou"]);
+                    //   },
+                    //   (err: any) => {
+                    //     console.log(err);
+                    //   }
+                    // );
+                }
+                else {
+                    this.isError = true;
+                    this.errorMessage = "Required fields are missing";
+                    console.log("validate fails");
+                    console.log("here");
+                }
+            }
+            return false;
+        });
     }
     getData() {
         this.apiser.getDataForBuyer().then((res) => {
@@ -294,6 +459,7 @@ let SellingINRPage = class SellingINRPage {
         if (this.selectedQualityType == "BASMATI") {
             selectedQualityTypeInit = 1;
         }
+        this.selectedQualityTypeInt = selectedQualityTypeInit;
         this.getCategoryQualities(selectedQualityTypeInit);
         this.riceQualityDataSelectedArray =
             this.riceQualityDataArray[data.detail.value.toLowerCase()];
@@ -301,10 +467,20 @@ let SellingINRPage = class SellingINRPage {
         //   this.riceQualityData[data.detail.value.toLowerCase()];
     }
     changeQuality(data) {
-        console.log();
+        console.log(data);
         this.quality = data.detail.value;
         this.getCategoryQualitiesForm(data.detail.value);
         console.log(this.quality);
+        this.onlyRiceName.forEach((data) => {
+            console.log(data);
+        });
+    }
+    textareaMaxLengthValidation() {
+        console.log(this.quantity.toString());
+        console.log(this.quantity.length);
+        if (this.quantity.length > 5) {
+            this.quantity = this.quantity.slice(0, 5);
+        }
     }
     changeQualityForm(data) {
         console.log();
@@ -317,6 +493,10 @@ let SellingINRPage = class SellingINRPage {
             }
         }
         this.getRiceWand();
+    }
+    changeGrade(data) {
+        this.selectedGrade = data.detail.value;
+        console.log(data);
     }
     changePacking(data) {
         let unprocessdata = data.detail.value.split("_");
@@ -341,8 +521,14 @@ SellingINRPage.ctorParameters = () => [
     { type: _angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ActionSheetController"] },
-    { type: _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_5__["File"] },
-    { type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_6__["Camera"] }
+    { type: _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_7__["FileTransfer"] },
+    { type: _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_8__["File"] },
+    { type: _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_5__["FileChooser"] },
+    { type: _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_6__["FilePath"] },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HttpClient"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"] },
+    { type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_9__["Camera"] // public imgPicker: ImagePicker
+     }
 ];
 SellingINRPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -354,8 +540,14 @@ SellingINRPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"],
         _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavController"],
         _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ActionSheetController"],
-        _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_5__["File"],
-        _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_6__["Camera"]])
+        _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_7__["FileTransfer"],
+        _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_8__["File"],
+        _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_5__["FileChooser"],
+        _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_6__["FilePath"],
+        _angular_common_http__WEBPACK_IMPORTED_MODULE_10__["HttpClient"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"],
+        _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_9__["Camera"] // public imgPicker: ImagePicker
+    ])
 ], SellingINRPage);
 
 

@@ -184,6 +184,7 @@ task cdvPrintProps {
 
 android {
     namespace cordovaConfig.PACKAGE_NAMESPACE
+    compileSdkVersion 33
 
     defaultConfig {
         versionCode cdvVersionCode ?: new BigInteger("" + privateHelpers.extractIntFromManifest("versionCode"))
@@ -194,7 +195,7 @@ android {
             maxSdkVersion cordovaConfig.MAX_SDK_VERSION
         }
         targetSdkVersion cordovaConfig.SDK_VERSION
-        compileSdkVersion cordovaConfig.COMPILE_SDK_VERSION
+        // compileSdkVersion cordovaConfig.COMPILE_SDK_VERSION
     }
 
     lintOptions {
