@@ -13,3 +13,10 @@
         opacity: 1;
     };
 }
+ion-toolbar {
+    --border-width: 0 0 0px !important;
+}
+
+.header-ios ion-toolbar:last-of-type {
+    --border-width: 0 0 0px !important;
+}

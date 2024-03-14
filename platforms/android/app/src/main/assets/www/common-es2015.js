@@ -444,7 +444,7 @@ const openURL = async (url, ev, direction, animation) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header>\n  <ion-toolbar>\n    <ion-title>contactmodal</ion-title>\n  </ion-toolbar>\n</ion-header> -->\n\n<ion-content class=\"bg-lightgreen\">\n\t<div class=\"logo\">\n\t\t<img src=\"../../assets/icon_logo.png\" class=\"app-logo\"/>\n\t</div>\n\t<a href=\"javascript:void(0);\" (click)=\"closeModal()\" class=\"closeModal\"> X </a>\n\t<div class=\"content\">\n\t\t<p style=\"padding-bottom: 10px;\">{{ roleTitle }}</p>\n\t\t<a href=\"tel:+919899330123\" class=\"contactuser\">Call now</a>\n\t\t<a href=\"mailto:rbajaj@sntcgroup.com\" class=\"contactuser\">Mail now</a>\n\t</div>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<!-- <ion-header>\n  <ion-toolbar>\n    <ion-title>contactmodal</ion-title>\n  </ion-toolbar>\n</ion-header> -->\n\n<ion-content class=\"bg-lightgreen\">\n\t<div class=\"logo\">\n\t\t<img src=\"../../assets/icon_logo.png\" class=\"app-logo\"/>\n\t</div>\n\t<a href=\"javascript:void(0);\" (click)=\"closeModal()\" class=\"closeModal\"> X </a>\n\t<div class=\"content\">\n\t\t<p style=\"padding-bottom: 10px;\">{{ roleTitle }}</p>\n\t\t<a href=\"tel:+919877092004\" class=\"contactuser\">Call now</a>\n\t\t<a href=\"mailto:rbajaj@sntcgroup.com\" class=\"contactuser\">Mail now</a>\n\t</div>\n</ion-content>");
 
 /***/ }),
 

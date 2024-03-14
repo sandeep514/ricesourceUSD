@@ -1,14 +1,17 @@
 <ion-header class="" style="background-color: #ECECEC;">
-	<!-- <ion-toolbar  mode="ios"  style="background: transparent; --background: transparent">
+	<ion-toolbar mode="ios" style="background: transparent; --background: transparent">
 		<ion-buttons slot="start" class="back-button" (click)="closeModal()">
 			<ion-icon name="arrow-back-outline"></ion-icon>
 		</ion-buttons>
-			<ion-title class="header-title porttitle">Freight</ion-title>
-	</ion-toolbar> -->
+		<ion-title class="header-title porttitle">Freight</ion-title>
+	</ion-toolbar>
 	<ion-row class="here">
 		<ion-col style="padding: 0px;">
-			<div class="" style="overflow: hidden;">
-				<img src="../../assets/img/Screen Shot 2023-11-21 at 12.13.30 PM.png" class="app-logo" style="width: 100%;"/>
+			<div class="" style="overflow: hidden;background: #fff;">
+				<ng-container *ngIf="portImages != undefined">
+					<img src="{{imagePre}}uploads/port/{{ portImages.attachment }}" class="app-logo"
+						style="width: 100%;" />
+				</ng-container>
 			</div>
 		</ion-col>
 	</ion-row>
@@ -24,7 +27,7 @@
 </ion-header>
 
 <ion-content class="">
-	<div>
+	<div style="">
 		<ion-row style="padding-top: 14px;height: auto;">
 			<ion-col class="pt0 pb0 " style="padding: 0px;">
 				<!-- <div class="scroll-arrow">
@@ -32,9 +35,12 @@
 					&nbsp;&nbsp;
 					<img src="./../../assets/LEFT.png" alt="" (click)="scroll('right','table-responsive-1')" class="lefticon">
 				</div> -->
-				<ion-segment scrollable (click)="getPortDetails($event)" value="{{ states }}"  class="header-segment table-responsive-1 basmatiState">
+				<ion-segment scrollable (click)="getPortDetails($event)" value="{{ states }}"
+					class="header-segment table-responsive-1 basmatiState">
 					<ng-container *ngFor="let data of listStates | keyvalue">
-						<ion-segment-button id="{{ lowerCase(states.key) }}" value="{{ states.key }}" [class.active]="lowerCase(states.key) == selectedTransportState"  *ngFor="let states of data.value | keyvalue">
+						<ion-segment-button id="{{ lowerCase(states.key) }}" value="{{ states.key }}"
+							[class.active]="lowerCase(states.key) == selectedTransportState"
+							*ngFor="let states of data.value | keyvalue">
 							<ion-label style="margin-top: -2px"> {{ states.key }}</ion-label>
 						</ion-segment-button>
 					</ng-container>
@@ -43,39 +49,45 @@
 			</ion-col>
 		</ion-row>
 
-		<ng-container >
+		<ng-container>
 			<ion-row class="ion-padding table-row padd-5 paddingBottom100" style="padding: 0px 10px;">
 				<ion-col class="price-table dashboard">
-					
-					<table class="table" >
+
+					<table class="table">
 						<thead>
 							<tr>
-								<th class="sticky-col first-col left pl-10" style="width:60%" ><h4 class="black ricetype" style="font-family: 'Poppins-SemiBold';font-size: 16px;">Destination</h4></th>
 								<th class="sticky-col first-col left pl-10" style="width:60%">
-									<h4 class="black ricetype" style="font-family: 'Poppins-SemiBold';font-size: 16px;">Prices in Qtls</h4>
+									<h4 class="black ricetype" style="font-family: 'Poppins-SemiBold';font-size: 16px;">
+										Destination</h4>
 								</th>
-							
+								<th class="sticky-col first-col left pl-10" style="width:60%">
+									<h4 class="black ricetype" style="font-family: 'Poppins-SemiBold';font-size: 16px;">
+										Prices in Qtls</h4>
+								</th>
+
 							</tr>
 							<div class="popoverley" (click)="removePopover()"></div>
 						</thead>
 
-						<tbody class="user_price" >
+						<tbody class="user_price">
 							<tr *ngFor="let list of selectedPortData" class="green">
-								<td class="sticky-col first-col left pl-10"  style="font-size: 14px !important;color: #464646;font-family: 'Poppins-Regular';">
+								<td class="sticky-col first-col left pl-10"
+									style="font-size: 14px !important;color: #464646;font-family: 'Poppins-Regular';">
 									{{ list.route.replace('_' , ' ') }}
 								</td>
-								<td class="type-columns" style="width:180px;border: none ;--border: none;color: #232000;font-size: 16px !important;font-family: 'Poppins-SemiBold';" >
+								<td class="type-columns"
+									style="width:180px;border: none ;--border: none;color: #232000;font-size: 16px !important;font-family: 'Poppins-SemiBold';">
 									₹ {{ list.price }}
 								</td>
 							</tr>
-							<tr *ngIf="isNull == true" >
+							<tr *ngIf="isNull == true">
 								<td colspan="2" style="text-align: center;">
 									No port found
 								</td>
 							</tr>
 						</tbody>
 					</table>
-					
+
 				</ion-col>
 			</ion-row>
 		</ng-container>

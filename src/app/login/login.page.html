@@ -24,19 +24,19 @@
 	<ion-row class="formData ">
 		<ion-col class="form">
 			<ion-item no-lines lines="none" style="background: rgba(255,255,255, 0.3);border-radius: 8px;">
-				<ion-label position="floating" style="color: #fff;">Email or Mobile number</ion-label>
-				<ion-input [(ngModel)]="email" name="email" style="font-family: 'Poppins-SemiBold';color: #fff;"></ion-input>
+				<!-- <ion-label position="floating" style="color: #fff;margin: 0px;">Email or Mobile number</ion-label> -->
+				<ion-input placeholder="Email or Mobile number" [(ngModel)]="email" name="email" style="font-family: 'Poppins-SemiBold';color: #fff;"></ion-input>
 				<!-- <img src="../../assets/svg/mail-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt=""> -->
 			</ion-item>
 			<ion-item no-lines lines="none" style="background: rgba(255,255,255, 0.3);border-radius: 8px;margin-top: 20px;">
-				<ion-label position="floating" style="color: #fff;">Password</ion-label>
-				<ion-input [type]="passwordType" name='password' [(ngModel)]="password" style="width: 100%;font-family: 'Poppins-SemiBold';color: #fff;"></ion-input>
+				<!-- <ion-label position="floating" style="color: #fff;margin: 0px;">Password</ion-label> -->
+				<ion-input placeholder="Password" [type]="passwordType" name='password' [(ngModel)]="password" style="width: 100%;font-family: 'Poppins-SemiBold';color: #fff;"></ion-input>
 				<ion-icon slot="end" [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()' style="font-size: 1px;"></ion-icon>
 				<!-- <img src="../../assets/svg/key-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt=""> -->
 			</ion-item>
 			<ion-item no-lines lines="none">
 				<p class=" w-100" style="text-align: center;">
-					<a href="javascript:void(0)" class="nounderline" (click)="forgotpassword()" style="color: #fff;font-family: 'Poppins-SemiBold';">Forgot Password?</a>
+					<a href="javascript:void(0)" class="nounderline" (click)="forgotpassword()" style="color: #fff;font-family: 'Poppins-Regular';font-size: 14px;">Forgot Password?</a>
 				</p>
 			</ion-item>
 			<div class="center mt10">

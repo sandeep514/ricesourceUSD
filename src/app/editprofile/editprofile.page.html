@@ -1,12 +1,31 @@
-<ion-content class="register lightgreen">
-	<ion-row>
-		<ion-col class="h-230 green brlb-30">
-      <p (click)="home()" style="float: left;color: white;margin-right: 20px;">
-		<ion-icon name="chevron-back-outline"  style="font-size: 22px ;" class="lefticon"></ion-icon>
-		</p>
+<ion-content class="register ">
+	<ion-row style="height: 30%;">
+		<!-- <ion-col class="h-230 green brlb-30">
+      		<p (click)="home()" style="float: left;color: white;margin-right: 20px;">
+				<ion-icon name="chevron-back-outline"  style="font-size: 22px ;" class="lefticon"></ion-icon>
+			</p>
 			<img src="../../assets/sntc_nobackground.png" class="registerlogo" alt="" style="margin-top: 20">
-		</ion-col>
+		</ion-col> -->
+		<div style="margin-top: 0px;text-align: center;width: 100%;">
+			<ion-row style="margin: 30px 0px;">
+				<ion-col style="text-align: left;padding-left: 20px;" (click)="home()">
+					<ion-icon name="arrow-back-outline" style="font-size: 20px;"></ion-icon>
+				</ion-col>
+				<ion-col>
+					<h1 class="" style="color: #000;font-size: 16px;margin: 0px;padding: 0px;">Edit Profile</h1>
+				</ion-col>
+				<ion-col>
+
+				</ion-col>
+			</ion-row>
+
+			<img src="../../assets/img/avatars/7.jpg" style="width: 100px;border-radius: 100%;" />
+			<h1 class="main-heading font-18" style="color: #000;font-size: 18px">{{ name | uppercase }}</h1>
+			<!-- <span class="tag" style="color: #000;font-size: 16px">{{ email }}</span>
+							<p style="color: #000;font-size: 16px">Role: {{ userRole }}</p> -->
+		</div>
 	</ion-row>
+
 	<!-- <ion-row>
 		<ion-col class="h-300 green brlb-30">
 			<ion-row class="formData">
@@ -35,13 +54,13 @@
 			</ion-row>
 		</ion-col>
 	</ion-row> -->
-	<ion-row>
+	<!-- <ion-row>
 		<ion-col>
 			<h3>
 				Edit Profile
 			</h3>
 		</ion-col>
-	</ion-row>
+	</ion-row> -->
 	<!-- <ion-row class="userType">
 		<ul style="justify-content: space-between;">
 			<li (click)="changeState('Supplier')" [class.activeTab]="role == 'Supplier' ">
@@ -61,8 +80,8 @@
 			</li>	
 		</ul>
 	</ion-row> -->
-	
-	<ion-row class="formData">
+
+	<ion-row class="formData lightgreen" style="height: 70%;border-radius: 30px 30px 0px 0px;">
 		<ion-col class="form">
 			<ion-item>
 				<ion-label position="floating">Username</ion-label>
@@ -70,31 +89,32 @@
 				<!-- <ion-icon name="person" slot="start"></ion-icon> -->
 				<img src="../../assets/svg/person-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
 			</ion-item>
-			
+
 			<ion-item>
 				<ion-label position="floating">Email</ion-label>
 				<ion-input [(ngModel)]="email" name="email"></ion-input>
 				<img src="../../assets/svg/mail-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
 			</ion-item>
-			
+
 			<ion-item>
 				<ion-label position="floating">Mobile no</ion-label>
 				<ion-input [(ngModel)]="mobile" name="mobile"></ion-input>
 				<img src="../../assets/svg/call-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
 			</ion-item>
-			
+
 			<ion-item>
 				<ion-label position="floating">Company name</ion-label>
 				<ion-input [(ngModel)]="companyname" name="companyname"></ion-input>
-				<img src="../../assets/svg/business-outline.svg" style="width: 8%;margin-top: 18px;" slot="start" alt="">
+				<img src="../../assets/svg/business-outline.svg" style="width: 8%;margin-top: 18px;" slot="start"
+					alt="">
 			</ion-item>
-			
+
 			<div class="center mt10">
 				<ion-button class="green" (click)="updateUserDetails()"> Edit Profile </ion-button>
 			</div>
 		</ion-col>
 	</ion-row>
 	<ion-row class="center">
-		
+
 	</ion-row>
 </ion-content>

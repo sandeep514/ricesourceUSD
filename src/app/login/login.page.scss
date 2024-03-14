@@ -134,3 +134,18 @@
 ion-button{
 
 }
+ion-input{
+    padding: 0px !important;
+    --padding: 0px !important;
+    --padding-top: 0px !important;
+    --padding-bottom: 0px !important;
+    --padding-start: 0px !important;
+    --placeholder-color: #fff;
+    --placeholder-opacity: 1;
+    font-size: 14px;
+    font-family: 'Poppins-Regular';
+}
+ion-item{
+    min-height: 55px;
+    --min-height: 55px;
+}

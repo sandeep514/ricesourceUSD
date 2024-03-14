@@ -33,7 +33,7 @@ export class LoginPage implements OnInit {
 		}
 		this.componentService.presentLoading();
 		let userDetails = {
-			email: (this.email).trim(),
+			email: (this.email).replaceAll(' ', ''),
 			password: this.password
 		}
 		this.restService.login(userDetails).then((res:any)=>{

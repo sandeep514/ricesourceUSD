@@ -17,7 +17,7 @@ ion-toolbar {
 }
 
 ion-item{
-    border: 3px solid #92b243;
+    border: 1px solid #ededed;
     border-radius: 10px;
     margin-bottom: 10px;
 }
@@ -31,4 +31,11 @@ ion-item{
     .select-text{
         display: none;
     }
+}
+ion-toolbar {
+    --border-width: 0 0 0px !important;
+}
+
+.header-ios ion-toolbar:last-of-type {
+    --border-width: 0 0 0px !important;
 }

@@ -6,6 +6,7 @@
     margin-right: 10px;
     margin-left: 10px;
     color: #FFF;
+
     ion-icon {
         font-size: 23px;
     }
@@ -26,6 +27,7 @@ ion-toolbar {
 
 ion-toolbar {
     --background: white;
+
     ion-icon {
         color: #000;
     }
@@ -82,16 +84,19 @@ tbody {
 
 table {
     width: 100%;
+
     thead {
         th {
             padding: 10px 0px;
             border-right: 1px solid #eeeeee;
         }
     }
+
     tbody {
         tr {
             border-bottom: 1px solid #ededed;
         }
+
         td {
             width: 50%;
             text-align: center;
@@ -113,13 +118,16 @@ table {
 }
 
 .price-table {
+
     // background-color: #FFF;
     table {
         width: 100%;
+
         thead {
             tr {
                 height: 34px;
                 font-size: 12px;
+
                 // background-color: #eeeeee !important;
                 th {
                     // background-color: #eeeeee !important;
@@ -127,9 +135,11 @@ table {
                 }
             }
         }
+
         tbody {
             tr {
                 height: 35px;
+
                 td {
                     font-size: 16px;
                     // padding-left: 20px;
@@ -138,6 +148,7 @@ table {
                 }
             }
         }
+
         margin-top: 6px;
     }
 }
@@ -157,10 +168,12 @@ table tbody tr {
     background: transparent !important;
     background-color: transparent !important;
 }
-table thead tr{
+
+table thead tr {
     border-bottom: 2px solid #cfcaab !important;
 }
-table tbody tr{
+
+table tbody tr {
     border-bottom: 2px solid #cfcaab !important;
 }
 
@@ -231,6 +244,7 @@ table {
     font-size: 12px;
     border: 2px solid #92b243;
 }
+
 .ios .header-segment ion-segment-button {
     --indicator-color: transparent !important;
     --indicator-color-checked: transparent !important;
@@ -249,12 +263,14 @@ table {
     font-size: 12px;
     border: 2px solid #92b243;
 }
-.header-ios ion-toolbar{
+
+.header-ios ion-toolbar {
     border: 0px;
     --border-width: 0px
 }
-.ios{
-    .type-columns{
+
+.ios {
+    .type-columns {
         border: 0px solid transparent !important;
         --border: 0px solid transparent !important;
     }
@@ -301,6 +317,7 @@ table {
 
 .green {
     color: #92B243;
+
     td {
         text-transform: capitalize;
         font-size: 18px !important;
@@ -309,7 +326,7 @@ table {
 
 .porttitle {
     font-size: 20px
-}   
+}
 
 ion-segment {
     ion-segment-button {
@@ -340,37 +357,52 @@ ion-segment {
 }
 
 
-.item-ionic-selectable{
+.item-ionic-selectable {
     border: 2px solid #92b243;
     border-radius: 10px;
-    .item-native{
+
+    .item-native {
         background-color: transparent;
         --background-color: transparent;
         background: transparent;
         --background: transparent;
     }
 }
-.demandHeaders{
+
+.demandHeaders {
     font-weight: bold;
     font-size: 18px;
 }
-.demandedData{
-    p{
+
+.demandedData {
+    p {
         padding: 0;
         margin: 0;
     }
-    div{
+
+    div {
         margin-bottom: 20px;
     }
 }
-ion-item{
+
+ion-item {
     width: 65%;
     float: left;
     margin-right: 10px;
     border: 2px solid rgba(255, 251, 214, 1);
     border-radius: 100px;
-    background: transparent !important;
-    background-color: transparent !important;
-    --background: transparent !important;
-    --background-color: transparent !important;
+    background: rgba(255, 251, 214, 1) !important;
+    background-color: rgba(255, 251, 214, 1) !important;
+    --background: rgba(255, 251, 214, 1) !important;
+    --background-color: rgba(255, 251, 214, 1) !important;
+}
+
+.select-placeholder {
+    color: #333;
+}
+
+ion-input,
+ion-select {
+    --placeholder-color: #333 !important;
+    --placeholder-opacity: 1 !important;
 }

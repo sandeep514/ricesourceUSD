@@ -3,23 +3,26 @@ import { ModalController, PopoverController, LoadingController, ToastController 
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { PopoverComponent } from './popover/popover.component';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { LoaderComponentPage } from './loader-component/loader-component.page';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class ComponentsService {
 	public loginUser = new Subject;
-	public cancelPopup = new Subject; 
-	public chartInterval = new Subject; 
+	public cancelPopup = new Subject;
+	public chartInterval = new Subject;
 	public sendMessage = new Subject;
 	public newRecieveMessage = new Subject;
-	public newRecieveMessageForUser : Subject<any[]> = new BehaviorSubject<any[]>([]); 
-	public chatOpen : Subject<any[]> = new BehaviorSubject<any[]>([]); 
+	public newRecieveMessageForUser: Subject<any[]> = new BehaviorSubject<any[]>([]);
+	public chatOpen: Subject<any[]> = new BehaviorSubject<any[]>([]);
 	public hasMessage = new Subject;
 	public firePushNotif = new Subject;
-	public isUserExpired = new Subject; 
-	public showPaymentModal = new Subject; 
-	public selectedPort = new Subject; 
+	public isUserExpired = new Subject;
+	public showPaymentModal = new Subject;
+	public selectedPort = new Subject;
+	public reRenderFooterMenu = new Subject;
+	public reRenderSideMenu = new Subject;
 
 	constructor(
 		public modalCtrl: ModalController,
@@ -31,14 +34,14 @@ export class ComponentsService {
 
 	}
 
-	async openModal(component){
+	async openModal(component) {
 		const modal = await this.modalCtrl.create({
 			component: component
 		});
 		return await modal.present();
 	}
 
-	takePicture(){
+	takePicture() {
 		const options: CameraOptions = {
 			quality: 20,
 			destinationType: this.camera.DestinationType.DATA_URL,
@@ -50,61 +53,70 @@ export class ComponentsService {
 
 	async presentPopover(ev: any) {
 		const popover = await this.popoverController.create({
-		  component: PopoverComponent,
-		  event: ev,
-		  translucent: true
+			component: PopoverComponent,
+			event: ev,
+			translucent: true
 		});
 		return await popover.present();
 	}
 
 	async presentLoading() {
+		// const modal = await this.modalCtrl.create({
+		// 	component: LoaderComponentPage,
+		// 	cssClass: "my-custom-class",
+		// });
+		// return await modal.present();
+
 		const loading = await this.loadingController.create({
-		  message: 'Please wait...',
+			spinner: null,
+			message: `<div><img src="../assets/img/loading.gif" style="height: 35px"/><p>Please wait</p></div>`,
+			cssClass: 'loadingPopup'
+			// content: `<img src="../assets/img/loading.gif" />`,
 		});
 		await loading.present();
 	}
 
-	async presentToastWithOptions(message, header='Error', position:any = 'top') {
+	async presentToastWithOptions(message, header = 'Error', position: any = 'top') {
 		const toast = await this.toastController.create({
-		  	header: header,
-		  	message: message,
+			header: header,
+			message: message,
 			position: position,
 			duration: 2000
 		});
 		toast.present();
 	}
 
-	async validateInput(formData,requiredFields){
+	async validateInput(formData, requiredFields) {
 		let isValid = true;
-		await requiredFields.forEach((key)=>{
-			if(formData[key] != undefined && formData[key] != '' && formData[key] != null){
-				if(typeof formData[key] === 'object'){
-					if(Object.keys(formData[key]).length == 0){
+		await requiredFields.forEach((key) => {
+			if (formData[key] != undefined && formData[key] != '' && formData[key] != null) {
+				if (typeof formData[key] === 'object') {
+					if (Object.keys(formData[key]).length == 0) {
 						isValid = false;
 					}
 				}
-			}else{
+			} else {
 				isValid = false;
 			}
 		});
 		return isValid;
 	}
 
-	compareTwoDates( date2 ){
+	compareTwoDates(date2) {
 		let todayDate = new Date();
 		let expiredDate = new Date(date2);
 
-		if( todayDate >= expiredDate ){
-			localStorage.setItem('isExpired' , 'true');
+		if (todayDate >= expiredDate) {
+			localStorage.setItem('isExpired', 'true');
 			this.isUserExpired.next('true');
-		}else{
-			localStorage.setItem('isExpired' , 'false');
+		} else {
+			localStorage.setItem('isExpired', 'false');
 			this.isUserExpired.next('false');
-		}		
+		}
 	}
-	differanceTwoDate(todaydate , ExpiredDate){
+	differanceTwoDate(todaydate, ExpiredDate) {
 
-		return new Promise((resolve , reject) => {
+		return new Promise((resolve, reject) => {
 			var date1 = new Date(todaydate);
 			var date2 = new Date(ExpiredDate);
 			var start = Math.floor(date1.getTime() / (3600 * 24 * 1000));
@@ -112,7 +124,7 @@ export class ComponentsService {
 			var daysDiff = end - start;
 			resolve(daysDiff);
 		});
-		
+
 	}
 
 }

@@ -63,6 +63,7 @@ export class SellingINRPage implements OnInit {
 	contactperson = "";
 	contactMobile = "";
 	isLoading = false;
+	userId = '';
 
 	imagePickerOptions = {
 		maximumImagesCount: 1,
@@ -85,6 +86,7 @@ export class SellingINRPage implements OnInit {
 	ngOnInit() {
 		this.getData();
 		this.getSellerINRPacking();
+		this.userId = localStorage.getItem('id');
 	}
 
 	selectedWand(selectedWantDetail) {
@@ -230,28 +232,14 @@ export class SellingINRPage implements OnInit {
 			Accept: "application/json",
 		};
 
-		console.log(this.selectedQualityTypeInt);
-		console.log(this.quality);
-		console.log(this.qualityForm);
-		console.log(this.selectedGrade);
-		console.log(this.changePackingType);
-		console.log(this.warehouselocation);
-		console.log(this.contactperson);
-		console.log(this.contactMobile);
-		console.log(this.quantity);
-		console.log(this.offerPrice);
-		console.log(this.validDays);
-		console.log(this.uncookedFile);
-		console.log(this.cookedImageFile);
-
-		if (this.selectedQualityTypeInt != undefined || this.selectedQualityTypeInt != 'undefined'  || this.quality != undefined || this.quality != 'undefined'  || this.qualityForm != undefined || this.qualityForm != 'undefined'  || this.selectedGrade != undefined || this.selectedGrade != 'undefined'  || this.changePackingType != undefined || this.changePackingType != 'undefined'  || this.warehouselocation != undefined || this.warehouselocation != 'undefined'  || this.contactperson != undefined || this.contactperson != 'undefined'  || this.contactMobile != undefined || this.contactMobile != 'undefined'  || this.quantity != undefined || this.quantity != 'undefined'  || this.offerPrice != undefined || this.offerPrice != 'undefined'  || this.uncookedFile != undefined || this.uncookedFile != 'undefined'  || this.cookedImageFile != undefined || this.cookedImageFile != 'undefined' ){
+		if (!this.selectedQualityTypeInt || !this.quality || !this.qualityForm || !this.selectedGrade || !this.changePackingType || !this.warehouselocation || !this.contactperson || !this.contactMobile || !this.quantity || !this.offerPrice || !this.uncookedFile || !this.cookedImageFile || !this.validDays) {
 			this.apiser.presentToast('Required fields are missing..');
 			setTimeout(() => {
 				this.loaderCtrl.dismiss();
 				this.apiser.dismissLoader();
 
-			} , 1000)
-		}else{
+			}, 1000)
+		} else {
 			let formData = new FormData();
 
 			formData.append("_method", "PATCH");
@@ -263,6 +251,7 @@ export class SellingINRPage implements OnInit {
 			formData.append("warehouselocation", this.warehouselocation);
 			formData.append("contactperson", this.contactperson);
 			formData.append("contactMobile", this.contactMobile);
+			formData.append("userId", this.userId);
 			if (this.packageImageFile != undefined) {
 				formData.append(
 					"packageImageFile",
@@ -288,10 +277,14 @@ export class SellingINRPage implements OnInit {
 				"https://snjtradelink.com/staging/public/api/submit/sell/query",
 				posteddata
 			).then(() => {
+				this.apiser.presentToast('Thanks for submiting the offer, SNTC will contact you shortly.');
+
 				setTimeout(() => {
 					this.apiser.dismissLoader();
-				},1000)
-				
+					this.loaderCtrl.dismiss();
+					this.navCtrl.navigateRoot(['trade-inr-list']);
+				}, 1000)
+
 			}).catch(() => {
 				setTimeout(() => {
 					this.apiser.dismissLoader();
@@ -344,7 +337,7 @@ export class SellingINRPage implements OnInit {
 		}
 		return false;
 
-		
+
 	}
 
 	getData() {

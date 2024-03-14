@@ -33,25 +33,27 @@ import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { ImagePicker } from "@ionic-native/image-picker/ngx";
+import { LoaderComponentPageModule } from './loader-component/loader-component.module';
 
 @NgModule({
-  	declarations: [
-		AppComponent, 
-		SampleEntryComponent, 
-		SendCourierComponent, 
-		MillStatusComponent,
-		PopoverComponent,
-		BrokLoginComponent
-	],
-  	entryComponents: [
+	declarations: [
+		AppComponent,
 		SampleEntryComponent,
-		SendCourierComponent, 
+		SendCourierComponent,
 		MillStatusComponent,
 		PopoverComponent,
 		BrokLoginComponent
 	],
-  	imports: [
-    	BrowserModule,
+	entryComponents: [
+		SampleEntryComponent,
+		SendCourierComponent,
+		MillStatusComponent,
+		PopoverComponent,
+		BrokLoginComponent,
+
+	],
+	imports: [
+		BrowserModule,
 		HttpClientModule,
 		SplashscreenPageModule,
 		ImageprevPageModule,
@@ -60,16 +62,17 @@ import { ImagePicker } from "@ionic-native/image-picker/ngx";
 		PlanpagePageModule,
 		UsdconvertmodalPageModule,
 		TrialperiodPageModule,
-    	IonicModule.forRoot({
-      		scrollPadding: false,
-      		scrollAssist: true,
-    	}),
-    	AppRoutingModule
-  	],
-  	providers: [
-    	StatusBar,
+		LoaderComponentPageModule,
+		IonicModule.forRoot({
+			scrollPadding: false,
+			scrollAssist: true,
+		}),
+		AppRoutingModule
+	],
+	providers: [
+		StatusBar,
 		ImagePicker,
-    	SplashScreen,
+		SplashScreen,
 		ThemeDetection,
 		Camera,
 		FirebaseMessaging,
@@ -79,9 +82,9 @@ import { ImagePicker } from "@ionic-native/image-picker/ngx";
 		FileTransfer,
 		File,
 		VersionmodalPage,
-    	{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    	{ provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptorService, multi: true }
-  	],
-  	bootstrap: [AppComponent]
+		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+		{ provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptorService, multi: true }
+	],
+	bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

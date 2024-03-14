@@ -1,0 +1,187 @@
+<ion-content id="content">
+	<div>
+		<div class="lightgreen">
+			<div class="header-content">
+				<ion-row class="">
+					<ion-col size="3" align="center">
+						<div class="user-profile-icon">
+							<span>{{ userFirstName }}</span>
+						</div>
+					</ion-col>
+					<ion-col size="6" align="center">
+						<h4>Product Details</h4>
+					</ion-col>
+				</ion-row>
+			</div>
+		</div>
+
+		<ion-row class="rice-gallery" *ngIf="tradeDetails != undefined ">
+			<ion-col
+				style="padding: 0px 0px 15px 0px;background-color: #fffbd6;border-radius: 0px 0px 25px 25px;overflow: hidden;">
+				<ion-slides pager="false" [options]="slideOpts">
+					<ion-slide *ngIf="tradeDetails?.attachment1 != null"
+						style="width: 100%;padding: 15px;height: 200px;">
+						<img (click)="openModal(imageUrl+'uploads/notifications/'+tradeDetails?.attachment1 )"
+							src="{{ imageUrl }}uploads/notifications/{{ tradeDetails?.attachment1 }}"
+							class="slide-image" onerror="this.src='../../assets/img/No_image_available.svg.png'">
+					</ion-slide>
+					<ion-slide *ngIf="tradeDetails?.attachment2 != null"
+						style="width: 100%;padding: 15px;height: 200px;">
+						<img (click)="openModal(imageUrl+'uploads/notifications/'+tradeDetails?.attachment2)"
+							src="{{ imageUrl }}uploads/notifications/{{ tradeDetails?.attachment2 }}"
+							class="slide-image" onerror="this.src='../../assets/img/No_image_available.svg.png'">
+					</ion-slide>
+				</ion-slides>
+			</ion-col>
+		</ion-row>
+
+
+		<ng-container *ngIf="tradeDetails != undefined ">
+			<ng-container>
+				<div style="margin: 0;padding: 15px 0px;margin-bottom: 100px;">
+
+					<ion-row
+						*ngIf="tradeDetails?.get_rice_quality?.quality != '' && tradeDetails?.get_rice_quality?.quality != null && tradeDetails?.get_rice_quality?.quality != undefined && tradeDetails?.get_rice_quality?.quality_name != '' && tradeDetails?.get_rice_quality?.quality_name != null && tradeDetails?.get_rice_quality?.quality_name != undefined ">
+						<ion-col size="4" class="demandHeaders">Quality</ion-col>
+						<div style="margin-top: 5px; ">:</div>
+						<ion-col> {{ tradeDetails?.get_rice_quality?.quality }} {{
+							tradeDetails?.get_rice_quality?.quality_name
+							}}</ion-col>
+					</ion-row>
+
+					<ion-row
+						*ngIf="tradeDetails?.get_u_s_d_default_master?.bag_size != '' && tradeDetails?.get_u_s_d_default_master?.bag_size != null && tradeDetails?.get_u_s_d_default_master?.bag_size != undefined && tradeDetails?.get_u_s_d_default_master?.bag_type != '' && tradeDetails?.get_u_s_d_default_master?.bag_type != null && tradeDetails?.get_u_s_d_default_master?.bag_type != undefined ">
+						<ion-col size="4" class="demandHeaders">Packing</ion-col>
+						<ion-col>: {{ tradeDetails?.get_u_s_d_default_master?.bag_size }} {{
+							tradeDetails?.get_u_s_d_default_master?.bag_type }}</ion-col>
+					</ion-row>
+
+					<ion-row
+						*ngIf="tradeDetails?.qty != '' && tradeDetails?.qty != null && tradeDetails?.qty != undefined">
+						<ion-col size="4" class="demandHeaders">Quantity (MT)</ion-col>
+						<ion-col>: {{ tradeDetails?.qty }}</ion-col>
+					</ion-row>
+					<ion-row
+						*ngIf="tradeDetails?.fob != '' && tradeDetails?.fob != null && tradeDetails?.fob != undefined">
+						<ion-col size="4" class="demandHeaders">FOB PMT</ion-col>
+						<ion-col>: ${{ tradeDetails?.fob }}</ion-col>
+					</ion-row>
+					<ion-row
+						*ngIf="tradeDetails?.message != '' && tradeDetails?.message != null && tradeDetails?.message != undefined">
+						<ion-col size="4" class="demandHeaders">Remarks</ion-col>
+						<ion-col style="text-transform: capitalize;">
+							<div style="float: left;margin-right: 4px;height: 100%">:</div> {{ tradeDetails?.message }}
+						</ion-col>
+					</ion-row>
+
+					<ion-row
+						*ngIf="tradeDetails?.created_at != '' && tradeDetails?.created_at != null && tradeDetails?.created_at != undefined">
+						<ion-col size="4" class="demandHeaders">Posted on</ion-col>
+						<ion-col style="text-transform: capitalize;">: {{ tradeDetails?.created_at | date:'dd-MM-yyyy |
+							hh:mm a' }}</ion-col>
+					</ion-row>
+
+					<ion-row
+						*ngIf="tradeDetails?.validDate != '' && tradeDetails?.validDate != null && tradeDetails?.validDate != undefined">
+						<ion-col size="4" class="demandHeaders">Valid Till</ion-col>
+						<ion-col style="text-transform: capitalize;">: {{ tradeDetails?.validDate | date:'dd-MM-yyyy |
+							hh:mm a' }}</ion-col>
+					</ion-row>
+
+
+
+
+					<ion-row
+						*ngIf="tradeDetails?.length != '' && tradeDetails?.length != 0 && tradeDetails?.length != null || tradeDetails?.length != '' && tradeDetails?.length != 0 && tradeDetails?.length != null || tradeDetails?.purity != '' && tradeDetails?.purity != 0 && tradeDetails?.purity != null || tradeDetails?.moisture != '' && tradeDetails?.moisture != 0 && tradeDetails?.moisture != null || tradeDetails?.broken != '' && tradeDetails?.broken != 0 && tradeDetails?.broken != null || tradeDetails?.kett != '' && tradeDetails?.kett != 0 && tradeDetails?.kett != null || tradeDetails?.dd != '' && tradeDetails?.dd != 0 && tradeDetails?.dd != null">
+						<ion-col size="4" class="demandHeaders"
+							style="font-size: 18px;font-weight: bold;">Parameters</ion-col>
+						<ion-col class="demandHeaders"
+							style="text-transform: capitalize;font-size: 18px;font-weight: bold">Specifications</ion-col>
+					</ion-row>
+
+					<ion-row
+						*ngIf="tradeDetails?.length != '' && tradeDetails?.length != 0 && tradeDetails?.length != null">
+						<ion-col size="4" class="demandHeaders">Length</ion-col>
+						<ion-col style="text-transform: capitalize;">: {{ tradeDetails?.length }}</ion-col>
+					</ion-row>
+
+					<ion-row
+						*ngIf="tradeDetails?.purity != '' && tradeDetails?.purity != 0 && tradeDetails?.purity != null">
+						<ion-col size="4" class="demandHeaders">Purity</ion-col>
+						<ion-col style="text-transform: capitalize;">: {{ tradeDetails?.purity }}</ion-col>
+					</ion-row>
+
+					<ion-row
+						*ngIf="tradeDetails?.moisture != '' && tradeDetails?.moisture != 0 && tradeDetails?.moisture != null">
+						<ion-col size="4" class="demandHeaders">Moisture</ion-col>
+						<ion-col style="text-transform: capitalize;">: {{ tradeDetails?.moisture }}</ion-col>
+					</ion-row>
+
+					<ion-row
+						*ngIf="tradeDetails?.broken != '' && tradeDetails?.broken != 0 && tradeDetails?.broken != null">
+						<ion-col size="4" class="demandHeaders">Broken</ion-col>
+						<ion-col style="text-transform: capitalize;">: {{ tradeDetails?.broken }}</ion-col>
+					</ion-row>
+
+					<ion-row *ngIf="tradeDetails?.kett != '' && tradeDetails?.kett != 0 && tradeDetails?.kett != null">
+						<ion-col size="4" class="demandHeaders">Kett</ion-col>
+						<ion-col style="text-transform: capitalize;">: {{ tradeDetails?.kett }}</ion-col>
+					</ion-row>
+
+					<ion-row *ngIf="tradeDetails?.dd != '' && tradeDetails?.dd != 0 && tradeDetails?.dd != null">
+						<ion-col size="4" class="demandHeaders">DD</ion-col>
+						<ion-col style="text-transform: capitalize;">: {{ tradeDetails?.dd }}</ion-col>
+					</ion-row>
+
+					<ion-row>
+						<ion-col size="12"
+							*ngIf="tradeDetails?.status == 0 && tradeDetails?.isExpired == 'true' || tradeDetails?.isExpired == 'true' && tradeDetails?.status == 1"
+							style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: red;font-weight: bold;">
+							<img src="../../assets/STAMP EXPIRED.png" style="width: 100px;" />
+						</ion-col>
+					</ion-row>
+
+					<ion-row *ngIf="tradeDetails?.hot_deal_accept.length <= 0">
+						<ion-col *ngIf="tradeDetails?.isExpired == 'false' && tradeDetails?.status == 1" size="12"
+							style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: red;">
+							<ion-button class="green" style="color: #fff;border-radius: 12px;"
+								(click)="acceptHotDeal(tradeDetails?.id)">Interested</ion-button>
+						</ion-col>
+					</ion-row>
+
+					<ng-container *ngIf="tradeDetails?.status == 1 && tradeDetails?.isExpired != 'true'">
+						<ion-row *ngIf="tradeDetails?.hot_deal_accept.length > 0 ">
+							<ion-col size="12"
+								style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;font-weight: bold;">{{
+								tradeDetails?.isDealAcceptedMessage }}
+							</ion-col>
+						</ion-row>
+					</ng-container>
+
+
+
+					<ion-row *ngIf="tradeDetails?.status == 0 && tradeDetails?.isExpired != 'true'">
+						<ion-col size="12"
+							style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;font-weight: bold;">
+							<img src="../../assets/STAMP SOLD.png" style="width: 100px;" />
+						</ion-col>
+					</ion-row>
+
+					<ion-row *ngIf="tradeDetails?.status == 2 && tradeDetails?.isExpired != 'true'">
+						<ion-col size="12"
+							style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;font-weight: bold;">
+							<!-- Deal is taken -->
+							<img src="../../assets/STAMP SOLD.png" style="width: 100px;" />
+						</ion-col>
+					</ion-row>
+
+
+				</div>
+			</ng-container>
+
+		</ng-container>
+
+
+		<app-menu></app-menu>
+	</div>
+</ion-content>

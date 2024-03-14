@@ -5,20 +5,20 @@
 .back-button {
     margin-right: 10px;
     margin-left: 10px;
-    color: #FFF;
+    // color: #FFF;
 
     ion-icon {
         font-size: 23px;
     }
 }
 
-ion-toolbar {
-    --background: #494f58;
-    color: #FFF;
-}
+// ion-toolbar {
+//     --background: #494f58;
+//     color: #FFF;
+// }
 
 ion-item {
-    border: 3px solid #92b243;
+    border: 1px solid rgba(225, 225, 225, 1);
     border-radius: 10px;
     margin-bottom: 10px;
 }
@@ -36,8 +36,8 @@ ion-item {
     }
 }
 ion-radio::part(container) {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
 
     border-radius: 8px;
     border: 2px solid #ddd;
@@ -64,4 +64,11 @@ ion-radio.radio-checked::part(mark) {
     border-color: #fff;
 
     transform: rotate(45deg);
+}
+
+ion-toolbar{
+    --border-width: 0 0 0px !important;
+}
+.header-ios ion-toolbar:last-of-type{
+    --border-width: 0 0 0px !important;
 }

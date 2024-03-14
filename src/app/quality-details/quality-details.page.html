@@ -1,113 +1,124 @@
-<ion-header class="green">
-	<ion-toolbar mode="ios" style="background: transparent; --background: transparent;padding: 0px;" >
+<ion-header class="">
+	<ion-toolbar mode="ios" style="background: transparent; --background: transparent;padding: 0px;">
 		<div>
 			<div>
 				<ion-buttons slot="start" class="back-button" (click)="closeModal()">
 					<ion-icon name="arrow-back-outline"></ion-icon>
 				</ion-buttons>
 			</div>
-			
+
 		</div>
-		
-		
+
+
 	</ion-toolbar>
 </ion-header>
 
-<ion-content class="lightgreen">
-	<div style="margin-bottom: 50px;">
+<ion-content class="">
+	<div style="margin-bottom: 50px; padding: 0px 20px;">
 
-		<div style="border-bottom: 2px solid #000;margin: 20px 0px">	
-			<div style="text-align: center;font-weight: bold;font-size: 20px;color: #92b243;">
-					{{ riceQuality?.quality }} {{ riceQuality?.quality_name }}
-			</div>		
-			<p style="font-size: 18px;font-weight: bold;text-align: center;">Customised Packing Price</p>
+		<div style="border-bottom: 2px solid #000;margin: 20px 0px">
+			<div style="text-align: center;font-weight: bold;font-size: 20px">
+				{{ riceQuality?.quality }} {{ riceQuality?.quality_name }}
+			</div>
+			<!-- <p style="font-size: 18px;font-weight: bold;text-align: center;">Customised Packing Price</p> -->
 			<ion-row>
-				<ion-col size="3" style="font-size: 20px;line-height: 2.6">Packing: </ion-col>
-				<ion-col size="8.5" style="border: 2px solid #92b243;border-radius: 9px">
-					<ion-row >
+				<ion-col size="12" style="font-size: 20px;line-height: 2.5;">Packing: </ion-col>
+				<ion-col size="12"
+					style="border: 1px solid rgba(225, 225, 225, 1);border-radius: 100px;overflow: hidden;">
+					<ion-row>
 						<ion-col>
-							<ion-item class="select" style="background: #fffbd6;--background: #fffbd6;">
-								<ion-label>Packing</ion-label>
+							<ion-item class="select">
+								<!-- <ion-label style="font-size: 15px;">Packing</ion-label> -->
 
 								<ion-select placeholder="Select" (ionChange)="changeBag($event)">
-		  							<ion-select-option *ngFor="let bag of packing" value="{{ bag?.id }}"> {{ bag?.bag_size }} <div></div> {{ bag?.bag_type }}
+									<ion-select-option *ngFor="let bag of packing" value="{{ bag?.id }}">
+										{{bag?.bag_size }} <div></div> {{ bag?.bag_type }}
 									</ion-select-option>
 								</ion-select>
 
-							  </ion-item>		
+							</ion-item>
 						</ion-col>
 					</ion-row>
-					<ion-row style="width: 100%;">
+					<!-- <ion-row style="width: 100%;">
 						<ion-col style="text-align: right;margin-right: 15px;">{{ selectedPackage }}</ion-col>
-					</ion-row>
-					  
+					</ion-row> -->
+
 				</ion-col>
-				
 			</ion-row>
 
-			<ion-row >
-				<ion-col size="4" style="font-size: 20px;line-height: 2.5">FOB Price: </ion-col>
-				<ion-col size="8" >
-					<ion-item class="select" style="background: #fffbd6;--background: #fffbd6">
-						<!-- <ion-label>region</ion-label> -->
-						<h4 style="padding: 0;margin: 0;width: 100%;text-align: right;">${{ fobminData }} - ${{ fobmaxData }} PMT</h4>
-					  </ion-item>
+			<ion-row>
+				<ion-col size="12" style="font-size: 20px;line-height: 2.5">FOB Price: </ion-col>
+				<ion-col size="12"
+					style="border: 1px solid rgba(225, 225, 225, 1);border-radius: 100px;overflow: hidden;">
+					<ion-item class="select" style="">
+						<!-- <ion-label style="font-size: 15px;">region</ion-label> -->
+						<h4 style="padding: 0;margin: 0;width: 100%;text-align: left;">${{ fobminDataUpdated }} - ${{
+							fobmaxDataUpdated }} PMT</h4>
+					</ion-item>
 				</ion-col>
 			</ion-row>
-			
-			<ion-row >
-				<ion-col size="3" style="font-size: 20px;line-height: 2.6">Port: </ion-col>
-				<ion-col size="8.5">
+
+			<ion-row>
+				<ion-col size="12" style="font-size: 20px;line-height: 2.5">Port: </ion-col>
+				<ion-col size="12">
 					<ion-row>
-						<ion-col size="12" style="background: #fffbd6;--background: #fffbd6;border: 2px solid #92b243;border-radius: 9px;margin-top: 15px;">
-							<ion-item class="select" style="background: #fffbd6;--background: #fffbd6">
-								<ion-label>REGION</ion-label>
-								<ion-select placeholder="Select" [(ngModel)]="selectedUserRegion" (ionChange)="changeRegion($event)">
-										<ion-select-option *ngFor="let region of regions">{{ region }}</ion-select-option>
+						<ion-col size="12"
+							style="border: 1px solid rgba(225, 225, 225, 1);border-radius: 100px;overflow: hidden;margin-bottom: 15px;">
+							<ion-item class="select" style="">
+								<ion-label style="font-size: 15px;">REGION</ion-label>
+								<ion-select placeholder="Select" [(ngModel)]="selectedUserRegion"
+									(ionChange)="changeRegion($event)">
+									<ion-select-option *ngFor="let region of regions">{{ region }}</ion-select-option>
 								</ion-select>
 							</ion-item>
-							<p style="padding: 0;margin: 0;float: right;margin-right: 10px;">{{ selectedUserRegion }}</p>
+							<!-- <p style="padding: 0;margin: 0;float: right;margin-right: 10px;">{{ selectedUserRegion }}</p> -->
 
 						</ion-col>
-						<ion-col size="12" style="background: #fffbd6;--background: #fffbd6;border: 2px solid #92b243;border-radius: 9px;margin-top: 15px;">
-							<ion-item class="select" style="background: #fffbd6;--background: #fffbd6">
-								<ion-label>COUNTRY</ion-label>
-		
+						<ion-col size="12"
+							style="border: 1px solid rgba(225, 225, 225, 1);border-radius: 100px;overflow: hidden;margin-bottom: 15px;">
+							<ion-item class="select" style="">
+								<ion-label style="font-size: 15px;">COUNTRY</ion-label>
+
 								<ion-select placeholder="Select" (ionChange)="changeCountry($event)">
-										<ion-select-option *ngFor="let ctry of country">{{ ctry }}</ion-select-option>
+									<ion-select-option *ngFor="let ctry of country">{{ ctry }}</ion-select-option>
 								</ion-select>
 							</ion-item>
-							<p style="padding: 0;margin: 0;float: right;margin-right: 10px;">{{  selectedUserCountry }}</p>
+							<!-- <p style="padding: 0;margin: 0;float: right;margin-right: 10px;">{{ selectedUserCountry }}</p> -->
 
 						</ion-col>
-						<ion-col size="12" style="background: #fffbd6;--background: #fffbd6;border: 2px solid #92b243;border-radius: 9px;margin-top: 15px;">
-							<ion-item class="select" style="background: #fffbd6;--background: #fffbd6">
-								<ion-label>PORT</ion-label>
-		
+						<ion-col size="12"
+							style="border: 1px solid rgba(225, 225, 225, 1);border-radius: 100px;overflow: hidden;margin-bottom: 15px;">
+							<ion-item class="select" style="">
+								<ion-label style="font-size: 15px;">PORT</ion-label>
+
 								<ion-select placeholder="Select" (ionChange)="changePort($event)">
-										<ion-select-option *ngFor="let ctry of selectedPorts">{{ ctry }}</ion-select-option>
+									<ion-select-option *ngFor="let ctry of selectedPorts">{{ ctry }}</ion-select-option>
 								</ion-select>
 							</ion-item>
-							<p style="padding: 0;margin: 0;float: right;margin-right: 10px;">{{  defalutPort }}</p>
+							<!-- <p style="padding: 0;margin: 0;float: right;margin-right: 10px;">{{ defalutPort }}</p> -->
 
 						</ion-col>
 					</ion-row>
 				</ion-col>
 			</ion-row>
 			<ion-row>
-				<ion-col size="5">
-					<p style="margin-left: 5px;font-size: 20px;">Ocean Freight PMT: </p>
+				<ion-col size="6">
+					<p style="margin-left: 5px;font-size: 14px;padding: 0px">Ocean Freight PMT: </p>
 				</ion-col>
-				<ion-col  size="7">
-					<p style="font-size: 18px; text-transform: uppercase; font-weight: bold; list-style: none; padding: 0; margin: 0; margin-top: 15px;text-align: right;margin-right: 14px;">{{ defalutPort }} (${{ defalutPortPrice }})</p>
+				<ion-col size="6">
+					<p
+						style="font-size: 14px; text-transform: uppercase; font-weight: bold; list-style: none; padding: 0; text-align: right;margin-right: 14px;color: rgba(119, 154, 32, 1)">
+						{{ defalutPort }} (${{ defalutPortPrice }})</p>
 				</ion-col>
 			</ion-row>
-			<ion-row >
-				<ion-col size="4" style="font-size: 20px;line-height: 2.5">CIF Price:</ion-col>
-				<ion-col size="8" >
-					<ion-item class="select" style="background: #fffbd6;--background: #fffbd6">
-						<h4 style="padding: 0;margin: 0;width: 100%;text-align: right;">${{CIFminData}} - ${{ CIFmaxData }} PMT</h4>
-					  </ion-item>
+			<ion-row>
+				<ion-col size="6">
+					<p style="margin-left: 5px;font-size: 14px;padding: 0px">CIF Price:</p>
+				</ion-col>
+				<ion-col size=" 6">
+					<p
+						style="font-size: 14px; text-transform: uppercase; font-weight: bold; list-style: none; padding: 0; text-align: right;margin-right: 14px;color: rgba(119, 154, 32, 1);">
+						${{CIFminData}} - ${{CIFmaxData}} PMT</p>
 				</ion-col>
 			</ion-row>
 		</div>
@@ -117,7 +128,7 @@
 		<div style="text-align: center;font-size: 20px;">
 			Rice Graph
 		</div>
-		<ion-row>
+		<ion-row style="margin-bottom: 100px;">
 			<ion-col size="0.5">
 			</ion-col>
 			<ion-col>
@@ -125,7 +136,7 @@
 			</ion-col>
 			<ion-col size="0.5">
 			</ion-col>
-			
+
 		</ion-row>
 
 	</div>

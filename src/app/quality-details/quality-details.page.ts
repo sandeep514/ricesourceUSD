@@ -5,39 +5,39 @@ import { RestService } from '../rest.service';
 import { LoadingController, ModalController, NavController } from '@ionic/angular';
 import { ComponentsService } from '../components.service';
 import { PlanpagePage } from '../planpage/planpage.page';
-declare let RazorpayCheckout:any;
-declare var Highcharts : any;
+declare let RazorpayCheckout: any;
+declare var Highcharts: any;
 import { StockChart } from 'angular-highcharts';
 import { ActivatedRoute } from '@angular/router';
 import { resolve } from 'url';
 
 @Component({
-  selector: 'app-quality-details',
-  templateUrl: './quality-details.page.html',
-  styleUrls: ['./quality-details.page.scss'],
+	selector: 'app-quality-details',
+	templateUrl: './quality-details.page.html',
+	styleUrls: ['./quality-details.page.scss'],
 })
 
 export class QualityDetailsPage implements OnInit {
 
-	loader:any;
-	selectedstate:any;
-	selectedriceType:any;
-	selectedChartData:any = "15_Days";
+	loader: any;
+	selectedstate: any;
+	selectedriceType: any;
+	selectedChartData: any = "15_Days";
 	private scrollDepthTriggered = false;
-	public scrollLength:any = 0;
+	public scrollLength: any = 0;
 	public scrollPosition = 'top';
 	public ricename = '';
 	public rice = '';
 	public userFirstName = '';
 	public chartIntervals: any;
 
-	paymentAmount:any = 1000;
-	currency:any = "INR";
-	listPlans:any;
-	chartInt:any;
-	productType:any;
+	paymentAmount: any = 1000;
+	currency: any = "INR";
+	listPlans: any;
+	chartInt: any;
+	productType: any;
 	stock: StockChart;
-	packing:any;
+	packing: any;
 	ports: any;
 	selectedRegion: any;
 	selectedCountry: any;
@@ -50,27 +50,29 @@ export class QualityDetailsPage implements OnInit {
 	defalutPort: any;
 	defalutPortPrice: number;
 	fobmaxData: any;
+	fobminDataUpdated: any;
+	fobmaxDataUpdated: any;
 	arrayPort: any;
 	riceQuality: any;
 	fiftykgMaster: any;
-	CIFminData:any;
-	CIFmaxData:any;
-	riceQualityId:any;
-	selectedPackage:any;
-	selectedUserCountry:any;
-	selectedUserRegion:any;
+	CIFminData: any;
+	CIFmaxData: any;
+	riceQualityId: any;
+	selectedPackage: any;
+	selectedUserCountry: any;
+	selectedUserRegion: any;
 
-	constructor(public navCtrl:NavController ,public apiser:RestService,public loading:LoadingController,public compSer: ComponentsService,public ModelCtrl: ModalController,public componentService: ComponentsService,public activRoute: ActivatedRoute) {
+	constructor(public navCtrl: NavController, public apiser: RestService, public loading: LoadingController, public compSer: ComponentsService, public ModelCtrl: ModalController, public componentService: ComponentsService, public activRoute: ActivatedRoute) {
 
 		this.selectedstate = localStorage.getItem('state');
 		this.selectedriceType = localStorage.getItem('riceType');
 		this.chartInt = localStorage.getItem('chartInt');
 		this.selectedChartData = "15_Days";
-		
+
 		this.getChartInterval();
 
-		this.compSer.isUserExpired.subscribe((res:any) => {
-			if( localStorage.getItem('isExpired') == 'true' ){
+		this.compSer.isUserExpired.subscribe((res: any) => {
+			if (localStorage.getItem('isExpired') == 'true') {
 				this.presentModel();
 			}
 		});
@@ -81,13 +83,13 @@ export class QualityDetailsPage implements OnInit {
 			{ id: 3, name: 'Navlakhi' }
 		];
 
-		this.activRoute.params.subscribe((params:any) => {
+		this.activRoute.params.subscribe((params: any) => {
 			this.riceQualityId = params.riceQuality
 			this.getAllCountryPorts();
 		});
 	}
-	
-	async presentModel(){
+
+	async presentModel() {
 		const model = await this.ModelCtrl.create({
 			component: PlanpagePage,
 			animated: true
@@ -95,11 +97,11 @@ export class QualityDetailsPage implements OnInit {
 		await model.present();
 	}
 
-	gotoProfile(){
+	gotoProfile() {
 		this.navCtrl.navigateForward(['profile']);
 	}
-	
-	parseValue(value){
+
+	parseValue(value) {
 		return value.split(' ').join('_');
 	}
 
@@ -107,34 +109,34 @@ export class QualityDetailsPage implements OnInit {
 		this.userFirstName = localStorage.getItem('name')[0];
 	}
 
-	getChartInterval(){
+	getChartInterval() {
 		// this.apiser.getChartInterval().then((res:any) => {
 		// 	this.chartIntervals = res.chartinterval;
 		// });
 	}
 
 
-	async presentLoader(message){
+	async presentLoader(message) {
 		this.loader = await this.loading.create({
-			message : message
+			message: message
 		});
 		await this.loader.present();
 	}
-	
-	loginProfile(){
+
+	loginProfile() {
 
 	}
 
-	scroll(direction,className){
-		if(direction == 'left'){
-			$("."+className).animate(
+	scroll(direction, className) {
+		if (direction == 'left') {
+			$("." + className).animate(
 				{
 					scrollLeft: "-=135px"
 				},
 				"slow"
-				);
-		}else{
-			$("."+className).animate(
+			);
+		} else {
+			$("." + className).animate(
 				{
 					scrollLeft: "+=135px"
 				},
@@ -142,17 +144,19 @@ export class QualityDetailsPage implements OnInit {
 			);
 		}
 	}
-	
-	
-	
-	changeName(name){		
-		let newname =  name.split('_').join(' ').toUpperCase();
+
+
+
+	changeName(name) {
+		let newname = name.split('_').join(' ').toUpperCase();
 		return newname;
 	}
 
-	getAllCountryPorts(){
+	getAllCountryPorts() {
 		this.componentService.presentLoading().then(() => {
-			this.apiser.getAllPorts(this.riceQualityId).then( (res:any) => {
+			this.apiser.getAllPorts(this.riceQualityId).then((res: any) => {
+				console.log('combinedData')
+				console.log(res.chartData.combinedData)
 				this.packing = res.packing;
 
 				this.FOB = res.FOB;
@@ -164,12 +168,12 @@ export class QualityDetailsPage implements OnInit {
 				this.portsArray = Object.values(res.ports);
 				this.riceQuality = res.riceQuality;
 				this.fiftykgMaster = res.fiftykgMaster;
-				this.defalutPort = res.defalutPort; 
-				
+				this.defalutPort = res.defalutPort;
+
 				this.selectedUserCountry = res.defalutPortDetail[0].country;
 				this.selectedUserRegion = res.defalutPortDetail[0].region;
 
-				
+
 				console.log(this.defalutPort);
 
 				this.defalutPortPrice = parseFloat(res.defalutPortPrice);
@@ -177,13 +181,17 @@ export class QualityDetailsPage implements OnInit {
 				this.CIFminData = (parseFloat(res.FOB.fobmin) + (this.defalutPortPrice));
 				this.CIFmaxData = (parseFloat(res.FOB.fobmax) + (this.defalutPortPrice));
 
-				this.selectedPackage = res.fiftykgMaster.bag_size+' '+res.fiftykgMaster.bag_type;
+				this.selectedPackage = res.fiftykgMaster.bag_size + ' ' + res.fiftykgMaster.bag_type;
 
-				Highcharts.stockChart('highcharts',{
+				// Data retrieved from https://www.vikjavev.no/ver/#2020-04-15,2020-04-16
+
+				Highcharts.chart('highcharts', {
 					chart: {
-						alignTicks: false,
-						backgroundColor: '#fffbd6',
-						marginLeft: 40
+						type: 'spline',
+						scrollablePlotArea: {
+							minWidth: 600,
+							scrollPositionX: 1
+						}
 					},
 					yAxis: {
 						opposite: false,
@@ -191,14 +199,28 @@ export class QualityDetailsPage implements OnInit {
 							align: 'left',
 						},
 						title: {
-							text: "Price in $",
-							x : -12
+							text: "Price( per Quintal )",
+							x: -12
+						}
+					},
+					title: {
+						text: 'Rice Graph',
+						align: 'left'
+					},
+					// subtitle: {
+					// 	text: '15th & 16th of April, 2020 at two locations in Vik i Sogn, Norway',
+					// 	align: 'left'
+					// },
+					xAxis: {
+						type: 'datetime',
+						labels: {
+							overflow: 'justify'
 						}
 					},
 					rangeSelector: {
 						selected: 0,
 						inputEnabled: false,
-						buttons: [ {
+						buttons: [{
 							type: 'week',
 							count: 1,
 							text: '1W'
@@ -242,7 +264,7 @@ export class QualityDetailsPage implements OnInit {
 							type: 'month',
 							count: 10,
 							text: '10m'
-						},{
+						}, {
 							type: 'month',
 							count: 11,
 							text: '11m'
@@ -252,52 +274,62 @@ export class QualityDetailsPage implements OnInit {
 							text: '1y'
 						}],
 					},
+					tooltip: {
+						valueSuffix: ''
+					},
+					plotOptions: {
+						spline: {
+							lineWidth: 4,
+							states: {
+								hover: {
+									lineWidth: 5
+								}
+							},
+							marker: {
+								enabled: false
+							},
+							pointInterval: 3600000, // one hour
+							pointStart: Date.UTC(2020, 3, 15, 0, 0, 0)
+						}
+					},
 					series: [{
-						fontSize: '11px',
-						color: '#92b243',
-						type: 'line',
-						name: '$',
-						data: res.chartData.combinedData,
-
-					dataGrouping: {
-						
-						units: [[
-							'week', // unit name
-							[1] // allowed multiples
-						], [
-							'month',
-							[1, 2, 3, 4, 6]
-						]]
+						name: 'Price',
+						data: res.chartData.combinedData
+					}],
+					navigation: {
+						menuItemStyle: {
+							fontSize: '10px'
+						}
 					}
-					}]
 				});
-				
-				console.log("kjnk");
-				
-				this.componentService.loadingController.dismiss();
-				
 
-			} , (err:any) => {
+
+				console.log("kjnk");
+
+				this.componentService.loadingController.dismiss();
+
+
+			}, (err: any) => {
 				this.componentService.loadingController.dismiss();
 
 			});
 		});
 	}
-	getbagIndex(selectedData){
+	getbagIndex(selectedData) {
 		let packingList = this.packing;
-		return new Promise(function(resolve , reject){
-			if( packingList.length == 0 ){
+		return new Promise(function (resolve, reject) {
+			if (packingList.length == 0) {
 				reject(false);
-			}else{
-				for(let i = 0 ; i < packingList.length ; i++){
-					if( selectedData == packingList[i].id ) {
+			} else {
+				for (let i = 0; i < packingList.length; i++) {
+					if (selectedData == packingList[i].id) {
 						resolve(i);
 					}
-				}	
+				}
 			}
 		});
 	}
-	changeBag(data ){
+	changeBag(data) {
 
 		this.getbagIndex(data.detail.value).then((res: any) => {
 			let bag_size = this.packing[res]['bag_size'];
@@ -305,42 +337,49 @@ export class QualityDetailsPage implements OnInit {
 			let bag_PMT_USD = this.packing[res]['PMT_USD'];
 
 
-			this.selectedPackage = bag_size+' '+bag_type;
+			this.selectedPackage = bag_size + ' ' + bag_type;
 			let packingPMT_USD = bag_PMT_USD;
 
-			let modifiedAmount:any = parseFloat(packingPMT_USD).toFixed(2);
-			let fobmin:any = parseFloat(this.fobminData).toFixed(2)
-			let fobmax:any = parseFloat(this.fobmaxData).toFixed(2);
-			let fiftyKGBagSize:any = parseFloat(this.fiftykgMaster.PMT_USD).toFixed(2);
-			let removedMinFiftyKgBag:any = (fobmin - fiftyKGBagSize);
-			let removedMaxFiftyKgBag:any = (fobmax - fiftyKGBagSize);
+			let modifiedAmount: any = parseFloat(packingPMT_USD).toFixed(2);
+			let fobmin: any = parseFloat(this.fobminData).toFixed(2)
+			let fobmax: any = parseFloat(this.fobmaxData).toFixed(2);
+			console.log(fobmin);
+			console.log(fobmax);
+			let fiftyKGBagSize: any = parseFloat(this.fiftykgMaster.PMT_USD).toFixed(2);
+			let removedMinFiftyKgBag: any = (fobmin - fiftyKGBagSize);
+			let removedMaxFiftyKgBag: any = (fobmax - fiftyKGBagSize);
 
-			let newFOBminDATA = parseFloat( (removedMinFiftyKgBag) + parseFloat(modifiedAmount) );
-			let newFOBmaxDATA = parseFloat( removedMaxFiftyKgBag + parseFloat(modifiedAmount) );
-			
-			this.fobminData = newFOBminDATA;
-			this.fobmaxData = newFOBmaxDATA;
+			console.log(fiftyKGBagSize);
+			console.log(removedMinFiftyKgBag);
+			console.log(removedMaxFiftyKgBag);
 
+			let newFOBminDATA = parseFloat((removedMinFiftyKgBag) + parseFloat(modifiedAmount));
+			let newFOBmaxDATA = parseFloat(removedMaxFiftyKgBag + parseFloat(modifiedAmount));
+
+			this.fobminDataUpdated = newFOBminDATA;
+			this.fobmaxDataUpdated = newFOBmaxDATA;
+
+			console.log(parseFloat(modifiedAmount));
 			console.log(newFOBminDATA);
 			console.log(newFOBmaxDATA);
 			console.log(this.defalutPortPrice);
 
 			this.CIFminData = ((newFOBminDATA) + (Number(this.defalutPortPrice)));
 			this.CIFmaxData = (newFOBmaxDATA + (Number(this.defalutPortPrice)));
-		} , (err:any) => {
+		}, (err: any) => {
 			console.log(err)
 		})
-		
+
 	}
 
-	changeRegion(data){
+	changeRegion(data) {
 		let region = data.detail.value;
 		this.selectedRegion = region;
 		this.country = ((Object.keys(this.ports[region])).sort());
 		this.defalutPort = '';
 		this.selectedUserCountry = '';
 	}
-	changeCountry(data){
+	changeCountry(data) {
 		let countries = data.detail.value;
 		this.selectedCountry = countries;
 
@@ -349,7 +388,7 @@ export class QualityDetailsPage implements OnInit {
 		this.selectedUserCountry = this.selectedCountry
 	}
 
-	changePort(data){
+	changePort(data) {
 		let oldDefaultPortName = this.defalutPort;
 		let oldReplacedWithUnderscore = oldDefaultPortName.split(' ').join('_');
 		let OldportPrice = this.defalutPortPrice;
@@ -360,12 +399,12 @@ export class QualityDetailsPage implements OnInit {
 		this.CIFmaxData = ((parseFloat(this.CIFmaxData) - OldportPrice) + parseFloat(portData[0].freight_25MT_1MT));
 	}
 
-	closeModal(){
+	closeModal() {
 		this.navCtrl.pop();
 
-		if( localStorage.getItem('apptype') == 'OTHER' ){
+		if (localStorage.getItem('apptype') == 'OTHER') {
 			this.navCtrl.navigateForward(['prices']);
-		}else{
+		} else {
 			this.navCtrl.navigateForward(['priceusd']);
 		}
 	}

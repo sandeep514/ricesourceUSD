@@ -22,18 +22,36 @@
     ;
 }
 
-.SelectButtonColumn{
+.SelectButtonColumn {
     text-decoration: none;
-    padding: 10px 15px;
-    border: 2px solid #92b243;
-    border-radius: 10px;
-    color: #fff;
-    background-color: #92b243;
+    padding: 5px 25px;
+    border: 1px solid rgba(238, 252, 206, 1);
+    border-radius: 100px;
+    color: rgba(119, 154, 32, 1);
+    background-color: rgba(238, 252, 206, 1);
 
 }
-.buttonColumn{
+
+.buttonColumn {
     text-decoration: none;
-    padding: 10px 15px;
-    border: 2px solid #92b243;
-    border-radius: 10px;
+    padding: 5px 25px;
+    border: 1px solid #ededed;
+    border-radius: 100px;
+    color: rgba(35, 32, 0, 1);
+}
+
+ion-toolbar {
+    --border-width: 0 0 0px !important;
+}
+
+.header-ios ion-toolbar:last-of-type {
+    --border-width: 0 0 0px !important;
+}
+
+.hide {
+    display: none !important
+}
+
+.inprocess {
+    background-color: rgba(0, 0, 0, 0.2) !important;
 }

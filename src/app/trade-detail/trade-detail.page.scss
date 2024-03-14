@@ -1,0 +1,173 @@
+.galleryContent {
+    padding: 0px;
+}
+
+.ricetype {
+    font-size: 18px;
+}
+
+.price-table {
+
+    // background-color: #FFF;
+    table {
+        width: 100%;
+
+        thead {
+            tr {
+                height: 34px;
+                font-size: 12px;
+                background-color: transparent important;
+
+                th {
+                    background-color: transparent important;
+                    border-right: 1px solid #dfdfdf;
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                height: 35px;
+
+                td {
+                    font-size: 16px;
+                    // padding-left: 20px;
+                    // border-bottom: 1px solid #dfdfdf;
+                    // border-right: 1px solid #dfdfdf;
+                }
+            }
+        }
+
+        margin-top: 6px;
+    }
+}
+
+table thead,
+table tbody {
+    background: transparent !important;
+    background-color: transparent !important;
+    border-bottom: 2px solid #ededed !important;
+}
+
+.specification {
+    ion-row {
+        padding: 0;
+    }
+
+    ion-col {
+        margin: 0;
+        padding: 0
+    }
+
+    thead {
+        th {
+            // font-size: 18px;
+            font-weight: inherit;
+            text-align: left;
+            // padding-left: 20px;
+        }
+    }
+}
+
+.ricetype {
+    font-size: 24px;
+    font-family: Arial;
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+
+    .black {
+        color: #000;
+    }
+}
+
+
+table tbody tr td {
+    // color: #92B243;
+    color: #000;
+    font-size: 14px !important;
+}
+
+.card {
+    .image {
+        text-align: center;
+    }
+}
+
+.type-columns {
+    padding-left: 40px
+}
+
+.pl-40 {
+    padding-left: 40px !important;
+}
+
+.pl-60 {
+    padding-left: 40px !important;
+}
+
+table tbody {
+    border: 0px !important;
+}
+
+// tbody tr:nth-child(odd) {
+//     background-color: #e4e9b1;
+// }
+
+#card th {
+    background-color: transparent !important;
+    --background-color: transparent !important;
+}
+
+#card {
+    position: absolute;
+    width: -webkit-fill-available;
+    padding-bottom: 25px;
+    margin: 0px;
+    border-radius: 0px 0px 22px 22px;
+}
+
+.swiper-slide {
+    img {
+        border-radius: 25px;
+    }
+}
+
+ion-toolbar {
+    --border-width: 0 0 0px !important;
+}
+
+.header-ios ion-toolbar:last-of-type {
+    --border-width: 0 0 0px !important;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+.interestedButton {
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    background-color: #000;
+    padding: 15px 0px;
+    text-transform: capitalize;
+    border-radius: 100px;
+    width: 40%;
+    // margin-right: 20px;
+}
+
+.callNowButton {
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    background-color: rgba(145, 178, 67, 1);
+    padding: 15px 0px;
+    text-transform: capitalize;
+    border-radius: 100px;
+    width: 40%
+}
+
+.hide {
+    display: none
+}

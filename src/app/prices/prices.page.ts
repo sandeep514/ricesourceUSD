@@ -43,6 +43,7 @@ export class PricesPage implements OnInit {
 	riceUserType: any;
 	myVar: any;
 	imagePrefix: any;
+	currentYear: any;
 
 	slideOpts = {
 		initialSlide: 0,
@@ -91,11 +92,16 @@ export class PricesPage implements OnInit {
 		console.log("jknk");
 		// 	this.navCtrl.navigateRoot( 'planpage', { animationDirection : 'forward' } );
 		// }
+		this.componentService.reRenderFooterMenu.next();
+		this.componentService.reRenderSideMenu.next();
+
 
 		var today = new Date();
 		var dd = String(today.getDate()).padStart(2, "0");
 		var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
 		var yyyy = today.getFullYear();
+		this.currentYear = yyyy;
+
 		var todayDate = mm + "/" + dd + "/" + yyyy;
 
 		var ExpiredDate = new Date(localStorage.getItem("expired_on"));
@@ -175,6 +181,9 @@ export class PricesPage implements OnInit {
 				this.componentService.loadingController.dismiss();
 			}, 1500);
 		});
+		console.log("i am here in view load");
+		this.componentService.reRenderFooterMenu.next();
+
 	}
 
 	getNotications() {
@@ -197,14 +206,12 @@ export class PricesPage implements OnInit {
 	}
 
 	brand() {
-		console.log("hjnjk");
 		this.navCtrl.navigateForward(["brands"]);
 	}
 
 	getGallery() {
 		this.restService.getImagesForDashboard().then(
 			(res: any) => {
-				console.log("i am here 2");
 			},
 			(err: any) => { }
 		);
@@ -215,7 +222,6 @@ export class PricesPage implements OnInit {
 			this.componentService.presentLoading().then(() => {
 				this.restService.getBasmatiState().then(
 					(res: any) => {
-						console.log("i am here 2");
 						if (res.data.length > 0) {
 							this.firstBasmatiState = res.data[0];
 							this.lastBasmatiState = res.data[res.data.length - 1];
@@ -438,6 +444,8 @@ export class PricesPage implements OnInit {
 		this.getNONBasmatiState();
 		this.getPlans();
 		this.getPriceBasmatiState();
+		this.fetchRiceForm('PUNJAB-HARYANA', 'basmati')
+		this.fetchRiceForm('PUNJAB-HARYANA', 'non-basmati')
 	}
 
 	ngOnInit() {
@@ -779,14 +787,17 @@ export class PricesPage implements OnInit {
 		if (isUSDActive != "0") {
 			if (isUserExpiredStatus == "true") {
 				console.log("jknk");
+
 				this.navCtrl.navigateForward(["planpage"]);
 			} else {
 				console.log("mnk n ");
 				localStorage.setItem("apptype", "USD");
+
 				this.navCtrl.navigateForward(["priceusd"]);
 			}
 		} else {
 			console.log("jknk");
+
 			this.navCtrl.navigateForward(["planpage"]);
 		}
 

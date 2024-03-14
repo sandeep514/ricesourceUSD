@@ -751,6 +751,8 @@ let RicechartPage = class RicechartPage {
         this.rice = localStorage.getItem('ricename');
         this.selectedChartData = "15_Days";
         this.apiser.getChartData(state, riceType, this.rice, "15_Days").then((res) => {
+            console.log('res.combinedData');
+            console.log(res);
             this.productType = res.productType.type;
             this.loading.dismiss();
             let priceArray = [];
@@ -887,10 +889,10 @@ let RicechartPage = class RicechartPage {
             // 			data: priceArray
             // 		}]
             // });
-            setTimeout(() => {
-                this.loading.dismiss();
-                console.log(priceArray);
-            }, 300);
+            // setTimeout(() => {
+            // 	this.loading.dismiss();
+            // 	console.log(priceArray);
+            // }, 300);
         }, (err) => {
         });
     }

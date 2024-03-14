@@ -1,0 +1,57 @@
+.blink_me {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    0% {
+        opacity: 0;
+    }
+
+    ;
+
+    50% {
+        opacity: 0.5;
+    }
+
+    ;
+
+    100% {
+        opacity: 1;
+    }
+
+    ;
+}
+
+.SelectButtonColumn {
+    text-decoration: none;
+    padding: 5px 25px;
+    border: 1px solid rgba(238, 252, 206, 1);
+    border-radius: 100px;
+    color: rgba(119, 154, 32, 1);
+    background-color: rgba(238, 252, 206, 1);
+
+}
+
+.buttonColumn {
+    text-decoration: none;
+    padding: 5px 25px;
+    border: 1px solid #ededed;
+    border-radius: 100px;
+    color: rgba(35, 32, 0, 1);
+}
+
+ion-toolbar {
+    --border-width: 0 0 0px !important;
+}
+
+.header-ios ion-toolbar:last-of-type {
+    --border-width: 0 0 0px !important;
+}
+
+.hide {
+    display: none !important
+}
+
+.inprocess {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+}

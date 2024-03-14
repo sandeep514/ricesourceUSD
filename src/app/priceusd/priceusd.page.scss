@@ -32,6 +32,7 @@ ion-content {
     margin-left: 15px;
     margin-top: 10px;
     padding: 20;
+
     span {
         color: #FFF;
         font-size: 30px;
@@ -44,11 +45,13 @@ ion-content {
         margin-right: 10px;
         margin-top: 18px;
     }
+
     ion-icon {
         font-size: 38px;
         margin-top: 15px;
         margin-right: 10px;
     }
+
     .badge {
         background-color: #ad362d;
         height: 17px;
@@ -66,6 +69,7 @@ ion-content {
 }
 
 .slider {
+
     // margin-top: 10px;
     //background-color: #f7f7f7;
     // margin-bottom: 11px;
@@ -77,6 +81,7 @@ ion-content {
 .title-padding {
     padding-top: 0px;
     padding-bottom: 0px;
+
     h2 {
         margin: 0px;
     }
@@ -128,13 +133,16 @@ ion-content {
     display: none;
     height: 88px;
     width: 150px;
+
     ul {
         list-style: none;
         padding: 0;
         margin: 0px;
+
         li {
             padding: 10px 10px;
             text-align: left;
+
             label {
                 font-size: 18px;
             }
@@ -143,30 +151,36 @@ ion-content {
 }
 
 .price-table {
+
     // background-color: #FFF;
     table {
         width: 100%;
+
         thead {
             tr {
                 height: 34px;
                 font-size: 12px;
                 background-color: #eeeeee !important;
+
                 th {
                     background-color: #eeeeee !important;
                     border-right: 1px solid #dfdfdf;
                 }
             }
         }
+
         tbody {
             tr {
                 height: 35px;
+
                 td {
                     font-size: 12px;
-                    border-bottom: 1px solid #dfdfdf;
-                    border-right: 1px solid #dfdfdf;
+                    border-bottom: 1px solid #ededed;
+                    border-right: 1px solid #ededed;
                 }
             }
         }
+
         margin-top: 6px;
     }
 }
@@ -174,6 +188,7 @@ ion-content {
 .table-row {
     margin-top: 0px;
     padding-top: 0px;
+
     tr {
         td {
             text-align: center;
@@ -282,6 +297,7 @@ ion-content {
         margin-top: 2px;
         margin-left: -16px;
     }
+
     h1 {
         font-size: 37px;
         margin: 0px;
@@ -289,6 +305,7 @@ ion-content {
         margin-top: 25px;
         color: green;
     }
+
     p {
         margin: 0px;
         padding: 0px;
@@ -321,6 +338,7 @@ ion-content {
     --padding-end: 0px;
     margin-right: 0px;
     margin: 0 auto;
+
     ion-segment-button {
         --indicator-color: transparent !important;
         --indicator-color-checked: transparent !important;
@@ -337,12 +355,14 @@ ion-content {
         min-width: auto;
         color: #000;
         font-size: 12px;
-        border: 2px solid #92b243;
+        // border: 2px solid #92b243;
     }
+
     ion-segment-button.segment-button-checked {
         // background-color: #FFF;
         background: #92b244;
         --background: #92b244;
+
         ion-label {
             margin: 0px;
             padding: 0px;
@@ -351,9 +371,11 @@ ion-content {
             font-size: 100%;
         }
     }
+
     ion-label.sc-ion-label-md-s md {
         font-size: 60%;
     }
+
     ion-label {
         margin: 0px;
         padding: 0px;
@@ -380,6 +402,7 @@ ion-content {
 
 .center {
     text-align: center;
+
     p {
         padding: 15px 0px 15px 0px;
         margin: 0;
@@ -407,6 +430,7 @@ ion-content {
 .scroll-arrow {
     position: absolute;
     margin-top: 1%;
+
     .lefticon {
         position: absolute;
         left: 10px;
@@ -417,6 +441,7 @@ ion-content {
         width: 18px;
         top: 0px;
     }
+
     .righticon {
         position: absolute;
         right: 10px;
@@ -441,9 +466,11 @@ ion-content {
 
 table {
     width: 100%;
+
     .right {
         text-align: right;
     }
+
     .left {
         text-align: left !important;
     }
@@ -524,9 +551,11 @@ table {
     display: inline-flex;
     padding: 0px;
     margin: 0px;
+
     .filter {
         font-size: 20px;
     }
+
     .filter-content {
         margin-top: 3px
     }
@@ -542,11 +571,13 @@ table {
         margin: 0;
         text-align: right;
     }
+
     ul {
         padding: 0;
         margin: 0;
         display: inline-flex;
         list-style: none;
+
         li {
             padding: 10px 20px;
             border: 1px solid #ededed;
@@ -556,6 +587,7 @@ table {
             float: right;
             display: none;
         }
+
         .show {
             display: block;
         }
@@ -564,21 +596,52 @@ table {
 
 .dashboard {
     table {
+
         thead,
         tbody {
             background: transparent !important;
             background-color: transparent !important;
-            border-bottom: 2px solid #cfcaab !important;
+
+            // border-bottom: 2px solid #cfcaab !important;
             tr {
                 background: transparent !important;
                 background-color: transparent !important;
-                border-bottom: 2px solid #cfcaab !important;
+                // border-bottom: 2px solid #cfcaab !important;
                 font-family: 'GlacialIndifference-Regular';
+
                 th {
                     background: transparent !important;
                     background-color: transparent !important;
                     border-right: 0px !important;
                 }
+
+                td {
+                    border-right: 0px !important;
+                    font-size: 18px !important
+                }
+            }
+        }
+    }
+
+    table {
+
+        thead {
+            background: transparent !important;
+            background-color: transparent !important;
+            // border-bottom: 2px solid #cfcaab !important;
+
+            tr {
+                background: rgba(255, 251, 214, 1) !important;
+                background-color: rgba(255, 251, 214, 1) !important;
+                // border-bottom: 2px solid #cfcaab !important;
+                font-family: 'GlacialIndifference-Regular';
+
+                th {
+                    background: transparent !important;
+                    background-color: transparent !important;
+                    border-right: 0px !important;
+                }
+
                 td {
                     border-right: 0px !important;
                     font-size: 18px !important
@@ -613,39 +676,96 @@ ion-segment {
 
 .background-image {
     width: 100px;
-    height: 94px;
-    border-radius: 10px;
+    height: 100px;
+    border-radius: 100px;
     overflow: hidden;
+    background-image: url('../../assets/img/refe 1.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    display: flex;
+    align-items: center;
+
     img {
         width: 100%;
+        margin: 0 auto;
+        border-radius: 100px;
     }
 }
-.ios{
-    .header-segment{
+
+.ios {
+    .header-segment {
         height: 40px;
-        ion-segment-button{
+
+        ion-segment-button {
             border-radius: 5px;
         }
     }
 }
 
-.height200{
-    height: 200px;
+.height200 {
+    height: 220px;
     overflow: hidden;
 }
-.heightAuto{
+
+.heightAuto {
     height: auto
 }
 
-.riceTypeName{
-    font-size: 19px; padding: 0px;margin: 0px;font-weight: bold;
+.riceTypeName {
+    font-size: 19px;
+    padding: 0px;
+    margin: 0px;
+    font-weight: bold;
 }
-.riceQualityName{
-    padding: 0px;margin: 0px;font-size: 12px;
+
+.riceQualityName {
+    padding: 0px;
+    margin: 0px;
+    font-size: 12px;
 }
-.bagSize{
+
+.bagSize {
     font-size: 13px !important;
 }
-.priceVal{
-    font-size: 13px !important; font-weight: bold;
+
+.priceVal {
+    font-size: 13px !important;
+    font-weight: bold;
+}
+
+.avatar {
+    height: 50px;
+    width: 50px;
+    background: #FFFBD6;
+    justify-content: center;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    border-radius: 100%;
+    font-size: 27px;
+    color: #92b243;
+    font-family: 'Poppins-SemiBold';
+}
+
+.convertButtonParent {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.riceCrop,
+.ricePrice {
+    font-size: 12px;
+    font-family: 'Poppins-SemiBold';
+    text-align: center;
+}
+
+.priceusd {
+    tr {
+        td {
+            border-right: 1px solid #ededed !important;
+        }
+    }
 }

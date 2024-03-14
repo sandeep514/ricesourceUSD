@@ -1,0 +1,217 @@
+<ion-content id="content">
+	<div style="margin-bottom: 100px;">
+		<div class="header-container">
+			<div class=""></div>
+			<div class="lightgreen">
+				<div style="margin-top: 0px;text-align: center;padding: 10px 0px;">
+					<ion-row style="margin: 0px 0px;">
+						<ion-col style="text-align: left;padding-left: 20px;" (click)="back()">
+							<ion-icon name="arrow-back-outline" style="font-size: 20px;"></ion-icon>
+						</ion-col>
+						<ion-col size="6" align="center">
+							<h4 style="padding: 0px;margin: 0px;">Trade Detail</h4>
+						</ion-col>
+						<ion-col>
+
+						</ion-col>
+					</ion-row>
+
+				</div>
+			</div>
+		</div>
+
+
+		<ion-row class="rice-gallery" *ngIf="tradeDetails != undefined && tradeDetails?.tradeType == 1">
+			<ion-col
+				style="padding: 0px 0px 15px 0px;background-color: #fffbd6;border-radius: 0px 0px 25px 25px;overflow: hidden;">
+				<ion-slides pager="false" [options]="slideOpts">
+					<ion-slide *ngIf="tradeDetails?.cooked_file != null"
+						style="width: 100%;padding: 15px;height: 200px;">
+						<img (click)="openModal(imageUrl+'uploads/'+tradeDetails?.cooked_file )"
+							src="{{ imageUrl }}uploads/{{ tradeDetails?.cooked_file }}" class="slide-image">
+					</ion-slide>
+					<ion-slide *ngIf="tradeDetails?.uncooked_file != null"
+						style="width: 100%;padding: 15px;height: 200px;">
+						<img (click)="openModal(imageUrl+'uploads/'+tradeDetails?.uncooked_file)"
+							src="{{ imageUrl }}uploads/{{ tradeDetails?.uncooked_file }}" class="slide-image">
+					</ion-slide>
+				</ion-slides>
+			</ion-col>
+		</ion-row>
+
+
+		<ng-container *ngIf="tradeDetails != undefined ">
+			<div style="padding: 12px 5px;">
+				<ion-row>
+					<ion-col>
+						<div class="title">
+							<p class="pt-0" style="font-size: 12px;">Valid Till: {{
+								generateDateForValid(tradeDetails?.created_at ,
+								tradeDetails?.validDays) }}</p>
+						</div>
+					</ion-col>
+				</ion-row>
+
+				<ion-row>
+					<ion-col>
+						<div class="title">
+							<p class=" pt-0" style="font-size: 16px;font-weight: bold;">
+								{{tradeDetails?.rice_name_data?.name }}
+								{{tradeDetails?.rice_form_milestone3?.name }}</p>
+						</div>
+					</ion-col>
+				</ion-row>
+
+				<ion-row>
+					<ion-col>
+						<div class="title">
+							<p class=" pt-0" style="font-size: 14px;">
+								{{tradeDetails?.rice_grade?.get_wand_type?.type}}
+								{{tradeDetails?.rice_grade?.value }} </p>
+						</div>
+					</ion-col>
+				</ion-row>
+
+				<ion-row *ngIf="tradeDetails?.tradeType == 1">
+					<ion-col>
+						<div class="title">
+							<p class=" pt-0" style="font-size: 16px;color: rgba(119, 154, 32, 1);font-weight: bold;">₹
+								{{tradeDetails?.offerPrice }} Price in Qtls (Ex. Factory) </p>
+						</div>
+					</ion-col>
+				</ion-row>
+
+
+				<ion-row>
+					<ion-col>
+						<div class="title">
+							<div class=" pt-0" style="display: flex;font-size: 14px;">
+								<p style="font-weight: bold;width: 40%;;">Packing</p>
+								<p> : {{ (tradeDetails?.tradeType == 2) ? tradeDetails?.rice_packing_buyer?.packing+'
+									'+tradeDetails?.rice_packing_buyer?.description :
+									tradeDetails?.rice_packing_seller?.description }} </p>
+							</div>
+						</div>
+					</ion-col>
+				</ion-row>
+
+
+				<ion-row>
+					<ion-col>
+						<div class="title">
+							<div class=" pt-0" style="display: flex;font-size: 14px;">
+								<p style="font-weight: bold;width: 40%;;">Quantity</p>
+								<p> : {{ tradeDetails?.quantity }} qtls </p>
+							</div>
+						</div>
+					</ion-col>
+				</ion-row>
+
+
+				<ion-row *ngIf="tradeDetails?.location && tradeDetails?.tradeType == 1">
+					<ion-col>
+						<div class="title">
+							<div class=" pt-0" style="display: flex;font-size: 14px;">
+								<p style="font-weight: bold;width: 40%;">Location</p>
+								<p> : {{ tradeDetails?.location }} </p>
+							</div>
+						</div>
+					</ion-col>
+				</ion-row>
+
+
+				<ion-row *ngIf="tradeDetails?.additioanlInfo">
+					<ion-col>
+						<div class="title">
+							<div class=" pt-0" style="display: flex;font-size: 14px;">
+								<p style="font-weight: bold;width: 40%;">Additional Info</p>
+								:
+								<ul style="padding: 0;margin: 0;list-style: none;">
+									<li *ngFor="let info of addInfo"> {{info}}</li>
+								</ul>
+							</div>
+						</div>
+					</ion-col>
+				</ion-row>
+			</div>
+
+
+			<div>
+				<ion-row style="padding: 10px 20px;" class="hide" id="showingInterest">
+					<ion-col>
+						<p>Thanks for showing your interest, Our team will contact you shortly.</p>
+					</ion-col>
+				</ion-row>
+
+				<ion-row style="padding: 10px 20px;" *ngIf="tradeDetails?.trade_interest">
+					<ion-col>
+						<p>Thanks for showing your interest, Our team will contact you shortly.</p>
+					</ion-col>
+				</ion-row>
+
+				<ion-row style="padding: 10px 20px;justify-content: center;" *ngIf="tradeDetails?.status == 1">
+					<ion-col size="6" class="interestedButton" *ngIf="!tradeDetails?.trade_interest"
+						(click)="userShowInterest(tradeDetails?.id , $event)">
+						<div>
+							<p>Interested</p>
+						</div>
+					</ion-col>
+					<ion-col size="6" class="callNowButton">
+						<div>
+							<p><a href="tel:+919877092004" class="contactuser"
+									style="text-decoration: none;color: #fff;">Call now</a>
+							</p>
+						</div>
+					</ion-col>
+				</ion-row>
+				<ion-row style="padding: 10px 20px;" *ngIf="tradeDetails?.status == 2">
+					<ion-col class="">
+						<div style="text-align: center;">
+							<img src="../../assets/STAMP EXPIRED.png" style="width: 200px;" />
+						</div>
+					</ion-col>
+				</ion-row>
+				<ion-row style="padding: 10px 20px;" *ngIf="tradeDetails?.status == 3">
+					<ion-col class="">
+						<div style="text-align: center;">
+							<img src="../../assets/STAMP SOLD.png" style="width: 200px;" />
+						</div>
+					</ion-col>
+				</ion-row>
+			</div>
+
+
+
+		</ng-container>
+
+		<!-- <ion-row class="ion-padding table-row padd-5" style="padding-top: 0px;">
+
+			<ion-col class="price-table dashboard">
+				<table class="table ">
+
+					<tbody>
+						<ng-container *ngFor="let list of spec | keyvalue">
+							<tr *ngFor="let listitems of list.value | keyvalue">
+								<td class="sticky-col first-col left pl-10"
+									style="font-family: 'Poppins-SemiBold';">
+									{{ listitems.key }}
+								</td>
+								<td class="type-columns pl-60" style="width:180px">
+									<div class="priceData " style="font-family: 'Poppins-Regular';">
+										{{ listitems.value }}
+									</div>
+								</td>
+							</tr>
+						</ng-container>
+					</tbody>
+
+				</table>
+			</ion-col>
+		</ion-row> -->
+	</div>
+
+</ion-content>
+<div>
+	<app-menu></app-menu>
+
+</div>

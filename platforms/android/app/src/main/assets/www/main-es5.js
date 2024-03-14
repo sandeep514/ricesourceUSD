@@ -117,7 +117,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
-    __webpack_exports__["default"] = "<ion-app>\n    <ion-split-pane contentId=\"main-content\">\n        <ion-menu contentId=\"main-content\" type=\"overlay\">\n            <ion-content class=\"menu-settings\">\n\t\t\t\t\n                <ion-row class=\"menu-header ion-no-padding\" (click)=\"showProfile()\">\n                    <ion-row style=\"width: 100%\">\n                        <ion-col style=\"text-align: right;\">\n                            <ion-label>V 2.0.18 </ion-label>\n                        </ion-col>\n                    </ion-row>\n\t\t\t\t\t<ion-col class=\"user-profile\">\n\t\t\t\t\t\t<img src=\"../assets/user.png\" class=\"user-icon\" /> <br/>\n\t\t\t\t\t\t<ion-label>Welcome {{ hasUser }}</ion-label>\n\t\t\t\t\t</ion-col>\n                </ion-row>\n                \n\t\t\t\t<ion-row>\n\t\t\t\t\t<ion-col>        \n                        <ion-item (click)=\"home()\">\n                            <ion-icon slot=\"start\" name=\"home-outline\"></ion-icon>\n                            <ion-label style=\"color: #616e7e !important;\">Home</ion-label>\n                        </ion-item>\n\n\t\t\t\t\t\t<ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\n\t\t\t\t\t\t\t<ion-item (click)=\"selectedIndex = i\" routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\" [class.selected]=\"selectedIndex == i\">\n\t\t\t\t\t\t\t\t<ion-icon slot=\"start\" [ios]=\"p.icon + '-outline'\" [md]=\"p.icon + '-sharp'\"></ion-icon>\n\t\t\t\t\t\t\t\t<ion-label>{{ p.title }}</ion-label>\n\t\t\t\t\t\t\t</ion-item>\n                        </ion-menu-toggle>\n\n                        <ion-item (click)=\"logout()\">\n                            <ion-icon slot=\"start\" name=\"lock-closed-outline\"></ion-icon>\n                            <ion-label style=\"color: #616e7e !important;\">Logout</ion-label>\n                        </ion-item>\n                        <ion-item (click)=\"deleteaccount()\" style=\"--background: red;--border-color: transparent\">\n                            <ion-icon slot=\"start\" name=\"lock-closed-outline\" style=\"color: #fff\"></ion-icon>\n                            <ion-label style=\"color: #fff !important;\">Delete Account</ion-label>\n                        </ion-item>\n\n                        <!-- <div style=\"--background: #92B243;width: 47%;--min-height: 40px;padding: 10px;background: #92B243;text-align: center;border-radius: 10px;\" *ngIf=\"appType == 'USD' \" (click)=\"goToUSD()\">\n                            <ion-label style=\"color: #fff !important;padding: 0;margin: 0;text-align: center;\">Switch to Rupee</ion-label>\n                        </div>\n\n                        <div style=\"--background: #92B243;width: 47%;--min-height: 40px;padding: 10px;background: #92B243;text-align: center;border-radius: 10px;\" *ngIf=\"appType != 'USD' \" (click)=\"goToUSD()\">\n                            <ion-label style=\"color: #fff !important;padding: 0;margin: 0;text-align: center;\">Switch to USD</ion-label>\n                        </div> -->\n\t\t\t\t\t</ion-col>\n                </ion-row>\n                \n                <!-- <ion-list id=\"inbox-list\">\n                    <ion-list-header>Inbox</ion-list-header>\n                    <ion-note>hi@ionicframework.com</ion-note>\n\n                    <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\n                        <ion-item (click)=\"selectedIndex = i\" routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\" [class.selected]=\"selectedIndex == i\">\n                            <ion-icon slot=\"start\" [ios]=\"p.icon + '-outline'\" [md]=\"p.icon + '-sharp'\"></ion-icon>\n                            <ion-label>{{ p.title }}</ion-label>\n                        </ion-item>\n                    </ion-menu-toggle>\n                </ion-list> -->\n\n                <!-- <ion-list id=\"labels-list\">\n                    <ion-list-header>Labels</ion-list-header>\n\n                    <ion-item *ngFor=\"let label of labels\" lines=\"none\">\n                        <ion-icon slot=\"start\" ios=\"bookmark-outline\" md=\"bookmark-sharp\"></ion-icon>\n                        <ion-label>{{ label }}</ion-label>\n                    </ion-item>\n                </ion-list> -->\n            </ion-content>\n        </ion-menu>\n        <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n    </ion-split-pane>\n</ion-app>";
+    __webpack_exports__["default"] = "<ion-app>\n    <ion-split-pane contentId=\"main-content\">\n        <ion-menu contentId=\"main-content\" type=\"overlay\">\n            <ion-content class=\"menu-settings\"\n                style=\"background-color: rgba(255, 251, 214, 1);background: rgba(255, 251, 214, 1);--background: rgba(255, 251, 214, 1);\">\n\n                <ion-row class=\"menu-header ion-no-padding green\" (click)=\"showProfile()\" style=\"height: 150px\">\n                    <ion-col class=\"user-profile\" size=\"8\" style=\"margin-top: 40px;padding-left: 20px;\">\n                        <ion-row>\n                            <ion-col size=\"5\">\n                                <div>\n                                    <img src=\"../assets/logo.png\" class=\"user-icon\"\n                                        style=\"width: 60px;float: left;margin-right: 20px;margin-top: 0px;\" />\n                                </div>\n                            </ion-col>\n                            <ion-col size=\"7\">\n                                <div>\n                                    <img src=\"../assets/img/Vector.png\" class=\"user-icon\"\n                                        style=\"width: 100%;float: left;margin-right: 20px;margin-top: 15px;\" />\n                                </div>\n                            </ion-col>\n\n                        </ion-row>\n                    </ion-col>\n                    <ion-col size=\"4\" style=\"margin-top: 40px;\">\n                        <img src=\"../assets/img/Group.png\" class=\"user-icon\"\n                            style=\"width: 100px;float: right;margin-top: 0px;\" />\n                    </ion-col>\n\n                    <div class=\"waveheader\">\n                        <svg class=\"waves\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n                            viewBox=\"0 24 150 28\" preserveAspectRatio=\"none\" shape-rendering=\"auto\">\n                            <defs>\n                                <path id=\"gentle-wave\"\n                                    d=\"M-160 44c30 40 28-18 70-18s 58 18 98 18 58-18 88-18 58 18 88 18 v44h-352z\" />\n                            </defs>\n                            <g class=\"parallax\">\n                                <use xlink:href=\"#gentle-wave\" x=\"98\" y=\"0\" fill=\"rgba(255,255,255,0.7\" />\n                                <use xlink:href=\"#gentle-wave\" x=\"98\" y=\"3\" fill=\"rgba(255, 251, 214, 1)\" />\n                            </g>\n                        </svg>\n\n                    </div>\n                </ion-row>\n                <!-- <ion-row class=\"menu-header ion-no-padding\" (click)=\"showProfile()\"> -->\n                <!-- <ion-row style=\"width: 100%\">\n                        <ion-col style=\"text-align: right;\">\n                            <ion-label>V 2.0.18 </ion-label>\n                        </ion-col>\n                    </ion-row> -->\n                <!-- <ion-col class=\"user-profile\">\n\t\t\t\t\t\t<img src=\"../assets/user.png\" class=\"user-icon\" /> <br/>\n\t\t\t\t\t\t<ion-label>Welcome {{ hasUser }}</ion-label>\n\t\t\t\t\t</ion-col> -->\n                <!-- </ion-row> -->\n\n                <ion-row style=\"margin-top: 20px;\">\n                    <ion-col size=\"4\">\n                        <div\n                            style=\"width: 70px;height: 70px;border-radius: 100%;overflow: hidden;background: #92b243;display: flex;justify-content: center;align-items: center;\">\n                            <div>\n                                <p style=\"color: #fff;font-size: 30px;\">{{ hasUser.charAt(0) }}</p>\n                            </div>\n                        </div>\n                    </ion-col>\n                    <ion-col size=\"8\" style=\"align-self: center;\">\n                        <div>\n                            <h3 style=\"padding: 0px;margin: 0px;color: rgba(145, 178, 67, 1);font-size: 14px;\">Welcome\n                            </h3>\n                            <h3 style=\"padding: 0px;margin: 0px;font-size: 18px;\">{{ hasUser }} </h3>\n                        </div>\n                    </ion-col>\n                </ion-row>\n\n                <ion-row>\n                    <ion-col>\n                        <ion-item (click)=\"home()\"\n                            style=\"--background: rgba(255, 251, 214, 1) !important;background: rgba(255, 251, 214, 1) !important;\">\n                            <ion-icon src=\"../assets/sidemenu/home.svg\" color=\"primary\"\n                                style=\"margin-right: 20px;\"></ion-icon>\n                            <ion-label style=\"color: #616e7e !important;\">Home</ion-label>\n                        </ion-item>\n                        <ion-item (click)=\"port()\" *ngIf=\"appType =='OTHER' \"\n                            style=\"--background: rgba(255, 251, 214, 1) !important;background: rgba(255, 251, 214, 1) !important;\">\n                            <ion-icon src=\"../assets/sidemenu/home.svg\" color=\"primary\"\n                                style=\"margin-right: 20px;\"></ion-icon>\n                            <ion-label style=\"color: #616e7e !important;\">Transport</ion-label>\n                        </ion-item>\n\n                        <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\n                            <ion-item (click)=\"selectedIndex = i\" routerDirection=\"root\" [routerLink]=\"[p.url]\"\n                                lines=\"none\" detail=\"false\" [class.selected]=\"selectedIndex == i\"\n                                style=\"--background: rgba(255, 251, 214, 1) !important;background: rgba(255, 251, 214, 1) !important;\">\n                                <!-- <img src=\"../assets/sidemenu/{{p.icon}}\" alt=\"\"> -->\n                                <ion-icon src=\"../assets/sidemenu/{{p.icon}}\"\n                                    style=\"color: #000;fill: #000;\"></ion-icon>\n                                <ion-label>{{ p.title }}</ion-label>\n                            </ion-item>\n                        </ion-menu-toggle>\n\n                        <ion-item (click)=\"logout()\"\n                            style=\"--background: rgba(255, 251, 214, 1) !important;background: rgba(255, 251, 214, 1) !important;\">\n                            <ion-icon slot=\"start\" name=\"lock-closed-outline\"\n                                style=\"margin-right: 20px;color: #000;\"></ion-icon>\n                            <ion-label style=\"color: #616e7e !important;\">Logout</ion-label>\n                        </ion-item>\n                        <ion-item (click)=\"deleteaccount()\" style=\"--background: red;--border-color: transparent\">\n                            <ion-icon slot=\"start\" name=\"lock-closed-outline\" style=\"color: #fff\"></ion-icon>\n                            <ion-label style=\"color: #fff !important;\">Delete Account</ion-label>\n                        </ion-item>\n\n                        <!-- <div style=\"--background: #92B243;width: 47%;--min-height: 40px;padding: 10px;background: #92B243;text-align: center;border-radius: 10px;\" *ngIf=\"appType == 'USD' \" (click)=\"goToUSD()\">\n                            <ion-label style=\"color: #fff !important;padding: 0;margin: 0;text-align: center;\">Switch to Rupee</ion-label>\n                        </div>\n\n                        <div style=\"--background: #92B243;width: 47%;--min-height: 40px;padding: 10px;background: #92B243;text-align: center;border-radius: 10px;\" *ngIf=\"appType != 'USD' \" (click)=\"goToUSD()\">\n                            <ion-label style=\"color: #fff !important;padding: 0;margin: 0;text-align: center;\">Switch to USD</ion-label>\n                        </div> -->\n                    </ion-col>\n                </ion-row>\n\n                <!-- <ion-list id=\"inbox-list\">\n                    <ion-list-header>Inbox</ion-list-header>\n                    <ion-note>hi@ionicframework.com</ion-note>\n\n                    <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of appPages; let i = index\">\n                        <ion-item (click)=\"selectedIndex = i\" routerDirection=\"root\" [routerLink]=\"[p.url]\" lines=\"none\" detail=\"false\" [class.selected]=\"selectedIndex == i\">\n                            <ion-icon slot=\"start\" [ios]=\"p.icon + '-outline'\" [md]=\"p.icon + '-sharp'\"></ion-icon>\n                            <ion-label>{{ p.title }}</ion-label>\n                        </ion-item>\n                    </ion-menu-toggle>\n                </ion-list> -->\n\n                <!-- <ion-list id=\"labels-list\">\n                    <ion-list-header>Labels</ion-list-header>\n\n                    <ion-item *ngFor=\"let label of labels\" lines=\"none\">\n                        <ion-icon slot=\"start\" ios=\"bookmark-outline\" md=\"bookmark-sharp\"></ion-icon>\n                        <ion-label>{{ label }}</ion-label>\n                    </ion-item>\n                </ion-list> -->\n            </ion-content>\n        </ion-menu>\n        <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n    </ion-split-pane>\n</ion-app>";
 
     /***/
   },
@@ -154,6 +154,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /***/
   },
 
+  /***/"./node_modules/raw-loader/dist/cjs.js!./src/app/loader-component/loader-component.page.html":
+  /*!***************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/loader-component/loader-component.page.html ***!
+    \***************************************************************************************************/
+  /*! exports provided: default */
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppLoaderComponentLoaderComponentPageHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+    __webpack_exports__["default"] = "<ion-content>\n  <p>hello</p>\n</ion-content>";
+
+    /***/
+  },
+
   /***/"./node_modules/raw-loader/dist/cjs.js!./src/app/mill-status/mill-status.component.html":
   /*!**********************************************************************************************!*\
     !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/mill-status/mill-status.component.html ***!
@@ -181,7 +197,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
-    __webpack_exports__["default"] = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-buttons slot=\"start\" style=\"color: #fff \" (click)='openModel()'>\n\t\t\t<img src=\"../../assets/menu/whitemenu.png\" style=\"width: 25px;margin-left: 10px;\" />\n\t\t\t  <!-- Menu -->\n\t\t</ion-buttons>\n\n\t\t<ion-title>Available Plans</ion-title>\n\n\t\t<ion-buttons slot=\"end\" (click)=\"closeme()\">\n\t\t\t<a href=\"javascript:void(0);\" style=\"color:black;text-decoration: none;padding-right: 10px;color: #FFFBD6 ;\">Back</a>\n\t\t</ion-buttons>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content class=\"lightgreen\">\n\n\t<!-- <div *ngFor=\"let plan of listPlans | keyvalue\">\n\t\t<div>\n\t\t\t<h2 class=\"planName green font-lightgreen\" >{{ plan.key }}</h2>\n\t\t\t<ion-row>\n\t\t\t\t<ion-col size=\"4\" size-md *ngFor=\"let subPlan of plan.value.SubPlan | keyvalue\">\n\n\t\t\t\t\t<h5 class=\"planName font-darkgreen\">{{ subPlan.value.data.name }}</h5>\n\t\t\t\t\t<div class=\"price green\">\n\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-bottom: 0; margin-bottom: 0;text-decoration: line-through\">₨ {{ subPlan.value.price.actualPrice }}</h5>\n\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-top: 0; margin-top: 0;font-weight: 600;margin-bottom: 0px;\">₨ {{ subPlan.value.price.offerPrice }}</h5>\n\t\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t\t<p class=\"font-darkgreen\" style=\"font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;\">Launch Offer</p>\n\t\t\t\t\t<p style=\"text-align: center;padding-top: 0;margin-top: 0;\" class=\"font-darkgreen\">\n\t\t\t\t\t\t<small style=\"font-size: 100%;\">Save {{ floatingTwo(subPlan.value.price.offerPrice , subPlan.value.price.actualPrice) }}%</small>\n\t\t\t\t\t</p>\n\t\t\t\t\t{{ getSplitsValue( subPlan.value.price.feature ) }}\n\t\t\t\t\t\n\t\t\t\t\t<div class=\"benefits\">\n\t\t\t\t\t\t<p>Benefits</p>\n\t\t\t\t\t\t<p *ngFor=\"let featureSpl of featureSplit\" style=\"margin-bottom: 0;font-size: 13px;margin-top: 3px;\">\n\t\t\t\t\t\t\t{{ featureSpl }}\n\t\t\t\t\t\t</p>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<ion-button class=\"buynow\" fill=\"outline\" (click)=\"buynow( plan.value.plan.id , subPlan.value.data.id ,subPlan.value.price )\">Subscribe</ion-button>\n\t\t\t\t</ion-col>\n\t\t\t</ion-row>\n\t\t</div>\n\t</div> -->\n\n\t<div >\n\t\t<div>\n\t\t\t<ion-row style=\"padding: 0px 10px\">\n\t\t\t\t<ion-row style=\"width: 100%;\" >\n\t\t\t\t\t<ion-col size=\"8\"></ion-col>\n\t\t\t\t\t<ng-container *ngIf=\"showScreenshotStatus == 0\">\n\t\t\t\t\t\t<ion-col size=\"4\">\n\t\t\t\t\t\t\t<p (click)=\"showScreenshot()\" style=\"padding: 10px;background: #92b243;color: white;border-radius: 10px;width: 100%;text-align: center;font-size: 20px;\n\t\t\t\t\t\t\tfont-weight: bold;\">Demo</p>\n\t\t\t\t\t\t</ion-col>\n\t\t\t\t\t</ng-container>\n\n\t\t\t\t\t<ng-container *ngIf=\"showScreenshotStatus == 1\">\n\t\t\t\t\t\t<ion-col size=\"4\" >\n\t\t\t\t\t\t\t<p (click)=\"showScreenshot()\" style=\"padding: 10px;background: #92b243;color: white;border-radius: 10px;width: 100%;text-align: center;font-size: 20px;\n\t\t\t\t\t\t\tfont-weight: bold;\">Back</p>\n\t\t\t\t\t\t</ion-col>\t\n\t\t\t\t\t</ng-container>\n\t\t\t\t</ion-row>\n\n\t\t\t\t<ng-container  *ngIf=\"showScreenshotStatus == 1\">\n\t\t\t\t\t<div style=\"position: absolute;top: 36%;left: 16px;font-size: 25px;z-index: 2;\" (click)=\"slidePrev()\">\n\t\t\t\t\t\t<ion-icon name=\"arrow-back\" style=\"font-size: 30px\" > </ion-icon>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div style=\"position: absolute;top: 36%;right: 16px;font-size: 25px;z-index: 2;\" (click)=\"slideNext()\">\n\t\t\t\t\t\t<ion-icon name=\"arrow-forward\" style=\"font-size: 30px\" > </ion-icon>\n\t\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t\t<ion-slides pager=\"true\" [options]=\"slideOpts\" style=\"height: auto;\" #slides>\n\t\t\t\t\t\t<ion-slide style=\"width: 260px;margin-right: 1px;height: 485px;\">\n\t\t\t\t\t\t\t<img src=\"../../assets/img/demo/prices.png\" style=\"width: 80%\"/>\n\t\t\t\t\t\t</ion-slide>\n\n\t\t\t\t\t\t<ion-slide style=\"width: 260px;margin-right: 1px;height: 485px;\">\n\t\t\t\t\t\t\t<img src=\"../../assets/img/demo/ocean.png\" style=\"width: 80%\"/>\n\t\t\t\t\t\t</ion-slide>\n\t\t\t\t\t\t\n\t\t\t\t\t\t<ion-slide style=\"width: 260px;margin-right: 1px;height: 485px;\">\n\t\t\t\t\t\t\t<img src=\"../../assets/img/demo/detail.png\" style=\"width: 80%\"/>\n\t\t\t\t\t\t</ion-slide>\n\n\t\t\t\t\t\t<ion-slide style=\"width: 260px;margin-right: 1px;height: 485px;\">\n\t\t\t\t\t\t\t<img src=\"../../assets/img/demo/buyquery.png\" style=\"width: 80%\"/>\n\t\t\t\t\t\t</ion-slide>\n\n\t\t\t\t\t\t<ion-slide style=\"width: 260px;margin-right: 1px;height: 485px;\">\n\t\t\t\t\t\t\t<img src=\"../../assets/img/demo/calculator.png\" style=\"width: 80%\"/>\n\t\t\t\t\t\t</ion-slide>\n\t\t\t\t\t\t\n\t\t\t\t\t\t<ion-slide style=\"width: 260px;margin-right: 1px;height: 485px;\">\n\t\t\t\t\t\t\t<img src=\"../../assets/img/demo/bids.png\" style=\"width: 80%\"/>\n\t\t\t\t\t\t</ion-slide>\n\n\t\t\t\t\t\t<ion-slide style=\"width: 260px;margin-right: 1px;height: 485px;\">\n\t\t\t\t\t\t\t<img src=\"../../assets/img/demo/hotdeals.png\" style=\"width: 80%\"/>\n\t\t\t\t\t\t</ion-slide>\n\t\t\t\t\t\t\n\t\t\t\t\t\t<ion-slide style=\"width: 260px;margin-right: 1px;height: 485px;\">\n\t\t\t\t\t\t\t<img src=\"../../assets/img/demo/otherservices.png\" style=\"width: 80%\"/>\n\t\t\t\t\t\t</ion-slide>\n\t\t\t\t\t</ion-slides>\n\t\t\t\t</ng-container>\n\t\t\t\t<!-- <p class=\"font-darkgreen\" style=\"font-size: 18px;text-align: center;padding-bottom: 0;margin-bottom: 10px;padding: 0 10px; \">This is a paid Service, But Relax you can access this by subscribing Following Plan.</p> -->\n\n\t\t\t\t<ion-row style=\"width: 100%;text-align: center;\" *ngIf=\"showTrialPeriod == true\">\n\t\t\t\t\t<ion-col>\n\t\t\t\t\t\tUse 30 days free trial period <button style=\"background: #92b245;padding: 10px 12px;border-radius: 20px;font-size: 17px;width: auto;text-transform: capitalize;\" (click)=\"startTrial()\">Activate Now</button>\n\t\t\t\t\t</ion-col>\n\t\t\t\t</ion-row>\n\n\t\t\t\t<ion-row style=\"width: 100%;justify-content: center;\" *ngIf=\"isUSDRoleAvailable != true\">\n\t\t\t\t\t<ion-col size=\"6\" size-md *ngFor=\"let plan of listUSDPlans\" >\n\t\t\t\t\t\t<div style=\"border: 1px solid #92B242;border-radius: 10px;overflow: hidden;\" [class.activeCurrentPlan]=\"selectedPlanId == plan.id\" (click)=\"updateSelectedPlan(plan)\">\n\t\t\t\t\t\t\t<h2 class=\"planName green font-lightgreen\"  style=\"text-transform: uppercase;padding: 0;margin: 0px 0px;\n\t\t\t\t\t\t\tpadding: 7px;\">{{ plan.plan_name }}</h2>\n\t\t\t\t\t\t\t<h5 class=\"planName font-darkgreen\"></h5>\n\t\n\t\t\t\t\t\t\t<div class=\"price green\" style=\"padding: 7px 0px\">\n\t\t\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-bottom: 0; margin-bottom: 0;text-decoration: line-through;padding: 0;margin: 0px\">\n\t\t\t\t\t\t\t\t\t₨ {{ plan.actual_price }}\n\t\t\t\t\t\t\t\t</h5>\n\t\t\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-top: 0;margin-top: 0;font-weight: 600;margin-bottom: 0px;\">\n\t\t\t\t\t\t\t\t\t₨ {{ plan.discounted_prie }}\n\t\t\t\t\t\t\t\t</h5>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<p style=\"text-align: center;padding-top: 0;margin-top: 0;padding: 0 10px;\" class=\"font-darkgreen\">\n\t\t\t\t\t\t\t\t<small style=\"font-size: 14px;\">{{ plan.plan_desc }}</small>\n\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t<!-- <p class=\"font-darkgreen\" style=\"font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;\">Launch Offer</p> -->\n\t\t\t\t\t\t\t<!-- <p style=\"text-align: center;padding-top: 0;margin-top: 0;\" class=\"font-darkgreen\">\n\t\t\t\t\t\t\t\t<small style=\"font-size: 100%;\">Valid for: {{plan.valid_months}} Months</small>\n\t\t\t\t\t\t\t</p> -->\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ion-col>\n\t\n\t\t\t\t</ion-row>\n\n\t\t\t\t<ion-row style=\"width: 100%;justify-content: center;\" *ngIf=\"isUSDRoleAvailable == true\">\n\t\t\t\t\t<ion-col size=\"6\" size-md *ngFor=\"let plan of listUSDPlans\" >\n\t\t\t\t\t\t<div style=\"border: 1px solid #92B242;border-radius: 10px;overflow: hidden;\" [class.activeCurrentPlan]=\"selectedPlanId == plan.id\" (click)=\"updateSelectedPlan(plan)\">\n\t\t\t\t\t\t\t<h2 class=\"planName green font-lightgreen\"  style=\"text-transform: uppercase;padding: 0;margin: 0px 0px;\n\t\t\t\t\t\t\tpadding: 7px;\">{{ plan.plan_name }}</h2>\n\t\t\t\t\t\t\t<h5 class=\"planName font-darkgreen\"></h5>\n\t\n\t\t\t\t\t\t\t<div class=\"price green\" style=\"padding: 7px 0px\">\n\t\t\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-bottom: 0; margin-bottom: 0;text-decoration: line-through;padding: 0;margin: 0px\">\n\t\t\t\t\t\t\t\t\t${{ plan.actual_price_usd }}\n\t\t\t\t\t\t\t\t</h5>\n\t\t\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-top: 0;margin-top: 0;font-weight: 600;margin-bottom: 0px;\">\n\t\t\t\t\t\t\t\t\t${{ plan.discounted_price_usd }}\n\t\t\t\t\t\t\t\t</h5>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<p style=\"text-align: center;padding-top: 0;margin-top: 0;padding: 0 10px;\" class=\"font-darkgreen\">\n\t\t\t\t\t\t\t\t<small style=\"font-size: 14px;\">{{ plan.plan_desc }}</small>\n\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t<!-- <p class=\"font-darkgreen\" style=\"font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;\">Launch Offer</p> -->\n\t\t\t\t\t\t\t<!-- <p style=\"text-align: center;padding-top: 0;margin-top: 0;\" class=\"font-darkgreen\">\n\t\t\t\t\t\t\t\t<small style=\"font-size: 100%;\">Valid for: {{plan.valid_months}} Months</small>\n\t\t\t\t\t\t\t</p> -->\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ion-col>\n\t\n\t\t\t\t</ion-row>\n\n\t\t\t</ion-row>\n\t\t\t\n\t\t\t<p style=\"text-align: center; font-size: 12px; padding: 0; margin: 0; color: #92b243; font-weight: bold;\">*Inclusive of GST</p>\n\n\t\t\t<div>\n\t\t\t\t<ul style=\"list-style: none;\" *ngIf=\"isUSDRoleAvailable != true\" >\n\t\t\t\t\t<li style=\"float: left;width: 70%;text-align: right;margin-top: 5px;\">Total in INR: </li>\n\t\t\t\t\t<li style=\"width: 30%;float: left;\"><h2 style=\"text-align: right;margin-right: 20px; padding: 0;margin: 0;margin-left: 10px;text-align: left;\">₹{{ selectedPlanDiscountedAmountINR }}</h2></li>\n\t\t\t\t</ul>\n\t\t\t\t<ul style=\"list-style: none;\" *ngIf=\"isUSDRoleAvailable == true\">\n\t\t\t\t\t<li style=\"float: left;width: 70%;text-align: right;margin-top: 5px;\">Total in USD: </li>\n\t\t\t\t\t<li style=\"width: 30%;float: left;\"><h2 style=\"text-align: right;margin-right: 20px; padding: 0;margin: 0;margin-left: 10px;text-align: left;\">${{ selectedPlanDiscountedAmountUSD }}</h2></li>\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t\t<div class=\"testing\"></div>\n\t\t\t\n\t\t\t<ion-button *ngIf=\"isDomesticRoleAvailable == true && isUSDRoleAvailable != true\"  fill=\"outline\" (click)=\"buynow( )\" style=\"background-color: #fff;--background-color: #fff;min-height: 43px;margin: 10px 6px;\">\n\t\t\t\t<img src=\"../../assets/rzp-logo-positive-padding.png\" style=\"width: 50%\" />\n\t\t\t</ion-button>\n\t\t\t<!-- <ion-button class=\"buynow\" fill=\"outline\" (click)=\"buynow( plan )\" style=\"width: 40%;float: left;\"><img src=\"../../assets/rzp-logo-positive-padding.png\" /></ion-button> -->\n\t\t\t<ng-container *ngIf=\"isUSDRoleAvailable == true\">\n\t\t\t\t<ion-button #stripeButton style=\"width: 1px;padding: 0;margin: 0px;height: 0px;\"></ion-button>\n\n\t\t\t\t<ion-card class=\"welcome-card\">\n\t\t\t\t\t<ion-img src=\"../../assets/png-clipart-earring-necklace-gemstone-logo-glass-visa-logo-gemstone-glass-removebg-preview.png\"></ion-img>\n\t\t\t\t\t<ion-card-header>\n\t\t\t\t\t  <ion-card-subtitle>SNTC</ion-card-subtitle>\n\t\t\t\t\t<ion-card-title></ion-card-title>\n\t\t\t\t\t  <ion-row>\n\t\t\t\t\t\t<ion-col>Total Payment</ion-col>\n\t\t\t\t\t\t<ion-col> {{currencyIcon}}{{ selectedPlanDiscountedAmountUSD }} </ion-col>\n\t\t\t\t\t  </ion-row>\n\t\t\t\t\t</ion-card-header>\n\t\t\t\t\t<ion-card-content>\n\t\t\t\t\t  <form action=\"/\" method=\"post\" id=\"payment-form\">\n\t\t\t\t\t\t<div class=\"form-row\">\n\t\t\t\t\t\t  <div id=\"card-element\"> <!-- a Stripe Element will be inserted here. --> </div>\n\t\t\t\t\t\t  <!-- Used to display Element errors -->\n\t\t\t\t\t\t  \n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<ion-button type=\"submit\" color=\"success\" expand=\"full\">Make Payment</ion-button>\n\t\t\t\t\t\t<div id=\"card-errors\" role=\"alert\" style=\"color: red;\"></div>\n\t\t\t\t\t  </form>\n\t\t\t\t\t</ion-card-content>\n\t\t\t\t  </ion-card>\n\t\n\t\t\t</ng-container>\n\t\t\t\n\n\t\t\t<p style=\"font-size: 0px\">{{ isUSDRoleAvailable }}</p>\t\t\t\n\t\t</div>\n\t</div>\n\n\t\n\n\t\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header>\n\t<ion-toolbar>\n\t\t<ion-buttons slot=\"start\" style=\"color: #fff \" (click)='openModel()'>\n\t\t\t<img src=\"../../assets/menu/whitemenu.png\" style=\"width: 25px;margin-left: 10px;\" />\n\t\t\t<!-- Menu -->\n\t\t</ion-buttons>\n\n\t\t<ion-title>Available Plans</ion-title>\n\n\t\t<ion-buttons slot=\"end\" (click)=\"closeme()\">\n\t\t\t<a href=\"javascript:void(0);\"\n\t\t\t\tstyle=\"color:black;text-decoration: none;padding-right: 10px;color: #FFFBD6 ;\">Back</a>\n\t\t</ion-buttons>\n\t</ion-toolbar>\n</ion-header>\n\n<ion-content class=\"\">\n\n\t<!-- <div *ngFor=\"let plan of listPlans | keyvalue\">\n\t\t<div>\n\t\t\t<h2 class=\"planName green font-lightgreen\" >{{ plan.key }}</h2>\n\t\t\t<ion-row>\n\t\t\t\t<ion-col size=\"4\" size-md *ngFor=\"let subPlan of plan.value.SubPlan | keyvalue\">\n\n\t\t\t\t\t<h5 class=\"planName font-darkgreen\">{{ subPlan.value.data.name }}</h5>\n\t\t\t\t\t<div class=\"price green\">\n\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-bottom: 0; margin-bottom: 0;text-decoration: line-through\">₨ {{ subPlan.value.price.actualPrice }}</h5>\n\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\" style=\"padding-top: 0; margin-top: 0;font-weight: 600;margin-bottom: 0px;\">₨ {{ subPlan.value.price.offerPrice }}</h5>\n\t\t\t\t\t</div>\n\t\t\t\t\t\n\t\t\t\t\t<p class=\"font-darkgreen\" style=\"font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;\">Launch Offer</p>\n\t\t\t\t\t<p style=\"text-align: center;padding-top: 0;margin-top: 0;\" class=\"font-darkgreen\">\n\t\t\t\t\t\t<small style=\"font-size: 100%;\">Save {{ floatingTwo(subPlan.value.price.offerPrice , subPlan.value.price.actualPrice) }}%</small>\n\t\t\t\t\t</p>\n\t\t\t\t\t{{ getSplitsValue( subPlan.value.price.feature ) }}\n\t\t\t\t\t\n\t\t\t\t\t<div class=\"benefits\">\n\t\t\t\t\t\t<p>Benefits</p>\n\t\t\t\t\t\t<p *ngFor=\"let featureSpl of featureSplit\" style=\"margin-bottom: 0;font-size: 13px;margin-top: 3px;\">\n\t\t\t\t\t\t\t{{ featureSpl }}\n\t\t\t\t\t\t</p>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<ion-button class=\"buynow\" fill=\"outline\" (click)=\"buynow( plan.value.plan.id , subPlan.value.data.id ,subPlan.value.price )\">Subscribe</ion-button>\n\t\t\t\t</ion-col>\n\t\t\t</ion-row>\n\t\t</div>\n\t</div> -->\n\n\t<div>\n\t\t<div>\n\t\t\t<ion-row style=\"padding: 0px 10px\">\n\t\t\t\t<ion-row style=\"width: 100%;\">\n\t\t\t\t\t<ion-col size=\"8\"></ion-col>\n\t\t\t\t\t<ng-container *ngIf=\"showScreenshotStatus == 0\">\n\t\t\t\t\t\t<ion-col size=\"4\">\n\t\t\t\t\t\t\t<p (click)=\"showScreenshot()\" style=\"padding: 10px;background: #92b243;color: white;border-radius: 10px;width: 100%;text-align: center;font-size: 20px;\n\t\t\t\t\t\t\tfont-weight: bold;\">Demo</p>\n\t\t\t\t\t\t</ion-col>\n\t\t\t\t\t</ng-container>\n\n\t\t\t\t\t<ng-container *ngIf=\"showScreenshotStatus == 1\">\n\t\t\t\t\t\t<ion-col size=\"4\">\n\t\t\t\t\t\t\t<p (click)=\"showScreenshot()\" style=\"padding: 10px;background: #92b243;color: white;border-radius: 10px;width: 100%;text-align: center;font-size: 20px;\n\t\t\t\t\t\t\tfont-weight: bold;\">Back</p>\n\t\t\t\t\t\t</ion-col>\n\t\t\t\t\t</ng-container>\n\t\t\t\t</ion-row>\n\n\t\t\t\t<ng-container *ngIf=\"showScreenshotStatus == 1\">\n\t\t\t\t\t<div style=\"position: absolute;top: 36%;left: 16px;font-size: 25px;z-index: 2;\"\n\t\t\t\t\t\t(click)=\"slidePrev()\">\n\t\t\t\t\t\t<ion-icon name=\"arrow-back\" style=\"font-size: 30px\"> </ion-icon>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div style=\"position: absolute;top: 36%;right: 16px;font-size: 25px;z-index: 2;\"\n\t\t\t\t\t\t(click)=\"slideNext()\">\n\t\t\t\t\t\t<ion-icon name=\"arrow-forward\" style=\"font-size: 30px\"> </ion-icon>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<ion-slides pager=\"true\" [options]=\"slideOpts\" style=\"height: auto;\" #slides>\n\t\t\t\t\t\t<ion-slide style=\"width: 260px;margin-right: 1px;height: 485px;\">\n\t\t\t\t\t\t\t<img src=\"../../assets/img/demo/prices.png\" style=\"width: 80%\" />\n\t\t\t\t\t\t</ion-slide>\n\n\t\t\t\t\t\t<ion-slide style=\"width: 260px;margin-right: 1px;height: 485px;\">\n\t\t\t\t\t\t\t<img src=\"../../assets/img/demo/ocean.png\" style=\"width: 80%\" />\n\t\t\t\t\t\t</ion-slide>\n\n\t\t\t\t\t\t<ion-slide style=\"width: 260px;margin-right: 1px;height: 485px;\">\n\t\t\t\t\t\t\t<img src=\"../../assets/img/demo/detail.png\" style=\"width: 80%\" />\n\t\t\t\t\t\t</ion-slide>\n\n\t\t\t\t\t\t<ion-slide style=\"width: 260px;margin-right: 1px;height: 485px;\">\n\t\t\t\t\t\t\t<img src=\"../../assets/img/demo/buyquery.png\" style=\"width: 80%\" />\n\t\t\t\t\t\t</ion-slide>\n\n\t\t\t\t\t\t<ion-slide style=\"width: 260px;margin-right: 1px;height: 485px;\">\n\t\t\t\t\t\t\t<img src=\"../../assets/img/demo/calculator.png\" style=\"width: 80%\" />\n\t\t\t\t\t\t</ion-slide>\n\n\t\t\t\t\t\t<ion-slide style=\"width: 260px;margin-right: 1px;height: 485px;\">\n\t\t\t\t\t\t\t<img src=\"../../assets/img/demo/bids.png\" style=\"width: 80%\" />\n\t\t\t\t\t\t</ion-slide>\n\n\t\t\t\t\t\t<ion-slide style=\"width: 260px;margin-right: 1px;height: 485px;\">\n\t\t\t\t\t\t\t<img src=\"../../assets/img/demo/hotdeals.png\" style=\"width: 80%\" />\n\t\t\t\t\t\t</ion-slide>\n\n\t\t\t\t\t\t<ion-slide style=\"width: 260px;margin-right: 1px;height: 485px;\">\n\t\t\t\t\t\t\t<img src=\"../../assets/img/demo/otherservices.png\" style=\"width: 80%\" />\n\t\t\t\t\t\t</ion-slide>\n\t\t\t\t\t</ion-slides>\n\t\t\t\t</ng-container>\n\t\t\t\t<!-- <p class=\"font-darkgreen\" style=\"font-size: 18px;text-align: center;padding-bottom: 0;margin-bottom: 10px;padding: 0 10px; \">This is a paid Service, But Relax you can access this by subscribing Following Plan.</p> -->\n\n\t\t\t\t<ion-row style=\"width: 100%;text-align: center;\" *ngIf=\"showTrialPeriod == true\">\n\t\t\t\t\t<ion-col>\n\t\t\t\t\t\tUse 30 days free trial period <button\n\t\t\t\t\t\t\tstyle=\"background: #92b245;padding: 10px 12px;border-radius: 20px;font-size: 17px;width: auto;text-transform: capitalize;\"\n\t\t\t\t\t\t\t(click)=\"startTrial()\">Activate Now</button>\n\t\t\t\t\t</ion-col>\n\t\t\t\t</ion-row>\n\n\t\t\t\t<ion-row style=\"width: 100%;justify-content: center;\" *ngIf=\"isUSDRoleAvailable != true\">\n\t\t\t\t\t<ion-col size=\"6\" size-md *ngFor=\"let plan of listUSDPlans\">\n\t\t\t\t\t\t<div style=\"border: 1px solid #92B242;border-radius: 10px;overflow: hidden;\"\n\t\t\t\t\t\t\t[class.activeCurrentPlan]=\"selectedPlanId == plan.id\" (click)=\"updateSelectedPlan(plan)\">\n\t\t\t\t\t\t\t<h2 class=\"planName green font-lightgreen\" style=\"text-transform: uppercase;padding: 0;margin: 0px 0px;\n\t\t\t\t\t\t\tpadding: 7px;\">{{ plan.plan_name }}</h2>\n\t\t\t\t\t\t\t<h5 class=\"planName font-darkgreen\"></h5>\n\n\t\t\t\t\t\t\t<div class=\"price green\" style=\"padding: 7px 0px\">\n\t\t\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\"\n\t\t\t\t\t\t\t\t\tstyle=\"padding-bottom: 0; margin-bottom: 0;text-decoration: line-through;padding: 0;margin: 0px\">\n\t\t\t\t\t\t\t\t\t₨ {{ plan.actual_price }}\n\t\t\t\t\t\t\t\t</h5>\n\t\t\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\"\n\t\t\t\t\t\t\t\t\tstyle=\"padding-top: 0;margin-top: 0;font-weight: 600;margin-bottom: 0px;\">\n\t\t\t\t\t\t\t\t\t₨ {{ plan.discounted_prie }}\n\t\t\t\t\t\t\t\t</h5>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<p style=\"text-align: center;padding-top: 0;margin-top: 0;padding: 0 10px;\"\n\t\t\t\t\t\t\t\tclass=\"font-darkgreen\">\n\t\t\t\t\t\t\t\t<small style=\"font-size: 14px;\">{{ plan.plan_desc }}</small>\n\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t<!-- <p class=\"font-darkgreen\" style=\"font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;\">Launch Offer</p> -->\n\t\t\t\t\t\t\t<!-- <p style=\"text-align: center;padding-top: 0;margin-top: 0;\" class=\"font-darkgreen\">\n\t\t\t\t\t\t\t\t<small style=\"font-size: 100%;\">Valid for: {{plan.valid_months}} Months</small>\n\t\t\t\t\t\t\t</p> -->\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ion-col>\n\n\t\t\t\t</ion-row>\n\n\t\t\t\t<ion-row style=\"width: 100%;justify-content: center;\" *ngIf=\"isUSDRoleAvailable == true\">\n\t\t\t\t\t<ion-col size=\"6\" size-md *ngFor=\"let plan of listUSDPlans\">\n\t\t\t\t\t\t<div style=\"border: 1px solid #92B242;border-radius: 10px;overflow: hidden;\"\n\t\t\t\t\t\t\t[class.activeCurrentPlan]=\"selectedPlanId == plan.id\" (click)=\"updateSelectedPlan(plan)\">\n\t\t\t\t\t\t\t<h2 class=\"planName green font-lightgreen\" style=\"text-transform: uppercase;padding: 0;margin: 0px 0px;\n\t\t\t\t\t\t\tpadding: 7px;\">{{ plan.plan_name }}</h2>\n\t\t\t\t\t\t\t<h5 class=\"planName font-darkgreen\"></h5>\n\n\t\t\t\t\t\t\t<div class=\"price green\" style=\"padding: 7px 0px\">\n\t\t\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\"\n\t\t\t\t\t\t\t\t\tstyle=\"padding-bottom: 0; margin-bottom: 0;text-decoration: line-through;padding: 0;margin: 0px\">\n\t\t\t\t\t\t\t\t\t${{ plan.actual_price_usd }}\n\t\t\t\t\t\t\t\t</h5>\n\t\t\t\t\t\t\t\t<h5 class=\"planName font-lightgreen\"\n\t\t\t\t\t\t\t\t\tstyle=\"padding-top: 0;margin-top: 0;font-weight: 600;margin-bottom: 0px;\">\n\t\t\t\t\t\t\t\t\t${{ plan.discounted_price_usd }}\n\t\t\t\t\t\t\t\t</h5>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<p style=\"text-align: center;padding-top: 0;margin-top: 0;padding: 0 10px;\"\n\t\t\t\t\t\t\t\tclass=\"font-darkgreen\">\n\t\t\t\t\t\t\t\t<small style=\"font-size: 14px;\">{{ plan.plan_desc }}</small>\n\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t\t<!-- <p class=\"font-darkgreen\" style=\"font-size: 20px;text-align: center;padding-bottom: 0;margin-bottom: 10px;\">Launch Offer</p> -->\n\t\t\t\t\t\t\t<!-- <p style=\"text-align: center;padding-top: 0;margin-top: 0;\" class=\"font-darkgreen\">\n\t\t\t\t\t\t\t\t<small style=\"font-size: 100%;\">Valid for: {{plan.valid_months}} Months</small>\n\t\t\t\t\t\t\t</p> -->\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ion-col>\n\n\t\t\t\t</ion-row>\n\n\t\t\t</ion-row>\n\n\t\t\t<p style=\"text-align: center; font-size: 12px; padding: 0; margin: 0; color: #92b243; font-weight: bold;\">\n\t\t\t\t*Inclusive of GST</p>\n\n\t\t\t<div>\n\t\t\t\t<ul style=\"list-style: none;\" *ngIf=\"isUSDRoleAvailable != true\">\n\t\t\t\t\t<li style=\"float: left;width: 70%;text-align: right;margin-top: 5px;\">Total in INR: </li>\n\t\t\t\t\t<li style=\"width: 30%;float: left;\">\n\t\t\t\t\t\t<h2\n\t\t\t\t\t\t\tstyle=\"text-align: right;margin-right: 20px; padding: 0;margin: 0;margin-left: 10px;text-align: left;\">\n\t\t\t\t\t\t\t₹{{ selectedPlanDiscountedAmountINR }}</h2>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t\t<ul style=\"list-style: none;\" *ngIf=\"isUSDRoleAvailable == true\">\n\t\t\t\t\t<li style=\"float: left;width: 70%;text-align: right;margin-top: 5px;\">Total in USD: </li>\n\t\t\t\t\t<li style=\"width: 30%;float: left;\">\n\t\t\t\t\t\t<h2\n\t\t\t\t\t\t\tstyle=\"text-align: right;margin-right: 20px; padding: 0;margin: 0;margin-left: 10px;text-align: left;\">\n\t\t\t\t\t\t\t${{ selectedPlanDiscountedAmountUSD }}</h2>\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t\t<div class=\"testing\"></div>\n\n\t\t\t<ion-button *ngIf=\"isDomesticRoleAvailable == true && isUSDRoleAvailable != true\" fill=\"outline\"\n\t\t\t\t(click)=\"buynow( )\"\n\t\t\t\tstyle=\"background-color: #fff;--background-color: #fff;min-height: 43px;margin: 10px 6px;\">\n\t\t\t\t<img src=\"../../assets/rzp-logo-positive-padding.png\" style=\"width: 50%\" />\n\t\t\t</ion-button>\n\t\t\t<!-- <ion-button class=\"buynow\" fill=\"outline\" (click)=\"buynow( plan )\" style=\"width: 40%;float: left;\"><img src=\"../../assets/rzp-logo-positive-padding.png\" /></ion-button> -->\n\t\t\t<ng-container *ngIf=\"isUSDRoleAvailable == true\">\n\t\t\t\t<ion-button #stripeButton style=\"width: 1px;padding: 0;margin: 0px;height: 0px;\"></ion-button>\n\n\t\t\t\t<ion-card class=\"welcome-card\">\n\t\t\t\t\t<ion-img\n\t\t\t\t\t\tsrc=\"../../assets/png-clipart-earring-necklace-gemstone-logo-glass-visa-logo-gemstone-glass-removebg-preview.png\"></ion-img>\n\t\t\t\t\t<ion-card-header>\n\t\t\t\t\t\t<ion-card-subtitle>SNTC</ion-card-subtitle>\n\t\t\t\t\t\t<ion-card-title></ion-card-title>\n\t\t\t\t\t\t<ion-row>\n\t\t\t\t\t\t\t<ion-col>Total Payment</ion-col>\n\t\t\t\t\t\t\t<ion-col> {{currencyIcon}}{{ selectedPlanDiscountedAmountUSD }} </ion-col>\n\t\t\t\t\t\t</ion-row>\n\t\t\t\t\t</ion-card-header>\n\t\t\t\t\t<ion-card-content>\n\t\t\t\t\t\t<form action=\"/\" method=\"post\" id=\"payment-form\">\n\t\t\t\t\t\t\t<div class=\"form-row\">\n\t\t\t\t\t\t\t\t<div id=\"card-element\"> <!-- a Stripe Element will be inserted here. --> </div>\n\t\t\t\t\t\t\t\t<!-- Used to display Element errors -->\n\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<ion-button type=\"submit\" color=\"success\" expand=\"full\">Make Payment</ion-button>\n\t\t\t\t\t\t\t<div id=\"card-errors\" role=\"alert\" style=\"color: red;\"></div>\n\t\t\t\t\t\t</form>\n\t\t\t\t\t</ion-card-content>\n\t\t\t\t</ion-card>\n\n\t\t\t</ng-container>\n\n\n\t\t\t<p style=\"font-size: 0px\">{{ isUSDRoleAvailable }}</p>\n\t\t</div>\n\t</div>\n\n\n\n\n</ion-content>";
 
     /***/
   },
@@ -803,7 +819,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'prices',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | prices-prices-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("common"), __webpack_require__.e("prices-prices-module")]).then(__webpack_require__.bind(null, /*! ./prices/prices.module */"./src/app/prices/prices.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | prices-prices-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("common"), __webpack_require__.e("prices-prices-module")]).then(__webpack_require__.bind(null, /*! ./prices/prices.module */"./src/app/prices/prices.module.ts")).then(function (m) {
           return m.PricesPageModule;
         });
       },
@@ -811,14 +827,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'about',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | about-about-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("about-about-module")]).then(__webpack_require__.bind(null, /*! ./about/about.module */"./src/app/about/about.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | about-about-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("about-about-module")]).then(__webpack_require__.bind(null, /*! ./about/about.module */"./src/app/about/about.module.ts")).then(function (m) {
           return m.AboutPageModule;
         });
       }
     }, {
       path: 'port',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | port-port-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("port-port-module")]).then(__webpack_require__.bind(null, /*! ./port/port.module */"./src/app/port/port.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | port-port-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("port-port-module")]).then(__webpack_require__.bind(null, /*! ./port/port.module */"./src/app/port/port.module.ts")).then(function (m) {
           return m.PortPageModule;
         });
       }
@@ -832,7 +848,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'ricechart',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | ricechart-ricechart-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("ricechart-ricechart-module")]).then(__webpack_require__.bind(null, /*! ./ricechart/ricechart.module */"./src/app/ricechart/ricechart.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | ricechart-ricechart-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("ricechart-ricechart-module")]).then(__webpack_require__.bind(null, /*! ./ricechart/ricechart.module */"./src/app/ricechart/ricechart.module.ts")).then(function (m) {
           return m.RicechartPageModule;
         });
       }
@@ -846,14 +862,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'gallery',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | gallery-gallery-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("gallery-gallery-module")]).then(__webpack_require__.bind(null, /*! ./gallery/gallery.module */"./src/app/gallery/gallery.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | gallery-gallery-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("gallery-gallery-module")]).then(__webpack_require__.bind(null, /*! ./gallery/gallery.module */"./src/app/gallery/gallery.module.ts")).then(function (m) {
           return m.GalleryPageModule;
         });
       }
     }, {
       path: 'gallerydetails',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | gallerydetails-gallerydetails-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("gallerydetails-gallerydetails-module")]).then(__webpack_require__.bind(null, /*! ./gallerydetails/gallerydetails.module */"./src/app/gallerydetails/gallerydetails.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | gallerydetails-gallerydetails-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("gallerydetails-gallerydetails-module")]).then(__webpack_require__.bind(null, /*! ./gallerydetails/gallerydetails.module */"./src/app/gallerydetails/gallerydetails.module.ts")).then(function (m) {
           return m.GallerydetailsPageModule;
         });
       }
@@ -888,7 +904,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'aboutus',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | aboutus-aboutus-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("aboutus-aboutus-module")]).then(__webpack_require__.bind(null, /*! ./aboutus/aboutus.module */"./src/app/aboutus/aboutus.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | aboutus-aboutus-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("aboutus-aboutus-module")]).then(__webpack_require__.bind(null, /*! ./aboutus/aboutus.module */"./src/app/aboutus/aboutus.module.ts")).then(function (m) {
           return m.AboutusPageModule;
         });
       }
@@ -951,7 +967,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'notifications',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | notifications-notifications-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("notifications-notifications-module")]).then(__webpack_require__.bind(null, /*! ./notifications/notifications.module */"./src/app/notifications/notifications.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | notifications-notifications-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("notifications-notifications-module")]).then(__webpack_require__.bind(null, /*! ./notifications/notifications.module */"./src/app/notifications/notifications.module.ts")).then(function (m) {
           return m.NotificationsPageModule;
         });
       }
@@ -979,70 +995,70 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'priceusd',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | priceusd-priceusd-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("common"), __webpack_require__.e("priceusd-priceusd-module")]).then(__webpack_require__.bind(null, /*! ./priceusd/priceusd.module */"./src/app/priceusd/priceusd.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | priceusd-priceusd-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("common"), __webpack_require__.e("priceusd-priceusd-module")]).then(__webpack_require__.bind(null, /*! ./priceusd/priceusd.module */"./src/app/priceusd/priceusd.module.ts")).then(function (m) {
           return m.PriceusdPageModule;
         });
       }
     }, {
       path: 'oceanfreights',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | oceanfreights-oceanfreights-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("oceanfreights-oceanfreights-module")]).then(__webpack_require__.bind(null, /*! ./oceanfreights/oceanfreights.module */"./src/app/oceanfreights/oceanfreights.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | oceanfreights-oceanfreights-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("oceanfreights-oceanfreights-module")]).then(__webpack_require__.bind(null, /*! ./oceanfreights/oceanfreights.module */"./src/app/oceanfreights/oceanfreights.module.ts")).then(function (m) {
           return m.OceanfreightsPageModule;
         });
       }
     }, {
       path: 'quality-details',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | quality-details-quality-details-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("quality-details-quality-details-module")]).then(__webpack_require__.bind(null, /*! ./quality-details/quality-details.module */"./src/app/quality-details/quality-details.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | quality-details-quality-details-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("default~port-port-module~prices-prices-module~priceusd-priceusd-module~quality-details-quality-detai~d1daa1b6"), __webpack_require__.e("quality-details-quality-details-module")]).then(__webpack_require__.bind(null, /*! ./quality-details/quality-details.module */"./src/app/quality-details/quality-details.module.ts")).then(function (m) {
           return m.QualityDetailsPageModule;
         });
       }
     }, {
       path: 'buy',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | buy-buy-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("buy-buy-module")]).then(__webpack_require__.bind(null, /*! ./buy/buy.module */"./src/app/buy/buy.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | buy-buy-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("buy-buy-module")]).then(__webpack_require__.bind(null, /*! ./buy/buy.module */"./src/app/buy/buy.module.ts")).then(function (m) {
           return m.BuyPageModule;
         });
       }
     }, {
       path: 'bid',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | bid-bid-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("bid-bid-module")]).then(__webpack_require__.bind(null, /*! ./bid/bid.module */"./src/app/bid/bid.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | bid-bid-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("bid-bid-module")]).then(__webpack_require__.bind(null, /*! ./bid/bid.module */"./src/app/bid/bid.module.ts")).then(function (m) {
           return m.BidPageModule;
         });
       }
     }, {
       path: 'calculator',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | calculator-calculator-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("calculator-calculator-module")]).then(__webpack_require__.bind(null, /*! ./calculator/calculator.module */"./src/app/calculator/calculator.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | calculator-calculator-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("calculator-calculator-module")]).then(__webpack_require__.bind(null, /*! ./calculator/calculator.module */"./src/app/calculator/calculator.module.ts")).then(function (m) {
           return m.CalculatorPageModule;
         });
       }
     }, {
       path: 'mybids',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | mybids-mybids-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("mybids-mybids-module")]).then(__webpack_require__.bind(null, /*! ./mybids/mybids.module */"./src/app/mybids/mybids.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | mybids-mybids-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("mybids-mybids-module")]).then(__webpack_require__.bind(null, /*! ./mybids/mybids.module */"./src/app/mybids/mybids.module.ts")).then(function (m) {
           return m.MybidsPageModule;
         });
       }
     }, {
       path: 'otherservices',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | otherservices-otherservices-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("otherservices-otherservices-module")]).then(__webpack_require__.bind(null, /*! ./otherservices/otherservices.module */"./src/app/otherservices/otherservices.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | otherservices-otherservices-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("otherservices-otherservices-module")]).then(__webpack_require__.bind(null, /*! ./otherservices/otherservices.module */"./src/app/otherservices/otherservices.module.ts")).then(function (m) {
           return m.OtherservicesPageModule;
         });
       }
     }, {
       path: 'contact',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | contact-contact-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("contact-contact-module")]).then(__webpack_require__.bind(null, /*! ./contact/contact.module */"./src/app/contact/contact.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | contact-contact-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("contact-contact-module")]).then(__webpack_require__.bind(null, /*! ./contact/contact.module */"./src/app/contact/contact.module.ts")).then(function (m) {
           return m.ContactPageModule;
         });
       }
     }, {
       path: 'hotdeals',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | hotdeals-hotdeals-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("hotdeals-hotdeals-module")]).then(__webpack_require__.bind(null, /*! ./hotdeals/hotdeals.module */"./src/app/hotdeals/hotdeals.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | hotdeals-hotdeals-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("hotdeals-hotdeals-module")]).then(__webpack_require__.bind(null, /*! ./hotdeals/hotdeals.module */"./src/app/hotdeals/hotdeals.module.ts")).then(function (m) {
           return m.HotdealsPageModule;
         });
       }
@@ -1070,7 +1086,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'thankyou',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | thankyou-thankyou-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("thankyou-thankyou-module")]).then(__webpack_require__.bind(null, /*! ./thankyou/thankyou.module */"./src/app/thankyou/thankyou.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | thankyou-thankyou-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("thankyou-thankyou-module")]).then(__webpack_require__.bind(null, /*! ./thankyou/thankyou.module */"./src/app/thankyou/thankyou.module.ts")).then(function (m) {
           return m.ThankyouPageModule;
         });
       }
@@ -1098,21 +1114,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'payment-success',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | payment-success-payment-success-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("payment-success-payment-success-module")]).then(__webpack_require__.bind(null, /*! ./payment-success/payment-success.module */"./src/app/payment-success/payment-success.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | payment-success-payment-success-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("payment-success-payment-success-module")]).then(__webpack_require__.bind(null, /*! ./payment-success/payment-success.module */"./src/app/payment-success/payment-success.module.ts")).then(function (m) {
           return m.PaymentSuccessPageModule;
         });
       }
     }, {
       path: 'cancel-success',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | cancel-success-cancel-success-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("cancel-success-cancel-success-module")]).then(__webpack_require__.bind(null, /*! ./cancel-success/cancel-success.module */"./src/app/cancel-success/cancel-success.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | cancel-success-cancel-success-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("cancel-success-cancel-success-module")]).then(__webpack_require__.bind(null, /*! ./cancel-success/cancel-success.module */"./src/app/cancel-success/cancel-success.module.ts")).then(function (m) {
           return m.CancelSuccessPageModule;
         });
       }
     }, {
       path: 'payment-cancel',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | payment-cancel-payment-cancel-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("payment-cancel-payment-cancel-module")]).then(__webpack_require__.bind(null, /*! ./payment-cancel/payment-cancel.module */"./src/app/payment-cancel/payment-cancel.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | payment-cancel-payment-cancel-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("payment-cancel-payment-cancel-module")]).then(__webpack_require__.bind(null, /*! ./payment-cancel/payment-cancel.module */"./src/app/payment-cancel/payment-cancel.module.ts")).then(function (m) {
           return m.PaymentCancelPageModule;
         });
       }
@@ -1126,42 +1142,42 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'selling-inr',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | selling-inr-selling-inr-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("selling-inr-selling-inr-module")]).then(__webpack_require__.bind(null, /*! ./selling-inr/selling-inr.module */"./src/app/selling-inr/selling-inr.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | selling-inr-selling-inr-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("selling-inr-selling-inr-module")]).then(__webpack_require__.bind(null, /*! ./selling-inr/selling-inr.module */"./src/app/selling-inr/selling-inr.module.ts")).then(function (m) {
           return m.SellingINRPageModule;
         });
       }
     }, {
       path: 'brands',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | brands-brands-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("brands-brands-module")]).then(__webpack_require__.bind(null, /*! ./brands/brands.module */"./src/app/brands/brands.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | brands-brands-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("brands-brands-module")]).then(__webpack_require__.bind(null, /*! ./brands/brands.module */"./src/app/brands/brands.module.ts")).then(function (m) {
           return m.BrandsPageModule;
         });
       }
     }, {
       path: 'brand-details',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | brand-details-brand-details-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("brand-details-brand-details-module")]).then(__webpack_require__.bind(null, /*! ./brand-details/brand-details.module */"./src/app/brand-details/brand-details.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | brand-details-brand-details-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("brand-details-brand-details-module")]).then(__webpack_require__.bind(null, /*! ./brand-details/brand-details.module */"./src/app/brand-details/brand-details.module.ts")).then(function (m) {
           return m.BrandDetailsPageModule;
         });
       }
     }, {
       path: 'trade-inr',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | trade-inr-trade-inr-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("trade-inr-trade-inr-module")]).then(__webpack_require__.bind(null, /*! ./trade-inr/trade-inr.module */"./src/app/trade-inr/trade-inr.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | trade-inr-trade-inr-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("trade-inr-trade-inr-module")]).then(__webpack_require__.bind(null, /*! ./trade-inr/trade-inr.module */"./src/app/trade-inr/trade-inr.module.ts")).then(function (m) {
           return m.TradeINRPageModule;
         });
       }
     }, {
       path: 'buy-inr',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | buy-inr-buy-inr-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("buy-inr-buy-inr-module")]).then(__webpack_require__.bind(null, /*! ./buy-inr/buy-inr.module */"./src/app/buy-inr/buy-inr.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | buy-inr-buy-inr-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("buy-inr-buy-inr-module")]).then(__webpack_require__.bind(null, /*! ./buy-inr/buy-inr.module */"./src/app/buy-inr/buy-inr.module.ts")).then(function (m) {
           return m.BuyInrPageModule;
         });
       }
     }, {
       path: 'trade-inr-list',
       loadChildren: function loadChildren() {
-        return Promise.all( /*! import() | trade-inr-list-trade-inr-list-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~061a359b"), __webpack_require__.e("trade-inr-list-trade-inr-list-module")]).then(__webpack_require__.bind(null, /*! ./trade-inr-list/trade-inr-list.module */"./src/app/trade-inr-list/trade-inr-list.module.ts")).then(function (m) {
+        return Promise.all( /*! import() | trade-inr-list-trade-inr-list-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("trade-inr-list-trade-inr-list-module")]).then(__webpack_require__.bind(null, /*! ./trade-inr-list/trade-inr-list.module */"./src/app/trade-inr-list/trade-inr-list.module.ts")).then(function (m) {
           return m.TradeInrListPageModule;
         });
       }
@@ -1184,6 +1200,34 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return __webpack_require__.e( /*! import() | welcome3-welcome3-module */"welcome3-welcome3-module").then(__webpack_require__.bind(null, /*! ./welcome3/welcome3.module */"./src/app/welcome3/welcome3.module.ts")).then(function (m) {
           return m.Welcome3PageModule;
+        });
+      }
+    }, {
+      path: 'trade-detail',
+      loadChildren: function loadChildren() {
+        return Promise.all( /*! import() | trade-detail-trade-detail-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("trade-detail-trade-detail-module")]).then(__webpack_require__.bind(null, /*! ./trade-detail/trade-detail.module */"./src/app/trade-detail/trade-detail.module.ts")).then(function (m) {
+          return m.TradeDetailPageModule;
+        });
+      }
+    }, {
+      path: 'loader-component',
+      loadChildren: function loadChildren() {
+        return Promise.resolve( /*! import() */).then(__webpack_require__.bind(null, /*! ./loader-component/loader-component.module */"./src/app/loader-component/loader-component.module.ts")).then(function (m) {
+          return m.LoaderComponentPageModule;
+        });
+      }
+    }, {
+      path: 'trade-list-usd',
+      loadChildren: function loadChildren() {
+        return Promise.all( /*! import() | trade-list-usd-trade-list-usd-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("trade-list-usd-trade-list-usd-module")]).then(__webpack_require__.bind(null, /*! ./trade-list-usd/trade-list-usd.module */"./src/app/trade-list-usd/trade-list-usd.module.ts")).then(function (m) {
+          return m.TradeListUsdPageModule;
+        });
+      }
+    }, {
+      path: 'trade-usd-details',
+      loadChildren: function loadChildren() {
+        return Promise.all( /*! import() | trade-usd-details-trade-usd-details-module */[__webpack_require__.e("default~about-about-module~aboutus-aboutus-module~bid-bid-module~brand-details-brand-details-module~~d00823e0"), __webpack_require__.e("trade-usd-details-trade-usd-details-module")]).then(__webpack_require__.bind(null, /*! ./trade-usd-details/trade-usd-details.module */"./src/app/trade-usd-details/trade-usd-details.module.ts")).then(function (m) {
+          return m.TradeUsdDetailsPageModule;
         });
       }
     }];
@@ -1211,7 +1255,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
-    __webpack_exports__["default"] = "ion-menu ion-content {\n  --background: var(--ion-item-background, var(--ion-background-color, #fff));\n}\n\nion-menu.md ion-content {\n  --padding-start: 8px;\n  --padding-end: 8px;\n  --padding-top: 20px;\n  --padding-bottom: 20px;\n}\n\nion-menu.md ion-list {\n  padding: 20px 0;\n}\n\nion-menu.md ion-note {\n  margin-bottom: 30px;\n}\n\nion-menu.md ion-list-header,\nion-menu.md ion-note {\n  padding-left: 10px;\n}\n\nion-menu.md ion-list#inbox-list {\n  border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);\n}\n\nion-menu.md ion-list#inbox-list ion-list-header {\n  font-size: 22px;\n  font-weight: 600;\n  min-height: 20px;\n}\n\nion-menu.md ion-list#labels-list ion-list-header {\n  font-size: 16px;\n  margin-bottom: 18px;\n  color: #757575;\n  min-height: 26px;\n}\n\nion-menu.md ion-item {\n  --padding-start: 10px;\n  --padding-end: 10px;\n  border-radius: 4px;\n}\n\nion-menu.md ion-item.selected {\n  --background: rgba(var(--ion-color-primary-rgb), 0.14);\n}\n\nion-menu.md ion-item.selected ion-icon {\n  color: var(--ion-color-primary);\n}\n\nion-menu.md ion-item ion-icon {\n  color: #616e7e;\n}\n\nion-menu.md ion-item ion-label {\n  font-weight: 500;\n}\n\nion-menu.ios ion-content {\n  --padding-bottom: 20px;\n}\n\nion-menu.ios ion-list {\n  padding: 20px 0 0 0;\n}\n\nion-menu.ios ion-note {\n  line-height: 24px;\n  margin-bottom: 20px;\n}\n\nion-menu.ios ion-item {\n  --padding-start: 16px;\n  --padding-end: 16px;\n  --min-height: 50px;\n}\n\nion-menu.ios ion-item.selected ion-icon {\n  color: var(--ion-color-primary);\n}\n\nion-menu.ios ion-item ion-icon {\n  font-size: 24px;\n  color: #73849a;\n}\n\nion-menu.ios ion-list#labels-list ion-list-header {\n  margin-bottom: 8px;\n}\n\nion-menu.ios ion-list-header,\nion-menu.ios ion-note {\n  padding-left: 16px;\n  padding-right: 16px;\n}\n\nion-menu.ios ion-note {\n  margin-bottom: 8px;\n}\n\nion-note {\n  display: inline-block;\n  font-size: 16px;\n  color: var(--ion-color-medium-shade);\n}\n\nion-item.selected {\n  --color: var(--ion-color-primary);\n}\n\n.menu-header {\n  background: #449893;\n  color: #FFF;\n  height: 230px;\n}\n\n.inner-scroll {\n  padding: 0px !important;\n  margin: 0px !important;\n}\n\n.menu-settings {\n  --padding-top: 0px !important;\n  --padding-start: 0px !important;\n  --padding-end: 0px !important;\n}\n\n.user-icon {\n  width: 136px;\n  margin-top: 15px;\n}\n\n.user-profile {\n  text-align: center;\n}\n\n.user-profile ion-label {\n  margin-top: 13px;\n  display: block;\n}\n\n.switch .item-inner {\n  padding: 0;\n  margin: 0;\n}\n\n@font-face {\n  font-family: \"Poppins-Regular\";\n  font-style: normal;\n  font-weight: normal;\n  src: url('Poppins-Regular.ttf');\n}\n\n@font-face {\n  font-family: \"Poppins-Bold\";\n  font-style: normal;\n  font-weight: normal;\n  src: url('Poppins-Bold.ttf');\n}\n\n@font-face {\n  font-family: \"Poppins-SemiBold\";\n  font-style: normal;\n  font-weight: normal;\n  src: url('Poppins-SemiBold.ttf');\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9jaGV0YW4vRGVza3RvcC9vZmZpY2UvbW9iaWxlL3JpY2Vzb3VyY2VVU0Qvc3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDJFQUFBO0FDQ0Y7O0FERUE7RUFDRSxvQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxzQkFBQTtBQ0NGOztBREVBO0VBQ0UsZUFBQTtBQ0NGOztBREVBO0VBQ0UsbUJBQUE7QUNDRjs7QURFQTs7RUFFRSxrQkFBQTtBQ0NGOztBREVBO0VBQ0UsMkRBQUE7QUNDRjs7QURFQTtFQUNFLGVBQUE7RUFDQSxnQkFBQTtFQUVBLGdCQUFBO0FDQUY7O0FER0E7RUFDRSxlQUFBO0VBRUEsbUJBQUE7RUFFQSxjQUFBO0VBRUEsZ0JBQUE7QUNIRjs7QURNQTtFQUNFLHFCQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBQ0hGOztBRE1BO0VBQ0Usc0RBQUE7QUNIRjs7QURNQTtFQUNFLCtCQUFBO0FDSEY7O0FETUE7RUFDRSxjQUFBO0FDSEY7O0FETUE7RUFDRSxnQkFBQTtBQ0hGOztBRE1BO0VBQ0Usc0JBQUE7QUNIRjs7QURNQTtFQUNFLG1CQUFBO0FDSEY7O0FETUE7RUFDRSxpQkFBQTtFQUNBLG1CQUFBO0FDSEY7O0FETUE7RUFDRSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7QUNIRjs7QURNQTtFQUNFLCtCQUFBO0FDSEY7O0FETUE7RUFDRSxlQUFBO0VBQ0EsY0FBQTtBQ0hGOztBRE1BO0VBQ0Usa0JBQUE7QUNIRjs7QURNQTs7RUFFRSxrQkFBQTtFQUNBLG1CQUFBO0FDSEY7O0FETUE7RUFDRSxrQkFBQTtBQ0hGOztBRE1BO0VBQ0UscUJBQUE7RUFDQSxlQUFBO0VBRUEsb0NBQUE7QUNKRjs7QURPQTtFQUNFLGlDQUFBO0FDSkY7O0FET0E7RUFDQyxtQkFBQTtFQUNBLFdBQUE7RUFDQSxhQUFBO0FDSkQ7O0FET0E7RUFDQyx1QkFBQTtFQUNBLHNCQUFBO0FDSkQ7O0FET0E7RUFDQyw2QkFBQTtFQUNBLCtCQUFBO0VBQ0EsNkJBQUE7QUNKRDs7QURPQTtFQUNDLFlBQUE7RUFDQSxnQkFBQTtBQ0pEOztBRE9BO0VBQ0Msa0JBQUE7QUNKRDs7QURNQztFQUNDLGdCQUFBO0VBQ0EsY0FBQTtBQ0pGOztBRFFDO0VBQ0MsVUFBQTtFQUNBLFNBQUE7QUNMRjs7QURTQTtFQUNFLDhCQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtFQUNBLCtCQUFBO0FDTkY7O0FEUUE7RUFDRSwyQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSw0QkFBQTtBQ05GOztBRFFBO0VBQ0UsK0JBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsZ0NBQUE7QUNORiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1tZW51IGlvbi1jb250ZW50IHtcbiAgLS1iYWNrZ3JvdW5kOiB2YXIoLS1pb24taXRlbS1iYWNrZ3JvdW5kLCB2YXIoLS1pb24tYmFja2dyb3VuZC1jb2xvciwgI2ZmZikpO1xufVxuXG5pb24tbWVudS5tZCBpb24tY29udGVudCB7XG4gIC0tcGFkZGluZy1zdGFydDogOHB4O1xuICAtLXBhZGRpbmctZW5kOiA4cHg7XG4gIC0tcGFkZGluZy10b3A6IDIwcHg7XG4gIC0tcGFkZGluZy1ib3R0b206IDIwcHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1saXN0IHtcbiAgcGFkZGluZzogMjBweCAwO1xufVxuXG5pb24tbWVudS5tZCBpb24tbm90ZSB7XG4gIG1hcmdpbi1ib3R0b206IDMwcHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1saXN0LWhlYWRlcixcbmlvbi1tZW51Lm1kIGlvbi1ub3RlIHtcbiAgcGFkZGluZy1sZWZ0OiAxMHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdCNpbmJveC1saXN0IHtcbiAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkIHZhcigtLWlvbi1jb2xvci1zdGVwLTE1MCwgI2Q3ZDhkYSk7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1saXN0I2luYm94LWxpc3QgaW9uLWxpc3QtaGVhZGVyIHtcbiAgZm9udC1zaXplOiAyMnB4O1xuICBmb250LXdlaWdodDogNjAwO1xuXG4gIG1pbi1oZWlnaHQ6IDIwcHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1saXN0I2xhYmVscy1saXN0IGlvbi1saXN0LWhlYWRlciB7XG4gIGZvbnQtc2l6ZTogMTZweDtcblxuICBtYXJnaW4tYm90dG9tOiAxOHB4O1xuXG4gIGNvbG9yOiAjNzU3NTc1O1xuXG4gIG1pbi1oZWlnaHQ6IDI2cHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtIHtcbiAgLS1wYWRkaW5nLXN0YXJ0OiAxMHB4O1xuICAtLXBhZGRpbmctZW5kOiAxMHB4O1xuICBib3JkZXItcmFkaXVzOiA0cHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtLnNlbGVjdGVkIHtcbiAgLS1iYWNrZ3JvdW5kOiByZ2JhKHZhcigtLWlvbi1jb2xvci1wcmltYXJ5LXJnYiksIDAuMTQpO1xufVxuXG5pb24tbWVudS5tZCBpb24taXRlbS5zZWxlY3RlZCBpb24taWNvbiB7XG4gIGNvbG9yOiB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtIGlvbi1pY29uIHtcbiAgY29sb3I6ICM2MTZlN2U7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtIGlvbi1sYWJlbCB7XG4gIGZvbnQtd2VpZ2h0OiA1MDA7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tY29udGVudCB7XG4gIC0tcGFkZGluZy1ib3R0b206IDIwcHg7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tbGlzdCB7XG4gIHBhZGRpbmc6IDIwcHggMCAwIDA7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tbm90ZSB7XG4gIGxpbmUtaGVpZ2h0OiAyNHB4O1xuICBtYXJnaW4tYm90dG9tOiAyMHB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWl0ZW0ge1xuICAtLXBhZGRpbmctc3RhcnQ6IDE2cHg7XG4gIC0tcGFkZGluZy1lbmQ6IDE2cHg7XG4gIC0tbWluLWhlaWdodDogNTBweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1pdGVtLnNlbGVjdGVkIGlvbi1pY29uIHtcbiAgY29sb3I6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1pdGVtIGlvbi1pY29uIHtcbiAgZm9udC1zaXplOiAyNHB4O1xuICBjb2xvcjogIzczODQ5YTtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1saXN0I2xhYmVscy1saXN0IGlvbi1saXN0LWhlYWRlciB7XG4gIG1hcmdpbi1ib3R0b206IDhweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1saXN0LWhlYWRlcixcbmlvbi1tZW51LmlvcyBpb24tbm90ZSB7XG4gIHBhZGRpbmctbGVmdDogMTZweDtcbiAgcGFkZGluZy1yaWdodDogMTZweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1ub3RlIHtcbiAgbWFyZ2luLWJvdHRvbTogOHB4O1xufVxuXG5pb24tbm90ZSB7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgZm9udC1zaXplOiAxNnB4O1xuXG4gIGNvbG9yOiB2YXIoLS1pb24tY29sb3ItbWVkaXVtLXNoYWRlKTtcbn1cblxuaW9uLWl0ZW0uc2VsZWN0ZWQge1xuICAtLWNvbG9yOiB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XG59XG5cbi5tZW51LWhlYWRlcntcblx0YmFja2dyb3VuZDogIzQ0OTg5Mztcblx0Y29sb3I6ICNGRkY7XG5cdGhlaWdodDogMjMwcHg7XG59XG5cbi5pbm5lci1zY3JvbGx7XG5cdHBhZGRpbmc6IDBweCAhaW1wb3J0YW50O1xuXHRtYXJnaW46IDBweCAhaW1wb3J0YW50O1xufVxuXG4ubWVudS1zZXR0aW5nc3tcblx0LS1wYWRkaW5nLXRvcDogMHB4ICFpbXBvcnRhbnQ7XG5cdC0tcGFkZGluZy1zdGFydDogMHB4ICFpbXBvcnRhbnQ7XG5cdC0tcGFkZGluZy1lbmQ6IDBweCAhaW1wb3J0YW50O1xufVxuXG4udXNlci1pY29ue1xuXHR3aWR0aDogMTM2cHg7XG5cdG1hcmdpbi10b3A6IDE1cHg7XG59XG5cbi51c2VyLXByb2ZpbGV7XG5cdHRleHQtYWxpZ246IGNlbnRlcjtcblxuXHRpb24tbGFiZWx7XG5cdFx0bWFyZ2luLXRvcDogMTNweDtcblx0XHRkaXNwbGF5OiBibG9jaztcblx0fVxufVxuLnN3aXRjaHtcblx0Lml0ZW0taW5uZXJ7XG5cdFx0cGFkZGluZzogMDtcblx0XHRtYXJnaW46IDA7XG5cdH1cbn1cblxuQGZvbnQtZmFjZSB7XG4gIGZvbnQtZmFtaWx5OiAnUG9wcGlucy1SZWd1bGFyJztcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBzcmM6IHVybCgnLi4vYXNzZXRzL2ZvbnRzL1BvcHBpbnMvUG9wcGlucy1SZWd1bGFyLnR0ZicpO1xufVxuQGZvbnQtZmFjZSB7XG4gIGZvbnQtZmFtaWx5OiAnUG9wcGlucy1Cb2xkJztcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBzcmM6IHVybCgnLi4vYXNzZXRzL2ZvbnRzL1BvcHBpbnMvUG9wcGlucy1Cb2xkLnR0ZicpO1xufVxuQGZvbnQtZmFjZSB7XG4gIGZvbnQtZmFtaWx5OiAnUG9wcGlucy1TZW1pQm9sZCc7XG4gIGZvbnQtc3R5bGU6IG5vcm1hbDtcbiAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgc3JjOiB1cmwoJy4uL2Fzc2V0cy9mb250cy9Qb3BwaW5zL1BvcHBpbnMtU2VtaUJvbGQudHRmJyk7XG59XG4iLCJpb24tbWVudSBpb24tY29udGVudCB7XG4gIC0tYmFja2dyb3VuZDogdmFyKC0taW9uLWl0ZW0tYmFja2dyb3VuZCwgdmFyKC0taW9uLWJhY2tncm91bmQtY29sb3IsICNmZmYpKTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWNvbnRlbnQge1xuICAtLXBhZGRpbmctc3RhcnQ6IDhweDtcbiAgLS1wYWRkaW5nLWVuZDogOHB4O1xuICAtLXBhZGRpbmctdG9wOiAyMHB4O1xuICAtLXBhZGRpbmctYm90dG9tOiAyMHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdCB7XG4gIHBhZGRpbmc6IDIwcHggMDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLW5vdGUge1xuICBtYXJnaW4tYm90dG9tOiAzMHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdC1oZWFkZXIsXG5pb24tbWVudS5tZCBpb24tbm90ZSB7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3QjaW5ib3gtbGlzdCB7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCB2YXIoLS1pb24tY29sb3Itc3RlcC0xNTAsICNkN2Q4ZGEpO1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdCNpbmJveC1saXN0IGlvbi1saXN0LWhlYWRlciB7XG4gIGZvbnQtc2l6ZTogMjJweDtcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbiAgbWluLWhlaWdodDogMjBweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3QjbGFiZWxzLWxpc3QgaW9uLWxpc3QtaGVhZGVyIHtcbiAgZm9udC1zaXplOiAxNnB4O1xuICBtYXJnaW4tYm90dG9tOiAxOHB4O1xuICBjb2xvcjogIzc1NzU3NTtcbiAgbWluLWhlaWdodDogMjZweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0ge1xuICAtLXBhZGRpbmctc3RhcnQ6IDEwcHg7XG4gIC0tcGFkZGluZy1lbmQ6IDEwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDRweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0uc2VsZWN0ZWQge1xuICAtLWJhY2tncm91bmQ6IHJnYmEodmFyKC0taW9uLWNvbG9yLXByaW1hcnktcmdiKSwgMC4xNCk7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtLnNlbGVjdGVkIGlvbi1pY29uIHtcbiAgY29sb3I6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0gaW9uLWljb24ge1xuICBjb2xvcjogIzYxNmU3ZTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0gaW9uLWxhYmVsIHtcbiAgZm9udC13ZWlnaHQ6IDUwMDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1jb250ZW50IHtcbiAgLS1wYWRkaW5nLWJvdHRvbTogMjBweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1saXN0IHtcbiAgcGFkZGluZzogMjBweCAwIDAgMDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1ub3RlIHtcbiAgbGluZS1oZWlnaHQ6IDI0cHg7XG4gIG1hcmdpbi1ib3R0b206IDIwcHg7XG59XG5cbmlvbi1tZW51LmlvcyBpb24taXRlbSB7XG4gIC0tcGFkZGluZy1zdGFydDogMTZweDtcbiAgLS1wYWRkaW5nLWVuZDogMTZweDtcbiAgLS1taW4taGVpZ2h0OiA1MHB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWl0ZW0uc2VsZWN0ZWQgaW9uLWljb24ge1xuICBjb2xvcjogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWl0ZW0gaW9uLWljb24ge1xuICBmb250LXNpemU6IDI0cHg7XG4gIGNvbG9yOiAjNzM4NDlhO1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWxpc3QjbGFiZWxzLWxpc3QgaW9uLWxpc3QtaGVhZGVyIHtcbiAgbWFyZ2luLWJvdHRvbTogOHB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWxpc3QtaGVhZGVyLFxuaW9uLW1lbnUuaW9zIGlvbi1ub3RlIHtcbiAgcGFkZGluZy1sZWZ0OiAxNnB4O1xuICBwYWRkaW5nLXJpZ2h0OiAxNnB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLW5vdGUge1xuICBtYXJnaW4tYm90dG9tOiA4cHg7XG59XG5cbmlvbi1ub3RlIHtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBmb250LXNpemU6IDE2cHg7XG4gIGNvbG9yOiB2YXIoLS1pb24tY29sb3ItbWVkaXVtLXNoYWRlKTtcbn1cblxuaW9uLWl0ZW0uc2VsZWN0ZWQge1xuICAtLWNvbG9yOiB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XG59XG5cbi5tZW51LWhlYWRlciB7XG4gIGJhY2tncm91bmQ6ICM0NDk4OTM7XG4gIGNvbG9yOiAjRkZGO1xuICBoZWlnaHQ6IDIzMHB4O1xufVxuXG4uaW5uZXItc2Nyb2xsIHtcbiAgcGFkZGluZzogMHB4ICFpbXBvcnRhbnQ7XG4gIG1hcmdpbjogMHB4ICFpbXBvcnRhbnQ7XG59XG5cbi5tZW51LXNldHRpbmdzIHtcbiAgLS1wYWRkaW5nLXRvcDogMHB4ICFpbXBvcnRhbnQ7XG4gIC0tcGFkZGluZy1zdGFydDogMHB4ICFpbXBvcnRhbnQ7XG4gIC0tcGFkZGluZy1lbmQ6IDBweCAhaW1wb3J0YW50O1xufVxuXG4udXNlci1pY29uIHtcbiAgd2lkdGg6IDEzNnB4O1xuICBtYXJnaW4tdG9wOiAxNXB4O1xufVxuXG4udXNlci1wcm9maWxlIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuLnVzZXItcHJvZmlsZSBpb24tbGFiZWwge1xuICBtYXJnaW4tdG9wOiAxM3B4O1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuLnN3aXRjaCAuaXRlbS1pbm5lciB7XG4gIHBhZGRpbmc6IDA7XG4gIG1hcmdpbjogMDtcbn1cblxuQGZvbnQtZmFjZSB7XG4gIGZvbnQtZmFtaWx5OiBcIlBvcHBpbnMtUmVndWxhclwiO1xuICBmb250LXN0eWxlOiBub3JtYWw7XG4gIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gIHNyYzogdXJsKFwiLi4vYXNzZXRzL2ZvbnRzL1BvcHBpbnMvUG9wcGlucy1SZWd1bGFyLnR0ZlwiKTtcbn1cbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogXCJQb3BwaW5zLUJvbGRcIjtcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBzcmM6IHVybChcIi4uL2Fzc2V0cy9mb250cy9Qb3BwaW5zL1BvcHBpbnMtQm9sZC50dGZcIik7XG59XG5AZm9udC1mYWNlIHtcbiAgZm9udC1mYW1pbHk6IFwiUG9wcGlucy1TZW1pQm9sZFwiO1xuICBmb250LXN0eWxlOiBub3JtYWw7XG4gIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gIHNyYzogdXJsKFwiLi4vYXNzZXRzL2ZvbnRzL1BvcHBpbnMvUG9wcGlucy1TZW1pQm9sZC50dGZcIik7XG59Il19 */";
+    __webpack_exports__["default"] = "ion-menu ion-content {\n  --background: var(--ion-item-background, var(--ion-background-color, #fff));\n}\n\nion-menu.md ion-content {\n  --padding-start: 8px;\n  --padding-end: 8px;\n  --padding-top: 20px;\n  --padding-bottom: 20px;\n}\n\nion-menu.md ion-list {\n  padding: 20px 0;\n}\n\nion-menu.md ion-note {\n  margin-bottom: 30px;\n}\n\nion-menu.md ion-list-header,\nion-menu.md ion-note {\n  padding-left: 10px;\n}\n\nion-menu.md ion-list#inbox-list {\n  border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);\n}\n\nion-menu.md ion-list#inbox-list ion-list-header {\n  font-size: 22px;\n  font-weight: 600;\n  min-height: 20px;\n}\n\nion-menu.md ion-list#labels-list ion-list-header {\n  font-size: 16px;\n  margin-bottom: 18px;\n  color: #757575;\n  min-height: 26px;\n}\n\nion-menu.md ion-item {\n  --padding-start: 10px;\n  --padding-end: 10px;\n  border-radius: 4px;\n}\n\nion-menu.md ion-item.selected {\n  --background: rgba(var(--ion-color-primary-rgb), 0.14);\n}\n\nion-menu.md ion-item.selected ion-icon {\n  color: var(--ion-color-primary);\n}\n\nion-menu.md ion-item ion-icon {\n  color: #616e7e;\n}\n\nion-menu.md ion-item ion-label {\n  font-weight: 500;\n}\n\nion-menu.ios ion-content {\n  --padding-bottom: 20px;\n}\n\nion-menu.ios ion-list {\n  padding: 20px 0 0 0;\n}\n\nion-menu.ios ion-note {\n  line-height: 24px;\n  margin-bottom: 20px;\n}\n\nion-menu.ios ion-item {\n  --padding-start: 16px;\n  --padding-end: 16px;\n  --min-height: 50px;\n}\n\nion-menu.ios ion-item.selected ion-icon {\n  color: var(--ion-color-primary);\n}\n\nion-menu.ios ion-item ion-icon {\n  font-size: 24px;\n  color: #73849a;\n}\n\nion-menu.ios ion-list#labels-list ion-list-header {\n  margin-bottom: 8px;\n}\n\nion-menu.ios ion-list-header,\nion-menu.ios ion-note {\n  padding-left: 16px;\n  padding-right: 16px;\n}\n\nion-menu.ios ion-note {\n  margin-bottom: 8px;\n}\n\nion-note {\n  display: inline-block;\n  font-size: 16px;\n  color: var(--ion-color-medium-shade);\n}\n\nion-item.selected {\n  --color: var(--ion-color-primary);\n}\n\n.menu-header {\n  background: #ffffff;\n  color: #FFF;\n  height: 230px;\n}\n\n.inner-scroll {\n  padding: 0px !important;\n  margin: 0px !important;\n}\n\n.menu-settings {\n  --padding-top: 0px !important;\n  --padding-start: 0px !important;\n  --padding-end: 0px !important;\n}\n\n.user-icon {\n  width: 136px;\n  margin-top: 15px;\n}\n\n.switch .item-inner {\n  padding: 0;\n  margin: 0;\n}\n\n@font-face {\n  font-family: \"Poppins-Regular\";\n  font-style: normal;\n  font-weight: normal;\n  src: url('Poppins-Regular.ttf');\n}\n\n@font-face {\n  font-family: \"Poppins-Bold\";\n  font-style: normal;\n  font-weight: normal;\n  src: url('Poppins-Bold.ttf');\n}\n\n@font-face {\n  font-family: \"Poppins-SemiBold\";\n  font-style: normal;\n  font-weight: normal;\n  src: url('Poppins-SemiBold.ttf');\n}\n\nion-menu-toggle ion-icon {\n  margin-right: 20px;\n}\n\nion-menu-toggle ion-icon svg path {\n  color: \"#000\" !important;\n  fill: \"#000\" !important;\n}\n\n.waves {\n  position: relative;\n  width: 100%;\n  height: 15vh;\n  margin-bottom: -7px;\n  /*Fix for safari gap*/\n  min-height: 100px;\n  max-height: 150px;\n}\n\n/*Shrinking for mobile*/\n\n@media (max-width: 768px) {\n  .waves {\n    height: 40px;\n    min-height: 40px;\n  }\n}\n\n.waveheader {\n  position: relative;\n  text-align: center;\n  background: #91b142;\n  color: white;\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9jaGV0YW4vRGVza3RvcC9vZmZpY2UvbW9iaWxlL3JpY2Vzb3VyY2VVU0Qvc3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDJFQUFBO0FDQ0Y7O0FERUE7RUFDRSxvQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxzQkFBQTtBQ0NGOztBREVBO0VBQ0UsZUFBQTtBQ0NGOztBREVBO0VBQ0UsbUJBQUE7QUNDRjs7QURFQTs7RUFFRSxrQkFBQTtBQ0NGOztBREVBO0VBQ0UsMkRBQUE7QUNDRjs7QURFQTtFQUNFLGVBQUE7RUFDQSxnQkFBQTtFQUVBLGdCQUFBO0FDQUY7O0FER0E7RUFDRSxlQUFBO0VBRUEsbUJBQUE7RUFFQSxjQUFBO0VBRUEsZ0JBQUE7QUNIRjs7QURNQTtFQUNFLHFCQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtBQ0hGOztBRE1BO0VBQ0Usc0RBQUE7QUNIRjs7QURNQTtFQUNFLCtCQUFBO0FDSEY7O0FETUE7RUFDRSxjQUFBO0FDSEY7O0FETUE7RUFDRSxnQkFBQTtBQ0hGOztBRE1BO0VBQ0Usc0JBQUE7QUNIRjs7QURNQTtFQUNFLG1CQUFBO0FDSEY7O0FETUE7RUFDRSxpQkFBQTtFQUNBLG1CQUFBO0FDSEY7O0FETUE7RUFDRSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7QUNIRjs7QURNQTtFQUNFLCtCQUFBO0FDSEY7O0FETUE7RUFDRSxlQUFBO0VBQ0EsY0FBQTtBQ0hGOztBRE1BO0VBQ0Usa0JBQUE7QUNIRjs7QURNQTs7RUFFRSxrQkFBQTtFQUNBLG1CQUFBO0FDSEY7O0FETUE7RUFDRSxrQkFBQTtBQ0hGOztBRE1BO0VBQ0UscUJBQUE7RUFDQSxlQUFBO0VBRUEsb0NBQUE7QUNKRjs7QURPQTtFQUNFLGlDQUFBO0FDSkY7O0FET0E7RUFDRSxtQkFBQTtFQUNBLFdBQUE7RUFDQSxhQUFBO0FDSkY7O0FET0E7RUFDRSx1QkFBQTtFQUNBLHNCQUFBO0FDSkY7O0FET0E7RUFDRSw2QkFBQTtFQUNBLCtCQUFBO0VBQ0EsNkJBQUE7QUNKRjs7QURPQTtFQUNFLFlBQUE7RUFDQSxnQkFBQTtBQ0pGOztBRGdCRTtFQUNFLFVBQUE7RUFDQSxTQUFBO0FDYko7O0FEaUJBO0VBQ0UsOEJBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsK0JBQUE7QUNkRjs7QURpQkE7RUFDRSwyQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSw0QkFBQTtBQ2ZGOztBRGtCQTtFQUNFLCtCQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtFQUNBLGdDQUFBO0FDaEJGOztBRHFCRTtFQUNFLGtCQUFBO0FDbkJKOztBRHNCTTtFQUNFLHdCQUFBO0VBQ0EsdUJBQUE7QUNwQlI7O0FENEJBO0VBQ0Usa0JBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLG1CQUFBO0VBQ0EscUJBQUE7RUFDQSxpQkFBQTtFQUNBLGlCQUFBO0FDekJGOztBRDZCQSx1QkFBQTs7QUFDQTtFQUNFO0lBQ0UsWUFBQTtJQUNBLGdCQUFBO0VDMUJGO0FBQ0Y7O0FENkJBO0VBQ0Usa0JBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7QUMzQkYiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tbWVudSBpb24tY29udGVudCB7XG4gIC0tYmFja2dyb3VuZDogdmFyKC0taW9uLWl0ZW0tYmFja2dyb3VuZCwgdmFyKC0taW9uLWJhY2tncm91bmQtY29sb3IsICNmZmYpKTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWNvbnRlbnQge1xuICAtLXBhZGRpbmctc3RhcnQ6IDhweDtcbiAgLS1wYWRkaW5nLWVuZDogOHB4O1xuICAtLXBhZGRpbmctdG9wOiAyMHB4O1xuICAtLXBhZGRpbmctYm90dG9tOiAyMHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdCB7XG4gIHBhZGRpbmc6IDIwcHggMDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLW5vdGUge1xuICBtYXJnaW4tYm90dG9tOiAzMHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdC1oZWFkZXIsXG5pb24tbWVudS5tZCBpb24tbm90ZSB7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3QjaW5ib3gtbGlzdCB7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCB2YXIoLS1pb24tY29sb3Itc3RlcC0xNTAsICNkN2Q4ZGEpO1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdCNpbmJveC1saXN0IGlvbi1saXN0LWhlYWRlciB7XG4gIGZvbnQtc2l6ZTogMjJweDtcbiAgZm9udC13ZWlnaHQ6IDYwMDtcblxuICBtaW4taGVpZ2h0OiAyMHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24tbGlzdCNsYWJlbHMtbGlzdCBpb24tbGlzdC1oZWFkZXIge1xuICBmb250LXNpemU6IDE2cHg7XG5cbiAgbWFyZ2luLWJvdHRvbTogMThweDtcblxuICBjb2xvcjogIzc1NzU3NTtcblxuICBtaW4taGVpZ2h0OiAyNnB4O1xufVxuXG5pb24tbWVudS5tZCBpb24taXRlbSB7XG4gIC0tcGFkZGluZy1zdGFydDogMTBweDtcbiAgLS1wYWRkaW5nLWVuZDogMTBweDtcbiAgYm9yZGVyLXJhZGl1czogNHB4O1xufVxuXG5pb24tbWVudS5tZCBpb24taXRlbS5zZWxlY3RlZCB7XG4gIC0tYmFja2dyb3VuZDogcmdiYSh2YXIoLS1pb24tY29sb3ItcHJpbWFyeS1yZ2IpLCAwLjE0KTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWl0ZW0uc2VsZWN0ZWQgaW9uLWljb24ge1xuICBjb2xvcjogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufVxuXG5pb24tbWVudS5tZCBpb24taXRlbSBpb24taWNvbiB7XG4gIGNvbG9yOiAjNjE2ZTdlO1xufVxuXG5pb24tbWVudS5tZCBpb24taXRlbSBpb24tbGFiZWwge1xuICBmb250LXdlaWdodDogNTAwO1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWNvbnRlbnQge1xuICAtLXBhZGRpbmctYm90dG9tOiAyMHB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWxpc3Qge1xuICBwYWRkaW5nOiAyMHB4IDAgMCAwO1xufVxuXG5pb24tbWVudS5pb3MgaW9uLW5vdGUge1xuICBsaW5lLWhlaWdodDogMjRweDtcbiAgbWFyZ2luLWJvdHRvbTogMjBweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1pdGVtIHtcbiAgLS1wYWRkaW5nLXN0YXJ0OiAxNnB4O1xuICAtLXBhZGRpbmctZW5kOiAxNnB4O1xuICAtLW1pbi1oZWlnaHQ6IDUwcHg7XG59XG5cbmlvbi1tZW51LmlvcyBpb24taXRlbS5zZWxlY3RlZCBpb24taWNvbiB7XG4gIGNvbG9yOiB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XG59XG5cbmlvbi1tZW51LmlvcyBpb24taXRlbSBpb24taWNvbiB7XG4gIGZvbnQtc2l6ZTogMjRweDtcbiAgY29sb3I6ICM3Mzg0OWE7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tbGlzdCNsYWJlbHMtbGlzdCBpb24tbGlzdC1oZWFkZXIge1xuICBtYXJnaW4tYm90dG9tOiA4cHg7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tbGlzdC1oZWFkZXIsXG5pb24tbWVudS5pb3MgaW9uLW5vdGUge1xuICBwYWRkaW5nLWxlZnQ6IDE2cHg7XG4gIHBhZGRpbmctcmlnaHQ6IDE2cHg7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tbm90ZSB7XG4gIG1hcmdpbi1ib3R0b206IDhweDtcbn1cblxuaW9uLW5vdGUge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIGZvbnQtc2l6ZTogMTZweDtcblxuICBjb2xvcjogdmFyKC0taW9uLWNvbG9yLW1lZGl1bS1zaGFkZSk7XG59XG5cbmlvbi1pdGVtLnNlbGVjdGVkIHtcbiAgLS1jb2xvcjogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufVxuXG4ubWVudS1oZWFkZXIge1xuICBiYWNrZ3JvdW5kOiAjZmZmZmZmO1xuICBjb2xvcjogI0ZGRjtcbiAgaGVpZ2h0OiAyMzBweDtcbn1cblxuLmlubmVyLXNjcm9sbCB7XG4gIHBhZGRpbmc6IDBweCAhaW1wb3J0YW50O1xuICBtYXJnaW46IDBweCAhaW1wb3J0YW50O1xufVxuXG4ubWVudS1zZXR0aW5ncyB7XG4gIC0tcGFkZGluZy10b3A6IDBweCAhaW1wb3J0YW50O1xuICAtLXBhZGRpbmctc3RhcnQ6IDBweCAhaW1wb3J0YW50O1xuICAtLXBhZGRpbmctZW5kOiAwcHggIWltcG9ydGFudDtcbn1cblxuLnVzZXItaWNvbiB7XG4gIHdpZHRoOiAxMzZweDtcbiAgbWFyZ2luLXRvcDogMTVweDtcbn1cblxuLy8gLnVzZXItcHJvZmlsZXtcbi8vIFx0dGV4dC1hbGlnbjogY2VudGVyO1xuXG4vLyBcdGlvbi1sYWJlbHtcbi8vIFx0XHRtYXJnaW4tdG9wOiAxM3B4O1xuLy8gXHRcdGRpc3BsYXk6IGJsb2NrO1xuLy8gXHR9XG4vLyB9XG4uc3dpdGNoIHtcbiAgLml0ZW0taW5uZXIge1xuICAgIHBhZGRpbmc6IDA7XG4gICAgbWFyZ2luOiAwO1xuICB9XG59XG5cbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogJ1BvcHBpbnMtUmVndWxhcic7XG4gIGZvbnQtc3R5bGU6IG5vcm1hbDtcbiAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgc3JjOiB1cmwoJy4uL2Fzc2V0cy9mb250cy9Qb3BwaW5zL1BvcHBpbnMtUmVndWxhci50dGYnKTtcbn1cblxuQGZvbnQtZmFjZSB7XG4gIGZvbnQtZmFtaWx5OiAnUG9wcGlucy1Cb2xkJztcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBzcmM6IHVybCgnLi4vYXNzZXRzL2ZvbnRzL1BvcHBpbnMvUG9wcGlucy1Cb2xkLnR0ZicpO1xufVxuXG5AZm9udC1mYWNlIHtcbiAgZm9udC1mYW1pbHk6ICdQb3BwaW5zLVNlbWlCb2xkJztcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBzcmM6IHVybCgnLi4vYXNzZXRzL2ZvbnRzL1BvcHBpbnMvUG9wcGlucy1TZW1pQm9sZC50dGYnKTtcbn1cblxuXG5pb24tbWVudS10b2dnbGUge1xuICBpb24taWNvbiB7XG4gICAgbWFyZ2luLXJpZ2h0OiAyMHB4O1xuXG4gICAgc3ZnIHtcbiAgICAgIHBhdGgge1xuICAgICAgICBjb2xvcjogJyMwMDAnICFpbXBvcnRhbnQ7XG4gICAgICAgIGZpbGw6ICcjMDAwJyAhaW1wb3J0YW50O1xuICAgICAgfVxuICAgIH1cbiAgfVxuXG5cbn1cblxuLndhdmVzIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxNXZoO1xuICBtYXJnaW4tYm90dG9tOiAtN3B4O1xuICAvKkZpeCBmb3Igc2FmYXJpIGdhcCovXG4gIG1pbi1oZWlnaHQ6IDEwMHB4O1xuICBtYXgtaGVpZ2h0OiAxNTBweDtcbn1cblxuXG4vKlNocmlua2luZyBmb3IgbW9iaWxlKi9cbkBtZWRpYSAobWF4LXdpZHRoOiA3NjhweCkge1xuICAud2F2ZXMge1xuICAgIGhlaWdodDogNDBweDtcbiAgICBtaW4taGVpZ2h0OiA0MHB4O1xuICB9XG59XG5cbi53YXZlaGVhZGVyIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGJhY2tncm91bmQ6ICM5MWIxNDI7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgd2lkdGg6IDEwMCU7XG59IiwiaW9uLW1lbnUgaW9uLWNvbnRlbnQge1xuICAtLWJhY2tncm91bmQ6IHZhcigtLWlvbi1pdGVtLWJhY2tncm91bmQsIHZhcigtLWlvbi1iYWNrZ3JvdW5kLWNvbG9yLCAjZmZmKSk7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1jb250ZW50IHtcbiAgLS1wYWRkaW5nLXN0YXJ0OiA4cHg7XG4gIC0tcGFkZGluZy1lbmQ6IDhweDtcbiAgLS1wYWRkaW5nLXRvcDogMjBweDtcbiAgLS1wYWRkaW5nLWJvdHRvbTogMjBweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3Qge1xuICBwYWRkaW5nOiAyMHB4IDA7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1ub3RlIHtcbiAgbWFyZ2luLWJvdHRvbTogMzBweDtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3QtaGVhZGVyLFxuaW9uLW1lbnUubWQgaW9uLW5vdGUge1xuICBwYWRkaW5nLWxlZnQ6IDEwcHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1saXN0I2luYm94LWxpc3Qge1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgdmFyKC0taW9uLWNvbG9yLXN0ZXAtMTUwLCAjZDdkOGRhKTtcbn1cblxuaW9uLW1lbnUubWQgaW9uLWxpc3QjaW5ib3gtbGlzdCBpb24tbGlzdC1oZWFkZXIge1xuICBmb250LXNpemU6IDIycHg7XG4gIGZvbnQtd2VpZ2h0OiA2MDA7XG4gIG1pbi1oZWlnaHQ6IDIwcHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1saXN0I2xhYmVscy1saXN0IGlvbi1saXN0LWhlYWRlciB7XG4gIGZvbnQtc2l6ZTogMTZweDtcbiAgbWFyZ2luLWJvdHRvbTogMThweDtcbiAgY29sb3I6ICM3NTc1NzU7XG4gIG1pbi1oZWlnaHQ6IDI2cHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtIHtcbiAgLS1wYWRkaW5nLXN0YXJ0OiAxMHB4O1xuICAtLXBhZGRpbmctZW5kOiAxMHB4O1xuICBib3JkZXItcmFkaXVzOiA0cHg7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtLnNlbGVjdGVkIHtcbiAgLS1iYWNrZ3JvdW5kOiByZ2JhKHZhcigtLWlvbi1jb2xvci1wcmltYXJ5LXJnYiksIDAuMTQpO1xufVxuXG5pb24tbWVudS5tZCBpb24taXRlbS5zZWxlY3RlZCBpb24taWNvbiB7XG4gIGNvbG9yOiB2YXIoLS1pb24tY29sb3ItcHJpbWFyeSk7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtIGlvbi1pY29uIHtcbiAgY29sb3I6ICM2MTZlN2U7XG59XG5cbmlvbi1tZW51Lm1kIGlvbi1pdGVtIGlvbi1sYWJlbCB7XG4gIGZvbnQtd2VpZ2h0OiA1MDA7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tY29udGVudCB7XG4gIC0tcGFkZGluZy1ib3R0b206IDIwcHg7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tbGlzdCB7XG4gIHBhZGRpbmc6IDIwcHggMCAwIDA7XG59XG5cbmlvbi1tZW51LmlvcyBpb24tbm90ZSB7XG4gIGxpbmUtaGVpZ2h0OiAyNHB4O1xuICBtYXJnaW4tYm90dG9tOiAyMHB4O1xufVxuXG5pb24tbWVudS5pb3MgaW9uLWl0ZW0ge1xuICAtLXBhZGRpbmctc3RhcnQ6IDE2cHg7XG4gIC0tcGFkZGluZy1lbmQ6IDE2cHg7XG4gIC0tbWluLWhlaWdodDogNTBweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1pdGVtLnNlbGVjdGVkIGlvbi1pY29uIHtcbiAgY29sb3I6IHZhcigtLWlvbi1jb2xvci1wcmltYXJ5KTtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1pdGVtIGlvbi1pY29uIHtcbiAgZm9udC1zaXplOiAyNHB4O1xuICBjb2xvcjogIzczODQ5YTtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1saXN0I2xhYmVscy1saXN0IGlvbi1saXN0LWhlYWRlciB7XG4gIG1hcmdpbi1ib3R0b206IDhweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1saXN0LWhlYWRlcixcbmlvbi1tZW51LmlvcyBpb24tbm90ZSB7XG4gIHBhZGRpbmctbGVmdDogMTZweDtcbiAgcGFkZGluZy1yaWdodDogMTZweDtcbn1cblxuaW9uLW1lbnUuaW9zIGlvbi1ub3RlIHtcbiAgbWFyZ2luLWJvdHRvbTogOHB4O1xufVxuXG5pb24tbm90ZSB7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgZm9udC1zaXplOiAxNnB4O1xuICBjb2xvcjogdmFyKC0taW9uLWNvbG9yLW1lZGl1bS1zaGFkZSk7XG59XG5cbmlvbi1pdGVtLnNlbGVjdGVkIHtcbiAgLS1jb2xvcjogdmFyKC0taW9uLWNvbG9yLXByaW1hcnkpO1xufVxuXG4ubWVudS1oZWFkZXIge1xuICBiYWNrZ3JvdW5kOiAjZmZmZmZmO1xuICBjb2xvcjogI0ZGRjtcbiAgaGVpZ2h0OiAyMzBweDtcbn1cblxuLmlubmVyLXNjcm9sbCB7XG4gIHBhZGRpbmc6IDBweCAhaW1wb3J0YW50O1xuICBtYXJnaW46IDBweCAhaW1wb3J0YW50O1xufVxuXG4ubWVudS1zZXR0aW5ncyB7XG4gIC0tcGFkZGluZy10b3A6IDBweCAhaW1wb3J0YW50O1xuICAtLXBhZGRpbmctc3RhcnQ6IDBweCAhaW1wb3J0YW50O1xuICAtLXBhZGRpbmctZW5kOiAwcHggIWltcG9ydGFudDtcbn1cblxuLnVzZXItaWNvbiB7XG4gIHdpZHRoOiAxMzZweDtcbiAgbWFyZ2luLXRvcDogMTVweDtcbn1cblxuLnN3aXRjaCAuaXRlbS1pbm5lciB7XG4gIHBhZGRpbmc6IDA7XG4gIG1hcmdpbjogMDtcbn1cblxuQGZvbnQtZmFjZSB7XG4gIGZvbnQtZmFtaWx5OiBcIlBvcHBpbnMtUmVndWxhclwiO1xuICBmb250LXN0eWxlOiBub3JtYWw7XG4gIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gIHNyYzogdXJsKFwiLi4vYXNzZXRzL2ZvbnRzL1BvcHBpbnMvUG9wcGlucy1SZWd1bGFyLnR0ZlwiKTtcbn1cbkBmb250LWZhY2Uge1xuICBmb250LWZhbWlseTogXCJQb3BwaW5zLUJvbGRcIjtcbiAgZm9udC1zdHlsZTogbm9ybWFsO1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBzcmM6IHVybChcIi4uL2Fzc2V0cy9mb250cy9Qb3BwaW5zL1BvcHBpbnMtQm9sZC50dGZcIik7XG59XG5AZm9udC1mYWNlIHtcbiAgZm9udC1mYW1pbHk6IFwiUG9wcGlucy1TZW1pQm9sZFwiO1xuICBmb250LXN0eWxlOiBub3JtYWw7XG4gIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gIHNyYzogdXJsKFwiLi4vYXNzZXRzL2ZvbnRzL1BvcHBpbnMvUG9wcGlucy1TZW1pQm9sZC50dGZcIik7XG59XG5pb24tbWVudS10b2dnbGUgaW9uLWljb24ge1xuICBtYXJnaW4tcmlnaHQ6IDIwcHg7XG59XG5pb24tbWVudS10b2dnbGUgaW9uLWljb24gc3ZnIHBhdGgge1xuICBjb2xvcjogXCIjMDAwXCIgIWltcG9ydGFudDtcbiAgZmlsbDogXCIjMDAwXCIgIWltcG9ydGFudDtcbn1cblxuLndhdmVzIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxNXZoO1xuICBtYXJnaW4tYm90dG9tOiAtN3B4O1xuICAvKkZpeCBmb3Igc2FmYXJpIGdhcCovXG4gIG1pbi1oZWlnaHQ6IDEwMHB4O1xuICBtYXgtaGVpZ2h0OiAxNTBweDtcbn1cblxuLypTaHJpbmtpbmcgZm9yIG1vYmlsZSovXG5AbWVkaWEgKG1heC13aWR0aDogNzY4cHgpIHtcbiAgLndhdmVzIHtcbiAgICBoZWlnaHQ6IDQwcHg7XG4gICAgbWluLWhlaWdodDogNDBweDtcbiAgfVxufVxuLndhdmVoZWFkZXIge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgYmFja2dyb3VuZDogIzkxYjE0MjtcbiAgY29sb3I6IHdoaXRlO1xuICB3aWR0aDogMTAwJTtcbn0iXX0= */";
 
     /***/
   },
@@ -1284,56 +1328,64 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         // {
         // 	title: 'Home',
         // 	url: '/prices',
-        // 	icon: 'albums'
+        // 	icon: 'home.svg'
         // },
         {
           title: 'Edit Profile',
           url: '/editprofile',
-          icon: 'albums'
-        }, {
-          title: 'Transport',
-          url: '/port',
-          icon: 'albums'
-        }, {
-          title: 'Gallery',
-          url: '/gallery',
-          icon: 'albums'
-        }, {
-          title: 'Chat',
-          url: '/chat-detail',
-          icon: 'albums'
+          icon: 'profile.svg'
         }, {
           title: 'About us',
           url: '/aboutus',
-          icon: 'albums'
+          icon: 'about.svg'
         }, {
           title: 'Terms and conditions',
           url: '/termsandcondition',
-          icon: 'albums'
+          icon: 'terms.svg'
         }, {
           title: 'Private Policy',
           url: '/privatepolicy',
-          icon: 'albums'
-        }, {
-          title: 'Return & Refund Policy',
-          url: '/refund',
-          icon: 'albums'
+          icon: 'privacy.svg'
         }, {
           title: 'Disclaimer',
           url: '/disclaimer',
-          icon: 'albums'
+          icon: 'disclaimer.svg'
         }, {
           title: 'Change Password',
           url: '/updatepassword',
-          icon: 'albums'
+          icon: 'changepassword.svg'
+        }, {
+          title: 'Return & Refund Policy',
+          url: '/refund',
+          icon: 'terms.svg'
         }, {
           title: 'Gallery',
           url: '/gallery',
-          icon: 'albums'
+          icon: 'gallery.svg'
         }, {
+          title: 'Chat',
+          url: '/chat-detail',
+          icon: 'chat.svg'
+        },
+        // {
+        // 	title: 'Trade',
+        // 	url: '/trade-inr',
+        // 	icon: 'albums'
+        // },
+        // {
+        // 	title: 'Trade list',
+        // 	url: '/trade-inr-list',
+        // 	icon: 'albums'
+        // },
+        // {
+        // 	title: 'Gallery',
+        // 	url: '/gallery',
+        // 	icon: 'albums'
+        // },
+        {
           title: 'Contact us',
           url: '/contact',
-          icon: 'albums'
+          icon: 'contactus.svg'
         }];
         this.labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
         this.razor_key = 'rzp_test_eBPImORw1zmU8F';
@@ -1377,12 +1429,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             });
             setInterval(function () {
               _this.firebase.onTokenRefresh().subscribe(function (token) {
+                console.log("hello i am here 2");
                 if (localStorage.getItem('id') != null) {
                   this.apiser.updateToken(localStorage.getItem('id'), token);
                 }
               });
             }, 600000);
             _this.firebase.onTokenRefresh().subscribe(function (token) {
+              console.log("hello i am here 2");
               if (localStorage.getItem('id') != null) {
                 this.apiser.updateToken(localStorage.getItem('id'), token);
               }
@@ -1427,11 +1481,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         setTimeout(function () {
           _this2.componentSer.compareTwoDates(localStorage.getItem('expired_on'));
+          _this2.appType = localStorage.getItem('apptype');
         }, 1000);
         this.componentSer.showPaymentModal.subscribe(function (res) {
           _this2.presentModel();
         });
-        this.appType = localStorage.getItem('apptype');
       }
       _createClass(AppComponent, [{
         key: "home",
@@ -1453,6 +1507,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.menuCtrl.close();
         }
       }, {
+        key: "port",
+        value: function port() {
+          this.navCtrl.navigateRoot('port', {
+            animationDirection: 'forward'
+          });
+          this.menuCtrl.close();
+        }
+      }, {
         key: "firebasepushnotif",
         value: function firebasepushnotif() {
           var _this3 = this;
@@ -1466,12 +1528,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             });
             setInterval(function () {
               _this3.firebase.onTokenRefresh().subscribe(function (token) {
+                console.log("hello i am here 2");
                 if (localStorage.getItem('id') != null) {
                   apiHn.updateToken(localStorage.getItem('id'), token);
                 }
               });
             }, 600000);
             _this3.firebase.onTokenRefresh().subscribe(function (token) {
+              console.log("hello i am here 2");
               if (localStorage.getItem('id') != null) {
                 apiHn.updateToken(localStorage.getItem('id'), token);
               }
@@ -1627,6 +1691,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         localStorage.setItem('ExpiryUSDDate', null);
                       }
                       localStorage.setItem('expired_on', res.data);
+                      console.log("i m here");
                       _this5.componentSer.compareTwoDates(localStorage.getItem('expired_on'));
                       _this5.componentSer.isUserExpired.next('true');
                     }, function (err) {});
@@ -1766,28 +1831,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                   }
                                 }
                               });
-                              console.log("jnk");
                               if (localStorage.getItem('isUserActivatedUSD') == '0') {
                                 if (localStorage.getItem('is_INR_active') == '1') {
                                   localStorage.setItem('apptype', 'OTHER');
                                   _this5.navCtrl.navigateRoot('prices');
-                                  console.log("kjhnijk");
-                                  console.log("apptype OTHER");
                                 } else {
-                                  console.log("jnk,");
-                                  console.log("hey i am here");
                                   _this5.navCtrl.navigateRoot('planpage');
                                 }
                               } else {
                                 if (localStorage.getItem('status') != '0') {
                                   if (localStorage.getItem('is_INR_active') == '0' && localStorage.getItem('transaction_id') == 'null') {
-                                    console.log("hey i am here");
                                     _this5.navCtrl.navigateRoot('planpage');
                                   } else {
-                                    console.log("i am here");
                                     _this5.navCtrl.navigateForward(['prices']);
-                                    console.log("apptype USD");
-                                    localStorage.setItem('apptype', 'USD');
+                                    localStorage.setItem('apptype', 'OTHER');
                                   }
                                 } else {
                                   _this5.navCtrl.navigateForward(['verifyotp']);
@@ -1919,12 +1976,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       });
                       setInterval(function () {
                         _this5.firebase.onTokenRefresh().subscribe(function (token) {
+                          console.log("hello i am here 2");
                           if (localStorage.getItem('id') != null) {
                             apiPre.updateToken(localStorage.getItem('id'), token);
                           }
                         });
                       }, 600000);
                       _this5.firebase.onTokenRefresh().subscribe(function (token) {
+                        console.log("hello i am here 2");
                         if (localStorage.getItem('id') != null) {
                           apiPre.updateToken(localStorage.getItem('id'), token);
                         }
@@ -2003,6 +2062,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     // 				}
                     // 			});
                     // 			this.firebase.onTokenRefresh().subscribe(function(token) {
+                    console.log("hello i am here 2");
                     // 				if( localStorage.getItem('id') != null ){
                     // 					this.apiser.updateToken(localStorage.getItem('id') , token);
                     // 				}
@@ -2023,12 +2083,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     // 		});
                     // 	});
                     // }
-                  case 30:
+                    this.appType = localStorage.getItem('apptype');
+                  case 32:
                   case "end":
                     return _context6.stop();
                 }
               }, _callee6, this);
             }));
+          });
+          this.componentSer.reRenderSideMenu.subscribe(function (data) {
+            _this4.appType = localStorage.getItem('apptype');
           });
         }
       }, {
@@ -2076,6 +2140,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "ngOnInit",
         value: function ngOnInit() {
           console.log(this.selectedIndex);
+          this.appType = localStorage.getItem('apptype');
           var path = window.location.pathname.split('folder/')[1];
           if (path !== undefined) {
             this.selectedIndex = this.appPages.findIndex(function (page) {
@@ -2272,6 +2337,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_native_file_path_ngx__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__( /*! @ionic-native/file-path/ngx */"./node_modules/@ionic-native/file-path/ngx/index.js");
     /* harmony import */
     var _ionic_native_image_picker_ngx__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__( /*! @ionic-native/image-picker/ngx */"./node_modules/@ionic-native/image-picker/ngx/index.js");
+    /* harmony import */
+    var _loader_component_loader_component_module__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__( /*! ./loader-component/loader-component.module */"./src/app/loader-component/loader-component.module.ts");
 
     // import { IonicSelectableModule } from 'ionic-selectable';
 
@@ -2281,7 +2348,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"], _sample_entry_sample_entry_component__WEBPACK_IMPORTED_MODULE_10__["SampleEntryComponent"], _send_courier_send_courier_component__WEBPACK_IMPORTED_MODULE_11__["SendCourierComponent"], _mill_status_mill_status_component__WEBPACK_IMPORTED_MODULE_13__["MillStatusComponent"], _popover_popover_component__WEBPACK_IMPORTED_MODULE_14__["PopoverComponent"], _brok_login_brok_login_component__WEBPACK_IMPORTED_MODULE_18__["BrokLoginComponent"]],
       entryComponents: [_sample_entry_sample_entry_component__WEBPACK_IMPORTED_MODULE_10__["SampleEntryComponent"], _send_courier_send_courier_component__WEBPACK_IMPORTED_MODULE_11__["SendCourierComponent"], _mill_status_mill_status_component__WEBPACK_IMPORTED_MODULE_13__["MillStatusComponent"], _popover_popover_component__WEBPACK_IMPORTED_MODULE_14__["PopoverComponent"], _brok_login_brok_login_component__WEBPACK_IMPORTED_MODULE_18__["BrokLoginComponent"]],
-      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_15__["HttpClientModule"], _splashscreen_splashscreen_module__WEBPACK_IMPORTED_MODULE_19__["SplashscreenPageModule"], _imageprev_imageprev_module__WEBPACK_IMPORTED_MODULE_20__["ImageprevPageModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_16__["FormsModule"], ionic_selectable__WEBPACK_IMPORTED_MODULE_24__["IonicSelectableModule"], _planpage_planpage_module__WEBPACK_IMPORTED_MODULE_21__["PlanpagePageModule"], _usdconvertmodal_usdconvertmodal_module__WEBPACK_IMPORTED_MODULE_25__["UsdconvertmodalPageModule"], _trialperiod_trialperiod_module__WEBPACK_IMPORTED_MODULE_26__["TrialperiodPageModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot({
+      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_15__["HttpClientModule"], _splashscreen_splashscreen_module__WEBPACK_IMPORTED_MODULE_19__["SplashscreenPageModule"], _imageprev_imageprev_module__WEBPACK_IMPORTED_MODULE_20__["ImageprevPageModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_16__["FormsModule"], ionic_selectable__WEBPACK_IMPORTED_MODULE_24__["IonicSelectableModule"], _planpage_planpage_module__WEBPACK_IMPORTED_MODULE_21__["PlanpagePageModule"], _usdconvertmodal_usdconvertmodal_module__WEBPACK_IMPORTED_MODULE_25__["UsdconvertmodalPageModule"], _trialperiod_trialperiod_module__WEBPACK_IMPORTED_MODULE_26__["TrialperiodPageModule"], _loader_component_loader_component_module__WEBPACK_IMPORTED_MODULE_33__["LoaderComponentPageModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot({
         scrollPadding: false,
         scrollAssist: true
       }), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"]],
@@ -2398,6 +2465,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.isUserExpired = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Subject"]();
         this.showPaymentModal = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Subject"]();
         this.selectedPort = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Subject"]();
+        this.reRenderFooterMenu = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Subject"]();
+        this.reRenderSideMenu = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Subject"]();
       }
       _createClass(ComponentsService, [{
         key: "openModal",
@@ -2472,7 +2541,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 case 0:
                   _context10.next = 2;
                   return this.loadingController.create({
-                    message: 'Please wait...'
+                    spinner: null,
+                    message: "<div><img src=\"../assets/img/loading.gif\" style=\"height: 35px\"/><p>Please wait</p></div>",
+                    cssClass: 'loadingPopup'
+                    // content: `<img src="../assets/img/loading.gif" />`,
                   });
                 case 2:
                   loading = _context10.sent;
@@ -2842,6 +2914,135 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     IsloginGuard = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"]])], IsloginGuard);
+
+    /***/
+  },
+
+  /***/"./src/app/loader-component/loader-component-routing.module.ts":
+  /*!*********************************************************************!*\
+    !*** ./src/app/loader-component/loader-component-routing.module.ts ***!
+    \*********************************************************************/
+  /*! exports provided: LoaderComponentPageRoutingModule */
+  /***/
+  function srcAppLoaderComponentLoaderComponentRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "LoaderComponentPageRoutingModule", function () {
+      return LoaderComponentPageRoutingModule;
+    });
+    /* harmony import */
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! tslib */"./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! @angular/core */"./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! @angular/router */"./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+    var _loader_component_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ./loader-component.page */"./src/app/loader-component/loader-component.page.ts");
+    var routes = [{
+      path: '',
+      component: _loader_component_page__WEBPACK_IMPORTED_MODULE_3__["LoaderComponentPage"]
+    }];
+    var LoaderComponentPageRoutingModule = /*#__PURE__*/_createClass(function LoaderComponentPageRoutingModule() {
+      _classCallCheck(this, LoaderComponentPageRoutingModule);
+    });
+    LoaderComponentPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
+      exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+    })], LoaderComponentPageRoutingModule);
+
+    /***/
+  },
+
+  /***/"./src/app/loader-component/loader-component.module.ts":
+  /*!*************************************************************!*\
+    !*** ./src/app/loader-component/loader-component.module.ts ***!
+    \*************************************************************/
+  /*! exports provided: LoaderComponentPageModule */
+  /***/
+  function srcAppLoaderComponentLoaderComponentModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "LoaderComponentPageModule", function () {
+      return LoaderComponentPageModule;
+    });
+    /* harmony import */
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! tslib */"./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! @angular/core */"./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! @angular/common */"./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! @angular/forms */"./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__( /*! @ionic/angular */"./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+    /* harmony import */
+    var _loader_component_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__( /*! ./loader-component-routing.module */"./src/app/loader-component/loader-component-routing.module.ts");
+    /* harmony import */
+    var _loader_component_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__( /*! ./loader-component.page */"./src/app/loader-component/loader-component.page.ts");
+    var LoaderComponentPageModule = /*#__PURE__*/_createClass(function LoaderComponentPageModule() {
+      _classCallCheck(this, LoaderComponentPageModule);
+    });
+    LoaderComponentPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _loader_component_routing_module__WEBPACK_IMPORTED_MODULE_5__["LoaderComponentPageRoutingModule"]],
+      declarations: [_loader_component_page__WEBPACK_IMPORTED_MODULE_6__["LoaderComponentPage"]]
+    })], LoaderComponentPageModule);
+
+    /***/
+  },
+
+  /***/"./src/app/loader-component/loader-component.page.scss":
+  /*!*************************************************************!*\
+    !*** ./src/app/loader-component/loader-component.page.scss ***!
+    \*************************************************************/
+  /*! exports provided: default */
+  /***/
+  function srcAppLoaderComponentLoaderComponentPageScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xvYWRlci1jb21wb25lbnQvbG9hZGVyLWNvbXBvbmVudC5wYWdlLnNjc3MifQ== */";
+
+    /***/
+  },
+
+  /***/"./src/app/loader-component/loader-component.page.ts":
+  /*!***********************************************************!*\
+    !*** ./src/app/loader-component/loader-component.page.ts ***!
+    \***********************************************************/
+  /*! exports provided: LoaderComponentPage */
+  /***/
+  function srcAppLoaderComponentLoaderComponentPageTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+    __webpack_require__.d(__webpack_exports__, "LoaderComponentPage", function () {
+      return LoaderComponentPage;
+    });
+    /* harmony import */
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! tslib */"./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! @angular/core */"./node_modules/@angular/core/fesm2015/core.js");
+    var LoaderComponentPage = /*#__PURE__*/function () {
+      function LoaderComponentPage() {
+        _classCallCheck(this, LoaderComponentPage);
+      }
+      _createClass(LoaderComponentPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }]);
+      return LoaderComponentPage;
+    }();
+    LoaderComponentPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-loader-component',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__( /*! raw-loader!./loader-component.page.html */"./node_modules/raw-loader/dist/cjs.js!./src/app/loader-component/loader-component.page.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__( /*! ./loader-component.page.scss */"./src/app/loader-component/loader-component.page.scss"))["default"]]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])], LoaderComponentPage);
 
     /***/
   },
@@ -3716,17 +3917,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "presentLoader",
         value: function presentLoader(message) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee14() {
+            var loading;
             return _regeneratorRuntime().wrap(function _callee14$(_context14) {
               while (1) switch (_context14.prev = _context14.next) {
                 case 0:
                   _context14.next = 2;
                   return this.loaderCtrl.create({
-                    message: message
+                    spinner: null,
+                    message: "<div><img src=\"../assets/img/loading.gif\" style=\"height: 35px\"/><p>Please wait</p></div>",
+                    cssClass: 'loadingPopup'
+                    // content: `<img src="../assets/img/loading.gif" />`,
                   });
                 case 2:
-                  this.loading = _context14.sent;
+                  loading = _context14.sent;
                   _context14.next = 5;
-                  return this.loading.present();
+                  return loading.present();
                 case 5:
                 case "end":
                   return _context14.stop();
@@ -4109,12 +4314,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
         }
       }, {
+        key: "getTradeData",
+        value: function getTradeData(tradeId) {
+          var _this40 = this;
+          return new Promise(function (resolve, reject) {
+            _this40.http.get(_this40.APIURL + "get/trade/details/" + tradeId).subscribe(function (res) {
+              resolve(res);
+            }, function (err) {
+              reject(err);
+            });
+          });
+        }
+      }, {
         key: "regsiterUser",
         value: function regsiterUser(formdata) {
-          var _this40 = this;
+          var _this41 = this;
           var token = localStorage.getItem("token");
           return new Promise(function (resolve, reject) {
-            _this40.http.post(_this40.APIURL + "save/user?api_token=" + token, JSON.stringify(formdata)).subscribe(function (res) {
+            _this41.http.post(_this41.APIURL + "save/user?api_token=" + token, JSON.stringify(formdata)).subscribe(function (res) {
               console.log(res);
               resolve(res);
             }, function (err) {
@@ -4126,10 +4343,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateUser",
         value: function updateUser(formdata) {
-          var _this41 = this;
+          var _this42 = this;
           var token = localStorage.getItem("token");
           return new Promise(function (resolve, reject) {
-            _this41.http.post(_this41.APIURL + "update/user?api_token=" + token, JSON.stringify(formdata)).subscribe(function (res) {
+            _this42.http.post(_this42.APIURL + "update/user?api_token=" + token, JSON.stringify(formdata)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4139,10 +4356,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "verifyUser",
         value: function verifyUser(formdata) {
-          var _this42 = this;
+          var _this43 = this;
           var token = localStorage.getItem("token");
           return new Promise(function (resolve, reject) {
-            _this42.http.post(_this42.APIURL + "verify/user?api_token=" + token, JSON.stringify(formdata)).subscribe(function (res) {
+            _this43.http.post(_this43.APIURL + "verify/user?api_token=" + token, JSON.stringify(formdata)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4152,9 +4369,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "sendOTP",
         value: function sendOTP(number) {
-          var _this43 = this;
+          var _this44 = this;
           return new Promise(function (resolve, reject) {
-            _this43.http.get(_this43.APIURL + "send/otp/" + number).subscribe(function (res) {
+            _this44.http.get(_this44.APIURL + "send/otp/" + number).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4164,9 +4381,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "resendOTP",
         value: function resendOTP(number) {
-          var _this44 = this;
+          var _this45 = this;
           return new Promise(function (resolve, reject) {
-            _this44.http.get(_this44.APIURL + "resend/otp/" + number).subscribe(function (res) {
+            _this45.http.get(_this45.APIURL + "resend/otp/" + number).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4176,9 +4393,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "verifyOTP",
         value: function verifyOTP(number, otp) {
-          var _this45 = this;
+          var _this46 = this;
           return new Promise(function (resolve, reject) {
-            _this45.http.get(_this45.APIURL + "verify/otp/" + number + "/" + otp).subscribe(function (res) {
+            _this46.http.get(_this46.APIURL + "verify/otp/" + number + "/" + otp).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4188,10 +4405,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "changePassword",
         value: function changePassword(formData) {
-          var _this46 = this;
+          var _this47 = this;
           var token = localStorage.getItem("token");
           return new Promise(function (resolve, reject) {
-            _this46.http.post(_this46.APIURL + "change/password?api_token=" + token, JSON.stringify(formData)).subscribe(function (res) {
+            _this47.http.post(_this47.APIURL + "change/password?api_token=" + token, JSON.stringify(formData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4201,9 +4418,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getBasmatiState",
         value: function getBasmatiState() {
-          var _this47 = this;
+          var _this48 = this;
           return new Promise(function (resolve, reject) {
-            _this47.http.get(_this47.APIURL + "get/basmati/state").subscribe(function (res) {
+            _this48.http.get(_this48.APIURL + "get/basmati/state").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4213,9 +4430,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getNONBasmatiState",
         value: function getNONBasmatiState() {
-          var _this48 = this;
+          var _this49 = this;
           return new Promise(function (resolve, reject) {
-            _this48.http.get(_this48.APIURL + "get/nonbasmati/state").subscribe(function (res) {
+            _this49.http.get(_this49.APIURL + "get/nonbasmati/state").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4225,9 +4442,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getChartInterval",
         value: function getChartInterval() {
-          var _this49 = this;
+          var _this50 = this;
           return new Promise(function (resolve, reject) {
-            _this49.http.get(_this49.APIURL + "get/chartinterval").subscribe(function (res) {
+            _this50.http.get(_this50.APIURL + "get/chartinterval").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4237,9 +4454,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "sendMessage",
         value: function sendMessage(userDetails) {
-          var _this50 = this;
+          var _this51 = this;
           return new Promise(function (resolve, reject) {
-            _this50.http.post(_this50.APIURL + "save/message", userDetails).subscribe(function (res) {
+            _this51.http.post(_this51.APIURL + "save/message", userDetails).subscribe(function (res) {
               console.log("jnhjkn");
               resolve(res);
             }, function (err) {
@@ -4251,9 +4468,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateToken",
         value: function updateToken(id, token) {
-          var _this51 = this;
+          var _this52 = this;
           return new Promise(function (resolve, reject) {
-            _this51.http.post(_this51.APIURL + "update/user/token", JSON.stringify({
+            _this52.http.post(_this52.APIURL + "update/user/token", JSON.stringify({
               id: id,
               user_token: token
             })).subscribe(function (res) {
@@ -4266,9 +4483,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getMessages",
         value: function getMessages(from, to) {
-          var _this52 = this;
+          var _this53 = this;
           return new Promise(function (resolve, reject) {
-            _this52.http.get(_this52.APIURL + "get/message/" + from + "/" + to).subscribe(function (res) {
+            _this53.http.get(_this53.APIURL + "get/message/" + from + "/" + to).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4278,9 +4495,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getChatPerson",
         value: function getChatPerson() {
-          var _this53 = this;
+          var _this54 = this;
           return new Promise(function (resolve, reject) {
-            _this53.http.get(_this53.APIURL + "get/message/contacts/list").subscribe(function (res) {
+            _this54.http.get(_this54.APIURL + "get/message/contacts/list").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4290,9 +4507,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getChatCount",
         value: function getChatCount() {
-          var _this54 = this;
+          var _this55 = this;
           return new Promise(function (resolve, reject) {
-            _this54.http.get(_this54.APIURL + "get/user/messages/count/" + localStorage.getItem("id")).subscribe(function (res) {
+            _this55.http.get(_this55.APIURL + "get/user/messages/count/" + localStorage.getItem("id")).subscribe(function (res) {
+              resolve(res);
+            }, function (err) {
+              reject(err);
+            });
+          });
+        }
+      }, {
+        key: "getNewsRunner",
+        value: function getNewsRunner() {
+          var _this56 = this;
+          return new Promise(function (resolve, reject) {
+            _this56.http.get(_this56.APIURL + "get/news/runner").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4302,9 +4531,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "CheckUserExpired",
         value: function CheckUserExpired() {
-          var _this55 = this;
+          var _this57 = this;
           return new Promise(function (resolve, reject) {
-            _this55.http.get(_this55.APIURL + "check/user/expired/" + localStorage.getItem("id")).subscribe(function (res) {
+            _this57.http.get(_this57.APIURL + "check/user/expired/" + localStorage.getItem("id")).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4314,9 +4543,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPriceBasmatiState",
         value: function getPriceBasmatiState() {
-          var _this56 = this;
+          var _this58 = this;
           return new Promise(function (resolve, reject) {
-            _this56.http.get(_this56.APIURL + "get/price/states").subscribe(function (res) {
+            _this58.http.get(_this58.APIURL + "get/price/states").subscribe(function (res) {
               console.log(res);
             }, function (err) {
               console.log(err);
@@ -4335,9 +4564,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPortDetails",
         value: function getPortDetails(state) {
-          var _this57 = this;
+          var _this59 = this;
           return new Promise(function (resolve, reject) {
-            _this57.http.get(_this57.APIURL + "get/port/details/" + state).subscribe(function (res) {
+            _this59.http.get(_this59.APIURL + "get/port/details/" + state).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4347,9 +4576,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUserPlanDetails",
         value: function getUserPlanDetails() {
-          var _this58 = this;
+          var _this60 = this;
           return new Promise(function (resolve, reject) {
-            _this58.http.get(_this58.APIURL + "get/user/plan/" + localStorage.getItem("id")).subscribe(function (res) {
+            _this60.http.get(_this60.APIURL + "get/user/plan/" + localStorage.getItem("id")).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4359,9 +4588,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getChatStatus",
         value: function getChatStatus() {
-          var _this59 = this;
+          var _this61 = this;
           return new Promise(function (resolve, reject) {
-            _this59.http.get(_this59.APIURL + "get/chat/status").subscribe(function (res) {
+            _this61.http.get(_this61.APIURL + "get/chat/status").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4371,9 +4600,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getLatestVersion",
         value: function getLatestVersion() {
-          var _this60 = this;
+          var _this62 = this;
           return new Promise(function (resolve, reject) {
-            _this60.http.get(_this60.APIURL + "get/latest/version").subscribe(function (res) {
+            _this62.http.get(_this62.APIURL + "get/latest/version").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4383,9 +4612,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUSDPrice",
         value: function getUSDPrice(userId) {
-          var _this61 = this;
+          var _this63 = this;
           return new Promise(function (resolve, reject) {
-            _this61.http.get(_this61.APIURL + "get/usd/prices/" + userId).subscribe(function (res) {
+            _this63.http.get(_this63.APIURL + "get/usd/prices/" + userId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4395,9 +4624,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getOceanPorts",
         value: function getOceanPorts() {
-          var _this62 = this;
+          var _this64 = this;
           return new Promise(function (resolve, reject) {
-            _this62.http.get(_this62.APIURL + "get/distinct/region").subscribe(function (res) {
+            _this64.http.get(_this64.APIURL + "get/distinct/region").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4407,9 +4636,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllPorts",
         value: function getAllPorts(riceQualityId) {
-          var _this63 = this;
+          var _this65 = this;
           return new Promise(function (resolve, reject) {
-            _this63.http.get(_this63.APIURL + "get/all/ports/" + riceQualityId + "/" + localStorage.getItem("id")).subscribe(function (res) {
+            _this65.http.get(_this65.APIURL + "get/all/ports/" + riceQualityId + "/" + localStorage.getItem("id")).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4419,9 +4648,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getDataForBuyer",
         value: function getDataForBuyer() {
-          var _this64 = this;
+          var _this66 = this;
           return new Promise(function (resolve, reject) {
-            _this64.http.get(_this64.APIURL + "get/data/for/buyer").subscribe(function (res) {
+            _this66.http.get(_this66.APIURL + "get/data/for/buyer").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4431,10 +4660,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getRiceQualities",
         value: function getRiceQualities(type) {
-          var _this65 = this;
+          var _this67 = this;
           // type = 1 or 2 ( basmati or non -basmati )
           return new Promise(function (resolve, reject) {
-            _this65.http.get(_this65.APIURL + "get/rice/qualities/" + type).subscribe(function (res) {
+            _this67.http.get(_this67.APIURL + "get/rice/qualities/" + type).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4444,10 +4673,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getRiceQualitiesForms",
         value: function getRiceQualitiesForms(riceNameId) {
-          var _this66 = this;
+          var _this68 = this;
           // type = 1 or 2 ( basmati or non -basmati )
           return new Promise(function (resolve, reject) {
-            _this66.http.get(_this66.APIURL + "get/rice/qualities/name/" + riceNameId).subscribe(function (res) {
+            _this68.http.get(_this68.APIURL + "get/rice/qualities/name/" + riceNameId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4457,9 +4686,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getRiceWand",
         value: function getRiceWand(riceNameId) {
-          var _this67 = this;
+          var _this69 = this;
           return new Promise(function (resolve, reject) {
-            _this67.http.get(_this67.APIURL + "get/rice/wand/" + riceNameId).subscribe(function (res) {
+            _this69.http.get(_this69.APIURL + "get/rice/wand/" + riceNameId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4469,9 +4698,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getBuyerDetails",
         value: function getBuyerDetails(queryId) {
-          var _this68 = this;
+          var _this70 = this;
           return new Promise(function (resolve, reject) {
-            _this68.http.get(_this68.APIURL + "get/buyer/details/" + queryId).subscribe(function (res) {
+            _this70.http.get(_this70.APIURL + "get/buyer/details/" + queryId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4481,9 +4710,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "saveUserBid",
         value: function saveUserBid(postedData) {
-          var _this69 = this;
+          var _this71 = this;
           return new Promise(function (resolve, reject) {
-            _this69.http.post(_this69.APIURL + "save/bid", JSON.stringify(postedData)).subscribe(function (res) {
+            _this71.http.post(_this71.APIURL + "save/bid", JSON.stringify(postedData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4493,9 +4722,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getCalculatorDetails",
         value: function getCalculatorDetails() {
-          var _this70 = this;
+          var _this72 = this;
           return new Promise(function (resolve, reject) {
-            _this70.http.get(_this70.APIURL + "get/calculator/data").subscribe(function (res) {
+            _this72.http.get(_this72.APIURL + "get/calculator/data").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4505,9 +4734,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "saveUSDPrices",
         value: function saveUSDPrices(postedData) {
-          var _this71 = this;
+          var _this73 = this;
           return new Promise(function (resolve, reject) {
-            _this71.http.post(_this71.APIURL + "save/usd/prices", postedData).subscribe(function (res) {
+            _this73.http.post(_this73.APIURL + "save/usd/prices", postedData).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4517,9 +4746,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addBidOnBuyerQuery",
         value: function addBidOnBuyerQuery(postedData) {
-          var _this72 = this;
+          var _this74 = this;
           return new Promise(function (resolve, reject) {
-            _this72.http.post(_this72.APIURL + "save/user/bid", postedData).subscribe(function (res) {
+            _this74.http.post(_this74.APIURL + "save/user/bid", postedData).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4529,9 +4758,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getMyBids",
         value: function getMyBids(userid) {
-          var _this73 = this;
+          var _this75 = this;
           return new Promise(function (resolve, reject) {
-            _this73.http.get(_this73.APIURL + "get/my/bids/" + userid).subscribe(function (res) {
+            _this75.http.get(_this75.APIURL + "get/my/bids/" + userid).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4541,9 +4770,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getTrades",
         value: function getTrades(userid) {
-          var _this74 = this;
+          var _this76 = this;
           return new Promise(function (resolve, reject) {
-            _this74.http.get(_this74.APIURL + "get/trades").subscribe(function (res) {
+            _this76.http.get(_this76.APIURL + "get/trades/" + userid).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4553,9 +4782,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getBuyerList",
         value: function getBuyerList() {
-          var _this75 = this;
+          var _this77 = this;
           return new Promise(function (resolve, reject) {
-            _this75.http.get(_this75.APIURL + "get/buyer/list").subscribe(function (res) {
+            _this77.http.get(_this77.APIURL + "get/buyer/list").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4565,9 +4794,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUSDPlan",
         value: function getUSDPlan() {
-          var _this76 = this;
+          var _this78 = this;
           return new Promise(function (resolve, reject) {
-            _this76.http.get(_this76.APIURL + "get/usd/plans").subscribe(function (res) {
+            _this78.http.get(_this78.APIURL + "get/usd/plans").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4577,9 +4806,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUSDCounties",
         value: function getUSDCounties() {
-          var _this77 = this;
+          var _this79 = this;
           return new Promise(function (resolve, reject) {
-            _this77.http.get(_this77.APIURL + "get/countries/list").subscribe(function (res) {
+            _this79.http.get(_this79.APIURL + "get/countries/list").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4589,9 +4818,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getBagVendors",
         value: function getBagVendors() {
-          var _this78 = this;
+          var _this80 = this;
           return new Promise(function (resolve, reject) {
-            _this78.http.get(_this78.APIURL + "get/bag/vendors").subscribe(function (res) {
+            _this80.http.get(_this80.APIURL + "get/bag/vendors").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4601,9 +4830,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "contact",
         value: function contact() {
-          var _this79 = this;
+          var _this81 = this;
           return new Promise(function (resolve, reject) {
-            _this79.http.get(_this79.APIURL + "get/contact/details").subscribe(function (res) {
+            _this81.http.get(_this81.APIURL + "get/contact/details").subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4613,9 +4842,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getHotDeals",
         value: function getHotDeals(userId) {
-          var _this80 = this;
+          var _this82 = this;
           return new Promise(function (resolve, reject) {
-            _this80.http.get(_this80.APIURL + "get/hot/deals/" + userId).subscribe(function (res) {
+            _this82.http.get(_this82.APIURL + "get/hot/deals/" + userId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4625,9 +4854,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "startTrialPeriod",
         value: function startTrialPeriod(userId) {
-          var _this81 = this;
+          var _this83 = this;
           return new Promise(function (resolve, reject) {
-            _this81.http.get(_this81.APIURL + "start/trial/period/" + userId).subscribe(function (res) {
+            _this83.http.get(_this83.APIURL + "start/trial/period/" + userId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4637,9 +4866,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updatePort",
         value: function updatePort(postedData) {
-          var _this82 = this;
+          var _this84 = this;
           return new Promise(function (resolve, reject) {
-            _this82.http.post(_this82.APIURL + "update/port", postedData).subscribe(function (res) {
+            _this84.http.post(_this84.APIURL + "update/port", postedData).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4649,9 +4878,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "acceptHotDeal",
         value: function acceptHotDeal(postedData) {
-          var _this83 = this;
+          var _this85 = this;
           return new Promise(function (resolve, reject) {
-            _this83.http.post(_this83.APIURL + "accept/hot/deal/notification", postedData).subscribe(function (res) {
+            _this85.http.post(_this85.APIURL + "accept/hot/deal/notification", postedData).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4661,9 +4890,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateUserPlan",
         value: function updateUserPlan(postedData) {
-          var _this84 = this;
+          var _this86 = this;
           return new Promise(function (resolve, reject) {
-            _this84.http.post(_this84.APIURL + "payment/success", postedData).subscribe(function (res) {
+            _this86.http.post(_this86.APIURL + "payment/success", postedData).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4673,9 +4902,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "userNotification",
         value: function userNotification(userId) {
-          var _this85 = this;
+          var _this87 = this;
           return new Promise(function (resolve, reject) {
-            _this85.http.get(_this85.APIURL + "user/notification/" + userId).subscribe(function (res) {
+            _this87.http.get(_this87.APIURL + "user/notification/" + userId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4685,9 +4914,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "clearNotification",
         value: function clearNotification(userId) {
-          var _this86 = this;
+          var _this88 = this;
           return new Promise(function (resolve, reject) {
-            _this86.http.get(_this86.APIURL + "clear/notification/" + userId).subscribe(function (res) {
+            _this88.http.get(_this88.APIURL + "clear/notification/" + userId).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4697,9 +4926,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteUser",
         value: function deleteUser(userId) {
-          var _this87 = this;
+          var _this89 = this;
           return new Promise(function (resolve, reject) {
-            _this87.http.get(_this87.APIURL + "delete/user/" + userId).subscribe(function (res) {
+            _this89.http.get(_this89.APIURL + "delete/user/" + userId).subscribe(function (res) {
+              resolve(res);
+            }, function (err) {
+              reject(err);
+            });
+          });
+        }
+      }, {
+        key: "likeTrade",
+        value: function likeTrade(formData) {
+          var _this90 = this;
+          var token = localStorage.getItem("token");
+          return new Promise(function (resolve, reject) {
+            _this90.http.post(_this90.APIURL + "like/trade?api_token=" + token, JSON.stringify(formData)).subscribe(function (res) {
+              resolve(res);
+            }, function (err) {
+              reject(err);
+            });
+          });
+        }
+      }, {
+        key: "tradeInterest",
+        value: function tradeInterest(formData) {
+          var _this91 = this;
+          var token = localStorage.getItem("token");
+          return new Promise(function (resolve, reject) {
+            _this91.http.post(_this91.APIURL + "intrested/trade?api_token=" + token, JSON.stringify(formData)).subscribe(function (res) {
               resolve(res);
             }, function (err) {
               reject(err);
@@ -4792,47 +5047,47 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPicture",
         value: function getPicture() {
-          var _this88 = this;
+          var _this92 = this;
           this.componentService.takePicture().then(function (imageData) {
             var base64Image = 'data:image/jpeg;base64,' + imageData;
-            _this88.sampleImage = base64Image;
-            _this88.selectedImage = base64Image;
+            _this92.sampleImage = base64Image;
+            _this92.selectedImage = base64Image;
           });
         }
       }, {
         key: "ionViewDidEnter",
         value: function ionViewDidEnter() {
-          var _this89 = this;
+          var _this93 = this;
           this.componentService.presentLoading().then(function () {
-            _this89.restService.sampleEntryPreLoaddata().then(function (res) {
-              _this89.componentService.loadingController.dismiss();
-              _this89.sellers = res.seller;
-              _this89.qualities = res.quality;
-              _this89.packings = res.packing;
-              _this89.packingTypes = res.packing_type;
+            _this93.restService.sampleEntryPreLoaddata().then(function (res) {
+              _this93.componentService.loadingController.dismiss();
+              _this93.sellers = res.seller;
+              _this93.qualities = res.quality;
+              _this93.packings = res.packing;
+              _this93.packingTypes = res.packing_type;
             });
           });
         }
       }, {
         key: "saveSample",
         value: function saveSample() {
-          var _this90 = this;
+          var _this94 = this;
           this.componentService.validateInput(this.formData, ['date', 'seller', 'packing', 'packing_type', 'qty']).then(function (isValid) {
             if (isValid) {
-              if (_this90.selectedImage == '') {
-                _this90.componentService.presentToastWithOptions('Please capture the sample image!');
+              if (_this94.selectedImage == '') {
+                _this94.componentService.presentToastWithOptions('Please capture the sample image!');
               } else {
-                _this90.formData['image'] = _this90.selectedImage;
-                _this90.componentService.presentLoading().then(function () {
-                  _this90.restService.saveSampleEntry(_this90.formData).then(function (res) {
-                    _this90.componentService.loadingController.dismiss();
-                    _this90.componentService.presentToastWithOptions('Sample entry saved successfully!', 'Success');
-                    _this90.componentService.modalCtrl.dismiss();
+                _this94.formData['image'] = _this94.selectedImage;
+                _this94.componentService.presentLoading().then(function () {
+                  _this94.restService.saveSampleEntry(_this94.formData).then(function (res) {
+                    _this94.componentService.loadingController.dismiss();
+                    _this94.componentService.presentToastWithOptions('Sample entry saved successfully!', 'Success');
+                    _this94.componentService.modalCtrl.dismiss();
                   });
                 });
               }
             } else {
-              _this90.componentService.presentToastWithOptions('Please fill all fields!');
+              _this94.componentService.presentToastWithOptions('Please fill all fields!');
             }
           });
         }
@@ -4915,46 +5170,46 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPicture",
         value: function getPicture() {
-          var _this91 = this;
+          var _this95 = this;
           this.componentService.takePicture().then(function (imageData) {
             var base64Image = 'data:image/jpeg;base64,' + imageData;
-            _this91.courierImage = base64Image;
-            _this91.selectedImage = base64Image;
+            _this95.courierImage = base64Image;
+            _this95.selectedImage = base64Image;
           });
         }
       }, {
         key: "ionViewDidEnter",
         value: function ionViewDidEnter() {
-          var _this92 = this;
+          var _this96 = this;
           this.componentService.presentLoading().then(function () {
-            _this92.restService.pubdingCourierSamples().then(function (res) {
-              _this92.componentService.loadingController.dismiss();
-              _this92.samples = res.samples;
-              _this92.sentVia = res.sent_via;
+            _this96.restService.pubdingCourierSamples().then(function (res) {
+              _this96.componentService.loadingController.dismiss();
+              _this96.samples = res.samples;
+              _this96.sentVia = res.sent_via;
             });
           });
         }
       }, {
         key: "saveCourier",
         value: function saveCourier() {
-          var _this93 = this;
+          var _this97 = this;
           this.componentService.validateInput(this.formData, ['date', 'details', 'sent_via', 'sample']).then(function (isValid) {
             if (isValid) {
-              var samples = _this93.formData.sample;
+              var samples = _this97.formData.sample;
               var arrangedSamples = {};
               samples.forEach(function (sample) {
                 arrangedSamples[sample] = 'on';
               });
-              _this93.formData['sample'] = arrangedSamples;
-              _this93.componentService.presentLoading().then(function () {
-                _this93.restService.saveCourier(_this93.formData).then(function (res) {
-                  _this93.componentService.loadingController.dismiss();
-                  _this93.componentService.modalCtrl.dismiss();
-                  _this93.componentService.presentToastWithOptions('Courier saved successfully!', 'Success');
+              _this97.formData['sample'] = arrangedSamples;
+              _this97.componentService.presentLoading().then(function () {
+                _this97.restService.saveCourier(_this97.formData).then(function (res) {
+                  _this97.componentService.loadingController.dismiss();
+                  _this97.componentService.modalCtrl.dismiss();
+                  _this97.componentService.presentToastWithOptions('Courier saved successfully!', 'Success');
                 });
               });
             } else {
-              _this93.componentService.presentToastWithOptions('Please fill required fileds');
+              _this97.componentService.presentToastWithOptions('Please fill required fileds');
             }
           });
         }

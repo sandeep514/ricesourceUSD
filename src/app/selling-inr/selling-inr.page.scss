@@ -5,7 +5,7 @@
 .back-button {
     margin-right: 10px;
     margin-left: 10px;
-    color: #FFF;
+    // color: #FFF;
 
     ion-icon {
         font-size: 23px;
@@ -14,12 +14,12 @@
 
 ion-toolbar {
     --background: #494f58;
-    color: #FFF;
+    // color: #FFF;
 }
 
 ion-item {
-    border: 3px solid #92b243;
-    border-radius: 10px;
+    border: 1px solid rgba(225, 225, 225, 1);
+    border-radius: 100px;
     margin-bottom: 10px;
 }
 
@@ -34,4 +34,16 @@ ion-item {
     .select-text {
         display: none;
     }
+}
+
+ion-toolbar {
+    --border-width: 0 0 0px !important;
+}
+
+.header-ios ion-toolbar:last-of-type {
+    --border-width: 0 0 0px !important;
+}
+
+.alert-message.sc-ion-alert-md {
+    padding: 0px !important;
 }

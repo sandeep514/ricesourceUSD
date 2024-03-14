@@ -6,6 +6,7 @@
     margin-right: 10px;
     margin-left: 10px;
     color: #FFF;
+
     ion-icon {
         font-size: 23px;
     }
@@ -16,28 +17,37 @@ ion-toolbar {
     color: #FFF;
 }
 
-ion-item{
-    border: 3px solid #92b243;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    --background: #fffbd6;
+ion-item {
+    // border: 3px solid #92b243;
+    // border-radius: 10px;
+    // margin-bottom: 10px;
+    // --background: #fffbd6;
+    border: 1px solid #e1e1e1;
+    border-radius: 100px;
+    // margin-bottom: 10px;
+    // min-height: auto;
+    // height: auto;
 }
-.item-native{
+
+.item-native {
     background: transparent;
     background-color: transparent;
     --background: transparent;
     --background-color: transparent;
 }
-.packingSelect{
-    .select-text{
+
+.packingSelect {
+    .select-text {
         display: none;
     }
 
 }
-ion-content{
+
+ion-content {
     padding: 10px;
-    border: 10px solid #fffbd6;
+    // border: 10px solid #fffbd6;
 }
+
 .tf-tree.example {
     text-align: center;
 }
@@ -46,6 +56,7 @@ ion-content{
     margin-right: 10px;
     margin-left: 10px;
     color: #FFF;
+
     ion-icon {
         font-size: 23px;
     }
@@ -66,6 +77,7 @@ ion-toolbar {
 
 ion-toolbar {
     --background: white;
+
     ion-icon {
         color: #000;
     }
@@ -122,16 +134,19 @@ tbody {
 
 table {
     width: 100%;
+
     thead {
         th {
             padding: 10px 0px;
             border-right: 1px solid #eeeeee;
         }
     }
+
     tbody {
         tr {
             border-bottom: 1px solid #ededed;
         }
+
         td {
             width: 50%;
             text-align: center;
@@ -153,13 +168,16 @@ table {
 }
 
 .price-table {
+
     // background-color: #FFF;
     table {
         width: 100%;
+
         thead {
             tr {
                 height: 34px;
                 font-size: 12px;
+
                 // background-color: #eeeeee !important;
                 th {
                     // background-color: #eeeeee !important;
@@ -167,10 +185,12 @@ table {
                 }
             }
         }
+
         tbody {
             tr {
                 height: 35px;
-                color:  #000;
+                color: #000;
+
                 td {
                     font-size: 16px;
                     // padding-left: 20px;
@@ -179,6 +199,7 @@ table {
                 }
             }
         }
+
         margin-top: 6px;
     }
 }
@@ -198,10 +219,12 @@ table tbody tr {
     background: transparent !important;
     background-color: transparent !important;
 }
-table thead tr{
+
+table thead tr {
     border-bottom: 2px solid #cfcaab !important;
 }
-table tbody tr{
+
+table tbody tr {
     border-bottom: 2px solid #cfcaab !important;
 }
 
@@ -272,6 +295,7 @@ table {
     font-size: 12px;
     border: 2px solid #92b243;
 }
+
 .ios .header-segment ion-segment-button {
     --indicator-color: transparent !important;
     --indicator-color-checked: transparent !important;
@@ -290,12 +314,14 @@ table {
     font-size: 12px;
     border: 2px solid #92b243;
 }
-.header-ios ion-toolbar{
+
+.header-ios ion-toolbar {
     border: 0px;
     --border-width: 0px
 }
-.ios{
-    .type-columns{
+
+.ios {
+    .type-columns {
         border: 0px solid transparent !important;
         --border: 0px solid transparent !important;
     }
@@ -342,6 +368,7 @@ table {
 
 .green {
     color: #92B243;
+
     td {
         text-transform: capitalize;
         font-size: 18px !important;
@@ -350,7 +377,7 @@ table {
 
 .porttitle {
     font-size: 20px
-}   
+}
 
 ion-segment {
     ion-segment-button {
@@ -381,16 +408,19 @@ ion-segment {
 }
 
 .alert-radio-label {
-    .sc-ion-alert-md{
+    .sc-ion-alert-md {
         --padding-left: 20px;
     }
 }
-.calc{
+
+.calc {
     padding: 0px 10px;
-    ion-col{
+
+    ion-col {
         padding: 0
     }
-    ion-row{
+
+    ion-row {
         margin: 7px 0px
     }
 }
@@ -400,11 +430,18 @@ ion-segment {
     --highlight-background: transparent !important;
 }
 
-ion-item{
+ion-item {
     --highlight-background: transparent;
     --highlight-background: transparent !important;
 }
 
-.inputlabel{
+.inputlabel {
     font-size: 15px !important;
+}
+
+ion-label {
+    margin-top: 0px;
+    padding-top: 0px;
+    padding: 0px;
+    margin: 0px;
 }

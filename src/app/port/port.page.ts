@@ -10,21 +10,25 @@ import { ComponentsService } from '../components.service';
 	styleUrls: ['./port.page.scss'],
 })
 export class PortPage implements OnInit {
-	listPortArea:any;
-	listPort:any;
-	listStates:any;
+	listPortArea: any;
+	listPort: any;
+	listStates: any;
 	areaData: any = "gujarat";
-	selectedTransportState:any = '';
-	selectedPortData:any = '';
-	isNull:any = false;
-	imagePre:any;
-	states:any;
-	
-	constructor(public apiser: RestService,public navCtrl: NavController,public componentService: ComponentsService) {
+	selectedTransportState: any = '';
+	selectedPortData: any = '';
+	isNull: any = false;
+	imagePre: any;
+	states: any;
+	portImages: any;
+
+	constructor(public apiser: RestService, public navCtrl: NavController, public componentService: ComponentsService) {
 		this.imagePre = this.apiser.imageUrl;
+		this.getTransportState();
+
+
 	}
 
-	ngOnInit(){
+	ngOnInit() {
 		this.getTransportState();
 		this.getTransportState();
 		this.componentService.selectedPort.subscribe((data) => {
@@ -32,57 +36,59 @@ export class PortPage implements OnInit {
 		});
 	}
 
-	getTransportState(){
+	getTransportState() {
 		this.componentService.presentLoading().then(() => {
-			this.apiser.getTransportStates().then( (res:any) => {
+			this.apiser.getTransportStates().then((res: any) => {
 				this.listStates = res.data;
-				
-				if( this.listStates.length > 0 ){
+
+				if (this.listStates.length > 0) {
 					let keys = Object.keys(this.listStates[0]);
 					let StateKeys = keys[0];
 					this.selectedTransportState = this.lowerCase(StateKeys);
 					console.log(this.selectedTransportState)
 				}
-	
+
 				let inLowerCase = this.selectedTransportState.toLowerCase();
+				console.log('inLowerCase')
+				console.log(inLowerCase)
 				this.getDetails(inLowerCase);
 				this.componentService.loadingController.dismiss();
 				setTimeout(() => {
 					this.componentService.loadingController.dismiss();
-				},1000)
+				}, 1000)
 				setTimeout(() => {
 					document.getElementById(inLowerCase).click();
 					// document.getElementById(inLowerCase).classList.add('active');
 				}, 1500);
-			} , (err:any) => {
+			}, (err: any) => {
 				this.componentService.loadingController.dismiss();
 				setTimeout(() => {
 					this.componentService.loadingController.dismiss();
-				},1000)
+				}, 1000)
 				this.componentService.loadingController.dismiss();
 			});
-	
+
 		});
 	}
 
 	ionViewDidEnter() {
-		this.getList().then((res:any) => {
+		this.getList().then((res: any) => {
 			this.getDataDetails(this.areaData);
-		} , (err:any) => {
+		}, (err: any) => {
 		});
 
 		// setTimeout(() => {
 		// }, 7000);
 	}
 
-	
-	scroll(direction,className){
-		if(direction == 'left'){
-			$("."+className).animate({
-					scrollLeft: "-=135px"
-				},"slow");
-		}else{
-			$("."+className).animate(
+
+	scroll(direction, className) {
+		if (direction == 'left') {
+			$("." + className).animate({
+				scrollLeft: "-=135px"
+			}, "slow");
+		} else {
+			$("." + className).animate(
 				{
 					scrollLeft: "+=135px"
 				},
@@ -90,11 +96,11 @@ export class PortPage implements OnInit {
 			);
 		}
 	}
-	removePopover(){
-		
+	removePopover() {
+
 	}
 	getList() {
-		return new Promise( (resolve , reject) => {
+		return new Promise((resolve, reject) => {
 			this.apiser.listPorts().then((res: any) => {
 				this.listPort = res.list;
 				resolve('true');
@@ -104,61 +110,66 @@ export class PortPage implements OnInit {
 		});
 	}
 
-	Details(){
+	Details() {
 	}
 	explodeString(string) {
 		let arrayLength = string.split(' ').length;
-		console.log(string.split(' ')[(arrayLength-1)])
-		return string.split(' ')[(arrayLength-1)];
+		console.log(string.split(' ')[(arrayLength - 1)])
+		return string.split(' ')[(arrayLength - 1)];
 	}
-	getPortDetails(area){
+	getPortDetails(area) {
 		this.selectedTransportState = '';
 		let targetName = area.target.innerText;
 
 		let smallArea = targetName.toLowerCase();
 		this.componentService.selectedPort.next(smallArea);
-		this.componentService.presentLoading().then( () =>{
-			this.apiser.getPortDetails(smallArea).then((res:any) => {
-				this.selectedPortData = res.data;
-				if( res.data.length == 0 ){
-					this.isNull = true;
-				}else{
-					this.isNull = false;
-				}
+		// this.componentService.presentLoading().then(() => {
+		this.apiser.getPortDetails(smallArea).then((res: any) => {
+			this.selectedPortData = res.data;
+			this.portImages = res.portImage;
+			console.log(this.portImages)
+			if (res.data.length == 0) {
+				this.isNull = true;
+			} else {
+				this.isNull = false;
+			}
 
+			this.componentService.loadingController.dismiss();
+			this.selectedTransportState = smallArea;
+			console.log(smallArea);
+
+			setTimeout(() => {
 				this.componentService.loadingController.dismiss();
-				this.selectedTransportState = smallArea;
-				console.log(smallArea);
+			}, 1000);
+		}, (err: any) => {
+			this.componentService.loadingController.dismiss();
 
-				setTimeout(() => {
-					this.componentService.loadingController.dismiss();
-				}, 1000);
-			} ,(err:any) =>{
+			setTimeout(() => {
 				this.componentService.loadingController.dismiss();
-
-				setTimeout(() => {
-					this.componentService.loadingController.dismiss();
-				}, 1000);
-			});		
+			}, 1000);
 		});
+		// });
 	}
 
-	getDetails(area){
-		if( area.target != undefined ){
-			this.componentService.presentLoading().then( () => {
-				let targetName = area.target.innerText;
-				let smallArea = targetName.toLowerCase();
-				
-				// document.getElementById(smallArea).click();
-	
-				this.apiser.getPortDetails(smallArea).then((res:any) => {
-					this.selectedTransportState = smallArea;
-					this.selectedPortData = res.data;
-					this.componentService.loadingController.dismiss();
-				} ,(err:any) =>{
-					this.componentService.loadingController.dismiss();
-				});
-			})
+	getDetails(area) {
+		if (area.target != undefined) {
+			// this.componentService.presentLoading().then(() => {
+			let targetName = area.target.innerText;
+			let smallArea = targetName.toLowerCase();
+
+			// document.getElementById(smallArea).click();
+
+			this.apiser.getPortDetails(smallArea).then((res: any) => {
+				this.selectedTransportState = smallArea;
+				this.selectedPortData = res.data;
+				this.portImages = res.portImage;
+				console.log(this.portImages)
+
+				this.componentService.loadingController.dismiss();
+			}, (err: any) => {
+				this.componentService.loadingController.dismiss();
+			});
+			// })
 		}
 		// this.listPortArea = this.listPort[area.detail.value];
 		// var element1 = document.getElementById('bundi');
@@ -179,27 +190,27 @@ export class PortPage implements OnInit {
 		// var element = document.getElementById(area);
 		// // element.classList.add("active");
 		// this.areaData = area.detail.value;
-		
+
 	}
 
-	getDataDetails(area){
+	getDataDetails(area) {
 		this.listPortArea = this.listPort[area];
-		this.areaData = area;	
+		this.areaData = area;
 	}
 
-	closeModal(){
+	closeModal() {
 		this.navCtrl.back();
 	}
-	
-	lowerCase(string){
+
+	lowerCase(string) {
 		let str = string.toLowerCase();
 		return str;
 	}
-	convertedToJson(string){
-		console.log( typeof string );
-		console.log( string.banner );
-		if( string != undefined ){
-			if( typeof string == 'object' ){
+	convertedToJson(string) {
+		console.log(typeof string);
+		console.log(string.banner);
+		if (string != undefined) {
+			if (typeof string == 'object') {
 				return string.banner;
 			}
 		}

@@ -1,5 +1,5 @@
-<ion-header class="green">
-	<ion-toolbar mode="ios" style="background: transparent; --background: transparent">
+<ion-header class="">
+	<ion-toolbar mode="ios" style="background: #fff; --background: #fff">
 		<ion-buttons slot="start" class="back-button" (click)="back()">
 			<ion-icon name="arrow-back-outline"></ion-icon>
 		</ion-buttons>
@@ -8,8 +8,8 @@
 </ion-header>
 
 
-<ion-content id="content" [scrollEvents]="true" class="lightgreen">
-	<div style="padding: 10px 10px;margin-bottom: 100px;">
+<ion-content id="content" [scrollEvents]="true" class="">
+	<div style="padding: 10px 20px;margin-bottom: 100px;">
 		<ion-item>
 			<ion-label>Category*</ion-label>
 			<!-- (ionChange)="changecountry($event)" -->
@@ -21,7 +21,7 @@
 
 		<ion-row style="margin-bottom: 10px;">
 			<ion-col size="12"
-				style="border: 3px solid #92b243;border-radius: 10px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
+				style="border: 1px solid rgba(225, 225, 225, 1);border-radius: 100px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
 				<ion-item style="border: 0px;margin-bottom: 0;">
 					<ion-label>Quality*</ion-label>
 					<ion-select placeholder="Select" (ionChange)="changeQuality($event)">
@@ -37,9 +37,9 @@
 
 		<ion-row style="margin-bottom: 10px;">
 			<ion-col size="12"
-				style="border: 3px solid #92b243;border-radius: 10px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
+				style="border: 1px solid rgba(225, 225, 225, 1);border-radius: 100px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
 				<ion-item style="border: 0px;margin-bottom: 0;">
-					<ion-label>Form*</ion-label>
+					<ion-label>Type*</ion-label>
 					<ion-select placeholder="Select" (ionChange)="changeQualityForm($event)">
 						<ion-select-option *ngFor="let riceName of onlyRiceForms" value={{riceName.id}}
 							style="text-transform: capitalize;">{{ riceName.name }}</ion-select-option>
@@ -59,13 +59,13 @@
 
 		<ion-row style="margin-bottom: 10px;">
 			<ion-col size="12"
-				style="border: 3px solid #92b243;border-radius: 10px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
+				style="border: 1px solid rgba(225, 225, 225, 1);border-radius: 100px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
 				<ion-item style="border: 0px;margin-bottom: 0;">
 					<ion-label>Grade*</ion-label>
 					<ion-select placeholder="Select" (ionChange)="changeGrade($event)">
 						<ion-select-option *ngFor="let wand of riceWand" value={{wand.id}}
 							style="text-transform: capitalize;">{{
-							wand.get_wand_type[0].type }} {{ wand.value }}</ion-select-option>
+							wand.get_wand_type.type }} {{ wand.value }}</ion-select-option>
 					</ion-select>
 				</ion-item>
 			</ion-col>
@@ -78,7 +78,7 @@
 					<div *ngFor="let wand of riceWand" style="padding: 0px 0px;">
 						<div (click)="selectedWand(wand)" style="display: inline-block;width: 100%;padding: 0px 10px;border-radius: 14px;" [ngStyle]="{'background': selectedGrade == wand.id ? '#92b243' : 'transparent' }">
 							<div style="width: 80%;float: left;">
-								<p style="margin: 10px 0px;">{{ wand.get_wand_type[0].type }}</p>
+								<p style="margin: 10px 0px;">{{ wand.get_wand_type.type }}</p>
 							</div>
 							<div style="width: 20%;float: left;">
 								<p style="margin: 10px 0px;">{{ wand.value }}</p>
@@ -90,30 +90,32 @@
 		</ion-row> -->
 
 		<ion-row style="margin-bottom: 10px;">
-			<ion-col size="12"  >
+			<ion-col size="12">
 				<!-- <ion-item class="packingSelect" style="border: 0px;margin-bottom: 0;">
 					<ion-label>Packing*</ion-label> -->
-					<!-- <ion-select placeholder="Select" (ionChange)="changeBuyerPackingType($event)">
+				<!-- <ion-select placeholder="Select" (ionChange)="changeBuyerPackingType($event)">
 						<ion-select-option value="0"><p>Miller Packing</p></ion-select-option>
 						<ion-select-option value="1"><p>Private Packing</p></ion-select-option>
 					</ion-select> -->
 
-					<ion-radio-group value="0" (ionChange)="changeBuyerPackingType($event)">
-						<div style="margin-top: 10px;">
-							<ion-label><span style="margin-right: 10px;">Miller Packing</span><ion-radio value="0">Miller Packing</ion-radio></ion-label><br />
-						</div>
-						
-						<div style="margin-top: 10px;">
-							<ion-label><span style="margin-right: 10px;">Private Packing</span><ion-radio value="1">Private Packing </ion-radio></ion-label>
-						</div>
-						
-					</ion-radio-group>
+				<ion-radio-group value="0" (ionChange)="changeBuyerPackingType($event)">
+					<div style="">
+						<ion-label><ion-radio style="vertical-align: middle;" value="0">Miller Packing</ion-radio><span
+								style="margin-left: 20px;">Miller Packing</span></ion-label><br />
+					</div>
+
+					<div style="">
+						<ion-label><ion-radio style="vertical-align: middle;" value="1">Private Packing
+							</ion-radio><span style="margin-left: 20px;">Private Packing</span></ion-label>
+					</div>
+
+				</ion-radio-group>
 				<!-- </ion-item> -->
 			</ion-col>
 		</ion-row>
 		<ion-row style="margin-bottom: 10px;" *ngIf="changedBuyerPackingType == '0' ">
 			<ion-col size="12"
-				style="border: 3px solid #92b243;border-radius: 10px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
+				style="border: 1px solid rgba(225, 225, 225, 1);border-radius: 100px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
 				<ion-item class="packingSelect" style="border: 0px;margin-bottom: 0;">
 					<ion-label>Packing*</ion-label>
 					<ion-select placeholder="Select" (ionChange)="changePacking($event)">
@@ -125,12 +127,13 @@
 						</ion-select-option>
 					</ion-select>
 				</ion-item>
-				<p style="padding: 0;margin: 0;margin-left: 15px;text-align: left;padding: 5px;">{{selectedPackageName}}</p>
+				<p style="padding: 0;margin: 0;margin-left: 15px;text-align: left;padding: 5px;">{{selectedPackageName}}
+				</p>
 			</ion-col>
 		</ion-row>
 		<ion-row style="margin-bottom: 10px;" *ngIf="changedBuyerPackingType == '1' ">
 			<ion-col size="12"
-				style="border: 3px solid #92b243;border-radius: 10px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
+				style="border: 1px solid rgba(225, 225, 225, 1);border-radius: 100px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
 				<ion-item class="packingSelect" style="border: 0px;margin-bottom: 0;">
 					<ion-label>Packing*</ion-label>
 					<ion-select placeholder="Select" (ionChange)="changePacking($event)">
@@ -150,7 +153,7 @@
 			<ion-input type="tel" maxLength="5" [(ngModel)]="quantity" (ionChange)="textareaMaxLengthValidation()"
 				style=" text-align: right;"></ion-input>
 		</ion-item>
-		
+
 		<ion-label position="">Additional Information*</ion-label>
 		<ion-item>
 			<ion-textarea rows="4" [(ngModel)]="additionalinfo" style=""></ion-textarea>
@@ -160,7 +163,8 @@
 		<div *ngIf="isError" style="text-align: center;color: red;font-weight: 600">
 			<span>{{ errorMessage }}</span>
 		</div>
-		<ion-button color="success" expand="full" shape="round" (click)="save()">Submit</ion-button>
+		<ion-button expand="full" shape="round" (click)="save()"
+			style="--background: #000;color: #fff">Submit</ion-button>
 	</div>
 	<app-menu></app-menu>
 </ion-content>

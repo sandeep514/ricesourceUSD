@@ -24,68 +24,68 @@
 	
 			<ul style="padding: 0px 20px">
 				<ng-container *ngFor="let buyers of selectedBuyers; index as i">
-					<li  class="demandedData" *ngIf="buyers.contact_person != '' || buyers.contact_person != null" style="list-style: none;padding: 15px 0px;border-bottom: 2px solid #91b243;">
+					<li  class="demandedData" *ngIf="buyers.contact_person != '' || buyers.contact_person != null" style="list-style: none;padding: 15px 0px;margin-bottom: 15px;background: rgba(226, 227, 228, 0.2);border-radius: 10px;">
 						<div style="margin: 0;">
 							<ion-row>
-								<ion-col size="3" class="demandHeaders" style="float: left;min-width: 40%">Serial No.</ion-col>
+								<ion-col size="3" class="demandHeaders" style="float: left;min-width: 35%;font-size: 14px">Serial No.</ion-col>
 								<ion-col size="7" style="line-height: 1.5;text-transform: capitalize;min-width:60%">
 									<div style="float: left;margin: 0.5px ;margin-right: 5px">:</div> 
-									<div style="margin: 0;margin-right: 5px;font-weight: bold;">
+									<div style="margin: 0;margin-right: 5px;font-size: 14px">
 										{{ (i+1) }}
 									</div>
 								</ion-col>
 							</ion-row>
 							<ion-row>
-								<ion-col size="3" class="demandHeaders" style="float: left;min-width: 40%">Product</ion-col>
+								<ion-col size="3" class="demandHeaders" style="float: left;min-width: 35%;font-size: 14px">Product</ion-col>
 								<ion-col size="7" style="line-height: 1.5;text-transform: capitalize;min-width:60%">
 									<div style="float: left;margin: 0.5px ;margin-right: 5px">:</div> 
-									<div style="margin: 0;margin-right: 5px">
+									<div style="margin: 0;margin-right: 5px;font-size: 14px">
 										{{ buyers.specialised }}
 									</div>
 								</ion-col>
 							</ion-row>
 							<ion-row>
-								<ion-col size="3" class="demandHeaders" style="float: left;min-width: 40%">Party Name</ion-col>
+								<ion-col size="3" class="demandHeaders" style="float: left;min-width: 35%;font-size: 14px">Party Name</ion-col>
 								<ion-col size="7" style="line-height: 1.5;text-transform: capitalize;min-width:60%">
 									<div style="float: left;margin: 0.5px ;margin-right: 5px">:</div> 
-									<div style="margin: 0;margin-right: 5px">
+									<div style="margin: 0;margin-right: 5px;font-size: 14px">
 										{{ buyers.vendor_name }}
 									</div>
 								</ion-col>
 							</ion-row>
 						 	<ion-row>
-								<ion-col size="3" class="demandHeaders" style="float: left;min-width: 40%">Address</ion-col>
+								<ion-col size="3" class="demandHeaders" style="float: left;min-width: 35%;font-size: 14px">Address</ion-col>
 								<ion-col size="7" style="line-height: 1.5;min-width:60%">
 									<div style="float: left;margin: 0.5px ;margin-right: 5px">:</div> 
-									<div style="margin: 0;margin-right: 5px">
+									<div style="margin: 0;margin-right: 5px;font-size: 14px">
 										{{ buyers.vendor_address }}
 									</div>
 								</ion-col>
 							</ion-row>
 							<ion-row>
-								<ion-col size="3" class="demandHeaders" style="float: left;min-width: 40%">Email</ion-col>
+								<ion-col size="3" class="demandHeaders" style="float: left;min-width: 35%;font-size: 14px">Email</ion-col>
 								<ion-col size="7" style="line-height: 1.5;min-width:60%">
 									<div style="float: left;margin: 0.5px ;margin-right: 5px">:</div> 
-									<div style="margin: 0;margin-right: 5px">
+									<div style="margin: 0;margin-right: 5px;font-size: 14px">
 										{{ buyers.email }}
 									</div>
 								</ion-col>
 							</ion-row>
 							<ion-row>
-								<ion-col size="3" class="demandHeaders" style="float: left;min-width: 40%">Contact no</ion-col>
+								<ion-col size="3" class="demandHeaders" style="float: left;min-width: 35%;font-size: 14px">Contact no</ion-col>
 								<ion-col size="7" style="line-height: 1.5;min-width:60%">
 									<div style="float: left;margin: 0.5px ;margin-right: 5px">:</div> 
-									<div style="margin: 0;margin-right: 5px">
+									<div style="margin: 0;margin-right: 5px;font-size: 14px">
 										{{ buyers.contact_number }}
 									</div>
 								</ion-col>
 							</ion-row>
 							
 							<ion-row>
-								<ion-col size="3" class="demandHeaders" style="float: left;min-width: 40%">Contact Person</ion-col>
+								<ion-col size="3" class="demandHeaders" style="float: left;min-width: 35%;font-size: 14px">Contact Person</ion-col>
 								<ion-col size="7" style="line-height: 1.5;min-width:60%">
 									<div style="float: left;margin: 0.5px ;margin-right: 5px">:</div> 
-									<div style="margin: 0;margin-right: 5px">
+									<div style="margin: 0;margin-right: 5px;font-size: 14px">
 										{{ buyers.contact_person }}
 									</div>
 								</ion-col>

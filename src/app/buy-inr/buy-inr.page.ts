@@ -66,6 +66,7 @@ export class BuyInrPage implements OnInit {
 	isLoading = false;
 	changedBuyerPackingType = "0";
 	additionalinfo = "";
+	user_id = "";
 
 	imagePickerOptions = {
 		maximumImagesCount: 1,
@@ -81,13 +82,14 @@ export class BuyInrPage implements OnInit {
 		public filechooser: FileChooser,
 		public filePath: FilePath,
 		public httpClient: HttpClient,
-		public loadCTRL : LoadingController,
+		public loadCTRL: LoadingController,
 		private camera: Camera // public imgPicker: ImagePicker
 	) { }
 	ngOnInit() {
 		this.getData();
 		this.getSellerINRPacking();
 		this.getBuyerINRPacking();
+		this.user_id = localStorage.getItem('id');
 	}
 
 	selectedWand(selectedWantDetail) {
@@ -215,7 +217,7 @@ export class BuyInrPage implements OnInit {
 	}
 	async save() {
 		this.apiser.presentLoader('Please wait...')
-		if(
+		if (
 			this.selectedQualityTypeInt == undefined ||
 			this.selectedQualityTypeInt == 'undefined' ||
 			this.selectedQualityTypeInt == '' ||
@@ -236,18 +238,15 @@ export class BuyInrPage implements OnInit {
 			this.changePackingType == '' ||
 			this.quantity == undefined ||
 			this.quantity == 'undefined' ||
-			this.quantity == '' ||
-			this.additionalinfo == undefined ||
-			this.additionalinfo == 'undefined' ||
-			this.additionalinfo == ''
-		){
+			this.quantity == ''
+		) {
 			setTimeout(() => {
 				this.loadCTRL.dismiss();
 				this.apiser.dismissLoader();
-			} , 1000)
+			}, 1000)
 			this.apiser.presentToast('All field are required...');
 			return false;
-		}else{
+		} else {
 			const headers = {
 				enctype: "multipart/form-data;",
 				Accept: "application/json",
@@ -264,6 +263,7 @@ export class BuyInrPage implements OnInit {
 			formData.append("packing", this.changePackingType);
 			formData.append("quantity", this.quantity);
 			formData.append("additionalinfo", this.additionalinfo);
+			formData.append("user_id", this.user_id);
 
 			let posteddata = {
 				method: "POST",
@@ -271,9 +271,10 @@ export class BuyInrPage implements OnInit {
 			};
 			fetch("https://snjtradelink.com/staging/public/api/submit/buy/query", posteddata).then((res) => {
 				setTimeout(() => {
-					this.apiser.presentToast('Query updated successfully...');
+					this.apiser.presentToast('We have received your buy query. SNTC will contact you shortly.');
 					this.loadCTRL.dismiss();
 					this.apiser.dismissLoader();
+					this.navCtrl.navigateForward('prices')
 				}, 1000)
 			}).catch((err) => {
 				setTimeout(() => {
@@ -281,7 +282,7 @@ export class BuyInrPage implements OnInit {
 					this.apiser.dismissLoader();
 				}, 1000)
 			});
-			
+
 		}
 		return false;
 	}
@@ -385,10 +386,8 @@ export class BuyInrPage implements OnInit {
 		this.quality = data.detail.value;
 		this.getCategoryQualitiesForm(data.detail.value);
 		console.log(this.quality);
-		this.onlyRiceName.forEach((data) => {
-			console.log(data);
-		});
 	}
+
 	textareaMaxLengthValidation() {
 		console.log(this.quantity.toString());
 		console.log(this.quantity.length);
@@ -409,6 +408,7 @@ export class BuyInrPage implements OnInit {
 		}
 		this.getRiceWand();
 	}
+
 	changeGrade(data) {
 		this.selectedGrade = data.detail.value;
 		console.log(data);

@@ -96,7 +96,8 @@ const routes: Routes = [
   {
     path: 'admin/chatdetails',
     loadChildren: () => import('./admin/chatdetails/chatdetails.module').then( m => m.ChatdetailsPageModule)
-  },  {
+  },
+  {
     path: 'planpage',
     loadChildren: () => import('./planpage/planpage.module').then( m => m.PlanpagePageModule)
   },
@@ -239,6 +240,22 @@ const routes: Routes = [
   {
     path: 'welcome3',
     loadChildren: () => import('./welcome3/welcome3.module').then( m => m.Welcome3PageModule)
+  },
+  {
+    path: 'trade-detail',
+    loadChildren: () => import('./trade-detail/trade-detail.module').then( m => m.TradeDetailPageModule)
+  },
+  {
+    path: 'loader-component',
+    loadChildren: () => import('./loader-component/loader-component.module').then( m => m.LoaderComponentPageModule)
+  },
+  {
+    path: 'trade-list-usd',
+    loadChildren: () => import('./trade-list-usd/trade-list-usd.module').then( m => m.TradeListUsdPageModule)
+  },
+  {
+    path: 'trade-usd-details',
+    loadChildren: () => import('./trade-usd-details/trade-usd-details.module').then( m => m.TradeUsdDetailsPageModule)
   }
 
 

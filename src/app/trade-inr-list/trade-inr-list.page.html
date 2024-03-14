@@ -1,5 +1,5 @@
-<ion-header class="green">
-	<ion-toolbar mode="ios" style="background: transparent; --background: transparent">
+<ion-header class="">
+	<ion-toolbar mode="ios" style="background: #fff; --background: #fff">
 		<ion-buttons slot="start" class="back-button" (click)="back()">
 			<ion-icon name="arrow-back-outline"></ion-icon>
 		</ion-buttons>
@@ -7,169 +7,699 @@
 	</ion-toolbar>
 </ion-header>
 
-<ion-content id="content" class="lightgreen" style="height: 100%;">
+<ion-content id="content" class="" style="height: 100%;">
 	<div style="height: 90%;overflow: scroll;">
+		<div style="width: 100%;background-color: rgba(0,0,0,0.4);z-index: 999999;"
+			*ngIf="currentStatus == 11 || currentStatus == 12">
+			<div class="green" style="justify-content: center;align-items: center;width: 100%;display: flex;">
+				<p style="margin: 0 auto;text-align: left;font-size: 18px;color: #fff;padding: 10px 0px;font-weight: bold;transform: translateX(100%);-webkit-animation: example1 10s linear infinite;animation: example1 10s linear infinite;"
+					class=" font-lightgreen" [ngStyle]='{ width : newsWidth }'>{{ currentStatusMessage
+					}}</p>
+			</div>
+		</div>
 		<div>
 			<ul
-				style="list-style: none;display: inline-flex;flex-direction: row;justify-content: space-evenly;width: 100%;">
+				style="list-style: none;display: inline-flex;flex-direction: row;justify-content: space-evenly;width: 100%;padding: 0px;">
+				<li>
+					<a [ngClass]="(selectedTradeType == 'all')? 'SelectButtonColumn': 'buttonColumn' "
+						(click)="updateSelectedTradeType('all')">All</a>
+				</li>
 				<li>
 					<a [ngClass]="(selectedTradeType == 'buy')? 'SelectButtonColumn': 'buttonColumn' "
 						(click)="updateSelectedTradeType('buy')">Buy</a>
-
 				</li>
-
 				<li>
 					<a [ngClass]="(selectedTradeType == 'sell')? 'SelectButtonColumn': 'buttonColumn' "
 						(click)="updateSelectedTradeType('sell')">Sell</a>
 				</li>
 			</ul>
-			<ul style="padding: 10px;list-style: none;">
+
+			<ul style="padding: 0px 15px;list-style: none">
+
+				<ng-container *ngIf="selectedTradeType == 'all'">
+					<li *ngFor="let bids of buyData" class="demandedData">
+						<div style="margin: 0;border-radius: 5px;margin-bottom: 10px;overflow: hidden;padding: 12px 10px;background-color: rgba(226, 227, 228, 0.2);box-shadow: 1px 3px 12px lightgray;position: relative;"
+							[class.inprocess]="bids?.status == 4">
+							<div style="text-align: right;position: absolute;right: 10px;" *ngIf="bids?.status == 4">
+								<p
+									style="color: #fff;padding: 5px 10px;border-radius: 10px;font-size: 15px;background: #000;z-index: 9999;right: 30px;margin: 0;">
+									In-Process</p>
+							</div>
+							<div style="width: 70%;float: left;">
+								<div style="width: 100%;">
+									<div style="width: 20%;float: left;margin-right: 10px;">
+										<div style="position: relative;">
+											<div *ngIf="bids?.status == 1 && bids?.hotdeal == 0">
+												<img src="../../assets/live.gif" />
+											</div>
+											<div *ngIf="bids?.hotdeal == 1">
+												<img src="../../assets/img/hotdeal.gif" />
+											</div>
+											<div
+												style="height: 50px;width: 50px;background-repeat: no-repeat;background-position: center;background-size: contain;">
+												<img src="../../assets/buy.png"
+													onerror="this.src='../../assets/img/No_image_available.svg.png'"
+													style="height: 30px;width: 30px;margin-left: 21%;border-radius: 100%;margin-top: 11px;" />
+												<!-- <img src="../../assets/sell.png"
+													onerror="this.src='../../assets/img/No_image_available.svg.png'"
+													style="height: 30px;width: 30px;margin-left: 21%;border-radius: 100%;margin-top: 11px;" /> -->
+											</div>
+										</div>
+									</div>
+									<div style="width: 75%;float: left;">
+										<div style="width: 100%;">
+											<div>
+												<div>
+													<p style="margin: 0px;font-size: 12px;font-weight: bold;">
+														<span>
+															<!-- <span
+																style="color: rgba(67, 125, 178, 1);font-size: 14px;">Buy</span> -->
+														</span>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div style="width: 100%;">
+											<div>
+												<div>
+													<p style="margin: 0px;font-size: 12px;font-weight: bold;">
+														{{ bids?.rice_name_data?.name }}
+														{{bids?.rice_form_milestone3?.name}}
+														<ng-container *ngIf="bids?.quality_type == 1 "> Basmati
+															Rice</ng-container> | {{ bids?.crop }}
+														<!-- <ng-container *ngIf="bids?.quality_type == 2 "> Non-Basmati
+															Rice</ng-container> -->
+													</p>
+												</div>
+											</div>
+										</div>
+
+										<div style="width: 100%;">
+											<div>
+												<div>
+													<p style="margin: 0px;font-size: 12px">
+														{{bids?.rice_grade?.get_wand_type?.type }} ({{
+														bids?.rice_grade?.value}})
+													</p>
+												</div>
+											</div>
+										</div>
+
+										<div style="width: 100%;">
+											<div>
+												<div>
+													<div>
+														<p style="margin: 0px;font-size: 13px;">Valid Till:
+															{{
+															generateDateForValid(bids?.created_at,bids?.validDays) }}
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div style="width: 100%;" *ngIf="bids?.tradeType == 1">
+											<div>
+												<div>
+													<div>
+														<ion-icon name="location-outline"
+															style="display: inline-flex;float: left;color: #000;font-size: 20px;margin-right: 10px;"></ion-icon>
+														<p style="margin: 0px;font-size: 13px;padding:3px">
+															{{(bids?.location?.length > 0)?bids?.location:
+															'Not-disclosed'}}</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div style="width: 30%;float: left;">
+								<div style="width: 100%;">
+									<div>
+										<div>
+											<div>
+												<div *ngIf="bids?.tradeType == 1">
+													<p
+														style="margin: 0px;font-size: 14px;text-align: right;font-weight: bold;">
+														₹{{
+														bids?.offerPrice }}</p>
+													<p style="margin: 0px;font-size: 10px;text-align: right">Price in
+														Qtls</p>
+												</div>
+												<div style="text-align: right;">
+
+													<img src="../../assets/availableSign.png"
+														*ngIf="bids?.status == 1" />
+													<img src="../../assets/soldoutsign.png" *ngIf="bids?.status == 3" />
+													<img src="../../assets/expiredsign.png" *ngIf="bids?.status == 2" />
+												</div>
+
+												<!-- <p style="margin: 0px;font-size: 13px;text-align: center;font-weight: bold;">₹{{ bids?.offerPrice }}</p> -->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div>
+								<div style="display: inline-flex;float: right;">
+									<div style="display: inline-flex;height: 20px">
+
+										<div>
+											<a (click)="likeTrade(bids?.id , $event)"
+												*ngIf="bids?.trade_like_all.length == 0">
+												<ion-icon name="heart-outline"
+													style="display: inline-flex;float: right;color: #000;font-size: 20px;margin-right: 0px;"></ion-icon>
+											</a>
+
+											<ion-icon class="hide" name="heart"
+												style="display: inline-flex;float: right;color: red;font-size: 20px;margin-right: 0px;"></ion-icon>
+
+											<div>
+												<ion-icon *ngIf="bids?.trade_like_all.length > 0" name="heart"
+													style="display: inline-flex;float: left;color: red;font-size: 20px;margin-right: 0px;"></ion-icon>
+
+											</div>
+										</div>
+										<div>
+											<p
+												style="padding: 0px;margin: 0px;float: left;margin-top: 5px;font-size: 12px;">
+												{{bids?.trade_like_all_count}}</p>
+										</div>
+
+									</div>
+
+
+									<div style="text-align: right;margin-left: 10px"
+										*ngIf="bids?.status != 4 && currentStatus != 11 && currentStatus != 12">
+										<a (click)="navigateToDetailPage(bids)"
+											style="list-style: none;text-decoration: none;color: #000;background: #fff;padding: 5px 10px;border-radius: 10px;box-shadow: 4px 2px 8px 2px #ededed;font-size: 12px">View
+											Details</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</li>
+					<li *ngFor="let bids of sellData" class="demandedData">
+						<div style="margin: 0;border-radius: 5px;margin-bottom: 10px;overflow: hidden;padding: 12px 10px;background-color: rgba(226, 227, 228, 0.2);box-shadow: 1px 3px 12px lightgray;position: relative;"
+							[class.inprocess]="bids?.status == 4">
+							<div style="text-align: right;position: absolute;right: 10px;" *ngIf="bids?.status == 4">
+								<p
+									style="color: #fff;padding: 5px 10px;border-radius: 10px;font-size: 15px;background: #000;z-index: 9999;right: 30px;margin: 0;">
+									In-Process</p>
+							</div>
+							<div style="width: 70%;float: left;">
+								<div style="width: 100%;">
+									<div style="width: 20%;float: left;margin-right: 10px;">
+										<div style="position: relative;">
+											<div *ngIf="bids?.status == 1 && bids?.hotdeal == 0">
+												<img src="../../assets/live.gif" />
+											</div>
+											<div *ngIf="bids?.hotdeal == 1">
+												<img src="../../assets/img/hotdeal.gif" />
+											</div>
+											<div
+												style="height: 50px;width: 50px;background-repeat: no-repeat;background-position: center;background-size: contain;">
+												<img src="../../assets/sell.png"
+													onerror="this.src='../../assets/img/No_image_available.svg.png'"
+													style="height: 30px;width: 30px;margin-left: 21%;border-radius: 100%;margin-top: 11px;" />
+												<!-- <img src="{{ imagePre }}uploads/{{bids?.uncooked_file}}"
+													onerror="this.src='../../assets/img/No_image_available.svg.png'"
+													style="height: 30px;width: 30px;margin-left: 21%;border-radius: 100%;margin-top: 11px;" /> -->
+											</div>
+											<!-- <img src="../../assets//img/refe 1.png" style="height: 50px;width: 50px;"/>
+																							<img src="{{ imagePre }}uploads/{{bids?.uncooked_file}}" onerror="this.src='../../assets/img/No_image_available.svg.png'" style="height: 30px;width: 30px;position: absolute;left: 14%;border-radius: 100%;top: 11px;" /> -->
+										</div>
+
+									</div>
+									<div style="width: 75%;float: left;">
+										<div style="width: 100%;">
+											<div>
+												<div>
+													<p style="margin: 0px;font-size: 12px;font-weight: bold;">
+														<span>
+															<!-- <span
+																style="color: rgba(119, 154, 32, 1);font-size: 14px;">Sell</span> -->
+														</span>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div style="width: 100%;">
+											<div>
+												<div>
+													<p style="margin: 0px;font-size: 12px;font-weight: bold;">
+														{{ bids?.rice_name_data?.name }}
+														{{bids?.rice_form_milestone3?.name}}
+														<ng-container *ngIf="bids?.quality_type == 1 "> Basmati
+															Rice</ng-container> | {{ bids?.crop }}
+														<!-- <ng-container *ngIf="bids?.quality_type == 2 "> Non-Basmati
+															Rice</ng-container> -->
+													</p>
+												</div>
+											</div>
+										</div>
+
+										<div style="width: 100%;">
+											<div>
+												<div>
+													<p style="margin: 0px;font-size: 12px">
+														{{bids?.rice_grade?.get_wand_type?.type }} ({{
+														bids?.rice_grade?.value}})
+													</p>
+												</div>
+											</div>
+										</div>
+
+										<div style="width: 100%;">
+											<div>
+												<div>
+													<div>
+														<p style="margin: 0px;font-size: 13px;">Valid Till:
+															{{
+															generateDate(bids?.validDays)
+															}}
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div style="width: 100%;" *ngIf="bids?.tradeType == 1">
+											<div>
+												<div>
+													<div>
+														<ion-icon name="location-outline"
+															style="display: inline-flex;float: left;color: #000;font-size: 20px;margin-right: 10px;"></ion-icon>
+														<p style="margin: 0px;font-size: 13px;padding:3px">
+															{{(bids?.location?.length > 0)?bids?.location:
+															'Not-disclosed'}}</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div style="width: 30%;float: left;">
+								<div style="width: 100%;">
+									<div>
+										<div>
+											<div>
+												<div *ngIf="bids?.tradeType == 1">
+													<p
+														style="margin: 0px;font-size: 14px;text-align: right;font-weight: bold;">
+														₹{{
+														bids?.offerPrice }}</p>
+													<p style="margin: 0px;font-size: 10px;text-align: right">Price in
+														Qtls</p>
+												</div>
+												<div style="text-align: right;">
+
+													<img src="../../assets/availableSign.png"
+														*ngIf="bids?.status == 1" />
+													<img src="../../assets/soldoutsign.png" *ngIf="bids?.status == 3" />
+													<img src="../../assets/expiredsign.png" *ngIf="bids?.status == 2" />
+												</div>
+												<!-- <p style="margin: 0px;font-size: 13px;text-align: center;font-weight: bold;">₹{{ bids?.offerPrice }}</p> -->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div>
+								<div style="display: inline-flex;float: right;">
+									<div style="display: inline-flex;height: 20px">
+
+										<div>
+											<a (click)="likeTrade(bids?.id , $event)"
+												*ngIf="bids?.trade_like_all.length == 0">
+												<ion-icon name="heart-outline"
+													style="display: inline-flex;float: right;color: #000;font-size: 20px;margin-right: 0px;"></ion-icon>
+											</a>
+
+											<ion-icon class="hide" name="heart"
+												style="display: inline-flex;float: right;color: red;font-size: 20px;margin-right: 0px;"></ion-icon>
+
+											<div>
+												<ion-icon *ngIf="bids?.trade_like_all.length > 0" name="heart"
+													style="display: inline-flex;float: left;color: red;font-size: 20px;margin-right: 0px;"></ion-icon>
+
+											</div>
+										</div>
+										<div>
+											<p
+												style="padding: 0px;margin: 0px;float: left;margin-top: 5px;font-size: 12px;">
+												{{bids?.trade_like_all_count}}</p>
+										</div>
+
+									</div>
+									<div style="text-align: right;margin-left: 10px"
+										*ngIf="bids?.status != 4 && currentStatus != 11 && currentStatus != 12">
+										<a (click)="navigateToDetailPage(bids)"
+											style="list-style: none;text-decoration: none;color: #000;background: #fff;padding: 5px 10px;border-radius: 10px;box-shadow: 4px 2px 8px 2px #ededed;font-size: 12px">View
+											Details</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ng-container>
 
 				<ng-container *ngIf="selectedTradeType == 'buy'">
 					<li *ngFor="let bids of buyData" class="demandedData">
-						<div
-							style="margin: 0;border: 2px solid #92b243;border-radius: 5px;margin-bottom: 10px;overflow: hidden;padding: 6px;">
-							<div style="width: 80%;float: left;">
-								<div style="width: 100%;">
-									<!-- <div style="width: 40%;float: left;" class="demandHeaders">
-										<p style="float: left;font-size: 13px;margin: 0px;font-weight: bold;padding: 3px">Rice</p>
-										<p style="float: right;width: 10px;margin: 0px;height: 25px">:</p>
-									</div> -->
-									<div>
-										<div>
-											<p style="margin: 0px;font-size: 15px;padding:3px;font-weight: bold;">
-												{{ bids?.rice_quality_master.quality }} {{
-												bids?.rice_form_milestone3.name
-												}}
-												<ng-container *ngIf="bids?.quality_type == 1 "> Basmati
-													Rice</ng-container>
-												<ng-container *ngIf="bids?.quality_type == 2 "> Non-Basmati
-													Rice</ng-container>
-											</p>
-										</div>
-									</div>
-								</div>
+						<div style="margin: 0;border-radius: 5px;margin-bottom: 10px;overflow: hidden;padding: 12px 10px;background-color: rgba(226, 227, 228, 0.2);box-shadow: 1px 3px 12px lightgray;position: relative;"
+							[class.inprocess]="bids?.status == 4">
+							<div style="text-align: right;position: absolute;right: 10px;" *ngIf="bids?.status == 4">
+								<p
+									style="color: #fff;padding: 5px 10px;border-radius: 10px;font-size: 15px;background: #000;z-index: 9999;right: 30px;margin: 0;">
+									In-Process</p>
+							</div>
 
+							<div style="width: 70%;float: left;">
 								<div style="width: 100%;">
-									<!-- <div style="width: 40%;float: left;" class="demandHeaders">
-														<p style="float: left;font-size: 13px;margin: 0px;font-weight: bold;padding: 3px">Grade</p>
-														<p style="float: right;width: 10px;margin: 0px;height: 25px">:</p>
-													</div> -->
-									<div>
-										<div>
-											<p style="margin: 0px;font-size: 13px;padding:3px">
-												{{bids?.rice_grade.get_wand_type[0].type }} ({{ bids?.rice_grade.value
-												}})
-											</p>
+									<div style="width: 20%;float: left;margin-right: 10px;">
+										<div style="position: relative;">
+											<div *ngIf="bids?.status == 1 && bids?.hotdeal == 0">
+												<img src="../../assets/live.gif" />
+											</div>
+											<div *ngIf="bids?.hotdeal == 1">
+												<img src="../../assets/img/hotdeal.gif" />
+											</div>
+											<div
+												style="height: 50px;width: 50px;background-repeat: no-repeat;background-position: center;background-size: contain;">
+												<img src="../../assets/buy.png"
+													onerror="this.src='../../assets/img/No_image_available.svg.png'"
+													style="height: 30px;width: 30px;margin-left: 21%;border-radius: 100%;margin-top: 11px;" />
+											</div>
+											<!-- <img src="../../assets//img/refe 1.png" style="height: 50px;width: 50px;"/>
+											<img src="{{ imagePre }}uploads/{{bids?.uncooked_file}}" onerror="this.src='../../assets/img/No_image_available.svg.png'" style="height: 30px;width: 30px;position: absolute;left: 14%;border-radius: 100%;top: 11px;" /> -->
 										</div>
-									</div>
-								</div>
 
-								<div style="width: 100%;">
-									<!-- <div style="width: 40%;float: left;" class="demandHeaders">
-														<p style="float: left;font-size: 13px;margin: 0px;font-weight: bold;padding: 3px">	Validity</p>
-														<p style="float: right;width: 10px;margin: 0px;height: 25px">:</p>
-													</div> -->
-									<div>
-										<div>
+									</div>
+									<div style="width: 75%;float: left;">
+										<div style="width: 100%;">
 											<div>
-												<p style="margin: 0px;font-size: 13px;padding:3px">{{
-													generateDate(bids?.validDays) }}</p>
+												<div>
+													<p style="margin: 0px;font-size: 12px;font-weight: bold;">
+														<span>
+															<!-- <span
+																style="color: rgba(67, 125, 178, 1);font-size: 14px;">Buy</span> -->
+														</span>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div style="width: 100%;">
+											<div>
+												<div>
+													<p style="margin: 0px;font-size: 12px;font-weight: bold;">
+														{{ bids?.rice_name_data?.name }}
+														{{bids?.rice_form_milestone3?.name}}
+														<ng-container *ngIf="bids?.quality_type == 1 "> Basmati
+															Rice</ng-container> | {{ bids?.crop }}
+														<!-- <ng-container *ngIf="bids?.quality_type == 2 "> Non-Basmati
+															Rice</ng-container> -->
+													</p>
+												</div>
+											</div>
+										</div>
+
+										<div style="width: 100%;">
+											<div>
+												<div>
+													<p style="margin: 0px;font-size: 12px">
+														{{bids?.rice_grade?.get_wand_type?.type }} ({{
+														bids?.rice_grade?.value}})
+													</p>
+												</div>
+											</div>
+										</div>
+
+										<div style="width: 100%;">
+											<div>
+												<div>
+													<div>
+														<p style="margin: 0px;font-size: 13px;">Valid Till:
+															{{
+															generateDate(bids?.validDays) }}</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div style="width: 100%;" *ngIf="bids?.tradeType == 1">
+											<div>
+												<div>
+													<div>
+														<ion-icon name="location-outline"
+															style="display: inline-flex;float: left;color: #000;font-size: 20px;margin-right: 10px;"></ion-icon>
+														<p style="margin: 0px;font-size: 13px;padding:3px">
+															{{(bids?.location?.length > 0)?bids?.location:
+															'Not-disclosed'}}</p>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div style="width: 20%;float: left;">
+
+							<div style="width: 30%;float: left;">
 								<div style="width: 100%;">
 									<div>
 										<div>
 											<div>
-												<p
-													style="margin: 0px;font-size: 13px;padding:40% 0% 0% 0%;text-align: center;font-weight: bold;">
-													₹{{ bids?.offerPrice }}
-												</p>
+												<div *ngIf="bids?.tradeType == 1">
+													<p
+														style="margin: 0px;font-size: 14px;text-align: right;font-weight: bold;">
+														₹{{ bids?.offerPrice }}</p>
+													<p style="margin: 0px;font-size: 10px;text-align: right">Price in
+														Qtls</p>
+												</div>
+												<div style="text-align: right;">
+
+													<img src="../../assets/availableSign.png"
+														*ngIf="bids?.status == 1" />
+													<img src="../../assets/soldoutsign.png" *ngIf="bids?.status == 3" />
+													<img src="../../assets/expiredsign.png" *ngIf="bids?.status == 2" />
+												</div>
+
+												<!-- <p style="margin: 0px;font-size: 13px;text-align: center;font-weight: bold;">₹{{ bids?.offerPrice }}</p> -->
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+
+							<div>
+								<div style="display: inline-flex;float: right;">
+									<div style="display: inline-flex;height: 20px">
+
+										<div>
+											<a (click)="likeTrade(bids?.id , $event)"
+												*ngIf="bids?.trade_like_all.length == 0">
+												<ion-icon name="heart-outline"
+													style="display: inline-flex;float: right;color: #000;font-size: 20px;margin-right: 0px;"></ion-icon>
+											</a>
+
+											<ion-icon class="hide" name="heart"
+												style="display: inline-flex;float: right;color: red;font-size: 20px;margin-right: 0px;"></ion-icon>
+
+											<div>
+												<ion-icon *ngIf="bids?.trade_like_all.length > 0" name="heart"
+													style="display: inline-flex;float: right;color: red;font-size: 20px;margin-right: 0px;"></ion-icon>
+											</div>
+
+										</div>
+										<div>
+											<p
+												style="padding: 0px;margin: 0px;float: left;margin-top: 5px;font-size: 12px;">
+												{{bids?.trade_like_all_count}}</p>
+										</div>
+
+
+									</div>
+									<div style="text-align: right;margin-left: 10px"
+										*ngIf="bids?.status != 4 && currentStatus != 11 && currentStatus != 12">
+										<a (click)="navigateToDetailPage(bids)"
+											style="list-style: none;text-decoration: none;color: #000;background: #fff;padding: 5px 10px;border-radius: 10px;box-shadow: 4px 2px 8px 2px #ededed;font-size: 15px;">View
+											Details</a>
+									</div>
+								</div>
+							</div>
+
 						</div>
 					</li>
 				</ng-container>
 
 				<ng-container *ngIf="selectedTradeType == 'sell'">
 					<li *ngFor="let bids of sellData" class="demandedData">
-						<div
-							style="margin: 0;border: 2px solid #92b243;border-radius: 5px;margin-bottom: 10px;overflow: hidden;padding: 6px;">
-							<div style="width: 80%;float: left;">
-								<div style="width: 100%;">
-									<!-- <div style="width: 40%;float: left;" class="demandHeaders">
-														<p style="float: left;font-size: 13px;margin: 0px;font-weight: bold;padding: 3px">Rice</p>
-														<p style="float: right;width: 10px;margin: 0px;height: 25px">:</p>
-													</div> -->
-									<div>
-										<div>
-											<p style="margin: 0px;font-size: 15px;padding:3px;font-weight: bold;">
-												{{ bids?.rice_quality_master.quality }} {{
-												bids?.rice_form_milestone3.name
-												}}
-												<ng-container *ngIf="bids?.quality_type == 1 "> Basmati
-													Rice</ng-container>
-												<ng-container *ngIf="bids?.quality_type == 2 "> Non-Basmati
-													Rice</ng-container>
-											</p>
-										</div>
-									</div>
-								</div>
 
+						<div style="margin: 0;border-radius: 5px;margin-bottom: 10px;overflow: hidden;padding: 12px 10px;background-color: rgba(226, 227, 228, 0.2);box-shadow: 1px 3px 12px lightgray;position: relative;"
+							[class.inprocess]="bids?.status == 4">
+							<div style="text-align: right;position: absolute;right: 10px;" *ngIf="bids?.status == 4">
+								<p
+									style="color: #fff;padding: 5px 10px;border-radius: 10px;font-size: 15px;background: #000;z-index: 9999;right: 30px;margin: 0;">
+									In-Process</p>
+							</div>
+							<div style="width: 70%;float: left;">
 								<div style="width: 100%;">
-									<!-- <div style="width: 40%;float: left;" class="demandHeaders">
-														<p style="float: left;font-size: 13px;margin: 0px;font-weight: bold;padding: 3px">Grade</p>
-														<p style="float: right;width: 10px;margin: 0px;height: 25px">:</p>
-													</div> -->
-									<div>
-										<div>
-											<p style="margin: 0px;font-size: 13px;padding:3px">
-												{{bids?.rice_grade.get_wand_type[0].type }} ({{ bids?.rice_grade.value
-												}})
-											</p>
+									<div style="width: 20%;float: left;margin-right: 10px;">
+										<div style="position: relative;">
+											<div *ngIf="bids?.status == 1 && bids?.hotdeal == 0">
+												<img src="../../assets/live.gif" />
+											</div>
+											<div *ngIf="bids?.hotdeal == 1">
+												<img src="../../assets/img/hotdeal.gif" />
+											</div>
+											<div
+												style="height: 50px;width: 50px;background-repeat: no-repeat;background-position: center;background-size: contain;">
+												<img src="../../assets/sell.png"
+													onerror="this.src='../../assets/img/No_image_available.svg.png'"
+													style="height: 30px;width: 30px;margin-left: 21%;border-radius: 100%;margin-top: 11px;" />
+											</div>
+											<!-- <img src="../../assets//img/refe 1.png" style="height: 50px;width: 50px;"/>
+																		<img src="{{ imagePre }}uploads/{{bids?.uncooked_file}}" onerror="this.src='../../assets/img/No_image_available.svg.png'" style="height: 30px;width: 30px;position: absolute;left: 14%;border-radius: 100%;top: 11px;" /> -->
 										</div>
-									</div>
-								</div>
 
-								<div style="width: 100%;">
-									<!-- <div style="width: 40%;float: left;" class="demandHeaders">
-														<p style="float: left;font-size: 13px;margin: 0px;font-weight: bold;padding: 3px">	Validity</p>
-														<p style="float: right;width: 10px;margin: 0px;height: 25px">:</p>
-													</div> -->
-									<div>
-										<div>
+									</div>
+									<div style="width: 75%;float: left;">
+										<div style="width: 100%;">
 											<div>
-												<p style="margin: 0px;font-size: 13px;padding:3px">{{
-													generateDate(bids?.validDays) }}</p>
+												<div>
+													<p style="margin: 0px;font-size: 12px;font-weight: bold;">
+														<span>
+															<!-- <span
+																style="color: rgba(119, 154, 32, 1);;font-size: 14px;">Sell</span> -->
+														</span>
+													</p>
+												</div>
+											</div>
+										</div>
+										<div style="width: 100%;">
+											<div>
+												<div>
+													<p style="margin: 0px;font-size: 12px;font-weight: bold;">
+														{{ bids?.rice_name_data?.name }}
+														{{bids?.rice_form_milestone3?.name}}
+														<ng-container *ngIf="bids?.quality_type == 1 "> Basmati
+															Rice</ng-container> | {{ bids?.crop }}
+														<!-- <ng-container *ngIf="bids?.quality_type == 2 "> Non-Basmati
+															Rice</ng-container> -->
+													</p>
+												</div>
+											</div>
+										</div>
+
+										<div style="width: 100%;">
+											<div>
+												<div>
+													<p style="margin: 0px;font-size: 12px">
+														{{bids?.rice_grade?.get_wand_type?.type }} ({{
+														bids?.rice_grade?.value}})
+													</p>
+												</div>
+											</div>
+										</div>
+
+										<div style="width: 100%;">
+											<div>
+												<div>
+													<div>
+														<p style="margin: 0px;font-size: 13px;">Valid Till:
+															{{
+															generateDate(bids?.validDays) }}
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div style="width: 100%;" *ngIf="bids?.tradeType == 1">
+											<div>
+												<div>
+													<div>
+														<ion-icon name="location-outline"
+															style="display: inline-flex;float: left;color: #000;font-size: 20px;margin-right: 10px;"></ion-icon>
+														<p style="margin: 0px;font-size: 13px;padding:3px">
+															{{(bids?.location?.length > 0)?bids?.location:
+															'Not-disclosed'}}</p>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div style="width: 20%;float: left;">
+							<div style="width: 30%;float: left;">
 								<div style="width: 100%;">
 									<div>
 										<div>
 											<div>
-												<p
-													style="margin: 0px;font-size: 13px;padding:40% 0% 0% 0%;text-align: center;font-weight: bold;">
-													₹{{ bids?.offerPrice }}
-												</p>
+
+												<div *ngIf="bids?.tradeType == 1">
+													<p
+														style="margin: 0px;font-size: 14px;text-align: right;font-weight: bold;">
+														₹{{bids?.offerPrice }}</p>
+													<p style="margin: 0px;font-size: 10px;text-align: right">Price in
+														Qtls</p>
+												</div>
+
+												<div style="text-align: right;">
+
+													<img src="../../assets/availableSign.png"
+														*ngIf="bids?.status == 1" />
+													<img src="../../assets/soldoutsign.png" *ngIf="bids?.status == 3" />
+													<img src="../../assets/expiredsign.png" *ngIf="bids?.status == 2" />
+												</div>
+
+												<!-- <p style="margin: 0px;font-size: 13px;text-align: center;font-weight: bold;">₹{{ bids?.offerPrice }}</p> -->
 											</div>
 										</div>
+									</div>
+								</div>
+							</div>
+
+							<div>
+								<div style="display: inline-flex;float: right;">
+									<div style="display: inline-flex;height: 20px;">
+
+										<div>
+											<a (click)="likeTrade(bids?.id , $event)"
+												*ngIf="bids?.trade_like_all.length == 0">
+												<ion-icon name="heart-outline"
+													style="display: inline-flex;float: right;color: #000;font-size: 20px;margin-right: 0px;"></ion-icon>
+											</a>
+
+											<ion-icon class="hide" name="heart"
+												style="display: inline-flex;float: right;color: red;font-size: 20px;margin-right: 0px;"></ion-icon>
+
+											<div>
+												<ion-icon *ngIf="bids?.trade_like_all.length > 0" name="heart"
+													style="display: inline-flex;float: right;color: red;font-size: 20px;margin-right: 0px;"></ion-icon>
+											</div>
+										</div>
+										<div>
+											<p
+												style="padding: 0px;margin: 0px;float: left;margin-top: 5px;font-size: 12px;">
+												{{bids?.trade_like_all_count}}</p>
+										</div>
+
+
+									</div>
+
+									<div style="text-align: right;margin-left: 10px;"
+										*ngIf="bids?.status != 4 && currentStatus != 11 && currentStatus != 12">
+										<a (click)="navigateToDetailPage(bids)"
+											style="list-style: none;text-decoration: none;color: #000;background: #fff;padding: 5px 10px;border-radius: 10px;box-shadow: 4px 2px 8px 2px #ededed;font-size: 12px">View
+											Details</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</li>
 				</ng-container>
+
 			</ul>
 		</div>
 	</div>

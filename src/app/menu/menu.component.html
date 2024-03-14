@@ -1,110 +1,203 @@
 <ion-row class="ion-no-padding footer-tabs">
 	<ion-col class="ion-no-padding">
-			<div class="example1">
-				<h3>Scrolling text... </h3>
-			</div>
+		<div class="example1" style="background: red;padding-top: 2px;height: 21px;">
+			<h3 style="color: #fff;min-width: 100%;" [ngStyle]='{ width : newsWidth }'>{{news}} </h3>
+		</div>
 		<ion-row class="tabs-row">
 			<ng-container *ngIf="apptype == 'OTHER' ">
 
-				<ion-col class="tab-icon ion-activatable ripple-parent" align="center"
+				<ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center"
 					(click)="goTo((apptype != 'USD')? 'prices' :'priceusd' )">
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
-					<img src="../../assets/menu/liveprice.svg" />
+					<div style="width: 100%;height: 35px; ">
+						<img src="../../assets/menu/liveprice.svg" *ngIf="apptype != 'USD'"
+							style="width: auto; height: 100%;padding: 5px;" />
+						<img src="../../assets/menu/livePriceUSD.svg" *ngIf="apptype == 'USD'"
+							style="width: auto; height: 100%;padding: 5px;" />
+					</div>
 					<h5>Live Prices</h5>
 				</ion-col>
 
-				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" (click)="goTo('buy-inr')">
+				<ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center"
+					(click)="goTo('buy-inr')">
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
-					<img src="../../assets/menu/transport.png" class="truck" style="width: 60px !important" />
+					<div style="width: 100%;height: 35px; ">
+						<img src="../../assets/menu/buy.svg" style="width: auto; height: 100%;padding: 5px;" />
+					</div>
 					<h5>Buy</h5>
 				</ion-col>
 
-				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" (click)='goTo("trade-inr")'>
+				<ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center"
+					(click)='goTo("trade-inr-list")'>
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
-					<img src="../../assets/menu/trade.svg" />
+					<div style="width: 100%;height: 35px; ">
+						<img src="../../assets/menu/trade.svg" style="width: auto; height: 100%;padding: 5px;" />
+					</div>
 					<h5>Trade</h5>
 				</ion-col>
 
-				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" (click)='goTo("selling-inr")'>
+				<ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center"
+					(click)='goTo("selling-inr")'>
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
-					<img src="../../assets/menu/chaat.png" />
+					<div style="width: 100%;height: 35px; ">
+						<img src="../../assets/menu/chat.svg" style="width: auto; height: 100%;padding: 5px;" />
+					</div>
 					<h5>Sell</h5>
 				</ion-col>
-				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" (click)='goTo("brands")'>
+
+				<ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center"
+					(click)='goTo("brands")'>
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
-					<img src="../../assets/menu/chaat.png" />
+					<div style="width: 100%;height: 35px; ">
+						<img src="../../assets/menu/brand.svg" style="width: auto; height: 100%;padding: 5px;" />
+					</div>
 					<h5>Brand</h5>
 				</ion-col>
 
-				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" (click)='openModel()'>
+				<ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center"
+					(click)='openModel()'>
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
-					<img src="../../assets/menu/menu.svg" />
+					<div style="width: 100%;height: 35px; ">
+						<img src="../../assets/menu/menu.svg" style="width: auto; height: 100%;padding: 7px;" />
+					</div>
 					<h5>Menu</h5>
 				</ion-col>
 
 			</ng-container>
-
-			<ng-container *ngIf="apptype != 'OTHER' ">
-				<ion-col class="tab-icon ion-activatable ripple-parent" align="center"
+			<ng-container *ngIf="apptype == 'USD' && seledctedRole == 5">
+				<ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center"
 					(click)="goTo((apptype != 'USD')? 'prices' :'priceusd' )">
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
 					<!-- <img src="../../assets/menu/live prices.png" *ngIf="apptype != 'USD'" />
-					<img src="../../assets/menu/doller.png" *ngIf="apptype == 'USD'" /> -->
-					<img src="../../assets/menu/liveprice.svg" />
-
+					<img src="../../assets/menu/doller.png" /> -->
+					<div style="width: 100%;height: 35px; ">
+						<img src="../../assets/menu/liveprice.svg" *ngIf="apptype != 'USD'"
+							style="width: auto; height: 100%;padding: 5px;" />
+						<img src="../../assets/menu/livePriceUSD.svg" *ngIf="apptype == 'USD'"
+							style="width: auto; height: 100%;padding: 5px;" />
+					</div>
 					<h5>Live Prices</h5>
 				</ion-col>
 
-				<ion-col class="tab-icon ion-activatable ripple-parent" align="center"
-					*ngIf="isCurrentUser == 'false' && apptype == 'USD'" (click)="goTo('oceanfreights')">
+				<ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center"
+					(click)="goTo('oceanfreights')">
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
-					<img src="../../assets/menu/images-removebg-preview.png" class="truck"
-						style="width: 39px !important" />
+					<div style="width: 100%;height: 35px; ">
+						<img src="../../assets/menu/oceanfreight.svg" style="width: auto; height: 100%;padding: 5px;" />
+					</div>
 					<h5>Ocean Freight</h5>
 				</ion-col>
-				<ion-col class="tab-icon ion-activatable ripple-parent" *ngIf="seledctedRole == 5 && apptype == 'USD' "
-					align="center" (click)='goTo("buy")'>
+				<ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center"
+					(click)='goTo("buy")'>
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
-					<img src="../../assets/menu/486-4865980_shopping-cart-png-vector-shopping-cart-png-transparent-removebg-preview.png"
-						style="width: 34px !important" />
+					<div style="width: 100%;height: 35px; ">
+						<img style="width: auto; height: 100%;padding: 5px;" src="../../assets/menu/buy.svg" />
+					</div>
 					<h5>Buy </h5>
 				</ion-col>
 
-				<ion-col class="tab-icon ion-activatable ripple-parent" align="center"
-					*ngIf="seledctedRole == 4 || seledctedRole == 6 || seledctedRole == 7  && apptype == 'USD'"
-					(click)='goTo("calculator")'>
+
+				<ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center"
+					(click)='goTo("trade-list-usd")'>
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
-					<img src="../../assets/menu/calculator.png" style="width: 21px !important" />
-					<h5>Calculator</h5>
+					<div style="width: 100%;height: 35px; ">
+						<img src="../../assets/menu/trade.svg" style="width: auto; height: 100%;padding: 5px;" />
+					</div>
+					<h5>Trade</h5>
 				</ion-col>
 
-				<ion-col class="tab-icon ion-activatable ripple-parent" align="center"
-					*ngIf="seledctedRole == 5  && apptype == 'USD'" (click)='goTo("hotdeals")'>
-					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
-					<img src="../../assets/menu/fire-sign-fire-flame-icon-isolated-on-white-background-illustration-free-vector-removebg-preview.png"
-						style="width: 34px !important" />
-					<h5>Hot Deals</h5>
-				</ion-col>
-
-				<!-- <ion-col class="tab-icon ion-activatable ripple-parent" align="center" *ngIf=" isCurrentUser == 'false' " (click)='goTo("gallery")'>
+				<!-- <ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center" *ngIf=" isCurrentUser == 'false' " (click)='goTo("gallery")'>
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
 					<img src="../../assets/menu/gallery.png" />
 					<h5>Gallery</h5>
 				</ion-col> -->
 
-				<ion-col class="tab-icon ion-activatable ripple-parent" align="center"
-					*ngIf="seledctedRole == 4 || seledctedRole == 6 || seledctedRole == 7 && apptype == 'USD'"
+				<ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center"
+					(click)="goTo('otherservices')" menuToggle>
+					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
+					<div style="width: 100%;height: 35px; ">
+						<img src="../../assets/menu/otherservices.svg"
+							style="width: auto; height: 100%;padding: 5px;" />
+					</div>
+					<h5>Services</h5>
+				</ion-col>
+				<ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center"
+					(click)='openModel()'>
+					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
+					<div style="width: 100%;height: 35px; ">
+						<img src="../../assets/menu/menu.svg" style="width: auto; height: 100%;padding: 7px;" />
+					</div>
+					<h5>Menu</h5>
+				</ion-col>
+			</ng-container>
+			<ng-container
+				*ngIf="apptype == 'USD' && seledctedRole == 4 || apptype == 'USD' && seledctedRole == 6 || apptype == 'USD' && seledctedRole == 7  ">
+				<ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center"
+					(click)="goTo((apptype != 'USD')? 'prices' :'priceusd' )">
+					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
+					<!-- <img src="../../assets/menu/live prices.png" *ngIf="apptype != 'USD'" />
+					<img src="../../assets/menu/doller.png" *ngIf="apptype == 'USD'" /> -->
+					<div style="width: 100%;height: 35px; ">
+						<img src="../../assets/menu/liveprice.svg" *ngIf="apptype != 'USD'"
+							style="width: auto; height: 100%;padding: 5px;" />
+						<img src="../../assets/menu/livePriceUSD.svg" *ngIf="apptype == 'USD'"
+							style="width: auto; height: 100%;padding: 5px;" />
+					</div>
+					<h5>Live Prices</h5>
+				</ion-col>
+
+				<ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center"
+					(click)="goTo('oceanfreights')">
+					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
+					<div style="width: 100%;height: 35px; ">
+						<img src="../../assets/menu/oceanfreight.svg" style="width: auto; height: 100%;padding: 5px;" />
+					</div>
+					<h5>Ocean Freight</h5>
+				</ion-col>
+
+
+				<ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center"
+					(click)='goTo("calculator")'>
+					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
+					<div style="width: 100%;height: 35px; ">
+						<img src="../../assets/menu/calculator.png" style="width: auto; height: 100%;padding: 5px;" />
+					</div>
+					<h5>Calculator</h5>
+				</ion-col>
+
+
+
+				<!-- <ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center" *ngIf=" isCurrentUser == 'false' " (click)='goTo("gallery")'>
+					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
+					<img src="../../assets/menu/gallery.png" />
+					<h5>Gallery</h5>
+				</ion-col> -->
+
+				<ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center"
 					(click)='goToBids()'>
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
-					<img src="../../assets/offers.png" style="width: 27px;" />
+					<div style="width: 100%;height: 35px; ">
+						<img src="../../assets/offers.png" style="width: auto; height: 100%;padding: 5px;" />
+					</div>
 					<h5>Offer</h5>
 				</ion-col>
 
-				<ion-col class="tab-icon ion-activatable ripple-parent" align="center" *ngIf="apptype == 'USD'"
+				<ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center"
 					(click)="goTo('otherservices')" menuToggle>
 					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
-					<img src="../../assets/menu/images__1_-removebg-preview.png" style="width: 27px;" />
-					<h5>Other services</h5>
+					<div style="width: 100%;height: 35px; ">
+						<img src="../../assets/menu/otherservices.svg"
+							style="width: auto; height: 100%;padding: 5px;" />
+					</div>
+					<h5>Services</h5>
+				</ion-col>
+				<ion-col style="padding: 0px;" class="tab-icon ion-activatable ripple-parent" align="center"
+					(click)='openModel()'>
+					<ion-ripple-effect type="unbounded"></ion-ripple-effect>
+					<div style="width: 100%;height: 35px; ">
+						<img src="../../assets/menu/menu.svg" style="width: auto; height: 100%;padding: 7px;" />
+					</div>
+					<h5>Menu</h5>
 				</ion-col>
 			</ng-container>
 

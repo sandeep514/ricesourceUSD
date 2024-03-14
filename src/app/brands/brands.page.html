@@ -1,5 +1,5 @@
-<ion-header class="green">
-	<ion-toolbar mode="ios" style="background: transparent; --background: transparent">
+<ion-header class="">
+	<ion-toolbar mode="ios" style="background: #fff; --background: #fff">
 		<ion-buttons slot="start" class="back-button" (click)="back()">
 			<ion-icon name="arrow-back-outline"></ion-icon>
 		</ion-buttons>
@@ -8,24 +8,30 @@
 </ion-header>
 
 
-<ion-content id="content" [scrollEvents]="true" class="lightgreen">
-	<ion-grid>
-		<ion-row>
-			
-			
-			<ion-col size="6" *ngFor="let brands of brandList">
-				<div (click)="getBrandDetail(brands)" style="border: 2px solid #92b243;border-radius: 20px;overflow: hidden;">
-					<div>
-						<img src="{{imagePre}}uploads/{{brands.image}}"
-							onerror="this.src='../../assets/img/No_image_available.svg.png'"
-							alt="i am here" style="padding: 15px;">
+<ion-content id="content" [scrollEvents]="true" class="">
+	<div style="height: 88%;overflow: scroll;">
+		<ion-grid>
+			<ion-row>
+				<ion-col size="6" *ngFor="let brands of brandList">
+					<div (click)="getBrandDetail(brands)"
+						style="border-radius: 20px;overflow: hidden;box-shadow: 1px 0px 14px 5px #ededed;">
+						<div
+							style="width: 200px;height: 200px;background-image: url({{imagePre}}uploads/{{brands.image}});">
+						</div>
+
+						<div style="height: 170px;width: 100%;">
+							<img src="{{imagePre}}uploads/brandlogo/{{brands.image}}"
+								onerror="this.src='../../assets/img/No_image_available.svg.png'" alt="i am here"
+								style="padding: 15px;width: 100%;">
+						</div>
+						<p
+							style="text-align: left;font-weight: bold;font-size: 12px;padding: 0px;margin: 0px;padding: 10px;text-transform: capitalize;">
+							{{brands.name}}</p>
+
 					</div>
-					<p style="text-align: center;font-weight: bold;font-size: 18px;padding: 0px;margin: 0px;background: #92b243;padding: 10px;text-transform: capitalize;">{{brands.name}}</p>
-				</div>
-			</ion-col>
-			
-			
-		</ion-row>
-	</ion-grid>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</div>
 	<app-menu></app-menu>
 </ion-content>

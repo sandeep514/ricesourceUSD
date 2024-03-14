@@ -1,5 +1,5 @@
-<ion-header class="green">
-	<ion-toolbar  mode="ios"  style="background: transparent; --background: transparent">
+<ion-header class="">
+	<ion-toolbar mode="ios" style="background: transparent; --background: transparent">
 		<ion-buttons slot="start" class="back-button" (click)="back()">
 			<ion-icon name="arrow-back-outline"></ion-icon>
 		</ion-buttons>
@@ -7,21 +7,24 @@
 	</ion-toolbar>
 </ion-header>
 
-<ion-content id="content" class="lightgreen"  style="height: 100%;">
+<ion-content id="content" class="" style="height: 100%;">
 	<div style="height: 90%;overflow: scroll;">
 		<div>
 			<ul style="padding: 10px;">
-				<li class="demandedData" *ngFor="let bids of notifs; index as i" style="border-bottom: 2px solid #91b243;">
-					<ng-container >
+				<li class="demandedData" *ngFor="let bids of notifs; index as i"
+					style="border-bottom: 2px solid #91b243;">
+					<ng-container>
 						<div style="margin: 0;padding: 15px 0px;">
 							<ion-row>
-								<ion-col size="4" class="demandHeaders">Deal No.</ion-col> 
-								<ion-col style="font-weight: bold;">: {{ (i+1)  }}</ion-col>
+								<ion-col size="4" class="demandHeaders">Deal No.</ion-col>
+								<ion-col style="font-weight: bold;">: {{ (i+1) }}</ion-col>
 							</ion-row>
-							<ion-row *ngIf="bids?.get_rice_quality?.quality != '' && bids?.get_rice_quality?.quality != null && bids?.get_rice_quality?.quality != undefined && bids?.get_rice_quality?.quality_name != '' && bids?.get_rice_quality?.quality_name != null && bids?.get_rice_quality?.quality_name != undefined ">
-								<ion-col size="4" class="demandHeaders">Quality</ion-col> 
+							<ion-row
+								*ngIf="bids?.get_rice_quality?.quality != '' && bids?.get_rice_quality?.quality != null && bids?.get_rice_quality?.quality != undefined && bids?.get_rice_quality?.quality_name != '' && bids?.get_rice_quality?.quality_name != null && bids?.get_rice_quality?.quality_name != undefined ">
+								<ion-col size="4" class="demandHeaders">Quality</ion-col>
 								<div style="margin-top: 5px; ">:</div>
-								<ion-col> {{ bids?.get_rice_quality?.quality }} {{ bids?.get_rice_quality?.quality_name }}</ion-col>
+								<ion-col> {{ bids?.get_rice_quality?.quality }} {{ bids?.get_rice_quality?.quality_name
+									}}</ion-col>
 							</ion-row>
 							<!-- <ion-row>
 								<ion-col size="4" class="demandHeaders">Specifications:</ion-col> 
@@ -35,54 +38,74 @@
 									<div style="margin: 0px">Kett - 33</div>
 								</ion-col>
 							</ion-row> -->
-							<ion-row *ngIf="bids?.get_u_s_d_default_master?.bag_size != '' && bids?.get_u_s_d_default_master?.bag_size != null && bids?.get_u_s_d_default_master?.bag_size != undefined && bids?.get_u_s_d_default_master?.bag_type != '' && bids?.get_u_s_d_default_master?.bag_type != null && bids?.get_u_s_d_default_master?.bag_type != undefined ">
-								<ion-col size="4" class="demandHeaders">Packing</ion-col> 
-								<ion-col>: {{ bids?.get_u_s_d_default_master?.bag_size }} {{ bids?.get_u_s_d_default_master?.bag_type }}</ion-col>
+							<ion-row
+								*ngIf="bids?.get_u_s_d_default_master?.bag_size != '' && bids?.get_u_s_d_default_master?.bag_size != null && bids?.get_u_s_d_default_master?.bag_size != undefined && bids?.get_u_s_d_default_master?.bag_type != '' && bids?.get_u_s_d_default_master?.bag_type != null && bids?.get_u_s_d_default_master?.bag_type != undefined ">
+								<ion-col size="4" class="demandHeaders">Packing</ion-col>
+								<ion-col>: {{ bids?.get_u_s_d_default_master?.bag_size }} {{
+									bids?.get_u_s_d_default_master?.bag_type }}</ion-col>
 							</ion-row>
-							
+
 							<ion-row *ngIf="bids?.qty != '' && bids?.qty != null && bids?.qty != undefined">
-								<ion-col size="4" class="demandHeaders">Quantity (MT)</ion-col> 
+								<ion-col size="4" class="demandHeaders">Quantity (MT)</ion-col>
 								<ion-col>: {{ bids?.qty }}</ion-col>
 							</ion-row>
-							<ion-row  *ngIf="bids?.fob != '' && bids?.fob != null && bids?.fob != undefined">
-								<ion-col size="4" class="demandHeaders">FOB PMT</ion-col> 
+							<ion-row *ngIf="bids?.fob != '' && bids?.fob != null && bids?.fob != undefined">
+								<ion-col size="4" class="demandHeaders">FOB PMT</ion-col>
 								<ion-col>: ${{ bids?.fob }}</ion-col>
 							</ion-row>
-							<ion-row  *ngIf="bids?.message != '' && bids?.message != null && bids?.message != undefined">
+							<ion-row *ngIf="bids?.message != '' && bids?.message != null && bids?.message != undefined">
 								<ion-col size="4" class="demandHeaders">Remarks</ion-col>
-								<ion-col style="text-transform: capitalize;"><div style="float: left;margin-right: 4px;height: 100%">:</div> {{ bids?.message }}</ion-col>
+								<ion-col style="text-transform: capitalize;">
+									<div style="float: left;margin-right: 4px;height: 100%">:</div> {{ bids?.message }}
+								</ion-col>
 							</ion-row>
 
-							<ion-row *ngIf="bids?.created_at != '' && bids?.created_at != null && bids?.created_at != undefined">
+							<ion-row
+								*ngIf="bids?.created_at != '' && bids?.created_at != null && bids?.created_at != undefined">
 								<ion-col size="4" class="demandHeaders">Posted on</ion-col>
-								<ion-col style="text-transform: capitalize;">: {{ bids?.created_at | date:'dd-MM-yyyy | hh:mm a' }}</ion-col>
+								<ion-col style="text-transform: capitalize;">: {{ bids?.created_at | date:'dd-MM-yyyy |
+									hh:mm a' }}</ion-col>
 							</ion-row>
 
-							<ion-row *ngIf="bids?.validDate != '' && bids?.validDate != null && bids?.validDate != undefined">
+							<ion-row
+								*ngIf="bids?.validDate != '' && bids?.validDate != null && bids?.validDate != undefined">
 								<ion-col size="4" class="demandHeaders">Valid Till</ion-col>
-								<ion-col style="text-transform: capitalize;">: {{ bids?.validDate  | date:'dd-MM-yyyy | hh:mm a' }}</ion-col>
+								<ion-col style="text-transform: capitalize;">: {{ bids?.validDate | date:'dd-MM-yyyy |
+									hh:mm a' }}</ion-col>
 							</ion-row>
 
-							<ion-row *ngIf="bids?.attachment1 != '' && bids?.attachment1 != null && bids?.attachment1 != undefined">
+							<ion-row
+								*ngIf="bids?.attachment1 != '' && bids?.attachment1 != null && bids?.attachment1 != undefined">
 								<ion-col size="4" class="demandHeaders">Rice Picture</ion-col>
 								<ion-col>
-									<img *ngIf=" bids?.attachment1 != '' && bids?.attachment1 != null " src="{{ imageUrl }}uploads/notifications/{{ bids?.attachment1 }}" (click)="openImage(imageUrl,'uploads/notifications',bids?.attachment1)" style="width: 80px;height: 120px;"/>
-									<p *ngIf="bids?.attachment1 == '' || bids?.attachment1 == null" style="width: 100%">Not Available</p>
+									<img *ngIf=" bids?.attachment1 != '' && bids?.attachment1 != null "
+										src="{{ imageUrl }}uploads/notifications/{{ bids?.attachment1 }}"
+										(click)="openImage(imageUrl,'uploads/notifications',bids?.attachment1)"
+										style="width: 80px;height: 120px;" />
+									<p *ngIf="bids?.attachment1 == '' || bids?.attachment1 == null" style="width: 100%">
+										Not Available</p>
 								</ion-col>
 							</ion-row>
 
-							<ion-row *ngIf="bids?.attachment2 != '' && bids?.attachment2 != null && bids?.attachment2 != undefined">
+							<ion-row
+								*ngIf="bids?.attachment2 != '' && bids?.attachment2 != null && bids?.attachment2 != undefined">
 								<ion-col size="4" class="demandHeaders">Cooked Picture</ion-col>
 								<ion-col>
-									<img *ngIf=" bids?.attachment2 != '' && bids?.attachment2 != null " src="{{ imageUrl }}uploads/notifications/{{ bids?.attachment2 }}" (click)="openImage(imageUrl,'uploads/notifications/',bids?.attachment2)" style="width: 80px;height: 120px;"/>
-									<p *ngIf="bids?.attachment2 == '' || bids?.attachment2 == null" style="width: 100%">Not Available</p>
+									<img *ngIf=" bids?.attachment2 != '' && bids?.attachment2 != null "
+										src="{{ imageUrl }}uploads/notifications/{{ bids?.attachment2 }}"
+										(click)="openImage(imageUrl,'uploads/notifications/',bids?.attachment2)"
+										style="width: 80px;height: 120px;" />
+									<p *ngIf="bids?.attachment2 == '' || bids?.attachment2 == null" style="width: 100%">
+										Not Available</p>
 								</ion-col>
 							</ion-row>
-							
-							
-							<ion-row *ngIf="bids?.length != '' && bids?.length != 0 && bids?.length != null || bids?.length != '' && bids?.length != 0 && bids?.length != null || bids?.purity != '' && bids?.purity != 0 && bids?.purity != null || bids?.moisture != '' && bids?.moisture != 0 && bids?.moisture != null || bids?.broken != '' && bids?.broken != 0 && bids?.broken != null || bids?.kett != '' && bids?.kett != 0 && bids?.kett != null || bids?.dd != '' && bids?.dd != 0 && bids?.dd != null">
+
+
+							<ion-row
+								*ngIf="bids?.length != '' && bids?.length != 0 && bids?.length != null || bids?.length != '' && bids?.length != 0 && bids?.length != null || bids?.purity != '' && bids?.purity != 0 && bids?.purity != null || bids?.moisture != '' && bids?.moisture != 0 && bids?.moisture != null || bids?.broken != '' && bids?.broken != 0 && bids?.broken != null || bids?.kett != '' && bids?.kett != 0 && bids?.kett != null || bids?.dd != '' && bids?.dd != 0 && bids?.dd != null">
 								<ion-col size="4" class="demandHeaders">Parameters</ion-col>
-								<ion-col class="demandHeaders" style="text-transform: capitalize;">Specifications</ion-col>
+								<ion-col class="demandHeaders"
+									style="text-transform: capitalize;">Specifications</ion-col>
 							</ion-row>
 
 							<ion-row *ngIf="bids?.length != '' && bids?.length != 0 && bids?.length != null">
@@ -109,20 +132,20 @@
 								<ion-col size="4" class="demandHeaders">Kett</ion-col>
 								<ion-col style="text-transform: capitalize;">: {{ bids?.kett }}</ion-col>
 							</ion-row>
-							
+
 							<ion-row *ngIf="bids?.dd != '' && bids?.dd != 0 && bids?.dd != null">
 								<ion-col size="4" class="demandHeaders">DD</ion-col>
 								<ion-col style="text-transform: capitalize;">: {{ bids?.dd }}</ion-col>
 							</ion-row>
-					
+
 
 							<!-- <ion-row>
 								<ion-col size="4" class="demandHeaders">Title</ion-col>
 								<ion-col style="text-transform: capitalize;">: {{ bids?.title }}</ion-col>
 							</ion-row>
 							 -->
-							
-	
+
+
 							<!-- <ion-row *ngIf="bids?.get_bids.length"  style="margin-top: 5px;">
 								<ion-row *ngIf="bids?.user_bid_amount">
 									your bids is <span class="demandHeaders" style="padding: 0px 10px;"> 
@@ -166,51 +189,61 @@
 								</ion-col>
 							</ion-row> -->
 							<ion-row>
-								<ion-col size="12" *ngIf="bids?.status == 0 && bids.isExpired == 'true' || bids.isExpired == 'true' && bids.status == 1" style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: red;font-weight: bold;">
+								<ion-col size="12"
+									*ngIf="bids?.status == 0 && bids.isExpired == 'true' || bids.isExpired == 'true' && bids.status == 1"
+									style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: red;font-weight: bold;">
 									<img src="../../assets/STAMP EXPIRED.png" style="width: 100px;" />
-								</ion-col>	
+								</ion-col>
 							</ion-row>
-						
-							<ion-row *ngIf="bids?.hot_deal_accept.length <= 0"  >
-								<ion-col *ngIf="bids.isExpired == 'false' && bids.status == 1" size="12" style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: red;" >
-									<ion-button class="green" style="color: #fff;border-radius: 12px;" (click)="acceptHotDeal(bids?.id)">Interested</ion-button>
+
+							<ion-row *ngIf="bids?.hot_deal_accept.length <= 0">
+								<ion-col *ngIf="bids.isExpired == 'false' && bids.status == 1" size="12"
+									style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: red;">
+									<ion-button class="green" style="color: #fff;border-radius: 12px;"
+										(click)="acceptHotDeal(bids?.id)">Interested</ion-button>
 								</ion-col>
 							</ion-row>
 
 							<ng-container *ngIf="bids?.status == 1 && bids.isExpired != 'true'">
-								<ion-row *ngIf="bids?.hot_deal_accept.length > 0 "  >
-									<ion-col size="12" style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;font-weight: bold;">{{ bids?.isDealAcceptedMessage }}
+								<ion-row *ngIf="bids?.hot_deal_accept.length > 0 ">
+									<ion-col size="12"
+										style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;font-weight: bold;">{{
+										bids?.isDealAcceptedMessage }}
 									</ion-col>
 								</ion-row>
 							</ng-container>
-							
-							
 
-							<ion-row *ngIf="bids?.status == 0 && bids.isExpired != 'true'"  >
-								<ion-col size="12" style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;font-weight: bold;">
+
+
+							<ion-row *ngIf="bids?.status == 0 && bids.isExpired != 'true'">
+								<ion-col size="12"
+									style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;font-weight: bold;">
 									<img src="../../assets/STAMP SOLD.png" style="width: 100px;" />
 								</ion-col>
 							</ion-row>
-							
-							<ion-row *ngIf="bids?.status == 2 && bids.isExpired != 'true'"  >
-								<ion-col size="12" style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;font-weight: bold;">
+
+							<ion-row *ngIf="bids?.status == 2 && bids.isExpired != 'true'">
+								<ion-col size="12"
+									style="margin-top: 5px;margin-bottom: 0px;text-align: center;font-size: 19px;color: green;font-weight: bold;">
 									<!-- Deal is taken -->
 									<img src="../../assets/STAMP SOLD.png" style="width: 100px;" />
 								</ion-col>
 							</ion-row>
-							
-	
+
+
 						</div>
 					</ng-container>
-				
-				</li>				
+
+				</li>
 			</ul>
 		</div>
 	</div>
 	<ng-container *ngIf="showImage">
-		<div style="justify-content: center;width: 100%;height: 100%;position: absolute;top: 0;background-color: rgba(000, 0, 0, 0.3);">
+		<div
+			style="justify-content: center;width: 100%;height: 100%;position: absolute;top: 0;background-color: rgba(000, 0, 0, 0.3);">
 			<div style="width: 80%;margin: 0 auto;top: 0;">
-				<p style="float: right;color: #fff;font-size: 25px;padding: 0;margin: 0;margin-bottom: 10px" (click)="closeImage()">X</p>
+				<p style="float: right;color: #fff;font-size: 25px;padding: 0;margin: 0;margin-bottom: 10px"
+					(click)="closeImage()">X</p>
 				<img src="{{ ShownImage }}">
 			</div>
 		</div>

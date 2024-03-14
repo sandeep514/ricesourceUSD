@@ -1,24 +1,28 @@
-<ion-header class="green">
-  <ion-toolbar mode="ios" style="background: transparent; --background: transparent">
-    <ion-buttons slot="start" class="back-button" (click)="back()">
-      <ion-icon name="arrow-back-outline"></ion-icon>
-    </ion-buttons>
-    <ion-title class="header-title porttitle">Rice Details</ion-title>
-  </ion-toolbar>
+<ion-header class="">
+	<ion-toolbar mode="ios" style="background: #fff; --background: #fff">
+		<ion-buttons slot="start" class="back-button" (click)="back()">
+			<ion-icon name="arrow-back-outline"></ion-icon>
+		</ion-buttons>
+		<ion-title class="header-title porttitle">Rice Details</ion-title>
+	</ion-toolbar>
 </ion-header>
 
 
-<ion-content id="content" [scrollEvents]="true" class="lightgreen">
-  <ion-grid>
-    <ion-row>
+<ion-content id="content" [scrollEvents]="true" class="">
+	<ion-grid>
+		<ion-row class="center">
+			<ion-col>For distributorship <a href="tel:+919877092004" class="contactuser">Call now</a></ion-col>
+		</ion-row>
+		<ion-row>
 
-<ion-slides pager="true" [options]="slideOpts">
-  <ion-slide *ngFor="let attachment of data">
-    <img src="{{imagePre}}uploads/brandlogo/brandAttachment/{{attachment.attachment}}"
-      onerror="this.src='../../assets/img/No_image_available.svg.png'" alt="i am here" style="padding: 15px;">
-  </ion-slide>
-</ion-slides>
-      <!-- <ion-col size="12" *ngFor="let attachment of data">
+			<ion-slides pager="true" [options]="slideOpts">
+				<ion-slide *ngFor="let attachment of data">
+					<img src="{{imagePre}}uploads/brandlogo/brandAttachment/{{attachment.attachment}}"
+						onerror="this.src='../../assets/img/No_image_available.svg.png'" alt="i am here"
+						style="padding: 15px;">
+				</ion-slide>
+			</ion-slides>
+			<!-- <ion-col size="12" *ngFor="let attachment of data">
         <div (click)="getBrandDetail(brands)" >
           <div>
             
@@ -27,7 +31,7 @@
       </ion-col> -->
 
 
-    </ion-row>
-  </ion-grid>
-  <app-menu></app-menu>
+		</ion-row>
+	</ion-grid>
+	<app-menu></app-menu>
 </ion-content>

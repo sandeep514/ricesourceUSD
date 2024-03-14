@@ -1,40 +1,45 @@
-.register{
+.register {
     text-align: center;
-    h3{
-        color:black;
+
+    h3 {
+        color: black;
         // text-align: right;
         // margin-right: 25px;
     }
-    .registerlogo{
+
+    .registerlogo {
         width: 31%;
         margin-top: 12px;
     }
 }
 
-.formData{
+.formData {
     padding: 0px 20px;
 }
 
-ion-button{
+ion-button {
     --box-shadow: none
 }
 
-.form{
-    ion-item{
+.form {
+    ion-item {
         background: transparent;
         --background: transparent;
-        .item-native{
+
+        .item-native {
             background: transparent;
             --background: transparent;
         }
     }
-    button{
-        --background: #92B243  !important;
+
+    button {
+        --background: #92B243 !important;
         background: #92B243 !important;
         background-color: #92B243 !important;
         --background-color: #92B243 !important;
     }
 }
+
 .userRole {
     // --background: #92B243  !important;
     // background: #92B243 !important;
@@ -49,24 +54,39 @@ ion-button{
     background: rgba(1, 0, 0, 0.3);
     --background: rgba(1, 0, 0, 0.3);
 }
-.activeTab{
+
+.activeTab {
     // --background: #92B243  !important;
     // background: #92B243 !important;
     // color: white;
-    border: 2px solid#000 !important;
-    color: white !important;
+    border: 2px solid rgba(238, 252, 206, 1) !important;
+    color: rgba(119, 154, 32, 1) !important;
     border-radius: 100px !important;
     overflow: hidden;
-    background-color: #000;
-    --background-color: #000;
-    background: #000;
-    --background: #000;
+    background-color: rgba(238, 252, 206, 1);
+    --background-color: rgba(238, 252, 206, 1);
+    background: rgba(238, 252, 206, 1);
+    --background: rgba(238, 252, 206, 1);
 }
 
+// .activeTab{
+//     // --background: #92B243  !important;
+//     // background: #92B243 !important;
+//     // color: white;
+//     border: 2px solid#000 !important;
+//     color: white !important;
+//     border-radius: 100px !important;
+//     overflow: hidden;
+//     background-color: #000;
+//     --background-color: #000;
+//     background: #000;
+//     --background: #000;
+// }
 
-.userType{
-        
-    ul{
+
+.userType {
+
+    ul {
         list-style: none;
         width: 100%;
         display: inline-flex;
@@ -74,7 +94,7 @@ ion-button{
         margin: 0;
         padding: 0;
 
-        li{
+        li {
             padding: 10px 15px;
             border: 2px solid #92B243;
             border-radius: 7px;
@@ -84,17 +104,17 @@ ion-button{
 
 }
 
-.userTitle{
+.userTitle {
     text-align: left !important;
     padding-left: 20px !important;
 }
 
-.nounderline{
+.nounderline {
     text-decoration: none;
 }
 
-.formType{
-    border: 4px solid#fff !important;
+.formType {
+    border: 1px solid#fff !important;
     color: white !important;
     border-radius: 10px;
     overflow: hidden;
@@ -114,15 +134,15 @@ ion-button{
     background: #fff;
     --background: #fff;
 }
- 
-.checkbox-icon{
+
+.checkbox-icon {
     margin-top: 3px;
 }
 
 
 
-ion-item{
-    background: rgba(255,255,255, 0.3) !important;
+ion-item {
+    background: rgba(255, 255, 255, 0.3) !important;
     border-radius: 8px;
     margin-top: 20px;
     --border: 0px !important;

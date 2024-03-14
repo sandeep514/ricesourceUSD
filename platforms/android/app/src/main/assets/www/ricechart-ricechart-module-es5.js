@@ -11325,6 +11325,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.rice = localStorage.getItem('ricename');
           this.selectedChartData = "15_Days";
           this.apiser.getChartData(state, riceType, this.rice, "15_Days").then(function (res) {
+            console.log('res.combinedData');
+            console.log(res);
             _this2.productType = res.productType.type;
             _this2.loading.dismiss();
             var priceArray = [];
@@ -11456,10 +11458,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             // 			data: priceArray
             // 		}]
             // });
-            setTimeout(function () {
-              _this2.loading.dismiss();
-              console.log(priceArray);
-            }, 300);
+            // setTimeout(() => {
+            // 	this.loading.dismiss();
+            // 	console.log(priceArray);
+            // }, 300);
           }, function (err) {});
         }
       }, {

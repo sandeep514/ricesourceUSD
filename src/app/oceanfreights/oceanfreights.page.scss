@@ -118,12 +118,13 @@ table {
         width: 100%;
         thead {
             tr {
-                height: 34px;
+                height: 50px;
                 font-size: 12px;
+                background-color: rgba(255, 251, 214, 1) !important;
                 // background-color: #eeeeee !important;
                 th {
                     // background-color: #eeeeee !important;
-                    border-right: 1px solid #dfdfdf;
+                    // border-right: 1px solid #dfdfdf;
                 }
             }
         }
@@ -134,7 +135,7 @@ table {
                     font-size: 16px;
                     // padding-left: 20px;
                     // border-bottom: 1px solid #dfdfdf;
-                    border-right: 1px solid #dfdfdf;
+                    // border-right: 1px solid #dfdfdf;
                 }
             }
         }
@@ -158,7 +159,7 @@ table tbody tr {
     background-color: transparent !important;
 }
 table thead tr{
-    border-bottom: 2px solid #cfcaab !important;
+    // border-bottom: 2px solid #cfcaab !important;
 }
 table tbody tr{
     border-bottom: 2px solid #cfcaab !important;
@@ -337,4 +338,12 @@ ion-segment {
 
 .paddingBottom100 {
     padding-bottom: 100px;
+}
+label{
+    opacity: 1 !important;   
+    --opacity: 1 !important;   
+}
+ion-select {
+    --placeholder-opacity: 1 !important;
+    color: black;
 }

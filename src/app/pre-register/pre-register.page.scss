@@ -125,3 +125,8 @@
 .nounderline{
     text-decoration: none;
 }
+ion-input,
+ion-select {
+    --placeholder-color: #92B243 !important;
+    --placeholder-opacity: 1 !important;
+}

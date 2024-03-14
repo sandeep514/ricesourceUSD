@@ -1,77 +1,69 @@
-<ion-content id="content" class="bg-lightgreen">
-	<div class="header-data green" >
-		<div class="header-content">
-			<ion-row class="">
-				<ion-col size="3" align="center">
-					<div class="user-profile-icon">
-						<span>{{ userFirstName }}</span>
-					</div>
-				</ion-col>
-				<ion-col size="6" align="center">
-					<h3>Gallery Details</h3>
-				</ion-col>
-				<!-- <ion-col size="3" align="right" class="notification">
-					<ion-icon name="notifications"></ion-icon>
-					<span class="badge">2</span>
-				</ion-col> -->
-			</ion-row>
-		</div>
-	</div>
-	
-	<ion-row  id='card'>
-		<ion-col>
-			<div class="card" *ngIf="galleryData != undefined ">
-				<!-- <div class="image">
-					<img src="{{ imageUrl }}uploads/gallery/{{ galleryData.attachment }}" alt="">
-				</div> -->
-				<ion-row class="rice-gallery">
-					<ion-col>
-						<ion-slides pager="false" [options]="slideOpts">
-							<ion-slide *ngIf="galleryData.attachment != null">
-								<img (click)="openModal(imageUrl+'uploads/gallery/'+galleryData.attachment )" src="{{ imageUrl }}uploads/gallery/{{ galleryData.attachment }}" class="slide-image">
-							</ion-slide>
-							<ion-slide *ngIf="galleryData.attachment2 != null">
-								<img (click)="openModal(imageUrl+'uploads/gallery/'+galleryData.attachment2)" src="{{ imageUrl }}uploads/gallery/{{ galleryData.attachment2 }}" class="slide-image">
-							</ion-slide>
-						</ion-slides>
+<ion-content id="content" >
+	<div>
+		<div class="lightgreen" >
+			<div class="header-content">
+				<ion-row class="">
+					<ion-col size="3" align="center">
+						<div class="user-profile-icon">
+							<span>{{ userFirstName }}</span>
+						</div>
+					</ion-col>
+					<ion-col size="6" align="center">
+						<h4>Product Details</h4>
 					</ion-col>
 				</ion-row>
-				<div class="galleryContent" >
-					<div class="title">
-						<h3 class="mt-0 pt-0" style="text-align: center">{{ galleryData.title }}</h3>
-					</div>
-					<div class="description">
-						<p>{{ galleryData.description }}</p>
-					</div>
-					<div class="specification">					
-						<ion-row class="ion-padding table-row padd-5"> 
-					
-							<ion-col class="price-table dashboard">
-								<table class="table ">
-			
-									<tbody >
-										<ng-container *ngFor="let list of spec | keyvalue">
-											<tr *ngFor="let listitems of list.value | keyvalue" >
-												<td class="sticky-col first-col left pl-10" >
-													{{ listitems.key }}
-												</td>
-												<td class="type-columns pl-60" style="width:180px" >
-													<div class="priceData " >
-														{{ listitems.value }}
-													</div> 
-												</td>
-											</tr>
-										</ng-container>
-									</tbody>
-		
-								</table>
-							</ion-col>
-						</ion-row>
-					</div>
-				</div>
-		
 			</div>
-		</ion-col>
-	</ion-row>
-	<app-menu></app-menu>
+		</div>
+
+	
+		<ion-row class="rice-gallery" *ngIf="galleryData != undefined ">
+			<ion-col
+				style="padding: 0px 0px 15px 0px;background-color: #fffbd6;border-radius: 0px 0px 25px 25px;overflow: hidden;">
+				<ion-slides pager="false" [options]="slideOpts">
+					<ion-slide *ngIf="galleryData.attachment != null" style="width: 100%;padding: 15px;">
+						<img (click)="openModal(imageUrl+'uploads/gallery/'+galleryData.attachment )"
+							src="{{ imageUrl }}uploads/gallery/{{ galleryData.attachment }}" class="slide-image">
+					</ion-slide>
+					<ion-slide *ngIf="galleryData.attachment2 != null" style="width: 100%;padding: 15px;">
+						<img (click)="openModal(imageUrl+'uploads/gallery/'+galleryData.attachment2)"
+							src="{{ imageUrl }}uploads/gallery/{{ galleryData.attachment2 }}" class="slide-image">
+					</ion-slide>
+				</ion-slides>
+			</ion-col>
+		</ion-row>		
+		
+		<ion-row *ngIf="galleryData != undefined ">
+			<ion-col>
+				<div class="title">
+					<h4 class="mt-2 pt-0" style="text-align: center">{{ galleryData.title }}</h4>
+				</div>
+			</ion-col>
+		</ion-row>
+		
+		<ion-row class="ion-padding table-row padd-5" style="padding-top: 0px;">
+		
+			<ion-col class="price-table dashboard">
+				<table class="table ">
+		
+					<tbody>
+						<ng-container *ngFor="let list of spec | keyvalue">
+							<tr *ngFor="let listitems of list.value | keyvalue">
+								<td class="sticky-col first-col left pl-10" style="font-family: 'Poppins-SemiBold';">
+									{{ listitems.key }}
+								</td>
+								<td class="type-columns pl-60" style="width:180px">
+									<div class="priceData " style="font-family: 'Poppins-Regular';">
+										{{ listitems.value }}
+									</div>
+								</td>
+							</tr>
+						</ng-container>
+					</tbody>
+		
+				</table>
+			</ion-col>
+		</ion-row>
+		<app-menu></app-menu>
+	</div>
 </ion-content>
+	
