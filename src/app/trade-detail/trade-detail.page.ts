@@ -35,7 +35,7 @@ export class TradeDetailPage implements OnInit {
 	constructor(public location: Location, public actRoute: ActivatedRoute, public apiser: RestService, public modalCtrl: ModalController) {
 		let tradeData = this.actRoute.snapshot.paramMap.get('tradeDetail');
 		this.tradeDetails = JSON.parse(tradeData);
-		var specialCharacter = ' ,';
+		var specialCharacter = ',';
 		this.addInfo = (this.tradeDetails.additioanlInfo).split(specialCharacter);
 
 		this.imageUrl = this.apiser.imageUrl;
@@ -78,11 +78,19 @@ export class TradeDetailPage implements OnInit {
 		var someDate = new Date(date);
 		return someDate.getDay() + '/' + (someDate.getMonth() + 1) + '/' + someDate.getFullYear();
 	}
-	generateDateForValid = (date, days) => {
-		var result = new Date(date);
-		result.setDate(result.getDate() + parseInt(days));
-
-		return result.getDate() + '/' + (result.getMonth() + 1) + '/' + result.getFullYear();
+	generateDateForValid = (validDate) => {
+		var date = new Date(validDate)
+		var ddate = date.getDate();
+		var month = date.getMonth();
+		var year = date.getFullYear();
+		var hours = date.getHours();
+		var minutes = date.getMinutes();
+		// var ampm = hours >= 12 ? 'pm' : 'am';
+		// hours = hours % 12;
+		// hours = hours ? hours : 12; // the hour '0' should be '12'
+		// minutes = minutes < 10 ? '0' + minutes : minutes;
+		var strTime = ddate + '/' + month + '/' + year + ' (' + hours + ':' + minutes + ')';
+		return strTime;
 	}
 	//intrested/trade
 	userShowInterest = (tradeId, $event) => {

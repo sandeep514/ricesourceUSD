@@ -194,20 +194,23 @@ export class TradeInrListPage implements OnInit {
 		await modal.present();
 	}
 
-	generateDate = (days) => {
-		var someDate = new Date();
-		var duration = days;
-		someDate.setTime(someDate.getTime() + (duration * 24 * 60 * 60 * 1000));
-		return (someDate.getDate() + '/' + (someDate.getMonth() + 1) + '/' + someDate.getFullYear());
+	generateDate = (validDate) => {
+		var date = new Date(validDate)
+		var ddate = date.getDate();
+		var month = date.getMonth();
+		var year = date.getFullYear();
+		var hours = date.getHours();
+		var minutes = date.getMinutes();
+		// var ampm = hours >= 12 ? 'pm' : 'am';
+		// hours = hours % 12;
+		// hours = hours ? hours : 12; // the hour '0' should be '12'
+		// minutes = minutes < 10 ? '0' + minutes : minutes;
+		var strTime = ddate + '/' + month + '/' + year + ' (' + hours + ':' + minutes + ')';
+		return strTime;
 	}
 
 	generateDateForValid = (date, days) => {
-		console.log(date);
 		var result = new Date(date);
-		console.log(result);
-		console.log(result.getDate());
-		console.log(result.getDay());
-		console.log(parseInt(days));
 		result.setDate(result.getDate() + parseInt(days));
 
 		console.log(result)
