@@ -5,29 +5,14 @@
 		</ion-buttons>
 		<ion-title class="header-title porttitle">Freight</ion-title>
 	</ion-toolbar>
-	<ion-row class="here">
-		<ion-col style="padding: 0px;">
-			<div class="" style="overflow: hidden;background: #fff;">
-				<ng-container *ngIf="portImages != undefined">
-					<img src="{{imagePre}}uploads/port/{{ portImages.attachment }}" class="app-logo"
-						style="width: 100%;" />
-				</ng-container>
-			</div>
-		</ion-col>
+	<ion-row class="here" *ngIf="portImages != undefined">
+		<img src="{{imagePre}}uploads/port/{{ portImages.attachment }}" class="app-logo" style="width: 100%;" />
 	</ion-row>
-	<!-- <ion-row >
-		<ion-col style="padding: 0px;">
-			<div class="imageprev" style="overflow: hidden;">
-				<div *ngIf="selectedPortData[0] != undefined ">
-					<img src="{{ imagePre }}/uploads/banner/{{ selectedPortData[0].banner }}" class="app-logo" />
-				</div>
-			</div>
-		</ion-col>
-	</ion-row> -->
+
 </ion-header>
 
-<ion-content class="">
-	<div style="">
+<ion-content class="" style="border: 2px solid red;">
+	<div style="margin-bottom: 55px;">
 		<ion-row style="padding-top: 14px;height: auto;">
 			<ion-col class="pt0 pb0 " style="padding: 0px;">
 				<!-- <div class="scroll-arrow">

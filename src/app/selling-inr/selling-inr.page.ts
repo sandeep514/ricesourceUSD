@@ -416,8 +416,8 @@ export class SellingINRPage implements OnInit {
 		this.selectedQualityTypeInt = selectedQualityTypeInit;
 
 		this.getCategoryQualities(selectedQualityTypeInit);
-		this.riceQualityDataSelectedArray =
-			this.riceQualityDataArray[data.detail.value.toLowerCase()];
+		this.riceQualityDataSelectedArray = this.riceQualityDataArray[data.detail.value.toLowerCase()];
+		document.getElementById('quality').click()
 		// this.selectedPackageData =
 		//   this.riceQualityData[data.detail.value.toLowerCase()];
 	}
@@ -427,9 +427,12 @@ export class SellingINRPage implements OnInit {
 		this.quality = data.detail.value;
 		this.getCategoryQualitiesForm(data.detail.value);
 		console.log(this.quality);
-		this.onlyRiceName.forEach((data) => {
-			console.log(data);
-		});
+		document.getElementById('qualityForm').click()
+
+		// this.onlyRiceName.forEach((data) => {
+		// 	console.log(data);
+		// });
+		// document.getElementById('qualityForm').click()
 	}
 	textareaMaxLengthValidation() {
 		console.log(this.quantity.toString());
@@ -450,9 +453,11 @@ export class SellingINRPage implements OnInit {
 			}
 		}
 		this.getRiceWand();
+		document.getElementById('grade').click()
 	}
 	changeGrade(data) {
 		this.selectedGrade = data.detail.value;
+		document.getElementById('packing').click();
 		console.log(data);
 	}
 

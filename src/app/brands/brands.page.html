@@ -9,29 +9,46 @@
 
 
 <ion-content id="content" [scrollEvents]="true" class="">
-	<div style="height: 88%;overflow: scroll;">
-		<ion-grid>
-			<ion-row>
-				<ion-col size="6" *ngFor="let brands of brandList">
-					<div (click)="getBrandDetail(brands)"
-						style="border-radius: 20px;overflow: hidden;box-shadow: 1px 0px 14px 5px #ededed;">
-						<div
-							style="width: 200px;height: 200px;background-image: url({{imagePre}}uploads/{{brands.image}});">
-						</div>
 
-						<div style="height: 170px;width: 100%;">
-							<img src="{{imagePre}}uploads/brandlogo/{{brands.image}}"
-								onerror="this.src='../../assets/img/No_image_available.svg.png'" alt="i am here"
-								style="padding: 15px;width: 100%;">
-						</div>
-						<p
-							style="text-align: left;font-weight: bold;font-size: 12px;padding: 0px;margin: 0px;padding: 10px;text-transform: capitalize;">
-							{{brands.name}}</p>
-
-					</div>
-				</ion-col>
+	<div style="height: 88%;">
+		<div style="height: 16%;">
+			<ion-row class="center" style="padding: 10px 0px">
+				<ion-col style="font-size: 22px;font-weight: bold;">For Distributorship</ion-col>
 			</ion-row>
-		</ion-grid>
+			<ion-row class="center">
+				<ion-col style="font-size: 22px;font-weight: bold;"><a href="tel:+919877092004" class="contactuser"
+						style="font-size: 18px;background: #92b243;padding: 5px 20px;color: #fff;text-decoration: none;border-radius: 10px;">Call
+						now</a></ion-col>
+			</ion-row>
+		</div>
+		<div style="height: 84% ;overflow: scroll;">
+
+			<ion-grid>
+				<ion-row>
+					<ion-col size="6" *ngFor="let brands of brandList">
+						<div (click)="getBrandDetail(brands)"
+							style="border-radius: 20px;overflow: hidden;box-shadow: 1px 0px 14px 5px #ededed;">
+							<div
+								style="width: 200px;height: 200px;background-image: url({{imagePre}}uploads/{{brands.image}});">
+							</div>
+
+							<div style="height: 170px;width: 100%;">
+								<img src="{{imagePre}}uploads/brandlogo/{{brands.image}}"
+									onerror="this.src='../../assets/img/No_image_available.svg.png'" alt="i am here"
+									style="padding: 15px;width: 100%;">
+							</div>
+							<p
+								style="text-align: left;font-weight: bold;font-size: 12px;padding: 0px;margin: 0px;padding: 10px;text-transform: capitalize;text-align: center;">
+								{{brands.name}}</p>
+
+						</div>
+					</ion-col>
+				</ion-row>
+
+			</ion-grid>
+
+		</div>
 	</div>
+
 	<app-menu></app-menu>
 </ion-content>

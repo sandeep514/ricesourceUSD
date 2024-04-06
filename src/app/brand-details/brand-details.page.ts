@@ -35,6 +35,7 @@ export class BrandDetailsPage implements OnInit {
   slideOpts = {
     initialSlide: 1,
     speed: 400,
+    pagination: true
   };
   constructor(
     public apiser: RestService,

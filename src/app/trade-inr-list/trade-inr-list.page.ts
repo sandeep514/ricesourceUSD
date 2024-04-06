@@ -12,6 +12,10 @@ import { ComponentsService } from "../components.service";
 	styleUrls: ['./trade-inr-list.page.scss'],
 })
 export class TradeInrListPage implements OnInit {
+	public allBuySellData: any;
+	public allBuyData: any;
+	public allSellData: any;
+	public buySellData: any;
 	public buyData: any;
 	public sellData: any;
 	public yourbid: any;
@@ -52,7 +56,6 @@ export class TradeInrListPage implements OnInit {
 	updateSelectedTradeType(selectedTrade) {
 		console.log(selectedTrade);
 		this.selectedTradeType = selectedTrade;
-
 	}
 	changed(event) {
 		let todayDate = new Date();
@@ -85,8 +88,14 @@ export class TradeInrListPage implements OnInit {
 				this.currentStatus = (res.currentStatus);
 				this.currentStatusMessage = (res.statusMessage);
 				this.newsWidth = (res.statusMessage.length * 14) + 'px'
+				console.log(res.data[1]);
 				this.buyData = res.data[1];
 				this.sellData = res.data[2];
+				this.buySellData = res.allTrade;
+
+				this.allBuyData = res.data[1];
+				this.allSellData = res.data[2];
+				this.allBuySellData = res.allTrade;
 				setTimeout(() => {
 					this.apiService.dismissLoader();
 				}, 1000);
@@ -197,14 +206,15 @@ export class TradeInrListPage implements OnInit {
 	generateDate = (validDate) => {
 		var date = new Date(validDate)
 		var ddate = date.getDate();
-		var month = date.getMonth();
+		var month = date.getMonth() + 1;
 		var year = date.getFullYear();
-		var hours = date.getHours();
-		var minutes = date.getMinutes();
+		var hours = date.getHours().toString();
+		var minutes = date.getMinutes().toString();
 		// var ampm = hours >= 12 ? 'pm' : 'am';
 		// hours = hours % 12;
-		// hours = hours ? hours : 12; // the hour '0' should be '12'
-		// minutes = minutes < 10 ? '0' + minutes : minutes;
+		hours = hours ? (hours).toString() : '12'; // the hour '0' should be '12'
+		hours = (hours.length == 1) ? '0' + hours : hours;
+		minutes = minutes < '10' ? '0' + minutes : minutes;
 		var strTime = ddate + '/' + month + '/' + year + ' (' + hours + ':' + minutes + ')';
 		return strTime;
 	}
@@ -213,7 +223,6 @@ export class TradeInrListPage implements OnInit {
 		var result = new Date(date);
 		result.setDate(result.getDate() + parseInt(days));
 
-		console.log(result)
 		return result.getDate() + '/' + (result.getMonth() + 1) + '/' + result.getFullYear();
 	}
 
@@ -239,4 +248,62 @@ export class TradeInrListPage implements OnInit {
 			console.log(err)
 		})
 	}
+
+	searchTrade(value, tradeType) {
+		let searchValue = value.detail.value;
+
+		if (tradeType == 'all') {
+			let data = [];
+			this.allBuySellData.filter(function (el, index) {
+				let string = (el.rice_name_data.name + ' ' + el.rice_form_milestone3.name).toLowerCase();
+				let stringToCheck = ((searchValue).toLowerCase());
+
+				if (string.indexOf(stringToCheck) !== -1) {
+					data.push(el);
+				}
+			});
+			console.log(data)
+			this.buySellData = data;
+
+
+			// let slData = [];
+			// this.allSellData.filter(function (el, index) {
+			// 	let string = (el.rice_name_data.name + ' ' + el.rice_form_milestone3.name).toLowerCase();
+			// 	let stringToCheck = ((searchValue).toLowerCase());
+
+			// 	if (string.indexOf(stringToCheck) !== -1) {
+			// 		slData.push(el);
+			// 	}
+			// });
+			// this.sellData = slData;
+
+		} else if (tradeType == 'buy') {
+			let data = [];
+			this.allBuyData.filter(function (el, index) {
+				let string = (el.rice_name_data.name + ' ' + el.rice_form_milestone3.name).toLowerCase();
+				let stringToCheck = ((searchValue).toLowerCase());
+
+				if (string.indexOf(stringToCheck) !== -1) {
+					data.push(el);
+				}
+			});
+			this.buyData = data;
+		} else {
+			let data = [];
+			this.allSellData.filter(function (el, index) {
+				let string = ((el.rice_form_milestone3.name).toLowerCase());
+				let string2 = ((el.rice_name_data.name).toLowerCase());
+
+				let stringToCheck = ((searchValue).toLowerCase());
+
+				if (string.indexOf(stringToCheck) !== -1 || string2.indexOf(stringToCheck) !== -1) {
+					data.push(el);
+				}
+
+			});
+			this.sellData = data;
+
+		}
+	}
+
 }

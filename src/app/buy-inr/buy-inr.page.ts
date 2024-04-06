@@ -375,8 +375,8 @@ export class BuyInrPage implements OnInit {
 		this.selectedQualityTypeInt = selectedQualityTypeInit;
 
 		this.getCategoryQualities(selectedQualityTypeInit);
-		this.riceQualityDataSelectedArray =
-			this.riceQualityDataArray[data.detail.value.toLowerCase()];
+		this.riceQualityDataSelectedArray = this.riceQualityDataArray[data.detail.value.toLowerCase()];
+		document.getElementById('quality').click()
 		// this.selectedPackageData =
 		//   this.riceQualityData[data.detail.value.toLowerCase()];
 	}
@@ -385,6 +385,8 @@ export class BuyInrPage implements OnInit {
 		console.log(data);
 		this.quality = data.detail.value;
 		this.getCategoryQualitiesForm(data.detail.value);
+		document.getElementById('qualityForm').click()
+
 		console.log(this.quality);
 	}
 
@@ -397,6 +399,8 @@ export class BuyInrPage implements OnInit {
 	}
 
 	changeQualityForm(data) {
+		this.selectedGrade = 0;
+
 		console.log();
 		this.qualityForm = data.detail.value;
 		// this.getCategoryQualitiesForm(data.detail.value);
@@ -407,6 +411,8 @@ export class BuyInrPage implements OnInit {
 			}
 		}
 		this.getRiceWand();
+		document.getElementById('grade').click()
+
 	}
 
 	changeGrade(data) {
@@ -438,5 +444,8 @@ export class BuyInrPage implements OnInit {
 
 		let portValue = parseFloat(data.freight_25MT).toFixed(2);
 		this.portName = selectedPortName;
+	}
+	clicked() {
+		console.log("i am here");
 	}
 }

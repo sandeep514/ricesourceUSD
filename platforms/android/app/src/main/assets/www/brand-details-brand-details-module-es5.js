@@ -15,7 +15,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
-    __webpack_exports__["default"] = "<ion-header class=\"\">\n\t<ion-toolbar mode=\"ios\" style=\"background: #fff; --background: #fff\">\n\t\t<ion-buttons slot=\"start\" class=\"back-button\" (click)=\"back()\">\n\t\t\t<ion-icon name=\"arrow-back-outline\"></ion-icon>\n\t\t</ion-buttons>\n\t\t<ion-title class=\"header-title porttitle\">Rice Details</ion-title>\n\t</ion-toolbar>\n</ion-header>\n\n\n<ion-content id=\"content\" [scrollEvents]=\"true\" class=\"\">\n\t<ion-grid>\n\t\t<ion-row class=\"center\">\n\t\t\t<ion-col>For Distributorship <a href=\"tel:+919877092004\" class=\"contactuser\">Call now</a></ion-col>\n\t\t</ion-row>\n\t\t<ion-row>\n\n\t\t\t<ion-slides pager=\"true\" [options]=\"slideOpts\">\n\t\t\t\t<ion-slide *ngFor=\"let attachment of data\">\n\t\t\t\t\t<img src=\"{{imagePre}}uploads/brandlogo/brandAttachment/{{attachment.attachment}}\"\n\t\t\t\t\t\tonerror=\"this.src='../../assets/img/No_image_available.svg.png'\" alt=\"i am here\"\n\t\t\t\t\t\tstyle=\"padding: 15px;\">\n\t\t\t\t</ion-slide>\n\t\t\t</ion-slides>\n\t\t\t<!-- <ion-col size=\"12\" *ngFor=\"let attachment of data\">\n        <div (click)=\"getBrandDetail(brands)\" >\n          <div>\n            \n          </div>\n        </div>\n      </ion-col> -->\n\n\n\t\t</ion-row>\n\t</ion-grid>\n\t<app-menu></app-menu>\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header class=\"\">\n\t<ion-toolbar mode=\"ios\" style=\"background: #fff; --background: #fff\">\n\t\t<ion-buttons slot=\"start\" class=\"back-button\" (click)=\"back()\">\n\t\t\t<ion-icon name=\"arrow-back-outline\"></ion-icon>\n\t\t</ion-buttons>\n\t\t<ion-title class=\"header-title porttitle\">Rice Details</ion-title>\n\t</ion-toolbar>\n</ion-header>\n\n\n<ion-content id=\"content\" [scrollEvents]=\"true\" class=\"\">\n\t<ion-grid>\n\n\t\t<ion-row>\n\n\t\t\t<ion-slides pager=\"true\" [options]=\"slideOpts\">\n\t\t\t\t<ion-slide *ngFor=\"let attachment of data\" style=\"width: 100%;\">\n\t\t\t\t\t<img src=\"{{imagePre}}uploads/brandlogo/brandAttachment/{{attachment.attachment}}\"\n\t\t\t\t\t\tonerror=\"this.src='../../assets/img/No_image_available.svg.png'\" alt=\"i am here\"\n\t\t\t\t\t\tstyle=\"padding: 15px;\">\n\t\t\t\t</ion-slide>\n\t\t\t</ion-slides>\n\t\t\t<!-- <ion-col size=\"12\" *ngFor=\"let attachment of data\">\n        <div (click)=\"getBrandDetail(brands)\" >\n          <div>\n            \n          </div>\n        </div>\n      </ion-col> -->\n\n\n\t\t</ion-row>\n\n\t</ion-grid>\n\t<app-menu></app-menu>\n</ion-content>";
 
     /***/
   },
@@ -158,7 +158,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.brandList = "";
         this.slideOpts = {
           initialSlide: 1,
-          speed: 400
+          speed: 400,
+          pagination: true
         };
         this.data = JSON.parse(this.ActRoute.snapshot.params.data).get_attachments;
         console.log(this.data);

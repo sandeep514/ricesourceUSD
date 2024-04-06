@@ -1,28 +1,33 @@
-.logo{
+.logo {
     text-align: center;
 }
-.app-logo{
+
+.app-logo {
     width: 32%;
     padding: 10px;
     border-radius: 20px;
 }
-.closeModal{
+
+.closeModal {
     position: absolute;
     text-decoration: none;
     top: 0;
     right: 0;
     padding: 10px;
-    background: red;
+    background: #92B243 !important;
     color: white;
 }
-.content{
+
+.content {
     text-align: center;
-    p{
+
+    p {
         text-align: center;
     }
 
 }
-.contactuser{
+
+.contactuser {
     height: 0px;
     margin-top: 8px;
     border-radius: 100px;

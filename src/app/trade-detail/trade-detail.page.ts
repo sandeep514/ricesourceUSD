@@ -35,8 +35,12 @@ export class TradeDetailPage implements OnInit {
 	constructor(public location: Location, public actRoute: ActivatedRoute, public apiser: RestService, public modalCtrl: ModalController) {
 		let tradeData = this.actRoute.snapshot.paramMap.get('tradeDetail');
 		this.tradeDetails = JSON.parse(tradeData);
+		console.log(this.tradeDetails)
 		var specialCharacter = ',';
-		this.addInfo = (this.tradeDetails.additioanlInfo).split(specialCharacter);
+		let additionalIn = this.tradeDetails.additioanlInfo;
+		if (additionalIn) {
+			this.addInfo = (additionalIn).split(specialCharacter);
+		}
 
 		this.imageUrl = this.apiser.imageUrl;
 		// this.getTradeDetails(this.galleryId);
@@ -79,16 +83,20 @@ export class TradeDetailPage implements OnInit {
 		return someDate.getDay() + '/' + (someDate.getMonth() + 1) + '/' + someDate.getFullYear();
 	}
 	generateDateForValid = (validDate) => {
-		var date = new Date(validDate)
-		var ddate = date.getDate();
-		var month = date.getMonth();
-		var year = date.getFullYear();
-		var hours = date.getHours();
-		var minutes = date.getMinutes();
+		var createddate = new Date(validDate)
+		var ddate = createddate.getDate();
+		var month = createddate.getMonth() + 1;
+		var year = createddate.getFullYear();
+		var hours = createddate.getHours().toString();
+		var minutes = createddate.getMinutes().toString();
 		// var ampm = hours >= 12 ? 'pm' : 'am';
 		// hours = hours % 12;
-		// hours = hours ? hours : 12; // the hour '0' should be '12'
-		// minutes = minutes < 10 ? '0' + minutes : minutes;
+		hours = hours ? (hours).toString() : '12'; // the hour '0' should be '12'
+		hours = (hours.length == 1) ? '0' + hours : hours;
+		console.log('minutes');
+		console.log(minutes);
+		minutes = minutes < '10' ? '0' + minutes : minutes;
+
 		var strTime = ddate + '/' + month + '/' + year + ' (' + hours + ':' + minutes + ')';
 		return strTime;
 	}

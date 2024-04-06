@@ -24,9 +24,9 @@
 				style="border:  1px solid rgba(225, 225, 225, 1);border-radius: 100px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
 				<ion-item style="border: 0px;margin-bottom: 0;">
 					<ion-label>Quality*</ion-label>
-					<ion-select placeholder="Select" (ionChange)="changeQuality($event)">
-						<ion-select-option *ngFor="let riceName of onlyRiceName | keyvalue" value={{riceName.value}}
-							style="text-transform: capitalize;">{{ riceName.key }}</ion-select-option>
+					<ion-select placeholder="Select" id="quality" (ionChange)="changeQuality($event)">
+						<ion-select-option *ngFor="let riceName of onlyRiceName" value={{riceName.id}}
+							style="text-transform: capitalize;">{{ riceName.name }}</ion-select-option>
 						<!-- <ion-select-option style="text-transform: capitalize;">Other</ion-select-option> -->
 					</ion-select>
 				</ion-item>
@@ -40,7 +40,7 @@
 				style="border:  1px solid rgba(225, 225, 225, 1);border-radius: 100px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
 				<ion-item style="border: 0px;margin-bottom: 0;">
 					<ion-label>Type*</ion-label>
-					<ion-select placeholder="Select" (ionChange)="changeQualityForm($event)">
+					<ion-select placeholder="Select" id="qualityForm" (ionChange)="changeQualityForm($event)">
 						<ion-select-option *ngFor="let riceName of onlyRiceForms" value={{riceName.id}}
 							style="text-transform: capitalize;">{{ riceName.name }}</ion-select-option>
 						<!-- <ion-select-option style="text-transform: capitalize;">Other</ion-select-option> -->
@@ -62,7 +62,7 @@
 				style="border:  1px solid rgba(225, 225, 225, 1);border-radius: 100px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
 				<ion-item style="border: 0px;margin-bottom: 0;">
 					<ion-label>Grade*</ion-label>
-					<ion-select placeholder="Select" (ionChange)="changeGrade($event)">
+					<ion-select placeholder="Select" id="grade" (ionChange)="changeGrade($event)">
 						<ion-select-option *ngFor="let wand of riceWand" value={{wand.id}}
 							style="text-transform: capitalize;">{{ wand.get_wand_type.type }} {{
 							wand.value}}</ion-select-option>
@@ -94,7 +94,7 @@
 				style="border:  1px solid rgba(225, 225, 225, 1);border-radius: 100px;margin-bottom: 10px;padding: 0;margin: 0;background: white;">
 				<ion-item class="packingSelect" style="border: 0px;margin-bottom: 0;">
 					<ion-label>Packing*</ion-label>
-					<ion-select placeholder="Select" (ionChange)="changePacking($event)">
+					<ion-select placeholder="Select" id="packing" (ionChange)="changePacking($event)">
 						<ion-select-option *ngFor="let package of sellerPackingList"
 							value="{{ package.id+'_'+package.packing }}">
 							<p>{{package.packing}} </p>

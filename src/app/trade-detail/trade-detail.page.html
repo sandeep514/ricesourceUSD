@@ -118,20 +118,92 @@
 					</ion-col>
 				</ion-row>
 
-
-				<ion-row *ngIf="tradeDetails?.additioanlInfo">
+				<ion-row
+					*ngIf="tradeDetails?.moisture || tradeDetails?.kett || tradeDetails?.broken || tradeDetails?.dd || tradeDetails?.admixture || tradeDetails?.elongation">
 					<ion-col>
-						<div class="title">
-							<div class=" pt-0" style="display: flex;font-size: 14px;">
-								<p style="font-weight: bold;width: 40%;">Additional Info</p>
-								:
-								<ul style="padding: 0;margin: 0;list-style: none;">
-									<li *ngFor="let info of addInfo"> {{info}}</li>
-								</ul>
-							</div>
-						</div>
+						<h4>Specification</h4>
 					</ion-col>
 				</ion-row>
+
+
+				<div class="specRice">
+					<ion-row *ngIf="tradeDetails?.moisture">
+						<ion-col>
+							<div class="title">
+								<div class=" pt-0" style="display: flex;font-size: 14px;">
+									<p style="font-weight: bold;width: 40%;">Moisture</p>
+									<p>: {{tradeDetails?.moisture}}</p>
+								</div>
+							</div>
+						</ion-col>
+					</ion-row>
+					<ion-row *ngIf="tradeDetails?.kett">
+						<ion-col>
+							<div class="title">
+								<div class=" pt-0" style="display: flex;font-size: 14px;">
+									<p style="font-weight: bold;width: 40%;">Kett</p>
+									<p>: {{tradeDetails?.kett}}</p>
+								</div>
+							</div>
+						</ion-col>
+					</ion-row>
+					<ion-row *ngIf="tradeDetails?.broken">
+						<ion-col>
+							<div class="title">
+								<div class=" pt-0" style="display: flex;font-size: 14px;">
+									<p style="font-weight: bold;width: 40%;">Broken</p>
+									<p>: {{tradeDetails?.broken}}</p>
+								</div>
+							</div>
+						</ion-col>
+					</ion-row>
+					<ion-row *ngIf="tradeDetails?.dd">
+						<ion-col>
+							<div class="title">
+								<div class=" pt-0" style="display: flex;font-size: 14px;">
+									<p style="font-weight: bold;width: 40%;">DD</p>
+									<p>: {{tradeDetails?.dd}}</p>
+								</div>
+							</div>
+						</ion-col>
+					</ion-row>
+					<ion-row *ngIf="tradeDetails?.admixture">
+						<ion-col>
+							<div class="title">
+								<div class=" pt-0" style="display: flex;font-size: 14px;">
+									<p style="font-weight: bold;width: 40%;">Admixture</p>
+									<p>: {{tradeDetails?.admixture}}</p>
+								</div>
+							</div>
+						</ion-col>
+					</ion-row>
+					<ion-row *ngIf="tradeDetails?.elongation">
+						<ion-col>
+							<div class="title">
+								<div class=" pt-0" style="display: flex;font-size: 14px;">
+									<p style="font-weight: bold;width: 40%;">Elongation</p>
+
+									<p>: {{tradeDetails?.elongation}}</p>
+								</div>
+							</div>
+						</ion-col>
+					</ion-row>
+					<ion-row *ngIf="tradeDetails?.additioanlInfo" style="margin-top: 20px;">
+						<ion-col>
+							<div class="title">
+								<div class=" pt-0" style="display: flex;font-size: 14px;">
+									<p style="font-weight: bold;width: 40%;">Additional Info</p>
+									:
+									<!-- <ul style="padding: 0;margin: 0;list-style: none;">
+																		<li *ngFor="let info of addInfo"> {{info}}</li>
+																	</ul> -->
+									<p>{{ tradeDetails?.additioanlInfo }}</p>
+								</div>
+							</div>
+						</ion-col>
+					</ion-row>
+				</div>
+
 			</div>
 
 
@@ -148,7 +220,8 @@
 					</ion-col>
 				</ion-row>
 
-				<ion-row style="padding: 10px 20px;justify-content: center;" *ngIf="tradeDetails?.status == 1">
+				<ion-row style="padding: 10px 20px;justify-content: center;"
+					*ngIf="tradeDetails?.status == 1 || tradeDetails?.status == 6">
 					<ion-col size="6" class="interestedButton" *ngIf="!tradeDetails?.trade_interest"
 						(click)="userShowInterest(tradeDetails?.id , $event)">
 						<div>
