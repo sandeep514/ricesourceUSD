@@ -42,14 +42,16 @@
 						<ion-input placeholder="Search" (ionChange)="searchTrade($event ,'all')"
 							style="width: 95%;margin-bottom: 10px;padding: 12px !important;background-color: #fff;border: 2px solid #ededed;border-radius: 100px;--placeholder-color: gray !important;text-align: left;"></ion-input>
 					</div>
-					<li *ngFor="let bids of buySellData" class="demandedData">
-						<div style="margin: 0;border-radius: 5px;margin-bottom: 10px;overflow: hidden;padding: 12px 10px;background-color: rgba(226, 227, 228, 0.2);box-shadow: 1px 3px 12px lightgray;position: relative;"
-							[class.inprocess]="bids?.status == 4">
+					<li *ngFor="let bids of buySellData" class="demandedData"
+						style="margin: 0;border-radius: 5px;margin-bottom: 10px;overflow: hidden;padding: 12px 10px;background-color: rgba(226, 227, 228, 0.2);box-shadow: 1px 3px 12px lightgray;position: relative;display: grid;">
+						<div [class.inprocess]="bids?.status == 4">
+
 							<div style="text-align: right;position: absolute;right: 10px;" *ngIf="bids?.status == 4">
 								<p
 									style="color: #fff;padding: 5px 10px;border-radius: 10px;font-size: 15px;background: #000;z-index: 9999;right: 30px;margin: 0;">
 									In-Process</p>
 							</div>
+
 							<div style="width: 70%;float: left;">
 								<div style="width: 100%;">
 									<div style="width: 20%;float: left;margin-right: 10px;">
@@ -126,7 +128,7 @@
 													<div>
 														<p style="margin: 0px;font-size: 13px;">Valid Till:
 															{{
-															generateDate(bids?.created_at,bids?.validDays) }}
+															generateDate(bids?.validDays) }}
 														</p>
 													</div>
 												</div>
@@ -148,6 +150,7 @@
 									</div>
 								</div>
 							</div>
+
 							<div style="width: 30%;float: left;">
 								<div style="width: 100%;">
 									<div>
@@ -197,25 +200,26 @@
 
 											</div>
 										</div>
-										<div>
-											<p
-												style="padding: 0px;margin: 0px;float: left;margin-top: 5px;font-size: 12px;">
-												{{bids?.trade_like_all_count}}</p>
+									</div>
+
+
+									<div>
+										<div style="text-align: right;margin-left: 10px"
+											*ngIf="bids?.status != 4 && currentStatus != 11 && currentStatus != 12">
+											<a (click)="navigateToDetailPage(bids)"
+												style="list-style: none;text-decoration: none;color: #000;background: #fff;padding: 5px 10px;border-radius: 10px;box-shadow: 4px 2px 8px 2px #ededed;font-size: 12px">View
+												Details</a>
 										</div>
 
 									</div>
-
-
-									<div style="text-align: right;margin-left: 10px"
-										*ngIf="bids?.status != 4 && currentStatus != 11 && currentStatus != 12">
-										<a (click)="navigateToDetailPage(bids)"
-											style="list-style: none;text-decoration: none;color: #000;background: #fff;padding: 5px 10px;border-radius: 10px;box-shadow: 4px 2px 8px 2px #ededed;font-size: 12px">View
-											Details</a>
-									</div>
 								</div>
 							</div>
-						</div>
 
+						</div>
+						<!-- <div>
+							<p style="text-align: right;padding: 0;margin: 0;margin-top: 10px;font-size: 12px;">
+								Trade_{{bids?.id}}</p>
+						</div> -->
 					</li>
 
 				</ng-container>

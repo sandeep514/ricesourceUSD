@@ -34,6 +34,7 @@ import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { ImagePicker } from "@ionic-native/image-picker/ngx";
 import { LoaderComponentPageModule } from './loader-component/loader-component.module';
+// import { Facebook } from '@ionic-native/facebook/ngx';
 
 @NgModule({
 	declarations: [
@@ -82,6 +83,7 @@ import { LoaderComponentPageModule } from './loader-component/loader-component.m
 		FileTransfer,
 		File,
 		VersionmodalPage,
+		// Facebook,
 		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 		{ provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptorService, multi: true }
 	],

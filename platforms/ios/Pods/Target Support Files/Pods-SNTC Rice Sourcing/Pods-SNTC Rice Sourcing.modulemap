@@ -1,0 +1,6 @@
+framework module Pods_SNTC_Rice_Sourcing {
+  umbrella header "Pods-SNTC Rice Sourcing-umbrella.h"
+
+  export *
+  module * { export * }
+}

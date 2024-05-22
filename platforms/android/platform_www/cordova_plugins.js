@@ -310,19 +310,11 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-file-transfer.FileTransferError",
-      "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
-      "pluginId": "cordova-plugin-file-transfer",
+      "id": "cordova-plugin-facebook4.FacebookConnectPlugin",
+      "file": "plugins/cordova-plugin-facebook4/www/facebook-native.js",
+      "pluginId": "cordova-plugin-facebook4",
       "clobbers": [
-        "window.FileTransferError"
-      ]
-    },
-    {
-      "id": "cordova-plugin-file-transfer.FileTransfer",
-      "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
-      "pluginId": "cordova-plugin-file-transfer",
-      "clobbers": [
-        "window.FileTransfer"
+        "facebookConnectPlugin"
       ]
     }
   ];
@@ -344,7 +336,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-theme-detection": "1.3.0",
     "cordova-plugin-filechooser": "1.2.0",
     "cordova-plugin-filepath": "1.6.0",
-    "cordova-plugin-file-transfer": "1.7.1",
-    "cordova-plugin-whitelist": "1.3.3"
+    "cordova-plugin-facebook4": "6.4.0"
   };
 });

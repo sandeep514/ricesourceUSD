@@ -8,7 +8,8 @@
   <base href="/" />
 
   <meta name="color-scheme" content="light dark" />
-  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport"
+    content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="format-detection" content="telephone=no" />
   <meta name="msapplication-tap-highlight" content="no" />
 
@@ -22,13 +23,29 @@
 <body>
   <app-root></app-root>
 </body>
-  <script type="text/javascript" src="https://checkout.razorpay.com/v1/checkout.js"></script>
-  <script type="text/javascript" src="https://code.highcharts.com/stock/highstock.js"></script>
-  <script type="text/javascript" src="https://code.highcharts.com/stock/modules/exporting.js"></script>
-  <script type="text/javascript" src="https://js.stripe.com/v3/" async></script>
-  <script type="text/javascript" src="https://checkout.stripe.com/checkout.js" async></script>
-  <!-- Google Tag Manager -->
- 
-  <!-- End Google Tag Manager -->
+<script type="text/javascript" src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/stock/highstock.js"></script>
+<script type="text/javascript" src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script type="text/javascript" src="https://js.stripe.com/v3/" async></script>
+<script type="text/javascript" src="https://checkout.stripe.com/checkout.js" async></script>
+
+<script>
+  !function (f, b, e, v, n, t, s) {
+    if (f.fbq) return; n = f.fbq = function () {
+      n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+    };
+    if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+    n.queue = []; t = b.createElement(e); t.async = !0;
+    t.src = v; s = b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t, s)
+  }(window, document, 'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1386223478792415');
+  fbq('track', 'PageView');
+</script>
+<!-- Google Tag Manager -->
+
+<!-- End Google Tag Manager -->
 
 </html>

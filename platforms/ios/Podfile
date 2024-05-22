@@ -1,0 +1,7 @@
+platform :ios, '10.0'
+use_frameworks!
+target 'SNTC Rice Sourcing' do
+	pod 'razorpay-pod', '1.2.5'
+	pod 'FirebaseCore', :modular_headers => true
+	pod 'FirebaseMessaging', :modular_headers => true
+end

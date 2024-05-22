@@ -207,6 +207,9 @@ export class TradeListUsdPage implements OnInit {
 		someDate.setTime(someDate.getTime() + (duration * 24 * 60 * 60 * 1000));
 		return (someDate.getDate() + '/' + (someDate.getMonth() + 1) + '/' + someDate.getFullYear());
 	}
+	back() {
+		this.location.back();
+	}
 	parseDate = (date) => {
 		var someDate = new Date(date);
 		// someDate.setTime(someDate.getTime() + (duration * 24 * 60 * 60 * 1000));

@@ -179,6 +179,16 @@
             }
           ]
         }
+      },
+      "res/values/facebookconnect.xml": {
+        "parents": {
+          "/*": []
+        }
+      },
+      "app/src/main/res/values/facebookconnect.xml": {
+        "parents": {
+          "/*": []
+        }
       }
     }
   },

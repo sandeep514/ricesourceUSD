@@ -14,6 +14,7 @@ declare let RazorpayCheckout: any;
 import { FirebaseMessaging } from '@ionic-native/firebase-messaging/ngx';
 import { UsdconvertmodalPage } from './usdconvertmodal/usdconvertmodal.page';
 import { ConditionalExpr } from '@angular/compiler';
+// import { Facebook } from '@ionic-native/facebook/ngx';
 
 @Component({
 	selector: 'app-root',
@@ -124,9 +125,9 @@ export class AppComponent implements OnInit {
 		public route: Router,
 		public location: Location,
 		public firebase: FirebaseMessaging,
+		// private fb: Facebook
 	) {
 		platform.ready().then(() => {
-
 
 		}).catch(() => {
 
@@ -246,9 +247,9 @@ export class AppComponent implements OnInit {
 
 		}, 1000);
 
-		this.componentSer.showPaymentModal.subscribe((res: any) => {
-			this.presentModel();
-		});
+		// this.componentSer.showPaymentModal.subscribe((res: any) => {
+		// 	this.presentModel();
+		// });
 
 	}
 
@@ -257,7 +258,7 @@ export class AppComponent implements OnInit {
 			this.navCtrl.navigateForward('prices');
 		} else {
 			if (localStorage.getItem('isExpiryUSD') == 'true') {
-				this.navCtrl.navigateForward(['planpage']);
+				// this.navCtrl.navigateForward(['planpage']);
 			} else {
 				if (localStorage.getItem('apptype') == 'USD') {
 					console.log("i am here");
@@ -537,7 +538,7 @@ export class AppComponent implements OnInit {
 							if (isExpiredUsd == 'true') {
 								if (localStorage.getItem('is_INR_active') == '0') {
 									console.log("hey i am here");
-									this.navCtrl.navigateRoot(['planpage']);
+									// this.navCtrl.navigateRoot(['planpage']);
 								} else {
 									this.platform.ready().then(async () => {
 										if (localStorage.getItem('id') != undefined) {
@@ -579,12 +580,12 @@ export class AppComponent implements OnInit {
 										this.navCtrl.navigateRoot('prices');
 
 									} else {
-										this.navCtrl.navigateRoot('planpage');
+										// this.navCtrl.navigateRoot('planpage');
 									}
 								} else {
 									if (localStorage.getItem('status') != '0') {
 										if (localStorage.getItem('is_INR_active') == '0' && localStorage.getItem('transaction_id') == 'null') {
-											this.navCtrl.navigateRoot('planpage');
+											// this.navCtrl.navigateRoot('planpage');
 										} else {
 											this.navCtrl.navigateForward(['prices']);
 											localStorage.setItem('apptype', 'OTHER')
@@ -656,7 +657,7 @@ export class AppComponent implements OnInit {
 							if (localStorage.getItem('is_INR_active') == '0' && localStorage.getItem('isUserActivatedUSD') == '1' && localStorage.getItem('isExpired') != 'true') {
 								if (localStorage.getItem('is_INR_active') == '0' && localStorage.getItem('transaction_id') == null) {
 									console.log("hey i am here");
-									this.navCtrl.navigateRoot('planpage');
+									// this.navCtrl.navigateRoot('planpage');
 								} else {
 									console.log("i am here");
 									this.navCtrl.navigateForward(['priceusd']);
@@ -667,7 +668,7 @@ export class AppComponent implements OnInit {
 
 							if (localStorage.getItem('is_INR_active') == '0' && localStorage.getItem('isUserActivatedUSD') == '1' && localStorage.getItem('isExpired') != 'false') {
 								console.log("hey i am here");
-								this.navCtrl.navigateForward(['planpage']);
+								// this.navCtrl.navigateForward(['planpage']);
 							}
 
 						}
