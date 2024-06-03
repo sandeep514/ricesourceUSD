@@ -1,7 +1,22 @@
-platform :ios, '10.0'
+platform :ios, '11.0'
 use_frameworks!
 target 'SNTC Rice Sourcing' do
+	project 'SNTC Rice Sourcing.xcodeproj'
+	pod 'FBSDKCoreKit', '5.15.0'
+	pod 'FBSDKLoginKit', '5.15.0'
+	pod 'FBSDKShareKit', '5.15.0'
+	pod 'Firebase/Messaging', '9.3.0'
 	pod 'razorpay-pod', '1.2.5'
 	pod 'FirebaseCore', :modular_headers => true
 	pod 'FirebaseMessaging', :modular_headers => true
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      if Gem::Version.new('8.0') > Gem::Version.new(config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'])
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+      end
+    end
+  end
 end

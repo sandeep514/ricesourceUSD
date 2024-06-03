@@ -1,22 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
   module.exports = [
     {
-      "id": "card.io.cordova.mobilesdk.CardIO",
-      "file": "plugins/card.io.cordova.mobilesdk/www/cdv-plugin-card-io.js",
-      "pluginId": "card.io.cordova.mobilesdk",
-      "clobbers": [
-        "CardIO"
-      ]
-    },
-    {
-      "id": "com.paypal.cordova.mobilesdk.PayPalMobile",
-      "file": "plugins/com.paypal.cordova.mobilesdk/www/cdv-plugin-paypal-mobile-sdk.js",
-      "pluginId": "com.paypal.cordova.mobilesdk",
-      "clobbers": [
-        "PayPalMobile"
-      ]
-    },
-    {
       "id": "com.razorpay.cordova.RazorpayCheckout",
       "file": "plugins/com.razorpay.cordova/www/RazorpayCheckout.js",
       "pluginId": "com.razorpay.cordova",
@@ -303,14 +287,12 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     }
   ];
   module.exports.metadata = {
-    "card.io.cordova.mobilesdk": "2.1.0",
-    "com.paypal.cordova.mobilesdk": "3.5.0",
     "cordova-plugin-cocoapod-support": "1.6.2",
     "com.razorpay.cordova": "0.16.1",
     "cordova-plugin-add-swift-support": "2.0.2",
     "cordova-plugin-androidx": "3.0.0",
     "cordova-plugin-androidx-adapter": "1.1.3",
-    "cordova-plugin-camera": "6.0.0",
+    "cordova-plugin-camera": "7.0.0",
     "cordova-plugin-device": "2.1.0",
     "cordova-plugin-file": "6.0.2",
     "cordova-plugin-filechooser": "1.2.0",

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="app.sntcrice.sourcing" version="1.0.16" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="app.sntcrice.sourcing" version="2.0.27" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="CDVWebViewEngine">
         <param name="ios-package" value="CDVWebViewEngine" />
     </feature>
@@ -24,12 +24,6 @@
     <feature name="GestureHandler">
         <param name="ios-package" value="CDVGestureHandler" />
         <param name="onload" value="true" />
-    </feature>
-    <feature name="CardIO">
-        <param name="ios-package" onload="false" value="CardIOCordovaPlugin" />
-    </feature>
-    <feature name="PayPalMobile">
-        <param name="ios-package" onload="true" value="PayPalMobileCordovaPlugin" />
     </feature>
     <feature name="Checkout">
         <param name="ios-package" value="Main" />
