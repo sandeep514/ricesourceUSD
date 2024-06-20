@@ -1,9 +1,9 @@
 <ion-header class="">
-	<ion-toolbar  mode="ios"  style="background: transparent; --background: transparent">
+	<ion-toolbar mode="ios" style="background: transparent; --background: transparent">
 		<ion-buttons slot="start" class="back-button" (click)="close()">
 			<ion-icon name="arrow-back-outline"></ion-icon>
 		</ion-buttons>
-			<ion-title class="header-title porttitle">Freight</ion-title>
+		<ion-title class="header-title porttitle">Freight</ion-title>
 	</ion-toolbar>
 	<!-- <ion-row >
 		<ion-col style="padding: 0px;">
@@ -17,37 +17,41 @@
 </ion-header>
 
 <ion-content class="">
-	<div>
+	<div style="height: 80%;overflow: scroll;">
 		<ion-row style="padding-top: 14px;">
-			<ion-col size="6" >
-				<ion-item class="select" style="background: rgba(238, 252, 206, 1);--background: rgba(238, 252, 206, 1);border-radius: 100px">
+			<ion-col size="6">
+				<ion-item class="select"
+					style="background: rgba(238, 252, 206, 1);--background: rgba(238, 252, 206, 1);border-radius: 100px">
 					<ion-label>Region</ion-label>
 					<ion-select placeholder="" (ionChange)="changecountry($event)">
-					  <ion-select-option *ngFor="let region of regions">{{ region }}</ion-select-option>
+						<ion-select-option *ngFor="let region of regions">{{ region }}</ion-select-option>
 					</ion-select>
-				  </ion-item>
+				</ion-item>
 			</ion-col>
-			<ion-col size="6" >
-				<ion-item class="select" style="background: rgba(238, 252, 206, 1);--background: rgba(238, 252, 206, 1);border-radius: 100px">
+			<ion-col size="6">
+				<ion-item class="select"
+					style="background: rgba(238, 252, 206, 1);--background: rgba(238, 252, 206, 1);border-radius: 100px">
 					<ion-label>Country</ion-label>
 					<ion-select [(ngModel)]="selectedCoun" placeholder="" (ionChange)="getPortList($event)">
 						<ion-select-option *ngFor="let country of countries">{{ country }}</ion-select-option>
 					</ion-select>
-				  </ion-item>
+				</ion-item>
 			</ion-col>
 		</ion-row>
 
-		<ng-container >
+		<ng-container>
 			<ion-row class="ion-padding table-row" style="margin: 10px 0px;padding: 5px 0px;">
 				<ion-col class="price-table dashboard">
-					
-					<table class="table" >
+
+					<table class="table">
 						<thead style="background: rgba(255, 251, 214, 1) !important;">
 							<tr>
-								<th class=" type-columns black" style="font-weight: bold;width:40%;font-size: 14px;padding-left: 10px;text-align: left;font-family: 'Poppins-Regular'" >
+								<th class=" type-columns black"
+									style="font-weight: bold;width:40%;font-size: 14px;padding-left: 10px;text-align: left;font-family: 'Poppins-Regular'">
 									Ports
 								</th>
-								<th class=" type-columns black" style="font-weight: bold;width:30%;font-size: 14px;font-family: 'Poppins-SemiBold'">
+								<th class=" type-columns black"
+									style="font-weight: bold;width:30%;font-size: 14px;font-family: 'Poppins-SemiBold'">
 									25MT Mundra
 								</th>
 							</tr>
@@ -55,14 +59,16 @@
 
 						<tbody class="user_price">
 							<tr *ngFor="let list of ports" class="green" style="height: 50px;">
-								<td class="sticky-col first-col left pl-10" style="color: rgba(70, 70, 70, 1);font-size: 18px;width:40%;font-size: 14px !important;font-family: 'Poppins-Regular';text-align: left;padding-left: 20px;" >
+								<td class="sticky-col first-col left pl-10"
+									style="color: rgba(70, 70, 70, 1);font-size: 18px;width:40%;font-size: 14px !important;font-family: 'Poppins-Regular';text-align: left;padding-left: 20px;">
 									{{ list.port }}
 								</td>
-								<td class="type-columns" style="color: #000;width:30%;font-size: 16px !important;font-family: 'Poppins-SemiBold';text-align: center;padding-right: 20px;" >
+								<td class="type-columns"
+									style="color: #000;width:30%;font-size: 16px !important;font-family: 'Poppins-SemiBold';text-align: center;padding: 0px">
 									$ {{ list.freight_21MT }} - {{ list.freight_25MT }}
 								</td>
 							</tr>
-							<tr *ngIf="isNull == true" >
+							<tr *ngIf="isNull == true">
 								<td colspan="2" style="text-align: center;">
 									No port found
 								</td>
