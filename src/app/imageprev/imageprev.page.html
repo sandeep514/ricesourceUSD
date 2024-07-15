@@ -2,7 +2,7 @@
 	
 	<ion-slides pager="false" [options]="slideOpts" style="position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;height: 450px">
 		<ion-slide >
-			<div class="crossModal" (click)="closeModal()" style="position: absolute;top: 15px;right: 10px;">
+			<div class="crossModal" (click)="closeModal()" style="position: absolute;top: 15px;right: 10px;z-index: 999999;">
 				X
 			</div>
 			<img src="{{ image }}" class="slide-image">

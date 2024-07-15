@@ -111,7 +111,7 @@
             </div> -->
             <ion-col class="pt0 pb0 ">
                 <ion-segment scrollable (ionChange)="changeStateBasmati($event)" value="{{ basmatiSt }}"
-                    class="header-segment table-responsive-1 basmatiState" style="padding: 0px;margin: 0px;">
+                    class="header-segment table-responsive-1 basmatiState" style="padding: 0px;margin: 0px;height: 55px">
                     <ng-container *ngFor="let basmatiSt of basmatiState">
                         <ion-segment-button class="{{ basmatiSt }}" id="{{ basmatiSt }}" value="{{ basmatiSt }}">
                             <ion-label>{{ parseText(basmatiSt) }}</ion-label>
@@ -211,7 +211,7 @@
                         </div> -->
                 <ion-col class="pt0 pb0 p05">
                     <ion-segment scrollable (ionChange)="changeStateNONBasmati($event)" value="{{ nonbasmatists }}"
-                        class="header-segment table-responsive-2 basmatiState">
+                        class="header-segment table-responsive-2 basmatiState"  style="padding: 0px;margin: 0px;height: 55px">
 
                         <ng-container *ngFor="let nonbasmatists of NONbasmatiState">
                             <ion-segment-button value="{{ nonbasmatists }}" class="{{ nonbasmatists }}">
