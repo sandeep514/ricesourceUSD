@@ -595,9 +595,17 @@ h3 {
     -webkit-transform: translateX(100%);
     transform: translateX(100%);
     /* Apply animation to this element */
-    -moz-animation: example1 40s linear infinite;
-    -webkit-animation: example1 40s linear infinite;
-    animation: example1 40s linear infinite;
+    -moz-animation: example1 70s linear infinite;
+    -webkit-animation: example1 70s linear infinite;
+    animation: example1 70s linear infinite;
+}
+
+ion-segment-button {
+    --indicator-height: 0px !important;
+}
+
+ion-segment-button::before {
+    border-left: 0px !important
 }
 
 /* Move it (define the animation) */
@@ -712,4 +720,32 @@ ion-header {
 ion-select {
     --placeholder-color: gray !important;
     --placeholder-opacity: 1 !important;
+}
+
+ion-segment-button {
+    --indicator-color: transparent !important;
+    --indicator-color-checked: transparent !important;
+}
+
+ion-segment-button::before {
+    --border: 0px !important;
+}
+
+ion-segment-button {
+    --color-checked: red;
+    --indicator-color: none;
+}
+
+::part(indicator-background) {
+    // background-color: #2D303A;
+    border: 0px !important;
+}
+
+.segment-button-checked {
+    --border-width: 0px;
+    --indicator-color-checked: 0;
+}
+
+.segment-button-checked ::ng-deep {
+    background-color: #2D303A;
 }

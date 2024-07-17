@@ -151,10 +151,10 @@ export class MenuComponent implements OnInit {
 			console.log(res.data)
 			if (localStorage.getItem('apptype') == 'USD') {
 				this.news = res.data['usd'][0].title;
-				this.newsWidth = (this.news.length * 4) + 'px';
+				this.newsWidth = (this.news.length * 7.5) + 'px';
 			} else {
 				this.news = res.data['inr'][0].title;
-				this.newsWidth = (this.news.length * 4) + 'px';
+				this.newsWidth = (this.news.length * 7.5) + 'px';
 			}
 
 		}, (err: any) => {

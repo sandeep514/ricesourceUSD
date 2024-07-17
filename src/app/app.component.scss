@@ -218,3 +218,22 @@ ion-menu-toggle {
   color: white;
   width: 100%;
 }
+
+ion-segment-button::after {
+  border: none !important;
+  --border: none !important;
+
+  border-left: none !important;
+  --border-left: none !important;
+}
+
+ion-segment-button::part(indicator) {
+  height: 100%;
+  border-width: 3px;
+  border-color: var(--ion-color-tertiary);
+  border-style: inset;
+}
+
+ion-segment-button::part(indicator-background) {
+  background: transparent;
+}
