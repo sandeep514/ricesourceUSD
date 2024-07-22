@@ -1,13 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<widget id="app.sntcrice.sourcing" version="2.0.27" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-=======
-<widget id="app.sntcrice.sourcing" version="2.0.23" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
->>>>>>> 7b4dc7db (code after ios upload)
-=======
-<widget id="app.sntcrice.sourcing" version="2.0.23" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
->>>>>>> 1c57006b211cb5b737bf0510319038737edf5a83
+<widget id="app.sntcrice.sourcing" version="2.0.31" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>SNTC Rice Sourcing </name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">SNTC Rice Sourcing</author>
