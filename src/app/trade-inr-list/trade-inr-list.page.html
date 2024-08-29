@@ -46,7 +46,8 @@
 						style="margin: 0;border-radius: 5px;margin-bottom: 10px;overflow: hidden;padding: 12px 10px;background-color: rgba(226, 227, 228, 0.2);box-shadow: 1px 3px 12px lightgray;position: relative;display: grid;">
 						<div [class.inprocess]="bids?.status == 4">
 
-							<div style="text-align: right;position: absolute;right: 10px;" *ngIf="bids?.status == 4">
+							<div style="text-align: right;position: absolute;right: 10px;bottom: 10px;"
+								*ngIf="bids?.status == 4">
 								<p
 									style="color: #fff;padding: 5px 10px;border-radius: 10px;font-size: 15px;background: #000;z-index: 9999;right: 30px;margin: 0;">
 									In-Process</p>
@@ -58,8 +59,7 @@
 										<div style="position: relative;">
 											<div *ngIf="currentStatus != 11 && currentStatus != 12">
 												<div *ngIf="bids?.hotdeal == 0">
-													<div
-														*ngIf="bids?.status == 1 || bids?.status == 6 || bids?.status == 4">
+													<div *ngIf="bids?.status == 1 || bids?.status == 6 ">
 														<img src="../../assets/live.gif" />
 													</div>
 												</div>
@@ -233,7 +233,8 @@
 					<li *ngFor="let bids of buyData" class="demandedData">
 						<div style="margin: 0;border-radius: 5px;margin-bottom: 10px;overflow: hidden;padding: 12px 10px;background-color: rgba(226, 227, 228, 0.2);box-shadow: 1px 3px 12px lightgray;position: relative;"
 							[class.inprocess]="bids?.status == 4">
-							<div style="text-align: right;position: absolute;right: 10px;" *ngIf="bids?.status == 4">
+							<div style="text-align: right;position: absolute;right: 10px;bottom: 10px;"
+								*ngIf="bids?.status == 4">
 								<p
 									style="color: #fff;padding: 5px 10px;border-radius: 10px;font-size: 15px;background: #000;z-index: 9999;right: 30px;margin: 0;">
 									In-Process</p>
@@ -245,8 +246,7 @@
 										<div style="position: relative;">
 											<div *ngIf="currentStatus != 11 && currentStatus != 12">
 												<div *ngIf="bids?.hotdeal == 0">
-													<div
-														*ngIf="bids?.status == 1 || bids?.status == 6 || bids?.status == 4">
+													<div *ngIf="bids?.status == 1 || bids?.status == 6 ">
 														<img src="../../assets/live.gif" />
 													</div>
 												</div>
@@ -414,7 +414,8 @@
 
 						<div style="margin: 0;border-radius: 5px;margin-bottom: 10px;overflow: hidden;padding: 12px 10px;background-color: rgba(226, 227, 228, 0.2);box-shadow: 1px 3px 12px lightgray;position: relative;"
 							[class.inprocess]="bids?.status == 4">
-							<div style="text-align: right;position: absolute;right: 10px;" *ngIf="bids?.status == 4">
+							<div style="text-align: right;position: absolute;right: 10px;bottom: 10px;"
+								*ngIf="bids?.status == 4">
 								<p
 									style="color: #fff;padding: 5px 10px;border-radius: 10px;font-size: 15px;background: #000;z-index: 9999;right: 30px;margin: 0;">
 									In-Process</p>
@@ -425,8 +426,7 @@
 										<div style="position: relative;">
 											<div *ngIf="currentStatus != 11 && currentStatus != 12">
 												<div *ngIf="bids?.hotdeal == 0">
-													<div
-														*ngIf="bids?.status == 1 || bids?.status == 6 || bids?.status == 4">
+													<div *ngIf="bids?.status == 1 || bids?.status == 6 ">
 														<img src="../../assets/live.gif" />
 													</div>
 												</div>

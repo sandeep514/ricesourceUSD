@@ -44,12 +44,15 @@ export class BrandDetailsPage implements OnInit {
     public ActRoute: ActivatedRoute
   ) {
     this.data = JSON.parse(this.ActRoute.snapshot.params.data).get_attachments;
+    console.log(JSON.parse(this.ActRoute.snapshot.params.data).get_attachments)
     console.log(this.data);
   }
 
   ngOnInit() {
     this.imagePre = this.apiser.imageUrl;
-
+    this.data = JSON.parse(this.ActRoute.snapshot.params.data).get_attachments;
+    console.log(JSON.parse(this.ActRoute.snapshot.params.data).get_attachments)
+    console.log(this.data);
     // this.getData();
   }
 

@@ -10,27 +10,27 @@
 
 <ion-content id="content" [scrollEvents]="true" class="">
 	<ion-grid>
-
 		<ion-row>
-
+			<div style="width: 100%">
+				<h4>Brand Attachment</h4>
+			</div>
 			<ion-slides pager="true" [options]="slideOpts">
-				<ion-slide *ngFor="let attachment of data" style="width: 100%;">
-					<img src="{{imagePre}}uploads/brandlogo/brandAttachment/{{attachment.attachment}}"
-						onerror="this.src='../../assets/img/No_image_available.svg.png'" alt="i am here"
-						style="padding: 15px;">
-				</ion-slide>
+				<div style="width: 100%">
+					<ion-slide *ngFor="let attachment of data" style="width: 100%;">
+						<img src="{{imagePre}}uploads/brandlogo/brandAttachment/{{attachment.attachment}}"
+							onerror="this.src='../../assets/img/No_image_available.svg.png'" alt="i am here"
+							style="padding: 15px;">
+					</ion-slide>
+				</div>
 			</ion-slides>
 			<!-- <ion-col size="12" *ngFor="let attachment of data">
-        <div (click)="getBrandDetail(brands)" >
-          <div>
-            
-          </div>
-        </div>
-      </ion-col> -->
-
-
+				<div (click)="getBrandDetail(brands)" >
+				<div>
+					
+				</div>
+				</div>
+			</ion-col> -->
 		</ion-row>
-
 	</ion-grid>
 	<app-menu></app-menu>
 </ion-content>
