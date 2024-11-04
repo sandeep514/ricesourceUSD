@@ -1,11 +1,11 @@
 import { Component, OnInit, QueryList } from '@angular/core';
 
 import { Platform, ModalController, NavController, MenuController, ToastController, IonRouterOutlet, AlertController } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+// import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ThemeDetection, ThemeDetectionResponse } from "@ionic-native/theme-detection/ngx";
 import { RestService } from './rest.service';
-import { SplashscreenPage } from './splashscreen/splashscreen.page';
+// // // import { SplashscreenPage } from './splashscreen/splashscreen.page';
 import { ComponentsService } from './components.service';
 import { Router } from '@angular/router';
 import { PlanpagePage } from './planpage/planpage.page';
@@ -112,7 +112,7 @@ export class AppComponent implements OnInit {
 
 	constructor(
 		private platform: Platform,
-		private splashScreen: SplashScreen,
+		// // private splashScreen: SplashScreen,
 		private statusBar: StatusBar,
 		private themeDetection: ThemeDetection,
 		public apiser: RestService,
@@ -350,12 +350,10 @@ export class AppComponent implements OnInit {
 				}
 
 				if (routeArray.indexOf('chatdetails')) {
-
 					if (localStorage.getItem('selectedChatUserId') == payload.messageFrom) {
 						// this.navCtrl.navigateForward(['admin/chatdetails', { 'contactId': payload.id }])
 						this.componentSer.newRecieveMessage.next(payload.body);
 					}
-
 				}
 				// if( localStorage.getItem('id') == '1' ){
 				// 	if (localStorage.getItem('selectedChatUserId') == payload.messageFrom) {
@@ -363,7 +361,6 @@ export class AppComponent implements OnInit {
 				// 	}
 				// }
 			});
-
 		});
 	}
 
@@ -501,17 +498,17 @@ export class AppComponent implements OnInit {
 			}, 1000);
 
 
-			let splash = await this.modalCtrl.create({ component: SplashscreenPage });
-			splash.present();
+			// // let splash = await this.modalCtrl.create({ component: SplashscreenPage });
+			// splash.present();
 			if (localStorage.getItem('role') != null && localStorage.getItem('role') != undefined) {
 				if (localStorage.getItem('role') == '2') {
 					setTimeout(() => {
-						splash.dismiss();
+						// splash.dismiss();
 						this.navCtrl.navigateForward(['admin/chat']);
 					}, 4000);
 				} else {
 					setTimeout(() => {
-						splash.dismiss();
+						// splash.dismiss();
 						let navigation = this.navCtrl;
 
 						// this.navCtrl.navigateForward(['quality-details']);
@@ -676,7 +673,7 @@ export class AppComponent implements OnInit {
 				}
 			} else {
 				setTimeout(() => {
-					splash.dismiss();
+					// splash.dismiss();
 					// this.navCtrl.navigateForward(['forgotpassword']);
 					this.navCtrl.navigateForward(['pre-register']);
 				}, 4000);

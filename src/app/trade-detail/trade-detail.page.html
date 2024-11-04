@@ -20,20 +20,49 @@
 			</div>
 		</div>
 
-
 		<ion-row class="rice-gallery" *ngIf="tradeDetails != undefined ">
 			<ion-col
 				style="padding: 0px 0px 15px 0px;background-color: #fffbd6;border-radius: 0px 0px 25px 25px;overflow: hidden;">
 				<ion-slides pager="false" [options]="slideOpts">
-					<ion-slide *ngIf="tradeDetails?.cooked_file != null"
+					<ion-slide *ngIf="tradeDetails?.cooked_file != null && tradeDetails?.cooked_file != '' "
 						style="width: 100%;padding: 15px;height: 200px;">
 						<img (click)="openModal(imageUrl+'uploads/'+tradeDetails?.cooked_file )"
 							src="{{ imageUrl }}uploads/{{ tradeDetails?.cooked_file }}" class="slide-image">
 					</ion-slide>
-					<ion-slide *ngIf="tradeDetails?.uncooked_file != null"
+					<ion-slide *ngIf="tradeDetails?.cooked_file1 != null && tradeDetails?.cooked_file1 != '' "
+						style="width: 100%;padding: 15px;height: 200px;">
+						<img (click)="openModal(imageUrl+'uploads/'+tradeDetails?.cooked_file1 )"
+							src="{{ imageUrl }}uploads/{{ tradeDetails?.cooked_file1 }}" class="slide-image">
+					</ion-slide>
+					<ion-slide *ngIf="tradeDetails?.cooked_file2 != null && tradeDetails?.cooked_file2 != '' "
+						style="width: 100%;padding: 15px;height: 200px;">
+						<img (click)="openModal(imageUrl+'uploads/'+tradeDetails?.cooked_file2 )"
+							src="{{ imageUrl }}uploads/{{ tradeDetails?.cooked_file2 }}" class="slide-image">
+					</ion-slide>
+					<ion-slide *ngIf="tradeDetails?.cooked_file3 != null && tradeDetails?.cooked_file3 != '' "
+						style="width: 100%;padding: 15px;height: 200px;">
+						<img (click)="openModal(imageUrl+'uploads/'+tradeDetails?.cooked_file3 )"
+							src="{{ imageUrl }}uploads/{{ tradeDetails?.cooked_file3 }}" class="slide-image">
+					</ion-slide>
+					<ion-slide *ngIf="tradeDetails?.uncooked_file != null && tradeDetails?.uncooked_file != '' "
 						style="width: 100%;padding: 15px;height: 200px;">
 						<img (click)="openModal(imageUrl+'uploads/'+tradeDetails?.uncooked_file)"
 							src="{{ imageUrl }}uploads/{{ tradeDetails?.uncooked_file }}" class="slide-image">
+					</ion-slide>
+					<ion-slide *ngIf="tradeDetails?.uncooked_file1 != null && tradeDetails?.uncooked_file1 != '' "
+						style="width: 100%;padding: 15px;height: 200px;">
+						<img (click)="openModal(imageUrl+'uploads/'+tradeDetails?.uncooked_file1)"
+							src="{{ imageUrl }}uploads/{{ tradeDetails?.uncooked_file1 }}" class="slide-image">
+					</ion-slide>
+					<ion-slide *ngIf="tradeDetails?.uncooked_file2 != null && tradeDetails?.uncooked_file2 != '' "
+						style="width: 100%;padding: 15px;height: 200px;">
+						<img (click)="openModal(imageUrl+'uploads/'+tradeDetails?.uncooked_file2)"
+							src="{{ imageUrl }}uploads/{{ tradeDetails?.uncooked_file2 }}" class="slide-image">
+					</ion-slide>
+					<ion-slide *ngIf="tradeDetails?.uncooked_file3 != null && tradeDetails?.uncooked_file3 != '' "
+						style="width: 100%;padding: 15px;height: 200px;">
+						<img (click)="openModal(imageUrl+'uploads/'+tradeDetails?.uncooked_file3)"
+							src="{{ imageUrl }}uploads/{{ tradeDetails?.uncooked_file3 }}" class="slide-image">
 					</ion-slide>
 				</ion-slides>
 			</ion-col>
@@ -188,16 +217,12 @@
 							</div>
 						</ion-col>
 					</ion-row>
-					<ion-row *ngIf="tradeDetails?.additioanlInfo" style="margin-top: 20px;">
+					<ion-row *ngIf="tradeDetails?.additioanlInfo" style="margin-top: 5px;">
 						<ion-col>
 							<div class="title">
 								<div class=" pt-0" style="display: flex;font-size: 14px;">
 									<p style="font-weight: bold;width: 40%;">Additional Info</p>
-									:
-									<!-- <ul style="padding: 0;margin: 0;list-style: none;">
-																		<li *ngFor="let info of addInfo"> {{info}}</li>
-																	</ul> -->
-									<p>{{ tradeDetails?.additioanlInfo }}</p>
+									:&nbsp; <p>{{ tradeDetails?.additioanlInfo }}</p>
 								</div>
 							</div>
 						</ion-col>
