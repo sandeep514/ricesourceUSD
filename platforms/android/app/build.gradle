@@ -297,9 +297,9 @@ dependencies {
     implementation(project(path: ":CordovaLib"))
     implementation platform("com.google.firebase:firebase-bom:30.3.1")
     implementation "com.razorpay:checkout:1.6.19"
+    implementation "com.stripe:stripe-android:4.1.2"
     implementation "com.google.firebase:firebase-messaging"
     implementation "me.leolin:ShortcutBadger:1.1.22@aar"
-    implementation "com.stripe:stripe-android:4.1.2"
     // SUB-PROJECT DEPENDENCIES END
 }
 

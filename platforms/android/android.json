@@ -9,7 +9,7 @@
         "parents": {
           "/manifest/application": [
             {
-              "xml": "<application android:usesCleartextTraffic=\"true\" />",
+              "xml": "<application android:networkSecurityConfig=\"@xml/network_security_config\" />",
               "count": 2,
               "mode": "merge",
               "id": "config.xml",
@@ -23,7 +23,7 @@
               }
             },
             {
-              "xml": "<application android:networkSecurityConfig=\"@xml/network_security_config\" />",
+              "xml": "<application android:usesCleartextTraffic=\"true\" />",
               "count": 1,
               "mode": "merge",
               "id": "config.xml",
@@ -43,11 +43,15 @@
         "parents": {
           "/*": [
             {
+              "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
               "xml": "<feature name=\"Checkout\"><param name=\"android-package\" value=\"com.razorpay.cordova.Main\" /></feature>",
               "count": 1
             },
             {
-              "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+              "xml": "<feature name=\"CordovaStripe\"><param name=\"android-package\" value=\"com.zyramedia.cordova.stripe.CordovaStripe\" /></feature>",
               "count": 1
             },
             {
@@ -63,25 +67,63 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"FirebaseMessaging\"><param name=\"android-package\" value=\"by.chemerisuk.cordova.firebase.FirebaseMessagingPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"CordovaStripe\"><param name=\"android-package\" value=\"com.zyramedia.cordova.stripe.CordovaStripe\" /></feature>",
+              "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
               "count": 1
             },
             {
               "xml": "<feature name=\"ThemeDetection\"><param name=\"android-package\" value=\"de.mariusbackes.cordova.plugin.ThemeDetection\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"FirebaseMessaging\"><param name=\"android-package\" value=\"by.chemerisuk.cordova.firebase.FirebaseMessagingPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
             }
           ],
           "/widget": [
             {
               "xml": "<feature name=\"FileChooser\"><param name=\"android-package\" value=\"com.megster.cordova.FileChooser\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<feature name=\"CDVIonicKeyboard\"><param name=\"android-package\" onload=\"true\" value=\"io.ionic.keyboard.CDVIonicKeyboard\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"AndroidXEnabled\" value=\"true\" />",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"GradlePluginGoogleServicesEnabled\" value=\"true\" />",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"GradlePluginGoogleServicesVersion\" value=\"4.3.13\" />",
+              "count": 1
+            },
+            {
+              "xml": "<allow-navigation href=\"http://localhost/*\" />",
+              "count": 1
+            },
+            {
+              "xml": "<allow-navigation href=\"https://localhost/*\" />",
+              "count": 1
+            },
+            {
+              "xml": "<allow-navigation href=\"ionic://*\" />",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"webView\" value=\"com.ionicframework.cordova.webview.IonicWebViewEngine\" />",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"IonicWebView\"><param name=\"android-package\" value=\"com.ionicframework.cordova.webview.IonicWebView\" /></feature>",
               "count": 1
             }
           ]
@@ -110,68 +152,35 @@
             }
           ]
         }
-      },
-      "config.xml": {
-        "parents": {
-          "/*": [
-            {
-              "xml": "<preference name=\"AndroidXEnabled\" value=\"true\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"GradlePluginGoogleServicesEnabled\" value=\"true\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"GradlePluginGoogleServicesVersion\" value=\"4.3.13\" />",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"CDVIonicKeyboard\"><param name=\"android-package\" onload=\"true\" value=\"io.ionic.keyboard.CDVIonicKeyboard\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<allow-navigation href=\"http://localhost/*\" />",
-              "count": 1
-            },
-            {
-              "xml": "<allow-navigation href=\"https://localhost/*\" />",
-              "count": 1
-            },
-            {
-              "xml": "<allow-navigation href=\"ionic://*\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"webView\" value=\"com.ionicframework.cordova.webview.IonicWebViewEngine\" />",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"IonicWebView\"><param name=\"android-package\" value=\"com.ionicframework.cordova.webview.IonicWebView\" /></feature>",
-              "count": 1
-            }
-          ]
-        }
       }
     }
   },
   "installed_plugins": {
-    "com.razorpay.cordova": {
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     },
     "cordova-plugin-androidx-adapter": {
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     },
-    "cordova-plugin-device": {
+    "com.razorpay.cordova": {
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-stripe": {
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     },
     "cordova-plugin-file": {
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     },
-    "cordova-plugin-filechooser": {
+    "cordova-plugin-filepath": {
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     },
-    "cordova-plugin-filepath": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-theme-detection": {
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     },
     "cordova-support-android-plugin": {
@@ -181,24 +190,31 @@
       "ANDROID_FIREBASE_BOM_VERSION": "30.3.1",
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     },
-    "cordova-plugin-ionic-keyboard": {
-      "PACKAGE_NAME": "app.sntcrice.sourcing"
-    },
     "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "app.sntcrice.sourcing"
-    },
-    "cordova-plugin-stripe": {
-      "PACKAGE_NAME": "app.sntcrice.sourcing"
-    },
-    "cordova-plugin-theme-detection": {
+    "cordova-plugin-filechooser": {
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     }
   },
   "dependent_plugins": {},
   "modules": [
+    {
+      "id": "cordova-plugin-statusbar.statusbar",
+      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+      "pluginId": "cordova-plugin-statusbar",
+      "clobbers": [
+        "window.StatusBar"
+      ]
+    },
+    {
+      "id": "cordova-plugin-ionic-keyboard.keyboard",
+      "file": "plugins/cordova-plugin-ionic-keyboard/www/android/keyboard.js",
+      "pluginId": "cordova-plugin-ionic-keyboard",
+      "clobbers": [
+        "window.Keyboard"
+      ]
+    },
     {
       "id": "com.razorpay.cordova.RazorpayCheckout",
       "file": "plugins/com.razorpay.cordova/www/RazorpayCheckout.js",
@@ -208,11 +224,11 @@
       ]
     },
     {
-      "id": "cordova-plugin-device.device",
-      "file": "plugins/cordova-plugin-device/www/device.js",
-      "pluginId": "cordova-plugin-device",
+      "id": "cordova-plugin-stripe.stripe",
+      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
+      "pluginId": "cordova-plugin-stripe",
       "clobbers": [
-        "device"
+        "cordova.plugins.stripe"
       ]
     },
     {
@@ -389,19 +405,27 @@
       "runs": true
     },
     {
-      "id": "cordova-plugin-filechooser.FileChooser",
-      "file": "plugins/cordova-plugin-filechooser/www/fileChooser.js",
-      "pluginId": "cordova-plugin-filechooser",
-      "clobbers": [
-        "fileChooser"
-      ]
-    },
-    {
       "id": "cordova-plugin-filepath.FilePath",
       "file": "plugins/cordova-plugin-filepath/www/FilePath.js",
       "pluginId": "cordova-plugin-filepath",
       "clobbers": [
         "window.FilePath"
+      ]
+    },
+    {
+      "id": "cordova-plugin-device.device",
+      "file": "plugins/cordova-plugin-device/www/device.js",
+      "pluginId": "cordova-plugin-device",
+      "clobbers": [
+        "device"
+      ]
+    },
+    {
+      "id": "cordova-plugin-theme-detection.ThemeDetection",
+      "file": "plugins/cordova-plugin-theme-detection/www/ThemeDetection.js",
+      "pluginId": "cordova-plugin-theme-detection",
+      "clobbers": [
+        "cordova.plugins.ThemeDetection"
       ]
     },
     {
@@ -413,14 +437,6 @@
       ]
     },
     {
-      "id": "cordova-plugin-ionic-keyboard.keyboard",
-      "file": "plugins/cordova-plugin-ionic-keyboard/www/android/keyboard.js",
-      "pluginId": "cordova-plugin-ionic-keyboard",
-      "clobbers": [
-        "window.Keyboard"
-      ]
-    },
-    {
       "id": "cordova-plugin-ionic-webview.IonicWebView",
       "file": "plugins/cordova-plugin-ionic-webview/src/www/util.js",
       "pluginId": "cordova-plugin-ionic-webview",
@@ -429,43 +445,27 @@
       ]
     },
     {
-      "id": "cordova-plugin-statusbar.statusbar",
-      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-      "pluginId": "cordova-plugin-statusbar",
+      "id": "cordova-plugin-filechooser.FileChooser",
+      "file": "plugins/cordova-plugin-filechooser/www/fileChooser.js",
+      "pluginId": "cordova-plugin-filechooser",
       "clobbers": [
-        "window.StatusBar"
-      ]
-    },
-    {
-      "id": "cordova-plugin-stripe.stripe",
-      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
-      "pluginId": "cordova-plugin-stripe",
-      "clobbers": [
-        "cordova.plugins.stripe"
-      ]
-    },
-    {
-      "id": "cordova-plugin-theme-detection.ThemeDetection",
-      "file": "plugins/cordova-plugin-theme-detection/www/ThemeDetection.js",
-      "pluginId": "cordova-plugin-theme-detection",
-      "clobbers": [
-        "cordova.plugins.ThemeDetection"
+        "fileChooser"
       ]
     }
   ],
   "plugin_metadata": {
-    "com.razorpay.cordova": "0.16.1",
+    "cordova-plugin-statusbar": "2.4.3",
+    "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-androidx-adapter": "1.1.3",
-    "cordova-plugin-device": "2.1.0",
+    "com.razorpay.cordova": "0.16.1",
+    "cordova-plugin-stripe": "1.5.3",
     "cordova-plugin-file": "6.0.2",
-    "cordova-plugin-filechooser": "1.2.0",
     "cordova-plugin-filepath": "1.6.0",
+    "cordova-plugin-device": "2.1.0",
+    "cordova-plugin-theme-detection": "1.3.0",
     "cordova-support-android-plugin": "2.0.4",
     "cordova-plugin-firebase-messaging": "7.0.4",
-    "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-ionic-webview": "5.0.0",
-    "cordova-plugin-statusbar": "2.4.3",
-    "cordova-plugin-stripe": "1.5.3",
-    "cordova-plugin-theme-detection": "1.3.0"
+    "cordova-plugin-filechooser": "1.2.0"
   }
 }

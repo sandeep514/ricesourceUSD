@@ -1,6 +1,22 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
   module.exports = [
     {
+      "id": "cordova-plugin-statusbar.statusbar",
+      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+      "pluginId": "cordova-plugin-statusbar",
+      "clobbers": [
+        "window.StatusBar"
+      ]
+    },
+    {
+      "id": "cordova-plugin-ionic-keyboard.keyboard",
+      "file": "plugins/cordova-plugin-ionic-keyboard/www/android/keyboard.js",
+      "pluginId": "cordova-plugin-ionic-keyboard",
+      "clobbers": [
+        "window.Keyboard"
+      ]
+    },
+    {
       "id": "com.razorpay.cordova.RazorpayCheckout",
       "file": "plugins/com.razorpay.cordova/www/RazorpayCheckout.js",
       "pluginId": "com.razorpay.cordova",
@@ -9,11 +25,11 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-device.device",
-      "file": "plugins/cordova-plugin-device/www/device.js",
-      "pluginId": "cordova-plugin-device",
+      "id": "cordova-plugin-stripe.stripe",
+      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
+      "pluginId": "cordova-plugin-stripe",
       "clobbers": [
-        "device"
+        "cordova.plugins.stripe"
       ]
     },
     {
@@ -190,19 +206,27 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "runs": true
     },
     {
-      "id": "cordova-plugin-filechooser.FileChooser",
-      "file": "plugins/cordova-plugin-filechooser/www/fileChooser.js",
-      "pluginId": "cordova-plugin-filechooser",
-      "clobbers": [
-        "fileChooser"
-      ]
-    },
-    {
       "id": "cordova-plugin-filepath.FilePath",
       "file": "plugins/cordova-plugin-filepath/www/FilePath.js",
       "pluginId": "cordova-plugin-filepath",
       "clobbers": [
         "window.FilePath"
+      ]
+    },
+    {
+      "id": "cordova-plugin-device.device",
+      "file": "plugins/cordova-plugin-device/www/device.js",
+      "pluginId": "cordova-plugin-device",
+      "clobbers": [
+        "device"
+      ]
+    },
+    {
+      "id": "cordova-plugin-theme-detection.ThemeDetection",
+      "file": "plugins/cordova-plugin-theme-detection/www/ThemeDetection.js",
+      "pluginId": "cordova-plugin-theme-detection",
+      "clobbers": [
+        "cordova.plugins.ThemeDetection"
       ]
     },
     {
@@ -214,14 +238,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-ionic-keyboard.keyboard",
-      "file": "plugins/cordova-plugin-ionic-keyboard/www/android/keyboard.js",
-      "pluginId": "cordova-plugin-ionic-keyboard",
-      "clobbers": [
-        "window.Keyboard"
-      ]
-    },
-    {
       "id": "cordova-plugin-ionic-webview.IonicWebView",
       "file": "plugins/cordova-plugin-ionic-webview/src/www/util.js",
       "pluginId": "cordova-plugin-ionic-webview",
@@ -230,52 +246,27 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-splashscreen.SplashScreen",
-      "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
-      "pluginId": "cordova-plugin-splashscreen",
+      "id": "cordova-plugin-filechooser.FileChooser",
+      "file": "plugins/cordova-plugin-filechooser/www/fileChooser.js",
+      "pluginId": "cordova-plugin-filechooser",
       "clobbers": [
-        "navigator.splashscreen"
-      ]
-    },
-    {
-      "id": "cordova-plugin-statusbar.statusbar",
-      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-      "pluginId": "cordova-plugin-statusbar",
-      "clobbers": [
-        "window.StatusBar"
-      ]
-    },
-    {
-      "id": "cordova-plugin-stripe.stripe",
-      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
-      "pluginId": "cordova-plugin-stripe",
-      "clobbers": [
-        "cordova.plugins.stripe"
-      ]
-    },
-    {
-      "id": "cordova-plugin-theme-detection.ThemeDetection",
-      "file": "plugins/cordova-plugin-theme-detection/www/ThemeDetection.js",
-      "pluginId": "cordova-plugin-theme-detection",
-      "clobbers": [
-        "cordova.plugins.ThemeDetection"
+        "fileChooser"
       ]
     }
   ];
   module.exports.metadata = {
-    "com.razorpay.cordova": "0.16.1",
+    "cordova-plugin-statusbar": "2.4.3",
+    "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-androidx-adapter": "1.1.3",
-    "cordova-plugin-device": "2.1.0",
+    "com.razorpay.cordova": "0.16.1",
+    "cordova-plugin-stripe": "1.5.3",
     "cordova-plugin-file": "6.0.2",
-    "cordova-plugin-filechooser": "1.2.0",
     "cordova-plugin-filepath": "1.6.0",
+    "cordova-plugin-device": "2.1.0",
+    "cordova-plugin-theme-detection": "1.3.0",
     "cordova-support-android-plugin": "2.0.4",
     "cordova-plugin-firebase-messaging": "7.0.4",
-    "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-ionic-webview": "5.0.0",
-    "cordova-plugin-splashscreen": "6.0.1",
-    "cordova-plugin-statusbar": "2.4.3",
-    "cordova-plugin-stripe": "1.5.3",
-    "cordova-plugin-theme-detection": "1.3.0"
+    "cordova-plugin-filechooser": "1.2.0"
   };
 });
