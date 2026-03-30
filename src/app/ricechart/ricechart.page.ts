@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
-import * as HighCharts from 'highcharts';
+import { Highcharts } from '../highcharts-stock';
 import { RestService } from '../rest.service';
 import { LoadingController, ModalController, NavController } from '@ionic/angular';
 import { ComponentsService } from '../components.service';
 import { PlanpagePage } from '../planpage/planpage.page';
 declare let RazorpayCheckout: any;
-declare var Highcharts: any;
-import { StockChart } from 'angular-highcharts';
 
 @Component({
 	selector: 'app-ricechart',
@@ -33,7 +31,24 @@ export class RicechartPage implements OnInit {
 	listPlans: any;
 	chartInt: any;
 	productType: any;
-	stock: StockChart;
+	chartRef: any;
+	timeframeOptions = [
+		{ label: '1W', value: '1w' },
+		{ label: '1m', value: '1m' },
+		{ label: '2m', value: '2m' },
+		{ label: '3m', value: '3m' },
+		{ label: '4m', value: '4m' },
+		{ label: '5m', value: '5m' },
+		{ label: '6m', value: '6m' },
+		{ label: '7m', value: '7m' },
+		{ label: '8m', value: '8m' },
+		{ label: '9m', value: '9m' },
+		{ label: '10m', value: '10m' },
+		{ label: '11m', value: '11m' },
+		{ label: '1y', value: '1y' },
+		{ label: 'All', value: 'all' }
+	];
+	selectedTimeframe = '5m';
 
 	constructor(public navCtrl: NavController, public apiser: RestService, public loading: LoadingController, public compSer: ComponentsService, public ModelCtrl: ModalController) {
 		this.selectedstate = localStorage.getItem('state');
@@ -86,7 +101,7 @@ export class RicechartPage implements OnInit {
 			for (let i = 0; i <= res.prices.length; i++) {
 				priceArray.push(parseInt(res.prices[i]));
 			}
-			Highcharts.stockChart('highcharts', {
+			this.chartRef = Highcharts.stockChart('highcharts', {
 				chart: {
 					alignTicks: false,
 					backgroundColor: '#fffbd6',
@@ -109,70 +124,15 @@ export class RicechartPage implements OnInit {
 					}
 				},
 				rangeSelector: {
-					selected: 0,
-					inputEnabled: false,
-					buttons: [{
-						type: 'week',
-						count: 1,
-						text: '1W'
-					}, {
-						type: 'month',
-						count: 1,
-						text: '1m'
-					}, {
-						type: 'month',
-						count: 2,
-						text: '2m'
-					}, {
-						type: 'month',
-						count: 3,
-						text: '3m'
-					}, {
-						type: 'month',
-						count: 4,
-						text: '4m'
-					}, {
-						type: 'month',
-						count: 5,
-						text: '5m'
-					}, {
-						type: 'month',
-						count: 6,
-						text: '6m'
-					}, {
-						type: 'month',
-						count: 7,
-						text: '7m'
-					}, {
-						type: 'month',
-						count: 8,
-						text: '8m'
-					}, {
-						type: 'month',
-						count: 9,
-						text: '9m'
-					}, {
-						type: 'month',
-						count: 10,
-						text: '10m'
-					}, {
-						type: 'month',
-						count: 11,
-						text: '11m'
-					}, {
-						type: 'year',
-						count: 1,
-						text: '1y'
-					}],
+					enabled: false
 				},
 
 				// title: {
 				// 	text: 'AAPL Stock Volume'
 				// },
 				series: [{
-					fontSize: '11px',
 					color: '#92b243',
-					type: 'line',
+					type: 'line' as 'line',
 					name: 'Rs (per Qtl)',
 					data:
 						res.combinedData,
@@ -189,6 +149,7 @@ export class RicechartPage implements OnInit {
 					}
 				}]
 			});
+			this.applyTimeframe(this.selectedTimeframe);
 
 			// var myChart = HighCharts.chart('highcharts', {
 			// 	chart: {
@@ -368,7 +329,7 @@ export class RicechartPage implements OnInit {
 					priceArray.push(parseInt(res.prices[i]));
 				}
 
-				var myChart = HighCharts.chart('highcharts', {
+				var myChart = Highcharts.chart('highcharts', {
 					chart: {
 						backgroundColor: '#FFFBD6',
 						type: 'line'
@@ -410,7 +371,7 @@ export class RicechartPage implements OnInit {
 					priceArray.push(parseInt(res.prices[i]));
 				}
 
-				var myChart = HighCharts.chart('highcharts', {
+				var myChart = Highcharts.chart('highcharts', {
 					chart: {
 						backgroundColor: '#FFFBD6',
 						type: 'line'
@@ -445,6 +406,44 @@ export class RicechartPage implements OnInit {
 	changeName(name) {
 		let newname = name.split('_').join(' ').toUpperCase();
 		return newname;
+	}
+
+	onTimeframeChange(event: any) {
+		this.selectedTimeframe = event.detail.value;
+		this.applyTimeframe(this.selectedTimeframe);
+	}
+
+	applyTimeframe(timeframe: string) {
+		if (!this.chartRef || !this.chartRef.xAxis || !this.chartRef.xAxis[0]) {
+			return;
+		}
+		if (timeframe === 'all') {
+			this.chartRef.xAxis[0].setExtremes(null, null);
+			return;
+		}
+
+		const data = (this.chartRef.series && this.chartRef.series[0] && this.chartRef.series[0].xData) ? this.chartRef.series[0].xData : [];
+		if (!data.length) {
+			return;
+		}
+
+		const max = data[data.length - 1];
+		let min = max;
+
+		if (timeframe === '1w') {
+			min = max - (7 * 24 * 60 * 60 * 1000);
+		} else if (timeframe.endsWith('m')) {
+			const months = parseInt(timeframe.replace('m', ''), 10);
+			const date = new Date(max);
+			date.setMonth(date.getMonth() - months);
+			min = date.getTime();
+		} else if (timeframe === '1y') {
+			const date = new Date(max);
+			date.setFullYear(date.getFullYear() - 1);
+			min = date.getTime();
+		}
+
+		this.chartRef.xAxis[0].setExtremes(min, max);
 	}
 
 }

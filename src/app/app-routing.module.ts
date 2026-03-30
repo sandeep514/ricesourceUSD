@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { IsloginGuard } from './islogin.guard';
+import { RicechartPage } from './ricechart/ricechart.page';
 
 const routes: Routes = [
   {
@@ -39,7 +40,7 @@ const routes: Routes = [
   },
   {
     path: 'ricechart',
-    loadChildren: () => import('./ricechart/ricechart.module').then( m => m.RicechartPageModule)
+    component: RicechartPage
   },
   {
     path: 'splashscreen',

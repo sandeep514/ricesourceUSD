@@ -1,12 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import * as $ from 'jquery';
-import * as HighCharts from 'highcharts';
+import { Highcharts } from '../highcharts-stock';
 import { RestService } from '../rest.service';
 import { LoadingController, ModalController, NavController } from '@ionic/angular';
 import { ComponentsService } from '../components.service';
 import { PlanpagePage } from '../planpage/planpage.page';
 declare let RazorpayCheckout: any;
-declare var Highcharts: any;
 import { StockChart } from 'angular-highcharts';
 import { ActivatedRoute } from '@angular/router';
 import { resolve } from 'url';
@@ -293,6 +292,7 @@ export class QualityDetailsPage implements OnInit {
 						}
 					},
 					series: [{
+						type: 'spline',
 						name: 'Price',
 						data: res.chartData.combinedData
 					}],

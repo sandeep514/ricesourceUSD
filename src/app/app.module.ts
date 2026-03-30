@@ -35,6 +35,7 @@ import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { ImagePicker } from "@ionic-native/image-picker/ngx";
 import { LoaderComponentPageModule } from './loader-component/loader-component.module';
+import { RicechartPageModule } from './ricechart/ricechart.module';
 // import { Facebook } from '@ionic-native/facebook/ngx';
 
 @NgModule({
@@ -65,6 +66,7 @@ import { LoaderComponentPageModule } from './loader-component/loader-component.m
 		UsdconvertmodalPageModule,
 		TrialperiodPageModule,
 		LoaderComponentPageModule,
+		RicechartPageModule,
 		IonicModule.forRoot({
 			scrollPadding: false,
 			scrollAssist: true,
