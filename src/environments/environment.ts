@@ -3,7 +3,19 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  /** `ionic serve` / dev: send Meta Pixel events (same pixel as prod). Set false to disable locally. */
+  facebookPixelEnabled: true,
+  /** Meta Pixel ID (Events Manager → Pixel) */
+  facebookPixelId: '1386223478792415',
+  /** Meta / Facebook App ID (developers.facebook.com app; sharing, native SDK, Events Manager app link) */
+  facebookAppId: '1460974571532915',
+  /**
+   * Optional: Events Manager → your Pixel → Test events → copy a test browser code.
+   * When non-empty, init uses test_event_code so events show under “Test events” only.
+   * Leave '' to send normal dev traffic to the live pixel stream.
+   */
+  facebookMetaTestEventCode: '' as string
 };
 
 /*

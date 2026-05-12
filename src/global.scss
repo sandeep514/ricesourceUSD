@@ -32,7 +32,10 @@
 @import './sass/fonts.scss';
 @import './sass/app.scss';
 
-
+ion-app{
+  padding: 0px !important;
+  margin: 0px !important;
+}
     /*
      * Dark Colors
      * -------------------------------------------
@@ -217,6 +220,7 @@
       --background-color: "transparent";
 
     }
+
   }
   ion-app {
     margin-bottom: env(safe-area-inset-bottom);

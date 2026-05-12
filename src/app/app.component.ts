@@ -7,13 +7,15 @@ import { ThemeDetection, ThemeDetectionResponse } from "@ionic-native/theme-dete
 import { RestService } from './rest.service';
 // // // import { SplashscreenPage } from './splashscreen/splashscreen.page';
 import { ComponentsService } from './components.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { MetaPixelService } from './meta-pixel.service';
+import { FirebaseInAppMessagingService } from './firebase-in-app-messaging.service';
 import { PlanpagePage } from './planpage/planpage.page';
 import { Location } from '@angular/common';
 declare let RazorpayCheckout: any;
 import { FirebaseMessaging } from '@ionic-native/firebase-messaging/ngx';
 import { UsdconvertmodalPage } from './usdconvertmodal/usdconvertmodal.page';
-import { ConditionalExpr } from '@angular/compiler';
 // import { Facebook } from '@ionic-native/facebook/ngx';
 
 @Component({
@@ -21,7 +23,7 @@ import { ConditionalExpr } from '@angular/compiler';
 	templateUrl: 'app.component.html',
 	styleUrls: ['app.component.scss']
 })
-
+ 
 export class AppComponent implements OnInit {
 	public selectedIndex = 0;
 	public user: any = '';
@@ -125,6 +127,8 @@ export class AppComponent implements OnInit {
 		public route: Router,
 		public location: Location,
 		public firebase: FirebaseMessaging,
+		private metaPixel: MetaPixelService,
+		private firebaseInApp: FirebaseInAppMessagingService,
 		// private fb: Facebook
 	) {
 		platform.ready().then(() => {
@@ -396,8 +400,12 @@ export class AppComponent implements OnInit {
 	}
 
 	initializeApp() {
+		this.metaPixel.bootstrap();
 
 		this.platform.ready().then(async () => {
+			this.metaPixel.trackAppOpen();
+			this.firebaseInApp.init();
+
 			this.hasUser = localStorage.getItem('name');
 
 			this.appType = localStorage.getItem('apptype')
@@ -847,6 +855,15 @@ export class AppComponent implements OnInit {
 		const path = window.location.pathname.split('folder/')[1];
 		if (path !== undefined) {
 			this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
+		}
+
+		if (this.metaPixel.isEnabled()) {
+			this.route.events.pipe(
+				filter((e): e is NavigationEnd => e instanceof NavigationEnd)
+			).subscribe((e: NavigationEnd) => {
+				const url = e.urlAfterRedirects || e.url;
+				this.metaPixel.trackPageView(url);
+			});
 		}
 	}
 

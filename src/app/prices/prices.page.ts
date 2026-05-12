@@ -9,6 +9,7 @@ import { IonContent } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { VersionmodalPage } from '../versionmodal/versionmodal.page';
 import { Navigation } from 'selenium-webdriver';
+import { FirebaseAnalyticsService } from "../firebase-analytics.service";
 
 @Component({
 	selector: "app-prices",
@@ -78,7 +79,8 @@ export class PricesPage implements OnInit {
 		public modalController: ModalController,
 		public navCtrl: NavController,
 		public route: Router,
-		public versionMdel: VersionmodalPage
+		public versionMdel: VersionmodalPage,
+		private firebaseAnalytics: FirebaseAnalyticsService
 	) {
 		if (localStorage.getItem("is_INR_active") == "0") {
 			console.log("jknk");
@@ -164,6 +166,13 @@ export class PricesPage implements OnInit {
 			this.refresh();
 			event.target.complete();
 		}, 2000);
+	}
+
+	async triggerInAppActionsTest(): Promise<void> {
+		await this.firebaseAnalytics.logEvent("screen_view", {
+			firebase_screen: "home",
+			firebase_screen_class: "PricesPage",
+		});
 	}
 
 	ionViewDidLoad() {

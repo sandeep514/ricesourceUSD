@@ -43,15 +43,43 @@
         "parents": {
           "/*": [
             {
-              "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
               "xml": "<feature name=\"Checkout\"><param name=\"android-package\" value=\"com.razorpay.cordova.Main\" /></feature>",
               "count": 1
             },
             {
+              "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"FilePath\"><param name=\"android-package\" value=\"com.hiddentao.cordova.filepath.FilePath\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"FirebaseAnalytics\"><param name=\"android-package\" value=\"by.chemerisuk.cordova.firebase.FirebaseAnalyticsPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"FirebaseInappMessaging\"><param name=\"android-package\" value=\"by.chemerisuk.cordova.firebase.FirebaseInappMessagingPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"FirebaseMessaging\"><param name=\"android-package\" value=\"by.chemerisuk.cordova.firebase.FirebaseMessagingPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
               "xml": "<feature name=\"CordovaStripe\"><param name=\"android-package\" value=\"com.zyramedia.cordova.stripe.CordovaStripe\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"ThemeDetection\"><param name=\"android-package\" value=\"de.mariusbackes.cordova.plugin.ThemeDetection\" /></feature>",
               "count": 1
             },
             {
@@ -60,22 +88,6 @@
             },
             {
               "xml": "<allow-navigation href=\"cdvfile:*\" />",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"FilePath\"><param name=\"android-package\" value=\"com.hiddentao.cordova.filepath.FilePath\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"ThemeDetection\"><param name=\"android-package\" value=\"de.mariusbackes.cordova.plugin.ThemeDetection\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"FirebaseMessaging\"><param name=\"android-package\" value=\"by.chemerisuk.cordova.firebase.FirebaseMessagingPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
             }
           ],
@@ -87,23 +99,95 @@
           ]
         }
       },
+      "AndroidManifest.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<uses-permission android:name=\"android.permission.READ_MEDIA_IMAGES\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.READ_MEDIA_VIDEO\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+              "count": 3
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
+              "count": 1
+            }
+          ],
+          "application": [
+            {
+              "xml": "<provider android:authorities=\"${applicationId}.cordova.plugin.camera.provider\" android:exported=\"false\" android:grantUriPermissions=\"true\" android:name=\"org.apache.cordova.camera.FileProvider\"><meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/camera_provider_paths\" /></provider>",
+              "count": 1
+            }
+          ],
+          "queries": [
+            {
+              "xml": "<intent><action android:name=\"android.media.action.IMAGE_CAPTURE\" /></intent>",
+              "count": 1
+            },
+            {
+              "xml": "<intent><action android:name=\"android.intent.action.GET_CONTENT\" /></intent>",
+              "count": 1
+            },
+            {
+              "xml": "<intent><action android:name=\"android.intent.action.PICK\" /></intent>",
+              "count": 1
+            },
+            {
+              "xml": "<intent><action android:name=\"com.android.camera.action.CROP\" /><data android:mimeType=\"image/*\" android:scheme=\"content\" /></intent>",
+              "count": 1
+            }
+          ],
+          "/manifest/application": [
+            {
+              "xml": "<meta-data android:name=\"firebase_analytics_collection_enabled\" android:value=\"true\" />",
+              "count": 1
+            },
+            {
+              "xml": "<meta-data android:name=\"google_analytics_automatic_screen_reporting_enabled\" android:value=\"true\" />",
+              "count": 1
+            },
+            {
+              "xml": "<meta-data android:name=\"firebase_inapp_messaging_auto_data_collection_enabled\" android:value=\"true\" />",
+              "count": 1
+            },
+            {
+              "xml": "<service android:exported=\"false\" android:name=\"by.chemerisuk.cordova.firebase.FirebaseMessagingPluginService\"><intent-filter><action android:name=\"com.google.firebase.MESSAGING_EVENT\" /></intent-filter></service>",
+              "count": 1
+            },
+            {
+              "xml": "<meta-data android:name=\"com.google.firebase.messaging.default_notification_channel_id\" android:value=\"default\" />",
+              "count": 1
+            }
+          ]
+        }
+      },
       "config.xml": {
         "parents": {
           "/*": [
             {
-              "xml": "<feature name=\"CDVIonicKeyboard\"><param name=\"android-package\" onload=\"true\" value=\"io.ionic.keyboard.CDVIonicKeyboard\" /></feature>",
-              "count": 1
-            },
-            {
               "xml": "<preference name=\"AndroidXEnabled\" value=\"true\" />",
-              "count": 1
+              "count": 2
             },
             {
               "xml": "<preference name=\"GradlePluginGoogleServicesEnabled\" value=\"true\" />",
-              "count": 1
+              "count": 2
             },
             {
               "xml": "<preference name=\"GradlePluginGoogleServicesVersion\" value=\"4.3.13\" />",
+              "count": 2
+            },
+            {
+              "xml": "<feature name=\"CDVIonicKeyboard\"><param name=\"android-package\" onload=\"true\" value=\"io.ionic.keyboard.CDVIonicKeyboard\" /></feature>",
               "count": 1
             },
             {
@@ -128,83 +212,154 @@
             }
           ]
         }
-      },
-      "AndroidManifest.xml": {
-        "parents": {
-          "/*": [
-            {
-              "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\" />",
-              "count": 1
-            }
-          ],
-          "/manifest/application": [
-            {
-              "xml": "<service android:exported=\"false\" android:name=\"by.chemerisuk.cordova.firebase.FirebaseMessagingPluginService\"><intent-filter><action android:name=\"com.google.firebase.MESSAGING_EVENT\" /></intent-filter></service>",
-              "count": 1
-            },
-            {
-              "xml": "<meta-data android:name=\"com.google.firebase.messaging.default_notification_channel_id\" android:value=\"default\" />",
-              "count": 1
-            }
-          ]
-        }
       }
     }
   },
   "installed_plugins": {
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "app.sntcrice.sourcing"
-    },
-    "cordova-plugin-ionic-keyboard": {
+    "com.razorpay.cordova": {
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     },
     "cordova-plugin-androidx-adapter": {
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     },
-    "com.razorpay.cordova": {
-      "PACKAGE_NAME": "app.sntcrice.sourcing"
-    },
-    "cordova-plugin-stripe": {
-      "PACKAGE_NAME": "app.sntcrice.sourcing"
-    },
-    "cordova-plugin-file": {
-      "PACKAGE_NAME": "app.sntcrice.sourcing"
-    },
-    "cordova-plugin-filepath": {
+    "cordova-plugin-camera": {
+      "ANDROIDX_CORE_VERSION": "1.6.+",
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     },
-    "cordova-plugin-theme-detection": {
+    "cordova-plugin-filechooser": {
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-filepath": {
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     },
     "cordova-support-android-plugin": {
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-firebase-analytics": {
+      "ANALYTICS_COLLECTION_ENABLED": "true",
+      "AUTOMATIC_SCREEN_REPORTING_ENABLED": "true",
+      "ANDROID_FIREBASE_BOM_VERSION": "30.3.1",
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-firebase-inappmessaging": {
+      "AUTOMATIC_DATA_COLLECTION_ENABLED": "true",
+      "ANDROID_FIREBASE_BOM_VERSION": "32.5.0",
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     },
     "cordova-plugin-firebase-messaging": {
       "ANDROID_FIREBASE_BOM_VERSION": "30.3.1",
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
     "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     },
-    "cordova-plugin-filechooser": {
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-stripe": {
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-theme-detection": {
+      "PACKAGE_NAME": "app.sntcrice.sourcing"
+    },
+    "cordova-plugin-file": {
       "PACKAGE_NAME": "app.sntcrice.sourcing"
     }
   },
   "dependent_plugins": {},
   "modules": [
     {
-      "id": "cordova-plugin-statusbar.statusbar",
-      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-      "pluginId": "cordova-plugin-statusbar",
+      "id": "com.razorpay.cordova.RazorpayCheckout",
+      "file": "plugins/com.razorpay.cordova/www/RazorpayCheckout.js",
+      "pluginId": "com.razorpay.cordova",
       "clobbers": [
-        "window.StatusBar"
+        "RazorpayCheckout"
+      ]
+    },
+    {
+      "id": "cordova-plugin-camera.Camera",
+      "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
+      "pluginId": "cordova-plugin-camera",
+      "clobbers": [
+        "Camera"
+      ]
+    },
+    {
+      "id": "cordova-plugin-camera.CameraPopoverOptions",
+      "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
+      "pluginId": "cordova-plugin-camera",
+      "clobbers": [
+        "CameraPopoverOptions"
+      ]
+    },
+    {
+      "id": "cordova-plugin-camera.camera",
+      "file": "plugins/cordova-plugin-camera/www/Camera.js",
+      "pluginId": "cordova-plugin-camera",
+      "clobbers": [
+        "navigator.camera"
+      ]
+    },
+    {
+      "id": "cordova-plugin-camera.CameraPopoverHandle",
+      "file": "plugins/cordova-plugin-camera/www/CameraPopoverHandle.js",
+      "pluginId": "cordova-plugin-camera",
+      "clobbers": [
+        "CameraPopoverHandle"
+      ]
+    },
+    {
+      "id": "cordova-plugin-device.device",
+      "file": "plugins/cordova-plugin-device/www/device.js",
+      "pluginId": "cordova-plugin-device",
+      "clobbers": [
+        "device"
+      ]
+    },
+    {
+      "id": "cordova-plugin-filechooser.FileChooser",
+      "file": "plugins/cordova-plugin-filechooser/www/fileChooser.js",
+      "pluginId": "cordova-plugin-filechooser",
+      "clobbers": [
+        "fileChooser"
+      ]
+    },
+    {
+      "id": "cordova-plugin-filepath.FilePath",
+      "file": "plugins/cordova-plugin-filepath/www/FilePath.js",
+      "pluginId": "cordova-plugin-filepath",
+      "clobbers": [
+        "window.FilePath"
+      ]
+    },
+    {
+      "id": "cordova-plugin-firebase-analytics.FirebaseAnalytics",
+      "file": "plugins/cordova-plugin-firebase-analytics/www/FirebaseAnalytics.js",
+      "pluginId": "cordova-plugin-firebase-analytics",
+      "merges": [
+        "cordova.plugins.firebase.analytics"
+      ]
+    },
+    {
+      "id": "cordova-plugin-firebase-inappmessaging.FirebaseInappMessaging",
+      "file": "plugins/cordova-plugin-firebase-inappmessaging/www/FirebaseInappMessaging.js",
+      "pluginId": "cordova-plugin-firebase-inappmessaging",
+      "merges": [
+        "cordova.plugins.firebase.inappmessaging"
+      ]
+    },
+    {
+      "id": "cordova-plugin-firebase-messaging.FirebaseMessaging",
+      "file": "plugins/cordova-plugin-firebase-messaging/www/FirebaseMessaging.js",
+      "pluginId": "cordova-plugin-firebase-messaging",
+      "merges": [
+        "cordova.plugins.firebase.messaging"
       ]
     },
     {
@@ -216,11 +371,19 @@
       ]
     },
     {
-      "id": "com.razorpay.cordova.RazorpayCheckout",
-      "file": "plugins/com.razorpay.cordova/www/RazorpayCheckout.js",
-      "pluginId": "com.razorpay.cordova",
+      "id": "cordova-plugin-ionic-webview.IonicWebView",
+      "file": "plugins/cordova-plugin-ionic-webview/src/www/util.js",
+      "pluginId": "cordova-plugin-ionic-webview",
       "clobbers": [
-        "RazorpayCheckout"
+        "Ionic.WebView"
+      ]
+    },
+    {
+      "id": "cordova-plugin-statusbar.statusbar",
+      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+      "pluginId": "cordova-plugin-statusbar",
+      "clobbers": [
+        "window.StatusBar"
       ]
     },
     {
@@ -229,6 +392,14 @@
       "pluginId": "cordova-plugin-stripe",
       "clobbers": [
         "cordova.plugins.stripe"
+      ]
+    },
+    {
+      "id": "cordova-plugin-theme-detection.ThemeDetection",
+      "file": "plugins/cordova-plugin-theme-detection/www/ThemeDetection.js",
+      "pluginId": "cordova-plugin-theme-detection",
+      "clobbers": [
+        "cordova.plugins.ThemeDetection"
       ]
     },
     {
@@ -403,69 +574,24 @@
         "cordova"
       ],
       "runs": true
-    },
-    {
-      "id": "cordova-plugin-filepath.FilePath",
-      "file": "plugins/cordova-plugin-filepath/www/FilePath.js",
-      "pluginId": "cordova-plugin-filepath",
-      "clobbers": [
-        "window.FilePath"
-      ]
-    },
-    {
-      "id": "cordova-plugin-device.device",
-      "file": "plugins/cordova-plugin-device/www/device.js",
-      "pluginId": "cordova-plugin-device",
-      "clobbers": [
-        "device"
-      ]
-    },
-    {
-      "id": "cordova-plugin-theme-detection.ThemeDetection",
-      "file": "plugins/cordova-plugin-theme-detection/www/ThemeDetection.js",
-      "pluginId": "cordova-plugin-theme-detection",
-      "clobbers": [
-        "cordova.plugins.ThemeDetection"
-      ]
-    },
-    {
-      "id": "cordova-plugin-firebase-messaging.FirebaseMessaging",
-      "file": "plugins/cordova-plugin-firebase-messaging/www/FirebaseMessaging.js",
-      "pluginId": "cordova-plugin-firebase-messaging",
-      "merges": [
-        "cordova.plugins.firebase.messaging"
-      ]
-    },
-    {
-      "id": "cordova-plugin-ionic-webview.IonicWebView",
-      "file": "plugins/cordova-plugin-ionic-webview/src/www/util.js",
-      "pluginId": "cordova-plugin-ionic-webview",
-      "clobbers": [
-        "Ionic.WebView"
-      ]
-    },
-    {
-      "id": "cordova-plugin-filechooser.FileChooser",
-      "file": "plugins/cordova-plugin-filechooser/www/fileChooser.js",
-      "pluginId": "cordova-plugin-filechooser",
-      "clobbers": [
-        "fileChooser"
-      ]
     }
   ],
   "plugin_metadata": {
-    "cordova-plugin-statusbar": "2.4.3",
-    "cordova-plugin-ionic-keyboard": "2.2.0",
-    "cordova-plugin-androidx-adapter": "1.1.3",
     "com.razorpay.cordova": "0.16.1",
-    "cordova-plugin-stripe": "1.5.3",
-    "cordova-plugin-file": "6.0.2",
-    "cordova-plugin-filepath": "1.6.0",
+    "cordova-plugin-androidx-adapter": "1.1.3",
+    "cordova-plugin-camera": "7.0.0",
     "cordova-plugin-device": "2.1.0",
-    "cordova-plugin-theme-detection": "1.3.0",
+    "cordova-plugin-filechooser": "1.2.0",
+    "cordova-plugin-filepath": "1.6.0",
     "cordova-support-android-plugin": "2.0.4",
+    "cordova-plugin-firebase-analytics": "7.0.5",
+    "cordova-plugin-firebase-inappmessaging": "8.0.0",
     "cordova-plugin-firebase-messaging": "7.0.4",
+    "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-ionic-webview": "5.0.0",
-    "cordova-plugin-filechooser": "1.2.0"
+    "cordova-plugin-statusbar": "2.4.3",
+    "cordova-plugin-stripe": "1.5.3",
+    "cordova-plugin-theme-detection": "1.3.0",
+    "cordova-plugin-file": "6.0.2"
   }
 }

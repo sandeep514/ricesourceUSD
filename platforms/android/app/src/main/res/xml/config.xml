@@ -1,34 +1,45 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="app.sntcrice.sourcing" version="2.0.35" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="app.sntcrice.sourcing" version="2.0.37" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Checkout">
+        <param name="android-package" value="com.razorpay.cordova.Main" />
+    </feature>
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="FilePath">
+        <param name="android-package" value="com.hiddentao.cordova.filepath.FilePath" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="FirebaseAnalytics">
+        <param name="android-package" value="by.chemerisuk.cordova.firebase.FirebaseAnalyticsPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="FirebaseInappMessaging">
+        <param name="android-package" value="by.chemerisuk.cordova.firebase.FirebaseInappMessagingPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="FirebaseMessaging">
+        <param name="android-package" value="by.chemerisuk.cordova.firebase.FirebaseMessagingPlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <feature name="StatusBar">
         <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="Checkout">
-        <param name="android-package" value="com.razorpay.cordova.Main" />
-    </feature>
     <feature name="CordovaStripe">
         <param name="android-package" value="com.zyramedia.cordova.stripe.CordovaStripe" />
+    </feature>
+    <feature name="ThemeDetection">
+        <param name="android-package" value="de.mariusbackes.cordova.plugin.ThemeDetection" />
     </feature>
     <feature name="File">
         <param name="android-package" value="org.apache.cordova.file.FileUtils" />
         <param name="onload" value="true" />
     </feature>
     <allow-navigation href="cdvfile:*" />
-    <feature name="FilePath">
-        <param name="android-package" value="com.hiddentao.cordova.filepath.FilePath" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="Device">
-        <param name="android-package" value="org.apache.cordova.device.Device" />
-    </feature>
-    <feature name="ThemeDetection">
-        <param name="android-package" value="de.mariusbackes.cordova.plugin.ThemeDetection" />
-    </feature>
-    <feature name="FirebaseMessaging">
-        <param name="android-package" value="by.chemerisuk.cordova.firebase.FirebaseMessagingPlugin" />
-        <param name="onload" value="true" />
-    </feature>
     <feature name="FileChooser">
         <param name="android-package" value="com.megster.cordova.FileChooser" />
     </feature>
@@ -70,11 +81,13 @@
     <allow-navigation href="http://localhost:8100" sessionid="84de1208" />
     <allow-navigation href="https://*stripe.com/*" />
     <allow-navigation href="https://*js.stripe.com/*" />
+    <hook src="hooks/after_prepare/patch-android-gradle-min-build-tools.js" type="after_prepare" />
     <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
         <application android:networkSecurityConfig="@xml/network_security_config" />
         <application android:usesCleartextTraffic="true" />
     </edit-config>
     <resource-file src="resources/android/xml/network_security_config.xml" target="app/src/main/res/xml/network_security_config.xml" />
+    <resource-file src="google-services.json" target="app/google-services.json" />
     <allow-intent href="market:*" />
     <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
     <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
@@ -97,11 +110,12 @@
     <preference name="loglevel" value="DEBUG" />
     <preference name="AndroidXEnabled" value="true" />
     <preference name="GradlePluginGoogleServicesEnabled" value="true" />
-    <preference name="GradlePluginGoogleServicesVersion" value="4.3.13" />
+    <preference name="GradlePluginGoogleServicesVersion" value="4.4.1" />
     <preference name="webView" value="com.ionicframework.cordova.webview.IonicWebViewEngine" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="22" />
     <preference name="android-targetSdkVersion" value="35" />
+    <preference name="android-compileSdkVersion" value="35" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreenDuration" value="300" />
@@ -115,5 +129,11 @@
     <preference name="AndroidWindowSplashScreenIconBackgroundColor" value="#92b243" />
     <preference name="AndroidWindowSplashScreenAnimatedIcon" value="./resources/iconsntcsplash.png" />
     <preference name="SplashScreenDelay" value="3000" />
+    <preference name="GradleVersion" value="8.7" />
+    <preference name="AndroidGradlePluginVersion" value="8.5.2" />
+    <preference name="GradlePluginKotlinVersion" value="1.8.22" />
+    <preference name="AndroidXAppCompatVersion" value="1.6.1" />
+    <preference name="AndroidXWebKitVersion" value="1.9.0" />
+    <preference name="android-buildToolsVersion" value="35.0.0" />
     <preference name="GTM_CONTAINER_ID" value="GTM-MFRD6R6" />
 </widget>

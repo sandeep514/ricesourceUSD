@@ -20,18 +20,6 @@
 	
 	<br>
 	<button id="clickme" (click)="clickme()"></button>
-	<ion-row class="ion-padding-start ion-padding-end">
-		<ion-col size="12">
-			<ion-item lines="none">
-				<ion-label>Timeframe</ion-label>
-				<ion-select interface="popover" [value]="selectedTimeframe" (ionChange)="onTimeframeChange($event)">
-					<ion-select-option *ngFor="let option of timeframeOptions" [value]="option.value">
-						{{ option.label }}
-					</ion-select-option>
-				</ion-select>
-			</ion-item>
-		</ion-col>
-	</ion-row>
 	<!-- <ion-row>
 		<div class="scroll-arrow">
 			<img src="./../../assets/RINGH.png" alt="" (click)="scroll('left','table-responsive-2')" class="righticon">
@@ -49,9 +37,11 @@
 		</ion-col>
 	</ion-row> -->
 
-	<ion-row>
-		<ion-col>
-			<div id="highcharts" style="width:400; height:400px;"></div>
+	<ion-row class="ricechart-chart-row">
+		<ion-col size="12" class="ricechart-chart-col">
+			<div class="ricechart-scroll">
+				<div id="highcharts" class="ricechart-highcharts"></div>
+			</div>
 		</ion-col>
 	</ion-row>
 

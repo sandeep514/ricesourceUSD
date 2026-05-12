@@ -32,23 +32,6 @@ export class RicechartPage implements OnInit {
 	chartInt: any;
 	productType: any;
 	chartRef: any;
-	timeframeOptions = [
-		{ label: '1W', value: '1w' },
-		{ label: '1m', value: '1m' },
-		{ label: '2m', value: '2m' },
-		{ label: '3m', value: '3m' },
-		{ label: '4m', value: '4m' },
-		{ label: '5m', value: '5m' },
-		{ label: '6m', value: '6m' },
-		{ label: '7m', value: '7m' },
-		{ label: '8m', value: '8m' },
-		{ label: '9m', value: '9m' },
-		{ label: '10m', value: '10m' },
-		{ label: '11m', value: '11m' },
-		{ label: '1y', value: '1y' },
-		{ label: 'All', value: 'all' }
-	];
-	selectedTimeframe = '5m';
 
 	constructor(public navCtrl: NavController, public apiser: RestService, public loading: LoadingController, public compSer: ComponentsService, public ModelCtrl: ModalController) {
 		this.selectedstate = localStorage.getItem('state');
@@ -105,7 +88,13 @@ export class RicechartPage implements OnInit {
 				chart: {
 					alignTicks: false,
 					backgroundColor: '#fffbd6',
-					marginLeft: 40
+					marginLeft: 40,
+					marginRight: 12,
+					spacing: [10, 12, 10, 10],
+					reflow: true,
+					style: {
+						overflow: 'visible'
+					}
 				},
 				// xAxis: {
 				// 	title: {
@@ -124,7 +113,73 @@ export class RicechartPage implements OnInit {
 					}
 				},
 				rangeSelector: {
-					enabled: false
+					enabled: true,
+					allButtonsEnabled: true,
+					inputEnabled: false,
+					buttonSpacing: 2,
+					selected: 5,
+					buttonTheme: {
+						padding: 4,
+						r: 2,
+						style: {
+							fontSize: '10px',
+							fontWeight: 'normal'
+						}
+					},
+					buttons: [
+						{ type: 'week', count: 1, text: '1W' },
+						{ type: 'month', count: 1, text: '1m' },
+						{ type: 'month', count: 2, text: '2m' },
+						{ type: 'month', count: 3, text: '3m' },
+						{ type: 'month', count: 4, text: '4m' },
+						{ type: 'month', count: 5, text: '5m' },
+						{ type: 'month', count: 6, text: '6m' },
+						{ type: 'month', count: 7, text: '7m' },
+						{ type: 'month', count: 8, text: '8m' },
+						{ type: 'month', count: 9, text: '9m' },
+						{ type: 'month', count: 10, text: '10m' },
+						{ type: 'month', count: 11, text: '11m' },
+						{ type: 'year', count: 1, text: '1y' },
+						{ type: 'all', text: 'All' }
+					]
+				},
+				navigator: {
+					margin: 6
+				},
+				responsive: {
+					rules: [{
+						condition: {
+							maxWidth: 640
+						},
+						chartOptions: {
+							rangeSelector: {
+								allButtonsEnabled: true,
+								inputEnabled: false,
+								selected: 2,
+								buttonSpacing: 3,
+								buttonTheme: {
+									padding: 5,
+									r: 2,
+									style: {
+										fontSize: '11px'
+									}
+								},
+								buttons: [
+									{ type: 'week', count: 1, text: '1W' },
+									{ type: 'month', count: 1, text: '1m' },
+									{ type: 'month', count: 5, text: '5m' },
+									{ type: 'month', count: 6, text: '6m' },
+									{ type: 'year', count: 1, text: '1y' },
+									{ type: 'all', text: 'All' }
+								]
+							},
+							chart: {
+								marginLeft: 36,
+								marginRight: 10,
+								spacing: [8, 10, 8, 8]
+							}
+						}
+					}]
 				},
 
 				// title: {
@@ -149,7 +204,15 @@ export class RicechartPage implements OnInit {
 					}
 				}]
 			});
-			this.applyTimeframe(this.selectedTimeframe);
+
+			const reflowChart = () => {
+				if (this.chartRef && typeof this.chartRef.reflow === 'function') {
+					this.chartRef.reflow();
+				}
+			};
+			setTimeout(reflowChart, 0);
+			setTimeout(reflowChart, 150);
+			setTimeout(reflowChart, 400);
 
 			// var myChart = HighCharts.chart('highcharts', {
 			// 	chart: {
@@ -406,44 +469,6 @@ export class RicechartPage implements OnInit {
 	changeName(name) {
 		let newname = name.split('_').join(' ').toUpperCase();
 		return newname;
-	}
-
-	onTimeframeChange(event: any) {
-		this.selectedTimeframe = event.detail.value;
-		this.applyTimeframe(this.selectedTimeframe);
-	}
-
-	applyTimeframe(timeframe: string) {
-		if (!this.chartRef || !this.chartRef.xAxis || !this.chartRef.xAxis[0]) {
-			return;
-		}
-		if (timeframe === 'all') {
-			this.chartRef.xAxis[0].setExtremes(null, null);
-			return;
-		}
-
-		const data = (this.chartRef.series && this.chartRef.series[0] && this.chartRef.series[0].xData) ? this.chartRef.series[0].xData : [];
-		if (!data.length) {
-			return;
-		}
-
-		const max = data[data.length - 1];
-		let min = max;
-
-		if (timeframe === '1w') {
-			min = max - (7 * 24 * 60 * 60 * 1000);
-		} else if (timeframe.endsWith('m')) {
-			const months = parseInt(timeframe.replace('m', ''), 10);
-			const date = new Date(max);
-			date.setMonth(date.getMonth() - months);
-			min = date.getTime();
-		} else if (timeframe === '1y') {
-			const date = new Date(max);
-			date.setFullYear(date.getFullYear() - 1);
-			min = date.getTime();
-		}
-
-		this.chartRef.xAxis[0].setExtremes(min, max);
 	}
 
 }

@@ -408,3 +408,43 @@ ion-content{
 .highcharts-axis-labels.highcharts-xaxis-labels{
     display: none !important;
 }
+
+/* Full-width chart: avoid Ionic grid padding clipping the SVG on narrow screens */
+.ricechart-chart-row {
+    margin: 0;
+    width: 100%;
+}
+.ricechart-chart-col {
+    --padding-start: 0;
+    --padding-end: 0;
+    padding: 0 4px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.ricechart-scroll {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+}
+
+.ricechart-highcharts {
+    width: 100%;
+    min-width: 0;
+    min-height: 420px;
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+}
+
+/* Range selector / input row — readable on cream background */
+::ng-deep .ricechart-highcharts .highcharts-range-selector-buttons .highcharts-button text,
+::ng-deep .ricechart-highcharts .highcharts-range-selector-buttons text {
+    fill: #333 !important;
+}
+::ng-deep .ricechart-highcharts .highcharts-range-selector-buttons .highcharts-button-box {
+    stroke: #92b243;
+}

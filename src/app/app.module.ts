@@ -28,7 +28,6 @@ import { IonicSelectableModule } from 'ionic-selectable';
 
 import { UsdconvertmodalPageModule } from './usdconvertmodal/usdconvertmodal.module';
 import { TrialperiodPageModule } from './trialperiod/trialperiod.module';
-import { Stripe } from '@ionic-native/stripe/ngx';
 import { File } from "@ionic-native/file/ngx";
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
 import { FileChooser } from '@ionic-native/file-chooser/ngx';
@@ -80,7 +79,6 @@ import { RicechartPageModule } from './ricechart/ricechart.module';
 		ThemeDetection,
 		Camera,
 		FirebaseMessaging,
-		Stripe,
 		FileChooser,
 		FilePath,
 		FileTransfer,

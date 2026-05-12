@@ -1,11 +1,91 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
   module.exports = [
     {
-      "id": "cordova-plugin-statusbar.statusbar",
-      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-      "pluginId": "cordova-plugin-statusbar",
+      "id": "com.razorpay.cordova.RazorpayCheckout",
+      "file": "plugins/com.razorpay.cordova/www/RazorpayCheckout.js",
+      "pluginId": "com.razorpay.cordova",
       "clobbers": [
-        "window.StatusBar"
+        "RazorpayCheckout"
+      ]
+    },
+    {
+      "id": "cordova-plugin-camera.Camera",
+      "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
+      "pluginId": "cordova-plugin-camera",
+      "clobbers": [
+        "Camera"
+      ]
+    },
+    {
+      "id": "cordova-plugin-camera.CameraPopoverOptions",
+      "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
+      "pluginId": "cordova-plugin-camera",
+      "clobbers": [
+        "CameraPopoverOptions"
+      ]
+    },
+    {
+      "id": "cordova-plugin-camera.camera",
+      "file": "plugins/cordova-plugin-camera/www/Camera.js",
+      "pluginId": "cordova-plugin-camera",
+      "clobbers": [
+        "navigator.camera"
+      ]
+    },
+    {
+      "id": "cordova-plugin-camera.CameraPopoverHandle",
+      "file": "plugins/cordova-plugin-camera/www/CameraPopoverHandle.js",
+      "pluginId": "cordova-plugin-camera",
+      "clobbers": [
+        "CameraPopoverHandle"
+      ]
+    },
+    {
+      "id": "cordova-plugin-device.device",
+      "file": "plugins/cordova-plugin-device/www/device.js",
+      "pluginId": "cordova-plugin-device",
+      "clobbers": [
+        "device"
+      ]
+    },
+    {
+      "id": "cordova-plugin-filechooser.FileChooser",
+      "file": "plugins/cordova-plugin-filechooser/www/fileChooser.js",
+      "pluginId": "cordova-plugin-filechooser",
+      "clobbers": [
+        "fileChooser"
+      ]
+    },
+    {
+      "id": "cordova-plugin-filepath.FilePath",
+      "file": "plugins/cordova-plugin-filepath/www/FilePath.js",
+      "pluginId": "cordova-plugin-filepath",
+      "clobbers": [
+        "window.FilePath"
+      ]
+    },
+    {
+      "id": "cordova-plugin-firebase-analytics.FirebaseAnalytics",
+      "file": "plugins/cordova-plugin-firebase-analytics/www/FirebaseAnalytics.js",
+      "pluginId": "cordova-plugin-firebase-analytics",
+      "merges": [
+        "cordova.plugins.firebase.analytics"
+      ]
+    },
+    {
+      "id": "cordova-plugin-firebase-inappmessaging.FirebaseInappMessaging",
+      "file": "plugins/cordova-plugin-firebase-inappmessaging/www/FirebaseInappMessaging.js",
+      "pluginId": "cordova-plugin-firebase-inappmessaging",
+      "merges": [
+        "cordova.plugins.firebase.inappmessaging"
+      ]
+    },
+    {
+      "id": "cordova-plugin-firebase-messaging.FirebaseMessaging",
+      "file": "plugins/cordova-plugin-firebase-messaging/www/FirebaseMessaging.js",
+      "pluginId": "cordova-plugin-firebase-messaging",
+      "merges": [
+        "cordova.plugins.firebase.messaging"
       ]
     },
     {
@@ -17,11 +97,19 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "com.razorpay.cordova.RazorpayCheckout",
-      "file": "plugins/com.razorpay.cordova/www/RazorpayCheckout.js",
-      "pluginId": "com.razorpay.cordova",
+      "id": "cordova-plugin-ionic-webview.IonicWebView",
+      "file": "plugins/cordova-plugin-ionic-webview/src/www/util.js",
+      "pluginId": "cordova-plugin-ionic-webview",
       "clobbers": [
-        "RazorpayCheckout"
+        "Ionic.WebView"
+      ]
+    },
+    {
+      "id": "cordova-plugin-statusbar.statusbar",
+      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+      "pluginId": "cordova-plugin-statusbar",
+      "clobbers": [
+        "window.StatusBar"
       ]
     },
     {
@@ -30,6 +118,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "pluginId": "cordova-plugin-stripe",
       "clobbers": [
         "cordova.plugins.stripe"
+      ]
+    },
+    {
+      "id": "cordova-plugin-theme-detection.ThemeDetection",
+      "file": "plugins/cordova-plugin-theme-detection/www/ThemeDetection.js",
+      "pluginId": "cordova-plugin-theme-detection",
+      "clobbers": [
+        "cordova.plugins.ThemeDetection"
       ]
     },
     {
@@ -204,69 +300,24 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
         "cordova"
       ],
       "runs": true
-    },
-    {
-      "id": "cordova-plugin-filepath.FilePath",
-      "file": "plugins/cordova-plugin-filepath/www/FilePath.js",
-      "pluginId": "cordova-plugin-filepath",
-      "clobbers": [
-        "window.FilePath"
-      ]
-    },
-    {
-      "id": "cordova-plugin-device.device",
-      "file": "plugins/cordova-plugin-device/www/device.js",
-      "pluginId": "cordova-plugin-device",
-      "clobbers": [
-        "device"
-      ]
-    },
-    {
-      "id": "cordova-plugin-theme-detection.ThemeDetection",
-      "file": "plugins/cordova-plugin-theme-detection/www/ThemeDetection.js",
-      "pluginId": "cordova-plugin-theme-detection",
-      "clobbers": [
-        "cordova.plugins.ThemeDetection"
-      ]
-    },
-    {
-      "id": "cordova-plugin-firebase-messaging.FirebaseMessaging",
-      "file": "plugins/cordova-plugin-firebase-messaging/www/FirebaseMessaging.js",
-      "pluginId": "cordova-plugin-firebase-messaging",
-      "merges": [
-        "cordova.plugins.firebase.messaging"
-      ]
-    },
-    {
-      "id": "cordova-plugin-ionic-webview.IonicWebView",
-      "file": "plugins/cordova-plugin-ionic-webview/src/www/util.js",
-      "pluginId": "cordova-plugin-ionic-webview",
-      "clobbers": [
-        "Ionic.WebView"
-      ]
-    },
-    {
-      "id": "cordova-plugin-filechooser.FileChooser",
-      "file": "plugins/cordova-plugin-filechooser/www/fileChooser.js",
-      "pluginId": "cordova-plugin-filechooser",
-      "clobbers": [
-        "fileChooser"
-      ]
     }
   ];
   module.exports.metadata = {
-    "cordova-plugin-statusbar": "2.4.3",
-    "cordova-plugin-ionic-keyboard": "2.2.0",
-    "cordova-plugin-androidx-adapter": "1.1.3",
     "com.razorpay.cordova": "0.16.1",
-    "cordova-plugin-stripe": "1.5.3",
-    "cordova-plugin-file": "6.0.2",
-    "cordova-plugin-filepath": "1.6.0",
+    "cordova-plugin-androidx-adapter": "1.1.3",
+    "cordova-plugin-camera": "7.0.0",
     "cordova-plugin-device": "2.1.0",
-    "cordova-plugin-theme-detection": "1.3.0",
+    "cordova-plugin-filechooser": "1.2.0",
+    "cordova-plugin-filepath": "1.6.0",
     "cordova-support-android-plugin": "2.0.4",
+    "cordova-plugin-firebase-analytics": "7.0.5",
+    "cordova-plugin-firebase-inappmessaging": "8.0.0",
     "cordova-plugin-firebase-messaging": "7.0.4",
+    "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-ionic-webview": "5.0.0",
-    "cordova-plugin-filechooser": "1.2.0"
+    "cordova-plugin-statusbar": "2.4.3",
+    "cordova-plugin-stripe": "1.5.3",
+    "cordova-plugin-theme-detection": "1.3.0",
+    "cordova-plugin-file": "6.0.2"
   };
 });

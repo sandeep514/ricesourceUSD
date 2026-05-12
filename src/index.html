@@ -15,6 +15,8 @@
 
   <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
 
+  <meta property="fb:app_id" content="1460974571532915" />
+
   <!-- add to homescreen for ios -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -26,22 +28,7 @@
 <script type="text/javascript" src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script type="text/javascript" src="https://js.stripe.com/v3/" async></script>
 <script type="text/javascript" src="https://checkout.stripe.com/checkout.js" async></script>
-
-<script>
-  !function (f, b, e, v, n, t, s) {
-    if (f.fbq) return; n = f.fbq = function () {
-      n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-    };
-    if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-    n.queue = []; t = b.createElement(e); t.async = !0;
-    t.src = v; s = b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t, s)
-  }(window, document, 'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1386223478792415');
-  fbq('track', 'PageView');
-</script>
+<!-- Meta Pixel: loaded via MetaPixelService + environment (see app.component / meta-pixel.service) -->
 <!-- Google Tag Manager -->
 
 <!-- End Google Tag Manager -->
